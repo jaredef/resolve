@@ -1,0 +1,16 @@
+<htx:type>convex_test</htx:type>
+<htx:where>status=published</htx:where>
+<htx:order>newest</htx:order>
+<htx>
+<div style="max-width: 800px; margin: 2rem auto; padding: 2rem;">
+  <h1 style="color: #00d4aa;">Convex Cloud Content</h1>
+  <p style="color: #999;">These items live in Convex DB, not SQLite.</p>
+  <htx:each>
+    <article style="border: 1px solid #333; border-radius: 8px; padding: 1.5rem; margin: 1rem 0; background: #1a1a2e;">
+      <h2 style="color: #fff;">__title__</h2>
+      <p style="color: #ccc;">__body__</p>
+      <small style="color: #666;">__slug__ &middot; __created_at__</small>
+    </article>
+  </htx:each>
+</div>
+</htx>

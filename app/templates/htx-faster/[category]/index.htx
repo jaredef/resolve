@@ -1,0 +1,49 @@
+<style>
+  .nf-layout { padding: 1.5rem 0; }
+  .nf-breadcrumb { font-size: 0.75rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.35rem; color: var(--text-dim); }
+  .nf-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .nf-breadcrumb a:hover { color: var(--accent); opacity: 1; }
+  .nf-breadcrumb .sep { color: var(--border-hover); font-size: 0.65rem; }
+  .nf-header { margin-bottom: 1.5rem; }
+  .nf-header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-heading); }
+  .nf-header p { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.2rem; }
+  .nf-product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .nf-product { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 0.5rem; overflow: hidden; transition: box-shadow 0.15s, border-color 0.15s; text-decoration: none; display: block; }
+  .nf-product:hover { border-color: var(--border-hover); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); opacity: 1; }
+  .nf-product-img { height: 120px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.15); font-size: 2rem; background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 40%, var(--bg-primary)) 100%); }
+  .nf-product-body { padding: 0.75rem 1rem; }
+  .nf-product-title { font-size: 0.8rem; font-weight: 600; color: var(--text-heading); line-height: 1.3; margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nf-product-price { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+  .nf-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .nf-count { font-size: 0.75rem; color: var(--text-dim); }
+  @media (max-width: 900px) { .nf-product-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .nf-product-grid { grid-template-columns: 1fr; } }
+</style>
+
+{{ if fp.category }}
+<div class="nf-layout">
+  <nav class="nf-breadcrumb">
+    <a href="/htx-faster">Store</a>
+    <span class="sep">/</span>
+    <span>{{ fp.category.title }}</span>
+  </nav>
+  <header class="nf-header">
+    <h1>{{ fp.category.title }}</h1>
+    <p>{{ fp.category.summary }}</p>
+  </header>
+</div>
+
+<div class="nf-layout">
+  <div class="nf-product-grid">
+  {{ each prod in fp.products }}
+    <a href="/htx-faster/{{ fp.category.slug }}/{{ prod.slug }}" class="nf-product" preload="mouseover">
+      <div class="nf-product-img">&#9670;</div>
+      <div class="nf-product-body">
+        <div class="nf-product-title">{{ prod.title }}</div>
+        <div class="nf-product-price">${{ prod.price }}</div>
+      </div>
+    </a>
+  {{ endeach }}
+  </div>
+</div>
+{{ endif }}

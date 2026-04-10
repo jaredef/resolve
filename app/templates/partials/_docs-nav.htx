@@ -1,0 +1,151 @@
+<div class="docs-nav-shell">
+  <p class="docs-nav-label">Documentation</p>
+
+  <div class="docs-nav-filter">
+    <input type="text" placeholder="Filter topics..." oninput="filterDocsNav(this.value)" />
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>Getting Started</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=getting-started</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>Core Concepts</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=core-concepts</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>Real-Time</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=real-time</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>Building Pages</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=building-pages</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>Guides</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=guides</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>Engine Internals</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=engine-internals</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>API Reference</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=api-reference</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>Adapters</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=adapters</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+
+  <div class="docs-nav-group" data-filter-section>
+    <h3>Operations</h3>
+    <ul>
+      <htx:type>documentation</htx:type>
+      <htx:where>status=published,section=operations</htx:where>
+      <htx:order>oldest</htx:order>
+      <htx>
+      <htx:each>
+      <li><a href="/docs/__slug__" data-filter-text="{{ lowercase(title) }}">__title__</a></li>
+      </htx:each>
+      </htx>
+    </ul>
+  </div>
+</div>
+
+<script>
+  function filterDocsNav(query) {
+    var q = query.toLowerCase().trim();
+    var sections = document.querySelectorAll('[data-filter-section]');
+    sections.forEach(function(section) {
+      var items = section.querySelectorAll('li');
+      var anyVisible = false;
+      items.forEach(function(item) {
+        var text = (item.querySelector('[data-filter-text]') || item).getAttribute('data-filter-text') || item.textContent || '';
+        var match = !q || text.toLowerCase().indexOf(q) !== -1;
+        item.style.display = match ? '' : 'none';
+        if (match) anyVisible = true;
+      });
+      section.style.display = anyVisible ? '' : 'none';
+    });
+  }
+</script>

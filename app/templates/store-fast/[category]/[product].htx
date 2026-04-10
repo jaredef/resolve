@@ -1,0 +1,63 @@
+<style>
+  .store-layout { padding-top: 1rem; }
+  .store-breadcrumb { font-size: 0.8rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-primary); display: flex; align-items: center; gap: 0.35rem; color: var(--text-dim); flex-wrap: wrap; }
+  .store-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .store-breadcrumb a:hover { color: var(--accent); opacity: 1; }
+  .store-breadcrumb .sep { color: var(--border-hover); }
+  .product-detail { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; margin-bottom: 2rem; }
+  .product-image { background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: rgba(255,255,255,0.15); max-height: 240px; background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 50%, var(--bg-primary)) 100%); }
+  .product-info h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; line-height: 1.3; }
+  .price-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .price { font-size: 1.75rem; font-weight: 700; color: var(--accent); }
+  .stock { font-size: 0.72rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 999px; text-transform: uppercase; background: rgba(74, 222, 128, 0.1); color: var(--color-success); }
+  .description { font-size: 0.92rem; color: var(--text-body); line-height: 1.7; margin-bottom: 1.5rem; }
+  .related-section { margin-top: 1rem; }
+  .related-section h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-heading); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.85rem; }
+  .related-card { background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 6px; overflow: hidden; text-decoration: none; transition: border-color 0.15s; }
+  .related-card:hover { border-color: var(--border-hover); opacity: 1; }
+  .related-card-img { height: 80px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: rgba(255,255,255,0.2); background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 50%, var(--bg-primary)) 100%); }
+  .related-card-body { padding: 0.65rem; }
+  .related-card-title { font-size: 0.78rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.15rem; line-height: 1.3; }
+  .related-card-price { font-size: 0.82rem; font-weight: 700; color: var(--accent); }
+  @media (max-width: 900px) { .product-detail { grid-template-columns: 1fr; } .product-image { max-height: 200px; } }
+</style>
+
+<div class="store-layout">
+  {{ if store.product.title }}
+  <nav class="store-breadcrumb">
+    <a href="/store-fast">Store</a>
+    <span class="sep">/</span>
+    <a href="/store-fast/{{ route.category }}" style="text-transform: capitalize;">{{ route.category }}</a>
+    <span class="sep">/</span>
+    <span>{{ store.product.title }}</span>
+  </nav>
+
+  <div class="product-detail">
+    <div class="product-image">&#9670;</div>
+    <div class="product-info">
+      <h1>{{ store.product.title }}</h1>
+      <div class="price-row">
+        <span class="price">${{ store.product.price }}</span>
+        <span class="stock">In Stock</span>
+      </div>
+      <p class="description">{{ store.product.body }}</p>
+    </div>
+  </div>
+
+  <section class="related-section">
+    <h2>More from this category</h2>
+    <div class="related-grid">
+      {{ each rel in store.related }}
+      <a href="/store-fast/{{ route.category }}/{{ rel.slug }}" class="related-card" preload="mouseover">
+        <div class="related-card-img">&#9670;</div>
+        <div class="related-card-body">
+          <div class="related-card-title">{{ rel.title }}</div>
+          <div class="related-card-price">${{ rel.price }}</div>
+        </div>
+      </a>
+      {{ endeach }}
+    </div>
+  </section>
+  {{ endif }}
+</div>

@@ -1,0 +1,63 @@
+<style>
+  .nf-layout { padding: 1.5rem 0; }
+  .nf-breadcrumb { font-size: 0.75rem; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.35rem; color: var(--text-dim); flex-wrap: wrap; }
+  .nf-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .nf-breadcrumb a:hover { color: var(--accent); opacity: 1; }
+  .nf-breadcrumb .sep { color: var(--border-hover); font-size: 0.65rem; }
+  .nf-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+  .nf-detail-img { background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 40%, var(--bg-primary)) 100%); border-radius: 0.5rem; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: rgba(255,255,255,0.12); }
+  .nf-detail-info h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-heading); line-height: 1.3; margin-bottom: 0.75rem; }
+  .nf-price-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+  .nf-price { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+  .nf-stock { font-size: 0.65rem; font-weight: 600; padding: 0.2rem 0.5rem; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; background: var(--success-bg); color: var(--color-success); }
+  .nf-desc { font-size: 0.875rem; color: var(--text-body); line-height: 1.7; }
+  .nf-related { margin-top: 1rem; }
+  .nf-related h2 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-heading); }
+  .nf-related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.75rem; }
+  .nf-related-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 0.5rem; overflow: hidden; text-decoration: none; transition: border-color 0.15s, box-shadow 0.15s; }
+  .nf-related-card:hover { border-color: var(--border-hover); box-shadow: 0 2px 4px rgba(0,0,0,0.06); opacity: 1; }
+  .nf-related-img { height: 80px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: rgba(255,255,255,0.12); background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 40%, var(--bg-primary)) 100%); }
+  .nf-related-body { padding: 0.5rem 0.75rem; }
+  .nf-related-title { font-size: 0.72rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.15rem; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nf-related-price { font-size: 0.78rem; font-weight: 700; color: var(--accent); }
+  @media (max-width: 768px) { .nf-detail { grid-template-columns: 1fr; } }
+</style>
+
+{{ if fp.product }}
+<div class="nf-layout">
+  <nav class="nf-breadcrumb">
+    <a href="/htx-faster">Store</a>
+    <span class="sep">/</span>
+    <a href="/htx-faster/{{ route.category }}" style="text-transform: capitalize;">{{ route.category }}</a>
+    <span class="sep">/</span>
+    <span>{{ fp.product.title }}</span>
+  </nav>
+
+  <div class="nf-detail">
+    <div class="nf-detail-img">&#9670;</div>
+    <div class="nf-detail-info">
+      <h1>{{ fp.product.title }}</h1>
+      <div class="nf-price-row">
+        <span class="nf-price">${{ fp.product.price }}</span>
+        <span class="nf-stock">In Stock</span>
+      </div>
+      <p class="nf-desc">{{ fp.product.body }}</p>
+    </div>
+  </div>
+</div>
+
+<section class="nf-related" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem 2rem;">
+  <h2>More from this category</h2>
+  <div class="nf-related-grid">
+  {{ each rel in fp.related }}
+    <a href="/htx-faster/{{ route.category }}/{{ rel.slug }}" class="nf-related-card" preload="mouseover">
+      <div class="nf-related-img">&#9670;</div>
+      <div class="nf-related-body">
+        <div class="nf-related-title">{{ rel.title }}</div>
+        <div class="nf-related-price">${{ rel.price }}</div>
+      </div>
+    </a>
+  {{ endeach }}
+  </div>
+</section>
+{{ endif }}

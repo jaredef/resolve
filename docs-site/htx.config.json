@@ -1,0 +1,7 @@
+{
+  "adapter": "markdown",
+  "contentRoot": "content",
+  "templatesDir": "app/templates",
+  "publicDir": "app/public",
+  "secretKey": "docs-site-key-not-needed-readonly"
+}

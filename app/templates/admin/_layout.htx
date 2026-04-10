@@ -1,0 +1,715 @@
+<htx:auth redirect="/admin/login" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTX Admin</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.setAttribute('data-theme', t);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+  <style>
+    /* ── Intercooler Theme ── */
+    :root {
+      color-scheme: dark;
+      --bg-primary: #1f1f1f;
+      --bg-secondary: #1a1d1e;
+      --bg-surface: #262829;
+      --bg-surface-hover: #2e3032;
+      --bg-input: #1a1d1e;
+      --bg-hover-subtle: rgba(255,255,255,0.04);
+      --text-primary: #c7c4c1;
+      --text-heading: #e0ddd9;
+      --text-body: #c7c4c1;
+      --text-secondary: #b0ada9;
+      --text-muted: #8a8785;
+      --text-dim: #777;
+      --text-subtle: #666;
+      --text-placeholder: #555;
+      --text-footer: #555;
+      --border-primary: #41464b;
+      --border-hover: #555;
+      --border-subtle: rgba(255,255,255,0.08);
+      --border-input: #41464b;
+      --border-input-focus: #5b96d5;
+      --accent: #5b96d5;
+      --accent-hover: #4a85c4;
+      --accent-bg: rgba(91, 150, 213, 0.08);
+      --color-success: #4ade80;
+      --color-warning: #f59e0b;
+      --color-error: #ef4444;
+      --color-danger-bg: rgba(239, 68, 68, 0.1);
+      --color-danger-border: rgba(239, 68, 68, 0.3);
+      --color-danger-hover: rgba(239, 68, 68, 0.2);
+      --success-bg: rgba(74, 222, 128, 0.08);
+      --warning-bg: rgba(245, 158, 11, 0.08);
+      --nav-link: rgba(199, 196, 193, 0.6);
+      --nav-link-hover: rgba(199, 196, 193, 0.85);
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      --font-code: 'SF Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+      --sidebar-width: 240px;
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f6f6f6;
+      --bg-surface: #f0f0f0;
+      --bg-surface-hover: #e8e8e8;
+      --bg-input: #fff;
+      --bg-hover-subtle: rgba(0,0,0,0.03);
+      --text-primary: #111;
+      --text-heading: #111;
+      --text-body: #333;
+      --text-secondary: #444;
+      --text-muted: #666;
+      --text-dim: #777;
+      --text-subtle: #888;
+      --text-placeholder: #aaa;
+      --text-footer: #888;
+      --border-primary: #d0d0d0;
+      --border-hover: #bbb;
+      --border-subtle: rgba(0,0,0,0.08);
+      --border-input: #d0d0d0;
+      --border-input-focus: #3366cc;
+      --accent: #3366cc;
+      --accent-hover: #2855b0;
+      --accent-bg: rgba(51, 102, 204, 0.06);
+      --color-success: #16a34a;
+      --color-warning: #d97706;
+      --color-error: #dc2626;
+      --color-danger-bg: rgba(220, 38, 38, 0.06);
+      --color-danger-border: rgba(220, 38, 38, 0.2);
+      --color-danger-hover: rgba(220, 38, 38, 0.12);
+      --success-bg: rgba(22, 163, 74, 0.06);
+      --warning-bg: rgba(217, 119, 6, 0.06);
+      --nav-link: rgba(0,0,0,0.5);
+      --nav-link-hover: rgba(0,0,0,0.7);
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { opacity: 0.75; }
+
+    /* ── Top bar ── */
+    .admin-topbar {
+      background: linear-gradient(var(--bg-primary), var(--bg-secondary));
+      border-bottom: 1px solid var(--border-primary);
+      height: 3.25rem;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .admin-topbar .brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      color: var(--text-heading);
+      letter-spacing: -0.02em;
+    }
+    .admin-topbar .brand .brand-accent { color: var(--accent); }
+    .admin-topbar .brand-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--accent-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-left: 0.25rem;
+    }
+    .admin-topbar-actions {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .admin-topbar-link {
+      color: var(--nav-link);
+      font-size: 0.82rem;
+      padding: 0.4rem 0.5rem;
+      transition: opacity 0.15s;
+    }
+    .admin-topbar-link:hover { opacity: 0.6; }
+
+    /* ── Theme toggle ── */
+    .theme-toggle {
+      display: flex; align-items: center; justify-content: center;
+      width: 2rem; height: 2rem; background: transparent;
+      border: none; color: var(--nav-link); cursor: pointer;
+      border-radius: 4px; padding: 0; transition: opacity 0.15s;
+    }
+    .theme-toggle:hover { opacity: 0.6; }
+    .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: none; }
+    :root .theme-toggle .icon-sun { display: block; }
+    html[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+    html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+    /* ── Layout shell ── */
+    .admin-shell {
+      display: flex;
+      min-height: calc(100vh - 3.25rem);
+    }
+
+    /* ── Sidebar ── */
+    .admin-sidebar {
+      width: var(--sidebar-width);
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border-primary);
+      padding: 1.25rem 0;
+      flex-shrink: 0;
+      position: sticky;
+      top: 3.25rem;
+      height: calc(100vh - 3.25rem);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-sidebar-header {
+      padding: 0 1.25rem 1rem;
+      border-bottom: 1px solid var(--border-primary);
+      margin-bottom: 0.75rem;
+    }
+    .admin-sidebar-header h3 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.15rem;
+    }
+    .admin-sidebar-header p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .admin-nav-group { margin-bottom: 0.5rem; }
+    .admin-nav-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.5rem 1.25rem 0.25rem;
+    }
+    .admin-nav-group ul { list-style: none; }
+    .admin-nav-group li a {
+      display: block;
+      padding: 0.35rem 1.25rem;
+      font-size: 0.82rem;
+      color: var(--nav-link);
+      transition: color 0.15s, background 0.15s;
+      text-decoration: none;
+    }
+    .admin-nav-group li a:hover {
+      color: var(--nav-link-hover);
+      background: var(--bg-hover-subtle);
+      opacity: 1;
+    }
+
+    .admin-sidebar-footer {
+      margin-top: auto;
+      padding: 1rem 1.25rem 0;
+      border-top: 1px solid var(--border-primary);
+    }
+
+    /* ── Main content ── */
+    .admin-main {
+      flex: 1;
+      min-width: 0;
+      padding: 2rem 2.5rem 3rem;
+      max-width: 960px;
+    }
+
+    /* ── Page header ── */
+    .admin-page-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-primary);
+    }
+    .admin-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.35rem;
+    }
+    .admin-page-header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
+    }
+    .admin-lead {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      max-width: 36em;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      border-radius: 5px;
+      border: 1px solid var(--border-primary);
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn:hover { background: var(--bg-surface-hover); border-color: var(--border-hover); opacity: 1; }
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--border-primary);
+      color: var(--text-muted);
+    }
+    .btn-secondary:hover { color: var(--text-primary); border-color: var(--border-hover); }
+    .btn-danger {
+      background: var(--color-danger-bg);
+      border-color: var(--color-danger-border);
+      color: var(--color-error);
+    }
+    .btn-danger:hover { background: var(--color-danger-hover); }
+    .btn-sm { padding: 0.3rem 0.6rem; font-size: 0.75rem; }
+
+    /* ── Card grid ── */
+    .admin-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .admin-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-primary);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+    }
+    .admin-card-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+    .admin-card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 0.35rem;
+      margin-top: 0;
+    }
+    .admin-card > p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 0.75rem; }
+    .admin-card-stat {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.15rem;
+    }
+    .admin-card-meta {
+      font-size: 0.72rem;
+      color: var(--text-subtle);
+      margin-bottom: 1rem;
+    }
+    .admin-card-actions {
+      display: flex;
+      gap: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border-primary);
+    }
+
+    /* ── Content list ── */
+    .admin-list { display: flex; flex-direction: column; }
+    .admin-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border-primary);
+    }
+    .admin-row:first-child { border-top: 1px solid var(--border-primary); }
+    .admin-row-main { flex: 1; min-width: 0; }
+    .admin-row-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+    .admin-row-title strong {
+      font-size: 0.92rem;
+      color: var(--text-heading);
+      font-weight: 500;
+    }
+    .admin-row-meta {
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+      margin-bottom: 0.2rem;
+      font-family: var(--font-code);
+    }
+    .admin-row p:not(.admin-row-meta) {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Status badges ── */
+    .status-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .status-published {
+      color: var(--color-success);
+      background: var(--success-bg);
+    }
+    .status-draft {
+      color: var(--color-warning);
+      background: var(--warning-bg);
+    }
+
+    /* ── Row actions ── */
+    .admin-row .actions {
+      display: flex;
+      gap: 0.15rem;
+      flex-shrink: 0;
+      padding-top: 0.15rem;
+    }
+    .admin-row .actions a {
+      font-size: 0.75rem;
+      color: var(--nav-link);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .admin-row .actions a:hover {
+      color: var(--text-primary);
+      background: var(--bg-hover-subtle);
+      opacity: 1;
+    }
+
+    /* ── Quick links ── */
+    .admin-section { margin-bottom: 2rem; }
+    .admin-section-heading { margin-bottom: 1rem; }
+    .admin-section-heading h2 {
+      font-size: 1.05rem; font-weight: 600; color: var(--text-heading);
+      margin-bottom: 0.15rem; margin-top: 0;
+    }
+    .admin-section-heading p { font-size: 0.82rem; color: var(--text-muted); }
+    .admin-quick-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.5rem;
+    }
+    .admin-quick-link {
+      display: block;
+      padding: 0.85rem 1rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-primary);
+      border-radius: 6px;
+      transition: border-color 0.15s, background 0.15s;
+      text-decoration: none;
+    }
+    .admin-quick-link:hover { border-color: var(--border-hover); background: var(--bg-surface); opacity: 1; }
+    .admin-quick-link strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-heading);
+      margin-bottom: 0.15rem;
+    }
+    .admin-quick-link span {
+      font-size: 0.75rem;
+      color: var(--text-subtle);
+    }
+
+    /* ── Empty state ── */
+    .admin-empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+    }
+    .admin-empty-state h2 {
+      font-size: 1.15rem;
+      color: var(--text-subtle);
+      margin-bottom: 0.5rem;
+      margin-top: 0;
+    }
+    .admin-empty-state p { font-size: 0.85rem; margin-bottom: 1rem; }
+
+    /* ── Forms ── */
+    .admin-form { max-width: 680px; }
+    .admin-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 0;
+    }
+    .admin-form-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .admin-form-field {
+      margin-bottom: 1rem;
+    }
+    .admin-form-field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.01em;
+    }
+    .admin-form-field input[type="text"],
+    .admin-form-field input[type="password"],
+    .admin-form-field textarea,
+    .admin-form-field select {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      background: var(--bg-input);
+      color: var(--text-primary);
+      border: 1px solid var(--border-input);
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .admin-form-field input:focus,
+    .admin-form-field textarea:focus,
+    .admin-form-field select:focus {
+      border-color: var(--border-input-focus);
+    }
+    .admin-form-field input::placeholder,
+    .admin-form-field textarea::placeholder {
+      color: var(--text-placeholder);
+    }
+    .admin-form-field textarea { resize: vertical; line-height: 1.6; }
+    .admin-form-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+    }
+    .admin-form-actions button {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .admin-form-actions button:hover { background: var(--accent-hover); }
+    .admin-form-actions .btn-danger {
+      background: var(--color-danger-bg);
+      border-color: var(--color-danger-border);
+      color: var(--color-error);
+    }
+    .admin-form-actions .btn-danger:hover { background: var(--color-danger-hover); }
+
+    /* ── Confirm delete ── */
+    .confirm-delete {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-primary);
+      border-radius: 6px;
+      padding: 1.5rem 2rem;
+      max-width: 520px;
+    }
+    .confirm-delete p { font-size: 0.88rem; color: var(--text-body); margin-bottom: 0.5rem; line-height: 1.6; }
+    .confirm-delete .admin-row-meta { margin-bottom: 0.75rem; }
+    .confirm-delete .admin-form-actions { padding-top: 1rem; border-top: 1px solid var(--border-primary); margin-top: 0.75rem; }
+
+    /* ── Logout button ── */
+    .admin-logout-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      width: 100%;
+      padding: 0.4rem 0;
+      font-size: 0.78rem;
+      font-family: var(--font-body);
+      background: none;
+      border: none;
+      color: var(--text-subtle);
+      cursor: pointer;
+      transition: color 0.15s;
+      text-align: left;
+    }
+    .admin-logout-btn:hover { color: var(--text-primary); }
+
+    /* ── Mobile sidebar ── */
+    .admin-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-heading);
+      cursor: pointer;
+      padding: 0.25rem;
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .admin-mobile-toggle { display: flex; align-items: center; }
+      .admin-sidebar {
+        position: fixed;
+        left: -260px;
+        top: 3.25rem;
+        z-index: 90;
+        width: var(--sidebar-width);
+        transition: left 0.2s ease;
+        box-shadow: none;
+      }
+      .admin-sidebar.sidebar-open {
+        left: 0;
+        box-shadow: 4px 0 12px rgba(0,0,0,0.2);
+      }
+      .admin-main { padding: 1.5rem 1rem 2rem; }
+      .admin-page-header { flex-direction: column; }
+      .admin-form-grid { grid-template-columns: 1fr; }
+      .admin-form-grid-3 { grid-template-columns: 1fr; }
+    }
+
+    input, textarea, select, button { font-size: 16px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="admin-topbar">
+    <button class="admin-mobile-toggle" onclick="document.querySelector('.admin-sidebar').classList.toggle('sidebar-open')" type="button" aria-label="Toggle sidebar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+    <a href="/admin" class="brand">
+      <span class="brand-accent">&lt;/&gt;</span> HTX
+      <span class="brand-tag">Admin</span>
+    </a>
+    <div class="admin-topbar-actions">
+      <a href="/" class="admin-topbar-link">View Site</a>
+      <a href="/docs" class="admin-topbar-link">Docs</a>
+      <button class="theme-toggle" onclick="toggleTheme()" type="button" aria-label="Toggle theme">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <h3>Content Admin</h3>
+        <p>Manage posts and docs with HTX templates.</p>
+      </div>
+
+      <div class="admin-nav-group">
+        <p class="admin-nav-label">Overview</p>
+        <ul>
+          <li><a href="/admin">Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="admin-nav-group">
+        <p class="admin-nav-label">Publishing</p>
+        <ul>
+          <li><a href="/admin/posts">Posts</a></li>
+          <li><a href="/admin/posts/new">New Post</a></li>
+        </ul>
+      </div>
+
+      <div class="admin-nav-group">
+        <p class="admin-nav-label">Documentation</p>
+        <ul>
+          <li><a href="/admin/docs">Docs</a></li>
+          <li><a href="/admin/docs/new">New Doc</a></li>
+        </ul>
+      </div>
+
+      <div class="admin-sidebar-footer">
+        <form method="post" action="/admin/logout">
+          <input type="hidden" name="htx-logout" value="true" />
+          <input type="hidden" name="htx-logout-redirect" value="/admin/login" />
+          <button type="submit" class="admin-logout-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Log Out
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      __content__
+    </main>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var next = (current === 'light') ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+  </script>
+</body>
+</html>

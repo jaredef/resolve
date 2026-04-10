@@ -1,0 +1,76 @@
+<style>
+  .store-layout { padding-top: 1rem; }
+
+  .store-main { min-width: 0; }
+  .store-hero { margin-bottom: 2rem; }
+  .store-hero h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.35rem; }
+  .store-hero .hero-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .store-hero .product-count { font-size: 0.78rem; color: var(--text-dim); }
+
+  .collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
+  .collection-card {
+    background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px;
+    overflow: hidden; transition: border-color 0.15s, transform 0.15s;
+  }
+  .collection-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+  .collection-card-color { height: 8px; }
+  .collection-card-body { padding: 1.25rem; }
+  .collection-card h2 { font-size: 1.05rem; font-weight: 600; margin: 0 0 0.25rem; }
+  .collection-card h2 a { color: var(--text-heading); text-decoration: none; }
+  .collection-card h2 a:hover { color: var(--accent); opacity: 1; }
+  .collection-card p { font-size: 0.82rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+  .cat-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+  .cat-chip {
+    font-size: 0.78rem; padding: 0.4rem 0.75rem; border-radius: 4px;
+    background: var(--bg-primary); border: 1px solid var(--border-primary);
+    color: var(--text-body); text-decoration: none; transition: border-color 0.15s;
+  }
+  .cat-chip:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+
+  @media (max-width: 900px) {
+    .store-layout { flex-direction: column; }
+    .store-layout .store-sidebar { display: none; }
+    .store-hero h1 { font-size: 1.5rem; }
+    .collection-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="store-layout">
+    <header class="store-hero">
+      <h1>Art Supply Store</h1>
+      <p class="hero-sub">Server-rendered e-commerce with <code>htx:rel</code> — no React, no GraphQL, no build step.</p>
+      <htx:type>store-product</htx:type>
+      <htx:where>status=published</htx:where>
+      <htx>
+      <p class="product-count">Explore {{ result.total }} products</p>
+      </htx>
+    </header>
+
+    <htx:type>store-collection</htx:type>
+    <htx:where>status=published</htx:where>
+    <htx:order>oldest</htx:order>
+    <htx>
+    <div class="collection-grid">
+    <htx:each>
+    <div class="collection-card">
+      <div class="collection-card-color" style="background: __color__;"></div>
+      <div class="collection-card-body">
+        <h2><a href="/store/collections/__slug__" preload="mouseover">__title__</a></h2>
+        <p>__summary__</p>
+        <div class="cat-grid">
+          <htx:type>store-category</htx:type>
+          <htx:rel>collection_id=parent.id</htx:rel>
+          <htx:order>oldest</htx:order>
+          <htx>
+          <htx:each>
+          <a href="/store/__slug__" class="cat-chip" preload="mouseover">__title__</a>
+          </htx:each>
+          </htx>
+        </div>
+      </div>
+    </div>
+    </htx:each>
+    </div>
+    </htx>
+</div>

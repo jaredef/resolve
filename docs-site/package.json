@@ -1,0 +1,14 @@
+{
+  "name": "htx-docs-site",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "bunx htx dev",
+    "serve": "bunx htx serve"
+  },
+  "dependencies": {
+    "@htx/cli": "workspace:*",
+    "@htx/engine": "workspace:*",
+    "@htx/adapter-markdown": "workspace:*"
+  }
+}

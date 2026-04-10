@@ -1,0 +1,1 @@
+The monorepo is split into engine, SQLite adapter, CLI, app, and tests.

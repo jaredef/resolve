@@ -1,0 +1,56 @@
+<htx:props>
+target = ".docs-main"
+</htx:props>
+<span style="display:none;"></span>
+<htx:script>
+  // Portal pattern: populate the TOC sidebar from the page template
+  var tocRoot = document.getElementById('docs-toc-root');
+  if (!tocRoot) return;
+  var list = tocRoot.querySelector('.docs-toc-list');
+  if (!list) return;
+  var target = '{{ target }}';
+
+  function buildToc() {
+    list.innerHTML = '';
+    var headings = document.querySelectorAll(target + ' h2, ' + target + ' h3');
+    headings.forEach(function(h) {
+      if (!h.id) h.id = h.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent;
+      if (h.tagName === 'H3') a.className = 'toc-h3';
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  }
+
+  function trackScroll() {
+    var links = list.querySelectorAll('a');
+    if (!links.length) return;
+    var items = [];
+    links.forEach(function(a) {
+      var ref = document.querySelector(a.getAttribute('href'));
+      if (ref) items.push({ el: ref, link: a });
+    });
+    var active = null;
+    for (var i = items.length - 1; i >= 0; i--) {
+      if (items[i].el.getBoundingClientRect().top <= 80) {
+        active = items[i].link;
+        break;
+      }
+    }
+    links.forEach(function(a) { a.classList.remove('active'); });
+    if (active) active.classList.add('active');
+  }
+
+  buildToc();
+  window.addEventListener('scroll', trackScroll, { passive: true });
+  trackScroll();
+
+  document.body.addEventListener('htmx:afterSwap', function(e) {
+    if (e.detail.target.classList.contains('docs-main')) {
+      setTimeout(buildToc, 50);
+    }
+  });
+</htx:script>

@@ -1,0 +1,24 @@
+{
+  "name": "create-hypermedia-app",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "bin": {
+    "create-hypermedia-app": "./bin/create-hypermedia-app"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "types": "./src/index.ts",
+  "files": [
+    "bin",
+    "src"
+  ],
+  "dependencies": {
+    "@htx/cli": "0.0.0"
+  },
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "bun x tsc --noEmit -p tsconfig.json"
+  }
+}

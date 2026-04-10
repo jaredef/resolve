@@ -1,0 +1,12 @@
+{
+  "name": "@htx/adapter-convex",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "convex": "^1.34.1"
+  },
+  "peerDependencies": {
+    "@htx/engine": "workspace:*"
+  }
+}

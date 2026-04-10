@@ -1,0 +1,30 @@
+<h1>PRESTO Engine <span class="badge-green badge">Go</span></h1>
+<p style="margin-bottom:2rem;">A conformant htxlang engine built in Go from the PRESTO seed. 22/22 tests passing. 2,173 lines of Go. Zero TypeScript.</p>
+
+<div class="grid-2">
+  <htx:component src="/components/card.htx" title="Spec-Derived">
+    <p>Built from 2,536 words of specification. No source code from the TypeScript engine. The seed compiled to Go.</p>
+  </htx:component>
+  <htx:component src="/components/card.htx" title="Pure Go">
+    <p>net/http + modernc.org/sqlite. No CGO. Single binary. Every contract satisfied.</p>
+  </htx:component>
+  <htx:component src="/components/card.htx" title="22-Stage Pipeline">
+    <p>Full resolution: includes, components, data, control flow, expressions, grants, mutations, layouts.</p>
+  </htx:component>
+  <htx:component src="/components/card.htx" title="Bilateral Boundary">
+    <p><code>htx:</code> = server. <code>script</code> = client. The namespace IS the boundary. Same as the TypeScript engine.</p>
+  </htx:component>
+</div>
+
+<h2>Pages from SQLite</h2>
+<htx:data type="page" where="status = 'published'" order="sort_order asc" as="pages" />
+<htx:each items="pages" as="page">
+  <article>
+    <h2><a href="/blog/{htx:page.slug}"><htx:v>page.title</htx:v></a></h2>
+    <p><htx:v>page.body</htx:v></p>
+  </article>
+<htx:empty>
+  <p>No pages found.</p>
+</htx:each>
+
+<htx:include src="/partials/_footer.htx" />

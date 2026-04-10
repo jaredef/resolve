@@ -1,0 +1,9 @@
+<span data-docs-scroll style="display:none;"></span>
+<htx:script>
+  document.body.addEventListener('htmx:afterSwap', function(e) {
+    if (e.detail.target.classList.contains('docs-main')) {
+      e.detail.target.scrollTop = 0;
+      window.scrollTo(0, 0);
+    }
+  });
+</htx:script>

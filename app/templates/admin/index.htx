@@ -1,0 +1,68 @@
+<section class="admin-page-header">
+  <div>
+    <p class="admin-eyebrow">Dashboard</p>
+    <h1>Content Admin</h1>
+    <p class="admin-lead">
+      Manage the app's published content through HTX routes,
+      layouts, and the mutation lifecycle.
+    </p>
+  </div>
+</section>
+
+<section class="admin-card-grid">
+  <div class="admin-card">
+    <p class="admin-card-eyebrow">Publishing</p>
+    <h2>Posts</h2>
+    <p>Manage blog entries, drafts, and published updates.</p>
+    <htx:type>post</htx:type>
+    <htx>
+    <p class="admin-card-stat">{{ result.total }}</p>
+    <p class="admin-card-meta">Total posts in database</p>
+    </htx>
+    <div class="admin-card-actions">
+      <a href="/admin/posts" class="btn">Manage Posts</a>
+      <a href="/admin/posts/new" class="btn btn-secondary">New Post</a>
+    </div>
+  </div>
+
+  <div class="admin-card">
+    <p class="admin-card-eyebrow">Knowledge Base</p>
+    <h2>Docs</h2>
+    <p>Edit documentation articles, sections, ordering, and slugs.</p>
+    <htx:type>documentation</htx:type>
+    <htx>
+    <p class="admin-card-stat">{{ result.total }}</p>
+    <p class="admin-card-meta">Documentation records</p>
+    </htx>
+    <div class="admin-card-actions">
+      <a href="/admin/docs" class="btn">Manage Docs</a>
+      <a href="/admin/docs/new" class="btn btn-secondary">New Doc</a>
+    </div>
+  </div>
+</section>
+
+<section class="admin-section">
+  <div class="admin-section-heading">
+    <h2>Quick links</h2>
+    <p>Jump directly into common authoring flows.</p>
+  </div>
+
+  <div class="admin-quick-links">
+    <a href="/blog" class="admin-quick-link">
+      <strong>View blog</strong>
+      <span>Open the public posts listing</span>
+    </a>
+    <a href="/docs" class="admin-quick-link">
+      <strong>View docs</strong>
+      <span>Open the public documentation index</span>
+    </a>
+    <a href="/admin/posts/new" class="admin-quick-link">
+      <strong>Create post</strong>
+      <span>Start a new blog entry</span>
+    </a>
+    <a href="/admin/docs/new" class="admin-quick-link">
+      <strong>Create doc</strong>
+      <span>Draft a new documentation article</span>
+    </a>
+  </div>
+</section>

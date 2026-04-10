@@ -1,0 +1,153 @@
+<div class="doc-fragment">
+<style>
+  .docs-index { padding: 0.5rem 0 3rem; }
+  .docs-index-header h1 { font-size: 1.75rem; margin-bottom: 0.35rem; letter-spacing: -0.02em; font-weight: 600; }
+  .docs-index-header p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0; }
+  .docs-index-header .docs-count {
+    font-size: 0.75rem; color: var(--text-subtle); margin-top: 0.5rem;
+    padding-top: 0.5rem; border-top: 1px solid var(--border-primary);
+  }
+  .docs-section { margin-bottom: 2rem; }
+  .docs-section-heading { margin-bottom: 0.75rem; }
+  .docs-section-heading h2 { font-size: 1.05rem; font-weight: 600; color: var(--text-heading); margin: 0 0 0.15rem; }
+  .docs-section-heading p { font-size: 0.82rem; color: var(--text-muted); }
+  .docs-card {
+    display: block;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border-primary);
+  }
+  .docs-card:first-child { border-top: 1px solid var(--border-primary); }
+  .docs-card h3 {
+    font-size: 0.92rem; font-weight: 500; margin: 0 0 0.15rem;
+    color: var(--text-heading); line-height: 1.4;
+  }
+  .docs-card h3 a { color: var(--accent); text-decoration: none; }
+  .docs-card h3 a:hover { opacity: 0.6; }
+  .docs-card > p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+</style>
+
+<div class="docs-index">
+  <header class="docs-index-header">
+    <h1>Documentation</h1>
+    <p>Learn how the HTX dogfood app routes templates, reads content, handles secure mutations, and runs on the Bun runtime.</p>
+    <p class="docs-count">{{ docs.total }} articles</p>
+  </header>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>Getting Started</h2>
+      <p>Start with the high-level model and the moving parts of the workspace.</p>
+    </div>
+    {{ each doc in docs.gettingStarted }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>Core Concepts</h2>
+      <p>Understand the routing, template, and read-path behavior that drives the app.</p>
+    </div>
+    {{ each doc in docs.coreConcepts }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>Real-Time</h2>
+      <p>WebSocket ceremony, pushed modules, WASM delivery, authenticated islands, and client-routed SPAs.</p>
+    </div>
+    {{ each doc in docs.realTime }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>Building Pages</h2>
+      <p>Compose layouts and secure forms with HTX primitives.</p>
+    </div>
+    {{ each doc in docs.buildingPages }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>Engine Internals</h2>
+      <p>Extend the engine with modules, context providers, and composition layers.</p>
+    </div>
+    {{ each doc in docs.engineInternals }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>Guides</h2>
+      <p>Step-by-step implementation walkthroughs.</p>
+    </div>
+    {{ each doc in docs.guides }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>Operations</h2>
+      <p>Run the app locally, use the CLI, and walk through the admin flows.</p>
+    </div>
+    {{ each doc in docs.operations }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>API Reference</h2>
+      <p>Comprehensive reference for directives, expressions, placeholders, routing, and mutations.</p>
+    </div>
+    {{ each doc in docs.apiReference }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+
+  <section class="docs-section">
+    <div class="docs-section-heading">
+      <h2>Adapters</h2>
+      <p>Content storage backends — SQLite for full CRUD, Markdown for flat-file content.</p>
+    </div>
+    {{ each doc in docs.adapters }}
+    <article class="docs-card">
+      <h3><a href="/docs/{{ doc.slug }}">{{ doc.title }}</a></h3>
+      <p>{{ doc.summary }}</p>
+    </article>
+    {{ endeach }}
+  </section>
+</div>
+</div>

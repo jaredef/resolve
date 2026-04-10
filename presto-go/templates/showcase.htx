@@ -1,0 +1,81 @@
+<h1>Feature Showcase</h1>
+<p style="margin-bottom:2rem;">Every htxlang directive exercised on one page. Built by Go. Derived from the PRESTO seed.</p>
+
+<h2>1. Expressions (<code>htx:v</code>)</h2>
+<htx:let engine="Go" />
+<htx:let version="0.1" />
+<p>Engine: <htx:v>engine</htx:v> | Version: <htx:v>version</htx:v></p>
+<p>Uppercase: <htx:v>engine | uppercase</htx:v> | Lowercase: <htx:v>engine | lowercase</htx:v></p>
+
+<h2>2. Data Binding (<code>htx:data</code>)</h2>
+<htx:data type="page" where="status = 'published'" order="sort_order asc" limit="3" as="docs" />
+<p>Loaded <htx:v>docs | length</htx:v> pages from SQLite:</p>
+<ul>
+<htx:each items="docs" as="doc">
+  <li><strong><htx:v>doc.title</htx:v></strong>: <htx:v>doc.body</htx:v></li>
+<htx:empty>
+  <li>No docs found.</li>
+</htx:each>
+</ul>
+
+<h2>3. Components (<code>htx:component</code>)</h2>
+<div class="grid-2">
+  <htx:component src="/components/card.htx" title="Component A">
+    <p>Props and slot content working in Go.</p>
+  </htx:component>
+  <htx:component src="/components/card.htx" title="Component B">
+    <p>Same component, different props.</p>
+  </htx:component>
+</div>
+
+<h2>4. Conditionals (<code>htx:if</code> / <code>htx:else</code>)</h2>
+<htx:if test="docs">
+  <p class="success">htx:if is truthy: docs array has content.</p>
+</htx:if>
+<htx:else>
+  <p>htx:else: no docs.</p>
+</htx:else>
+
+<h2>5. Attribute Binding (<code>{htx:...}</code>)</h2>
+<htx:each items="docs" as="doc">
+  <a href="/blog/{htx:doc.slug}" style="display:inline-block;margin-right:0.75rem;padding:0.3rem 0.75rem;border:1px solid #333;border-radius:4px;font-size:0.82rem;">
+    <htx:v>doc.title</htx:v>
+  </a>
+</htx:each>
+
+<h2>6. Grants (<code>htx:grant</code>)</h2>
+<htx:grant type="websocket" as="ws" />
+<htx:grant type="asset" path="/uploads/report.pdf" as="report" />
+<div class="card">
+  <h3>WebSocket Token</h3>
+  <p style="font-family:monospace;font-size:0.75rem;word-break:break-all;"><htx:v>ws.token</htx:v></p>
+</div>
+<div class="card">
+  <h3>Signed Asset URL</h3>
+  <p style="font-family:monospace;font-size:0.75rem;word-break:break-all;"><htx:v>report.url</htx:v></p>
+</div>
+
+<h2>7. Auth Conditionals (<code>htx:auth</code>)</h2>
+<htx:auth>
+  <p class="success">You are authenticated.</p>
+</htx:auth>
+<htx:unauth>
+  <p>Not authenticated. This is the htx:unauth block.</p>
+</htx:unauth>
+
+<h2>8. Script Protection</h2>
+<p>The script below is client territory. The engine does not touch it:</p>
+<script>
+  var config = { api: "{{ not evaluated }}", debug: true };
+  console.log("Go engine: script protection verified", config);
+</script>
+<p><span class="badge">Verified</span> Script blocks are opaque to the expression engine.</p>
+
+<h2>9. Raw Blocks (<code>htx:raw</code>)</h2>
+<p>Content inside htx:raw is literal:</p>
+<code style="display:block;background:#111;padding:0.75rem;border-radius:6px;font-size:0.85rem;color:#888;">
+<htx:raw><htx:v>not.evaluated</htx:v> {htx:also.not}</htx:raw>
+</code>
+
+<h2>10. Includes (<code>htx:include</code>)</h2>
+<htx:include src="/partials/_footer.htx" />

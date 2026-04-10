@@ -1,0 +1,74 @@
+<style>
+  .cart-page { padding: 1rem 0 3rem; }
+  .cart-page h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-heading); }
+  .cart-item {
+    display: flex; align-items: center; gap: 1rem; padding: 1rem 0;
+    border-bottom: 1px solid var(--border-primary); flex-wrap: wrap;
+  }
+  .cart-item:first-child { border-top: 1px solid var(--border-primary); }
+  .cart-item-info { flex: 1; min-width: 200px; }
+  .cart-item-title { font-size: 0.92rem; font-weight: 600; color: var(--text-heading); }
+  .cart-item-meta { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.15rem; }
+  .cart-item-qty { font-size: 0.82rem; color: var(--text-muted); min-width: 60px; }
+  .cart-item-price { font-size: 0.82rem; color: var(--text-muted); min-width: 80px; }
+  .cart-item-total { font-size: 0.95rem; font-weight: 700; color: var(--accent); min-width: 70px; text-align: right; }
+  .cart-remove-btn {
+    background: none; border: 1px solid var(--border-primary); border-radius: 4px;
+    color: var(--text-dim); cursor: pointer; font-size: 1rem; padding: 0.2rem 0.5rem;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .cart-remove-btn:hover { border-color: #ef4444; color: #ef4444; }
+  .cart-summary {
+    margin-top: 1.5rem; padding-top: 1rem; border-top: 2px solid var(--border-primary);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cart-summary-label { font-size: 1rem; color: var(--text-muted); }
+  .cart-summary-total { font-size: 1.5rem; font-weight: 700; color: var(--text-heading); }
+  .cart-empty { color: var(--text-dim); font-size: 0.92rem; padding: 2rem 0; }
+  .cart-empty a { color: var(--accent); }
+  .cart-back { display: inline-block; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-muted); text-decoration: none; }
+  .cart-back:hover { color: var(--accent); opacity: 1; }
+  .cart-breadcrumb { font-size: 0.8rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.35rem; color: var(--text-dim); }
+  .cart-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .cart-breadcrumb a:hover { color: var(--accent); opacity: 1; }
+  .cart-breadcrumb .sep { color: var(--border-hover); }
+</style>
+
+<nav class="cart-breadcrumb">
+  <a href="/store">Store</a>
+  <span class="sep">/</span>
+  <span>Cart</span>
+</nav>
+
+<div class="cart-page">
+  <h1>Your Cart{{ if cart.count }} ({{ cart.count }} item{{ if cart.count > 1 }}s{{ endif }}){{ endif }}</h1>
+
+  {{ if cart.count }}
+  {{ each item in cart.items }}
+  <div class="cart-item">
+    <div class="cart-item-info">
+      <div class="cart-item-title">{{ item.title }}</div>
+      <div class="cart-item-meta">{{ item.summary }}</div>
+    </div>
+    <div class="cart-item-qty">Qty: {{ item.quantity }}</div>
+    <div class="cart-item-price">${{ item.price }} each</div>
+    <div class="cart-item-total">${{ item.lineTotal }}</div>
+    <form method="POST" action="/api/cart/remove">
+      <input type="hidden" name="slug" value="{{ item.slug }}" />
+      <button type="submit" class="cart-remove-btn">&times;</button>
+    </form>
+  </div>
+  {{ endeach }}
+
+  <div class="cart-summary">
+    <span class="cart-summary-label">Merchandise</span>
+    <span class="cart-summary-total">${{ cart.total }}</span>
+  </div>
+  {{ endif }}
+
+  {{ if cart.count == 0 }}
+  <p class="cart-empty">Your cart is empty. <a href="/store">Browse the store &rarr;</a></p>
+  {{ endif }}
+
+  <a href="/store" class="cart-back">&larr; Continue shopping</a>
+</div>

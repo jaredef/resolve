@@ -1,0 +1,40 @@
+<style>
+  .nf-layout { padding: 1.5rem 0; }
+  .nf-hero { margin-bottom: 2rem; }
+  .nf-hero h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text-heading); }
+  .nf-hero p { color: var(--text-muted); font-size: 0.875rem; margin-top: 0.25rem; }
+  .nf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .nf-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 0.5rem; overflow: hidden; transition: box-shadow 0.15s, border-color 0.15s; text-decoration: none; display: block; }
+  .nf-card:hover { border-color: var(--border-hover); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); opacity: 1; }
+  .nf-card-accent { height: 4px; }
+  .nf-card-body { padding: 1rem 1.25rem; }
+  .nf-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.25rem; }
+  .nf-card-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+  .nf-scroll-sentinel { display: flex; align-items: center; justify-content: center; padding: 2rem; grid-column: 1 / -1; color: var(--text-dim); font-size: 0.8rem; }
+  .nf-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .nf-count { font-size: 0.75rem; color: var(--text-dim); }
+  @media (max-width: 900px) { .nf-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .nf-grid { grid-template-columns: 1fr; } }
+</style>
+
+<div class="nf-layout">
+  <header class="nf-hero">
+    <h1>HTX Faster</h1>
+    <p>Cloud-powered e-commerce &mdash; 120K items in Convex DB, rendered by HTX on a Raspberry Pi.</p>
+  </header>
+
+  <div class="nf-grid">
+  {{ each coll in fp.collections }}
+    <a href="/htx-faster/collections/{{ coll.slug }}" class="nf-card" preload="mouseover">
+      <div class="nf-card-accent" style="background: {{ coll.color }};"></div>
+      <div class="nf-card-body">
+        <div class="nf-card-title">{{ coll.title }}</div>
+        <div class="nf-card-desc">{{ coll.summary }}</div>
+      </div>
+    </a>
+  {{ endeach }}
+    <div class="nf-scroll-sentinel" hx-get="/htx-faster/scroll/2" hx-trigger="revealed" hx-swap="outerHTML">
+      Loading&hellip;
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<style>
+  .blog-index { padding: 0.5rem 0 3rem; }
+  .blog-index-header h1 { font-size: 1.75rem; margin-bottom: 0.35rem; letter-spacing: -0.02em; font-weight: 600; }
+  .blog-index-header p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 0; }
+  .blog-list { margin-top: 1.5rem; }
+  .blog-card {
+    display: block; padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border-primary);
+  }
+  .blog-card:first-child { border-top: 1px solid var(--border-primary); }
+  .blog-card h2 {
+    font-size: 1.1rem; font-weight: 600; margin: 0 0 0.3rem;
+    color: var(--text-heading); line-height: 1.4;
+  }
+  .blog-card h2 a { color: var(--text-heading); text-decoration: none; transition: color 0.15s; }
+  .blog-card h2 a:hover { color: var(--accent); }
+  .blog-card .blog-card-summary { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 0.5rem; }
+  .blog-card .blog-card-meta {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.75rem; color: var(--text-dim);
+  }
+  .blog-card .blog-card-meta .meta-tag {
+    background: var(--accent-bg); color: var(--accent); padding: 0.1rem 0.45rem;
+    border-radius: 999px; font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+</style>
+
+<div class="blog-index">
+  <header class="blog-index-header">
+    <h1>Blog</h1>
+    <p>Engineering notes, benchmarks, and build logs from the Hypermedia App project.</p>
+  </header>
+
+  <div class="blog-list">
+    <htx:type>post</htx:type>
+    <htx:where>status=published</htx:where>
+    <htx:order>newest</htx:order>
+    <htx:howmany>20</htx:howmany>
+    <htx>
+    <htx:each>
+    <article class="blog-card">
+      <h2><a href="/blog/__slug__">__title__</a></h2>
+      <p class="blog-card-summary">__summary__</p>
+      <div class="blog-card-meta">
+        <time>__created_at__</time>
+        <span class="meta-tag">__category__</span>
+      </div>
+    </article>
+    </htx:each>
+    <htx:none>
+    <p style="color: var(--text-dim); padding: 2rem 0;">No published posts yet.</p>
+    </htx:none>
+    </htx>
+  </div>
+</div>

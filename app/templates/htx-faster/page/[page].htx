@@ -1,0 +1,67 @@
+<style>
+  .nf-layout { padding: 1.5rem 0; }
+  .nf-hero { margin-bottom: 2rem; }
+  .nf-hero h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text-heading); }
+  .nf-hero p { color: var(--text-muted); font-size: 0.875rem; margin-top: 0.25rem; }
+  .nf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .nf-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 0.5rem; overflow: hidden; transition: box-shadow 0.15s, border-color 0.15s; text-decoration: none; display: block; }
+  .nf-card:hover { border-color: var(--border-hover); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); opacity: 1; }
+  .nf-card-accent { height: 4px; }
+  .nf-card-body { padding: 1rem 1.25rem; }
+  .nf-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.25rem; }
+  .nf-card-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+  .nf-pagination { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 2rem; padding: 1rem 0; }
+  .nf-pagination a, .nf-pagination span { display: inline-flex; align-items: center; justify-content: center; min-width: 2rem; height: 2rem; padding: 0 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: background 0.1s, color 0.1s; }
+  .nf-pagination a { color: var(--text-secondary); border: 1px solid var(--border-subtle); background: var(--bg-secondary); }
+  .nf-pagination a:hover { background: var(--accent-bg); color: var(--accent); border-color: var(--accent); opacity: 1; }
+  .nf-pagination .current { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
+  .nf-pagination .ellipsis { color: var(--text-dim); border: none; }
+  .nf-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .nf-count { font-size: 0.75rem; color: var(--text-dim); }
+  @media (max-width: 900px) { .nf-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .nf-grid { grid-template-columns: 1fr; } }
+</style>
+
+<div class="nf-layout">
+  <header class="nf-hero">
+    <h1>HTX Faster</h1>
+    <p>Cloud-powered e-commerce &mdash; 120K items in Convex DB, rendered by HTX on a Raspberry Pi.</p>
+  </header>
+
+  <div class="nf-meta">
+    <span class="nf-count">Collections &middot; Page {{ route.page }}</span>
+    <a href="/htx-faster" style="font-size: 0.75rem; color: var(--accent);">&larr; Page 1</a>
+  </div>
+
+  <htx:type>fp-collection</htx:type>
+  <htx:order>oldest</htx:order>
+  <htx:howmany>99</htx:howmany>
+  <htx:offset>{{ mult(sub(route.page, 1), 99) }}</htx:offset>
+  <htx>
+  <div class="nf-grid">
+  <htx:each>
+    <a href="/htx-faster/collections/__slug__" class="nf-card" preload="mouseover">
+      <div class="nf-card-accent" style="background: __color__;"></div>
+      <div class="nf-card-body">
+        <div class="nf-card-title">__title__</div>
+        <div class="nf-card-desc">__summary__</div>
+      </div>
+    </a>
+  </htx:each>
+  </div>
+  </htx>
+
+  <nav class="nf-pagination">
+    {{ if route.page > 2 }}
+    <a href="/htx-faster/page/{{ sub(route.page, 1) }}">&larr; Prev</a>
+    {{ endif }}
+    {{ if route.page == 2 }}
+    <a href="/htx-faster">&larr; Prev</a>
+    {{ endif }}
+    <a href="/htx-faster">1</a>
+    <span class="ellipsis">&hellip;</span>
+    <span class="current">{{ route.page }}</span>
+    <span class="ellipsis">&hellip;</span>
+    <a href="/htx-faster/page/{{ add(route.page, 1) }}">Next &rarr;</a>
+  </nav>
+</div>

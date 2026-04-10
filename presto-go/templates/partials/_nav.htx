@@ -1,0 +1,7 @@
+<nav>
+  <a href="/" class="brand">PRESTO<span>Go</span></a>
+  <a href="/">Home</a>
+  <a href="/showcase">Showcase</a>
+  <a href="/expressions">Expressions</a>
+  <a href="/blog/getting-started">Blog</a>
+</nav>

@@ -1,0 +1,54 @@
+<!-- HTX Action Login Form (for use with built-in AuthModule) -->
+<!-- This template uses the two-phase prepare/execute pattern with CSRF protection -->
+<!-- To use: requires AuthModule with MutationActionHandler registered for "login" -->
+
+<htx:action>login</htx:action>
+
+<htx:response name="redirect">/admin</htx:response>
+<htx:response name="error">
+<div class="login-card">
+  <h1>Sign in</h1>
+  <div class="login-error">Invalid username or password. Please try again.</div>
+  <form method="POST">
+    <input type="hidden" name="htx-payload" value="__payload__" />
+    <div class="login-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required />
+    </div>
+    <div class="login-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required />
+    </div>
+    <div class="login-actions">
+      <button type="submit">Log In</button>
+      <a href="/">Back to site</a>
+    </div>
+  </form>
+</div>
+</htx:response>
+
+<htx>
+<div class="login-card">
+  <h1>Sign in</h1>
+  <p class="login-subtitle">Enter your admin credentials to continue.</p>
+
+  <form method="POST">
+    <input type="hidden" name="htx-payload" value="__payload__" />
+
+    <div class="login-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username" required />
+    </div>
+
+    <div class="login-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required />
+    </div>
+
+    <div class="login-actions">
+      <button type="submit">Log In</button>
+      <a href="/">Back to site</a>
+    </div>
+  </form>
+</div>
+</htx>

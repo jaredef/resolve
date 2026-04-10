@@ -1,0 +1,10 @@
+<htx:props>
+title
+variant = "default"
+</htx:props>
+<div class="card card-{{ variant }}">
+    <h3>{{ title }}</h3>
+    <div class="card-body">
+        <htx:slot>No content provided.</htx:slot>
+    </div>
+</div>

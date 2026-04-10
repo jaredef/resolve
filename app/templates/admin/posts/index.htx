@@ -1,0 +1,41 @@
+<section class="admin-page-header">
+  <div>
+    <p class="admin-eyebrow">Publishing</p>
+    <h1>All posts</h1>
+    <p class="admin-lead">
+      Drafts and published records share the same content type. Public routes only render published entries.
+    </p>
+  </div>
+  <a href="/admin/posts/new" class="btn btn-primary">Create Post</a>
+</section>
+
+<htx:type>post</htx:type>
+<htx:order>newest</htx:order>
+<htx>
+<div class="admin-list">
+<htx:each>
+<article class="admin-row">
+  <div class="admin-row-main">
+    <div class="admin-row-title">
+      <strong>__title__</strong>
+      <span class="status-badge status-__status__">__status__</span>
+    </div>
+    <p class="admin-row-meta">__slug__</p>
+    <p>__summary__</p>
+  </div>
+  <div class="actions">
+    <a href="/blog/__slug__">View</a>
+    <a href="/admin/posts/__id__/edit">Edit</a>
+    <a href="/admin/posts/__id__/delete">Delete</a>
+  </div>
+</article>
+</htx:each>
+</div>
+<htx:none>
+<div class="admin-empty-state">
+  <h2>No posts yet</h2>
+  <p>Create a post to populate the blog and admin listing.</p>
+  <a href="/admin/posts/new" class="btn btn-primary">Create Post</a>
+</div>
+</htx:none>
+</htx>

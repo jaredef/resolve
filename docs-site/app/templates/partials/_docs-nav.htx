@@ -1,0 +1,77 @@
+<style>
+  .docs-nav-section {
+    margin-bottom: 0.15rem;
+  }
+  .docs-nav-section-title {
+    display: block;
+    padding: 0.4rem 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 0.5rem;
+  }
+  .docs-nav-link {
+    display: block;
+    padding: 0.3rem 0.5rem 0.3rem 12px;
+    color: var(--text-faded);
+    text-decoration: none;
+    font-size: 0.82rem;
+    line-height: 1.4;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .docs-nav-link:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .docs-nav-link.active {
+    color: var(--accent);
+    font-weight: 500;
+    border-left-color: var(--accent);
+  }
+</style>
+
+<div class="docs-nav-section">
+  <span class="docs-nav-section-title">Getting Started</span>
+  <a href="/docs/what-is-hypermedia-app" class="docs-nav-link" data-filter-text="what is hypermedia app">What Is Hypermedia App?</a>
+  <a href="/docs/project-structure" class="docs-nav-link" data-filter-text="project structure">Project Structure</a>
+  <a href="/docs/quick-start" class="docs-nav-link" data-filter-text="quick start guide">Quick Start Guide</a>
+</div>
+
+<div class="docs-nav-section">
+  <span class="docs-nav-section-title">Core Concepts</span>
+  <a href="/docs/routing" class="docs-nav-link" data-filter-text="routing">Routing</a>
+  <a href="/docs/templates-and-dsl" class="docs-nav-link" data-filter-text="templates and the htx dsl">Templates and the HTX DSL</a>
+  <a href="/docs/expression-engine" class="docs-nav-link" data-filter-text="expression engine">Expression Engine</a>
+  <a href="/docs/layouts-includes-components" class="docs-nav-link" data-filter-text="layouts includes and components">Layouts, Includes, and Components</a>
+</div>
+
+<div class="docs-nav-section">
+  <span class="docs-nav-section-title">Data and Content</span>
+  <a href="/docs/reads-and-queries" class="docs-nav-link" data-filter-text="reads and queries">Reads and Queries</a>
+  <a href="/docs/content-adapter" class="docs-nav-link" data-filter-text="content adapter contract">Content Adapter Contract</a>
+  <a href="/docs/sqlite-adapter" class="docs-nav-link" data-filter-text="sqlite adapter">SQLite Adapter</a>
+  <a href="/docs/markdown-adapter" class="docs-nav-link" data-filter-text="markdown adapter">Markdown Adapter</a>
+  <a href="/docs/hydrator" class="docs-nav-link" data-filter-text="hydrator">Hydrator</a>
+</div>
+
+<div class="docs-nav-section">
+  <span class="docs-nav-section-title">Mutations and Security</span>
+  <a href="/docs/forms-and-mutations" class="docs-nav-link" data-filter-text="forms and mutations">Forms and Mutations</a>
+  <a href="/docs/security" class="docs-nav-link" data-filter-text="security model">Security Model</a>
+</div>
+
+<div class="docs-nav-section">
+  <span class="docs-nav-section-title">Tooling</span>
+  <a href="/docs/cli" class="docs-nav-link" data-filter-text="cli reference">CLI Reference</a>
+  <a href="/docs/create-hypermedia-app" class="docs-nav-link" data-filter-text="create hypermedia app">create-hypermedia-app</a>
+</div>
+
+<div class="docs-nav-section">
+  <span class="docs-nav-section-title">Runtime Internals</span>
+  <a href="/docs/request-pipeline" class="docs-nav-link" data-filter-text="request pipeline">Request Pipeline</a>
+  <a href="/docs/functions-reference" class="docs-nav-link" data-filter-text="built-in functions reference">Built-in Functions</a>
+  <a href="/docs/configuration" class="docs-nav-link" data-filter-text="configuration">Configuration</a>
+</div>

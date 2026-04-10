@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PRESTO Go</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <htx:include src="/partials/_nav.htx" />
+  <main>
+    __content__
+  </main>
+  <footer><p>PRESTO Go Engine</p></footer>
+</body>
+</html>

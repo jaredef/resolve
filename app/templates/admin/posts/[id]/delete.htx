@@ -1,0 +1,24 @@
+<section class="admin-page-header">
+  <div>
+    <p class="admin-eyebrow">Delete</p>
+    <h1>Delete post</h1>
+    <p class="admin-lead">This action cannot be undone.</p>
+  </div>
+</section>
+
+<htx:type>post</htx:type>
+<htx:action>delete</htx:action>
+<htx:recordId>{{ route.id }}</htx:recordId>
+<htx:response name="redirect">/admin/posts</htx:response>
+<htx>
+<div class="confirm-delete">
+  <p>Are you sure you want to delete <strong>__title__</strong>?</p>
+  <p class="admin-row-meta">__slug__</p>
+  <p>This removes the record from the blog and the admin listing permanently.</p>
+  <form method="post" class="admin-form-actions">
+    <input type="hidden" name="htx-payload" value="__payload__" />
+    <button type="submit" class="btn-danger">Delete Post</button>
+    <a href="/admin/posts" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+</htx>

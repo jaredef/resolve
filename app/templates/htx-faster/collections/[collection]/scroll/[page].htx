@@ -1,0 +1,21 @@
+<htx:type>fp-category</htx:type>
+<htx:where>collection_slug={{ route.collection }},status=published</htx:where>
+<htx:order>oldest</htx:order>
+<htx:howmany>30</htx:howmany>
+<htx:offset>{{ mult(sub(route.page, 1), 30) }}</htx:offset>
+<htx>
+<htx:each>
+  <a href="/htx-faster/__slug__" class="nf-card" preload="mouseover">
+    <div class="nf-card-body">
+      <div class="nf-card-title">__title__</div>
+      <div class="nf-card-desc">__summary__</div>
+    </div>
+  </a>
+</htx:each>
+<div class="nf-scroll-sentinel" hx-get="/htx-faster/collections/{{ route.collection }}/scroll/{{ add(route.page, 1) }}" hx-trigger="revealed" hx-swap="outerHTML">
+  Loading&hellip;
+</div>
+<htx:none>
+<span class="nf-scroll-sentinel">All categories loaded</span>
+</htx:none>
+</htx>

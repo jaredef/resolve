@@ -1,0 +1,190 @@
+<style>
+  .docs-shell {
+    display: grid;
+    grid-template-columns: 220px 1fr 180px;
+    gap: 0;
+    min-height: calc(100vh - 3.25rem - 4rem);
+    margin: 0 -2rem;
+  }
+
+  /* ── Left Sidebar ── */
+  .docs-sidebar {
+    border-right: 1px solid var(--border-primary);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 3.25rem;
+    height: calc(100vh - 3.25rem);
+    overflow-y: auto;
+  }
+  .docs-nav-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0 1.25rem 0.75rem;
+  }
+  .docs-nav-filter {
+    padding: 0 1rem 0.75rem;
+  }
+  .docs-nav-filter input {
+    width: 100%;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .docs-nav-filter input:focus { border-color: var(--accent); }
+  .docs-nav-filter input::placeholder { color: var(--text-placeholder); }
+  .docs-nav-group { margin-bottom: 0.35rem; }
+  .docs-nav-group h3 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 0.5rem 1.25rem 0.25rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .docs-nav-group ul { list-style: none; }
+  .docs-nav-group li { display: block; }
+  .docs-nav-group li a {
+    display: block;
+    padding: 0.3rem 1.25rem;
+    font-size: 0.82rem;
+    color: var(--nav-link);
+    text-decoration: none;
+    transition: color 0.15s, background 0.15s;
+  }
+  .docs-nav-group li a:hover {
+    color: var(--nav-link-hover);
+    background: var(--bg-hover-subtle);
+    opacity: 1;
+  }
+
+  /* ── Content area ── */
+  .docs-main {
+    padding: 1.5rem 2.5rem 3rem;
+    max-width: 780px;
+    min-width: 0;
+  }
+
+  /* ── Right Sidebar (TOC) ── */
+  .docs-toc {
+    border-left: 1px solid var(--border-primary);
+    padding: 1.5rem 1rem;
+    position: sticky;
+    top: 3.25rem;
+    height: calc(100vh - 3.25rem);
+    overflow-y: auto;
+  }
+  .docs-toc-label {
+    font-size: 0.62rem;
+    font-weight: 600;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.6rem;
+  }
+  .docs-toc-list {
+    list-style: none;
+  }
+  .docs-toc-list a {
+    display: block;
+    padding: 0.2rem 0;
+    font-size: 0.75rem;
+    color: var(--text-placeholder);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.15s;
+    border-left: 2px solid transparent;
+    padding-left: 0.6rem;
+  }
+  .docs-toc-list a:hover {
+    color: var(--text-primary);
+    opacity: 1;
+  }
+  .docs-toc-list a.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+  .docs-toc-list .toc-h3 {
+    padding-left: 1.2rem;
+    font-size: 0.72rem;
+  }
+
+  /* ── Mobile ── */
+  .docs-mobile-toggle {
+    display: none;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: 5px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    padding: 0.45rem 0.85rem;
+    cursor: pointer;
+    margin-bottom: 1.25rem;
+    transition: border-color 0.15s;
+  }
+  .docs-mobile-toggle:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+  @media (max-width: 1024px) {
+    .docs-shell {
+      grid-template-columns: 220px 1fr;
+    }
+    .docs-toc { display: none; }
+  }
+  @media (max-width: 768px) {
+    .docs-shell {
+      grid-template-columns: 1fr;
+      margin: 0 -1rem;
+    }
+    .docs-sidebar {
+      display: none;
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid var(--border-primary);
+      padding: 1rem 0;
+    }
+    .docs-sidebar.sidebar-open { display: block; }
+    .docs-mobile-toggle { display: block; }
+    .docs-main { padding: 1rem 1rem 2rem; }
+    .docs-toc { display: none; }
+  }
+</style>
+
+<button class="docs-mobile-toggle" onclick="document.querySelector('.docs-sidebar').classList.toggle('sidebar-open')" type="button">
+  Browse topics
+</button>
+
+<div class="docs-shell">
+  <aside class="docs-sidebar" hx-boost="true" hx-target=".docs-main" hx-swap="innerHTML show:none" hx-select=".doc-fragment" hx-push-url="true">
+    <htx:include src="/partials/_docs-nav.htx" />
+  </aside>
+  <div class="docs-main">
+    __content__
+  </div>
+  <aside class="docs-toc" id="docs-toc-root">
+    <div class="docs-toc-label">On this page</div>
+    <ul class="docs-toc-list"></ul>
+  </aside>
+</div>
+<script>
+  document.body.addEventListener('htmx:afterSwap', function(e) {
+    if (e.detail.target.classList.contains('docs-main')) {
+      e.detail.target.scrollTop = 0;
+      window.scrollTo(0, 0);
+      // Re-highlight code blocks in swapped content
+      e.detail.target.querySelectorAll('pre code').forEach(function(block) {
+        hljs.highlightElement(block);
+      });
+    }
+  });
+</script>

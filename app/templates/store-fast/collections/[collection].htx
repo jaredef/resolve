@@ -1,0 +1,60 @@
+<style>
+  .store-layout { padding-top: 1rem; }
+  .store-breadcrumb { font-size: 0.8rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.35rem; color: var(--text-dim); }
+  .store-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .store-breadcrumb a:hover { color: var(--accent); opacity: 1; }
+  .store-breadcrumb .sep { color: var(--border-hover); }
+  .collection-header { margin-bottom: 2rem; }
+  .collection-header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.25rem; }
+  .collection-header p { color: var(--text-muted); font-size: 0.9rem; }
+  .cat-section { margin-bottom: 2.5rem; }
+  .cat-section-head { margin-bottom: 1rem; }
+  .cat-section-head h2 { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.15rem; color: var(--text-heading); }
+  .cat-section-head h2 a { color: var(--text-heading); text-decoration: none; }
+  .cat-section-head h2 a:hover { color: var(--accent); opacity: 1; }
+  .cat-section-head p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+  .product-card { background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden; transition: border-color 0.15s, transform 0.15s; text-decoration: none; }
+  .product-card:hover { border-color: var(--border-hover); transform: translateY(-2px); opacity: 1; }
+  .product-card-img { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: rgba(255,255,255,0.2); background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 50%, var(--bg-primary)) 100%); }
+  .product-card-body { padding: 0.75rem; }
+  .product-card-title { font-size: 0.8rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.15rem; line-height: 1.3; }
+  .product-card-price { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+  @media (max-width: 768px) { .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); } }
+</style>
+
+<div class="store-layout">
+  {{ if store.collection.title }}
+  <nav class="store-breadcrumb">
+    <a href="/store-fast">Store</a>
+    <span class="sep">/</span>
+    <span>{{ store.collection.title }}</span>
+  </nav>
+
+  <header class="collection-header">
+    <h1>{{ store.collection.title }}</h1>
+    <p>{{ store.collection.summary }}</p>
+  </header>
+
+  {{ each cat in store.categories }}
+  <section class="cat-section">
+    <div class="cat-section-head">
+      <h2><a href="/store-fast/{{ cat.slug }}" preload="mouseover">{{ cat.title }}</a></h2>
+      <p>{{ cat.summary }}</p>
+    </div>
+    <div class="product-grid">
+      {{ each prod in cat.products }}
+      <a href="/store-fast/{{ cat.slug }}/{{ prod.slug }}" class="product-card" preload="mouseover">
+        <div class="product-card-img">&#9670;</div>
+        <div class="product-card-body">
+          <div class="product-card-title">{{ prod.title }}</div>
+          <div class="product-card-price">${{ prod.price }}</div>
+        </div>
+      </a>
+      {{ endeach }}
+    </div>
+  </section>
+  {{ endeach }}
+
+  {{ endif }}
+</div>

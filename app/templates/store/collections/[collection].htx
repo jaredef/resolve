@@ -1,0 +1,94 @@
+<style>
+  .store-layout { padding-top: 1rem; }
+
+  .store-breadcrumb { font-size: 0.8rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.35rem; color: var(--text-dim); }
+  .store-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .store-breadcrumb a:hover { color: var(--accent); opacity: 1; }
+  .store-breadcrumb .sep { color: var(--border-hover); }
+
+  .collection-header { margin-bottom: 2rem; }
+  .collection-header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.25rem; }
+  .collection-header p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .cat-section { margin-bottom: 2.5rem; }
+  .cat-section-head { margin-bottom: 1rem; }
+  .cat-section-head h2 { font-size: 1.1rem; font-weight: 600; margin: 0 0 0.15rem; color: var(--text-heading); }
+  .cat-section-head h2 a { color: var(--text-heading); text-decoration: none; }
+  .cat-section-head h2 a:hover { color: var(--accent); opacity: 1; }
+  .cat-section-head p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
+
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+  .product-card {
+    background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px;
+    overflow: hidden; transition: border-color 0.15s, transform 0.15s; text-decoration: none;
+  }
+  .product-card:hover { border-color: var(--border-hover); transform: translateY(-2px); opacity: 1; }
+  .product-card-img { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: rgba(255,255,255,0.2); }
+  .product-card-body { padding: 0.75rem; }
+  .product-card-title { font-size: 0.8rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.15rem; line-height: 1.3; }
+  .product-card-price { font-size: 0.85rem; font-weight: 700; color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .product-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+    .collection-header h1 { font-size: 1.4rem; }
+  }
+</style>
+
+<div class="store-layout">
+  <htx:type>store-collection</htx:type>
+  <htx:slug>{{ route.collection }}</htx:slug>
+  <htx>
+  <htx:each>
+  <nav class="store-breadcrumb">
+    <a href="/store">Store</a>
+    <span class="sep">/</span>
+    <span>__title__</span>
+  </nav>
+
+  <header class="collection-header">
+    <h1>__title__</h1>
+    <p>__summary__</p>
+  </header>
+
+  <htx:type>store-category</htx:type>
+  <htx:rel>collection_id=parent.id</htx:rel>
+  <htx:order>oldest</htx:order>
+  <htx>
+  <htx:each>
+  <section class="cat-section">
+    <div class="cat-section-head">
+      <h2><a href="/store/__slug__" preload="mouseover">__title__</a></h2>
+      <p>__summary__</p>
+    </div>
+    <div class="product-grid">
+      <htx:type>store-product</htx:type>
+      <htx:rel>category_id=parent.id</htx:rel>
+      <htx:order>oldest</htx:order>
+      <htx:howmany>6</htx:howmany>
+      <htx>
+      <htx:each>
+      <a href="/store/__category_slug__/__slug__" class="product-card" preload="mouseover" style="text-decoration: none;">
+        <div class="product-card-img" style="background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 50%, var(--bg-primary)) 100%);">&#9670;</div>
+        <div class="product-card-body">
+          <div class="product-card-title">__title__</div>
+          <div class="product-card-price">$__price__</div>
+        </div>
+      </a>
+      </htx:each>
+      </htx>
+    </div>
+  </section>
+  </htx:each>
+  </htx>
+
+  </htx:each>
+  <htx:none>
+  <nav class="store-breadcrumb"><a href="/store">Store</a><span class="sep">/</span><span>Not found</span></nav>
+  <div style="text-align: center; padding: 3rem 1rem;">
+    <h2 style="margin-bottom: 0.5rem; color: var(--text-muted);">Collection not found</h2>
+    <p style="color: var(--text-dim); margin-bottom: 1rem;">No collection matches this URL.</p>
+    <a href="/store" style="color: var(--accent);">Browse all collections &rarr;</a>
+  </div>
+  </htx:none>
+  </htx>
+</div>

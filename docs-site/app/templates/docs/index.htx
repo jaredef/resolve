@@ -1,0 +1,59 @@
+<htx:type>documentation</htx:type>
+<htx:order>oldest</htx:order>
+<htx:howmany>500</htx:howmany>
+<htx:where>status=published</htx:where>
+
+<htx>
+<style>
+  .docs-index { padding: 1.5rem 0 3rem; max-width: 40em; }
+  .docs-index-header h1 { font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: -0.02em; font-weight: 600; }
+  .docs-index-header p { color: var(--text-subtle); font-size: 1rem; line-height: 1.6; margin-bottom: 0; }
+  .docs-grid-header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1rem; }
+  .docs-grid-header h2 { font-size: 1.15rem; color: var(--text-primary); margin: 0; font-weight: 600; }
+  .docs-grid-count { font-size: 0.8rem; color: var(--text-footer); }
+  .docs-grid { display: flex; flex-direction: column; gap: 0; }
+  .docs-link {
+    display: flex; align-items: flex-start; gap: 1rem; padding: 0.75rem 0;
+    text-decoration: none; color: inherit; border-bottom: 1px solid var(--border-primary); transition: color 0.1s;
+  }
+  .docs-link:first-child { border-top: 1px solid var(--border-primary); }
+  .docs-link:hover { text-decoration: none; }
+  .docs-link-number {
+    font-size: 0.7rem; color: var(--docs-link-number); font-weight: 600;
+    min-width: 1.5rem; padding-top: 0.2rem; font-family: var(--font-code); text-align: right;
+  }
+  .docs-link-body { flex: 1; min-width: 0; }
+  .docs-link-title { font-weight: 500; color: var(--accent); font-size: 0.95rem; }
+  .docs-link:hover .docs-link-title { opacity: 0.6; }
+  .docs-link-summary { color: var(--text-muted-alt); font-size: 0.82rem; margin-top: 0.2rem; line-height: 1.5; }
+</style>
+
+<div class="docs-index">
+  <header class="docs-index-header">
+    <h1>Documentation</h1>
+  </header>
+
+  <div class="docs-grid-header">
+    <h2>All Topics</h2>
+    <span class="docs-grid-count">{{ result.total }} articles</span>
+  </div>
+
+  <div class="docs-grid">
+    <htx:each>
+      <a href="/docs/__slug__" class="docs-link">
+        <div class="docs-link-body">
+          <span class="docs-link-title">__title__</span>
+          <div class="docs-link-summary">__summary__</div>
+        </div>
+      </a>
+    </htx:each>
+  </div>
+
+  <htx:none>
+    <div style="text-align: center; color: var(--text-placeholder); padding: 3rem 1rem;">
+      <h3 style="margin-bottom: 0.5rem;">No documentation yet</h3>
+      <p>Add <code>.md</code> files to the <code>content/</code> directory to get started.</p>
+    </div>
+  </htx:none>
+</div>
+</htx>

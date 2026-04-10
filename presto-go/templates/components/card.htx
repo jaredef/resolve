@@ -1,0 +1,10 @@
+<htx:props>
+title = "Default Title"
+</htx:props>
+<div class="card">
+  <h2>{{ title }}</h2>
+  <htx:slot />
+  <htx:script>
+    el.addEventListener('click', () => console.log('card clicked'));
+  </htx:script>
+</div>

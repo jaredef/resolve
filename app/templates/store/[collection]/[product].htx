@@ -1,0 +1,120 @@
+<style>
+  .store-layout { padding-top: 1rem; }
+
+  .store-main { min-width: 0; }
+  .store-breadcrumb { font-size: 0.8rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.35rem; color: var(--text-dim); flex-wrap: wrap; }
+  .store-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .store-breadcrumb a:hover { color: var(--accent); opacity: 1; }
+  .store-breadcrumb .sep { color: var(--border-hover); }
+
+  .store-breadcrumb { margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-primary); }
+  .product-detail { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; margin-bottom: 2rem; }
+  .product-image {
+    background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px;
+    aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; color: rgba(255,255,255,0.15); max-height: 240px;
+  }
+  .product-info {}
+  .product-info h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; line-height: 1.3; }
+  .product-info .price-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .product-info .price { font-size: 1.75rem; font-weight: 700; color: var(--accent); }
+  .product-info .stock {
+    font-size: 0.72rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 999px;
+    text-transform: uppercase; letter-spacing: 0.03em;
+    background: rgba(74, 222, 128, 0.1); color: var(--color-success);
+  }
+  .product-info .description { font-size: 0.92rem; color: var(--text-body); line-height: 1.7; margin-bottom: 1.5rem; }
+  .add-to-cart-btn {
+    display: inline-block; padding: 0.65rem 2rem; background: var(--accent); color: white;
+    border: none; border-radius: 6px; font-size: 0.92rem; font-weight: 600;
+    cursor: pointer; font-family: var(--font-body); transition: opacity 0.15s;
+  }
+  .add-to-cart-btn:hover { opacity: 0.85; }
+  .add-to-cart-success {
+    display: inline-block; padding: 0.5rem 1rem; margin-top: 0.5rem;
+    background: rgba(74, 222, 128, 0.1); color: var(--color-success);
+    border-radius: 4px; font-size: 0.82rem; font-weight: 500;
+  }
+
+  .related-section { margin-top: 1rem; }
+  .related-section h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-heading); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.85rem; }
+  .related-card {
+    background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 6px;
+    overflow: hidden; text-decoration: none; transition: border-color 0.15s;
+  }
+  .related-card:hover { border-color: var(--border-hover); opacity: 1; }
+  .related-card-img { height: 80px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: rgba(255,255,255,0.2); }
+  .related-card-body { padding: 0.65rem; }
+  .related-card-title { font-size: 0.78rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.15rem; line-height: 1.3; }
+  .related-card-price { font-size: 0.82rem; font-weight: 700; color: var(--accent); }
+
+  @media (max-width: 900px) {
+    .store-layout { grid-template-columns: 1fr; }
+    .store-sidebar { display: none; position: static; }
+    .product-detail { grid-template-columns: 1fr; }
+    .product-image { max-height: 200px; }
+    .related-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  }
+</style>
+
+<div class="store-layout">
+    <htx:type>store-product</htx:type>
+    <htx:slug>{{ route.product }}</htx:slug>
+    <htx>
+    <htx:each>
+    <nav class="store-breadcrumb">
+      <a href="/store">Store</a>
+      <span class="sep">/</span>
+      <a href="/store/{{ route.collection }}" style="text-transform: capitalize;">{{ route.collection }}</a>
+      <span class="sep">/</span>
+      <span>__title__</span>
+    </nav>
+
+    <div class="product-detail">
+      <div class="product-image" style="background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 50%, var(--bg-primary)) 100%);">
+        &#9670;
+      </div>
+      <div class="product-info">
+        <h1>__title__</h1>
+        <div class="price-row">
+          <span class="price">$__price__</span>
+          <span class="stock">In Stock</span>
+        </div>
+        <p class="description">__body__</p>
+        <form method="POST" action="/api/cart/add" hx-post="/api/cart/add" hx-swap="outerHTML" style="display: inline;">
+          <input type="hidden" name="slug" value="__slug__" />
+          <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Related products in the same category -->
+    <section class="related-section">
+      <h2>More from this category</h2>
+      <div class="related-grid">
+        <htx:type>store-product</htx:type>
+        <htx:rel>category_id=parent.category_id</htx:rel>
+        <htx:order>oldest</htx:order>
+        <htx:howmany>6</htx:howmany>
+        <htx>
+        <htx:each>
+        <a href="/store/{{ route.collection }}/__slug__" class="related-card" preload="mouseover">
+          <div class="related-card-img" style="background: linear-gradient(135deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 50%, var(--bg-primary)) 100%);">&#9670;</div>
+          <div class="related-card-body">
+            <div class="related-card-title">__title__</div>
+            <div class="related-card-price">$__price__</div>
+          </div>
+        </a>
+        </htx:each>
+        </htx>
+      </div>
+    </section>
+
+    </htx:each>
+    <htx:none>
+    <nav class="store-breadcrumb"><a href="/store">Store</a><span class="sep">/</span><span>Not found</span></nav>
+    <p style="color: var(--text-dim); padding: 2rem 0;">Product not found. <a href="/store">Browse all collections &rarr;</a></p>
+    </htx:none>
+    </htx>
+</div>

@@ -1,0 +1,8 @@
+<header>
+    <nav>
+        <a href="/" class="logo">HTX Dogfood</a>
+        <a href="/docs">Docs</a>
+        <a href="/blog">Blog</a>
+        <a href="/admin">Admin</a>
+    </nav>
+</header>

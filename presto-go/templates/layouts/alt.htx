@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Alt Layout</title></head>
+<body>
+  <div class="alt-layout">__content__</div>
+</body>
+</html>

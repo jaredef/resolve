@@ -1,0 +1,7 @@
+node_modules/
+app/data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+bun.lock
+/tmp/

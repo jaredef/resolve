@@ -1,0 +1,91 @@
+<style>
+  .home-hero {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-primary);
+    text-align: center;
+    padding: 5rem 1rem 4rem;
+    margin: 0 -2rem;
+  }
+  .home-hero-inner { max-width: 40em; margin: 0 auto; }
+  .home-hero h1 { font-size: 2.5rem; margin-bottom: 1rem; letter-spacing: -0.03em; line-height: 1.15; color: var(--text-heading); font-weight: 600; }
+  .home-hero h1 .accent { color: var(--accent); }
+  .home-hero p { color: var(--text-dim); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; max-width: 32em; margin-left: auto; margin-right: auto; }
+  .home-cta-group { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .home-cta { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1.5rem; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: opacity 0.15s; }
+  .home-cta-primary { background: var(--cta-primary-bg); color: var(--cta-primary-text); border-radius: 4px; }
+  .home-cta-primary:hover { opacity: 0.85; color: var(--cta-primary-text); text-decoration: none; }
+  .home-cta-secondary { color: var(--text-muted); }
+  .home-cta-secondary:hover { color: var(--accent); text-decoration: none; }
+  .home-features { max-width: 40em; margin: 3rem auto; padding: 0 1rem; }
+  .home-features h2 { font-size: 1.25rem; margin-bottom: 1.5rem; color: var(--text-heading); font-weight: 600; }
+  .home-feature-list { list-style: none; padding: 0; }
+  .home-feature-list li { padding: 0.75rem 0; border-bottom: 1px solid var(--border-primary); display: flex; gap: 0.75rem; align-items: baseline; }
+  .home-feature-list li:last-child { border-bottom: none; }
+  .home-feature-label { font-weight: 600; color: var(--text-heading); font-size: 0.9rem; min-width: 10em; }
+  .home-feature-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.55; }
+  .home-quickstart { max-width: 40em; margin: 0 auto 3rem; padding: 0 1rem; }
+  .home-quickstart h2 { font-size: 1.25rem; color: var(--text-heading); font-weight: 600; margin-bottom: 0.75rem; }
+  .home-quickstart pre { text-align: left; }
+  @media (max-width: 640px) {
+    .home-hero h1 { font-size: 1.75rem; }
+    .home-hero p { font-size: 0.95rem; }
+    .home-hero { padding: 3rem 0.5rem 2.5rem; margin: 0 -1rem; }
+    .home-feature-list li { flex-direction: column; gap: 0.25rem; }
+    .home-feature-label { min-width: auto; }
+  }
+</style>
+
+<div class="home-hero">
+  <div class="home-hero-inner">
+    <h1>HTX engine<br><span class="accent">documentation</span></h1>
+    <p>
+      Bun runtime. Markdown flat-files. HTX templates. Adapter-backed content.
+      No build step, no framework, no ORM.
+    </p>
+    <div class="home-cta-group">
+      <a href="/docs" class="home-cta home-cta-primary">
+        Read the Docs
+      </a>
+      <a href="https://github.com/hypermediacms/hypermedia-app" target="_blank" rel="noopener" class="home-cta home-cta-secondary">
+        View on GitHub &rarr;
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="home-features">
+  <h2>How it works</h2>
+  <ul class="home-feature-list">
+    <li>
+      <span class="home-feature-label">Flat-File Content</span>
+      <span class="home-feature-desc">Write Markdown files with YAML front matter. Or use SQLite for full CRUD. The adapter interface makes any data source work.</span>
+    </li>
+    <li>
+      <span class="home-feature-label">File-System Routing</span>
+      <span class="home-feature-desc">Drop an .htx file in templates/ and it becomes a route. Dynamic segments with [param]. No route registration.</span>
+    </li>
+    <li>
+      <span class="home-feature-label">HTX Templates</span>
+      <span class="home-feature-desc">Declarative templates with expressions, layouts, includes, and components. The file is the page.</span>
+    </li>
+    <li>
+      <span class="home-feature-label">Expression Engine</span>
+      <span class="home-feature-desc">48 built-in functions, pipes, ternaries, if/else, each loops. All inside \{{ \}} expressions.</span>
+    </li>
+    <li>
+      <span class="home-feature-label">Two-Phase Mutations</span>
+      <span class="home-feature-desc">JWT-signed action tokens make forms CSRF-proof and replay-protected by default.</span>
+    </li>
+    <li>
+      <span class="home-feature-label">One Dependency</span>
+      <span class="home-feature-desc">Bun runtime, jose for JWT. No Express, no Hono, no ORM, no build pipeline.</span>
+    </li>
+  </ul>
+</div>
+
+<div class="home-quickstart">
+  <h2>Quick Start</h2>
+  <pre><code class="language-bash">bun create hypermedia-app my-app
+cd my-app && bun install
+bun run seed && bun run dev</code></pre>
+</div>

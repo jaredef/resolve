@@ -1,0 +1,11 @@
+#!/usr/bin/env bun
+
+import { Application, DevCommand, NewCommand, ServeCommand } from "../src";
+
+const app = new Application("HTX", "0.1.0");
+app.register(new NewCommand());
+app.register(new DevCommand());
+app.register(new ServeCommand());
+
+const exitCode = await app.run(Bun.argv.slice(1));
+process.exit(exitCode);

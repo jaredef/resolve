@@ -1,0 +1,101 @@
+<style>
+  .blog-page { padding: 0.5rem 0 3rem; }
+  .blog-breadcrumb {
+    font-size: 0.8rem; margin-bottom: 1.5rem; display: flex;
+    align-items: center; gap: 0.35rem; color: var(--text-dim);
+  }
+  .blog-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+  .blog-breadcrumb a:hover { color: var(--accent); }
+  .blog-breadcrumb .sep { color: var(--border-hover); }
+  .blog-header { margin-bottom: 2rem; }
+  .blog-header h1 {
+    font-size: 1.85rem; line-height: 1.25; letter-spacing: -0.025em;
+    font-weight: 700; color: var(--text-heading); margin-bottom: 0.75rem;
+  }
+  .blog-summary {
+    color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin-bottom: 0.75rem;
+  }
+  .blog-meta {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    font-size: 0.78rem; color: var(--text-dim); padding-top: 0.75rem;
+    border-top: 1px solid var(--border-primary);
+  }
+  .blog-meta .meta-tag {
+    background: var(--accent-bg); color: var(--accent); padding: 0.15rem 0.55rem;
+    border-radius: 999px; font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .blog-back {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border-primary);
+    font-size: 0.85rem; color: var(--text-muted); text-decoration: none;
+    transition: color 0.15s;
+  }
+  .blog-back:hover { color: var(--accent); text-decoration: none; }
+  .post-body p { margin-bottom: 1.25rem; line-height: 1.75; }
+  .post-body table { margin: 2rem 0; }
+  .post-body table + p, .post-body table + h2, .post-body table + h3 { margin-top: 2rem; }
+  .post-body th {
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em;
+    font-weight: 600; color: var(--text-heading); padding: 0.6rem 0.75rem;
+    border-bottom: 2px solid var(--border-primary);
+  }
+  .post-body td { padding: 0.6rem 0.75rem; }
+  .post-body tr:hover { background: var(--accent-bg); }
+  .post-body ul, .post-body ol { margin: 0.5rem 0 1.25rem 1.5rem; }
+  .post-body li { margin-bottom: 0.4rem; line-height: 1.7; }
+  .post-body h2 { margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--border-primary); }
+  .post-body h3 { margin-top: 2rem; margin-bottom: 0.5rem; }
+  .post-body blockquote {
+    border-left: 3px solid var(--accent); padding: 0.5rem 1rem; margin: 1.5rem 0;
+    color: var(--text-muted); background: var(--accent-bg);
+    border-radius: 0 4px 4px 0;
+  }
+  .post-body pre { background: var(--bg-code); border: 1px solid var(--border-primary); border-radius: 6px; padding: 1rem 1.25rem; overflow-x: auto; margin: 1.25rem 0; font-size: 0.82rem; }
+  .post-body pre code { background: none; padding: 0; }
+  .post-body strong { color: var(--text-heading); }
+  .post-body hr { border: none; border-top: 1px solid var(--border-primary); margin: 2.5rem 0; }
+  @media (max-width: 768px) {
+    .blog-header h1 { font-size: 1.5rem; }
+  }
+</style>
+
+<htx:type>post</htx:type>
+<htx:slug>{{ route.slug }}</htx:slug>
+<htx>
+<htx:each>
+  <article class="blog-page">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="sep">/</span>
+      <a href="/blog">Blog</a>
+      <span class="sep">/</span>
+      <span>__title__</span>
+    </nav>
+
+    <header class="blog-header">
+      <h1>__title__</h1>
+      <p class="blog-summary">__summary__</p>
+      <div class="blog-meta">
+        <time>__created_at__</time>
+        <span class="meta-tag">__category__</span>
+      </div>
+    </header>
+
+    <div class="post-body">
+      __body_html__
+    </div>
+
+    <a href="/blog" class="blog-back">&larr; Back to blog</a>
+    <script>document.querySelectorAll('.post-body a[href^="http"]').forEach(function(a){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');})</script>
+  </article>
+</htx:each>
+
+<htx:none>
+  <div style="text-align: center; padding: 4rem 1rem;">
+    <h2 style="margin-bottom: 0.5rem; color: var(--text-muted);">Post not found</h2>
+    <p style="color: var(--text-dim); margin-bottom: 1.5rem;">This blog post doesn't exist or has been removed.</p>
+    <a href="/blog" style="color: var(--accent);">Browse all posts &rarr;</a>
+  </div>
+</htx:none>
+</htx>

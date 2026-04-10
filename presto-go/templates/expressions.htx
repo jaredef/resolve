@@ -1,0 +1,36 @@
+<htx:let greeting = "hello world" />
+
+<h1>Expression Tests</h1>
+
+<p>Greeting: <htx:v>greeting</htx:v></p>
+<p>Uppercase: <htx:v>greeting | uppercase</htx:v></p>
+<p>Capitalize: <htx:v>greeting | capitalize</htx:v></p>
+<p>Escaped: <htx:v>html</htx:v></p>
+<p>Raw: <htx:v raw>html</htx:v></p>
+
+<script>
+  var x = {htx:greeting};
+  console.log("this should not be touched: {htx:greeting}");
+</script>
+
+<htx:raw>
+  <p>This {htx:greeting} should not be evaluated</p>
+</htx:raw>
+
+<htx:if test="greeting">
+  <p>Greeting exists!</p>
+</htx:if>
+
+<htx:if test="missing">
+  <p>Should not show</p>
+</htx:if><htx:else>
+  <p>Missing is falsy</p>
+</htx:else>
+
+<htx:auth>
+  <p>Authenticated content</p>
+</htx:auth>
+
+<htx:unauth>
+  <p>Unauthenticated content</p>
+</htx:unauth>

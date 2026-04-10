@@ -1,0 +1,12 @@
+# Files customized for hypermediaapp.org that should NOT be overwritten by upstream syncs
+# Use with: rsync --exclude-from=.local-overrides
+app/templates/_layout.htx
+app/templates/index.htx
+app/templates/partials/_nav.htx
+app/templates/partials/_footer.htx
+app/public/css/style.css
+app/data/
+packages/htx-adapter-sqlite/src/sqlite-adapter.ts
+app/templates/partials/_docs-nav.htx
+.local-overrides
+CLAUDE.md

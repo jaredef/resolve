@@ -1,0 +1,41 @@
+<section class="admin-page-header">
+  <div>
+    <p class="admin-eyebrow">Documentation</p>
+    <h1>All docs</h1>
+    <p class="admin-lead">
+      Manage documentation records rendered by the public docs routes.
+    </p>
+  </div>
+  <a href="/admin/docs/new" class="btn btn-primary">Create Doc</a>
+</section>
+
+<htx:type>documentation</htx:type>
+<htx:order>oldest</htx:order>
+<htx>
+<div class="admin-list">
+<htx:each>
+<article class="admin-row">
+  <div class="admin-row-main">
+    <div class="admin-row-title">
+      <strong>__title__</strong>
+      <span class="status-badge status-__status__">__status__</span>
+    </div>
+    <p class="admin-row-meta">__section_label__ &middot; #__order__ &middot; __slug__</p>
+    <p>__summary__</p>
+  </div>
+  <div class="actions">
+    <a href="/docs/__slug__">View</a>
+    <a href="/admin/docs/__id__/edit">Edit</a>
+    <a href="/admin/docs/__id__/delete">Delete</a>
+  </div>
+</article>
+</htx:each>
+</div>
+<htx:none>
+<div class="admin-empty-state">
+  <h2>No docs yet</h2>
+  <p>Create a documentation article to populate the docs section.</p>
+  <a href="/admin/docs/new" class="btn btn-primary">Create Doc</a>
+</div>
+</htx:none>
+</htx>

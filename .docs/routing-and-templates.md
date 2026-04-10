@@ -1,0 +1,1 @@
+Routes are defined by template paths, including dynamic segments like [slug].

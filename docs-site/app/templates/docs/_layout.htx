@@ -1,0 +1,137 @@
+<style>
+  .docs-container {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr) 180px;
+    gap: 2rem;
+    padding-top: 1rem;
+  }
+  .docs-sidebar {
+    position: sticky;
+    top: 3.75rem;
+    max-height: calc(100vh - 4.25rem);
+    overflow-y: auto;
+    padding: 1rem 0;
+    font-size: 0.85rem;
+    border-right: 1px solid var(--border-primary);
+    padding-right: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-primary) transparent;
+  }
+  .docs-sidebar::-webkit-scrollbar { width: 3px; }
+  .docs-sidebar::-webkit-scrollbar-thumb { background: var(--border-primary); border-radius: 3px; }
+  .sidebar-filter {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    background: var(--bg-hover-subtle);
+    border: 1px solid var(--border-primary);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    outline: none;
+    margin-bottom: 0.75rem;
+    transition: border-color 0.15s;
+  }
+  .sidebar-filter::placeholder { color: var(--text-footer); }
+  .sidebar-filter:focus { border-color: var(--accent); }
+  .docs-sidebar-back {
+    display: block;
+    padding: 0.3rem 0;
+    color: var(--text-placeholder);
+    text-decoration: none;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.15s;
+  }
+  .docs-sidebar-back:hover { color: var(--text-muted); text-decoration: none; }
+  .docs-sidebar-topics {
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-no-results {
+    display: none;
+    color: var(--text-footer);
+    font-size: 0.8rem;
+    padding: 0.75rem 0;
+    text-align: center;
+  }
+  .docs-content {
+    min-width: 0;
+    padding: 0.5rem 0;
+    max-width: 40em;
+  }
+  .sidebar-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border-primary);
+    color: var(--text-subtle);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .sidebar-toggle:hover { border-color: var(--border-hover); color: var(--text-secondary); }
+
+  @media (max-width: 1024px) {
+    .docs-container { grid-template-columns: 220px minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .docs-container { grid-template-columns: 1fr; gap: 0; padding-top: 0.5rem; }
+    .docs-sidebar {
+      position: relative; top: 0; max-height: none; border-right: none;
+      border-bottom: 1px solid var(--border-primary); padding: 0.5rem 0 0.75rem;
+      padding-right: 0; margin-bottom: 0.5rem;
+    }
+    .sidebar-toggle { display: block; }
+    .sidebar-filter, .docs-sidebar-back, .docs-sidebar-topics, .sidebar-no-results { display: none; }
+    .docs-sidebar.sidebar-open .sidebar-filter { display: block; }
+    .docs-sidebar.sidebar-open .docs-sidebar-back { display: block; }
+    .docs-sidebar.sidebar-open .docs-sidebar-topics { display: flex; }
+  }
+</style>
+
+<div class="docs-container">
+  <nav class="docs-sidebar" aria-label="Documentation navigation">
+    <button class="sidebar-toggle" aria-expanded="false" onclick="var s=this.closest('.docs-sidebar');s.classList.toggle('sidebar-open');this.setAttribute('aria-expanded',s.classList.contains('sidebar-open'))">&#9776; Menu</button>
+    <input type="text" class="sidebar-filter" placeholder="Filter..." aria-label="Filter documentation topics">
+    <a href="/docs" class="docs-sidebar-back">&larr; All Topics</a>
+    <div id="sidebar-topics" class="docs-sidebar-topics">
+      <htx:include src="/partials/_docs-nav.htx" />
+    </div>
+    <div class="sidebar-no-results">No matches</div>
+  </nav>
+  <div id="docs-body" style="display:contents">
+    <div class="docs-content">
+      __content__
+    </div>
+    <div class="docs-toc-container"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var filterInput = document.querySelector('.sidebar-filter');
+  if (!filterInput) return;
+
+  filterInput.addEventListener('input', function() {
+    var query = this.value.toLowerCase().trim();
+    var links = document.querySelectorAll('.docs-nav-link');
+    var noResults = document.querySelector('.sidebar-no-results');
+    var visibleCount = 0;
+
+    links.forEach(function(link) {
+      var text = (link.dataset.filterText || link.textContent).toLowerCase();
+      var match = !query || text.indexOf(query) !== -1;
+      link.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
+    });
+
+    if (noResults) {
+      noResults.style.display = (visibleCount === 0 && query) ? 'block' : 'none';
+    }
+  });
+})();
+</script>

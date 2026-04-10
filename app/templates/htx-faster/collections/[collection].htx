@@ -1,0 +1,47 @@
+<style>
+  .nf-layout { padding: 1.5rem 0; }
+  .nf-breadcrumb { font-size: 0.75rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.35rem; color: var(--text-dim); }
+  .nf-breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .nf-breadcrumb a:hover { color: var(--accent); opacity: 1; }
+  .nf-breadcrumb .sep { color: var(--border-hover); font-size: 0.65rem; }
+  .nf-header { margin-bottom: 1.5rem; }
+  .nf-header h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-heading); }
+  .nf-header p { color: var(--text-muted); font-size: 0.85rem; margin-top: 0.2rem; }
+  .nf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .nf-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 0.5rem; overflow: hidden; transition: box-shadow 0.15s, border-color 0.15s; text-decoration: none; display: block; }
+  .nf-card:hover { border-color: var(--border-hover); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); opacity: 1; }
+  .nf-card-body { padding: 1rem 1.25rem; }
+  .nf-card-title { font-size: 0.9rem; font-weight: 600; color: var(--text-heading); margin-bottom: 0.25rem; }
+  .nf-card-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+  .nf-scroll-sentinel { display: flex; align-items: center; justify-content: center; padding: 2rem; grid-column: 1 / -1; color: var(--text-dim); font-size: 0.8rem; }
+  @media (max-width: 900px) { .nf-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .nf-grid { grid-template-columns: 1fr; } }
+</style>
+
+{{ if fp.collection }}
+<div class="nf-layout">
+  <nav class="nf-breadcrumb">
+    <a href="/htx-faster">Store</a>
+    <span class="sep">/</span>
+    <span>{{ fp.collection.title }}</span>
+  </nav>
+  <header class="nf-header">
+    <h1>{{ fp.collection.title }}</h1>
+    <p>{{ fp.collection.summary }}</p>
+  </header>
+
+  <div class="nf-grid">
+  {{ each cat in fp.categories }}
+    <a href="/htx-faster/{{ cat.slug }}" class="nf-card" preload="mouseover">
+      <div class="nf-card-body">
+        <div class="nf-card-title">{{ cat.title }}</div>
+        <div class="nf-card-desc">{{ cat.summary }}</div>
+      </div>
+    </a>
+  {{ endeach }}
+    <div class="nf-scroll-sentinel" hx-get="/htx-faster/collections/{{ route.collection }}/scroll/2" hx-trigger="revealed" hx-swap="outerHTML">
+      Loading&hellip;
+    </div>
+  </div>
+</div>
+{{ endif }}

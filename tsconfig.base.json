@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2023", "DOM"],
+    "strict": true,
+    "noEmit": true,
+    "allowJs": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "types": ["bun-types"],
+    "baseUrl": ".",
+    "paths": {
+      "@htx/engine": ["./packages/htx-engine/src/index.ts"],
+      "@htx/engine/*": ["./packages/htx-engine/src/*"],
+      "@htx/adapter-sqlite": ["./packages/htx-adapter-sqlite/src/index.ts"],
+      "@htx/adapter-sqlite/*": ["./packages/htx-adapter-sqlite/src/*"],
+      "@htx/adapter-markdown": ["./packages/htx-adapter-markdown/src/index.ts"],
+      "@htx/adapter-markdown/*": ["./packages/htx-adapter-markdown/src/*"],
+      "@htx/cli": ["./packages/htx-cli/src/index.ts"],
+      "@htx/cli/*": ["./packages/htx-cli/src/*"],
+      "create-hypermedia-app": ["./packages/create-hypermedia-app/src/index.ts"]
+    }
+  }
+}

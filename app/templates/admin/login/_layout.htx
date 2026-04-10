@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTX Admin &mdash; Sign In</title>
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.setAttribute('data-theme', t);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-primary: #1f1f1f;
+      --bg-secondary: #1a1d1e;
+      --bg-surface: #262829;
+      --bg-input: #1a1d1e;
+      --text-primary: #c7c4c1;
+      --text-heading: #e0ddd9;
+      --text-secondary: #b0ada9;
+      --text-muted: #8a8785;
+      --text-subtle: #666;
+      --text-placeholder: #555;
+      --border-primary: #41464b;
+      --border-input: #41464b;
+      --border-input-focus: #5b96d5;
+      --accent: #5b96d5;
+      --accent-hover: #4a85c4;
+      --accent-bg: rgba(91, 150, 213, 0.08);
+      --color-error: #ef4444;
+      --color-danger-bg: rgba(239, 68, 68, 0.08);
+      --nav-link: rgba(199, 196, 193, 0.6);
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    }
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f6f6f6;
+      --bg-surface: #f0f0f0;
+      --bg-input: #fff;
+      --text-primary: #111;
+      --text-heading: #111;
+      --text-secondary: #444;
+      --text-muted: #666;
+      --text-subtle: #888;
+      --text-placeholder: #aaa;
+      --border-primary: #d0d0d0;
+      --border-input: #d0d0d0;
+      --border-input-focus: #3366cc;
+      --accent: #3366cc;
+      --accent-hover: #2855b0;
+      --accent-bg: rgba(51, 102, 204, 0.06);
+      --color-error: #dc2626;
+      --color-danger-bg: rgba(220, 38, 38, 0.06);
+      --nav-link: rgba(0,0,0,0.5);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { opacity: 0.75; }
+    .login-shell {
+      width: 100%;
+      max-width: 380px;
+      padding: 0 1.5rem;
+    }
+    .login-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-heading);
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+    .login-brand .brand-accent { color: var(--accent); }
+    .login-brand .brand-tag {
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--accent-bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-left: 0.15rem;
+    }
+    .login-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-primary);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+    .login-card h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-heading);
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.02em;
+    }
+    .login-card .login-subtitle {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .login-error {
+      font-size: 0.8rem;
+      color: var(--color-error);
+      background: var(--color-danger-bg);
+      padding: 0.5rem 0.75rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+    }
+    .login-field { margin-bottom: 1rem; }
+    .login-field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+    }
+    .login-field input {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      background: var(--bg-input);
+      color: var(--text-primary);
+      border: 1px solid var(--border-input);
+      border-radius: 5px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .login-field input:focus { border-color: var(--border-input-focus); }
+    .login-field input::placeholder { color: var(--text-placeholder); }
+    .login-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    .login-actions button {
+      padding: 0.55rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: var(--font-body);
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .login-actions button:hover { background: var(--accent-hover); }
+    .login-actions a {
+      font-size: 0.8rem;
+      color: var(--nav-link);
+    }
+    input { font-size: 16px; }
+  </style>
+</head>
+<body>
+  <div class="login-shell">
+    __content__
+  </div>
+</body>
+</html>

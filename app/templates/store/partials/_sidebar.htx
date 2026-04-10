@@ -1,0 +1,23 @@
+<nav class="store-sidebar">
+  <div class="sidebar-label">Collections</div>
+  <htx:type>store-collection</htx:type>
+  <htx:where>status=published</htx:where>
+  <htx:order>oldest</htx:order>
+  <htx>
+  <htx:each>
+  <div class="sidebar-group">
+    <a href="/store/__slug__" class="sidebar-collection">__title__</a>
+    <htx:type>store-category</htx:type>
+    <htx:rel>collection_id=parent.id</htx:rel>
+    <htx:order>oldest</htx:order>
+    <htx>
+    <ul class="sidebar-categories">
+      <htx:each>
+      <li><a href="/store/__slug__" class="sidebar-cat-link">__title__</a></li>
+      </htx:each>
+    </ul>
+    </htx>
+  </div>
+  </htx:each>
+  </htx>
+</nav>
