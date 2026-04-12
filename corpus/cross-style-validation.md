@@ -217,8 +217,8 @@ The form precedes the implementation. The prose is the seed. The machines are wh
 
 | Artifact | Location | Size |
 |----------|----------|------|
-| DO Constraint Analysis | `.whitepaper/do-constraint-analysis.md` | 16 constraints, 6 levels |
-| DO Induced Properties | `.whitepaper/do-induced-properties.md` | 7 properties, constraint-property matrix |
+| DO Constraint Analysis | `corpus/do-constraint-analysis.md` | 16 constraints, 6 levels |
+| DO Induced Properties | `corpus/do-induced-properties.md` | 7 properties, constraint-property matrix |
 | DO Seed | `.spec/do-seed.md` | 2,177 words |
 | DO Runtime | `.spec/do-runtime.ts` | 379 lines TypeScript |
 | DO Verification Suite | `.spec/do-verify.ts` | 15 tests, all passing |

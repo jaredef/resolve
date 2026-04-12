@@ -54,10 +54,13 @@ export function createDogfoodAppRuntime(
   const componentResolver = new ComponentResolver(config.templatesDir, expressionEngine, includeResolver);
   const tokenService = new ActionTokenService(config.secretKey);
   const replayGuard = new InMemoryReplayGuard();
-  const convexAdapter = new ConvexAdapter(
-    { url: process.env.CONVEX_URL ?? "https://industrious-ibis-971.convex.cloud" },
-    api,
-  );
+  const convexUrl = process.env.CONVEX_URL;
+  if (!convexUrl) {
+    throw new Error(
+      "CONVEX_URL is required (Convex deployment URL). Example: export CONVEX_URL=https://your-deployment.convex.cloud — see packages/htx-adapter-convex/.env.local.example",
+    );
+  }
+  const convexAdapter = new ConvexAdapter({ url: convexUrl }, api);
   const registry = new AdapterRegistry({
     default: adapter,
     convex_test: convexAdapter,
@@ -111,10 +114,7 @@ export function createDogfoodAppRuntime(
         new CartModule(adapter),
         new StoreContextModule(adapter, config.databasePath),
         new DocsContextModule(config.databasePath),
-        new ConvexStoreContextModule(
-          process.env.CONVEX_URL ?? "https://industrious-ibis-971.convex.cloud",
-          api,
-        ),
+        new ConvexStoreContextModule(convexUrl, api),
       ],
     },
   );

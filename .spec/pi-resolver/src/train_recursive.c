@@ -468,7 +468,7 @@ static void train_level_3(Model *m, const uint8_t *corpus, int corpus_len, int s
 // ============================================================
 
 int main(int argc, char **argv) {
-    const char *corpus_dir = "../../.whitepaper";
+    const char *corpus_dir = "../../corpus";
     int steps_per_level = 200;
     if (argc > 1) corpus_dir = argv[1];
     if (argc > 2) steps_per_level = atoi(argv[2]);

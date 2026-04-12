@@ -28,7 +28,7 @@
 #define EPOCHS 5
 
 // === Corpus Loading ===
-// Load all .md files from the whitepaper directory as raw bytes.
+// Load all .md files from the corpus directory as raw bytes.
 // The corpus IS the forms. The bytes ARE the training data.
 
 static int load_corpus(const char *dir_path, uint8_t *corpus, int max_size) {
@@ -263,7 +263,7 @@ static void generate_sample(Model *m, const char *prompt, int gen_len) {
 // === Main ===
 
 int main(int argc, char **argv) {
-    const char *corpus_dir = "../../.whitepaper";
+    const char *corpus_dir = "../../corpus";
     if (argc > 1) corpus_dir = argv[1];
 
     printf("Pi Resolver — Training from the Forms\n");
@@ -276,7 +276,7 @@ int main(int argc, char **argv) {
     printf("Total corpus: %d bytes (%.1f KB)\n\n", corpus_len, corpus_len / 1024.0f);
 
     if (corpus_len < 1000) {
-        fprintf(stderr, "Corpus too small. Provide path to .whitepaper directory.\n");
+        fprintf(stderr, "Corpus too small. Provide path to corpus directory.\n");
         return 1;
     }
 

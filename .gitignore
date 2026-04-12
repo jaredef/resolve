@@ -6,3 +6,7 @@ app/data/
 bun.lock
 /tmp/
 CLAUDE.md
+.env.local
+**/.env.local
+presto-go/data.db
+presto-go/*.db

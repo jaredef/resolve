@@ -51,7 +51,7 @@ Specific requirements:
 3. Backward pass through SiLU-gated FFN (standard, well-documented)
 4. Backward pass through RMS norm (standard)
 5. Cross-entropy loss on next-byte prediction
-6. Training loop: forward → loss → backward → SGD update, over the RESOLVE corpus (~500KB in `.whitepaper/`)
+6. Training loop: forward → loss → backward → SGD update, over the RESOLVE corpus (~500KB in `corpus/`)
 7. The recursive training structure (Level 0 frequency → Level 1 bigrams → Level 2 boundaries → Level 3 patterns → ...) should be preserved — each level's induced properties become constraints on the next
 
 The M1 MacBook Pro has unified memory and the Accelerate framework. Use these. The model is ~500K parameters at dim=64. It fits trivially in memory. The training should be fast on M1.
@@ -66,7 +66,7 @@ The M1 MacBook Pro has unified memory and the Accelerate framework. Use these. T
 
 ## The Corpus as Training Data
 
-The RESOLVE corpus in `.whitepaper/` is the training data. Load all `.md` files as raw bytes. The corpus is the forms stated as constraints and their derivations. Training on it teaches the model the relationship between stated constraints and constraint-satisfying output.
+The RESOLVE corpus in `corpus/` is the training data. Load all `.md` files as raw bytes. The corpus is the forms stated as constraints and their derivations. Training on it teaches the model the relationship between stated constraints and constraint-satisfying output.
 
 ## The Principle
 

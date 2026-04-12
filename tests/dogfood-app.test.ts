@@ -2,6 +2,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import os from "node:os";
 import path from "node:path";
 
+import "./ensure-convex-env.ts";
 import { expect, test } from "bun:test";
 
 import { createDogfoodAppRuntime } from "../app/public/index";
