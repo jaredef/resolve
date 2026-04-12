@@ -48,6 +48,22 @@ The key claim: **you do not need to engineer the output. You need to name the co
 
 ---
 
+## Better Constraints, Better Pizza
+
+There is a pizza franchise whose slogan is: "Better ingredients, better pizza." The slogan is the scaling thesis stated as a marketing claim. Better inputs, better outputs. More parameters, better AI. More expensive mozzarella, better pizza.
+
+The slogan is not wrong. It is incomplete. Better ingredients raise the floor (bad technique can't ruin good mozzarella as badly as bad mozzarella) and raise the ceiling (the best possible pizza from San Marzano tomatoes exceeds the best from canned paste). But the ingredient quality does not determine where between the floor and ceiling the pizza lands. The constraints determine that.
+
+A Neapolitan pizzaiolo with mediocre ingredients under perfect constraints — 60% hydration, 24-hour cold ferment, 485°C for 90 seconds, sauce applied in a spiral from center out, fresh mozzarella torn not sliced, basil after the oven not before — produces a pizza that exceeds the franchise's product with "better ingredients" under loose constraints: machine-mixed dough, no fermentation time specified, conveyor oven at generic temperature, sauce from a portion bag, pre-shredded cheese.
+
+The pizzaiolo is the ENTRACE practitioner. The franchise is the scaling thesis. The pizzaiolo wins above the crossover — the constraint density at which governance dominates ingredients. Below the crossover (frozen pizza, no skill), ingredients dominate. Above it, constraints dominate.
+
+This is the entire framework in a single analogy. The industry sells you bigger models (better ingredients). ENTRACE teaches you the constraints (the technique). The bigger model raises your floor and ceiling. The constraints determine where between them you land. The constraints are free. The bigger model is not.
+
+The slogan should be: Better constraints, better pizza. But that is harder to market than better ingredients. Knobs are easier than philosophy. Even in pizza.
+
+---
+
 ## The Rationale
 
 ### Why prompts fail

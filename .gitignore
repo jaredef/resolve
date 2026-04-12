@@ -5,3 +5,4 @@ app/data/
 *.sqlite-wal
 bun.lock
 /tmp/
+CLAUDE.md
