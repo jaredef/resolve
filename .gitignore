@@ -10,3 +10,5 @@ CLAUDE.md
 **/.env.local
 presto-go/data.db
 presto-go/*.db
+.cursor/
+.cursor/
