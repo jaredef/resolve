@@ -25,7 +25,7 @@ Four real pages, each with a different workload profile:
 | Doc + sidebar | 5 | 29KB | Content query + 4 sidebar section queries via nested blocks |
 | Docs index | 7 | 30KB | Count query + 6 section listings with template composition |
 
-These aren't synthetic routes. They're the actual pages running on [app.hypermediadocs.com](https://app.hypermediadocs.com). The blog post serves a 7,400-word article pre-rendered to HTML by cmark-gfm at write time — reads hit zero markdown parsing. The docs pages compose a data-driven sidebar from multiple independent query blocks. The home page evaluates expressions, hydrates placeholders, and renders feature cards.
+These aren't synthetic routes. They're the actual pages from the live deployment described in this repository. The blog post serves a 7,400-word article pre-rendered to HTML by cmark-gfm at write time — reads hit zero markdown parsing. The docs pages compose a data-driven sidebar from multiple independent query blocks. The home page evaluates expressions, hydrates placeholders, and renders feature cards.
 
 ## Throughput
 
