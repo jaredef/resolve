@@ -105,7 +105,7 @@ export function createDogfoodAppRuntime(
       modules: [
         new BetterAuthModule({
           databasePath: path.resolve(path.dirname(config.databasePath), "auth.sqlite"),
-          baseURL: process.env.HTX_BASE_URL ?? "https://hypermediaapp.org",
+          baseURL: process.env.HTX_BASE_URL ?? "http://127.0.0.1:3000",
           secret: config.adminSessionSecret,
           requireAuth: true,
           loginPath: "/admin/login",

@@ -73,7 +73,7 @@ a category of waste tokens.
 ### An Example: The Optimal CLAUDE.md for This Project
 
 ```markdown
-# hypermediaapp.org
+# RESOLVE
 
 ## Constraints
 1. The bilateral boundary is the foundational architectural invariant.
@@ -104,7 +104,7 @@ a category of waste tokens.
 ## Context
 - presto-ts is the canary engine at /home/jaredef/presto-ts
 - agent-space is at /home/jaredef/agent-space (port 4050)
-- hypermediaapp.org is the documentation site (port 3000)
+- RESOLVE dev server (port 3000)
 - Telegram plugin may be active for communication
 
 ## Non-Goals

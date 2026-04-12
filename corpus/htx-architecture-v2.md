@@ -407,4 +407,4 @@ Strings all the way down.
 
 ---
 
-*This paper describes the PRESTO architectural style and the htxlang specification. Six conformant engine implementations, the complete specification, documentation, and live demonstrations are available at the project repository (https://hypermediaapp.org). The demonstrations are live at https://demo.hypermediaapp.org.*
+*This paper describes the PRESTO architectural style and the htxlang specification. Six conformant engine implementations, the complete specification, documentation, and live demonstrations are available at the project repository (https://github.com/jaredef/resolve). Demonstrations and deployment notes are maintained in that repository.*

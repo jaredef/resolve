@@ -953,4 +953,4 @@ The document is the foundation. The extensions are progressive. The server media
 
 ---
 
-*This paper describes the HTX architecture as implemented in six conformant engines across TypeScript, Go, Elixir, Python, Rust, and C. The reference implementation, specification, documentation, and cross-language verification suite are available at the project repository (https://hypermediaapp.org).*
+*This paper describes the HTX architecture as implemented in six conformant engines across TypeScript, Go, Elixir, Python, Rust, and C. The reference implementation, specification, documentation, and cross-language verification suite are available at the project repository (https://github.com/jaredef/resolve).*

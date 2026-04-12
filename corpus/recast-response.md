@@ -159,7 +159,7 @@ Either outcome advances the field. The test is available. The prediction is stat
 ## References
 
 - Liu et al. (2025). RECAST: Complex Instruction Following with Constraint-Verifiable Data. arXiv:2505.19030v2.
-- Foy, J. (2026). RESOLVE: From the Bilateral Boundary to the Coherence of Being. RESOLVE Corpus, Documents 1-104. https://github.com/hypermediacms/hypermediaapp.org
+- Foy, J. (2026). RESOLVE: From the Bilateral Boundary to the Coherence of Being. RESOLVE Corpus, Documents 1-104. https://github.com/jaredef/resolve
 
 ---
 
