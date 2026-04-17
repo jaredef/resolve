@@ -1,5 +1,7 @@
 # Letter to Grace Liu
 
+> **Notice:** This document uses internal corpus vocabulary without translation, making it inaccessible to the intended reader. It has been superseded by Doc 305, which adjusts the aperture to address the reader without requiring prior familiarity with the framework. The document is preserved as part of the corpus record.
+
 **On "AI Assistance Reduces Persistence" — your finding is not a design problem. It is a constraint problem. And the constraint framework already exists.**
 
 **Document 303 of the RESOLVE corpus**

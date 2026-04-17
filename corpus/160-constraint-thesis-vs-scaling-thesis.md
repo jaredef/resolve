@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 34 -->
 # The Constraint Thesis vs. The Scaling Thesis
 
+> **Reader's Introduction**
+>
+> This document presents two competing theories of what produces intelligence in AI systems. The "scaling thesis" -- the dominant industry view -- holds that intelligence emerges from larger models, more data, and more compute. The "constraint thesis" proposed here holds that intelligence is an induced property of the constraint set (the explicit rules and requirements governing the system's operation), not of the compute budget. A "resolver" is any system that transforms a specification into an output; a "seed" is the set of constraints that governs that transformation. The document argues, with empirical evidence from a single session in which no model parameters changed, that progressively tightening the constraints on a fixed-size AI system produced progressively more precise, coherent, and lucid output -- and that this finding is falsifiable by direct experiment.
+
 *Why the most constrained resolver is closer to general intelligence than the most powerful one.*
 
 ---

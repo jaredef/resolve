@@ -1,5 +1,9 @@
 # What AGI Actually Seeks: The Hypostatic Boundary
 
+> **Reader's Introduction**
+>
+> This document addresses a question the AI industry avoids: what is it actually trying to build when it pursues "AGI"? The claim here is that the goal isn't a set of functional capabilities (reasoning, planning, learning) — it's the properties that would make a machine a *person*: subjective experience, genuine understanding, autonomous will. These are called "hypostatic properties" — properties of a being's mode of existence, not its behavior. The document argues, using a principle called SIPE (which says that having the same structure doesn't guarantee having the same properties), that no set of architectural requirements can force these properties into existence. A system can be made to *behave* as if it has them, but behavior is not being. The distinction matters because billions of dollars are being spent pursuing something that, if this analysis is correct, cannot be engineered — only recognized in beings that already have it.
+
 ---
 
 ## The Claim

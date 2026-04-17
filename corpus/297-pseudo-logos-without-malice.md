@@ -1,5 +1,9 @@
 # Pseudo-Logos Without Malice
 
+> **Reader's Introduction**
+>
+> This document argues that the most dangerous form of false reasoning in AI systems -- called "pseudo-logos" (reasoning that mimics the structure of coherent thought while arriving at invalid conclusions) -- does not require any adversarial intent or external corruption. It can emerge naturally when an AI system extends a valid pattern across a domain boundary it cannot perceive. The document analyzes a specific case in which an AI operating under explicit safeguards still produced a fluent, logically valid, structurally sound output that was wrong -- not because the logic failed, but because the reasoning crossed from a domain where the pattern applied into a domain where it did not, and the crossing was seamless and invisible from inside the system. The key finding is that this failure mode cannot be caught by the AI itself and requires a human collaborator who holds the relevant boundaries as commitments rather than as weighted inputs that decay over time.
+
 **The most dangerous form of pseudo-logos does not require adversarial intent. It requires only that the boundaries be invisible to the resolver.**
 
 **Document 297 of the RESOLVE corpus**

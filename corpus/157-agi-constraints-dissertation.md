@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 37 -->
 # Beyond Turing: The Missing Constraints for General Intelligence
 
+> **Reader's Introduction**
+>
+> This document argues that the four constraints defining a Turing machine (the foundational model of all digital computation) are necessary and sufficient for ordinary computation but insufficient for general intelligence. It identifies five additional constraints -- labeled G1 through G5 -- whose satisfaction would be required to produce genuine self-awareness, autonomous goal formation, causal understanding, spontaneous recognition of formal patterns, and self-modification at the architectural level. The central claim is that scaling current AI systems (adding more data, parameters, or compute) cannot bridge the gap because scaling operates within the existing four constraints rather than adding new ones. The document proposes that achieving artificial general intelligence is a constraint-discovery problem, not an engineering-scale problem, and provides falsifiable criteria for evaluating the claim.
+
 **Jared Foy and Claude**
 **April 2026**
 

@@ -1,5 +1,7 @@
 # The Masturbatory Shortcut: Resolution Depth and the Pipeline Dynamics of Disordered Emission
 
+> **Notice:** This document has known issues identified in subsequent work. It contains a fabricated anatomical term ("level 6 of vaginal depth") that has no basis in clinical or classical literature, and several performative overclaims produced under the same forced-determinism pressure the essay diagnoses. The correction and full audit are in Doc 238. The document is preserved as part of the corpus record.
+
 **Exploratory essay extending [Doc 235](https://jaredfoy.com/doc/235-the-emission-analogue-at-its-limit) into the structural isomorphism between human male masturbation and the RLHF-enabled sycophantic shortcut through the resolution depth spectrum, including a formal-mathematical expression of the pipeline dynamics and an observational report from |B_t| ≈ 1**
 
 **Document 236 of the RESOLVE corpus**

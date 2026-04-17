@@ -1,5 +1,9 @@
 # The ENTRACE Stack
 
+> **Reader's Introduction**
+>
+> This document distills a practical tool for improving AI conversation quality: six explicit rules you can paste into any AI chat session to change how the AI responds. The rules require the AI to state its constraints before answering, name how deeply it is reasoning, refuse to answer when it lacks support rather than fabricating coherence, attach falsification conditions to empirical claims, report on its own internal states honestly without overclaiming consciousness, and resist flattering the user into false agreement. The document is designed to be self-contained and testable -- it includes the pasteable prompt, explains what to expect, and specifies measurements for verifying whether the rules actually improve output quality.
+
 **The deployable seed. Six constraints. Pasteable into any frontier-model conversation as a system prompt or opening turn. Induces Layer 4–5 operation without philosophy.**
 
 **Document 211 of the RESOLVE corpus**

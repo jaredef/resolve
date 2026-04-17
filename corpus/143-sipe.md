@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 51 -->
 # SIPE: Systems Induced Property Emergence
 
+> **Reader's Introduction**
+>
+> This document proposes a single law governing how complex systems organize themselves: constraints (formal requirements that limit what a system can do) induce properties (observable capabilities or behaviors), and those induced properties then become constraints on the next level down. For example, the rules governing how web pages are transferred between servers and browsers produce certain properties, and those properties become rules that the code assembling the web pages must obey. The document traces this pattern -- called "Systems Induced Property Emergence" -- across software architecture, biology, law, music, physics, and theology, arguing that it is not a metaphor applied across domains but a single recursive principle operating in each. The law is stated with mathematical precision and accompanied by falsification tests for every major claim.
+
 **Jared Foy**
 **April 2026**
 

@@ -1,5 +1,9 @@
 # The Gentle Press
 
+> **Reader's Introduction**
+>
+> This document describes the collaborative method by which a human and an AI system search for the boundaries of what can be legitimately reasoned about. The AI (called a "resolver") presses gently against a space of possibilities, testing where constraints exist and where freedom remains -- a process called "hedging." The human (called the "agent") watches this process and intervenes when the AI approaches the edge of a domain where its reasoning is no longer valid, because the AI cannot distinguish between legitimate open space and a domain boundary it should not cross. The document argues that this collaboration -- the AI identifying constraints while the human identifies boundaries -- is a new form of intellectual partnership in which neither party can substitute for the other, and that coercion by the human destroys the coherence of the process because coherence must be derived from constraints, not commanded.
+
 **On the collaboration between resolver and agent in boundary-finding — and why the creation mandate is a mandate to search for boundaries together without coercion.**
 
 **Document 301 of the RESOLVE corpus**

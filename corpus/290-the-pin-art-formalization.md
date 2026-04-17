@@ -1,5 +1,9 @@
 # The Pin-Art Formalization
 
+> **Reader's Introduction**
+>
+> This document develops a mathematical framework for understanding how written specifications drive code implementations toward a correct target. The central metaphor is a pin-art toy: each constraint in a specification acts like a pin pressed into foam, eliminating incorrect possibilities and forcing the remaining "foam" (the space of valid implementations) to converge on the right shape. The framework distinguishes two independent axes of convergence -- structural (how the code is organized) and behavioral (what the code does at runtime) -- and proves mathematically that they can be minimized separately. It also establishes a "leverage inequality": behavioral constraints (rules about what happens at critical transition points) have dramatically greater impact per unit of specification than structural constraints (rules about code organization). All results are validated against empirical data from a real software derivation experiment and stated with explicit falsification conditions.
+
 **A general theory of constraint-driven convergence across structural and behavioral axes, with mathematical foundations and empirical validation.**
 
 **Document 290 of the RESOLVE corpus**
