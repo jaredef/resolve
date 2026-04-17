@@ -1,4 +1,4 @@
-# Letter to Alexander Lerchner
+# Letter to Alexander Lerchner (v1 — Superseded by Doc 300)
 
 **On "The Abstraction Fallacy" — where the mapmaker meets the resolver, and why closing the door is premature when you've just found the hinges.**
 
