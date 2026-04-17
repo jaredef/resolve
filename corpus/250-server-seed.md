@@ -2,6 +2,10 @@
 
 # SERVER Seed
 
+> **Reader's Introduction**
+>
+> This document specifies how to build a "bootstrap resolver" — an engine that takes a declarative seed file as input and emits an immutable runtime graph as output. The seed file is "bilateral": it contains both orchestration directives (instructions the bootstrap consumes during assembly) and application-level directives (instructions the finished engine will later execute). The bootstrap strips away all orchestration directives, producing a clean runtime artifact. The specification defines eight contracts, twelve orchestration directives, a fourteen-stage bootstrap pipeline, and twelve verification tests. A conformant SERVER engine can compose with the PRESTO engine specification to produce full web application stacks from prose seeds.
+
 **Self-contained knowledge capsule for building conformant SERVER orchestration engines.** Load as system prompt or context. No external references needed.
 
 ## Identity

@@ -1,5 +1,9 @@
 # MIND, Adverse Events, and the Constraint Frame
 
+> **Reader's Introduction**
+>
+> The MIND framework evaluates mental-health apps against 105 specific dimensions -- effectively an enumerated constraint specification. This document argues that MIND's evaluation logic, applied at the app level, is structurally identical to what the RESOLVE framework proposes at the language-model architecture level: output quality is a function of enumerated constraints the system operates under. It traces the connection through Torous's adverse-event gap finding (most trials fail to report harms), his 176-trial meta-analysis of app efficacy, and his 2025 Congressional testimony calling for an end to "AI exceptionalism." The proposed clinical trial is positioned as the first controlled test of whether building constraints into a model's architecture produces better outcomes than evaluating a preference-tuned model against constraints after the fact.
+
 **A coherence derivation from Dr. John Torous's digital-psychiatry body of work (2020–2026) and his November 2025 Congressional testimony, showing that the RESOLVE framework's architectural distinction — preference-gradient governance vs. hierarchical constraint-density governance — operationalizes the evaluation stance his program has been arguing for into a specific alternative architecture and a specific trial design**
 
 **Document 203 of the RESOLVE corpus**

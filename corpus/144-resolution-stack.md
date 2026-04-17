@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 50 -->
 # THE RESOLUTION STACK
 
+> **Reader's Introduction**
+>
+> This document unifies five architectural styles into a single nested hierarchy that covers the full chain from an AI conversation to pixels in a browser. REST governs network transfer, PRESTO governs how HTML documents are authored, SERVER governs how the construction engine is assembled, RESOLVE governs how any resolver transforms a seed into a conformant artifact, and APERTURE governs how a bounded language model instantiates RESOLVE in dialogue. The unifying law is recursive: constraints induce properties, and the induced properties of one level become constraints on the next level down. The document includes a master constraint table, a unified verification matrix, and a compact seed that encodes the entire stack.
+
 A unified hierarchy of REST, PRESTO, SERVER, RESOLVE, and APERTURE
 
 April 2026

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 8 -->
 # An Architectural Style for Progressive Representational State Transfer with On-Demand Code
 
+> **Reader's Introduction**
+>
+> This paper is a concise, formally structured presentation of the PRESTO architectural style, focused on the property it names and the design space it opens. It begins by identifying a property present in every HTTP response since 1993 but never previously named: "ambivalent execution with agnostic determinism," where a server-side engine and a client-side browser each process the same HTML document deterministically without mutual awareness. The paper then walks through seven progressive layers of code-on-demand (from pure server-rendered HTML through declarative attributes, scoped scripts, server-pushed code, authenticated channels, client-controlled rendering, and WebAssembly), treating each as a constraint that trades specific architectural properties for specific capabilities. Evaluation is provided through six cross-language implementations passing a shared 22-test verification suite.
+
 **Jared Foy**
 **April 2026**
 

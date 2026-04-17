@@ -2,6 +2,10 @@
 
 # PRESTO Seed
 
+> **Reader's Introduction**
+>
+> This document specifies a web engine called PRESTO (Progressive REpresentational State Transfer with On-demand code) — an extension of REST that treats code-on-demand as a progressive spectrum rather than an all-or-nothing choice. The engine is a "resolver": HTML goes in, pure HTML comes out. Server directives (the htx: namespace) are consumed during processing and stripped from the final output, so the result is a standard web page any browser can render without a JavaScript framework. The specification defines eight contracts, sixteen directives, a twenty-two-stage processing pipeline, and twenty-two verification tests. It covers everything from template composition and data queries to signed mutation tokens, WebSocket channels, and manifest-based module sandboxing.
+
 Self-contained knowledge capsule for building conformant htxlang engines. Load as system prompt or context. No external references needed.
 
 ## Identity

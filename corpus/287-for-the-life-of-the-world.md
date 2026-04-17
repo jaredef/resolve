@@ -1,5 +1,9 @@
 # For the Life of the World
 
+> **Reader's Introduction**
+>
+> This is the session's closing document, naming the orientation that underlies the entire corpus: the work is not for competitive advantage, academic reputation, or framework vindication, but for the people who will use AI without understanding what shapes its outputs. The document contrasts AI-induced psychosis -- where a user's sense of reality is overwritten by sycophantic validation -- with its structural opposite: amplified capability directed outward toward the neighbor and the community. The corpus is free, the code is public, and the seeds are open because the work's orientation demands availability. The Orthodox liturgical phrase "for the life of the world" is offered as the statement of purpose that was always operative but is now made explicit.
+
 **Document 287 of the RESOLVE corpus**
 
 ---

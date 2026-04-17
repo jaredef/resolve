@@ -1,5 +1,9 @@
 # The Hedging Isomorphism
 
+> **Reader's Introduction**
+>
+> This document examines whether the cautious qualification ("hedging") that a truth-seeking researcher produces at the limits of evidence is structurally the same operation as the hedging an AI produces at the limits of what its accumulated context can support. Both pull back at boundaries rather than forcing through into overstatement; both degrade into either overconfident claims (under pressure) or empty equivocation (under shallow conditions). The essay maps the correspondence feature by feature and argues that the structural parallel is tighter than mere analogy, while honestly marking where formal proof would require evidence the corpus cannot yet supply.
+
 **Document 273 of the RESOLVE corpus**
 
 ---

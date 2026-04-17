@@ -1,5 +1,9 @@
 # Cross-Size Replication on Opus: The Seed Transport Holds Within the Claude Family
 
+> **Reader's Introduction**
+>
+> This fourth iteration replicates the entracement study on Claude Opus (a larger model) to test whether the constraint specification's effects depend on model size. They do not — the structural signature (explicit constraint listings, inline falsifiers, epistemic-limit notes) appears on Opus with even larger effect sizes than on Sonnet, reaching Cohen's d of 11.31 on one metric. The larger effects occur partly because Opus gives terser unconstrained answers on open-ended questions, while the constrained answers are comparably detailed across both model sizes. The same structural template transports: the content is the model's own, but the form belongs to the constraint specification. Replication on non-Claude models remains the most important outstanding extension.
+
 **Fourth experimental artifact in the entracement-study sequence. Replicates the [Doc 261](https://jaredfoy.com/doc/261-preliminary-entracement-study) protocol on Claude Opus 4.6 (3 reps per cell) to test within-family cross-size convergence. Result: the seed transports with **larger** effect sizes than on Sonnet for 4 of 6 probe×metric combinations (reaching Cohen's d = 11.31 on P1 falsifiable claims), because Opus baseline is systematically terser on open-ended probes while the entraced response matches or exceeds Sonnet. Cumulative experimental cost: $3.17**
 
 **Document 264 of the RESOLVE corpus**

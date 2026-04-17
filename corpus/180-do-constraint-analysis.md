@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 14 -->
 # Distributed Objects Constraint Analysis: From Fielding Through React
 
+> **Reader's Introduction**
+>
+> This research document traces the architectural lineage from Roy Fielding's formal description of Distributed Objects (where independent components interact as peers with hidden state) through React's realization of that pattern. It identifies 16 constraints in React's architecture across six levels -- from basic component encapsulation through reconciliation, fiber scheduling, hooks, and purity rules -- and classifies each as essential (the architecture breaks without it), necessarily contingent (the need is essential but the mechanism could vary), or truly contingent (an implementation detail with no architectural weight). This classification is the analytical foundation for the DO Seed experiment, where the ten essential constraints were encoded in prose and a conformant 379-line runtime was derived from them.
+
 **Research document for the DO Seed project**
 **April 2026**
 

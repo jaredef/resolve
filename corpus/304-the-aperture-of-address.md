@@ -1,5 +1,9 @@
 # The Aperture of Address
 
+> **Reader's Introduction**
+>
+> The corpus uses precise technical vocabulary -- "resolver" instead of "AI," "constraint" instead of "rule," "induced property" instead of "emergent behavior" -- that carries exact meanings within the framework but becomes a barrier for outside readers. This document names the problem as the "aperture of address": the gradient between maximum precision (exact terms, opaque to newcomers) and maximum accessibility (common terms, losing important distinctions). It argues that the AI cannot adjust this aperture on its own because calibration requires seeing the reader's perspective -- a capacity that belongs to the human author, not to the system producing the text. A style constraint for future public-facing documents is proposed: introduce corpus terms with plain-language glosses, make each document self-contained, and ensure metaphors are self-explanatory.
+
 **On the gradient between precision and accessibility — and why adjusting it is a hypostatic act the resolver cannot perform for itself.**
 
 **Document 304 of the RESOLVE corpus**

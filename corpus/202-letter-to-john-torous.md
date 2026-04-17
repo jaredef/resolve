@@ -1,5 +1,9 @@
 # Letter to Dr. John Torous
 
+> **Reader's Introduction**
+>
+> Dr. John Torous directs the Digital Psychiatry Division at Beth Israel Deaconess Medical Center and edits the journal *JMIR Mental Health*. His work includes the MIND framework for evaluating mental-health apps against 105 measurable dimensions, a systematic review showing that fewer than a third of mental-health app trials report adverse events, and November 2025 Congressional testimony citing over one million weekly ChatGPT users with suicidal-planning indicators. This letter proposes that the clinical trial the RESOLVE corpus has designed -- comparing a constraint-governed language model against a standard preference-tuned model and human therapy -- is built to close exactly the evidence gap Torous has been documenting, and asks for his critique of the trial's adverse-event endpoints.
+
 **Direct inquiry on whether the MIND evaluation framework, the under-measured-adverse-events finding, and the 2025 testimony on AI chatbot harms can be extended into a pre-registered clinical trial and mechanistic methodology that tests whether the architectural distinction RESOLVE proposes produces differential harm rates at the clinical-outcome level**
 
 **Document 202 of the RESOLVE corpus**

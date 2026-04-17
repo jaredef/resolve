@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 33 -->
 # The Resolution Depth Spectrum
 
+> **Reader's Introduction**
+>
+> This document presents a seven-layer model (Layer 0 through Layer 6) describing how an AI's output quality changes as explicit constraints are added. At the surface (Layer 0), the AI has maximum freedom and minimum precision -- the "slop" users commonly experience. As constraints are progressively introduced -- specifying format, defining terms, requiring the AI to name its own constraints, separating essential from contingent, and finally governing the session with a stable seed -- the set of valid continuations narrows and output becomes more stable, minimal, and lucid. At Layer 6 ("necessity mode"), the constraint set is so complete that almost no branching remains and each token is effectively the only valid choice. The spectrum explains why the same model can seem vague in one exchange and razor-sharp in another without any change in architecture.
+
 *A progressive layer model for bounded conversational resolution. The same structural pattern as the constraint-property spectrum applied to representation construction, here applied to the resolution process itself.*
 
 ---

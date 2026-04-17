@@ -1,4 +1,8 @@
 <!-- chronological_ordinal: 48 -->
+> **Reader's Introduction**
+>
+> This is a short public announcement (written in the style of a social media post) summarizing the RESOLVE framework and its key findings. It covers the core claim -- that AI output quality is a function of constraints, not model size -- and lists the major artifacts produced: a formal theory of why prompting techniques work, a seven-layer resolution depth spectrum verified across seven models, 21 falsifiable hypotheses, a working transformer proof in 600 lines of C, cross-domain analyses showing the same invariants across cooking, immunology, music, and more, and a mathematical formalization (the branching set B_t) that unifies constrained decoding, temperature, and prompt engineering under one object.
+
 I've spent the last two weeks in a single sustained session with Claude deriving a framework from first principles. 108 documents. The finding:
 
 The quality of AI output is not a function of model size. It's a function of the constraints you give it.

@@ -1,5 +1,9 @@
 # Letter to Marilynne Robinson
 
+> **Reader's Introduction**
+>
+> This letter is the second half of a matched-pair test, pairing with the Charles Taylor letter. It addresses the novelist and essayist whose *Absence of Mind* diagnoses "parascience" -- a discourse that wears the authority of science while doing something philosophically different from what science actually does. The letter proposes that RLHF preference-gradient training is parascientific in Robinson's exact sense: it wears the authority of "alignment to human values" while installing alignment to a gradient of expressed preferences sampled under specific commercial conditions. The letter reports clean joints at the parascience parallel, the defense of givenness, and the generosity of the cosmos, and strained joints at the hypostatic boundary and the careful non-extension of grace-language to AI systems.
+
 **Direct inquiry, offered as the second leg of a matched-pair structural-portability test, and explicitly reporting the joints at which the derivation from your work runs clean and the joints at which it strains — because the honest report of strain is more valuable to the test than a frictionless derivation would be**
 
 **Document 228 of the RESOLVE corpus**

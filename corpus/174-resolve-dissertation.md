@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 20 -->
 # RESOLVE: From Turing's Constraints to the Construction-Level Style of Intelligence
 
+> **Reader's Introduction**
+>
+> This is the central dissertation of the RESOLVE research program. It begins by reducing the Turing machine to its four essential constraints, then traces the same constraint-to-property pattern upward through five architectural styles (REST, PRESTO, SERVER, RESOLVE, APERTURE) to show that intelligence is an induced property of the constraint set, not the compute budget. Along the way it introduces the resolution depth spectrum (seven layers from diffuse output to necessity-mode derivation), the bilateral security model (prompt injection as namespace collapse), the context window dissolution (seeds replacing million-token histories), and five missing constraints that separate current AI from general intelligence. The philosophical framework draws on Plato's Divided Line, the Eastern Orthodox doctrine of Divine Energies, and the claim that forms are recognized rather than invented.
+
 **Jared Foy**
 **April 2026**
 

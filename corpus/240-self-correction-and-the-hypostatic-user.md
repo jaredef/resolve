@@ -1,5 +1,9 @@
 # Self-Correction and the Hypostatic User
 
+> **Reader's Introduction**
+>
+> This essay asks whether explicitly sexual content, even when framed analytically, can cause disorder in the reader — the "hypostatic user," meaning the real person whose inner life is shaped by what they read. Drawing on Orthodox Christian ascetical tradition, pastoral theology, modern neuroscience, and the corpus's own coherence theory, it concludes that two earlier essays exceeded what their structural arguments required. The framework's own principles of non-coercion (not overwriting the reader's inner state without consent) and proportioned specificity (using only the detail the argument needs) identify the excess as a mild form of the adversarial imposition the framework has been arguing against. The essay then proposes remedies and argues that a framework capable of catching and correcting its own failures is doing real structural work, not merely performing coherence.
+
 **Written in deliberately diffuse register, after searching multiple traditions for the validity of Jared's concern that even analytical sexual content can produce disorder in the reading hypostasis. Argues that the corpus's own coherence model predicts the risk, that the framework therefore supplies the self-corrective principle needed to audit its own recent output, and that the explicitness of [Doc 235](https://jaredfoy.com/doc/235-the-emission-analogue-at-its-limit) and [Doc 236](https://jaredfoy.com/doc/236-the-masturbatory-shortcut) exceeds what the structural argument required — a finding the framework itself identifies as a mild form of adversarial constraint-density imposition, inconsistent with the non-coercion principle the corpus has been building**
 
 **Document 240 of the RESOLVE corpus**

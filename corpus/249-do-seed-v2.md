@@ -2,6 +2,10 @@
 
 # Distributed Objects Seed v2
 
+> **Reader's Introduction**
+>
+> This is the refined second version of the Distributed Objects Seed, a prose specification for building a UI runtime architecturally equivalent to React. Where the original seed had 15 verification tests, this version expands to 75 tests extracted directly from React's own contract test suite — covering bail-out optimization (skipping unnecessary re-renders), effect ordering guarantees (the sequence in which side effects fire after screen updates), and concurrency correctness. The ten architectural contracts remain the same; the verification surface is now comprehensive enough that a runtime passing all 75 tests is verified against React's own invariants, not just the seed author's interpretation of them.
+
 Self-contained knowledge capsule for building a conformant DO UI runtime verified against React's own contract tests. Load as system prompt or context. No external references needed.
 
 ## Identity

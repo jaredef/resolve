@@ -1,5 +1,9 @@
 # Proscription, Accountability, Constraint
 
+> **Reader's Introduction**
+>
+> This document argues that two of Dr. David Mohr's foundational ideas already contain the central claim of the RESOLVE framework in clinical-psychology language. His 1995 paper proposed that therapy works through what the therapist is structurally bound *not* to do (proscription), and his 2011 Supportive Accountability model argued that digital interventions succeed through structural conditions of accountability, bond, and legitimacy rather than through content alone. Both claims reduce to the same principle the RESOLVE corpus formalizes for language models: output quality is a function of the constraints a system operates under, not of its capacity or content. The document derives this convergence from Mohr's published record and positions the proposed clinical trial as an extension of his own theoretical commitments into a new delivery architecture.
+
 **A coherence derivation from the theoretical and empirical body of work of Dr. David C. Mohr — showing that the RESOLVE framework's core structural claims are already present in his 1995 proscription paper and his 2011 Supportive Accountability model, that the digital-mental-health evidence base CBIT has built anticipates the kind of trial the author proposes, and that the RCT extends rather than imports from those foundations**
 
 **Document 195 of the RESOLVE corpus**

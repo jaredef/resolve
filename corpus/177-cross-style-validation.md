@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 17 -->
 # Cross-Style Validation: Deriving a Conformant React-like Runtime from a Prose Seed
 
+> **Reader's Introduction**
+>
+> This paper answers a critical objection: does the constraint-to-code derivation method work only on architectures the author designed? To find out, the same method was applied to React -- an architecture the author did not create. Ten essential constraints were identified by studying React's source code and behavioral invariants, then stated in a 2,177-word prose specification (called a "seed"). An AI model consumed the seed and produced a 379-line TypeScript runtime that passes 15 verification tests corresponding to React's own architectural contracts, with no React source code consulted during generation. The result demonstrates that prose-stated constraints are sufficient for a resolver to derive a conformant implementation of an architecture it has never seen, eliminating the circularity objection.
+
 **Jared Foy**
 **April 2026**
 

@@ -1,5 +1,9 @@
 # The Vocabulary Pin Model
 
+> **Reader's Introduction**
+>
+> This document provides a mathematical framework for deciding when to use a specialized term versus a common equivalent when writing for a specific audience. Each technical term is modeled as a "pin" and the reader's existing knowledge as "foam" -- a pin that matches an existing mental model (a "socket") communicates precisely, while a pin pressed into foam with no socket confuses and alienates. A reader-availability score between 0 and 1 is estimated for each term given a specific reader's background, and an aperture threshold determines whether each term should be used directly, introduced with a brief explanation ("bridged"), or replaced with a general equivalent ("retracted"). The model includes a communication cost function and is demonstrated with worked examples for an academic cognitive scientist and an htmx developer.
+
 **A mathematical framework for adjusting the aperture of address — when to press a term and when to retract it, based on the overlap between writer and reader constraint spaces.**
 
 **Document 306 of the RESOLVE corpus**

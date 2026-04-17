@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 3 -->
 # Ambivalent Execution with Agnostic Determinism
 
+> **Reader's Introduction**
+>
+> When a server produces an HTML string, it is indifferent to client-side attributes like `hx-get` embedded in that string; likewise, by the time a browser receives the HTML, every server directive has been consumed and the browser is unaware they ever existed. This mutual indifference is the property named here: two interpreters (server engine and browser) execute deterministically on the same document, each processing only its own namespace and ignoring the other's. The document traces how this property was discovered by observing a PHP function that did not care about an htmx attribute, then extended symmetrically to produce the htxlang template language. The property turns out to be the foundation from which the progressive layer model, architectural encapsulation, and bilateral authorship all derive.
+
 **Companion document to: An Architectural Style for Progressive Representational State Transfer with On-Demand Code**
 **Jared Foy, April 2026**
 

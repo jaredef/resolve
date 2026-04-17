@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 2 -->
 # Annotations on Fielding's REST Dissertation
 
+> **Reader's Introduction**
+>
+> Roy Fielding's 2000 dissertation defined REST, the architectural style underlying the World Wide Web. This document collects observations made while reading that dissertation alongside the development of the PRESTO style and the htxlang specification. It identifies several contributions Fielding did not address, including a "bilateral authorial model" (the developer writes a single document that addresses two interpreters simultaneously), a temporal-latency dimension introduced by code-on-demand, and an argument that React's component model is structurally the "Distributed Objects" style Fielding himself evaluated unfavorably. Together, the annotations build the case that REST's design space has been under-explored and that a coherent developer mental model for working within its constraints has been missing until now.
+
 **Companion document to: An Architectural Style for Progressive Representational State Transfer with On-Demand Code**
 **Jared Foy, April 2026**
 

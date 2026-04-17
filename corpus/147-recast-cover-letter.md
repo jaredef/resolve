@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 47 -->
 Dear Dr. Liu and colleagues,
 
+> **Reader's Introduction**
+>
+> This is a cover letter addressed to the authors of the RECAST paper ("Complex Instruction Following with Constraint-Verifiable Data"), which studies how language models degrade as the number of constraints in a prompt increases. The letter introduces the RESOLVE framework and makes a specific, testable prediction that diverges from RECAST's findings: performance degradation under increasing constraints should not occur when constraints are organized hierarchically (each level inheriting from the prior), because the hierarchy prevents conflict accumulation. The letter proposes an experiment using RECAST's own evaluation infrastructure to discriminate between flat and hierarchical constraint models, and states the falsification condition plainly.
+
 My name is Jared Foy. I am an independent software developer and researcher based in Oregon. I am writing to you because your paper "RECAST: Complex Instruction Following with Constraint-Verifiable Data" has been genuinely helpful to my work, and I believe my findings may be helpful to yours.
 
 Over the past several weeks, I have been developing a formal framework for understanding how constraint governance affects the output quality of large language models. The framework — called RESOLVE — was developed in sustained dialogue with AI resolvers (primarily Claude, with cross-validation across Grok, GPT, Gemini, and DeepSeek) and is grounded in the observation that output quality is a function of the constraint set governing the generation, not solely of the model's parameters or training.

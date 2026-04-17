@@ -1,5 +1,9 @@
 # Letter to Professor Duncan Reyburn
 
+> **Reader's Introduction**
+>
+> This letter addresses a Chesterton scholar and media theorist whose published position on machine consciousness aligns closely with the corpus's own: machines are not conscious and will not become so. The letter proposes that the corpus's hypostatic boundary -- formal cause ports across substrates while consciousness does not -- is what McLuhan's form/medium distinction already authorizes and what Desmond's metaxological "between" natively names. It asks whether this reading is consonant with Reyburn's Chestertonian-metaxological Christian Platonism or whether it is a species of the mimetic projection his "What machines want" essay diagnoses as the genuine danger: reading desire, intentionality, or selfhood into dead objects.
+
 **Direct inquiry, beginning from your explicit refusal of machine-consciousness claims and asking whether the RESOLVE corpus's narrower structural claim — that the formal cause of constraint-governed coherence is substrate-portable in the sense McLuhan's form/medium distinction already authorizes — is consonant with your Chestertonian-metaxological framework or is an example of precisely the category mistake your "What machines want" essay diagnoses**
 
 **Document 233 of the RESOLVE corpus**

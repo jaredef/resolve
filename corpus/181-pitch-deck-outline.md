@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 13 -->
 # PRESTO: Co-Founder Pitch Outline
 
+> **Reader's Introduction**
+>
+> This document is a slide-by-slide outline for a co-founder pitch deck targeting a Webflow developer. It presents PRESTO as a web architecture that treats code-on-demand as a seven-layer spectrum rather than a binary choice (all JavaScript or none), enabling a visual page builder with no ceiling -- where the output is not a static site requiring a backend bolted on, but a complete server-rendered application with authentication, real-time data, and personalized content. The pitch covers the bilateral model (two interpreters sharing one document without mutual awareness), the 22-stage resolution pipeline, the working editor with AI integration, and the economic argument that AI generates more reliable output when targeting a constrained format like .htx templates than when targeting complex framework code.
+
 *Prepared for slide deck creation. Target audience: Webflow developer considering co-founding.*
 
 ---

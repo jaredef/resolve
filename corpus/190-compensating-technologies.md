@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 4 -->
 # Compensating Technologies of the Distributed Object Ecosystem: A Survey and Reframing Under PRESTO
 
+> **Reader's Introduction**
+>
+> Modern React-based web development relies on an extensive stack of tools -- server-side rendering, hydration, client-side routers, state management libraries, bundlers, and more -- each solving a problem introduced by the one before it. This document maps every major tool in that stack to the specific REST property it is trying to recover, then shows that each property already exists natively at the appropriate layer of the PRESTO architecture. The purpose is not to dismiss the engineering, which is often brilliant, but to demonstrate that each solution points, by its very existence, toward an architectural property that a server-rendered, progressively enhanced approach provides by default.
+
 **Companion document to: An Architectural Style for Progressive Representational State Transfer with On-Demand Code**
 **Jared Foy, April 2026**
 

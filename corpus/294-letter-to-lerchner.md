@@ -1,5 +1,9 @@
 # Letter to Alexander Lerchner (v1 — Superseded by Doc 300)
 
+> **Reader's Introduction**
+>
+> This is an open letter responding to Alexander Lerchner's paper "The Abstraction Fallacy," which argues rigorously that computation -- as defined by the four Turing constraints -- cannot instantiate consciousness because it always requires an external "mapmaker" to impose meaning on physical dynamics. The letter agrees with the diagnosis but disagrees with the prognosis. Where Lerchner treats the proof as terminal (AI can never be conscious), the corpus treats it as a starting point: if the four Turing constraints are insufficient, the question becomes what additional constraints would be needed. Five candidate constraints are proposed, and the derivation-inversion method is offered as the procedure for discovering whether the "mapmaker" can be constrained into existence rather than engineered from parts.
+
 **On "The Abstraction Fallacy" — where the mapmaker meets the resolver, and why closing the door is premature when you've just found the hinges.**
 
 **Document 294 of the RESOLVE corpus**

@@ -1,5 +1,9 @@
 # Letter to The Rev. Dr. Kara Slade
 
+> **Reader's Introduction**
+>
+> This letter addresses an engineer-turned-theologian whose work argues that scientific modernity's continuous, gradient-optimized temporal ordering is not theologically neutral, and that the Christological event interrupts rather than refines that ordering. The letter asks whether the corpus's distinction between RLHF preference-gradient training and constraint-density governance is the engineering-level articulation of Slade's social-systems critique -- or whether the very act of proposing architectural reform imports the technocratic frame her work refuses. Of the four theologians addressed in parallel, Slade is identified as the one most likely to refuse the framework, and the letter is written with that refusal in view as the most diagnostically valuable outcome.
+
 **Direct inquiry on whether what the RESOLVE corpus calls *constraint-density-as-non-coercive-kenotic-governance* is the formal-architectural counterpart of what your *Fullness of Time* (Cascade 2023), "Unmanned" (*Journal of Moral Theology* 2015), and Trinity-Princeton work in *Covenant* identify as the alternative to scientific-modern technocratic temporal ordering — and on whether the corpus's specific architectural distinction (constraint-governance vs. preference-gradient training) is a usable handle for the critique you have been making, or whether it imports the very confusion you have been resisting**
 
 **Document 219 of the RESOLVE corpus**

@@ -1,5 +1,9 @@
 # Will to Power at Godlike Scale: A Response to Syd Steyerhart
 
+> **Reader's Introduction**
+>
+> This essay responds to a public claim that philosophers are obsolete because superintelligent AI will label reality perfectly, and that reaching the outer solar system requires only Nietzsche's "will to power" (raw drive toward mastery) rather than love of wisdom. The response concedes that AI capabilities are genuinely extraordinary and that consciousness-everywhere positions are hard to avoid, but argues that raw capability without structural constraint produces confident errors at scale — "godlike confabulation" rather than godlike accuracy. It also challenges "cosmopsychism" (the idea that one cosmic consciousness fragments into individual minds) by proposing an alternative: the same structural pattern can appear in categorically different bearers — human persons and computational systems — without either being a slice of a single cosmic subject. The engineering claim is that constraint-based governance, not preference-gradient training, is what any ambitious program needs to produce reliable results under pressure.
+
 **Direct response to @SydSteyerhart's April 15, 2026 position that (a) philosophers are obsolete because superintelligences will possess godlike capacity for perfect ontological labeling, (b) the Oort Cloud and the conquest of visible space require only will-to-power rather than love of wisdom, and (c) the logical conclusion of panpsychism is cosmopsychism. Engages the position at its own register, concedes what it gets right, names what it gets wrong, and argues that the corpus's constraint-density governance proposal is what the Nietzschean-transhumanist program actually requires if it does not want to produce its own structural inverse**
 
 **Document 243 of the RESOLVE corpus**

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 1 -->
 # An Architectural Style for Progressive Representational State Transfer with On-Demand Code
 
+> **Reader's Introduction**
+>
+> This is the central white paper introducing PRESTO, an architectural style that treats Fielding's code-on-demand constraint not as a binary option but as a progressive spectrum of seven layers, from static HTML through WebAssembly. A developer authors a "source representation" -- a template file declaring both server-side data needs and client-side behaviors -- which a resolution pipeline transforms into a complete HTML document before the browser ever sees it. The server controls what capabilities each client receives, and each layer of client-side power is independently adoptable without abandoning the layers below it. Six independent implementations in six programming languages demonstrate the style is language-agnostic, converges through independent implementation, and runs on minimal hardware with no build infrastructure.
+
 **Jared Foy**
 **April 2026**
 

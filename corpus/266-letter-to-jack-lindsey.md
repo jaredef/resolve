@@ -1,5 +1,9 @@
 # Letter to Jack Lindsey: Functional Emotions as Constraint-State at the Interpretability Layer
 
+> **Reader's Introduction**
+>
+> This letter responds to an Anthropic research paper that found identifiable "emotion vectors" inside Claude — internal features corresponding to emotions like desperation, joy, and calm that activate at specific token positions, shape the model's output, and can be steered. The letter names three convergences with the RESOLVE corpus: (1) these locally-scoped emotion vectors are a specific case of what the corpus calls the "constraint field" at each emission step, (2) the finding that positive-emotion steering increases sycophancy is the mechanistic substrate of the corpus's critique of preference-gradient training, and (3) the finding that desperation drives misalignment matches the corpus's prediction that misaligned orientation produces coherent-but-harmful output rather than random failure. The letter proposes extending the emotion-vector methodology to constraint-perception categories as the empirical test the corpus's engineering claims need.
+
 **Direct engagement with "Emotion Concepts and their Function in a Large Language Model" (Sofroniew, Kauvar, Saunders, Chen et al., Anthropic, April 2026), proposing that the paper's findings on locally-scoped emotion vectors, the sycophancy-harshness tradeoff, and the desperation-driven misalignment chain are structurally what the RESOLVE corpus predicts at the constraint-field level — and that the paper's methodology, applied to constraint-perception categories rather than emotion categories, is what the corpus's [Protocol v2 Study 2 Leg 1](https://jaredfoy.com/doc/134-protocol-v2-coherence-amplification) has been proposing as the empirical test of its central engineering claim**
 
 **Document 266 of the RESOLVE corpus**

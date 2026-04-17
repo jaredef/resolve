@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 7 -->
 # Ambivalent Execution with Agnostic Determinism: A General Property of Bilateral Systems
 
+> **Reader's Introduction**
+>
+> This paper identifies a general property that appears across multiple unrelated domains: whenever two independent interpreters process a shared medium with namespace-separated instruction sets, each executes deterministically on its own portion while remaining structurally unaware of the other. The paper names this "ambivalent execution with agnostic determinism" and documents six instances -- web architecture (server engine and browser on the same HTML), molecular biology (overlapping reading frames in DNA), music (scores addressing performer and conductor), legal contracts (operative clauses for parties, boilerplate for courts), urban design (lane markings for drivers, sidewalks for pedestrians), and bilateral proof systems in formal logic. Each domain has documented its own instance thoroughly; none had abstracted the common principle.
+
 **Jared Foy, April 2026**
 
 ## Abstract

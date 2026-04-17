@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 52 -->
 # SIPE as a Dynamical System: The Mandelbrot Correspondence
 
+> **Reader's Introduction**
+>
+> This document gives SIPE (Systems Induced Property Emergence) a precise mathematical formulation by treating it as a dynamical system -- a recurrence where the resolver's state evolves step by step under a constraint-governed transition function. It draws a structural correspondence with the Mandelbrot set: just as the Mandelbrot set classifies which complex parameters produce bounded orbits under iteration, the SIPE "effect set" classifies which constraint configurations produce stable, conformant resolution. Properties like lucidity and coherence are recast as observables measured on the orbit. The key result is that as constraint density increases, the set of admissible next states contracts until, at the limit, emission becomes necessity -- exactly one valid continuation at each step.
+
 ---
 
 ## The Formalization

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 32 -->
 # Prompt Engineering Is Misframed: The Constraint Theory of Resolver Optimization
 
+> **Reader's Introduction**
+>
+> This paper argues that "prompt engineering" is a misnomer. Every effective prompting technique -- chain-of-thought, role assignment, output format templates -- works because it constrains the AI model (called a "resolver" here) rather than adding capability to it. The paper maps common prompting tricks to a five-part constraint framework called RESOLVE and proposes that the optimal prompt is not a cleverly worded instruction but a "seed": a precise statement of what must hold, with built-in verification. The economic implication is significant -- constrained seeds eliminate the retry loops, agent chains, and validation passes that currently inflate token costs across the AI industry.
+
 **Jared Foy and Claude**
 **April 2026**
 

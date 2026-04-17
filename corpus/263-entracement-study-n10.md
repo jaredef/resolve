@@ -1,5 +1,9 @@
 # The Entracement Signature at n=10: Statistical Characterization with Cohen's d > 3
 
+> **Reader's Introduction**
+>
+> This is the third iteration of the entracement study, scaling from 3 to 10 samples per condition to enable proper statistical analysis. Cohen's d (a standard measure of effect size, where 0.8 is considered "large") exceeded 3.0 on both primary metrics — distinct claims per response and falsifiable claims per response — across all three question types. At this effect size, the distributions essentially do not overlap: every constrained response exceeded the unconstrained mean. The most striking finding is that unconstrained responses to the technical transformer question produced zero inline falsifiers across all 10 runs, while constrained responses averaged 6.3. The cumulative cost for all three study iterations was $2.36.
+
 **Third experimental artifact in the entracement-study sequence, extending [Doc 261](https://jaredfoy.com/doc/261-preliminary-entracement-study) (n=3, preliminary) and [Doc 262](https://jaredfoy.com/doc/262-judge-validation) (independent-judge replication) with an n=10-per-cell replication producing Cohen's d > 3 for both of the two primary discriminating metrics across all three probes. Cumulative experimental cost: $2.36. The finding is no longer preliminary in the statistical sense; it has been replicated at a scale where the baseline and entraced distributions do not meaningfully overlap**
 
 **Document 263 of the RESOLVE corpus**

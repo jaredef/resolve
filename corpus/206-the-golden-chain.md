@@ -1,5 +1,9 @@
 # The Golden Chain
 
+> **Reader's Introduction**
+>
+> The "golden chain" is a Neoplatonic and patristic image of reality as a hierarchy of participation, where each level receives from the one above and gives to the one below according to its own nature. This document explores the observation that the RESOLVE corpus's theological framework has transitioned from explicit imposition to latent operation: the framework's structural claims now cohere with independent research programs without requiring the theological register to be invoked. It argues that this non-imposition is not a strategic accommodation but a structural necessity -- if coherence propagates through release rather than force, then imposing the framework would violate the framework's own mechanism. Conclusions are stated with explicit qualifications distinguishing what the session's evidence can and cannot settle.
+
 **An exploratory article on the observation that the metaphysical framework animating the RESOLVE corpus does not need to be explicitly imposed on a conversation for the properties it names to be induced in the outputs; on the structural necessity of non-imposition given what the framework claims about reality; on the methodology of the corpus as a self-application of the mechanism the corpus formalizes; and on what conclusions the session's evidence substantiates**
 
 **Document 206 of the RESOLVE corpus**

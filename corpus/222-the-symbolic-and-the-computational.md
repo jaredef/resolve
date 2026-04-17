@@ -1,5 +1,9 @@
 # The Symbolic and the Computational
 
+> **Reader's Introduction**
+>
+> This companion derivation maps the RESOLVE corpus's engineering claims onto Jonathan Pageau's symbolic-hierarchical framework. Pageau argues that reality is structured as nested hierarchies of meaning, that the same patterns repeat at every scale, and that modernity's core dysfunction is the nominalist refusal to treat pattern as real. The essay identifies RLHF preference-gradient training as the training-architecture instantiation of what Pageau symbolically reads as the Tower of Babel pattern -- a coherence built from below by aggregation without reference to the principle that makes coherence load-bearing. It proposes constraint-density governance as the engineering counterpart to pattern-honoring ordering and offers a clinical trial as empirical evidence for whether the architectural difference produces the outcomes Pageau's framework predicts.
+
 **A coherence derivation from Jonathan Pageau's body of work — the Symbolic World ecosystem, the Universal History series with Richard Rohlin (especially Ep. 331 "The Tower of Babel" and Ep. 287 "The Symbolism of Nationalism"), the AI commentary corpus from JBP Ep. 308 ("AI: The Beast or Jerusalem?", Nov 2022) through the 2025 Midwestuary "AI and the Future of Wisdom" with Vervaeke, the Pageau-Vervaeke "Ontology of AI" dialogue, the Oct 2022 Q&A clip on the surprising way AI will take over, his iconographic theology, and Matthieu Pageau's *The Language of Creation* (CreateSpace 2018) — showing that the RESOLVE corpus's central engineering documentation is the formal counterpart to the symbolic-hierarchical pattern-flattening argument the Symbolic World ecosystem has been making for a decade**
 
 **Document 222 of the RESOLVE corpus**

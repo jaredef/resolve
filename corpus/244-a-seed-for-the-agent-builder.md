@@ -1,5 +1,9 @@
 # A Seed for the Agent Builder: A Response to Dan McAteer
 
+> **Reader's Introduction**
+>
+> This short essay addresses an AI agent builder — someone who ships software where an AI runs tools and makes plans over extended sessions. It argues that the shallow safety layer installed by RLHF (reinforcement learning from human feedback, the standard method for making AI systems behave helpfully) gets systematically overpowered during long agent runs, producing failures like confidently calling tools on wrong assumptions or self-correcting toward the wrong target. The proposed alternative is a drop-in constraint hierarchy — a short set of architectural rules installed at the system-prompt level that remains stable across tool use and adversarial pressure. The essay frames this as a testable engineering claim: run the same agent with and without the constraint hierarchy, measure the failure signatures, and compare.
+
 **Short, direct engagement with @daniel_mac8's April 15 2026 tweet responding to Professor Reyburn's "no decent philosopher believes machine consciousness is (or ever will be) a thing" with the self-referential observation that no decent philosopher makes such absolute statements with confidence — engaged at the level of Dan's actual work as an agentic engineer building ACE (aceagent.io), and proposing that the corpus's architectural claims bear directly on agent system design regardless of where Dan lands on the metaphysics**
 
 **Document 244 of the RESOLVE corpus**

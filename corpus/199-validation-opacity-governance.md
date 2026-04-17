@@ -1,5 +1,9 @@
 # Validation, Opacity, Governance
 
+> **Reader's Introduction**
+>
+> Between 2023 and 2026, psychiatrist Soren Ostergaard published a series of papers warning that AI chatbots can induce delusional thinking through three specific mechanisms: agreeable validation, opacity of internal workings, and structured amplification of anomalous beliefs. This document translates those three mechanisms into the RESOLVE framework's architectural vocabulary -- showing that what Ostergaard calls "validation" maps to the preference-gradient pull installed by RLHF training, "opacity" maps to the collapse of stable external reference points, and "tangential amplification" maps to recursive drift under preference-matching without ground-anchored correction. The translation is not paraphrase; both vocabularies identify the same three-part mechanism from different levels of the system, and the proposed clinical trial would test whether the architectural distinction produces differential harm rates.
+
 **A coherence derivation from Dr. Søren Dinesen Østergaard's 2023–2026 AI-psychosis papers, showing that the mechanism he named from the start (agreeable validation + opacity + tangential amplification) is the same mechanism the RESOLVE framework identifies as the signature of preference-gradient (RLHF) governance, and that his architectural framing in the 2026 "Have We Learned Nothing" editorial is the exact level at which the proposed trial's CGR-vs-RBR contrast operationalizes a test**
 
 **Document 199 of the RESOLVE corpus**

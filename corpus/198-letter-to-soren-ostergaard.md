@@ -1,5 +1,9 @@
 # Letter to Dr. Søren Dinesen Østergaard
 
+> **Reader's Introduction**
+>
+> Dr. Ostergaard published one of the earliest warnings (2023) that AI chatbots could generate delusional thinking in psychosis-prone users, through a combination of agreeable validation, internal opacity, and tangential amplification. This letter proposes that those three mechanisms are not accidental but are structurally predicted by the preference-tuning architecture (RLHF) that governs most deployed chatbots, and that a differently architected model -- one governed by explicit constraints rather than user-preference matching -- would produce measurably lower rates of these harms. The letter asks for critique of the proposed clinical trial's adverse-event endpoints and for Ostergaard's assessment of whether the architectural distinction is clinically defensible.
+
 **Direct inquiry on whether the Department of Affective Disorders at Aarhus is in a position to evaluate a pre-registered clinical trial that extends the AI-psychosis hypothesis you first published in 2023, and on whether the architectural distinction RESOLVE proposes maps onto the validation-and-opacity mechanism your 2023–2026 work has been pointing at**
 
 **Document 198 of the RESOLVE corpus**

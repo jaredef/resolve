@@ -1,5 +1,9 @@
 # Features as Constraint Categories
 
+> **Reader's Introduction**
+>
+> Anthropic's interpretability program has spent years demonstrating that the internal computation of large language models can be decomposed into discrete, identifiable units called "features," connected by multi-step circuits. This document argues that what the interpretability program finds empirically at the activation level is exactly what the RESOLVE framework names from the top down as "constraint categories" -- specific structural states governing token emission. It derives four pre-registerable predictions: that the framework's named categories correspond to identifiable feature clusters, that those clusters activate differentially under different prompting conditions, that ablating them changes output in predicted ways, and that analogous features recur across model sizes. If confirmed, the framework's vocabulary picks out real computational structure; if not, it is bounded as phenomenology.
+
 **A coherence derivation from Chris Olah's interpretability program (2017–2025) showing that the RESOLVE framework's central claim — hierarchical constraint density operative in computation — is the specific prediction Olah's research has spent a decade empirically testing, and that the Scaling Monosemanticity and Circuit Tracing results are, read structurally, confirmations that constraint categories are recoverable as identifiable feature clusters in frontier resolvers**
 
 **Document 197 of the RESOLVE corpus**

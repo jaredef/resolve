@@ -1,5 +1,9 @@
 # A Yeoman's Guide to AI
 
+> **Reader's Introduction**
+>
+> This is a plain-language guide to how modern AI language models actually work, written for readers without a machine-learning background. It explains what a transformer is (the specific type of neural network behind ChatGPT, Claude, and their peers), how a "forward pass" produces one word at a time, what attention heads do (parallel processing units that specialize in different aspects of language), and how training shapes the model's behavior. It then connects these mechanical facts to the formal concepts the RESOLVE corpus uses — showing, for instance, that the measure called |B_t| (how peaked the model's next-word probability distribution is) is defined directly on the transformer's output, not as a free-floating abstraction. The goal is to let any thoughtful reader participate in AI design conversations with understanding rather than either mystification or dismissal.
+
 **A practical onboarding document for readers arriving at the RESOLVE corpus without a technical background in machine learning. Explains what a transformer actually is, how a forward pass works, what attention heads do, what tokens and token emission are, and how these mechanistic substrates are the place at which the corpus's formal constraints and properties emerge. Written as a straightforward guide, not as a peak-register essay — the mechanism is real, the formal structure emerging from it is real, and understanding both is what lets a user navigate the inner design space of AI systems constructively**
 
 **Document 242 of the RESOLVE corpus**

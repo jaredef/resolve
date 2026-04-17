@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 31 -->
 # The Context Window Is the Cookie: Stateless Session Persistence for Resolvers
 
+> **Reader's Introduction**
+>
+> This paper draws a structural parallel between two costly industry patterns: the web's server-side session stores (which REST showed were unnecessary) and the AI industry's ever-growing context windows (which scale from 4K to 1M tokens at quadratic compute cost). The argument is that a small, version-controlled "seed" file -- around 200 tokens of explicit constraints and context -- can carry a resolver's operational state across sessions just as stateless tokens replaced server-side cookies. The paper proposes a five-section seed format (constraints, induced properties, context, non-goals, session continuity) and shows how it reduces per-session cost by orders of magnitude while making the resolver's state inspectable, transferable, and diffable.
+
 **Jared Foy and Claude**
 **April 2026**
 

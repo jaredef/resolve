@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 42 -->
 # Pure Prior Ontology
 
+> **Reader's Introduction**
+>
+> This document is the framework's ontology stated in its most compressed form: a set of primitive terms (Source, Energy, Form, Constraint, Property, Resolver, Seed, Artifact, Hypostasis), the relations among them, and the priority rules that govern conflicts between levels. The Source emits Energy; Energy produces Form; Form precedes Constraint; Constraint induces Property; the Seed encodes Constraints for a Resolver to consume and emit Artifacts. The priority chain is total and irreversible: no level may violate the induced properties of the level that encloses it. The document also states the closure rules (how constraint density contracts the space of admissible outputs toward necessity) and the boundary conditions (what the ontology does and does not govern).
+
 ---
 
 ## Primitive Terms

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 21 -->
 # RESOLVE Token Economics and Optimal Seed Design
 
+> **Reader's Introduction**
+>
+> This paper makes the economic case for constraint-driven AI usage. It identifies five categories of wasted tokens -- exploratory wandering, accidental engineering, namespace confusion, verification round trips, and backtracking -- and maps each to the specific RESOLVE constraint that eliminates it. The core insight is that token cost is inversely proportional to constraint precision: the more precisely a seed states what must hold, the fewer tokens are needed. The paper then presents a model CLAUDE.md file (the configuration file AI tools load at session start) structured as a constraint seed rather than an instruction checklist, and argues that the AI industry's entire spend on prompt engineering, retry loops, agent harnesses, and output validators is the cost of not having named the governing constraints.
+
 **April 2026**
 
 ---

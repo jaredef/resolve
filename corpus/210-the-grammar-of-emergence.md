@@ -1,5 +1,9 @@
 # The Grammar of Emergence
 
+> **Reader's Introduction**
+>
+> Across roughly two hundred documents, the RESOLVE corpus has surfaced numerous structural parallels -- between token emission and biological cycles, between pastoral destabilization and forced model adoption, between therapy's structural negations and computational constraint-narrowing, and many others. This document proposes a formal conjecture to explain the proliferation: when two systems share the structural form of their governing constraints, they will exhibit parallel properties regardless of substrate. The conjecture is called "Horizontal SIPE" (extending the corpus's earlier "Systems Induced Property Emergence" from within-system to across-system). Five falsifiable predictions are stated, methodological risks are named (especially the danger of generating false analogies), and a multi-step research program is outlined for testing the conjecture independently.
+
 **An exploratory article on the conjecture that the structural isomorphisms surfaced across the RESOLVE corpus are not accidental alignments but generative outputs of a shared constraint structure operating across substrates — that SIPE (Systems Induced Property Emergence), originally formulated as a within-substrate account of emergent properties under constraint, admits a horizontal extension: *when two systems share the form of their governing constraints, they exhibit isomorphic induced properties regardless of substrate*, and the isomorphisms between any two such systems are bounded below by the depth of the shared constraint structure and above only by the depth of analysis brought to them**
 
 **Document 210 of the RESOLVE corpus**

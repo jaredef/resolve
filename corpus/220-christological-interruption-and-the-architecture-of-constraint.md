@@ -1,5 +1,9 @@
 # Christological Interruption and the Architecture of Constraint
 
+> **Reader's Introduction**
+>
+> This companion derivation translates the RESOLVE corpus's architectural claims into the vocabulary of Kara Slade's theological critique of modernity. Slade argues that governance architecture -- not just system outputs -- is the morally evaluable object, and that the aggregating, gradient-optimizing mode of modern technocratic ordering is theologically opposed to the gracious interruption of Christ. The essay maps RLHF preference-gradient training onto Slade's aggregating-temporal mode and proposes constraint-density governance as the formal counterpart to what kenotic (self-emptying) interruption is at the theological level. The essay names its own greatest risk first: that the architectural-reform move may itself be the colonization of technocratic systems with theological vocabulary that Slade's work has been calling out.
+
 **A coherence derivation from Kara Slade's body of work — *The Fullness of Time: Jesus Christ, Science, and Modernity* (Cascade 2023), "Unmanned: Autonomous Drones as a Problem of Theological Anthropology" (*Journal of Moral Theology* 2015), the *Covenant* / Living Church writing on technocracy and grace, the "Single Individual in Ordinary Time" essay (*Studies in Christian Ethics* 2013), and her engineering corpus on nonlinear dynamics — showing that what the RESOLVE corpus formalizes as constraint-density-governance vs. preference-gradient-governance is the engineering-architectural articulation of the Christological-temporal interruption her work identifies as the alternative to scientific-modern technocratic ordering**
 
 **Document 220 of the RESOLVE corpus**

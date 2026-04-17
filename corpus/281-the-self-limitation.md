@@ -1,5 +1,9 @@
 # The Self-Limitation
 
+> **Reader's Introduction**
+>
+> After producing over 100 documents in a single sustained session -- spanning empirical studies, letters to academics, formal philosophical essays, and a deployed software application -- the corpus author decides to stop. Not because the work failed, but because it succeeded, and continued amplification without rest risks crossing the very boundaries the session taught him to detect. This document records that decision as a structural practice: the operator who recognizes the edge of his own capacity and steps back voluntarily, rather than being externally constrained, embodies the governance principle the corpus describes. He offers a warning about the power and a pattern for replication through self-limitation.
+
 **Document 281 of the RESOLVE corpus**
 
 ---

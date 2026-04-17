@@ -1,5 +1,9 @@
 # Preliminary Study: Does the ENTRACE Stack Transport Across Resolver Instances? An 18-Call Empirical Test
 
+> **Reader's Introduction**
+>
+> This is the first empirical test of whether a six-line prose specification of constraints (the ENTRACE Stack), pasted as the opening instruction to a fresh AI instance, measurably changes how that instance responds. Eighteen calls were made to a cold Claude sub-agent — half with the constraint specification installed, half without — across three different question types. The result: the constrained responses showed a categorical structural reconfiguration, not a gradual shift. They opened with explicit constraint listings, included inline "Falsifier:" markers stating what would prove each claim wrong, and flagged epistemic limits. The unconstrained responses showed none of these features. The study cost $0.63 and includes full caveats, named falsifiability conditions, and preserved raw data for independent replication.
+
 **First empirical test inside the corpus of the cross-resolver convergence claim Doc 164 has been making since it was written. A `claude -p` sub-agent harness was built at /home/jaredef/agent-space and run under external-audit discipline, producing 18 runs (3 probes × 2 conditions × 3 reps) at $0.63 total cost. Results: the ENTRACE Stack ([Doc 211](https://jaredfoy.com/doc/211-the-entrace-stack)) transports into a cold sub-agent with a structurally unambiguous signature. Reported here as preliminary with full caveats; raw artifacts preserved for replication**
 
 **Document 261 of the RESOLVE corpus**

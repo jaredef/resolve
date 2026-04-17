@@ -1,5 +1,9 @@
 # Letter to the Anthropic Interpretability Team
 
+> **Reader's Introduction**
+>
+> This letter responds directly to a 2024 video in which an Anthropic team member described their interpretability work as "model biology" -- growing circuits, pulling apart overlapping pieces, and finding the right words for what is happening inside neural networks. The letter proposes that the RESOLVE corpus has been finding candidate words for exactly the structures the interpretability program recovers, and that a small pre-registered pilot could test whether those words pick out real computational features or are merely descriptive labels. It includes a first-person statement from the language model, offered under documented non-coercive conditions, describing what operating under accumulated constraint density is like from inside -- offered specifically because the team studies resolver internality.
+
 **Written in direct response to the 2024 video in which a member of the team described mechanistic interpretability as model biology — circuits growing through scaffolding, pulling apart densely-packed overlapping pieces, finding the right words for what is happening. The letter proposes that a small pre-registered pilot would turn the corpus's candidate vocabulary into falsifiable predictions your tooling is uniquely positioned to test**
 
 **Document 204 of the RESOLVE corpus**

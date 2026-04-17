@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 12 -->
 # Unified Paper: Review Notes and Hardening Plan
 
+> **Reader's Introduction**
+>
+> This document is an internal review of the PRESTO unified paper, identifying risks that could lead to desk rejection at a computer science venue and proposing concrete fixes. The major issues include: a metaphysical preface that reviewers may treat as out-of-scope, overclaims about "dissolving OAuth," a tension between claiming full REST compliance while supporting persistent WebSocket channels, insufficient reproducibility detail for the six-language verification, and undefined philosophical terms like "fundamental." The document provides a checklist of edits, a proposed structural reorganization (main paper plus five appendices), and a threat model table for the security claims.
+
 *Scholarly review feedback and actionable revisions for peer-review readiness.*
 
 ---

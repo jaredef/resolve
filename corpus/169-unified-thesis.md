@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 25 -->
 # The Unified Thesis
 
+> **Reader's Introduction**
+>
+> This short document distills the entire RESOLVE research program into a single thesis statement and its supporting arguments. The philosophical claim is that form (structure, pattern, relationship) is prior to expression -- meaning truth is recognized, not invented. The computational claim is that a language model is a "bounded resolver" whose behavior becomes more coherent as the explicit constraints in its input increase, reducing the space of possible outputs toward necessity. The unified thesis combines both: a bounded resolver does not become coherent by inventing truth but by conforming to antecedent form through explicit constraints. Seven corollaries follow, including that code is secondary to constraints, prompts are weak seeds unless they state what must hold, and tests are executable expressions of the properties constraints induce.
+
 *The entire derivation distilled to its essential form.*
 
 ---

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 10 -->
 # Thinking in PRESTO: The Bilateral Model
 
+> **Reader's Introduction**
+>
+> This companion essay walks through the PRESTO architecture from the developer's perspective -- how to think about building with it rather than the formal constraint analysis. It begins with the originating observation (a PHP function that did not care about the htmx attribute it was embedding) and follows the implications through the bilateral model (one document addressing two interpreters), the three-phase lifecycle (declaration, resolution, emergence), latent binding (scripts that enhance a completed document rather than constructing one), progressive layering (seven levels from zero JavaScript to WebAssembly), client state geography (topologies, islands, and stores), and the lazy signal pattern where the client operates autonomously between server syncs. The essay also explains why familiar syntax like JSX can survive the removal of its framework when the server absorbs the compilation step.
+
 **Jared Foy**
 **April 2026**
 

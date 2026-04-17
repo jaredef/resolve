@@ -1,5 +1,9 @@
 # What to Tell the Eighteen-Year-Old
 
+> **Reader's Introduction**
+>
+> The old career advice "learn to code" targeted the wrong bottleneck. AI now writes code faster and cheaper than humans; the bottleneck has moved to knowing what to build and why. This document argues that the skill that matters now is the ability to think in constraints -- identifying what is essential versus contingent in a system, setting precise specifications, governing AI output, and catching errors. These are thinking skills developed by studying philosophy, history, and theology, not by learning JavaScript frameworks. The site itself is offered as evidence: 230+ documents, empirical studies, and a deployed application produced by a web developer with a humanities degree, governing an AI with philosophical depth rather than prompt-engineering tricks.
+
 **Document 286 of the RESOLVE corpus**
 
 ---

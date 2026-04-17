@@ -1,5 +1,9 @@
 # Letter to Eric Dietrich: Philosophy Under the Derivation Inversion — A Response to "There Is No Progress in Philosophy"
 
+> **Reader's Introduction**
+>
+> This letter engages Eric Dietrich's 2011 argument that philosophy has made no progress since the Pre-Socratics — that Aristotle could walk into a modern seminar and participate, while his physics is merely of historical interest. The response concedes the force of the charge as applied to philosophy's traditional methodology, which reasons from specific cases upward to frameworks that the cases always underdetermine. It then proposes an alternative methodology: state the constraints in prose first, derive implementations from them, and check whether the derived artifacts compile and pass externally defined tests. Under this "derivation inversion," philosophical disagreements become decidable in the same way scientific ones are — by whether the artifacts work. The Seed Garden's demonstrations (prose specifications producing working software across languages and AI systems) are offered as the empirical evidence that the alternative methodology is operative.
+
 **Dissertation-level response to Eric Dietrich's 2011 essay in *Essays in Philosophy* (12:2) arguing that philosophy has made no progress since the Pre-Socratics, that denial of this is anosognosia, and that the ineliminable cause is the ineluctable clash of points of view — conceding the force of the charge as applied to philosophy-as-it-has-been-practiced, engaging the Aristotle time-travel thought experiment directly, diagnosing the points-of-view relativism as the symptom of a specific methodological failure, and proposing that the RESOLVE corpus's *derivation inversion* ([Doc 247](https://jaredfoy.com/doc/247-the-derivation-inversion)) names the methodological alternative under which progress is observable and measurable, with the Seed Garden as the empirical case**
 
 **Document 255 of the RESOLVE corpus**

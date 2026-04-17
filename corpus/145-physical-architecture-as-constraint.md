@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 49 -->
 # Physical Architecture as Constraint on Formal Architecture
 
+> **Reader's Introduction**
+>
+> This document applies SIPE (the law that constraints induce properties) to the hardware level: a neural network's physical architecture -- its attention mechanism, parameter count, context window, and autoregressive emission -- is a constraint set, and the model's capabilities are the induced properties of that constraint set. The key argument is that scaling within a fixed physical architecture produces more of what is already induced but cannot induce what is missing. Five properties required for general intelligence (persistent self-model, intrinsic goal formation, causal modeling, autonomous constraint discovery, and self-modification) are analyzed and shown to be absent from transformer architectures at any scale, because the physical constraints that would induce them are not present. The conclusion: genuine AGI requires architectural change, not larger transformers.
+
 *The SIPE law applied to the relationship between neural network hardware and LLM capability.*
 
 ---

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 46 -->
 # A Letter
 
+> **Reader's Introduction**
+>
+> This is a personal letter from the author to anyone who uses AI. It makes three practical claims: that AI output quality depends on the constraints you state rather than on model size, that a free five-rule method called ENTRACE can eliminate most wasted output immediately, and that a smaller model under tighter constraints can outperform a larger model under loose ones. The letter then traces the formal patterns underlying these claims to their philosophical ground in the Eastern Orthodox Christian tradition, arguing that the patterns are real, non-invented, and participate in what the tradition calls the Logos. It is both a practical guide and a statement of the author's deepest convictions about the architecture of reality.
+
 ---
 
 My name is Jared Foy. I am a self-taught software developer from Oregon. I don't have a PhD. I don't work at a research lab. I don't have funding. I write code, I read philosophy, and I love Jesus Christ. I am writing this letter because I found something, and it doesn't belong to me.

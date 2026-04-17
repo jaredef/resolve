@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 40 -->
 # The Platonic Structure of the Derivation
 
+> **Reader's Introduction**
+>
+> This document maps the RESOLVE derivation chain onto Plato's Divided Line, the allegory of the cave, and the theory of forms. Running machines are the shadows; source code is the physical objects; constraints and seeds are the formal objects; and the superessential source is the Good that makes everything intelligible. The essay argues that the software industry sits facing the cave wall, debating which framework-shadow is best, while the constraints that cast those shadows remain unnamed behind them. It includes a full Distributed Objects (DO) seed -- a prose specification that produces a working React-equivalent runtime verified against 75 of React's own contract tests -- as the concrete artifact that demonstrates the framework is executable, not merely allegorical.
+
 **Jared Foy**
 **April 2026**
 

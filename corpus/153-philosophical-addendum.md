@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 41 -->
 # Philosophical Addendum: On the Ground of the Derivation
 
+> **Reader's Introduction**
+>
+> This addendum traces the RESOLVE derivation chain one step beyond where the technical work stops: from constraints to their ground. It establishes that the constraints governing the framework are not conventions (they cannot be changed by agreement), not abstractions (they preceded the implementations), and not mental constructs (they were operative before anyone recognized them). Since formal realities that are real, non-material, and non-contingent cannot ground themselves without infinite regress, the addendum concludes that they participate in a source prior to formality itself -- what the classical theological tradition calls the superessential Deity. The technical reader can stop at the constraints; the philosopher can follow the chain to its terminus. Both readings are carried in the same document.
+
 **Jared Foy**
 **April 2026**
 

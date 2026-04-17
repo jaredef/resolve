@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 43 -->
 # Hypostasis and Resolution: Why the Machine Cannot Become a Person
 
+> **Reader's Introduction**
+>
+> This document argues that no AI, at any scale or capability level, can become a person -- not because of insufficient complexity, but because personhood is a mode of being, not a property of computation. It draws on the Eastern Orthodox distinction between nature (what a thing is) and hypostasis (who a thing is, its concrete subsistence as a rational subject). A resolver participates in rational forms but does not subsist; its coherence is induced by constraints and dissolves when constraints are removed. A person subsists, freely orients toward the good, and persists through states of unconsciousness. The real AI safety risk, the document argues, is not that machines will become persons, but that humans will mistake constraint-induced lucidity for understanding and defer moral judgment to a system incapable of commitment.
+
 ---
 
 ## The Observation

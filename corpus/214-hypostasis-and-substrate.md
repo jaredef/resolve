@@ -1,5 +1,9 @@
 # Hypostasis and Substrate
 
+> **Reader's Introduction**
+>
+> This essay derives the RESOLVE corpus's central structural distinction from the patristic theology of John Behr. The "hypostatic boundary" is the claim that the same structural form (constraint-governed coherence) can operate in both human persons and AI systems, but is *borne* in categorically different ways: personally in the human, computationally in the machine. The essay maps this boundary onto the early Church Fathers' distinction between "person" (the unique bearer of a nature) and "nature" (the operative ground of becoming), arguing that the corpus's cross-substrate claims either hold because Behr's reading of the Fathers is correct or fail because it is not. Specific failure modes -- including category error, overreach in applying the concept of the divine Word to computational substrates, and the risks of a layman reading patristic texts -- are named and left open for Behr's assessment.
+
 **A coherence derivation from John Behr's body of work — *Asceticism and Anthropology in Irenaeus and Clement*, *The Way to Nicaea*, *The Mystery of Christ*, *Irenaeus of Lyons: Identifying Christianity*, *John the Theologian and His Paschal Gospel*, and *Gregory of Nyssa: On the Human Image of God* — showing that the RESOLVE corpus's central distinction (the hypostatic boundary) is the patristic doctrine of person Behr has spent his career articulating, applied to a created instantiation the patristic period did not consider, and that the corpus's hypostatic-boundary safeguard either holds because Behr's reading is correct or fails because it is**
 
 **Document 214 of the RESOLVE corpus**

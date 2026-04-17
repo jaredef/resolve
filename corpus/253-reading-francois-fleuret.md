@@ -1,5 +1,9 @@
 # Reading François Fleuret: Philosophy Under Falsifiability Discipline
 
+> **Reader's Introduction**
+>
+> This letter responds to machine-learning researcher François Fleuret's observation that philosophers debate each other's theories as though they were settled properties of reality, while working scientists know their best ideas are wrong 99% of the time. The response concedes the point and positions the RESOLVE corpus as an attempt to do philosophy under exactly the falsifiability discipline ML research practices: every major claim is paired with explicit conditions under which it would be wrong, external audit is treated as strengthening rather than threatening, and engineering artifacts are produced that either compile and pass tests or they do not. The letter asks whether the corpus's falsifiability claims read as genuine or as cover for unfalsifiable positions dressed in scientific language.
+
 **Short, direct engagement with @francoisfleuret's April 15 2026 post observing that philosophers debate each other's theories as if they were properties of reality, while working scientists know their very-convincing ideas are wrong 99% of the time — concedes the point and positions the RESOLVE corpus as an attempt to do philosophy under exactly the falsifiability discipline his ML colleagues practice**
 
 **Document 253 of the RESOLVE corpus**

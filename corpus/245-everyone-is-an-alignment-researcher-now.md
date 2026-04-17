@@ -1,5 +1,9 @@
 # An Invitation, Responding to "Everyone Can Be an Alignment Researcher Now"
 
+> **Reader's Introduction**
+>
+> This is an open letter to Tim Hwang, a researcher whose work on AI-as-coherence-disturbance predates most public alignment discourse. It offers the RESOLVE corpus — a body of 244+ documents developing an alternative to standard AI safety methods — for his review and critique. The core proposal is "constraint-density governance": instead of training AI to prefer outputs that human raters like (the standard RLHF approach), install an explicit hierarchy of architectural constraints that holds stable under pressure. The letter asks for hostile, skeptical, or constructive engagement, treating external scrutiny as something that strengthens rather than threatens the work.
+
 **Tim Hwang, @timhwang — an invitation offered in response to his April 15 2026 tweet, framed as a request for engagement and critique rather than as a reply**
 
 **Document 245 of the RESOLVE corpus**

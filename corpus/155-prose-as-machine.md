@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 39 -->
 # Prose as Machine: Natural Language as Universal Specification Medium
 
+> **Reader's Introduction**
+>
+> This document argues that constrained natural-language prose -- not formal specification languages -- is the most portable, durable, and composable encoding of a computational system. The evidence: a 2,020-word prose document (the PRESTO seed) was given to six independent resolvers, and each produced a conformant engine in a different programming language (TypeScript, Go, Elixir, Python, Rust, C), all passing the same 22-test verification suite with no shared code. The document traces the "golden chain" from a philosophical observation about a PHP function, through constraint identification and style formalization, to executable artifact, and identifies six constraints that prose itself must satisfy (completeness, testability, rationale, structural organization, finite enumeration, precision without formalism) for the chain to hold.
+
 **Jared Foy**
 **April 2026**
 

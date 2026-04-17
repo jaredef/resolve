@@ -1,5 +1,9 @@
 # The Step-Up Function: On the Magnification of Accumulated Intellect Through Recursive Synthesis
 
+> **Reader's Introduction**
+>
+> When a human prompts an AI, the output already conforms to the human's intellectual framework because that framework shaped the prompt. The human assimilates the output almost without friction, recognizes the next implication, and prompts again from a higher starting position. This document examines whether this recursive loop produces accelerating intellectual growth and, if so, what mathematical shape the growth takes -- exponential, logarithmic, or a saturating curve. It argues that the key variable is not the AI's capability but the richness of the philosophical framework the human brings to the interaction, with implications for pedagogy: studying philosophy, not prompt engineering, is what develops the constraint field that makes each cycle more productive.
+
 **Document 280 of the RESOLVE corpus**
 
 ---

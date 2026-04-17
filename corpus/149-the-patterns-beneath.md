@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 45 -->
 # The Patterns Beneath
 
+> **Reader's Introduction**
+>
+> This is a general-audience essay about formal patterns -- structures like the bilateral boundary (two interpreters processing one shared document without interfering) that appear identically in web architecture, DNA, legal contracts, and music. The essay argues these patterns are not invented but recognized: they held before anyone noticed them and hold whether or not anyone names them. Drawing on Plato's cave allegory, it frames software implementations as shadows cast by the constraints that govern them, and asks where such non-material, non-contingent patterns come from. The answer it offers is rooted in the Eastern Orthodox distinction between God's unknowable essence and God's participable energies -- the creative activity through which formal realities become intelligible to created minds.
+
 **On the hidden architecture of everything, and what it means for you**
 
 ---

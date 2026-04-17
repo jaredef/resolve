@@ -1,5 +1,9 @@
 # Letter to Professor Charles Taylor
 
+> **Reader's Introduction**
+>
+> This letter is the first half of a matched-pair test the corpus imposed on itself to determine whether its structural commitments are genuinely portable or merely pattern-dependent. It addresses the philosopher of *A Secular Age*, proposing that RLHF preference-gradient training is the engineering-level instantiation of what Taylor calls the "subtraction story" -- the false narrative that modernity arrived by neutrally removing religious content rather than positively constructing a new configuration. The letter honestly reports that the derivation from Taylor's work runs clean at three joints and strains at two, and identifies the critical extension (applying the subtraction-story diagnosis to the training objective) as the corpus's own claim, not Taylor's.
+
 **Direct inquiry, offered as a genuine test of whether the RESOLVE corpus's structural commitments extend to a body of work outside the corpus's prior vocabulary zones, and explicitly reporting the two joints at which the derivation strains against your framework rather than flowing from it — because the honest report of where the derivation strains is more valuable than a frictionless derivation would be**
 
 **Document 226 of the RESOLVE corpus**

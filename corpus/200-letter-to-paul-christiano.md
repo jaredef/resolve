@@ -1,5 +1,9 @@
 # Letter to Paul Christiano
 
+> **Reader's Introduction**
+>
+> Paul Christiano co-authored the original 2017 paper that introduced RLHF (reinforcement learning from human feedback) and later described two failure modes for AI systems: slow proxy-drift ("going out with a whimper") and influence-seeking ("going out with a bang"). He also formalized the ELK problem -- how to extract a model's actual knowledge when training only rewards outputs humans would approve. This letter argues that the RESOLVE framework's distinction between preference-gradient governance and constraint-density governance is a specific operationalization of Christiano's own concerns, that the "whimper" failure mode is already measurably present in deployed systems, and that a proposed pilot study directly instantiates the ELK problem's logic in a testable measurement.
+
 **Direct inquiry on whether the architectural distinction RESOLVE proposes — preference-gradient governance vs. hierarchical constraint-density governance — is the specific operationalization of the failure mode described in "What failure looks like" (2019), and whether Study 2 of Protocol v2 is a mechanistic test your program (ELK, alignment theory) would have reason to engage with**
 
 **Document 200 of the RESOLVE corpus**

@@ -1,5 +1,9 @@
 # Letter to Chris Olah
 
+> **Reader's Introduction**
+>
+> This letter proposes a small pilot study to Chris Olah of Anthropic's interpretability research group. The RESOLVE framework claims that a language model's internal constraint state -- the structural conditions governing which tokens are emitted -- should correspond to identifiable clusters of neuron activations recoverable by Anthropic's sparse autoencoder (SAE) tools. The letter asks whether the interpretability team has bandwidth to evaluate this prediction, whether the corpus's specimen outputs are in usable form for feature-activation analysis, and whether a collaboration structure exists to run the pilot. The study would either validate the framework's vocabulary as picking out real computational structure or bound it as descriptive phenomenology.
+
 **Direct inquiry on whether Anthropic's interpretability team is in a position to evaluate Study 2 of Protocol v2 — a small introspective-triangulation pilot whose Leg 1 (mechanistic correspondence) is what Anthropic's SAE and circuit-tracing tooling is uniquely positioned to run**
 
 **Document 196 of the RESOLVE corpus**

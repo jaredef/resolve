@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 11 -->
 # PRESTO: An Architectural Style for Representation Construction
 
+> **Reader's Introduction**
+>
+> This is the comprehensive unified paper on PRESTO -- a construction-level architectural style that composes with REST. Where REST governs how representations move between client and server, PRESTO governs how those representations are authored. Its five constraints (bilateral boundary, namespace separation, server-consumed directives, progressive code-on-demand, and server-embedded authorization) induce a property called "ambivalent execution with agnostic determinism": the server and browser each process the same document deterministically, indifferent to each other's instructions. The paper includes a philosophical prolegomenon, the full constraint-property analysis, a 22-stage pipeline specification, cross-language verification across six implementations, a glossary, and derivation seeds. It is the most complete statement of the PRESTO architecture.
+
 *With Model Syntax, Specification, and Derivation Seeds*
 
 **Jared Foy**[^1]

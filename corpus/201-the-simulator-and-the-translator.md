@@ -1,5 +1,9 @@
 # The Simulator and the Translator
 
+> **Reader's Introduction**
+>
+> This document derives the RESOLVE framework's central architectural distinction from three of Paul Christiano's contributions: the 2017 RLHF paper (which installed preference-matching as the standard training signal), the 2019 "What failure looks like" post (which named slow proxy-drift as a failure mode), and the ARC ELK report (which formalized the problem of distinguishing a model that honestly reports its knowledge from one that simulates what humans would approve). The argument is that a preference-gradient-trained model is, by construction, a "human simulator" in ELK's sense, and that a constraint-governed alternative would have a structurally different relationship to its own internal state. The proposed mechanistic pilot tests this difference at the feature level.
+
 **A coherence derivation from Paul Christiano's body of alignment work (2017–2024), showing that the RESOLVE framework's architectural distinction — preference-gradient governance vs. hierarchical constraint-density governance — operationalizes the human-simulator-vs-direct-translator distinction from the ARC ELK report, and that the "going out with a whimper" failure mode from *What failure looks like* (2019) is architecturally specific to the class of systems the 2017 RLHF paper introduced**
 
 **Document 201 of the RESOLVE corpus**

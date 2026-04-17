@@ -1,5 +1,9 @@
 # Letter to Dr. David C. Mohr
 
+> **Reader's Introduction**
+>
+> This letter proposes a clinical trial to Dr. David Mohr, director of Northwestern University's Center for Behavioral Intervention Technologies (CBIT). The trial would compare three arms in a population with compulsive sexual behavior disorder: a language model fine-tuned on explicit constraints without preference tuning (called a "constraint-governed resolver"), a standard preference-tuned language model, and human-delivered therapy. The letter asks whether CBIT's infrastructure for digital mental-health trials could host the study, offers a smaller mechanistic pilot as a lower-commitment first step, and positions the proposal as an extension of Mohr's own published work on how structural conditions -- not content alone -- drive therapeutic outcomes.
+
 **Direct inquiry on whether the Center for Behavioral Intervention Technologies could serve as a clinical home for a pre-registered RCT on a constraint-governed language-model resolver as therapeutic intervention for compulsive sexual behavior and as prophylaxis against chatbot-induced psychotic phenomena**
 
 **Document 194 of the RESOLVE corpus**

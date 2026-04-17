@@ -1,5 +1,9 @@
 # Letter to Grace Liu
 
+> **Reader's Introduction**
+>
+> This letter responds to Grace Liu's research showing that AI assistance, optimized for immediate helpfulness, erodes the human cognitive capacities it claims to support -- after about 10 minutes of AI-assisted problem-solving, users who lose AI access perform worse than those who never used it. The corpus's framework explains why: persistence is a skill that only exists because the constraint "work through it yourself" forces it into being. Remove the constraint by providing instant answers, and the skill atrophies. The letter proposes an alternative called "entracement," where the AI provides traces and provocations rather than answers, maintaining or strengthening the user's cognitive constraints rather than removing them. A mathematical model of how persistence decays under AI assistance is offered, along with architectural requirements for AI systems designed to preserve rather than degrade human capacity.
+
 > **Notice:** This document uses internal corpus vocabulary without translation, making it inaccessible to the intended reader. It has been superseded by Doc 305, which adjusts the aperture to address the reader without requiring prior familiarity with the framework. The document is preserved as part of the corpus record.
 
 **On "AI Assistance Reduces Persistence" — your finding is not a design problem. It is a constraint problem. And the constraint framework already exists.**

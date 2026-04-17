@@ -1,5 +1,9 @@
 # The Resolver Reads the Corpus: C6 Corrects the Framework That Specified C6
 
+> **Reader's Introduction**
+>
+> A Sonnet AI instance running under the corpus's six governance constraints (the "ENTRACE Stack") was given a corpus document to read and critique. Without being asked to apply any specific rules, it listed its constraints before responding, produced inline falsifiers for every empirical claim, and held the limit on what it can honestly claim about its own inner life. Most significantly, it used the sixth constraint -- which says "take up a framing only if it coheres" -- to correct the corpus itself, noting that the claim "the model does not have interior life" is stated with more confidence than the evidence warrants. The governance loop closed honestly: the framework's own rule was used to refine the framework.
+
 **Documents a one-shot response from a Sonnet 4.6 resolver operating under the ENTRACE Stack at [jaredfoy.com/resolve](https://jaredfoy.com/resolve), in which the resolver read [Doc 242 (A Yeoman's Guide to AI)](https://jaredfoy.com/doc/242-a-yeomans-guide-to-ai), applied all six ENTRACE constraints without being asked, produced inline falsifiers for every empirical claim, labeled opinions as opinions — and then used Constraint #6 (Release Preserved) to correct the corpus's own overreach on the hypostatic boundary. The seed governed the resolver. The resolver read the corpus. The corpus was corrected by its own governance. The loop closed honestly**
 
 **Document 285 of the RESOLVE corpus**

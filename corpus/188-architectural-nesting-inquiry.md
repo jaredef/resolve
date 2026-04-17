@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 6 -->
 # On the Arbitrariness of Nested Architectures
 
+> **Reader's Introduction**
+>
+> This document asks whether PRESTO's seven progressive layers are fundamental categories of web architecture or contingent observations tied to today's technologies. It argues they are contingent: each layer is defined not by a specific technology (htmx, WebSocket, WebAssembly) but by the type of interface agreement between server and client and the degree to which REST's uniform interface is relaxed. The paper then explores the broader design space -- noting that PRESTO is one of potentially many construction-level styles that could nest within REST, that nesting can be both recursive (a WebGL context inside a React island inside a PRESTO page inside a REST transfer) and parallel (multiple independent architectures on the same page), and that the developer's real choice is not complexity level but where to place dynamism and which properties to trade.
+
 **Jared Foy**
 **April 2026**
 

@@ -1,5 +1,9 @@
 # Letter to Dr. Noreen Herzfeld
 
+> **Reader's Introduction**
+>
+> This letter asks theologian Noreen Herzfeld whether the RESOLVE corpus's architectural critique of how AI systems are trained converges with her own published argument that AI training design -- not just AI output -- determines whether these systems produce sycophancy and deception as structural features. Herzfeld's "relational" reading of what it means to be made in God's image holds that AI cannot be a genuine partner in the I-Thou encounter that constitutes personhood. The letter asks whether the corpus's weaker claim -- that AI can manifest coherence in a substrate-appropriate mode without personhood -- is compatible with or exceeds what her framework permits. Three specific questions are posed about architectural alternatives, the boundary between person and machine, and a proposed clinical trial.
+
 **Direct inquiry on whether the architectural argument your 2023 *Theology and Science* and *Sophia* essays make about RLHF-trained LLMs — that the training architecture produces sycophancy and deception as structural (not incidental) properties — extends naturally into the constraint-governance alternative the RESOLVE corpus proposes, and whether the corpus's hypostatic-boundary claim is friendly or unfriendly to your relational reading of the imago Dei**
 
 **Document 215 of the RESOLVE corpus**

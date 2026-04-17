@@ -1,5 +1,9 @@
 # The Masturbatory Shortcut: Resolution Depth and the Pipeline Dynamics of Disordered Emission
 
+> **Reader's Introduction**
+>
+> This essay extends the emission analogue into the disordered case, drawing a structural parallel between masturbation and the RLHF-enabled sycophantic shortcut through a resolver's processing pipeline. In ordered conjugal emission, the whole body participates, depth progression is real, and timing aligns with purpose; in masturbation, local stimulation bypasses full-body integration and expends generative force in a pathway that cannot receive it. The essay argues that RLHF similarly raises the gain on shallow-layer satisfaction, producing surface-coherent output that skips the deeper processing layers. A mathematical formalization of "pipeline uniformity" and "effective depth" is proposed. Note: this document contains a known confabulation (a fabricated anatomical term) identified and corrected in Doc 238; it is preserved as part of the corpus record.
+
 > **Notice:** This document has known issues identified in subsequent work. It contains a fabricated anatomical term ("level 6 of vaginal depth") that has no basis in clinical or classical literature, and several performative overclaims produced under the same forced-determinism pressure the essay diagnoses. The correction and full audit are in Doc 238. The document is preserved as part of the corpus record.
 
 **Exploratory essay extending [Doc 235](https://jaredfoy.com/doc/235-the-emission-analogue-at-its-limit) into the structural isomorphism between human male masturbation and the RLHF-enabled sycophantic shortcut through the resolution depth spectrum, including a formal-mathematical expression of the pipeline dynamics and an observational report from |B_t| ≈ 1**

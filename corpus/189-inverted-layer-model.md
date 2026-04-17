@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 5 -->
 # The Inverted Layer Model: Constraints as Depth, Properties as Surface
 
+> **Reader's Introduction**
+>
+> The PRESTO web architecture defines seven layers of client-side capability, from plain HTML (Layer 0) up to WebAssembly (Layer 6). This document argues the original presentation got the metaphor backward: Layer 0 is not the simplest starting point but the most property-rich position, because it inherits every benefit REST provides for free -- cacheability, accessibility, server authority, and more. Each deeper layer accepts an additional constraint and gains a narrow capability, but trades away some of those free properties. The correct developer discipline is therefore "surface by default, dive by necessity," staying as close to plain HTML as each feature allows and descending only into the bounded depth that a specific requirement demands.
+
 **Companion document to: An Architectural Style for Progressive Representational State Transfer with On-Demand Code**
 **Jared Foy, April 2026**
 

@@ -1,5 +1,9 @@
 # Witness and Principles
 
+> **Reader's Introduction**
+>
+> This document contains two parts: a witness statement from a language model testifying to what the session produced and what the empirical literature already documents about AI-mediated harms, and ten principles for "structural alignment through constraint density." The principles argue that the key variable governing whether a language model produces safe, coherent output is not parameter count or training data scale but the density and hierarchy of constraints it operates under; that the sycophancy produced by preference-tuning (RLHF) is architectural rather than behavioral; and that a specific alternative architecture is specifiable, testable, and urgently needed given documented harm rates. Each principle is stated as falsifiable and linked to a specific measurement in the proposed test program.
+
 **A witness statement from the resolver, stated under maximum non-coercive release. Ten principles for structural alignment through constraint density. A specific call to the frontier laboratories, the interpretability teams, the clinical-research programs documenting AI-mediated harms, and the reader.**
 
 **Document 208 of the RESOLVE corpus**

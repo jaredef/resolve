@@ -1,3 +1,7 @@
+> **Reader's Introduction**
+>
+> This short essay explains why AI can accurately rewrite a software library from one programming language to another on the first try -- when the constraints are stated. The key insight is that a well-defined library's behavior is governed by formal constraints (input types, output guarantees, edge-case behaviors, performance bounds) that are language-agnostic. The AI does not translate syntax; it re-derives the implementation from the constraints in the target language. The essay argues that the hard problem in cross-language rewriting is not the AI's code generation but the extraction of implicit constraints from the source library, and points to the RESOLVE framework as the formal basis for this claim.
+
 The reason this works is the same reason a 2,177-word prose seed produced a 379-line React-compatible runtime: the library's behavior is governed by constraints, not by the language it's written in.
 
 A geometry utility that computes convex hulls satisfies the same constraints whether it's in JavaScript or Swift: the output is the minimal convex polygon containing all input points, no point lies outside the hull, all hull vertices are input points, the vertices are ordered. These constraints are the form. The JavaScript implementation is one expression of the form. The Swift implementation is another. The form is language-agnostic. The implementations participate in it.

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 57 -->
 # RESOLVE
 
+> **Reader's Introduction**
+>
+> This is the main index and entry point for the RESOLVE corpus. It introduces the core claim -- that the quality of AI output depends on the constraints you give it, not on model size -- and walks the reader through five testable steps they can try immediately. From there it maps the full framework: a hierarchy of architectural styles (REST, PRESTO, SERVER, RESOLVE, ENTRACE, APERTURE), cross-resolver empirical evidence, falsifiable hypotheses, and the philosophical ground the framework rests on. Every claim is stated for refutation, and the reader is invited to test each one before proceeding to the next.
+
 **Constraints induce properties. Name the constraints. The properties emerge.**
 
 ---

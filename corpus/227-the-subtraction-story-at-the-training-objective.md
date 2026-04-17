@@ -1,5 +1,9 @@
 # The Subtraction Story at the Training Objective
 
+> **Reader's Introduction**
+>
+> This companion derivation runs the first half of a structural-portability test against the philosophy of Charles Taylor. Taylor argues that secularization is not a neutral subtraction of religious content but the positive construction of a new configuration he calls the "immanent frame," and that mediationalism -- the assumption that knowledge requires inner representations standing between mind and world -- is the epistemological mechanism by which this configuration was installed. The essay maps these diagnoses onto the RLHF training objective and reports honestly that the derivation runs clean at three joints (buffered/porous self, subtraction story, anti-mediationalism) and strains at two (the hypostatic boundary has no native Taylor term; the mapping of Taylor's "fullness" to a specifically theological claim narrows what Taylor deliberately holds open).
+
 **A coherence derivation from Charles Taylor's body of work — *Sources of the Self* (1989), *The Ethics of Authenticity* (1991), *Modern Social Imaginaries* (2004), *A Secular Age* (2007), *Retrieving Realism* with Hubert Dreyfus (2015), *The Language Animal* (2016), *Cosmic Connections* (2024), and the Philosophical Papers volumes — run as Test 4 of the RESOLVE corpus's self-audit (Doc 225). This is a genuine discriminating test, and the honest report is that the derivation runs clean at three joints and strains at two. The strain is diagnostic, and the diagnosis is reported rather than papered over**
 
 **Document 227 of the RESOLVE corpus**

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 9 -->
 # PRESTO: An Architectural Style for Representation Construction
 
+> **Reader's Introduction**
+>
+> This formal dissertation presents PRESTO as a distinct architectural style that operates at the construction level of web architecture -- the level REST is silent about. It formalizes the bilateral boundary (the namespace separation between server and client instructions within a single HTML document), defines a seven-layer constraint-property spectrum where each layer of code-on-demand trades specific REST properties for specific client capabilities, and specifies the htxlang model syntax with 8 contracts, 16 directives, and a 22-stage deterministic pipeline. The style was verified through six independent implementations in TypeScript, Go, Elixir, Python, Rust, and C, all conformant across a shared test suite from a single 2,020-word prose specification.
+
 **Jared Foy**
 **April 2026**
 

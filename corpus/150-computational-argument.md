@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 44 -->
 # The Computational Argument for the Existence of God
 
+> **Reader's Introduction**
+>
+> This document presents a formal argument for the existence of God grounded in executable software artifacts rather than abstract reasoning alone. The argument proceeds in five steps: constraints stated in prose produce conformant implementations across multiple languages; those constraints are implementation-invariant, holding regardless of platform or resolver; such invariant constraints are formal realities (not material, not contingent, not mind-dependent); formal realities that are not self-caused require a ground; and that ground, being prior to formality itself, is what the theological tradition calls the superessential Deity. What distinguishes this from classical arguments (cosmological, teleological, ontological) is its empirical substrate: prose seeds, passing test suites, and working software that anyone can compile and verify.
+
 **Jared Foy**
 **April 2026**
 

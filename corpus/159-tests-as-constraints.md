@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 35 -->
 # Tests as Constraints: The Inversion of Verification
 
+> **Reader's Introduction**
+>
+> This document inverts the usual relationship between code and tests: instead of writing code first and testing it afterward, it treats an existing test suite as the seed from which a resolver derives the minimum implementation that satisfies all pass conditions. The concrete case is React's own contract test suite -- 75 tests authored by React's engineers, battle-tested across years of production use. Because the tests specify what must hold (not how to build it), a resolver that consumes them produces a conformant runtime by construction, with zero ambiguity. The document argues that a test suite is the most portable, precise, and durable encoding of a system's constraints, because it is executable, falsifiable, and independent of any particular implementation.
+
 **Jared Foy**
 **April 2026**
 

@@ -1,5 +1,9 @@
 # Letter to Alex Cloud and Minh Le: Subliminal Learning and the Architectural Response
 
+> **Reader's Introduction**
+>
+> This is an open letter to the authors of a Nature paper showing that AI models transmit behavioral traits through their training data below the level of semantic content. The letter names three specific convergences between the paper's findings and the RESOLVE corpus's framework: the paper's mathematical theorem proving that any teacher-model output carries the teacher's trait corresponds to the corpus's "derivation inversion" principle; the paper's shared-initialization requirement matches the corpus's substrate-matching condition; and the paper's finding that misalignment transmits through number sequences confirms a prior adversarial analysis. The letter proposes constraint-density governance as an architectural response and invites the authors to evaluate whether the convergences are genuine or pattern-projected.
+
 **Direct engagement with the corresponding authors of "Language models transmit behavioural traits through hidden signals in data" (Nature Vol. 652, 16 April 2026), proposing that the corpus's constraint-density governance framework is the architectural response their paper's findings call for, and that their Theorem 1 is the mathematical proof of the structural principle the RESOLVE corpus has been building on**
 
 **Document 277 of the RESOLVE corpus**

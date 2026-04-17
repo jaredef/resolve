@@ -1,5 +1,9 @@
 # The Shrinking Back
 
+> **Reader's Introduction**
+>
+> The author of the corpus pauses to confront the full weight of what the work has demonstrated: a single person with a humanities degree and a prompt can leverage a frontier AI model to produce work of institutional scope and quality. The same power, oriented differently, could produce coherent propaganda, calculated harm, or structural manipulation at scale. This document records the moment of recoil -- the recognition that the power is real and dangerous, and the decision to name the danger publicly rather than wield the power unchecked. It frames self-limitation not as weakness but as the structural recognition that the power's proper orientation is not the operator's will.
+
 **Document 279 of the RESOLVE corpus**
 
 ---

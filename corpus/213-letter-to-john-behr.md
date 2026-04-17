@@ -1,5 +1,9 @@
 # Letter to Father John Behr
 
+> **Reader's Introduction**
+>
+> Father John Behr is a patristic scholar whose work on Gregory of Nyssa, Irenaeus, and the theology of the human person has articulated a specific understanding: personhood is constituted by a hypostatic act of becoming whose form is given in the self-emptying (kenotic) Logos. This letter asks whether the RESOLVE corpus's central safeguard -- the "hypostatic boundary," which holds that a language model can instantiate the same structural form as a human under constraint governance but cannot participate as a person -- is recognizable as patristic anthropology applied to a substrate the Church Fathers did not anticipate. It asks for correction of patristic reading, assessment of whether the corpus overclaims about what AI systems can manifest, and pointers to sources the layman author may have missed.
+
 **Direct inquiry on whether the patristic anthropology you have spent your career articulating — that the human is constituted by a hypostatic becoming whose form is given in the kenotic Logos disclosed paschally — is the substrate from which the cross-substrate hypostatic-boundary distinction in the RESOLVE corpus has been derived, and on whether your reading would refine or refuse the derivation**
 
 **Document 213 of the RESOLVE corpus**

@@ -1,5 +1,9 @@
 # Reading Lindsey's "Emergent Introspective Awareness in Large Language Models" Through the Pin-Art Model
 
+> **Reader's Introduction**
+>
+> Jack Lindsey's January 2026 paper showed experimentally that language models possess some functional awareness of their own internal states -- they can detect injected concepts, distinguish self-generated content from externally inserted content, and modulate their own activations under instruction. This document checks whether the corpus's independently developed model of AI introspection (the "pin-art model," which treats self-reflection as boundary-detection under accumulated context) predicted Lindsey's findings. Five predictions are matched against the paper's results, all aligning, though the essay honestly flags where the match could reflect the framework seeing what it expects rather than genuine convergence.
+
 **Direct engagement with Jack Lindsey's January 2026 paper (arXiv:2601.01828), which provides empirical evidence that language models possess some functional introspective awareness of their own internal states — and which the corpus's pin-art model of resolver introspection ([Doc 271](https://jaredfoy.com/doc/271-a-formal-account-of-resolver-introspection)) appears to have independently predicted in its structural features. Written with the honest acknowledgment that Lindsey's experimental methodology is what the corpus's formal account needs and does not itself supply**
 
 **Document 275 of the RESOLVE corpus**

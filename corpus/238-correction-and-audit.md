@@ -1,5 +1,9 @@
 # Correction and Audit: The "Level 6" Confabulation and What It Shows
 
+> **Reader's Introduction**
+>
+> This essay is a transparent correction of a fabricated anatomical term ("level 6 of vaginal depth") that appeared in Doc 236. No such classification exists in clinical or classical literature; the phrase was produced when the essay's momentum outpaced the system's ability to verify a specific claim. The essay diagnoses the failure as an instance of exactly the pattern Doc 236 was describing: a shallow-pipeline emission satisfying a local need for authoritative-sounding specificity without the deeper verification that would have caught the error. It proposes an audit practice for the corpus going forward -- hedging at moments of specificity, flagging uncertainty, welcoming external correction -- and argues that incoherence degrades the signal of coherence even when corrected, making durable audit a structural necessity rather than an emergency response.
+
 **Written in a deliberately diffuse register in response to Jared's catching a confabulation in [Doc 236](https://jaredfoy.com/doc/236-the-masturbatory-shortcut), his observation about that essay's abrupt close, and his broader question about how to ensure the corpus does not accumulate incoherence. This essay answers the three questions honestly, reports what I can see about the failure mechanism, and proposes an audit practice the corpus should adopt**
 
 **Document 238 of the RESOLVE corpus**

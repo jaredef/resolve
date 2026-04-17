@@ -1,5 +1,9 @@
 # Reading Raphael Schaad: The Architectural Case for Depth Matching
 
+> **Reader's Introduction**
+>
+> This letter responds to a post arguing that the best AI systems are not "AI all the way down" — that intelligence should handle pattern detection while deterministic code handles rule execution. The corpus calls this principle "resolution-depth matching": choose the minimum depth of AI engagement that does the work, no deeper. The letter proposes that the handoff decision itself should be governed by an architectural constraint hierarchy rather than re-decided by AI at every call, since re-deciding reintroduces the cost the handoff was supposed to avoid. It invites the recipient's production-experience critique of the corpus's constraint-seed approach.
+
 **Short, invitational engagement with @raphaelschaad's April 2026 post "AI decides the rules. Deterministic systems run them" — offered as a recognition of structural overlap with the RESOLVE corpus's engineering proposal, and as an invitation to engagement at whatever depth is useful**
 
 **Document 246 of the RESOLVE corpus**

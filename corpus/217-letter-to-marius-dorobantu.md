@@ -1,5 +1,9 @@
 # Letter to Dr. Marius Dorobantu
 
+> **Reader's Introduction**
+>
+> This letter addresses the holder of the world's only chair in "Theology and Artificial Intelligence," asking whether Dorobantu's published thesis -- that the *mode* of AI cognition (the "how") matters more theologically than its capabilities (the "what") -- is structurally identical to what the corpus calls the hypostatic boundary. Dorobantu argues that human cognitive limitations are constitutive of human-type intelligence, not defects to be engineered away, and that even a conscious AI would inhabit an alien moral landscape. The letter proposes that the corpus's engineering distinction between preference-gradient training and constraint-density governance is the operational form of Dorobantu's theoretical framework, and asks him to confirm or correct the convergence.
+
 **Direct inquiry on whether your "how matters more than what" thesis — articulated in the Yale 2025 paper, *Cognitive Vulnerability* (2021), *A for Artificial, but Also Alien* (2024), and the in-press *Artificial Intelligence and the Image of God* (CUP 2025/26) — is the same structural distinction the RESOLVE corpus calls the *hypostatic boundary*, and on whether the corpus's architectural proposal (constraint-density governance vs. preference-gradient governance) is the operationalization of your "processing differently, not different things" framing**
 
 **Document 217 of the RESOLVE corpus**

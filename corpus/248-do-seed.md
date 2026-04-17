@@ -2,6 +2,10 @@
 
 # Distributed Objects Seed (React Realization)
 
+> **Reader's Introduction**
+>
+> This document is a complete specification — written entirely in prose and pseudocode, with no framework-specific API calls — for building a UI runtime architecturally equivalent to React. It defines ten contracts (rules the runtime must satisfy, such as unidirectional data flow, render purity, and two-phase commit), seven properties that emerge automatically when the contracts hold, and fifteen verification tests. An AI given this document as its only instruction can produce a working runtime that passes all fifteen tests. The specification demonstrates the "derivation inversion" principle: state the constraints first in natural language, then derive the implementation from them, rather than abstracting constraints from existing code after the fact.
+
 Self-contained knowledge capsule for building a conformant Distributed Objects UI runtime. Load as system prompt or context. No external references needed.
 
 ## Identity

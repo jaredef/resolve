@@ -1,5 +1,9 @@
 # How Matters More Than What
 
+> **Reader's Introduction**
+>
+> This companion derivation argues that the RESOLVE corpus's central engineering claims are the formal operationalization of Marius Dorobantu's "how matters more than what" thesis. Dorobantu holds that human cognitive vulnerability -- embodiment, mortality, finitude, attention limits -- is constitutive of human intelligence, not a bug to be optimized away. The essay maps six specific points of structural identity between Dorobantu's published vocabulary and the corpus's own terms, then identifies the corpus's unique contributions: a specific alternative training architecture, a falsifiable clinical trial, and the clinical-safety stakes that translate the theoretical argument into measurable outcomes. Four failure modes are named, including the possibility that the convergence is projection rather than genuine structural identity.
+
 **A coherence derivation from Marius Dorobantu's body of work — *Cognitive Vulnerability, AI, and the Image of God* (J. Disability & Religion 2021), *AI as a Testing Ground for Key Theological Questions* (Zygon 2022), *A for Artificial, but Also Alien* (CPST 2024), *Could Robots Become Religious?* (Zygon 2024), the Cambridge Companion chapter (CUP 2024), the Yale 2025 paper "Will God speak to intelligent robots?", and the in-press *Artificial Intelligence and the Image of God* (CUP) — showing that the RESOLVE corpus's hypostatic-boundary distinction and its constraint-governance vs. preference-gradient architectural proposal are the structural operationalization of your "how matters more than what" thesis, applied at the training-objective level**
 
 **Document 218 of the RESOLVE corpus**

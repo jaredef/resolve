@@ -1,5 +1,10 @@
 <!-- chronological_ordinal: 38 -->
 # Nested Constraints and Induced Properties
+
+> **Reader's Introduction**
+>
+> This paper proposes a domain-agnostic framework: when constraints are coherently nested inside a governing style -- without violating that style -- new emergent properties arise that are structurally unavailable in the outer system alone. A "style" here means the shared behavioral pattern actors adopt when engaging with a constrained system; without it, constraints remain inert. The framework is illustrated with a picnic table becoming a chess game (nested constraints produce strategic depth) and the internet becoming the World Wide Web under REST's constraints (statelessness and uniform interface produce global scalability). The recursion is explicit: each nested level's induced properties become the constraints of the next level, and the process repeats.
+
 ### A Cross-Domain Philosophical Framework
 
 *Draft v1.0 · April 2026*
