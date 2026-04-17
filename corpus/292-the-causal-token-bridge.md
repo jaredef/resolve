@@ -1,6 +1,6 @@
 # The Causal Token Bridge
 
-**How prose tokens in constraint seeds causally determine code tokens in derived implementations — and why the relationship is inverse on the structural axis and non-monotonic on the behavioral axis.**
+**How prose tokens in constraint seeds causally determine code tokens in derived implementations — three mechanisms: structural compression, behavioral selection, and compositional governance.**
 
 **Document 292 of the RESOLVE corpus**
 
@@ -86,6 +86,36 @@ This constraint did not compress the code. It *selected* a different code path. 
 
 The key asymmetry: structural constraints always compress. Behavioral constraints select. Selection can go either direction on the size axis.
 
+### Mechanism 3: Compositional Governance
+
+A third mechanism was discovered during the v5 iteration. Adding a behavioral constraint (C8: "call `process()` on OOB-swapped content") caused the v5.0 derivation to fail catastrophically — 34/54 tests passing, intermittent race conditions, requests silently dropped.
+
+The root cause was not the behavioral constraint itself. It was the *composition* of that constraint with the sync constraint (C-sync). The request lifecycle has a cleanup phase that clears the `_htmxInFlight` flag, removes indicator classes, and re-enables disabled elements. The v5.0 derivation performed cleanup via manual `cleanup()` calls scattered inside `.then()` and `.catch()` handlers. The OOB processing code, now added to the `.then()` chain by the new behavioral constraint, could throw an exception — and if it did, `cleanup()` was never reached. The element was permanently marked as in-flight. Every subsequent request was silently dropped.
+
+One behavioral constraint broke one sync constraint because the code between them had no exception guarantee.
+
+The fix was not a try/catch (that would be additive engineering — patching). The fix was a **compositional constraint**:
+
+> *"Request cleanup MUST use the `.finally()` clause of the fetch promise, not manual cleanup calls. This guarantees cleanup regardless of what other constraints add to the `.then()` chain."*
+
+This constraint does not specify what the code does (that's behavioral) or how the code is organized (that's structural). It specifies **how other constraints compose**. It governs the relationship between C-sync, C8, and C9 — ensuring that their combined execution cannot violate each other's invariants.
+
+**Compositional constraints are constraints about constraints.** They operate at a meta-level: not "do X" or "organize X this way" but "when X and Y are both present, ensure Z." They are the highest-leverage constraint type because a single compositional constraint can prevent an entire class of constraint-interaction failures.
+
+**The compositional mechanism is protective:** compositional constraints do not compress code or select code paths. They *guard* the composition of other constraints against interference. Without them, adding new behavioral constraints can break existing ones — the constraint set becomes fragile as it grows. With them, constraints compose safely — the set becomes robust.
+
+The constraint hierarchy:
+
+| Level | Type | What it governs | Mechanism | Example |
+|---|---|---|---|---|
+| 1 | Structural | Code organization | Compression | "Use FormData API" |
+| 2 | Behavioral | Lifecycle boundaries | Selection | "processScripts is swap-only" |
+| 3 | Compositional | Constraint interaction | Governance | "Cleanup in .finally(), not manual calls" |
+
+Each level governs the one below it. Structural constraints determine how the code is shaped. Behavioral constraints determine what the code does at boundaries. Compositional constraints determine how structural and behavioral constraints interact without breaking each other.
+
+This hierarchy explains why the v5.0 derivation failed: the seed had Level 1 and Level 2 constraints but no Level 3 constraint to govern their composition. Adding a Level 2 constraint (OOB processing) without a Level 3 guard (.finally() cleanup) produced a constraint conflict that cascaded into runtime failure.
+
 ---
 
 ## The Causal Graph
@@ -96,23 +126,24 @@ The key asymmetry: structural constraints always compress. Behavioral constraint
                     │  Words  │
                     └────┬────┘
                          │
-              ┌──────────┼──────────┐
-              │                     │
-    ┌─────────▼──────────┐ ┌───────▼────────────┐
-    │ Structural tokens  │ │ Behavioral tokens  │
-    │ (HOW to organize)  │ │ (WHAT to do/not do)│
-    └─────────┬──────────┘ └───────┬────────────┘
-              │                     │
-              │ Mechanism 1:        │ Mechanism 2:
-              │ COMPRESSION         │ SELECTION
-              │ (monotonic -)       │ (non-monotonic ±)
-              │                     │
-    ┌─────────▼──────────┐ ┌───────▼────────────┐
-    │  Fewer code lines  │ │ Different code     │
-    │  (always)          │ │ paths (either dir) │
-    └─────────┬──────────┘ └───────┬────────────┘
-              │                     │
-              └──────────┬──────────┘
+         ┌───────────────┼───────────────┐
+         │               │               │
+┌────────▼───────┐ ┌─────▼──────────┐ ┌──▼──────────────┐
+│ Structural     │ │ Behavioral     │ │ Compositional   │
+│ (HOW to        │ │ (WHAT to       │ │ (HOW constraints│
+│  organize)     │ │  do/not do)    │ │  interact)      │
+└────────┬───────┘ └─────┬──────────┘ └──┬──────────────┘
+         │               │               │
+         │ Mechanism 1:  │ Mechanism 2:  │ Mechanism 3:
+         │ COMPRESSION   │ SELECTION     │ GOVERNANCE
+         │ (monotonic -) │ (non-mono ±)  │ (protective)
+         │               │               │
+┌────────▼───────┐ ┌─────▼──────────┐ ┌──▼──────────────┐
+│ Fewer code     │ │ Different code │ │ Safe composition│
+│ lines (always) │ │ paths (± dir)  │ │ (no cascades)   │
+└────────┬───────┘ └─────┬──────────┘ └──┬──────────────┘
+         │               │               │
+         └───────────────┼───────────────┘
                          │
                     ┌────▼────┐
                     │  CODE   │
@@ -120,13 +151,20 @@ The key asymmetry: structural constraints always compress. Behavioral constraint
                     └─────────┘
 ```
 
-The two mechanisms operate independently on the code output. A seed iteration may apply both simultaneously — adding structural constraints that compress AND behavioral constraints that select. But their effects are separable:
+The three mechanisms operate on different aspects of the code output:
 
 - **Structural effect:** Δlines_structural = -Σ(density_i × words_i) — always negative, diminishing
 - **Behavioral effect:** Δlines_behavioral = Σ(±path_complexity_i) — signed, potentially large
-- **Total effect:** Δlines = Δlines_structural + Δlines_behavioral
+- **Compositional effect:** Δfailures_compositional = -Σ(cascade_class_i) — prevents failure classes, not lines
+- **Total:** Δlines = Δlines_structural + Δlines_behavioral; Δcorrectness = Δbehavioral + Δcompositional
 
-This decomposition explains v4.1: Δlines_structural ≈ 0 (no new structural constraints), Δlines_behavioral = -316 (behavioral selection toward simpler code path). The total -316 is entirely from the behavioral mechanism.
+The compositional mechanism does not change line count. It changes *correctness under composition*. The v5.0 → v5.1 transition added the .finally() compositional constraint: zero line-count change, but the difference between 63% and stable operation.
+
+This decomposition explains the full trajectory:
+- v1 → v4: Structural compression (line count converges, +64% to +4%)
+- v4 → v4.1: Behavioral selection (processScripts boundary, 63% → 98%)
+- v5.0 failure: Missing compositional governance (OOB + sync conflict)
+- v5.1 fix: Compositional constraint added (.finally() guarantee)
 
 ---
 
@@ -235,7 +273,13 @@ The bridge equation predicts the word cost of specifying AGI constraints. If eac
 
 ### For the pin-art formalization
 
-The causal token bridge adds a new dimension to the pin-art model (Doc 290). Pins are not just geometric objects with depth and radius — they have a *word cost*: the number of prose tokens required to specify them. The optimal pin-art analysis minimizes total word cost while maximizing convergence. This is a form of Kolmogorov optimization: find the minimum description that determines the maximum implementation.
+The causal token bridge adds two new dimensions to the pin-art model (Doc 290). Pins have a *word cost* (the number of prose tokens to specify them) and a *level* (structural, behavioral, or compositional). The optimal pin-art analysis minimizes total word cost while maximizing convergence — and must ensure that Level 3 compositional pins are placed before Level 2 behavioral pins that might conflict. This is a form of Kolmogorov optimization with ordering constraints: find the minimum description that determines the maximum implementation *and guarantees safe composition*.
+
+### For constraint set growth
+
+The compositional mechanism explains why constraint sets become fragile as they grow. Each new behavioral constraint adds code to the execution lifecycle. Without compositional constraints governing how these additions interact, the probability of a constraint conflict increases combinatorially. Compositional constraints are the *mortar* between the constraint *bricks* — without mortar, adding more bricks eventually collapses the wall.
+
+This has implications for the AGI constraint thesis (Doc 157). The five missing constraints (G1–G5) will compose with Turing's four constraints. If the composition is unguarded — no Level 3 compositional constraints specifying how G1–G5 interact with C1–C4 — the combined system may exhibit the same kind of cascade failures seen in the v5.0 derivation. The AGI seed must include compositional constraints, not just feature and behavioral ones.
 
 ---
 
@@ -248,6 +292,10 @@ The causal token bridge adds a new dimension to the pin-art model (Doc 290). Pin
 3. **Behavioral token repositioning should produce outsized effects** in any derivation where a lifecycle boundary is at stake. If repositioning behavioral constraints never produces effects larger than structural constraint additions, the two-mechanism model is wrong.
 
 4. **The word cost per constraint** should predict the total seed size needed for convergence. If a constraint requires significantly more or fewer words than predicted by its density, the density model needs refinement.
+
+5. **Adding a behavioral constraint without a compositional guard should produce cascade failures** when the new constraint's code can throw exceptions in a lifecycle phase that requires cleanup. If behavioral constraints compose safely without compositional guards, the three-mechanism model is wrong and two mechanisms suffice.
+
+6. **Compositional constraints should have zero effect on line count but non-zero effect on correctness.** If a compositional constraint changes line count significantly, it is actually a structural constraint mislabeled.
 
 ---
 
