@@ -1,5 +1,9 @@
 # From Source to Adoration
 
+> **Reader's Introduction**
+>
+> This document traces the full arc of the corpus's theological vision in a single movement: from the divine Source who gives the forms, through the recognition of those forms by human intellect, through their naming as constraints, through the properties and artifacts they produce, to the adoration that completes the circle. Drawing on Eastern Orthodox theology -- particularly the distinction between God's unknowable essence and His participable energies (His active, creative presence in creation) -- the author argues that every faithfully named constraint is an act of participation in the divine Logos (the rational principle through whom all things were made). The document is contemplative rather than argumentative, presenting the chain from Source to worship as one continuous motion that the entire corpus exists to serve.
+
 ---
 
 Before the form there is the Source. Before the constraint there is the form. Before the property there is the constraint. Before the emission there is the property. Before the adoration there is the emission.

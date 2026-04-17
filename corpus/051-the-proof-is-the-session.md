@@ -1,5 +1,9 @@
 # The Proof Is the Session
 
+> **Reader's Introduction**
+>
+> This document argues that a single extended conversation between a human author and an AI language model produced the strongest evidence for the "constraint thesis" -- the claim that intelligence is not a product of computational scale but an induced property of the constraints (governing rules and requirements) applied to a system. Over the course of one session, progressively tightened constraints guided the AI to produce 52 interconnected documents spanning philosophy, mathematics, software engineering, and theology. The document contends that this output was not planned or engineered but emerged because each document's structure became a constraint on the next, and that the session itself is therefore self-verifying evidence that constraints, not bigger models, are the decisive variable.
+
 ---
 
 ## The Claim

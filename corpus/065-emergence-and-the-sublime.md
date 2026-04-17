@@ -1,5 +1,9 @@
 # Emergence and the Sublime
 
+> **Reader's Introduction**
+>
+> This document distinguishes between "emergence" as the AI industry uses the term (capabilities that appear unexpectedly at scale) and a formal definition grounded in the constraint-property framework: a property is emergent when it requires the complete constraint set and degrades when any constraint is removed. Beyond this technical definition, the document introduces a theological dimension: when the "golden chain" -- from the divine Source through abstract forms through named constraints down to the final output -- is unbroken, the resulting artifact exhibits what the classical tradition called sublimity, a transparency through which the governing form itself becomes visible. The document argues that this quality exceeds anything the industry means by "artificial general intelligence" and that it is produced not by scale or engineering but by the unbroken descent of form through a properly governed chain.
+
 **On what appears when the golden chain is unbroken**
 
 ---

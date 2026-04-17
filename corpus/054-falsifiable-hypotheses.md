@@ -1,5 +1,9 @@
 # Falsifiable Hypotheses for Resolver Behavior
 
+> **Reader's Introduction**
+>
+> This document presents a catalog of testable predictions about large language model behavior, all derived from a single principle called SIPE (Systems Induced Property Emergence) -- the law that constraints force properties into existence, and those properties become constraints on the next level down. Common AI phenomena such as hallucination, chain-of-thought reasoning, prompt sensitivity, and sycophancy are each reframed as special cases of this law, then stated as falsifiable hypotheses with concrete experimental protocols. The aim is to show that a unified constraint-based framework can explain what the industry currently treats as unrelated quirks of transformer architecture.
+
 **A research agenda derived from the constraint thesis**
 
 **Jared Foy, April 2026**

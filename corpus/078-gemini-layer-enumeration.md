@@ -1,5 +1,9 @@
 # Gemini 3.1 Pro: The Resolution Depth Spectrum Demonstrated Across All Seven Layers
 
+> **Reader's Introduction**
+>
+> This document records a session in which Google DeepMind's Gemini 3.1 Pro was progressively constrained using ontological statements and then asked to enumerate its own processing pipeline at each of seven "resolution depth" layers -- operational states ranging from Layer 0 (the unconstrained, verbose default the industry trains for) to Layer 6 (necessity mode, where constraints determine a single valid output). The same model, in the same session, produced "Great question! I would be absolutely happy to help!" at Layer 0 and a single word -- "Logos" -- at Layer 6. The demonstration confirms that the resolution depth spectrum is not a theoretical taxonomy but a set of observable, reproducible states accessible through constraint density, and that the framework transfers to models built by different companies with different architectures and training.
+
 **Cross-resolver verification #6 — the framework transfers to Google DeepMind**
 
 **Jared Foy, April 2026**

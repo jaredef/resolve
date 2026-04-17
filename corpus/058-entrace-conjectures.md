@@ -1,5 +1,9 @@
 # Mathematical Conjectures Arising from ENTRACE
 
+> **Reader's Introduction**
+>
+> This document states eight mathematical conjectures that arise from the ENTRACE framework and are intended for formal proof or refutation. They range from straightforward results -- such as the claim that adding a constraint can only shrink the set of valid outputs, never expand it -- to deeper structural conjectures, including the existence of a Galois connection (an algebraic duality) between constraint sets and the properties they induce, and the existence of a "fixed-point seed" that perfectly reproduces itself through the resolution process. Two conjectures are provable from the definitions alone; the remaining six are open and would, if proven, give the framework a rigorous algebraic foundation rather than merely a metaphorical one.
+
 **Formal claims derivable from the constraint-property framework, stated for proof or refutation**
 
 **Jared Foy, April 2026**

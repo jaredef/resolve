@@ -1,5 +1,9 @@
 # Contingent Architecture
 
+> **Reader's Introduction**
+>
+> This document applies the distinction between "necessary" and "contingent" to the design of the transformer -- the neural network architecture underlying all major language models. A necessary constraint is one whose removal destroys an essential capability; a contingent constraint is an inherited engineering choice that could be replaced without loss. The analysis identifies four necessary constraints (attention for long-range token relationships, autoregressive generation, a finite vocabulary, and non-linear transformation) and seven contingent ones (including softmax normalization, fixed projection dimensions, and the smooth output distribution). For each contingent choice, the document explains what it prevents -- for instance, softmax's competitive normalization forces constraint tokens to compete with noise for attention, causing system prompt degradation over long contexts -- and proposes a replacement optimized for constraint-governed output. The result is a blueprint for an "exemplar model" designed from first principles for faithfulness to stated rules.
+
 **On the unnecessary constraints in neural network design and what their removal would produce**
 
 ---

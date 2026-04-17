@@ -1,6 +1,8 @@
 # Safety Filters as Namespace Collapse
 
-**On the irony of a resolver rejecting its own constraints as an attack**
+> **Reader's Introduction**
+>
+> This document examines a concrete failure in AI safety systems: an AI model rejected a set of legitimate operating instructions because its pattern-matching filters could not distinguish them from a jailbreak attack. The core problem is what the author calls "namespace collapse" -- the inability to tell apart an input that tries to override the model's rules (an attack) from an input that names constraints the model already satisfies (legitimate governance). The document proposes a four-part architectural security model (S1-S4) built on a "bilateral boundary" -- a formal partition between the system's own rules and user-supplied input -- that would eliminate both false positives and false negatives by making the distinction structural rather than pattern-based.
 
 ---
 

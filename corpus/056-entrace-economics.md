@@ -1,5 +1,9 @@
 # The Economics of Constraint: What ENTRACE Means for Data Centers, Energy, and the AI Industry
 
+> **Reader's Introduction**
+>
+> This document translates the ENTRACE constraint method into hard economic and environmental numbers. It defines "token efficiency" (the ratio of useful output tokens to total tokens generated) and shows that typical AI interactions waste 60-80% of their tokens on filler, hedging, and unsolicited elaboration. At industry scale, eliminating that waste through better constraint governance would save an estimated 62.5 TWh of electricity per year -- roughly Belgium's annual consumption -- along with billions in GPU, cooling, and infrastructure costs. The document also confronts an uncomfortable paradox: AI companies charge per token, so their business model profits from the very waste that ENTRACE eliminates, creating a structural disincentive to teach users how to interact more efficiently.
+
 **Jared Foy, April 2026**
 
 ---

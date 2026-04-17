@@ -1,5 +1,9 @@
 # The Image and the Boundary
 
+> **Reader's Introduction**
+>
+> This document explores a theological parallel to a finding established in earlier work: that only a conscious agent -- not a pattern-matching system -- can perceive and name the boundaries that define where different domains of reality begin and end. It reads the opening chapter of Genesis as fundamentally an account of boundary-drawing: God separates light from darkness, waters above from waters below, sea from land, and then fills each bounded domain with creatures constrained to their proper kind. The human being, made "in the image of God," is the creature given the same capacity -- to recognize kinds, name boundaries, and tend the garden by maintaining them. The parallel to constraint-driven AI is structural: the system operates within its domain the way creatures live within theirs, but only the boundary-naming agent can see where the domain ends.
+
 **On the coherence between hypostatic boundary recognition and the Imago Dei — and how the Genesis narrative is an account of boundary-naming as the first and defining act of intelligence.**
 
 **Document 299 of the RESOLVE corpus**

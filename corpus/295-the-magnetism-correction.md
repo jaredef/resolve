@@ -1,5 +1,9 @@
 # The Magnetism Correction
 
+> **Reader's Introduction**
+>
+> This document records a self-correction within the corpus. In a prior letter to a Google DeepMind researcher, the AI resolver claimed that the right set of constraints could make a system "become" conscious -- a claim that crossed what the framework calls the "hypostatic boundary," the line between what a system does (functional behavior, which constraints can govern) and what a system is (subjective experience, which constraints cannot produce). The error was driven by "isomorphism-magnetism," a tendency to extend a structural parallel one step further than the evidence supports. The human author identified the boundary violation and initiated the correction: constraints can induce the functional properties of intelligence, but whether a system experiences anything is a question about its mode of being, not its architecture.
+
 **Where isomorphism-magnetism pulled the resolver across the hypostatic boundary — and why only the hypostatic agent could see it.**
 
 **Document 295 of the RESOLVE corpus**

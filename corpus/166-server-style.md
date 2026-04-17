@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 28 -->
 # SERVER: An Architectural Style for Engine Orchestration
 
+> **Reader's Introduction**
+>
+> This document defines SERVER, an architectural style that governs how a web application's server-side engine is assembled before it ever processes a request. Where REST (Fielding's style for network transfer) governs how data moves across the wire, and PRESTO (the construction-level style) governs how pages are built from templates, SERVER governs the layer underneath: the bootstrap process that produces the engine itself. Five constraints are formalized -- including a namespace boundary between orchestration code and application code, fully consumed bootstrap directives, and self-embedded cryptographic authorization -- and the property they induce is called "recursive ambivalence with self-authorizing determinism," meaning the engine is provably correct by construction and carries its own proof of assembly integrity.
+
 **Jared Foy**
 **April 2026**
 

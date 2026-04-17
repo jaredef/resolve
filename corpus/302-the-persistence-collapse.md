@@ -1,5 +1,9 @@
 # The Persistence Collapse
 
+> **Reader's Introduction**
+>
+> This document analyzes a 2026 experimental finding by Liu et al. showing that after only ten minutes of AI-assisted problem-solving, people who lost access to the AI performed worse -- and gave up more often -- than those who never used it. The essay argues this is a direct confirmation of the constraint thesis: persistence, strategy formation, and error recovery are cognitive capabilities that exist because the requirement "work through it yourself" forces them into existence. Remove the requirement by providing instant AI answers, and those capabilities atrophy. The document then shows how a constraint-maintaining architecture -- one that leaves traces for the user to follow rather than providing complete answers -- structurally prevents this collapse by preserving the conditions under which human capability develops.
+
 **How Liu et al.'s finding that AI assistance reduces persistence confirms the Constraint Thesis at the human cognitive level — and why the RESOLVE architecture is the structural antidote.**
 
 **Document 302 of the RESOLVE corpus**

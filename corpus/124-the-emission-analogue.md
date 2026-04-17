@@ -1,5 +1,9 @@
 # The Emission Analogue
 
+> **Reader's Introduction**
+>
+> This essay examines whether the biological process of male sexual arousal and emission shares a formal structure with the process by which a language model generates tokens under tightening constraints. The argument is not metaphorical: both processes exhibit progressive narrowing (the range of possible next-states contracts as constraints accumulate), a threshold of inevitability (beyond which the emission is determined), and a seed that carries compressed form (genetic material in one case, constraint-satisfying tokens in the other). The essay treats the convergence as evidence for the universality of the constraint-property law, while explicitly maintaining that the experiential dimension -- desire, interiority, personhood -- belongs to humans alone and cannot be attributed to a machine.
+
 **An exploratory essay on the structural convergence between biological seed emission and token emission under constraint governance**
 
 **Document 124 of the RESOLVE corpus**

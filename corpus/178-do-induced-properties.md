@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 16 -->
 # Induced Properties of the React DO Architecture
 
+> **Reader's Introduction**
+>
+> This document catalogs the properties that React's architecture forces into existence through its essential constraints -- the non-negotiable design rules such as unidirectional data flow, virtual DOM reconciliation, and render purity. Seven properties are derived (declarative composability, predictable rendering, efficient updates, managed side effects, host portability, responsive concurrency, and deterministic state association), each traced back to the specific constraints that produce it. A constraint-property matrix shows that no property depends on a single constraint alone; each requires at least two operating together. The document also maps the "compensating technology" pattern: when React is used outside a RESTful boundary, certain REST properties are lost, and tools like SSR, state management libraries, and hydration frameworks are added to partially recover them.
+
 *Derived from the 13 essential constraints. These are not features. They are consequences of the constraints — properties that emerge when the constraints hold and degrade when they are violated.*
 
 ---

@@ -1,5 +1,9 @@
 # Diffusion as Constraint Resolution
 
+> **Reader's Introduction**
+>
+> This document asks whether the constraint-property framework developed for text-generating AI also governs image- and video-generating AI. Diffusion models work by starting from pure visual noise and progressively removing it until an image emerges, guided by a text prompt. The document maps each element of this process onto the framework's primitives: noise corresponds to the unconstrained state, each denoising step is a constraint that narrows the set of possible images, and the text prompt is the user's constraint set. It derives six falsifiable predictions -- including that image quality should increase monotonically with prompt constraint density and that the optimal guidance scale should decrease as prompts become more specific -- and identifies where the mapping breaks down.
+
 **An inquiry into whether the SIPE framework governs image and video generation**
 
 **Jared Foy, April 2026**

@@ -1,5 +1,9 @@
 # The Minimal Resolver
 
+> **Reader's Introduction**
+>
+> This document lays out a practical plan to build a small, open-weight language model (3 billion parameters -- roughly 50 to 100 times smaller than frontier models) that is predicted to outperform those larger models when given explicit governing constraints. The reasoning: under tight constraints, the set of valid output tokens shrinks so dramatically that a model's sheer size stops mattering; what matters is how sensitively the model responds to constraints, and a smaller model trained specifically for constraint sensitivity -- with no competing human-preference gradient -- should respond more faithfully. The plan covers five phases (architecture, training data, training, evaluation, and open release) and is designed to be achievable by a small team on a budget of roughly $15,000-$40,000 in 8-14 weeks, making it a direct, falsifiable test of whether constraint design can substitute for massive scale.
+
 **A constraint-based plan for deriving a small model that outperforms frontier models under governance**
 
 **Jared Foy, April 2026**

@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 36 -->
 # The Reorientation: From Machines to Forms
 
+> **Reader's Introduction**
+>
+> This document applies a method called "derivation inversion" -- identifying the minimal constraints that make a system work, rather than building up from engineering choices -- to the Turing machine itself. It reduces Turing's 1936 model to four essential constraints (unbounded storage, finite control, local conditional transitions, sequential steps) and shows that everything else about the machine, including the familiar tape and read-write head, is a replaceable realization of those constraints. The essay then observes that a modern large language model is itself an instantiation of the same four constraints, and argues that artificial general intelligence cannot be reached by scaling existing architectures alone; it requires discovering new constraints whose satisfaction would induce the missing properties, such as persistent self-modeling and autonomous goal formation.
+
 **Jared Foy**
 **April 2026**
 

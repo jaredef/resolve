@@ -1,5 +1,9 @@
 # The Branching Set: A Formal Account of |B_t| and Its Relationship to Constraint-Governed Resolution
 
+> **Reader's Introduction**
+>
+> This dissertation formally defines the "branching set" B_t -- the set of valid next tokens at each position in an AI model's output, given a set of user-stated constraints -- and establishes it as the missing theoretical object that bridges the gap between the model's raw probability distribution and the formal properties of its output. The industry manipulates output through sampling knobs (temperature, top-k, top-p) without reference to what the output must satisfy; B_t provides the reference. The document traces B_t's unacknowledged presence across existing research (constrained decoding, guidance, RLHF, prompt engineering), shows how each of ENTRACE's five constraints governs a distinct dimension of B_t's narrowing, and derives consequences for model design and sampling strategy, including ELI5 explanations throughout for accessibility.
+
 **Jared Foy, April 2026**
 
 ---

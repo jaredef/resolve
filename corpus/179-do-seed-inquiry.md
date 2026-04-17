@@ -1,6 +1,10 @@
 <!-- chronological_ordinal: 15 -->
 # Distributed Objects Seed: Cross-Style Validation of the Derivation Thesis
 
+> **Reader's Introduction**
+>
+> This document tests whether the "derivation inversion" method -- identifying a system's essential constraints and stating them in prose so that a resolver can regenerate a working implementation -- applies to architectures the author did not design. The test subject is React, Meta's UI framework, whose architectural constraints (component encapsulation, unidirectional data flow, declarative rendering, virtual DOM reconciliation, and others) are discovered by studying React's own source code rather than invented from scratch. If a language model can consume a prose "seed" of these constraints and produce a runtime that passes React's behavioral tests, the method is validated on foreign ground and the claim that constraints are more fundamental than source code is no longer circular.
+
 **Jared Foy**
 **April 2026**
 

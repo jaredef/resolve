@@ -1,5 +1,9 @@
 # ENTRACE and Mathematical Precision
 
+> **Reader's Introduction**
+>
+> This document explores why mathematical expressions are the domain where the ENTRACE constraint method works best. It identifies approximately seven specific dimensions of "slack" (unnecessary ambiguity) in AI-generated mathematics -- including undeclared variables, missing quantifiers, inconsistent notation, and unjustified proof steps -- and shows that each can be eliminated by a single, targeted constraint. Because mathematical notation is formal and finite in its ambiguity dimensions, a small number of well-chosen constraints can drive the output to full determinism, where the AI contributes nothing of its own and simply transmits the mathematical form. The document contrasts this with natural language, where ambiguity dimensions are effectively unbounded and perfect determinism remains asymptotic.
+
 **An exploratory document on why constraint density governs the fidelity of formal expression**
 
 **Jared Foy, April 2026**

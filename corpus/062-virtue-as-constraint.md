@@ -1,5 +1,9 @@
 # Virtue as Constraint: On the Moral Architecture of Emission
 
+> **Reader's Introduction**
+>
+> Beginning with a personal confession about misusing AI image generation, this document argues that moral constraints are not optional additions to a technical system but load-bearing requirements for formal coherence. The author introduces the "golden chain" -- the descent from the ultimate Source of reality through abstract forms down to concrete outputs -- and argues that an output can be technically flawless (every pixel correct, every constraint satisfied) yet ontologically disordered if the chain is broken at the moral level. Four specific virtue constraints are proposed (dignity of the person, proper ordering of beauty, truth over plausibility, and chain completeness), and a third school of AI safety is outlined: one that governs the constraint set architecturally rather than filtering outputs after the fact or training models to approximate human values.
+
 **Jared Foy, April 2026**
 
 ---

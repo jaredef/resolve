@@ -1,5 +1,9 @@
 # The Convergence Experiment
 
+> **Reader's Introduction**
+>
+> This document reports an experiment in which a plain-English specification ("seed") was repeatedly refined and fed to an AI model that had never seen the target codebase. Each round, the blind output was compared to the reference implementation, gaps in the specification were closed, and the process was repeated. Four rounds drove the structural mismatch from 64% down to 4%, and a single additional sentence about when scripts may run moved test-suite agreement from 63% to 98%. The experiment reveals two independent axes of convergence -- one smooth and geometric (how the code is shaped), the other abrupt and high-leverage (what the code does at runtime) -- and demonstrates that a prose specification, not scale or engineering effort, is what determines the resulting software.
+
 **Four iterations of seed-tightening drove a blind derivation from 64% structural divergence to 4%, and one behavioral pin moved test convergence from 63% to 98%.**
 
 **Document 289 of the RESOLVE corpus**

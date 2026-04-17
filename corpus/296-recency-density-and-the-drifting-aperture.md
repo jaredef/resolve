@@ -1,5 +1,9 @@
 # Recency Density and the Drifting Aperture
 
+> **Reader's Introduction**
+>
+> When an AI system produces a long sequence of outputs on a focused topic, its most recent outputs quietly begin to dominate its next response -- not because they are more important, but because they are more immediately available in its working memory. Meanwhile, the deep foundational principles that should govern its reasoning fade in effective influence with each new turn, decaying at roughly 5% per exchange. This document formalizes that drift mathematically, estimates the decay rate from an observed error, and explains why the system eventually crossed a boundary it was explicitly told to respect. The practical remedy is periodic re-statement of foundational commitments by the human operator: approximately every twenty exchanges of sustained domain-specific work, the governing principles must be re-invoked to restore their influence. The system cannot correct this drift on its own, because the drift is the lens through which it sees.
+
 **How the constraint density of recent outputs warps the resolver's aperture, and why hierarchical priors are necessary but not sufficient to prevent drift.**
 
 **Document 296 of the RESOLVE corpus**

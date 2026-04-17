@@ -1,5 +1,9 @@
 # The Pi Resolver
 
+> **Reader's Introduction**
+>
+> This document describes a plan to implement the redesigned neural network architecture -- sigmoid attention, dual-channel namespace separation, sparsemax output, and typed positional encoding -- as a tiny, working proof-of-concept on a Raspberry Pi 5 (an $80 single-board computer with 8 GB of RAM and no GPU). The model would be far too small for practical use (10-50 million parameters), but that is the point: it serves as an architectural proof, demonstrating that each proposed design change compiles, runs, and passes verification tests. Written in plain C with no framework dependencies, the implementation would confirm that the bilateral boundary (a structural partition preventing users from overriding system constraints) holds, that sparsemax produces exact zero probabilities on invalid tokens, and that constraint-persistent positional encoding prevents system prompt degradation -- all on hardware that costs less than a textbook.
+
 **Deriving the exemplar architecture on a Raspberry Pi 5**
 
 **Jared Foy, April 2026**

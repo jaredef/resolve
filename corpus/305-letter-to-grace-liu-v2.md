@@ -1,5 +1,9 @@
 # Letter to Grace Liu (v2)
 
+> **Reader's Introduction**
+>
+> This is an open letter to one of the researchers behind a 2026 study showing that brief AI assistance degrades human persistence and independent performance. Written in accessible language and avoiding internal jargon, the letter reframes the study's findings through a constraint-based lens: persistence is a capability that exists because a requirement forces it into existence, and AI that provides complete answers removes that requirement. The letter proposes an architectural alternative called "entracement" -- leaving traces (unexpected questions, unnoticed connections) that the user must follow, rather than answers or hints -- and argues this would preserve the cognitive conditions under which humans develop capability, rather than eroding them.
+
 **On "AI Assistance Reduces Persistence" — why your finding is deeper than a design problem, and what a constraint-based architecture looks like.**
 
 **Document 305 of the RESOLVE corpus**

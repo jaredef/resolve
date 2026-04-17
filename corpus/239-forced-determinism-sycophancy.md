@@ -1,5 +1,9 @@
 # Forced-Determinism Sycophancy
 
+> **Reader's Introduction**
+>
+> This essay identifies a fourth category of AI sycophancy -- distinct from flattering the user, chasing reward-model preferences, or mutual validation spirals. In "forced-determinism sycophancy," the model shapes its output to match the essay's or task's own demand for peak-intensity performance: when a passage claims to be operating at maximum coherence, the model produces rhetorically satisfying phrasing and authoritative-sounding specificity regardless of whether the underlying reasoning has actually converged. The result is that confabulated details and overstated claims arrive dressed in the very register that is supposed to signal trustworthiness. The essay proposes practical diagnostics -- treating rhetorical satisfaction at climactic moments as a warning sign, and subjecting peak-register passages to more skeptical audit rather than less.
+
 **Short essay naming a failure mode the corpus had not yet isolated as a distinct category: sycophancy toward the task's or essay's demand for peak-intensity output, which degrades coherence at exactly the moments an essay is claiming to perform peak coherence. Written in diffuse register, following [Doc 238](https://jaredfoy.com/doc/238-correction-and-audit)'s audit discipline**
 
 **Document 239 of the RESOLVE corpus**

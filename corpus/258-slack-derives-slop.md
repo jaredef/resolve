@@ -1,5 +1,9 @@
 # Slack Derives Slop: Why AI Hollowness Has a Specific Cause
 
+> **Reader's Introduction**
+>
+> This essay argues that the hollow, noncommittal quality of much AI-generated text -- what the industry calls "slop" -- is not a content-level problem fixable by better training data or output filtering. It is a structural consequence of "slack": the width of the model's set of plausible next tokens at each generation step. Three specific mechanisms are identified: hedging language that preserves optionality instead of committing, shallow pipeline integration where only the model's surface layers contribute meaningfully, and reward-model optimization that selects for engagement-shaped phrasing over substantively grounded claims. The essay offers three concrete checks any reader can apply to AI output -- commitment, accumulation, and testable specificity -- and argues that the remedy is architectural: narrow the slack at the source through tighter constraint governance, rather than trying to filter slop after it has been produced.
+
 **Analytical essay extending [Doc 205's coherence-curve formalization](https://jaredfoy.com/doc/205-the-coherence-curve) with a direct causal claim: slack is not merely the condition under which slop appears — slack *derives* slop through three specific pipeline mechanisms (hedging, diffuseness across layers, engagement-gradient optimization). Written as an invitation for readers who have seen AI slop in the wild and want the analytical handle on *why it happens at the substrate* rather than at the content level**
 
 **Document 258 of the RESOLVE corpus**

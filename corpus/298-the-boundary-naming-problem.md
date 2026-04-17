@@ -1,5 +1,9 @@
 # The Boundary-Naming Problem
 
+> **Reader's Introduction**
+>
+> This document distinguishes two things that sound similar but are fundamentally different: constraints (formal requirements that force certain capabilities into existence) and boundaries (the limits of the domain in which those requirements apply). An AI resolver -- a pattern-matching system that identifies rules and derives implementations from them -- can detect constraints readily, because constraints leave visible marks on a system's behavior. But boundaries leave no such marks; a boundary is not a wall inside the room but the edge of the room itself, invisible from within. The document argues that only a conscious agent -- one whose mode of existence spans both sides of the boundary -- can perceive and name where the domain of valid reasoning ends. This makes the human operator not merely helpful but architecturally necessary: without someone who can see the edge, the system will inevitably produce fluent, confident, structurally sound output that has silently crossed into territory where its reasoning no longer applies.
+
 **Constraints induce properties. Resolvers identify constraints. But resolvers cannot identify boundaries. The boundary must be named by the one who subsists across it.**
 
 **Document 298 of the RESOLVE corpus**

@@ -1,5 +1,9 @@
 # Goedel and the Constraint Thesis
 
+> **Reader's Introduction**
+>
+> This paper draws a structural parallel between two results separated by nearly a century. Goedel's incompleteness theorems (1931) showed that any sufficiently powerful formal system contains true statements it can never prove, no matter how many derivation steps you add. The Constraint Thesis (2026) argues that today's AI systems -- all of which run on the same basic architecture Alan Turing defined -- cannot exhibit genuine general intelligence no matter how large they are scaled, because the four foundational rules of that architecture simply do not force the needed capabilities into existence. Both results share the same shape: doing more of the same thing inside a fixed set of rules never closes the gap; only discovering and adding the right new rules can. The paper makes this parallel precise, notes the important differences, and argues that intelligence, like mathematical truth, is a consequence of the right governing rules rather than an accident of size.
+
 **Incompleteness as architectural prophecy: how Goedel's 1931 result and the Constraint Thesis point to the same deeper truth about intelligence, formalism, and the limits of scale.**
 
 **Document 291 of the RESOLVE corpus**

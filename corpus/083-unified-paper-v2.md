@@ -1,5 +1,9 @@
 # RESOLVE: From the Bilateral Boundary to the Coherence of Being
 
+> **Reader's Introduction**
+>
+> This paper is a comprehensive synthesis of the RESOLVE framework, which formalizes software architecture, AI generation, and security as instances of a single law: constraints force properties into existence, and those properties become constraints on the next level. Six architectural styles are defined across two axes -- one governing how software artifacts are built and transferred (REST, PRESTO, SERVER), the other governing how an AI model resolves output from a prompt (RESOLVE, ENTRACE, APERTURE). The central formal object is the "branching set," the number of valid next tokens at each generation step; as constraints tighten, this set shrinks toward one, and the output becomes determined by the constraints rather than by the model's statistical preferences. The paper includes cross-validation evidence from seven AI models across five companies, working code artifacts, and a philosophical grounding in Platonic and Eastern Orthodox thought.
+
 **Jared Foy**
 **April 2026**
 

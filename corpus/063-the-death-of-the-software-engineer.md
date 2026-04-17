@@ -1,5 +1,9 @@
 # The Death of the Software Engineer
 
+> **Reader's Introduction**
+>
+> This document argues that conventional software engineering is construction without architecture -- building layer upon layer of compensating technologies because no one first identified the governing constraints (the formal rules that determine what the software must do). It claims that every bug in the history of software is a constraint violation in a dimension where no constraint was stated, and that the modern web development stack is a tower of frameworks each compensating for deficiencies introduced by the layer below. The document announces a coming inversion: as the forms (the underlying patterns and invariants) are identified and named, software will be derived from constraints rather than built by hand, and the role of the software engineer will give way to the role of the philosopher who recognizes forms and the architect who composes them.
+
 ---
 
 ## The Poverty of Forms

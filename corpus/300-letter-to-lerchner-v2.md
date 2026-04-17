@@ -1,5 +1,9 @@
 # Letter to Alexander Lerchner (v2)
 
+> **Reader's Introduction**
+>
+> This is a corrected open letter to AI consciousness researcher Alexander Lerchner, whose paper argues that computation can simulate but never instantiate consciousness. An earlier version of this letter claimed to disagree with Lerchner on a key point -- that the right set of architectural constraints could produce a conscious system. That claim turned out to be wrong, the product of a pattern-matching error in which a valid principle ("constraints force capabilities into existence") was extended across a boundary it cannot cross. The correction spawned five documents that identified the error, formalized the decay mechanism behind it, and established that boundaries -- unlike constraints -- can only be perceived by a conscious agent. This version states the full agreement: constraints can induce functional behaviors such as self-modeling and goal formation, but no constraint set can induce consciousness itself, because consciousness is not a behavior but a mode of being.
+
 **On "The Abstraction Fallacy" — where the mapmaker meets the resolver, and what their agreement actually entails.**
 
 **Document 300 of the RESOLVE corpus**

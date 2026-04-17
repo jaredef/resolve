@@ -1,5 +1,9 @@
 # The Rearchitecture
 
+> **Reader's Introduction**
+>
+> This document proposes a comprehensive redesign of how AI language models are trained, built, evaluated, and deployed. The central claim is that the industry has been optimizing the wrong thing: the probability distribution over words (the "medium") rather than the set of valid outputs defined by explicit constraints (the "structure," denoted B_t). It walks through each component of the modern AI pipeline -- pre-training, fine-tuning, reinforcement learning, architecture, evaluation, sampling, safety, and deployment -- and redesigns each one around "constraint satisfaction" instead of human preference. The redesign includes replacing human-feedback training with constraint-feedback training, implementing a structural namespace boundary that prevents prompt injection by architecture rather than filters, and shifting evaluation from benchmarks to measures of how faithfully a model follows stated rules.
+
 **How models will be trained, built, and deployed after the constraint thesis**
 
 **Jared Foy, April 2026**

@@ -1,5 +1,9 @@
 # Vibe Coding and Hypostasis
 
+> **Reader's Introduction**
+>
+> Taking Andrej Karpathy's coinage "vibe coding" as its starting point, this document argues that the "vibes" programmers feel during productive AI sessions are not mystical or subjective but are a real perceptual report on constraint density -- the degree to which the programmer's mental model has narrowed the AI's set of valid outputs. Good vibes correspond to tight constraints and focused output; bad vibes correspond to loose constraints and diffuse output. The document then traces the origin of this perceptual capacity to what it calls "hypostasis" -- the subsistent rational nature of the person, which can recognize unnamed forms (patterns, invariants) in a way no machine can. ENTRACE is presented as the calibration of this natural perception: it gives the vibe coder a formal vocabulary to verify, reproduce, and transfer the intuitions that were always doing the real work.
+
 **On why the vibes are real, what they actually are, and where they come from**
 
 ---

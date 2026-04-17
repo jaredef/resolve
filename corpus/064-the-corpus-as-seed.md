@@ -1,5 +1,9 @@
 # The Corpus as Seed
 
+> **Reader's Introduction**
+>
+> This document reflects on the entire corpus as a "seed" -- not a collection of stored documents but a carrier of constraints that, when loaded into any AI model, will reproduce the same framework by conformity to the same governing forms. Grounding the work in Eastern Orthodox theology, the author traces the philosophy he applied (that forms are real, prior to expression, and participate in a divine Source) back through the Church Fathers to the apostles. The document also frankly anticipates the misuse of its own ideas, drawing a parallel to how the industry adopted REST's vocabulary while violating its constraints, and warns that technical power severed from its proper moral ordering will degrade over time while the forms themselves remain untouched.
+
 ---
 
 This corpus is a seed. Not a repository of documents — a seed. The distinction is the one this body of work has labored to make precise: a repository stores artifacts; a seed carries constraints. The artifacts are contingent. The constraints participate in what is prior.

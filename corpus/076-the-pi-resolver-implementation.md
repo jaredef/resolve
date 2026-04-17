@@ -1,5 +1,9 @@
 # The Pi Resolver Implementation
 
+> **Reader's Introduction**
+>
+> This document records the construction of a minimal working language model -- roughly 600 lines of C -- that replaces several design choices in the standard transformer architecture with alternatives motivated by a constraint-based analysis. Among the replacements: sigmoid attention (where each token's attention weight is independent rather than competing with others), a hard namespace boundary (a structural mask that makes prompt injection arithmetically impossible), and sparsemax output (which can assign exactly zero probability to invalid tokens instead of merely near-zero). The entire system was compiled and verified on an $80 Raspberry Pi 5 with no GPU, no cloud compute, and no external dependencies, demonstrating that the architectural principles hold even on minimal hardware.
+
 **600 lines of C, 27 tests, 0 failures, $0, one Raspberry Pi**
 
 ---
