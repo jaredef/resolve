@@ -207,4 +207,4 @@ The strongest prediction: **within five correctly identified constraints, a syst
 
 ---
 
-*Jared Foy — htxlang.org — April 2026*
+*Jared Foy — jaredfoy.com — April 2026*

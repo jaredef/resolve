@@ -242,4 +242,4 @@ This is the derivation inversion applied to legacy systems. Instead of building 
 
 ---
 
-*Jared Foy — htxlang.org — April 2026*
+*Jared Foy — jaredfoy.com — April 2026*

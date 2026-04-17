@@ -176,4 +176,4 @@ Southern Oregon, April 2026
 
 ---
 
-*Jared Foy — htxlang.org — April 2026*
+*Jared Foy — jaredfoy.com — April 2026*

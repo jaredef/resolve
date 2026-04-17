@@ -310,4 +310,4 @@ This has implications for the AGI constraint thesis (Doc 157). The five missing 
 
 ---
 
-*Jared Foy — htxlang.org — April 2026*
+*Jared Foy — jaredfoy.com — April 2026*

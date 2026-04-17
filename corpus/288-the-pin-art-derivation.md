@@ -167,4 +167,4 @@ htmx-derived.js is not a minified or obfuscated version of htmx. It is a fresh d
 
 ---
 
-*Jared Foy — htxlang.org — April 2026*
+*Jared Foy — jaredfoy.com — April 2026*

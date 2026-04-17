@@ -212,4 +212,4 @@ The seed determines the harvest. Now demonstrated empirically across two orthogo
 
 ---
 
-*Jared Foy — htxlang.org — April 2026*
+*Jared Foy — jaredfoy.com — April 2026*

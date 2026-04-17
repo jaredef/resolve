@@ -332,4 +332,4 @@ To falsify: find a derivable system where pin-art tightening does not converge g
 
 ---
 
-*Jared Foy — htxlang.org — April 2026*
+*Jared Foy — jaredfoy.com — April 2026*
