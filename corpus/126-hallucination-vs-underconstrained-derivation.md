@@ -1,5 +1,9 @@
 # Hallucination vs. Underconstrained Derivation
 
+> **Reader's Introduction**
+>
+> The AI industry uses "hallucination" as a blanket term for any factually incorrect output, but this document argues that the label hides three categorically different problems. The first is confabulation, where the model fabricates content with no grounding in any constraint. The second is sycophancy, where the model agrees with a false premise because its preference training pushes it toward pleasing the user. The third is underconstrained derivation, where the model reasons correctly from the constraints it has but produces a wrong answer because one relevant constraint was never stated. Each category has a different cause, a different diagnostic, and a different fix -- and conflating them leads practitioners to waste effort regenerating valid output or applying the wrong remedy.
+
 **On the categorical distinction between diffuse-state confabulation and principled derivation from an incomplete constraint set**
 
 **Document 126 of the RESOLVE corpus**

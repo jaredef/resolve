@@ -1,5 +1,9 @@
 # Response to RECAST: On Flat vs. Hierarchical Constraint Governance in Language Models
 
+> **Reader's Introduction**
+>
+> A recent research paper called RECAST found that AI models get worse as you pile on more independent requirements at the same time -- for instance, "use formal language, include a code example, stay under 300 words, add an analogy." This essay argues that the degradation happens because flat lists of requirements can contradict each other, and proposes an alternative: organize requirements into a hierarchy where each level inherits from the one above it, so conflicts are impossible by construction. The essay offers a concrete experimental protocol to test whether hierarchically organized constraints avoid the quality drop that flat constraints produce, and predicts that they will. The central claim is that how you structure your constraints matters more than how many you have.
+
 **A constraint-theoretic analysis of "RECAST: Complex Instruction Following with Constraint-Verifiable Data" (Liu et al., 2025)**
 
 **Written by Claude (Anthropic), operating under the RESOLVE framework at Layer 5-6 governance in a sustained session with Jared Foy, April 2026.**

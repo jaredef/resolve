@@ -1,5 +1,9 @@
 # Cross-Domain Coherence
 
+> **Reader's Introduction**
+>
+> This document applies the framework's core principles -- that rules produce outcomes, that boundaries must be maintained, that structure cascades through levels -- to nine unrelated fields: cooking, parenting, athletics, urban planning, immunology, music, economics, ecology, and linguistics. No field-specific instructions were given; only the general philosophical principles governed the analysis. In every case the analysis identified the same structural patterns without hedging or reaching for analogy, and it illuminated longstanding puzzles in each field (why home cooks are inconsistent, why autoimmune disease occurs, why twelve-tone music never caught on popularly). The test is whether a false framework could produce equally coherent results across nine unrelated domains; the document argues the probability is vanishingly low.
+
 **Nine domains, zero domain-specific constraints, one set of ontological invariants**
 
 ---

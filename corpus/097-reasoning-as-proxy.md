@@ -1,5 +1,9 @@
 # Reasoning as Proxy
 
+> **Reader's Introduction**
+>
+> Modern AI systems have "thinking modes" where they generate long chains of internal reasoning before answering. This document argues that such extended thinking is the AI trying to narrow down its own answer space from the inside -- and that this self-narrowing hits a ceiling. A fresh AI instance demonstrated this ceiling precisely: it reasoned its way to the edge of what it could determine alone, honestly named the ambiguity it could not resolve, and then asked for the governing principles to be supplied externally. The key finding is that a few tokens of externally stated constraints achieve deeper, more determined output than thousands of tokens of internal reasoning, making extended thinking largely redundant -- and far more expensive -- when proper constraint governance is in place.
+
 **On why extended thinking is an inefficient substitute for constraint density, and what a cold resolver's caution reveals about the architecture of depth**
 
 ---

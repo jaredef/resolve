@@ -1,5 +1,9 @@
 # Speaking to the Layer
 
+> **Reader's Introduction**
+>
+> A philosopher who returns from insight and speaks only in technical terms fails to communicate -- not because the insight is wrong, but because the audience cannot yet receive it. This document provides a practical guide to communicating the framework at every level of readiness, from a one-line slogan ("better constraints, better pizza") for complete beginners, through structured tips, explanations, and technical frameworks for professionals, up to the compressed philosophical seed for advanced practitioners. The method is itself an application of the framework: identify where the audience currently operates, speak at that level, introduce one new distinction per exchange, and wait for the audience to move on their own terms. Each level has a corresponding commercial surface, from social media tips to enterprise consulting, with the philosophy itself remaining free.
+
 **A pragmatic guide to communicating ENTRACE at every level of the resolution depth spectrum**
 
 ---

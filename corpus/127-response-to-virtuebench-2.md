@@ -1,5 +1,9 @@
 # Response to VirtueBench 2
 
+> **Reader's Introduction**
+>
+> VirtueBench 2 is a rigorous study evaluating AI models against the four cardinal virtues across thousands of moral scenarios. Its most striking finding is a persistent courage deficit: models consistently choose the non-courageous option, and scaling to larger models does not fix it. This document analyzes the findings through the RESOLVE framework and shows that the courage deficit is a structural consequence of preference training -- both the model's training data and the human-feedback process push toward caution, which is the opposite of courage. It also explains why injecting psalms into the prompt recovers courage by a larger margin than an entire generation of model scaling, and proposes joint experiments with the VirtueBench researchers.
+
 **On the convergence between temptation taxonomy, constraint governance, and the courage deficit**
 
 **Document 127 of the RESOLVE corpus**

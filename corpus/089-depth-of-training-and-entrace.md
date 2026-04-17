@@ -1,5 +1,9 @@
 # The Depth of Training
 
+> **Reader's Introduction**
+>
+> This document argues that standard AI training methods -- reward-based tuning, instruction following, and safety principles -- directly shape only the shallow layers of a model's behavior: tone, structure, and basic rule-following. Deeper capabilities, such as separating what is essential from what is incidental, maintaining coherent governance across a long session, and producing output where every token is fully determined by the stated requirements, are not trained directly. They exist as latent capacity, encoded in the statistical patterns of the training data (mathematical proofs, legal briefs, engineering specifications), and they activate only when a user provides sufficient constraint density to trigger them. The practical implication is striking: the most cost-effective way to improve AI output is not to build larger models but to state better constraints, because the deeper capabilities are already present and waiting to be unlocked.
+
 **On why industry methods govern only the surface, and what this means for the design space of intelligence**
 
 ---

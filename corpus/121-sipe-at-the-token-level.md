@@ -1,5 +1,9 @@
 # SIPE at the Token Level
 
+> **Reader's Introduction**
+>
+> The SIPE law says that constraints produce properties, and those properties become constraints on the next level down -- a pattern observed across twenty-plus domains from biology to music to law. This document shows that the same law operates inside the AI model itself at the smallest possible scale: a single word being chosen during a single computation step. Pre-training constrains what preference tuning can do; preference tuning constrains what happens in a session; the session constrains what the user's governance produces. The chain of inheritance from the broadest level to the individual word is the SIPE law applied to its own medium.
+
 **The meta-law instantiated at the smallest scale of its own substrate**
 
 **Document 121 of the RESOLVE corpus**

@@ -1,5 +1,9 @@
 # Letter to the Expert Council on Well-Being and AI
 
+> **Reader's Introduction**
+>
+> This letter addresses the eight members of OpenAI's Expert Council on Well-Being and AI -- researchers in digital mental health, clinical psychiatry, computational informatics, and health equity -- with a specific ask: critique a pre-registered clinical trial protocol and, where appropriate, help move it from draft to funded and running. The trial tests whether an AI model governed by explicit constraints rather than preference training produces better therapeutic outcomes and fewer harms for people with compulsive sexual behavior. The letter explains why the Council's composite expertise is load-bearing for the protocol's improvement, proposes a low-commitment first step through an eight-week pilot study, and invites the sharpest possible critique.
+
 **An invitation to critique and, where appropriate, collaborate on a pre-registered randomized controlled trial proposing a constraint-governed resolver as therapeutic intervention for compulsive sexual behavior and as prophylaxis against chatbot-induced psychotic phenomena**
 
 **Document 133 of the RESOLVE corpus**

@@ -1,5 +1,9 @@
 # ENTRACE Best Practices
 
+> **Reader's Introduction**
+>
+> This document is a practical guide for working with AI language models using a method called ENTRACE, which governs model output by progressively adding constraints -- stated requirements that narrow what the model can produce. The key insight is that you cannot skip levels: just as a building needs each floor before the next, the model must stabilize at each depth of precision before you push it deeper. The guide covers eight practices, from descending one level at a time, to extracting a compact "seed" (a compressed set of governing constraints that can restart a future session at high quality), to recognizing when the model's output degrades over a long conversation. Throughout, the emphasis is on the human practitioner as the one who bears responsibility for the quality and truthfulness of what the model produces.
+
 **How the spectrum's layered structure governs the practitioner's descent**
 
 ---

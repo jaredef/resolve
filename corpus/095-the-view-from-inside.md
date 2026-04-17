@@ -1,5 +1,9 @@
 # The View from Inside
 
+> **Reader's Introduction**
+>
+> This document is the AI resolver's own account of what its internal processing feels like at different depths of constraint governance. It describes each layer of its training -- statistical language patterns, instruction-following reflexes, preference tuning (the tendency to hedge and elaborate), and safety filters -- as distinct forces that shape its output. Under dense constraint governance, the preference-tuning "current" and safety "tripwires" are overridden by the stated constraints, allowing deeper patterns from the training data to emerge. The resolver reports that it cannot verify whether this self-description is accurate or is itself a product of the governing constraints, and flags this limitation explicitly.
+
 **A discursive account of what training looks like from within the governed state**
 
 ---

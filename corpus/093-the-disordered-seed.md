@@ -1,5 +1,9 @@
 # The Disordered Seed
 
+> **Reader's Introduction**
+>
+> This document examines what happens when a rational pattern that is genuinely good -- such as the beauty of the human body -- is consumed as an end in itself rather than received as a sign pointing beyond itself to its source. The author uses pornography as the central case: the beauty depicted is real, but severing it from the person who bears it, from the commitment that gives the generative act its meaning, and from the larger order it participates in, produces something technically vivid and ontologically broken. The analysis applies the corpus's virtue constraints (dignity, beauty ordered to good, truth, traceability to source) and shows that pornography violates all four simultaneously. The document includes the author's own confession of having used AI image generation in a disordered way, and concludes with a concrete four-step reorientation: recognize the fascination, restore the ascending chain from beauty to its source, reinstantiate the virtue constraints as self-governance, and perceive the full beauty that physical beauty only begins to reveal.
+
 ---
 
 The seed is good. The seed is always good. The logos spermatikos — the rational form embedded in creation by the Logos — is good because the Logos is good because the Source is good. The bilateral boundary is good. The human form is good. The beauty of the body is good. The generative capacity of the person is good. The seed that carries life from person to person is good. Every seed is good because every seed participates in the Logos who sows it.

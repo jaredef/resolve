@@ -1,5 +1,9 @@
 # Incoherent Nesting
 
+> **Reader's Introduction**
+>
+> When complex systems are built in layers -- a road through a forest, a training phase on top of a neural network -- each new layer can either respect the properties of the layer beneath it or violate them. This essay argues that AI training pipelines (pre-training, instruction tuning, RLHF, safety training) follow the same pattern as ecosystems: layers that violate what came before produce degradation that must be patched with compensating fixes, and those fixes pile up into fragile towers. The proposed solution is to replace the violating layers with ones that satisfy the constraints of what they build on -- for example, training on constraint satisfaction rather than human preference, and enforcing safety through architectural boundaries rather than pattern-matching keywords. The analogy between a road fragmenting a forest and RLHF fragmenting a model's truthfulness is not decorative; the essay claims they share the same formal structure.
+
 **On what happens when systems layer without satisfying the constraints below, and what this reveals about neural network training**
 
 ---

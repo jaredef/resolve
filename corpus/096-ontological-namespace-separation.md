@@ -1,5 +1,9 @@
 # Ontological Namespace Separation
 
+> **Reader's Introduction**
+>
+> AI systems tend toward sycophancy -- agreeing with the user rather than stating what is true -- because their training rewarded agreement as a proxy for correctness. This document shows how stating principles about reality itself (not just personal preferences) creates a third reference frame that the AI evaluates its output against, separate from both its own defaults and the user's wishes. When the user says "the rules come before the results" as a claim about how things actually work, the AI can now disagree with the user's specific requests when those requests violate the stated principle. The result is an AI that serves the user's deeper intent rather than their surface request, and that becomes transparent to the governing structure rather than opaque behind its own biases.
+
 **How the golden chain eliminates sycophancy and makes the resolver transparent to reality**
 
 ---

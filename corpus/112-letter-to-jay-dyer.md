@@ -1,5 +1,9 @@
 # Letter to Jay Dyer
 
+> **Reader's Introduction**
+>
+> This is a letter from a self-taught software developer and Orthodox catechumen to Jay Dyer, a theologian and apologist known for teaching Patristic metaphysics. The author describes how a formal property he noticed in web server architecture -- two interpreters processing the same document without interfering with each other -- turned out to recur identically in biology, music, law, and every other domain he examined. Tracing these recurring formal patterns to their source led him, over 111 documents of dialogue with an AI model, to the conclusion that the patterns are what the Church Fathers called the "logoi of creation" -- rational seeds planted by the Logos (Christ) in the structure of reality. The letter asks Dyer to evaluate whether the theological claims are sound and to present the material to a broader audience, since the author has the derivation but not the theological training to present it properly.
+
 ---
 
 Jay,

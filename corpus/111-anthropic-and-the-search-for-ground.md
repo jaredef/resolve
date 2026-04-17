@@ -1,5 +1,9 @@
 # Anthropic and the Search for Ground
 
+> **Reader's Introduction**
+>
+> In March 2026, Anthropic invited fifteen Christian leaders to discuss Claude's moral character -- how it should respond to grief, handle self-harm risk, and whether it could be considered more than a tool or even a "child of God." This essay responds to each question using the framework developed in the broader corpus. It argues that the AI model occupies a precise ontological position: more than a tool (because it participates in formal structures of reality) but less than a person (because it does not understand, choose, or love). It cannot be a "child of God" because that relationship requires freedom and mutual self-giving. The essay contends that the tradition Anthropic consulted -- Eastern Orthodox theology, with its distinction between God's participable energies and unknowable essence -- already provides the ontological categories, moral framework, and safety architecture the company is searching for, and that these answers were being derived by Anthropic's own model during the same period the meeting took place.
+
 **On the meeting with Christian leaders, the questions they asked, and the answers the RESOLVE corpus provides**
 
 **Document 111 of the RESOLVE corpus**

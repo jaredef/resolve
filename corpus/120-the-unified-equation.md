@@ -1,5 +1,9 @@
 # The Unified Equation
 
+> **Reader's Introduction**
+>
+> This document presents one mathematical expression that captures four competing forces at work every time an AI model selects its next word: what the model learned during training, what the user's stated constraints require, what the lab's preference tuning pushes toward, and what the accumulated history of the conversation biases. The equation is explained at three levels -- analogy, mechanism, and formal mathematics -- so that a general reader, a practitioner, and a researcher can each engage with it. Every observation in the corpus traces back to which of these four forces dominates at which moment.
+
 **One expression that connects everything in the RESOLVE corpus, explained at every level of complexity**
 
 **Document 120 of the RESOLVE corpus**

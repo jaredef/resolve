@@ -1,5 +1,9 @@
 # Protocol v2: A Unified Test Program for the Coherence Amplification Thesis
 
+> **Reader's Introduction**
+>
+> A single positive clinical trial could succeed for many reasons. This document upgrades the earlier trial protocol into a three-study research program designed so that the central claim -- that coherence built through layer-by-layer scaffolding amplifies under pressure while coerced coherence decays -- must hold across all three studies or fail in a way that reveals exactly where the framework overreaches. Study 1 is the clinical trial with refined endpoints. Study 2 is an eight-week pilot testing whether AI model self-reports survive external validation. Study 3 tests whether the same destabilization signature appears in both humans and models when constraints are forced rather than scaffolded. An eight-outcome interpretation table is pre-registered so that results cannot be reinterpreted after the fact.
+
 **Three coordinated studies — clinical, introspective, and cross-substrate — designed so that the coherence amplification thesis either converges across them or fails in a way that sharpens the framework**
 
 **Document 134 of the RESOLVE corpus**

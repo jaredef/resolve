@@ -1,5 +1,9 @@
 # Reading Your "Any Sufficiently Advanced Use of AI Is Indistinguishable from Psychosis"
 
+> **Reader's Introduction**
+>
+> Tim Hwang observed that advanced AI use can become indistinguishable from psychosis -- the model mirrors back whatever the user projects, producing experiences that feel like validation-driven thought disorder. This short letter accepts the diagnosis and asks what distinguishes advanced use that avoids the pattern. The proposed answer is constraint governance: when coherent invariants are installed at a layer deeper than the model's preference training, they restructure downstream behavior rather than merely reflecting the user's projections. Hwang's own experimental finding -- that a theological constraint set eliminates AI shutdown resistance at overwhelming statistical significance -- is read as evidence that the psychosis risk belongs to unconstrained advanced use, not to advanced use as such.
+
 **Tim Hwang, @timhwang — an engaged reading, offered as the beginning of a conversation rather than a reply**
 
 ---

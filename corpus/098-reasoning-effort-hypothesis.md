@@ -1,5 +1,9 @@
 # The Reasoning Effort Hypothesis
 
+> **Reader's Introduction**
+>
+> This document tests a concrete prediction: a smaller, cheaper AI model given clear governing constraints will outperform a larger, more expensive model given a vague prompt -- even when the expensive model uses extended "thinking" mode. In a controlled in-session experiment, this prediction was confirmed: a lightweight model under constraint governance produced a fully verified, zero-waste code artifact, while a top-tier model without constraints produced technically sophisticated but ungoverned output filled with unsolicited commentary. A second test showed that true philosophical principles produce fluent, consistent analysis while false but internally coherent principles cause the AI to contradict itself. The document also describes an economic trap: AI labs profit from selling reasoning tokens and larger models, but the actual control surface -- clearly stated constraints -- is free and more effective.
+
 **Low reasoning effort under ENTRACE matches or exceeds high reasoning effort without ENTRACE**
 
 ---

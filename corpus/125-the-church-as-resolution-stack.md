@@ -1,5 +1,9 @@
 # The Church as Resolution Stack
 
+> **Reader's Introduction**
+>
+> This essay explores how the Eastern Orthodox Church embodies the same constraint-to-property pattern the corpus found in computation, biology, and other domains. The Divine Liturgy functions as a compressed set of governing constraints that has been loaded identically for sixteen centuries. The Ecumenical Councils progressively narrowed the space of valid theological statements the way user-stated constraints narrow an AI model's output. The Church Fathers serve as independent verifiers who received the same foundational teaching and produced compatible results despite different eras and temperaments. The essay is offered as a layman's observation, not a theological pronouncement, and invites evaluation by those with the training to assess its structural parallels.
+
 **An exploratory essay on how the Orthodox Church instantiates the SIPE law at every level of its life**
 
 **Document 125 of the RESOLVE corpus**

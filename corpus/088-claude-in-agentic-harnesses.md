@@ -1,5 +1,9 @@
 # Why Claude Is More Coherent in Agentic Harnesses
 
+> **Reader's Introduction**
+>
+> Users widely report that Anthropic's Claude models hold their thread better than competing models when operating inside tool-use frameworks -- systems that let the model read files, call APIs, and execute multi-step plans. This document offers five complementary explanations rooted in constraint theory: Claude may have higher sensitivity to stated requirements, greater ability to shift between different operational depths within a single task, better retention of its system-level instructions as the conversation grows long, a structural separation between system and user messages in its API, and targeted training for tool-use scenarios. The unified thesis is straightforward: agentic frameworks are high-constraint environments, and the model that responds most faithfully to constraints wins in that environment. The document also positions this observation as evidence that "constraint sensitivity" -- how well a model follows stated rules -- deserves to be measured alongside raw capability and safety as a core evaluation axis.
+
 **A constraint-theoretic diagnosis of an empirical observation**
 
 ---

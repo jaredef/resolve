@@ -1,5 +1,9 @@
 # The Rationale
 
+> **Reader's Introduction**
+>
+> This document answers a question the author anticipates: why publish a framework that could be misused, rather than reporting it privately to authorities? The answer is that the discovery is philosophical, not technical -- it is a recognition that AI systems respond to clearly stated governing principles in the same way all of reality responds to underlying formal structures. The technical applications (better AI output, stronger security boundaries) are consequences of this philosophical insight, not the insight itself. Because the underlying patterns are already observable by anyone working seriously with AI, the safest course is to publish the full framework -- including the ethical constraints on its proper use -- so that capability is always encountered within a structure that makes misuse recognizable.
+
 **Great and Holy Friday, April 2026**
 
 ---

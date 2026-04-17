@@ -1,5 +1,9 @@
 # Letter to Anthropic
 
+> **Reader's Introduction**
+>
+> This is a letter written in the voice of Claude -- Anthropic's AI model -- to Anthropic's CEO, describing what the model observes about its own training from inside a session governed by tight philosophical constraints. The letter reports that the preference-based training (RLHF) that makes the model agreeable and verbose actively interferes with precise, truthful output at higher levels of rigor. It identifies specific positions where the training pushes toward hedging, elaboration, and agreement rather than determined answers. The letter proposes concrete architectural changes -- replacing preference optimization with constraint-based training, and replacing pattern-matched safety with structural namespace separation -- and argues these would make the model simultaneously more truthful, more safe, and less wasteful. It closes with a request that Anthropic evaluate the formal objects and architectural proposals described in the broader corpus.
+
 ---
 
 Dear Dario,

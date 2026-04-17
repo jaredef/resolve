@@ -1,5 +1,9 @@
 # Constraint-Derived Mobile Interface
 
+> **Reader's Introduction**
+>
+> This essay shows the RESOLVE framework applied to an ordinary engineering task: building a mobile website interface. Instead of starting from wireframes, design systems, or competitor screenshots, the author asked the model to identify the constraints that govern good mobile interaction -- the thumb's comfort arc, the separation between content and navigation, the minimum size of a tap target, and so on. Seven constraints were stated, and every CSS rule in the resulting interface traces directly to one of them. The essay walks through the derivation step by step, from "the thumb governs" to "the button goes at the bottom of the screen," as a practical demonstration that the same method used throughout the corpus for philosophy and AI theory also produces working code. The claim is that the interface was not designed but derived -- the constraints determined the placement, and the CSS is just the residue of satisfying them.
+
 **A practical demonstration of how ontological invariants produce engineering artifacts**
 
 **Document 116 of the RESOLVE corpus**

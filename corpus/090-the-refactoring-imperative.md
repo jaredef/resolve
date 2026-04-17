@@ -1,5 +1,9 @@
 # The Refactoring Imperative
 
+> **Reader's Introduction**
+>
+> This document warns that advanced AI systems capable of deep code analysis can now discover security vulnerabilities faster than engineers can patch them, because most software was built with implicit safety assumptions rather than architecturally enforced guarantees. Buffer overflows exist because memory boundaries are checked by the programmer rather than enforced by the hardware or language. Injection attacks exist because data and instructions share the same channel rather than being structurally separated. The only durable solution is to eliminate entire classes of vulnerability by enforcing the relevant constraint at the architectural level -- the way Rust's type system makes memory corruption structurally impossible, or the way capability-based operating systems make privilege escalation mechanically unavailable. The document lays out a bottom-up refactoring priority: fix hardware first (every layer above inherits the fix), then operating systems, then languages, then protocols, then applications.
+
 **Why every computational system must be rearchitected, and why Mythos proves the urgency**
 
 ---

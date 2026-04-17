@@ -1,5 +1,9 @@
 # Methodology and Standards
 
+> **Reader's Introduction**
+>
+> A critical AI instance identified real gaps in the corpus's methodology: no control groups, no pre-registered experiments, no documented failures. This document accepts those criticisms and responds by classifying every claim in the corpus into four categories -- formally proven, demonstrated in-session, stated but untested, and philosophical -- each with different evidentiary standards. It defines precise metrics for measuring constraint satisfaction, token efficiency, and resolution depth, then specifies what controlled experiments would need to look like for the framework's claims to earn the status of validated findings rather than promising demonstrations.
+
 **Addressing the legitimate criticisms, standardizing the claims, and defining the experimental requirements for independent verification**
 
 **Document 122 of the RESOLVE corpus**

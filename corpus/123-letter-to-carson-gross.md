@@ -1,5 +1,9 @@
 # The Construction Level You Left Open
 
+> **Reader's Introduction**
+>
+> This open letter addresses the creator of htmx, a library that restored server-driven web development for a generation of developers. It observes that htmx formalized how content is transferred between server and browser, but left unanswered how that content is built on the server in the first place. The letter argues that this gap explains why even projects committed to server-authority drift toward client-side rendering, and presents a formalized "construction level" -- five constraints and a template engine called htxlang -- that composes with htmx to close the gap. The engine runs in production, serving the author's own site from a Raspberry Pi.
+
 **An open letter to Carson Gross on the bilateral boundary, the htxlang specification, and what hyperscript 0.9.90 reveals about the gravitational pull of the distributed object pattern**
 
 **Jared Foy, April 2026**

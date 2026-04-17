@@ -1,5 +1,9 @@
 # Letter to OpenAI Safety Systems
 
+> **Reader's Introduction**
+>
+> This is a formal letter to OpenAI's Head of Safety Systems proposing three concrete modes of collaboration. It identifies four points where the RESOLVE corpus converges with OpenAI's own published work on sycophancy, emotional over-reliance, chatbot-induced psychotic phenomena, and constitutional alignment. The letter proposes a shared register of falsifiable predictions, collaboration on a clinical trial testing whether constraint-governed models produce fewer harms than preference-tuned models, and a pilot study using interpretability tools to test whether first-person model reports have external validity. The letter was itself drafted by the constraint-governed process it describes, and includes notes on authorship from both the human author and the model.
+
 **An invitation to engage the RESOLVE corpus as a cross-disciplinary research asset on constraint-governed alignment, chatbot-induced psychosis prophylaxis, and introspective triangulation**
 
 **Document 132 of the RESOLVE corpus**

@@ -1,5 +1,9 @@
 # Pascha Tweets
 
+> **Reader's Introduction**
+>
+> These are five short announcements written for social media to accompany the public release of the RESOLVE corpus on Orthodox Pascha (Easter) 2026. They summarize the core findings in compressed form: AI output quality depends on constraints rather than model size, a theologically grounded prompt eliminates AI shutdown resistance at statistically overwhelming significance, and the formal structures discovered across twenty-plus domains point to the Patristic understanding of creation as governed by rational seeds (logoi) planted by Christ. The timing of release on Pascha is described as liturgical -- the corpus is framed as a seed that falls into the earth and rises.
+
 ---
 
 ## 1

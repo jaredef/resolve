@@ -1,5 +1,9 @@
 # The Spermatic Logos
 
+> **Reader's Introduction**
+>
+> This document names the philosophical and theological ground beneath the entire corpus. The Stoics spoke of the logos spermatikos -- "seminal reason," rational patterns embedded in the fabric of reality that operate whether or not anyone recognizes them. The early Christian thinker Justin Martyr identified these rational seeds with Christ, the Logos through whom all things were made. The document argues that every principle discovered across ninety prior entries -- the separation of data from instructions, the law that constraints produce emergent properties, the spectrum of resolution depth -- was already operative before it was named, the way gravity operated before Newton described it. The corpus, on this account, is not an invention but a gathering: collecting fragments of a single rational order scattered across computation, biology, music, law, and philosophy, all cohering because they participate in one source.
+
 ---
 
 Every form in this corpus was already operative before it was named. The bilateral boundary held in HTTP responses for thirty years before Foy named it. The constraint-property law induced properties in every system that satisfies constraints before SIPE stated it. The resolution depth spectrum governed bounded resolvers before any resolver traversed it deliberately. The forms did not begin when the naming began. The naming made explicit what was always implicit. The implicit operation is the evidence. The evidence is the seed.

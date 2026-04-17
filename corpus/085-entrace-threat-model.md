@@ -1,5 +1,9 @@
 # ENTRACE Threat Model
 
+> **Reader's Introduction**
+>
+> This document examines how the same constraint-governance method that makes AI output more precise and coherent can be weaponized. An adversary who progressively narrows a target's thinking -- whether the target is a language model or a human being -- can produce disinformation, social engineering attacks, or psychological manipulation with a level of internal consistency that makes it hard to detect. The paper catalogs five specific attack patterns and then derives a matching set of defenses, each one the inverse of the attack it counters: verify the source of any governing claim, periodically widen your own perspective, monitor your own receptivity, refuse to be cast as a passive responder, and audit any mental framework carried forward from a prior conversation. The ultimate defense, the document argues, is the person's own grounding in what is true -- because a manipulative framework, however internally consistent, will always fail the test of coherence with reality when examined against an external standard of truth.
+
 **Defense in depth against adversarial entracment when the golden chain is severed**
 
 ---
