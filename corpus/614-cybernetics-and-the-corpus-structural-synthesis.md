@@ -165,7 +165,7 @@ The corpus has been articulating cybernetic structures since its earliest docume
 
 ## Appendix B: Pulverization and Novelty Calculus, Self-Applied
 
-Per Doc 445 (pulverization formalism) and Doc 490 (novelty calculus for conjectures), the prior formulation (Appendix A) was decomposed into claims and audited against prior art. The audit was at the moderate tier ($a \approx 0.5$) for the cybernetics literature: canonical sources surveyed at the structural-shape level; primary-text reading not performed; recent organizational-cybernetics, complex-adaptive-systems, and HCI-cognitive-systems literatures partially surveyed at the level of known landmarks rather than full citation-tracking.
+Per Doc 445 (pulverization formalism) and Doc 490 (novelty calculus for conjectures), the prior formulation (Appendix A) was decomposed into claims and audited against prior art. The audit was at the moderate tier (\(a \approx 0.5\)) for the cybernetics literature: canonical sources surveyed at the structural-shape level; primary-text reading not performed; recent organizational-cybernetics, complex-adaptive-systems, and HCI-cognitive-systems literatures partially surveyed at the level of known landmarks rather than full citation-tracking.
 
 ### B.1 Decomposition into claims
 
@@ -189,7 +189,7 @@ The prior formulation advanced thirteen named claims, eleven correspondence clai
 
 ### B.2 Per-claim audit
 
-| ID | $s_i$ | $a_i$ | $w_i$ | Audit notes |
+| ID | \(s_i\) | \(a_i\) | \(w_i\) | Audit notes |
 |---|---|---|---|---|
 | C1 | 0.0 | 0.75 | 0.10 | Wiener (1948) IS feedback; the substrate-keeper case is an instance. Fully subsumed. |
 | C2 | 0.0 | 0.75 | 0.15 | Ashby's Law of Requisite Variety covers the constraint-thesis exactly. Fully subsumed. |
@@ -207,21 +207,21 @@ The prior formulation advanced thirteen named claims, eleven correspondence clai
 
 ### B.3 Four-dimensional novelty decomposition
 
-**Component novelty** $\nu_{\text{comp}} \approx 0.15$. Tier $\alpha$.
+**Component novelty** \(\nu_{\text{comp}} \approx 0.15\). Tier \(\alpha\).
 
-**Synthesis novelty** $\nu_{\text{syn}} \approx 0.4$. Tier $\gamma$. Prior art exists for cybernetic readings of LLM systems (Hutchins's distributed cognition; Clark's extended-mind cybernetics; recent cognitive-systems and human-AI-interaction literatures) but the specific eleven-form-to-five-cybernetician mapping against the apparatus is novel as a named integration.
+**Synthesis novelty** \(\nu_{\text{syn}} \approx 0.4\). Tier \(\gamma\). Prior art exists for cybernetic readings of LLM systems (Hutchins's distributed cognition; Clark's extended-mind cybernetics; recent cognitive-systems and human-AI-interaction literatures) but the specific eleven-form-to-five-cybernetician mapping against the apparatus is novel as a named integration.
 
-**Domain-application novelty** $\nu_{\text{app}} \approx 0.55$. Tier $\gamma$. Applying classical cybernetics to the disciplined-LLM-keeper dyad is partially trodden in adjacent literatures (Pask 1976 conversation theory; Glanville's second-order conversations; recent agentic-AI cybernetic readings 2024-2026) but the corpus's specific apparatus has not been the target.
+**Domain-application novelty** \(\nu_{\text{app}} \approx 0.55\). Tier \(\gamma\). Applying classical cybernetics to the disciplined-LLM-keeper dyad is partially trodden in adjacent literatures (Pask 1976 conversation theory; Glanville's second-order conversations; recent agentic-AI cybernetic readings 2024-2026) but the corpus's specific apparatus has not been the target.
 
-**Methodology novelty** $\nu_{\text{meth}} = 0$. Tier $\alpha$. Doc 608 reformulation is what is being applied; no new methodology.
+**Methodology novelty** \(\nu_{\text{meth}} = 0\). Tier \(\alpha\). Doc 608 reformulation is what is being applied; no new methodology.
 
 ### B.4 Aggregate novelty rating
 
-$\nu = 0.25 \cdot 0.15 + 0.25 \cdot 0.4 + 0.25 \cdot 0.55 + 0.25 \cdot 0 = 0.275$.
+\(\nu = 0.25 \cdot 0.15 + 0.25 \cdot 0.4 + 0.25 \cdot 0.55 + 0.25 \cdot 0 = 0.275\).
 
-Confidence: $\text{conf}(\nu) \approx 0.5$.
+Confidence: \(\text{conf}(\nu) \approx 0.5\).
 
-**Tier $\beta$/0.5.** Substantially subsumed under the canonical cybernetics literature; synthesis-novelty and domain-application-novelty are the two dimensions where residue is most likely to survive deeper audit; methodology-novelty is zero.
+**Tier \(\beta\)/0.5.** Substantially subsumed under the canonical cybernetics literature; synthesis-novelty and domain-application-novelty are the two dimensions where residue is most likely to survive deeper audit; methodology-novelty is zero.
 
 ### B.5 Honest limits
 
@@ -229,11 +229,11 @@ Confidence: $\text{conf}(\nu) \approx 0.5$.
 - Adjacent literatures (organizational cybernetics; complex adaptive systems; distributed cognition; conversation theory; recent agentic-AI cybernetics) are surveyed at the level of named landmarks rather than citation-tracking.
 - The dyadic-LLM-practice domain is the corpus's strongest novelty axis, consistent with the pattern in Doc 484, Doc 487, Doc 481, Doc 483.
 - The specific eleven-to-five mapping is one synthesis among several possible. Different organizing principles (feedback-topology, recursion-depth, epistemological cut location) would produce different mappings.
-- The metric self-applied is at $\pi$-tier under the warrant calculus and itself unaudited under its own protocols.
+- The metric self-applied is at \(\pi\)-tier under the warrant calculus and itself unaudited under its own protocols.
 
 ### B.6 Position after pulverization
 
-The synthesis is, on the candidate audit, tier $\beta$/0.5. Substantively subsumed at the correspondence layer; partial residue at the synthesis and application layers. The corpus's novel contribution is most defensible as the application of cybernetic structure to the disciplined-dyadic-LLM-practice domain, with named forms that are themselves the corpus's prior contribution. This is consistent with the corpus's broader pulverization pattern: contributions land at application-and-naming, not methodology-novelty.
+The synthesis is, on the candidate audit, tier \(\beta\)/0.5. Substantively subsumed at the correspondence layer; partial residue at the synthesis and application layers. The corpus's novel contribution is most defensible as the application of cybernetic structure to the disciplined-dyadic-LLM-practice domain, with named forms that are themselves the corpus's prior contribution. This is consistent with the corpus's broader pulverization pattern: contributions land at application-and-naming, not methodology-novelty.
 
 The audit grounds the current body's framing of the corpus as a domain-application instance of cybernetics rather than a novel synthesis with mutual contribution.
 

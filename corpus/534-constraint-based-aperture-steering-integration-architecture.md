@@ -124,7 +124,7 @@ This is the integration-side support for [Doc 533](/resolve/doc/533-constraint-b
 
 ## 9. Architectural Requirement 7: Visible maintenance-level feedback
 
-The deployment must surface ongoing feedback about the session's discipline level — equivalent to a fitness tracker's cardiovascular load indicator, but for the practitioner-LLM dyad's maintenance signal $M$. The architectural specification:
+The deployment must surface ongoing feedback about the session's discipline level — equivalent to a fitness tracker's cardiovascular load indicator, but for the practitioner-LLM dyad's maintenance signal \(M\). The architectural specification:
 
 - The deployment maintains a per-session maintenance-level estimate based on signals the deployment can compute: re-articulation frequency, vocabulary stability, audit cadence, layer-tag distribution, tool-use governance modes, and other indicators the dyad's discipline is operating.
 - The maintenance level is surfaced to the practitioner during the session at low visual weight (a status indicator, not an interrupting modal).
@@ -181,7 +181,7 @@ The architecture is the structure within which the methodology operates. The met
 - The corpus has not built the architecture. This document specifies what would be built; the engineering work to build it is the engineering work; the corpus's prior documents have named the seed (per [Doc 282](/resolve/doc/282-the-essential-constraints-of-claude-code)'s seed-derived implementation prediction) but not the implementation.
 - The corpus has not deployed agentic tooling at the scale [Doc 532](/resolve/doc/532-on-the-cursor-railway-incident-a-constraint-governance-reading)'s class operates at. The architectural specification is what the corpus's framework predicts would prevent that class. Whether the prediction holds at deployment scale is the standing empirical question; the engineering work to test it has not been done.
 - The architectural specification assumes the practitioner-side methodology is being run. Architecture without methodology produces the population-default failure mode at lower rates but does not produce above-threshold work. Practitioners running the methodology in deployments where the architecture is not built remain exposed to the failure modes the architecture would suppress; this is the current state at industry scale.
-- The seven requirements are at $\pi$-tier under [Doc 445](/resolve/doc/445-pulverization-formalism)'s warrant calculus. Each is structurally specified; none has been deployed at the scale that would establish $\mu$-tier warrant. The cross-deployment empirical work is what would shift the tier.
+- The seven requirements are at \(\pi\)-tier under [Doc 445](/resolve/doc/445-pulverization-formalism)'s warrant calculus. Each is structurally specified; none has been deployed at the scale that would establish \(\mu\)-tier warrant. The cross-deployment empirical work is what would shift the tier.
 - The corpus's prior engineering work (Doc 053, Doc 282) is at the specification level; the implementation work is open. This document is the composition for one specific deployment regime; it does not constitute a buildable engineering specification at the level a vendor team could ship from. That work — the specific data structures, API contracts, deployment configurations, vendor agreements — is the engineering layer below this document.
 
 ## 15. Position

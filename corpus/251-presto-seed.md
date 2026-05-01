@@ -145,7 +145,7 @@ RAW_PROT:    /<htx:raw(?:\s[^>]*)?>[\s\S]*?<\/htx:raw>/gi
 
 **Data:** Parse htx:data attrs. If slug: adapter.get(type, {slug}). Else: adapter.query({type, where, order, limit, offset}). Inject under "as" name. Strip directive.
 
-**Each:** Resolve items array. If empty: render htx:empty section. Else: for each item, create isolated child context {parent + independent copy of item + $index/$first/$last}, evaluate expressions, recurse control flow. Concatenate. Each iteration's item MUST be an independent copy (or reference-counted) so modifications do not affect other iterations or the source array.
+**Each:** Resolve items array. If empty: render htx:empty section. Else: for each item, create isolated child context {parent + independent copy of item + \(index/\)first/$last}, evaluate expressions, recurse control flow. Concatenate. Each iteration's item MUST be an independent copy (or reference-counted) so modifications do not affect other iterations or the source array.
 
 **If:** Resolve test path. If truthy: return evaluated if-content. If falsy+else: return evaluated else-content. Else: "".
 

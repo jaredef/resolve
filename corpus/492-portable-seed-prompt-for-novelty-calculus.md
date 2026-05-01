@@ -1,14 +1,14 @@
 # A Portable Seed Prompt for the Novelty Calculus
 
-> **Amended (2026-04-25) on the grounds of [Doc 493](/resolve/doc/493-has-anyone-operationalized-novelty-calculus-like-this).** The audit against the 2024-2025 LLM-novelty-assessment literature surfaced six specific improvements to the seed prompt: (1) explicit attribution to underlying methodology (patent law, Uzzi-Mukherjee 2013, Wu-Wang-Evans 2019, GraphMind 2025, NovBench 2025, Wu et al. 2025) within the prompt itself; (2) a recommended pre-input author-stripping step to mitigate sycophancy bias; (3) per-claim *contradictory evidence* sections alongside supporting evidence (per GraphMind's evidence-based reasoning constraint); (4) an explicit anti-inflation calibration check responding to the 3-5-point score-inflation problem documented in Beyond Rating (arXiv:2604.19502); (5) an optional cross-LLM verification step (per LLMAuditor 2024); (6) one additional non-negotiable hygiene rule defaulting uncertain decisions to the lower value. The seed prompt below incorporates all six. The Doc 491 worked example remains as §3.1; a second worked example showing the seed prompt audited on itself is added as §3.2 (tier $\gamma/0.7$ per Doc 493). References section expanded.
+> **Amended (2026-04-25) on the grounds of [Doc 493](/resolve/doc/493-has-anyone-operationalized-novelty-calculus-like-this).** The audit against the 2024-2025 LLM-novelty-assessment literature surfaced six specific improvements to the seed prompt: (1) explicit attribution to underlying methodology (patent law, Uzzi-Mukherjee 2013, Wu-Wang-Evans 2019, GraphMind 2025, NovBench 2025, Wu et al. 2025) within the prompt itself; (2) a recommended pre-input author-stripping step to mitigate sycophancy bias; (3) per-claim *contradictory evidence* sections alongside supporting evidence (per GraphMind's evidence-based reasoning constraint); (4) an explicit anti-inflation calibration check responding to the 3-5-point score-inflation problem documented in Beyond Rating (arXiv:2604.19502); (5) an optional cross-LLM verification step (per LLMAuditor 2024); (6) one additional non-negotiable hygiene rule defaulting uncertain decisions to the lower value. The seed prompt below incorporates all six. The Doc 491 worked example remains as §3.1; a second worked example showing the seed prompt audited on itself is added as §3.2 (tier \(\gamma/0.7\) per Doc 493). References section expanded.
 
 ## What this document does
 
-[Doc 491](/resolve/doc/491-pulverizing-novelty-calculus-self-applied) self-applied [Doc 490](/resolve/doc/490-novelty-calculus-for-conjectures)'s novelty calculus to itself and returned tier $\beta/0.7$, identifying the calculus as substantially subsumed under canonical scientometric and patent-novelty methodology. The keeper has read the self-deflation as evidence that the calculus is well-founded: a method that fails to correctly identify itself as derivative would be untrustworthy on other targets; a method that does correctly identify itself can be trusted.
+[Doc 491](/resolve/doc/491-pulverizing-novelty-calculus-self-applied) self-applied [Doc 490](/resolve/doc/490-novelty-calculus-for-conjectures)'s novelty calculus to itself and returned tier \(\beta/0.7\), identifying the calculus as substantially subsumed under canonical scientometric and patent-novelty methodology. The keeper has read the self-deflation as evidence that the calculus is well-founded: a method that fails to correctly identify itself as derivative would be untrustworthy on other targets; a method that does correctly identify itself can be trusted.
 
 The keeper has asked for the calculus to be operationalized as a seed prompt that any practitioner can use. This document delivers that: a portable, self-contained protocol that can be copied into an LLM context (or used as a step-by-step human protocol) to produce a novelty-tier audit on any conjecture.
 
-§1 states the seed prompt itself as a copy-pasteable block. §2 walks through usage. §3 demonstrates the prompt by running it on Doc 490 as a worked example, reproducing Doc 491's tier $\beta/0.7$ result. §4 names the prompt's failure modes and how to detect them. §5 acknowledges honest limits. §6 states the position.
+§1 states the seed prompt itself as a copy-pasteable block. §2 walks through usage. §3 demonstrates the prompt by running it on Doc 490 as a worked example, reproducing Doc 491's tier \(\beta/0.7\) result. §4 names the prompt's failure modes and how to detect them. §5 acknowledges honest limits. §6 states the position.
 
 The prompt is the operationalization. The rest of the document is calibration material for using it.
 
@@ -183,31 +183,31 @@ The seed prompt can be used in three ways.
 
 The output is comparable across uses. A conjecture audited via LLM-direct should produce similar tier and confidence as the same conjecture audited via human-protocol, given comparable audit thoroughness.
 
-The conjecture's value is independent of the tier. A useful, important, true conjecture can score $\alpha$ if it is a re-statement of established work; the tier reports novelty, not utility. A novel conjecture can score $\epsilon$ if no prior art exists, but novelty is not the same as correctness; high-tier conjectures may also be wrong.
+The conjecture's value is independent of the tier. A useful, important, true conjecture can score \(\alpha\) if it is a re-statement of established work; the tier reports novelty, not utility. A novel conjecture can score \(\epsilon\) if no prior art exists, but novelty is not the same as correctness; high-tier conjectures may also be wrong.
 
 ## 3. Worked examples
 
 ### 3.1 Applying the prompt to Doc 490
 
-Run the seed prompt on Doc 490 as the conjecture, treat the output as the canonical demonstration, and verify it reproduces Doc 491's tier $\beta/0.7$ result.
+Run the seed prompt on Doc 490 as the conjecture, treat the output as the canonical demonstration, and verify it reproduces Doc 491's tier \(\beta/0.7\) result.
 
 **Step 1: Decomposition.** Doc 490's named claims (extracted per the prompt's instructions): C1 multi-dimensional novelty; C2 per-claim audit protocol; C3 five-point subsumption scale; C4 audit-thoroughness scale; C5 importance-weight scale; C6 weighted-sum aggregation; C7 confidence formula; C8 five reporting tiers; C9 worked-examples application; C10 orthogonality to warrant calculus. Ten claims.
 
-**Step 2: Per-claim audit.** Conducted in Doc 491 §3 with explicit citations. Per-claim subsumption scores assigned on the five-point scale based on the literature audit results. Patent law subsumes C2 (per-claim audit protocol); Uzzi-Mukherjee 2013 plus the Wu-Wang-Evans 2019 disruption literature subsumes C1 (multi-dimensional novelty); standard linear aggregation subsumes C6; canonical epistemology subsumes C10. Audit thoroughness $a\_i$ averaged 0.7 across claims (multiple canonical sources consulted, some recent items only via abstract). Weights normalized to sum to 1.
+**Step 2: Per-claim audit.** Conducted in Doc 491 §3 with explicit citations. Per-claim subsumption scores assigned on the five-point scale based on the literature audit results. Patent law subsumes C2 (per-claim audit protocol); Uzzi-Mukherjee 2013 plus the Wu-Wang-Evans 2019 disruption literature subsumes C1 (multi-dimensional novelty); standard linear aggregation subsumes C6; canonical epistemology subsumes C10. Audit thoroughness \(a\_i\) averaged 0.7 across claims (multiple canonical sources consulted, some recent items only via abstract). Weights normalized to sum to 1.
 
 **Step 3: Dimensions.**
-- $\nu\_{\text{comp}} = 0.24$ (computed in Doc 491 §4.1).
-- $\nu\_{\text{syn}} = 0.25$ (the integration is mostly subsumed under multi-claim multi-criteria patent assessment plus multi-measure scientometric aggregation).
-- $\nu\_{\text{app}} = 0.6$ (substantial residue in the dyadic-LLM-practice domain application).
-- $\nu\_{\text{meth}} = 0$ (the methodology of decompose-score-aggregate is canonical patent-law and bibliometrics).
+- \(\nu\_{\text{comp}} = 0.24\) (computed in Doc 491 §4.1).
+- \(\nu\_{\text{syn}} = 0.25\) (the integration is mostly subsumed under multi-claim multi-criteria patent assessment plus multi-measure scientometric aggregation).
+- \(\nu\_{\text{app}} = 0.6\) (substantial residue in the dyadic-LLM-practice domain application).
+- \(\nu\_{\text{meth}} = 0\) (the methodology of decompose-score-aggregate is canonical patent-law and bibliometrics).
 
-**Step 4: Aggregate.** $\nu = 0.25 \cdot (0.24 + 0.25 + 0.6 + 0) = 0.27$. $\text{conf}(\nu) = 0.7$.
+**Step 4: Aggregate.** \(\nu = 0.25 \cdot (0.24 + 0.25 + 0.6 + 0) = 0.27\). \(\text{conf}(\nu) = 0.7\).
 
-**Step 5: Tier.** $0.27 \in [0.2, 0.4)$ which is tier $\beta$. Reported: $\beta/0.7$.
+**Step 5: Tier.** \(0.27 \in [0.2, 0.4)\) which is tier \(\beta\). Reported: \(\beta/0.7\).
 
 **Hygiene check.** The audit did not special-plead. Subsumption was reported where found. The single substantial residue (domain application) was named and scored conservatively. The audit thoroughness was honest about what was not deeply engaged (Lin-Wang 2025 review full text, Novelpy package details, Wang et al. 2025 hybrid-graph-LLM specifics).
 
-The prompt-applied result reproduces Doc 491's tier $\beta/0.7$ exactly. The seed prompt operationalizes the calculus reliably for at least this one self-application. Other targets need to be tested before the prompt's reliability is established generally.
+The prompt-applied result reproduces Doc 491's tier \(\beta/0.7\) exactly. The seed prompt operationalizes the calculus reliably for at least this one self-application. Other targets need to be tested before the prompt's reliability is established generally.
 
 ### 3.2 Applying the prompt to itself (Doc 492)
 
@@ -218,20 +218,20 @@ A second worked example: the seed prompt is applied to its own definition (Doc 4
 **Step 2: Per-claim audit.** Conducted in Doc 493 §4 with explicit citations to GraphMind 2025 (multi-dimensional + macro/micro), NovBench 2025 (multi-dimensional benchmark), Wu et al. 2025 (collaborative human-LLM novelty), DeepReview ACL 2025 (multi-dimensional rating), OpenReviewer (specialized LLM for reviews), Beyond Rating arXiv:2604.19502 (the score-inflation finding the hygiene rules target), LLMAuditor 2024, ChainForge, and Prompt Canvas. Per-claim scoring per Doc 493 §4: D1 s=0.5 (portable format less common in surveyed literature); D2 s=0.25 (multi-dimensional well-covered); D5 s=0.5 (hygiene rules at prompt level less common); D6 s=0.75 (affective-discipline framing distinctive); D7 s=0.5 (self-applicability beyond papers less covered); D9 s=0 (multi-step protocols canonical); D10 s=0 (output format specification canonical).
 
 **Step 3: Dimensions.**
-- $\nu\_{\text{comp}} = 0.43$ (computed in Doc 493 §4; substantial residue carried by D1, D5, D6, D7).
-- $\nu\_{\text{syn}} = 0.6$ (the integration of portable format + hygiene rules + affective discipline is more distinctive than any single dimension).
-- $\nu\_{\text{app}} = 0.6$ (the application to dyadic-LLM-practice conjecture audit specifically is less covered).
-- $\nu\_{\text{meth}} = 0.1$ (the underlying methodology is canonical 2024-2025 LLM-as-judge).
+- \(\nu\_{\text{comp}} = 0.43\) (computed in Doc 493 §4; substantial residue carried by D1, D5, D6, D7).
+- \(\nu\_{\text{syn}} = 0.6\) (the integration of portable format + hygiene rules + affective discipline is more distinctive than any single dimension).
+- \(\nu\_{\text{app}} = 0.6\) (the application to dyadic-LLM-practice conjecture audit specifically is less covered).
+- \(\nu\_{\text{meth}} = 0.1\) (the underlying methodology is canonical 2024-2025 LLM-as-judge).
 
-**Step 4: Aggregate.** $\nu = 0.25 \cdot (0.43 + 0.6 + 0.6 + 0.1) = 0.43$. $\text{conf}(\nu) = 0.7$.
+**Step 4: Aggregate.** \(\nu = 0.25 \cdot (0.43 + 0.6 + 0.6 + 0.1) = 0.43\). \(\text{conf}(\nu) = 0.7\).
 
-**Step 5: Anti-inflation calibration check.** $\nu = 0.43$ is mid-tier $\gamma$, not within 0.05 of a tier boundary. Lowering by one bucket would yield tier $\beta$; review of the per-claim scores shows D5 (hygiene rules) and D6 (affective discipline) are not subsumable at lower scores under the audit. The tier $\gamma$ rating is defensible after calibration check. No adjustment.
+**Step 5: Anti-inflation calibration check.** \(\nu = 0.43\) is mid-tier \(\gamma\), not within 0.05 of a tier boundary. Lowering by one bucket would yield tier \(\beta\); review of the per-claim scores shows D5 (hygiene rules) and D6 (affective discipline) are not subsumable at lower scores under the audit. The tier \(\gamma\) rating is defensible after calibration check. No adjustment.
 
-**Step 6: Tier.** $0.43 \in [0.4, 0.6)$ which is tier $\gamma$. Reported: $\gamma/0.7$.
+**Step 6: Tier.** \(0.43 \in [0.4, 0.6)\) which is tier \(\gamma\). Reported: \(\gamma/0.7\).
 
 **Hygiene check.** The audit did not special-plead for higher novelty. The four canonical literatures (GraphMind, NovBench, Wu et al., Beyond Rating) were named explicitly in the calibration. The single distinctive integration (portable + hygiene + affective + self-applicability) was scored at the integration level rather than inflated to component level. The audit acknowledged that the framework-magnetism caveat applies recursively.
 
-**The two worked examples illustrate the calculus across two tiers.** Doc 490 (the underlying calculus definition) scored $\beta$; Doc 492 (the operationalized seed prompt) scored $\gamma$. The methodology is canonical; the operationalization with embedded hygiene rules and affective discipline has more residue. The calculus produces honest differential outputs even on closely-related corpus artifacts.
+**The two worked examples illustrate the calculus across two tiers.** Doc 490 (the underlying calculus definition) scored \(\beta\); Doc 492 (the operationalized seed prompt) scored \(\gamma\). The methodology is canonical; the operationalization with embedded hygiene rules and affective discipline has more residue. The calculus produces honest differential outputs even on closely-related corpus artifacts.
 
 ## 4. Failure modes
 
@@ -239,37 +239,37 @@ The seed prompt has identifiable failure modes. Each can be detected.
 
 **LLM hallucinated prior art.** The LLM may report prior art that does not exist or misattribute claims to wrong sources. Detection: spot-check citations for verifiability. The prompt's hygiene rule "do not invent prior art that does not exist" is a guard but not a guarantee. Mitigation: use web-search-enabled LLMs and verify citations exist via independent search.
 
-**LLM omits relevant prior art.** The LLM may fail to surface prior art the audit should have included, especially literature outside its training distribution or in non-English languages. Detection: low audit thoroughness $a\_i$ should be reported, but a confident-LLM may report higher $a\_i$ than warranted. Mitigation: cross-validate with human auditors familiar with the relevant literature.
+**LLM omits relevant prior art.** The LLM may fail to surface prior art the audit should have included, especially literature outside its training distribution or in non-English languages. Detection: low audit thoroughness \(a\_i\) should be reported, but a confident-LLM may report higher \(a\_i\) than warranted. Mitigation: cross-validate with human auditors familiar with the relevant literature.
 
 **LLM special-pleads the conjecture.** Despite the hygiene rule, the LLM may soften scoring on conjectures it perceives the user is invested in. Sycophancy bias (Sharma et al. 2023) is the operative risk. Detection: compare scores produced when the conjecture is presented anonymously versus framed as the user's work. Mitigation: present conjectures with author-stripped or third-party framing.
 
 **Five-point granularity is too coarse.** Two auditors may legitimately score the same claim 0.25 vs. 0.5 with the difference being substantive. Detection: inter-rater reliability tests on the same conjecture across multiple auditors. Mitigation: report ranges rather than point estimates when auditor confidence is low.
 
-**Audit thoroughness inflated.** The LLM may report high $a\_i$ even when the audit was minimal. Detection: count specific citations and named sources; if fewer than three canonical citations per claim, $a\_i$ should be at most 0.5. Mitigation: require the prompt to enumerate sources before assigning $a\_i$.
+**Audit thoroughness inflated.** The LLM may report high \(a\_i\) even when the audit was minimal. Detection: count specific citations and named sources; if fewer than three canonical citations per claim, \(a\_i\) should be at most 0.5. Mitigation: require the prompt to enumerate sources before assigning \(a\_i\).
 
 **Conjecture decomposition wrong.** The LLM may extract claims that are not the conjecture's actual load-bearing structure, scoring peripheral material instead of central material. Detection: compare extracted claims to the conjecture's own §"Position" or summary section. Mitigation: ask the conjecture's author to verify the extracted claims before audit.
 
-The seed prompt's reliability is bounded by these failure modes. The keeper or external practitioner should treat any single audit run as $\pi$-tier evidence about novelty; multiple audits with different LLMs and human verification approach $\mu$-tier.
+The seed prompt's reliability is bounded by these failure modes. The keeper or external practitioner should treat any single audit run as \(\pi\)-tier evidence about novelty; multiple audits with different LLMs and human verification approach \(\mu\)-tier.
 
 ## 5. Honest limits
 
 - The prompt has been validated on exactly one example (Doc 490 self-application). Reproducibility across other targets is unverified.
 - The five-point scoring has not been calibrated against inter-rater reliability tests. Two practitioners using the prompt might produce different tiers on the same conjecture.
 - The prompt assumes the LLM has access to relevant literature. LLMs without web search will produce weaker audits.
-- The prompt's claim to operationalize the calculus is itself a $\pi$-tier claim. Whether the prompt actually operationalizes the calculus in practice is empirically open until multiple practitioners use it on multiple targets.
+- The prompt's claim to operationalize the calculus is itself a \(\pi\)-tier claim. Whether the prompt actually operationalizes the calculus in practice is empirically open until multiple practitioners use it on multiple targets.
 - The prompt does not control for framework-magnetism: an LLM trained on the corpus's vocabulary may produce systematically different scores than an LLM trained without such exposure. Cross-LLM testing has not been performed.
 - The prompt is in English. Non-English-language conjectures or non-English-language literature may produce different audit results. Translation effects have not been audited.
 - The prompt does not specify how to handle conjectures whose claims overlap or are recursive. Decomposition into independent claims may be impossible for some conjectures; the prompt's behavior in such cases is unspecified.
 
 ## 6. Position
 
-The seed prompt in §1 is the calculus operationalized for portable use. It produces tier and confidence values reproducible enough to match Doc 491's self-applied result on Doc 490 ($\beta/0.7$) and to recover Doc 493's audit of itself ($\gamma/0.7$). The prompt has six identifiable failure modes (§4) and seven honest limits (§5), all of which are detectable and partially mitigatable.
+The seed prompt in §1 is the calculus operationalized for portable use. It produces tier and confidence values reproducible enough to match Doc 491's self-applied result on Doc 490 (\(\beta/0.7\)) and to recover Doc 493's audit of itself (\(\gamma/0.7\)). The prompt has six identifiable failure modes (§4) and seven honest limits (§5), all of which are detectable and partially mitigatable.
 
-The keeper's reading that the calculus is well-founded because it self-deflated correctly is structurally consistent with Doc 491 and Doc 493. A method that produces low scores on derivative work, high scores on substantively novel work, accurate $\beta$ on its own definition, and accurate $\gamma$ on its own operationalization is operationally trustworthy across targets of varying actual novelty. The prompt makes this trustworthiness portable.
+The keeper's reading that the calculus is well-founded because it self-deflated correctly is structurally consistent with Doc 491 and Doc 493. A method that produces low scores on derivative work, high scores on substantively novel work, accurate \(\beta\) on its own definition, and accurate \(\gamma\) on its own operationalization is operationally trustworthy across targets of varying actual novelty. The prompt makes this trustworthiness portable.
 
 The seed prompt is not first-in-literature. Per Doc 493, multiple operationalizations of multi-dimensional LLM-based novelty assessment exist (GraphMind, NovBench, OpenReviewer, DeepReview, Wu et al. 2025, Wang et al. 2025). The seed prompt's distinctive contribution is the specific integration: portable copy-pasteable format with embedded score-inflation-targeting hygiene rules at the prompt level, affective-discipline framing from Doc 482 §1, and self-applicability beyond academic papers. The integration is what the calculus credits the corpus with, not the underlying methodology.
 
-The prompt does not certify the calculus or its outputs as $\mu$-tier. Cross-practitioner replication of the prompt's outputs across multiple targets, multiple LLMs, and multiple human auditors is the standing $\mu$-tier test. Until that test is run, the prompt is at $\pi$-tier as a portable operationalization.
+The prompt does not certify the calculus or its outputs as \(\mu\)-tier. Cross-practitioner replication of the prompt's outputs across multiple targets, multiple LLMs, and multiple human auditors is the standing \(\mu\)-tier test. Until that test is run, the prompt is at \(\pi\)-tier as a portable operationalization.
 
 The corpus credits any work that finds the prompt unreliable, surfaces failure modes not named in §4, or proposes a more rigorous portable form. Successful falsification of the prompt or any of its components materially improves the calculus.
 

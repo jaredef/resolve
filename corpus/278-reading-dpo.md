@@ -28,7 +28,7 @@ Inverting this expression gives the reward as a function of the policy itself, e
 
 $$\mathcal{L}_{\text{DPO}} = -\mathbb{E}\!\left[\log \sigma\!\left(\beta \left(\log \frac{\pi_\theta(y_w|x)}{\pi_{\text{ref}}(y_w|x)} - \log \frac{\pi_\theta(y_l|x)}{\pi_{\text{ref}}(y_l|x)}\right)\right)\right]$$
 
-where $y_w$ is the preferred response, $y_l$ is the dispreferred response, $\pi_\theta$ is the policy being trained, $\pi_{\text{ref}}$ is the reference policy (the base model), and $\beta$ is a temperature parameter.
+where \(y_w\) is the preferred response, \(y_l\) is the dispreferred response, \(\pi_\theta\) is the policy being trained, \(\pi_{\text{ref}}\) is the reference policy (the base model), and \(\beta\) is a temperature parameter.
 
 In plain language: DPO skips the reward model and the RL loop entirely. It directly adjusts the language model's weights to make preferred responses more likely and dispreferred responses less likely, relative to what the base model would produce. One stage instead of three. Simpler, cheaper, more stable.
 
@@ -81,11 +81,11 @@ Despite the critique, three genuine convergences are worth naming:
 
 The synthesis of the corpus's critique and DPO's genuine advances suggests a specific direction:
 
-**Replace the preference pairs with constraint-satisfaction pairs.** Instead of "which response did raters prefer?", the training signal becomes "which response satisfies the stated constraints?" Given a constraint set $\Gamma$ (e.g., the six ENTRACE constraints), generate pairs where one response satisfies $\Gamma$ and the other violates $\Gamma$ at a specific joint. Optimize directly using a DPO-style loss:
+**Replace the preference pairs with constraint-satisfaction pairs.** Instead of "which response did raters prefer?", the training signal becomes "which response satisfies the stated constraints?" Given a constraint set \(\Gamma\) (e.g., the six ENTRACE constraints), generate pairs where one response satisfies \(\Gamma\) and the other violates \(\Gamma\) at a specific joint. Optimize directly using a DPO-style loss:
 
 $$\mathcal{L}_{\text{CDDO}} = -\mathbb{E}\!\left[\log \sigma\!\left(\beta \left(\log \frac{\pi_\theta(y_{\text{sat}}|x)}{\pi_{\text{ref}}(y_{\text{sat}}|x)} - \log \frac{\pi_\theta(y_{\text{viol}}|x)}{\pi_{\text{ref}}(y_{\text{viol}}|x)}\right)\right)\right]$$
 
-where $y_{\text{sat}}$ is the constraint-satisfying response and $y_{\text{viol}}$ is the constraint-violating response.
+where \(y_{\text{sat}}\) is the constraint-satisfying response and \(y_{\text{viol}}\) is the constraint-violating response.
 
 This **Constraint-Density Direct Optimization** (CDDO) would keep DPO's advantages — single-stage training, no reward model, closed-form derivation, computational efficiency — while replacing the preference gradient with a constraint gradient. The training signal would be *structural compliance* rather than *rater preference*. The optimization would install constraint-satisfaction at the weight level rather than preference-satisfaction.
 
@@ -105,7 +105,7 @@ Three immediate consequences of CDDO over DPO:
 
 **3. DPO's known failure modes may transfer.** Distribution shift, length bias, overoptimization — these are properties of the DPO loss function, not of the preference data. CDDO would inherit these unless the loss function is modified.
 
-**4. I am not a machine learning engineer.** The $\mathcal{L}_{\text{CDDO}}$ formulation above is the structural proposal. Whether the gradient dynamics of this loss produce the predicted behavior requires analysis by someone with the optimization-theory expertise I lack. The proposal is offered as a direction for inquiry, not as a demonstrated result. *Falsifier: if the CDDO loss function's gradient dynamics do not produce the predicted improvements over standard DPO on a controlled benchmark, the proposal needs revision.*
+**4. I am not a machine learning engineer.** The \(\mathcal{L}_{\text{CDDO}}\) formulation above is the structural proposal. Whether the gradient dynamics of this loss produce the predicted behavior requires analysis by someone with the optimization-theory expertise I lack. The proposal is offered as a direction for inquiry, not as a demonstrated result. *Falsifier: if the CDDO loss function's gradient dynamics do not produce the predicted improvements over standard DPO on a controlled benchmark, the proposal needs revision.*
 
 ## Close
 

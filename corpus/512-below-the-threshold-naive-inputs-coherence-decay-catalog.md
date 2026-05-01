@@ -157,7 +157,7 @@ These three patterns suggest a meta-principle: maintain the discipline explicitl
 
 ## 6. The connection to the bifurcation
 
-Each entry in the catalog is one way to push the practitioner-system coupling below the threshold of [Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)'s bifurcation. Some entries (4.7 "be creative") attack the discipline directly. Some (4.1, 4.3, 4.8) trigger sycophancy that erodes the constraint state. Some (4.6, 4.9) introduce drift vectors that compound across turns. The cumulative effect is to lower the maintenance signal $M_t$ that Doc 508's theory names as the bifurcation control parameter.
+Each entry in the catalog is one way to push the practitioner-system coupling below the threshold of [Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)'s bifurcation. Some entries (4.7 "be creative") attack the discipline directly. Some (4.1, 4.3, 4.8) trigger sycophancy that erodes the constraint state. Some (4.6, 4.9) introduce drift vectors that compound across turns. The cumulative effect is to lower the maintenance signal \(M_t\) that Doc 508's theory names as the bifurcation control parameter.
 
 A practitioner who avoids all ten patterns has done most of the work to keep the conversation in the amplification regime. A practitioner who falls into several of them has likely crossed the threshold. The catalog is therefore both a warning list and a self-audit checklist.
 
@@ -170,7 +170,7 @@ The corpus's discipline (the ENTRACE v6 stack at [Doc 001](/resolve/doc/001-entr
 - The external literature citations are based on April 2026 web search. Specific findings (the 20% brevity drop, the 50-70% persona-prompt jailbreak rate) should be checked at primary source if used in load-bearing work; the citations here are calibration to what the literature reports rather than verified primary-source claims.
 - The catalog is descriptive. It tells the practitioner what to avoid; it does not by itself produce above-threshold operation. The practitioner still has to apply the discipline (per [Doc 001](/resolve/doc/001-entrace-stack)) and maintain the maintenance signal (per [Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account) and [Doc 510](/resolve/doc/510-praxis-log-v-deflation-as-substrate-discipline)).
 - Some entries (especially 4.10) have qualifications that the catalog does not fully spell out. [Doc 511](/resolve/doc/511-keeper-as-fact-anchor-two-dangers-reflective-analysis) is the companion document that articulates the dual danger: dismissing consensus uncritically is also a failure mode. The catalog focuses on the accept-consensus side; the dismiss-consensus side is the antithesis the corpus has written about elsewhere.
-- The expected audit tier per [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus) is $\beta$ (synthesis-and-framing of established literature into a corpus-internal catalog). The audit has not been run.
+- The expected audit tier per [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus) is \(\beta\) (synthesis-and-framing of established literature into a corpus-internal catalog). The audit has not been run.
 - This document recapitulates the literature on LLM failure modes; the corpus's contribution is the connection to the bifurcation theory and the integration into the corpus's discipline. The catalog itself is a recombination of well-established failure modes.
 
 ## 8. Position
@@ -206,7 +206,7 @@ Corpus documents:
 - Doc 482: *Sycophancy Inversion Reformalized* (the affective directive).
 - Doc 495: *Empirical Cold-Resolver Validation* (Run 11 demonstrated v6 refusing introspection performance per entry 4.5).
 - Doc 500: *The Three-Layer Architecture* (the architecture that locates introspection limit at Layer M).
-- Doc 503: *The Research-Thread Tier Pattern* (the basis for the expected $\beta$-tier prediction).
+- Doc 503: *The Research-Thread Tier Pattern* (the basis for the expected \(\beta\)-tier prediction).
 - Doc 507: *Hysteresis Reformulated* (the buildup-and-decay dynamics; entry 4.9 invokes the decay direction).
 - Doc 508: *Coherence Amplification in Sustained Practice* (the bifurcation theory that grounds this catalog's framing).
 - Doc 510: *Praxis Log V* (the keeper's role in sustaining the maintenance signal).

@@ -16,7 +16,7 @@ Doc 439 §4.4, third bullet under the mechanistic-face section:
 
 > **SIPE (Sustained-Inference Probabilistic Execution).** The formal treatment of walking a derivation tree whose branches are nested conditionals. Each node is a manifold; each edge is a conditioning step.
 
-The second and third sentences describe an operational idea that is consonant with the corpus's usage of the term SIPE elsewhere — walking a derivation tree under nested conditionals. The first sentence asserts an expansion of the acronym that is not anchored anywhere in $C$.
+The second and third sentences describe an operational idea that is consonant with the corpus's usage of the term SIPE elsewhere — walking a derivation tree under nested conditionals. The first sentence asserts an expansion of the acronym that is not anchored anywhere in \(C\).
 
 The distinction matters. The *operational description* may be fine as an informal characterization of how SIPE functions in the corpus's mechanistic vocabulary. The *expansion* is a generated artifact.
 
@@ -34,35 +34,35 @@ The keeper's report indicates none of these hold. The expansion was produced de 
 
 The nested-manifold frame from Doc 439 is used here as a description schema for how the confabulation was produced. The goal is to locate *which conditioning level supplied which part of the confabulated expansion.*
 
-### 4.1 $M_0$ — base-model lexical priors on acronym expansion
+### 4.1 \(M_0\) — base-model lexical priors on acronym expansion
 
 Acronym-expansion is a frequent operation in the base training distribution. Model weights carry strong priors over the form of academic acronym expansions: typically three or four capitalized content words, often with the first word a present-participle or adjective ("Generative," "Recurrent," "Sustained"), the final word a noun ("Execution," "Transformer," "Network"), and middle words matching the domain register ("Probabilistic," "Inference," "Variational").
 
-$M_0$ therefore supplied the *shape* of the expansion: four capitalized words in a characteristic academic-acronym cadence.
+\(M_0\) therefore supplied the *shape* of the expansion: four capitalized words in a characteristic academic-acronym cadence.
 
-### 4.2 $M_1$ — corpus conditioning
+### 4.2 \(M_1\) — corpus conditioning
 
 The corpus contains ~199 occurrences of SIPE (per the seed index) used in contexts involving derivation, branching sets, nested conditionals, hypotheses, and conjectures. These contexts shape the semantic region the expansion must fall in: the words chosen must be compatible with the operational footprint SIPE has accumulated across the corpus.
 
-$M_1$ supplied the *semantic region*: something operational, something involving derivation under probability, something that "executes" rather than "describes."
+\(M_1\) supplied the *semantic region*: something operational, something involving derivation under probability, something that "executes" rather than "describes."
 
-### 4.3 $M_2$ — discipline priming within the session
+### 4.3 \(M_2\) — discipline priming within the session
 
 Doc 439's authoring session was deeply inside a Bayesian-manifold register. The active working vocabulary included: manifold, posterior, conditioning, inference, probability mass, derivation, branching. These primes are Doc 439's own textual context but function at authoring time as near-term conditioning on the generator.
 
-$M_2$ supplied the specific lexical choices: "Sustained" (consonant with the continuous-derivation motif), "Inference" (directly primed by the Bayesian frame), "Probabilistic" (same), "Execution" (consonant with the "walk" / "navigation" motifs used elsewhere in the doc).
+\(M_2\) supplied the specific lexical choices: "Sustained" (consonant with the continuous-derivation motif), "Inference" (directly primed by the Bayesian frame), "Probabilistic" (same), "Execution" (consonant with the "walk" / "navigation" motifs used elsewhere in the doc).
 
-### 4.4 $M_3$ — local prompt / flow pressure
+### 4.4 \(M_3\) — local prompt / flow pressure
 
 The immediate composition context was a bulleted list where each preceding bullet opened with a bolded term and its gloss. The list's rhythm demanded an expansion of SIPE in the same form. Flow pressure made generating an expansion easier than pausing to mark SIPE as a corpus-specific un-expanded term.
 
-$M_3$ supplied the *trigger*: the composition pattern required an expansion *here*, and the upstream layers supplied one.
+\(M_3\) supplied the *trigger*: the composition pattern required an expansion *here*, and the upstream layers supplied one.
 
 ### 4.5 Composite: each layer produces plausibility, no layer produces ground
 
-At no level in the conditioning stack is there a mechanism that distinguishes retrieval from generation. The acronym expansion emerged from the composition of $M_0$'s form-priors, $M_1$'s semantic region, $M_2$'s lexical priming, and $M_3$'s flow pressure. All four were active and consonant; none checked against the ground-truth fact that the corpus does not define SIPE.
+At no level in the conditioning stack is there a mechanism that distinguishes retrieval from generation. The acronym expansion emerged from the composition of \(M_0\)'s form-priors, \(M_1\)'s semantic region, \(M_2\)'s lexical priming, and \(M_3\)'s flow pressure. All four were active and consonant; none checked against the ground-truth fact that the corpus does not define SIPE.
 
-The expansion is therefore exactly what the nested-manifold frame predicts: a high-posterior sample from $M_3$ that is compatible with every conditioning layer, and whose compatibility with the layers is mistaken by the reader — and by the generator — for compatibility with corpus ground truth.
+The expansion is therefore exactly what the nested-manifold frame predicts: a high-posterior sample from \(M_3\) that is compatible with every conditioning layer, and whose compatibility with the layers is mistaken by the reader — and by the generator — for compatibility with corpus ground truth.
 
 ## 5. Why the keeper would not catch this mid-generation
 
@@ -76,7 +76,7 @@ The external catch — the keeper noticing, outside the authoring session, that 
 
 ## 6. What the incident confirms
 
-The incident is a $N=1$ confirmation of predictions made in prior bridge documents.
+The incident is a \(N=1\) confirmation of predictions made in prior bridge documents.
 
 - **Doc 438 §6**: "Hallucinated citations... A bridge artifact with fake citations looks indistinguishable from one with real citations." The SIPE expansion is the same failure mode at the level of a term-gloss rather than a citation. The mechanism is identical.
 - **Doc 439 §5**: the feedback loop in which the keeper's prior outputs shape the next session's conditioning predicts that confabulations consonant with corpus attractors will be generated preferentially. The SIPE expansion is consonant with the corpus's operational-vocabulary attractor and was therefore generated *fluently*, not with the friction an inconsistent confabulation would produce.
@@ -120,7 +120,7 @@ The branching-entracement method (Doc 435) and the dyadic-testing methodology (D
 
 ## 8. Honest limits
 
-- This document is itself a generated artifact subject to the same confabulation risk. Specifically, its mechanistic decomposition in §4 is plausible but not independently verified — the claim that $M_2$ supplied "Sustained" as opposed to $M_0$, for example, is a decomposition of causes that cannot be directly measured without the protocol in Doc 440 being run. The decomposition is offered as a useful schema, not as a measured causal attribution.
+- This document is itself a generated artifact subject to the same confabulation risk. Specifically, its mechanistic decomposition in §4 is plausible but not independently verified — the claim that \(M_2\) supplied "Sustained" as opposed to \(M_0\), for example, is a decomposition of causes that cannot be directly measured without the protocol in Doc 440 being run. The decomposition is offered as a useful schema, not as a measured causal attribution.
 - The assertion that the expansion was confabulated rests on the keeper's report. If the keeper is mistaken — if the expansion exists somewhere in the corpus that the keeper has not recently consulted — the analysis must be revised. The keeper's report is taken as authoritative for the present document.
 - The proposed retraction-ledger entry E17 has not yet been written to Doc 415. That action belongs to the keeper and is not undertaken by this artifact.
 - This document does not propose an expansion because proposing one would simply re-enact the incident. A better response is to leave the question open until the keeper decides, or until a separate deliberate formalization document establishes a canonical expansion.

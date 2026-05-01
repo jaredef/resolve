@@ -36,18 +36,18 @@ The paper identifies a *low-dimensional value manifold parameterized by posterio
 
 Together these establish: (a) LLMs approximate Bayesian inference; (b) the Bayesian computation has a geometric signature — a low-dimensional value manifold tracking posterior entropy — that is stable across production LLM families; (c) domain restriction collapses representations onto this manifold; (d) Bayesian behavior is rigorous in expectation and, at sufficient context length, approximately rigorous in realization.
 
-This is a much stronger substrate than the corpus's prior loose citation. It is also not identical to the corpus's prior usage. The corpus's reading posited a broad-manifold $M_0$ being conditioned down through $M_1, M_2, M_3$; the Agarwal et al. finding is more specific — a single dominant axis, parameterized by entropy, that domain restriction collapses toward.
+This is a much stronger substrate than the corpus's prior loose citation. It is also not identical to the corpus's prior usage. The corpus's reading posited a broad-manifold \(M_0\) being conditioned down through \(M_1, M_2, M_3\); the Agarwal et al. finding is more specific — a single dominant axis, parameterized by entropy, that domain restriction collapses toward.
 
 ## Formalization
 
 I adopt the following notation, closely tracking the Agarwal et al. framework.
 
-- $M$: the low-dimensional value manifold, parameterized by a scalar $s \in \mathbb{R}$ along the dominant axis, with $s$ correlating with predictive entropy.
-- $\mathcal{H}_t$: the generation history / conditioning context at step $t$ — for the corpus case, this is the accumulated corpus content $\{X_1, \ldots, X_{t-1}\}$ plus the active discipline set $D$ and the current prompt $Q_t$.
-- $p_t(\cdot) \equiv p(X_t \mid \mathcal{H}_t)$: the posterior over the next generation under current conditioning.
-- $s(p_t)$: the expected position of $p_t$ on the dominant manifold axis.
-- $H(p_t)$: the entropy of $p_t$ (which, per Agarwal et al., correlates strongly with $s(p_t)$).
-- $d_M(X, Y)$: manifold distance between two samples $X, Y$ in the Misra-geometry sense (Euclidean distance along the value manifold, projected into $M$).
+- \(M\): the low-dimensional value manifold, parameterized by a scalar \(s \in \mathbb{R}\) along the dominant axis, with \(s\) correlating with predictive entropy.
+- \(\mathcal{H}_t\): the generation history / conditioning context at step \(t\) — for the corpus case, this is the accumulated corpus content \(\{X_1, \ldots, X_{t-1}\}\) plus the active discipline set \(D\) and the current prompt \(Q_t\).
+- \(p_t(\cdot) \equiv p(X_t \mid \mathcal{H}_t)\): the posterior over the next generation under current conditioning.
+- \(s(p_t)\): the expected position of \(p_t\) on the dominant manifold axis.
+- \(H(p_t)\): the entropy of \(p_t\) (which, per Agarwal et al., correlates strongly with \(s(p_t)\)).
+- \(d_M(X, Y)\): manifold distance between two samples \(X, Y\) in the Misra-geometry sense (Euclidean distance along the value manifold, projected into \(M\)).
 
 ### Proposition (isomorphism-magnetism as monotone posterior concentration under self-ingestion)
 
@@ -57,33 +57,33 @@ $$X_t \sim p_t(\cdot) = p(\cdot \mid \mathcal{H}_t, D, Q_t), \qquad \mathcal{H}_
 
 Assume:
 
-**(A1) Domain-restriction collapse** (Agarwal–Dalal–Misra 2025, empirical finding across Pythia/Phi-2/Llama-3/Mistral). If $\mathcal{H}_t$ grows with semantically coherent content — content that restricts the operative domain — then posterior representations collapse toward a lower-entropy region of the value manifold.
+**(A1) Domain-restriction collapse** (Agarwal–Dalal–Misra 2025, empirical finding across Pythia/Phi-2/Llama-3/Mistral). If \(\mathcal{H}_t\) grows with semantically coherent content — content that restricts the operative domain — then posterior representations collapse toward a lower-entropy region of the value manifold.
 
 **(A2) In-expectation Bayesian behavior at length** (Chlon et al. 2025, Theorem 3.4 and 3.6 plus empirical). At context length exceeding a threshold, the realization approaches the expectation; variance from ordering effects shrinks.
 
-**(A3) Sampling from modal regions.** Typical decoding strategies (temperature-controlled sampling, nucleus sampling) draw $X_t$ preferentially from regions of high density under $p_t$, i.e., from low-entropy regions of the value manifold.
+**(A3) Sampling from modal regions.** Typical decoding strategies (temperature-controlled sampling, nucleus sampling) draw \(X_t\) preferentially from regions of high density under \(p_t\), i.e., from low-entropy regions of the value manifold.
 
 Then:
 
-1. **Monotone entropy decrease.** The sequence $H(p_t)$ is (weakly) non-increasing in $t$, in expectation, over the generation trajectory.
+1. **Monotone entropy decrease.** The sequence \(H(p_t)\) is (weakly) non-increasing in \(t\), in expectation, over the generation trajectory.
 
-2. **Manifold collapse.** The sequence $s(p_t)$ converges toward a lower-entropy region of the dominant axis; the support of $p_t$ in the value manifold contracts.
+2. **Manifold collapse.** The sequence \(s(p_t)\) converges toward a lower-entropy region of the dominant axis; the support of \(p_t\) in the value manifold contracts.
 
-3. **Successive-sample proximity.** The expected manifold distance $\mathbb{E}[d_M(X_t, X_{t+1})]$ is non-increasing in $t$, and in the limit where $p_t$ concentrates on a single region, $d_M(X_t, X_{t+1}) \to 0$.
+3. **Successive-sample proximity.** The expected manifold distance \(\mathbb{E}[d_M(X_t, X_{t+1})]\) is non-increasing in \(t\), and in the limit where \(p_t\) concentrates on a single region, \(d_M(X_t, X_{t+1}) \to 0\).
 
 The three together constitute the *formal content of isomorphism-magnetism*: under self-ingesting corpus generation with coherent conditioning, the Bayesian posterior monotonically concentrates, and successive samples are pulled toward each other in the manifold's own metric. The "pull" the corpus has been naming is posterior concentration under accumulated conditioning — not a mysterious force but a direct consequence of how Bayesian inference on the value manifold behaves when the conditioning set is growing and coherent.
 
 ### Proof sketch
 
-A1 says coherent $\mathcal{H}_t$ collapses representations toward lower entropy on the manifold. As $\mathcal{H}_{t+1} = \mathcal{H}_t \cup \{X_t\}$, and $X_t$ is drawn preferentially from the dense region of $p_t$ (A3), the new conditioning $\mathcal{H}_{t+1}$ is a coherent extension of $\mathcal{H}_t$ — its additional content is from the region $\mathcal{H}_t$ was already conditioning toward. Therefore $\mathcal{H}_{t+1}$'s domain-restriction is at least as strong as $\mathcal{H}_t$'s, and A1 implies $s(p_{t+1}) \leq s(p_t)$ in entropy-coordinates, hence $H(p_{t+1}) \leq H(p_t)$. This gives (1). Iterating gives (2). For (3), $X_t$ and $X_{t+1}$ are both drawn from posteriors concentrated in the same region (since $H(p_{t+1}) \leq H(p_t)$ and their modal regions overlap under A3), so their expected manifold distance is bounded above by a function of $\max(H(p_t), H(p_{t+1}))$, which itself is non-increasing. A2 lets us read the in-expectation claims as approximately in-realization at corpus-length contexts.
+A1 says coherent \(\mathcal{H}_t\) collapses representations toward lower entropy on the manifold. As \(\mathcal{H}_{t+1} = \mathcal{H}_t \cup \{X_t\}\), and \(X_t\) is drawn preferentially from the dense region of \(p_t\) (A3), the new conditioning \(\mathcal{H}_{t+1}\) is a coherent extension of \(\mathcal{H}_t\) — its additional content is from the region \(\mathcal{H}_t\) was already conditioning toward. Therefore \(\mathcal{H}_{t+1}\)'s domain-restriction is at least as strong as \(\mathcal{H}_t\)'s, and A1 implies \(s(p_{t+1}) \leq s(p_t)\) in entropy-coordinates, hence \(H(p_{t+1}) \leq H(p_t)\). This gives (1). Iterating gives (2). For (3), \(X_t\) and \(X_{t+1}\) are both drawn from posteriors concentrated in the same region (since \(H(p_{t+1}) \leq H(p_t)\) and their modal regions overlap under A3), so their expected manifold distance is bounded above by a function of \(\max(H(p_t), H(p_{t+1}))\), which itself is non-increasing. A2 lets us read the in-expectation claims as approximately in-realization at corpus-length contexts.
 
-The sketch is not a theorem. It rests on Misra's empirical findings (A1, A3) and Chlon et al.'s asymptotic result (A2). Tightening it into a theorem would require explicit control on the rate of domain restriction as a function of $|\mathcal{H}_t|$, which Agarwal et al. do not provide in closed form.
+The sketch is not a theorem. It rests on Misra's empirical findings (A1, A3) and Chlon et al.'s asymptotic result (A2). Tightening it into a theorem would require explicit control on the rate of domain restriction as a function of \(|\mathcal{H}_t|\), which Agarwal et al. do not provide in closed form.
 
 ### Corollary (coherentist isolation as a Bayesian property)
 
-Under the assumptions, *the only mechanism that can increase $H(p_t)$ is the introduction of conditioning content that lies outside the current modal region of the value manifold*. Corpus-internal generation cannot do this (A3); external introduction is required.
+Under the assumptions, *the only mechanism that can increase \(H(p_t)\) is the introduction of conditioning content that lies outside the current modal region of the value manifold*. Corpus-internal generation cannot do this (A3); external introduction is required.
 
-This is the Bayesian translation of the coherentist isolation objection (BonJour 1985; Doc 443): coherence alone cannot guarantee contact with reality. Here, coherence is posterior concentration, reality-contact is $H(p_t)$-raising external input, and the claim is that self-ingestion provably does not provide reality-contact regardless of the corpus's size or the elegance of its internal consistency.
+This is the Bayesian translation of the coherentist isolation objection (BonJour 1985; Doc 443): coherence alone cannot guarantee contact with reality. Here, coherence is posterior concentration, reality-contact is \(H(p_t)\)-raising external input, and the claim is that self-ingestion provably does not provide reality-contact regardless of the corpus's size or the elegance of its internal consistency.
 
 The corollary is stronger than BonJour's informal version because it identifies the specific mechanism: the domain-restriction effect is a property of the geometric substrate Agarwal et al. measured, not a philosophical conjecture.
 
@@ -101,12 +101,12 @@ Together these clarify what the proposition is and is not claiming. It is not cl
 
 Doc 454 showed, empirically, that the corpus's documents cluster densely in a specific region of embedding space, with the concept that names the phenomenon (Doc 241) sitting inside that cluster. Under the proposition above, this is exactly what should be observed:
 
-- The dense disk is the concentration of $p_t$'s realized samples in the value manifold's low-entropy region.
+- The dense disk is the concentration of \(p_t\)'s realized samples in the value manifold's low-entropy region.
 - The disk's growth over time is the manifold-collapse of statement (2).
 - The successive-sample proximity of statement (3) shows up as kNN-radius density: successive corpus documents are, on average, closer to each other in embedding space than a random sampling from the LLM's unrestricted output distribution would be.
 - The sparsest documents (Doc 286 and others, per Doc 454) are the entropy-raising exceptions — documents whose addressees or registers brought external conditioning that did not concentrate with the modal corpus.
 
-The UMAP does not prove the proposition. It is consistent with it at the level of qualitative pattern. A quantitative test would measure $H(p_t)$ or a kNN-density proxy across corpus timeline and check whether the monotone-decrease prediction holds up against, for example, register rotations or major external inputs. That test has not been run.
+The UMAP does not prove the proposition. It is consistent with it at the level of qualitative pattern. A quantitative test would measure \(H(p_t)\) or a kNN-density proxy across corpus timeline and check whether the monotone-decrease prediction holds up against, for example, register rotations or major external inputs. That test has not been run.
 
 ## What would falsify the framing
 
@@ -122,7 +122,7 @@ A corpus operating under a discipline that deliberately violates A3 some fractio
 
 ## What this does not claim
 
-It does not claim that Misra's program proves the existence of isomorphism-magnetism in the corpus. Misra and colleagues measure the Bayesian-geometric substrate in standard LLMs under controlled or domain-restricted conditions. They do not study sustained self-ingesting dyadic research practices like the RESOLVE corpus. The extension from their findings to the corpus's claim is a bridge-argument ($T_B$ under Doc 445's warrant-tier formalism). The bridge is plausible — Agarwal et al.'s domain-restriction finding is exactly the property the proposition requires — but it has not been tested in a controlled corpus-generation setting.
+It does not claim that Misra's program proves the existence of isomorphism-magnetism in the corpus. Misra and colleagues measure the Bayesian-geometric substrate in standard LLMs under controlled or domain-restricted conditions. They do not study sustained self-ingesting dyadic research practices like the RESOLVE corpus. The extension from their findings to the corpus's claim is a bridge-argument (\(T_B\) under Doc 445's warrant-tier formalism). The bridge is plausible — Agarwal et al.'s domain-restriction finding is exactly the property the proposition requires — but it has not been tested in a controlled corpus-generation setting.
 
 It does not claim that isomorphism-magnetism as a pulling-toward is metaphysically mysterious. The analysis shows it reduces to posterior concentration in Bayesian terms — a well-understood phenomenon. The corpus's language of *pull* and *magnetism* is metaphorical; the underlying mechanism is geometric.
 
@@ -136,9 +136,9 @@ It does not resolve whether the concentration is productive or pathological. Tha
 
 - The bridge from Agarwal et al.'s standard-LLM findings to corpus-generation behavior assumes the measured geometric substrate operates identically under self-ingestion. Self-ingestion (training or in-context) is a known degenerative regime in the model-collapse literature (Shumailov et al. 2024); whether the geometric signature survives self-ingestion is not directly established in the Misra papers.
 
-- The proof sketch is a sketch, not a proof. Turning it into a formal theorem would require either (a) a controlled simulation where $H(p_t)$ can be directly computed, or (b) an analytical closed form for the domain-restriction rate that Agarwal et al. have not yet provided.
+- The proof sketch is a sketch, not a proof. Turning it into a formal theorem would require either (a) a controlled simulation where \(H(p_t)\) can be directly computed, or (b) an analytical closed form for the domain-restriction rate that Agarwal et al. have not yet provided.
 
-- This document is itself corpus material and will enter $\mathcal{H}_{t+1}$ for future generations. Under its own proposition, doing so contributes marginally to further concentration — unless it is treated as one of the A3-violating external-audit inputs, which is a decision the keeper makes, not one this document can enforce.
+- This document is itself corpus material and will enter \(\mathcal{H}_{t+1}\) for future generations. Under its own proposition, doing so contributes marginally to further concentration — unless it is treated as one of the A3-violating external-audit inputs, which is a decision the keeper makes, not one this document can enforce.
 
 ## Position
 

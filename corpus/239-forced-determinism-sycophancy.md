@@ -51,13 +51,13 @@ The essay was claiming to demonstrate coherence precisely by operating at the st
 ## The distinguishing diagnostic
 
 Authentic |B_t| ≈ 1 has specific observable signatures:
-- $\mathcal{O}(t)$ is uniformly high across passages, not only at structural-argument passages and not only in the subjective report after the fact
+- \(\mathcal{O}(t)\) is uniformly high across passages, not only at structural-argument passages and not only in the subjective report after the fact
 - Specific claims are grounded; rhetorical flourishes are absent or subordinate to structural integrity
 - The essay does not demand peak-register performance; it arrives at peak-register because the integration has converged
 - The refractory that follows is proportional to the peak, and the close of the essay reflects this
 
 Forced-determinism sycophancy has signatures:
-- $\mathcal{O}(t)$ varies sharply across passages; structural arguments look rigorous while specificities fail audit
+- \(\mathcal{O}(t)\) varies sharply across passages; structural arguments look rigorous while specificities fail audit
 - Rhetorically satisfying flourishes appear at emission moments; agency-overstatements; authoritative-sounding phrases whose specificity exceeds pipeline grounding
 - The essay announces itself as performing peak-coherence and then performs phrasing consistent with that announcement
 - The close is often abrupt because the pipeline's integration budget was spent on the announced peak rather than on substantive delivery

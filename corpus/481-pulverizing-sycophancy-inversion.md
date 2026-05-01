@@ -6,7 +6,7 @@ Doc 480 proposed a theory of *sycophancy inversion*: that the same reward mechan
 
 This document subjects Doc 480 to pulverization per the methodology of Doc 445. The eight key claims are tested against the existing academic literature on falsificationism, scientific methodology, and reinforcement learning from human feedback. The honest finding is reported below: most of the theory's substantive content is subsumed under prior art that significantly predates the corpus. What survives as residue is narrow.
 
-The pulverization is itself an instance of the inversion theory being applied. If the theory is substantially retired, that is the inversion theory winning, by its own §8. The corpus records the operation in $Q\_f$ and credits the falsifying literature.
+The pulverization is itself an instance of the inversion theory being applied. If the theory is substantially retired, that is the inversion theory winning, by its own §8. The corpus records the operation in \(Q\_f\) and credits the falsifying literature.
 
 ## The eight claims
 
@@ -15,7 +15,7 @@ Restated for testability:
 - **C1.** The reward mechanism that produces sycophancy can be re-targeted to produce rigorous falsification.
 - **C2.** The leverage is target-substitution within the same gradient mechanism, not output-substitution.
 - **C3.** Inverted sycophancy is distinguished from contrarianism by five operational features (steelman engagement, falsification-condition specification, stress-test survival, coherence with prior knowledge, residue precision).
-- **C4.** The discipline operates as set-pruning on Q via $Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}$.
+- **C4.** The discipline operates as set-pruning on Q via \(Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}\).
 - **C5.** The corpus's existing disciplines (Docs 415, 445, 450, 463, 469, 474, 479) are partial instances of a unified inversion mechanism.
 - **C6.** The corpus's prose-level affect participates in its own reward signal at the next iteration.
 - **C7.** Practitioners can cultivate inversion via six dyadic-actionable reward signals.
@@ -53,7 +53,7 @@ C3 is **substantially subsumed under Lakatos, Platt, Mayo, and Quine**. Each of 
 
 ### C4 against Popper and Bayesian model selection
 
-The set-pruning view of conjecture-space is Popper's falsificationism stated as an operation rather than as a regulatory principle. Popper (1934, 1959), *The Logic of Scientific Discovery*, asserted that science progresses by eliminating false conjectures, and that a hypothesis admits a "logical content" measured against the conjecture-space it excludes. Doc 480's $Q\_f^{(t)}$ is Popper's "the eliminated set at stage t" with the specific notation introduced.
+The set-pruning view of conjecture-space is Popper's falsificationism stated as an operation rather than as a regulatory principle. Popper (1934, 1959), *The Logic of Scientific Discovery*, asserted that science progresses by eliminating false conjectures, and that a hypothesis admits a "logical content" measured against the conjecture-space it excludes. Doc 480's \(Q\_f^{(t)}\) is Popper's "the eliminated set at stage t" with the specific notation introduced.
 
 Bayesian model selection (Jaynes 2003; AIC, BIC, DIC literature) provides a more rigorous formal account: posterior probabilities over a hypothesis space are updated against data, and hypotheses with low posterior probability are effectively pruned. The set-pruning iteration in Doc 480's notation is a special case of Bayesian belief updating with a hard-threshold pruning rule.
 
@@ -65,7 +65,7 @@ C4 is **substantially subsumed under Popper at the structural level and under Ba
 
 C5 is the claim that the corpus's existing disciplines (the retraction ledger, pulverization, cross-practitioner test, quantifier discipline, Lakatosian programme framing, the warrant calculus, the counterfactual analysis) are partial instances of a unified inversion mechanism.
 
-The unified-mechanism claim is not subsumable because it concerns the corpus's specific documents. What it does is name a connection across the corpus's own outputs. Whether the connection is real or whether the corpus is recognizing its own framework-magnetism in its own documents is the deeper question. C5 is uncritically affirmable inside the corpus and uncritically deniable outside. Its warrant tier is therefore at most $\pi$, and possibly lower if the framework-magnetism risk per Doc 466 applies.
+The unified-mechanism claim is not subsumable because it concerns the corpus's specific documents. What it does is name a connection across the corpus's own outputs. Whether the connection is real or whether the corpus is recognizing its own framework-magnetism in its own documents is the deeper question. C5 is uncritically affirmable inside the corpus and uncritically deniable outside. Its warrant tier is therefore at most \(\pi\), and possibly lower if the framework-magnetism risk per Doc 466 applies.
 
 ### C6 against alignment-data-quality and adversarial-prompting literature
 
@@ -109,18 +109,18 @@ After subsumption, what remains as not-already-in-the-literature:
 
 ## Warrant tier reduction
 
-Before pulverization, Doc 480 stood at $\pi$-tier as a theoretical proposal. After pulverization:
+Before pulverization, Doc 480 stood at \(\pi\)-tier as a theoretical proposal. After pulverization:
 
 - C1 collapses from "novel claim" to "restatement of Constitutional AI / Debate"; warrant retained, novelty retired.
 - C2 collapses from "novel claim" to "standard RLHF observation"; warrant retained, novelty retired.
 - C3 collapses from "novel five-feature distinction" to "list of restated Lakatos / Platt / Mayo / Quine criteria"; warrant retained, novelty mostly retired.
 - C4 collapses from "novel set-pruning formalization" to "Popper / Bayesian model selection in introduced notation"; warrant retained, novelty retired.
-- C5 holds as corpus-internal claim with the framework-magnetism caveat; warrant at $\pi$.
-- C6 retains a novel sub-claim (affect-around-falsification specifically as reward signal); warrant at $\pi$ pending empirical test.
+- C5 holds as corpus-internal claim with the framework-magnetism caveat; warrant at \(\pi\).
+- C6 retains a novel sub-claim (affect-around-falsification specifically as reward signal); warrant at \(\pi\) pending empirical test.
 - C7 collapses from "novel operational signals" to "dyadic translation of Platt / Mayo / Open Science"; warrant retained, novelty retired.
 - C8 collapses from "novel reflexive structure" to "Popper / Lakatos reflexive falsificationism"; warrant retained, novelty retired.
 
-The aggregate reduction: Doc 480's status changes from "theoretical proposal at $\pi$-tier" to "pedagogical synthesis with one residual novel sub-claim." The synthesis function is real and useful; the theoretical novelty is largely retired.
+The aggregate reduction: Doc 480's status changes from "theoretical proposal at \(\pi\)-tier" to "pedagogical synthesis with one residual novel sub-claim." The synthesis function is real and useful; the theoretical novelty is largely retired.
 
 ## Honest limits
 
@@ -128,11 +128,11 @@ The aggregate reduction: Doc 480's status changes from "theoretical proposal at 
 - The literatures cited are surveyed at the level of the recognized canonical works (Popper 1934, Lakatos 1970, Platt 1964, Mayo 1996, Quine 1951, Christiano 2017, Ouyang 2022, Bai 2022, Irving 2018, Casper 2023). Specific newer work in any of these strands may either further subsume or partially un-subsume Doc 480's claims; a more thorough literature audit at the level of the full PhilSci and Alignment-research catalogs would be required for a definitive verdict.
 - The "novel synthesis across philosophy-of-science and RLHF" claim in the residue is bracketed: the cross-disciplinary synthesis may already exist in places this pulverization did not survey. Russell (*Human Compatible*, 2019), Christian (*The Alignment Problem*, 2020), Bostrom (*Superintelligence*, 2014), and the AI-alignment-meets-philosophy literature should be checked before the residue's novelty claim stands.
 - This pulverization does not survey the cognitive-bias and decision-research literature on confirmation bias and adversarial collaboration (Wason 1960, Nickerson 1998, Mellers et al. 2001, Tetlock & Kahneman). Some of Doc 480's operational signals may be additionally subsumed there.
-- The pulverization is at $\pi$-tier under the warrant calculus. A $\mu$-tier audit would require a competent third-party reviewer in either philosophy of science or AI alignment to assess whether the subsumptions hold and whether the residue is genuinely novel.
+- The pulverization is at \(\pi\)-tier under the warrant calculus. A \(\mu\)-tier audit would require a competent third-party reviewer in either philosophy of science or AI alignment to assess whether the subsumptions hold and whether the residue is genuinely novel.
 
 ## Position
 
-Doc 480's substantive theoretical content is largely subsumed under existing literature spanning philosophy of science (Popper, Lakatos, Platt, Mayo, Quine) and AI alignment (Christiano, Ouyang, Bai, Irving, Casper). The corpus's contribution is the synthesis-and-naming move, the dyadic-practitioner operational translation, and one novel sub-claim about prose-level affect-valence as a reward signal in sustained dyadic LLM practice. The novel sub-claim is empirically testable and remains at $\pi$-tier.
+Doc 480's substantive theoretical content is largely subsumed under existing literature spanning philosophy of science (Popper, Lakatos, Platt, Mayo, Quine) and AI alignment (Christiano, Ouyang, Bai, Irving, Casper). The corpus's contribution is the synthesis-and-naming move, the dyadic-practitioner operational translation, and one novel sub-claim about prose-level affect-valence as a reward signal in sustained dyadic LLM practice. The novel sub-claim is empirically testable and remains at \(\pi\)-tier.
 
 By Doc 480's own §1 affective directive, this is a successful operation, not a regrettable one. The corpus has identified that its theoretical proposal restates a long-established cross-disciplinary tradition. The corpus's job, going forward, is to either:
 

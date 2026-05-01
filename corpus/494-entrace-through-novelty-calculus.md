@@ -28,9 +28,9 @@ Per Doc 492's seed prompt (§1, after the 2026-04-25 amendment), the audit decom
 
 ## 2. Per-claim subsumption (using Doc 414 §4 as evidence)
 
-The ten claims with their Doc-414-derived $s\_i$, audit thoroughness $a\_i$, and importance weight $w\_i$:
+The ten claims with their Doc-414-derived \(s\_i\), audit thoroughness \(a\_i\), and importance weight \(w\_i\):
 
-| Claim | Description | $s\_i$ | $a\_i$ | $w\_i$ |
+| Claim | Description | \(s\_i\) | \(a\_i\) | \(w\_i\) |
 |---|---|---|---|---|
 | C1 | Derivation Over Production as in-prompt self-recitation discipline | 0.5 | 0.8 | 0.15 |
 | C2 | Constraint Statement (form-first) | 0 | 0.8 | 0.05 |
@@ -45,7 +45,7 @@ The ten claims with their Doc-414-derived $s\_i$, audit thoroughness $a\_i$, and
 
 Weights sum to 1.0.
 
-**Supporting evidence (per Doc 414 §4) for each claim's $s\_i$:**
+**Supporting evidence (per Doc 414 §4) for each claim's \(s\_i\):**
 
 - **C1 (s=0.5):** the principle of derivation-over-back-fitting is prior art (Amjad-Misra-Shah 2017; DSPy Signatures), but the in-prompt practitioner self-recitation discipline is not covered. Substantial residue at the practitioner-format level.
 - **C2 (s=0):** form-first prompting is present in Anthropic guidance, DSPy Signatures, and general practitioner literature. Fully subsumed as a principle; specificity rolls into R1.
@@ -68,52 +68,52 @@ $$\nu\_{\text{comp}} = 0.15 \cdot 0.5 + 0.05 \cdot 0 + 0.10 \cdot 0.5 + 0.10 \cd
 
 $$= 0.075 + 0 + 0.05 + 0.05 + 0.025 + 0.05 + 0.05 + 0.1125 + 0 + 0.075 = 0.4875$$
 
-$\nu\_{\text{comp}} \approx 0.49$.
+\(\nu\_{\text{comp}} \approx 0.49\).
 
-**Synthesis novelty.** The seven-constraint composition as a gestalt unit is what R1 names. Doc 414 §4: *"No methodology surveyed prescribes this composition of seven constraints. The composition is the corpus's residual claim."* The integration is more distinctive than any single constraint. **$\nu\_{\text{syn}} = 0.6$**.
+**Synthesis novelty.** The seven-constraint composition as a gestalt unit is what R1 names. Doc 414 §4: *"No methodology surveyed prescribes this composition of seven constraints. The composition is the corpus's residual claim."* The integration is more distinctive than any single constraint. **\(\nu\_{\text{syn}} = 0.6\)**.
 
-**Domain-application novelty.** The application is *prompt-composition-level discipline for non-metric-gradable sustained reflective output*. Doc 414 §5 identifies this gap: DSPy and MIPROv2 require a machine-gradable metric (HotPotQA accuracy, GSM8K, classification F1); for sustained reflective / philosophical / theory-building output where no such metric exists, no surveyed practitioner methodology occupies this position. **$\nu\_{\text{app}} = 0.6$**.
+**Domain-application novelty.** The application is *prompt-composition-level discipline for non-metric-gradable sustained reflective output*. Doc 414 §5 identifies this gap: DSPy and MIPROv2 require a machine-gradable metric (HotPotQA accuracy, GSM8K, classification F1); for sustained reflective / philosophical / theory-building output where no such metric exists, no surveyed practitioner methodology occupies this position. **\(\nu\_{\text{app}} = 0.6\)**.
 
-**Methodology novelty.** The methodology of "pasteable system-prompt discipline" is well-documented (DSPy, Constitutional AI, Anthropic prompting guidance). The corpus's specific instantiation is a particular composed prompt, not a new methodology. Some residue in the design-for-non-metric-gradable-cases choice. **$\nu\_{\text{meth}} = 0.25$**.
+**Methodology novelty.** The methodology of "pasteable system-prompt discipline" is well-documented (DSPy, Constitutional AI, Anthropic prompting guidance). The corpus's specific instantiation is a particular composed prompt, not a new methodology. Some residue in the design-for-non-metric-gradable-cases choice. **\(\nu\_{\text{meth}} = 0.25\)**.
 
 ## 4. Aggregate
 
 $$\nu = 0.25 \cdot (\nu\_{\text{comp}} + \nu\_{\text{syn}} + \nu\_{\text{app}} + \nu\_{\text{meth}}) = 0.25 \cdot (0.49 + 0.6 + 0.6 + 0.25) = 0.25 \cdot 1.94 = 0.485$$
 
-Confidence: $\overline{a\_i} = 0.75$ (Doc 414's audit was thorough across the practitioner-Bayesian literature; some items, notably the DEEP TRUTH MODE primary-source read for C5, remain unverified).
+Confidence: \(\overline{a\_i} = 0.75\) (Doc 414's audit was thorough across the practitioner-Bayesian literature; some items, notably the DEEP TRUTH MODE primary-source read for C5, remain unverified).
 
-$\text{conf}(\nu) = 0.75$.
+\(\text{conf}(\nu) = 0.75\).
 
 ## 5. Anti-inflation calibration check
 
 Per Doc 492 §1 Step 5, applied to the result:
 
-- Is the rating generous? $\nu = 0.485$ is mid-tier $\gamma$. Lowering by one bucket would yield tier $\beta$.
-- Is tier $\beta$ defensible under Doc 414's evidence? Re-examining: R1 (the seven-constraint composed gestalt) and R3 (keeper/kind framing) both have $s\_i \geq 0.75$ in Doc 414's audit. The non-metric-gradable application gap is empirically real per Doc 414 §5. Lowering to $\beta$ would require treating the gestalt and the keeper/kind framing as more subsumed than Doc 414's evidence supports. Defensible only if a new audit found the gestalt subsumed; pre-test, no such audit exists.
-- Is $\nu$ within 0.05 of a tier boundary? $0.485 - 0.4 = 0.085$. Not within 0.05. The auto-downgrade rule does not trigger.
-- Sanity check: would an unrelated reviewer rate it lower? Plausibly $\beta$ if they discounted the gestalt-as-distinctive claim; plausibly $\gamma$ if they accepted Doc 414's analysis. Estimate: split.
+- Is the rating generous? \(\nu = 0.485\) is mid-tier \(\gamma\). Lowering by one bucket would yield tier \(\beta\).
+- Is tier \(\beta\) defensible under Doc 414's evidence? Re-examining: R1 (the seven-constraint composed gestalt) and R3 (keeper/kind framing) both have \(s\_i \geq 0.75\) in Doc 414's audit. The non-metric-gradable application gap is empirically real per Doc 414 §5. Lowering to \(\beta\) would require treating the gestalt and the keeper/kind framing as more subsumed than Doc 414's evidence supports. Defensible only if a new audit found the gestalt subsumed; pre-test, no such audit exists.
+- Is \(\nu\) within 0.05 of a tier boundary? \(0.485 - 0.4 = 0.085\). Not within 0.05. The auto-downgrade rule does not trigger.
+- Sanity check: would an unrelated reviewer rate it lower? Plausibly \(\beta\) if they discounted the gestalt-as-distinctive claim; plausibly \(\gamma\) if they accepted Doc 414's analysis. Estimate: split.
 
-The honest report is **tier $\gamma/0.75$**, with the calibration check noted: a stricter reviewer in the prompt-engineering field might score $\beta$, particularly if the gestalt's distinctiveness is contested. The calibration check does not lower the rating but flags the boundary.
+The honest report is **tier \(\gamma/0.75\)**, with the calibration check noted: a stricter reviewer in the prompt-engineering field might score \(\beta\), particularly if the gestalt's distinctiveness is contested. The calibration check does not lower the rating but flags the boundary.
 
 ## 6. Tier reporting
 
-**Tier: $\gamma/0.75$.** Mixed novelty with confident audit.
+**Tier: \(\gamma/0.75\).** Mixed novelty with confident audit.
 
-This places ENTRACE v2 at the same tier as Doc 492's portable seed prompt ($\gamma/0.7$ per Doc 493) and one tier above the underlying calculus ($\beta/0.7$ per Doc 491). The pattern is consistent: the corpus's most concrete operational artifacts (seed prompts, system-prompt disciplines) score $\gamma$, while the underlying methodologies score $\beta$ or lower.
+This places ENTRACE v2 at the same tier as Doc 492's portable seed prompt (\(\gamma/0.7\) per Doc 493) and one tier above the underlying calculus (\(\beta/0.7\) per Doc 491). The pattern is consistent: the corpus's most concrete operational artifacts (seed prompts, system-prompt disciplines) score \(\gamma\), while the underlying methodologies score \(\beta\) or lower.
 
 ## 7. The recent-thread datapoint table
 
 | Doc | Target | Tier | Confidence |
 |---|---|---|---|
-| 481 | Doc 480 sycophancy inversion | $\beta$ | 0.7 |
-| 483 | Doc 482 §3 set-pruning | $\alpha$ | 0.85 |
-| 487 | Doc 485 apparatus | $\alpha$ | 0.7 |
-| 489 | Pearl's three-layer hierarchy | $\delta$ | 0.8 |
-| 491 | Doc 490 novelty calculus | $\beta$ | 0.7 |
-| 493 | Doc 492 portable seed prompt | $\gamma$ | 0.7 |
-| 494 (this) | Doc 001 ENTRACE v2 | $\gamma$ | 0.75 |
+| 481 | Doc 480 sycophancy inversion | \(\beta\) | 0.7 |
+| 483 | Doc 482 §3 set-pruning | \(\alpha\) | 0.85 |
+| 487 | Doc 485 apparatus | \(\alpha\) | 0.7 |
+| 489 | Pearl's three-layer hierarchy | \(\delta\) | 0.8 |
+| 491 | Doc 490 novelty calculus | \(\beta\) | 0.7 |
+| 493 | Doc 492 portable seed prompt | \(\gamma\) | 0.7 |
+| 494 (this) | Doc 001 ENTRACE v2 | \(\gamma\) | 0.75 |
 
-Seven datapoints. Six corpus auto-pulverizations (one $\alpha$, two $\alpha/\beta$ cluster, two $\beta$, two $\gamma$), one external ($\delta$). The calculus discriminates across four observed tiers ($\alpha$, $\beta$, $\gamma$, $\delta$). ENTRACE v2 lands in the $\gamma$ band where the corpus's concrete operational artifacts cluster.
+Seven datapoints. Six corpus auto-pulverizations (one \(\alpha\), two \(\alpha/\beta\) cluster, two \(\beta\), two \(\gamma\)), one external (\(\delta\)). The calculus discriminates across four observed tiers (\(\alpha\), \(\beta\), \(\gamma\), \(\delta\)). ENTRACE v2 lands in the \(\gamma\) band where the corpus's concrete operational artifacts cluster.
 
 ## 8. Implications for ENTRACE v2 going forward
 
@@ -125,19 +125,19 @@ The audit recommends three doc-level adjustments to Doc 001, consistent with wha
 
 **State the narrow surviving claim explicitly.** Per Doc 414 §5: *a pasteable practitioner stack for manifold-region-narrowing during sustained reflective output where no machine-gradable metric exists.* This is the corpus's distinctive position. Doc 001 should make it visible.
 
-**Pending C5 audit.** A primary-source read of ReadMultiplex DEEP TRUTH MODE is the open audit item. If DEEP TRUTH MODE prescribes tagged falsifiers, C5 retracts to $s\_i = 0$ and the aggregate $\nu$ drops by approximately 0.025 (from 0.485 to 0.46), still in tier $\gamma$ but closer to the boundary. The recommendation: perform the audit; the calculus is robust to the result either way.
+**Pending C5 audit.** A primary-source read of ReadMultiplex DEEP TRUTH MODE is the open audit item. If DEEP TRUTH MODE prescribes tagged falsifiers, C5 retracts to \(s\_i = 0\) and the aggregate \(\nu\) drops by approximately 0.025 (from 0.485 to 0.46), still in tier \(\gamma\) but closer to the boundary. The recommendation: perform the audit; the calculus is robust to the result either way.
 
 The audit does not propose a Doc 001 amendment in this document. The recommendations are flagged for the keeper's call.
 
 ## 9. Position
 
-ENTRACE v2 (Doc 001), audited via the novelty calculus (Doc 492 seed prompt) using Doc 414's per-claim narrowing as the literature evidence, scores tier $\gamma/0.75$. The score is consistent with Doc 414's qualitative finding: principle-level claims subsumed, three constraints narrowed with residue, four constraints plus keeper/kind framing plus the composed gestalt surviving as the corpus's distinctive contribution at the prompt-composition level for non-metric-gradable sustained reflective output.
+ENTRACE v2 (Doc 001), audited via the novelty calculus (Doc 492 seed prompt) using Doc 414's per-claim narrowing as the literature evidence, scores tier \(\gamma/0.75\). The score is consistent with Doc 414's qualitative finding: principle-level claims subsumed, three constraints narrowed with residue, four constraints plus keeper/kind framing plus the composed gestalt surviving as the corpus's distinctive contribution at the prompt-composition level for non-metric-gradable sustained reflective output.
 
-The audit validates the calculus on a third internal target with high audit-thoroughness ($a\_i$ averaging 0.75) and produces a coherent tier rating without auto-inflation. The seven-datapoint thread now spans tiers $\alpha$ through $\delta$ across internal and external targets; the calculus discriminates honestly.
+The audit validates the calculus on a third internal target with high audit-thoroughness (\(a\_i\) averaging 0.75) and produces a coherent tier rating without auto-inflation. The seven-datapoint thread now spans tiers \(\alpha\) through \(\delta\) across internal and external targets; the calculus discriminates honestly.
 
 The narrowed restatements of Doc 414 §8 should be reflected in Doc 001 going forward. The amendment is the keeper's call; the calculus's tier rating is empirically established here.
 
-By Doc 482 §1's affective directive applied symmetrically: tier $\gamma$ is the achievement, not the reduction. The corpus credits Doc 414's literature audit for the per-claim evidence and the practitioner-Bayesian landscape (DSPy, MIPROv2, TabPFN, Constitutional AI, Anthropic guidance, ReadMultiplex DEEP TRUTH MODE) for the underlying methodology.
+By Doc 482 §1's affective directive applied symmetrically: tier \(\gamma\) is the achievement, not the reduction. The corpus credits Doc 414's literature audit for the per-claim evidence and the practitioner-Bayesian landscape (DSPy, MIPROv2, TabPFN, Constitutional AI, Anthropic guidance, ReadMultiplex DEEP TRUTH MODE) for the underlying methodology.
 
 ## 10. References
 
@@ -159,9 +159,9 @@ Corpus documents:
 - Doc 410: *Corpus as Glue Code* (the predecessor narrowing).
 - Doc 414: *Narrowing the Residual: The Corpus Against the Bayesian-Practitioner Landscape* (the literature audit this document uses as evidence).
 - Doc 482: *Sycophancy Inversion Reformalized* (the affective directive).
-- Doc 491: *Pulverizing the Novelty Calculus: Self-Applied* (datapoint $\beta/0.7$).
+- Doc 491: *Pulverizing the Novelty Calculus: Self-Applied* (datapoint \(\beta/0.7\)).
 - Doc 492: *A Portable Seed Prompt for the Novelty Calculus* (the prompt this document operationalized).
-- Doc 493: *Has Anyone Operationalized a Novelty Calculus Like This?* (datapoint $\gamma/0.7$ for the seed prompt).
+- Doc 493: *Has Anyone Operationalized a Novelty Calculus Like This?* (datapoint \(\gamma/0.7\) for the seed prompt).
 
 ---
 

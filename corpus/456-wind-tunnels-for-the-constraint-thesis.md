@@ -110,7 +110,7 @@ The charitable reading is: *the corpus's methodology should adopt the wind-tunne
 
 - Doc 445's warrant tiers are being invoked but not audited in this analysis. The claim that building wind tunnels would move the Constraint Thesis from π-tier to μ-tier is itself at π-tier — the claim rests on plausibility, not yet on measurement.
 
-- This document is part of the corpus it analyzes. Under Doc 455's proposition, adding this document to $\mathcal{H}_t$ marginally concentrates the corpus posterior further. The proposal to build wind tunnels would be one of the A3-violating entropy-raising practices Doc 455 identified as the only thing that can break the concentration. That is the intervention the document recommends, which is consistent with its own analysis.
+- This document is part of the corpus it analyzes. Under Doc 455's proposition, adding this document to \(\mathcal{H}_t\) marginally concentrates the corpus posterior further. The proposal to build wind tunnels would be one of the A3-violating entropy-raising practices Doc 455 identified as the only thing that can break the concentration. That is the intervention the document recommends, which is consistent with its own analysis.
 
 ## Position
 

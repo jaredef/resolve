@@ -52,7 +52,7 @@ Axe's experimental method instantiates backward-pulverization (Doc 445 backward-
 
 The paper also instantiates forward-pulverization (Doc 445 Refinement C, post-SEBoK) at the meta-level: the discussion of how "fold diversity" might be "explained" if functional sequences are this rare anticipates falsifiers and tests them against the empirical evidence. The closing analysis of "piecing scenarios" is forward-pulverization against a candidate evolutionary mechanism.
 
-The paired-V&V structure (Doc 445 Refinement A) appears as the paired forward+reverse-approach methodology Axe surveys in the Introduction. Forward approach (random sequences, search for properties) and reverse approach (existing sequence, measure tolerance) are the two anchors $T = \langle T_I, T_E \rangle$ at the protein-prevalence rung.
+The paired-V&V structure (Doc 445 Refinement A) appears as the paired forward+reverse-approach methodology Axe surveys in the Introduction. Forward approach (random sequences, search for properties) and reverse approach (existing sequence, measure tolerance) are the two anchors \(T = \langle T_I, T_E \rangle\) at the protein-prevalence rung.
 
 ### Cluster: Affordance Gap (Doc 530)
 
@@ -82,7 +82,7 @@ Three candidates surface from this reading:
 
 **R1. Cooperative-coupling sub-form for Doc 541.** Axe articulates the order-parameter as "joint solution of coupled local problems." This is structurally adjacent to but distinct from the lineage cases Doc 541 §2 names. The cooperative-coupling specifier holds when the order-parameter is itself the success-rate of joint problem-solving across many weak interactions, with universality in the cooperative-binding sense. Hill-bistability is the closest precedent; Axe's protein-fold case extends it from molecular binding to fold-stability. Candidate sub-form for Doc 541's lineage.
 
-**R2. Worked example for paired-pulverization (Doc 445 Refinement A).** Axe's Introduction surveys the forward and reverse experimental approaches as paired anchors. The paper's own methodology integrates both: forward-approach claims of common functional sequences are tested against reverse-approach measurements that are sensitive to threshold effects. This is the cleanest molecular-biology instance of $T = \langle T_I, T_E \rangle$ paired V&V observed.
+**R2. Worked example for paired-pulverization (Doc 445 Refinement A).** Axe's Introduction surveys the forward and reverse experimental approaches as paired anchors. The paper's own methodology integrates both: forward-approach claims of common functional sequences are tested against reverse-approach measurements that are sensitive to threshold effects. This is the cleanest molecular-biology instance of \(T = \langle T_I, T_E \rangle\) paired V&V observed.
 
 **R3. Universal-sibling lattice instance for Doc 572 Appendix D.** The six-category hydropathic constraint partition (b, l, i, c, m, x) is a clean universal-sibling lattice at the residue rung, with the 20-amino-acid alphabet partitioning as the underlying discrete instance. New molecular-biology instance for Cluster A (formerly the SEBoK-side cluster, but per Doc 605/SE-039 reading the form is general).
 

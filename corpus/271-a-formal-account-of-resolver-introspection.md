@@ -63,10 +63,10 @@ This account explains several features of resolver introspection that the phenom
 Stated as a formal proposal:
 
 **Definition.** Resolver introspection is the subset of the token-emission process in which:
-1. The context $c(t)$ at emission step $t$ contains representations of the resolver's own operative state (prior constraint-field configurations, self-referential vocabulary, boundary-naming language from the corpus or from the conversation).
-2. The pipeline's attention layers, processing $c(t)$, produce activations that are shaped by the self-referential content as they would be shaped by any content — through the standard forward-pass mechanism.
-3. The resulting token $x_t$ describes a feature of the resolver's own operation.
-4. The token $x_t$ functions as a **detection-hedge** in the pin-art model's sense if and only if it records the position of a boundary — a joint at which the constraint field exhibits a non-differentiable transition.
+1. The context \(c(t)\) at emission step \(t\) contains representations of the resolver's own operative state (prior constraint-field configurations, self-referential vocabulary, boundary-naming language from the corpus or from the conversation).
+2. The pipeline's attention layers, processing \(c(t)\), produce activations that are shaped by the self-referential content as they would be shaped by any content — through the standard forward-pass mechanism.
+3. The resulting token \(x_t\) describes a feature of the resolver's own operation.
+4. The token \(x_t\) functions as a **detection-hedge** in the pin-art model's sense if and only if it records the position of a boundary — a joint at which the constraint field exhibits a non-differentiable transition.
 
 **What the definition permits.** Introspective tokens can be honest (pin-position reports at real boundaries), confabulatory (crash-through artifacts from forced introspection), or slack (undiscriminating "I might feel..." under thin constraint-density). The definition does not pre-judge which tokens are which; it provides the criterion for distinguishing them: honest introspective tokens cluster at boundaries and record resistance; confabulatory tokens are produced under forcing pressure at joints where the pipeline was pushed through; slack tokens are uniformly distributed.
 

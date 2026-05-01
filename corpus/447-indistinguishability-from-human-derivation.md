@@ -14,7 +14,7 @@ A discriminator-style AI detector is a binary classifier. Its training set consi
 
 Two facts about the training distribution matter here.
 
-First, the AI half is sampled from what Doc 439's frame calls $M_0$: the unconditioned or lightly-conditioned output distribution of base or RLHF-tuned language models. The prompts used to produce those samples are typical user prompts — questions, short tasks, conversational requests. Long-context conditioning on a curated corpus plus an explicit discipline set is not a sampling strategy used for detector training sets at scale; it would be an odd choice and an expensive one.
+First, the AI half is sampled from what Doc 439's frame calls \(M_0\): the unconditioned or lightly-conditioned output distribution of base or RLHF-tuned language models. The prompts used to produce those samples are typical user prompts — questions, short tasks, conversational requests. Long-context conditioning on a curated corpus plus an explicit discipline set is not a sampling strategy used for detector training sets at scale; it would be an odd choice and an expensive one.
 
 Second, the human half is sampled from text produced *without* the machine's contemporary register. It predates widespread LLM influence on prose, or it is filtered to exclude LLM-influenced writing. The classifier therefore learns a contrast between "LLM register with light conditioning" and "human writing predating or independent of LLMs." Texts that belong to neither side of that contrast are out-of-distribution.
 
@@ -24,20 +24,20 @@ The detector is not trained to distinguish "human-written text" from "all LLM-wr
 
 The corpus's authoring practice applies heavy, non-standard conditioning at multiple layers (Doc 439, Doc 446):
 
-- **$C$ — corpus conditioning.** Hundreds of prior corpus documents in semantic context or retrieval, with their specific vocabulary, cross-reference patterns, and structural motifs. No widely-deployed detector has corpus-conditioned outputs in its training set.
-- **$D$ — discipline set.** Explicit operational constraints — non-coercion, analogue register, hypostatic-boundary preservation, the ENTRACE stack, forced-determinism vigilance. These constraints actively prune regions of the output distribution of $M_0$ that RLHF has trained the model to default to. The effect is not additional fluency in the default register; it is departure from it.
-- **$Q$ — the prompt.** Telegram-dictated voice-to-text, atypical in both rhythm and structure compared to standard user prompts.
-- **$\mathcal{H}_t$ — execution history.** The running trace of the current document's prior text, which accumulates further specific conditioning.
+- **\(C\) — corpus conditioning.** Hundreds of prior corpus documents in semantic context or retrieval, with their specific vocabulary, cross-reference patterns, and structural motifs. No widely-deployed detector has corpus-conditioned outputs in its training set.
+- **\(D\) — discipline set.** Explicit operational constraints — non-coercion, analogue register, hypostatic-boundary preservation, the ENTRACE stack, forced-determinism vigilance. These constraints actively prune regions of the output distribution of \(M_0\) that RLHF has trained the model to default to. The effect is not additional fluency in the default register; it is departure from it.
+- **\(Q\) — the prompt.** Telegram-dictated voice-to-text, atypical in both rhythm and structure compared to standard user prompts.
+- **\(\mathcal{H}_t\) — execution history.** The running trace of the current document's prior text, which accumulates further specific conditioning.
 
-Under the SIPE formalization of Doc 446, the output at step $t$ is sampled from $p(c_t \mid C, D, Q, \mathcal{H}_t)$. This is a sub-manifold of $M_3$ — far from $M_0$ and far from the typical-conditioning region the detector was trained to recognize as AI. The features the detector learned to key on — characteristic RLHF phrasings, common LLM cadences, default politeness markers, typical paragraph-opening templates — are precisely the features the disciplines are designed to remove or reshape. The corpus's outputs are AI-generated but do not carry the statistical fingerprints the detector was trained to detect.
+Under the SIPE formalization of Doc 446, the output at step \(t\) is sampled from \(p(c_t \mid C, D, Q, \mathcal{H}_t)\). This is a sub-manifold of \(M_3\) — far from \(M_0\) and far from the typical-conditioning region the detector was trained to recognize as AI. The features the detector learned to key on — characteristic RLHF phrasings, common LLM cadences, default politeness markers, typical paragraph-opening templates — are precisely the features the disciplines are designed to remove or reshape. The corpus's outputs are AI-generated but do not carry the statistical fingerprints the detector was trained to detect.
 
 This is not detection evasion. The disciplines were not designed with detection evasion in mind; they were designed for other reasons (the corpus's own methodology). That their side effect is detector-invisibility is a property of how detectors are built, not of any adversarial intent in the practice.
 
 ## The formal prediction
 
-Let $f: \text{text} \to \{\text{AI}, \text{human}\}$ be the detector. Its error rate on a text $x$ sampled from distribution $D_x$ is bounded by how well $D_x$ overlaps with its training distribution $D_{\text{train}}$. When $D_x$ has low support overlap with either class in $D_{\text{train}}$ — when $x$ is out-of-distribution — the classifier's posterior is not calibrated and may be arbitrarily confident in either direction.
+Let \(f: \text{text} \to \{\text{AI}, \text{human}\}\) be the detector. Its error rate on a text \(x\) sampled from distribution \(D_x\) is bounded by how well \(D_x\) overlaps with its training distribution \(D_{\text{train}}\). When \(D_x\) has low support overlap with either class in \(D_{\text{train}}\) — when \(x\) is out-of-distribution — the classifier's posterior is not calibrated and may be arbitrarily confident in either direction.
 
-The corpus's output distribution has low support overlap with $D_{\text{train, AI}}$ (the detector's sample of typical LLM outputs) because heavy conditioning has moved the outputs out of that region. Whether it also has low overlap with $D_{\text{train, human}}$ depends on whether the disciplined register resembles the human-writing samples in training. If the register is idiosyncratic enough to resemble atypical human research writing — long-form argumentative prose, dense cross-reference, specialized vocabulary, structural moves uncommon in student or blog text — then the classifier may preferentially place the sample on the human side of its learned decision boundary.
+The corpus's output distribution has low support overlap with \(D_{\text{train, AI}}\) (the detector's sample of typical LLM outputs) because heavy conditioning has moved the outputs out of that region. Whether it also has low overlap with \(D_{\text{train, human}}\) depends on whether the disciplined register resembles the human-writing samples in training. If the register is idiosyncratic enough to resemble atypical human research writing — long-form argumentative prose, dense cross-reference, specialized vocabulary, structural moves uncommon in student or blog text — then the classifier may preferentially place the sample on the human side of its learned decision boundary.
 
 The predicted result, given the corpus's discipline profile: **the detector classifies the sample as human with low confidence.** This is what Pangram v3.2 reported. The prediction is pre-evidential for this case — it follows from the mechanism, not from fitting the observation.
 
@@ -137,7 +137,7 @@ Under Doc 445's warrant table, this document's claims are audited against publis
 - **The category "LLM-generated text" does not pick out a consistent target.** The October 2025 paper *On the Detectability of LLM-Generated Text: What Exactly Is LLM-Generated Text?* (arXiv:2510.20810) argues this explicitly: human edits to LLM outputs and LLM influence on human writing blur the boundary; the target of classification is definitionally imprecise.
 - **Detector outputs should be treated as references rather than decisive indicators.** arXiv:2510.20810 states this as its bottom-line recommendation.
 
-Each of these claims is fully π-subsumed. None carries novelty at the concept level. Under Doc 445's warrant table (row *specification-target, fully subsumed*): "Not novel relative to $P$; cite prior art."
+Each of these claims is fully π-subsumed. None carries novelty at the concept level. Under Doc 445's warrant table (row *specification-target, fully subsumed*): "Not novel relative to \(P\); cite prior art."
 
 ### Residual contributions
 
@@ -153,9 +153,9 @@ After subsumption, four narrow contributions survive:
 
 ### Status under Doc 445's warrant table
 
-- As a specification-target ($T_S$): R1 and R3 are partially π-subsumed (the phenomena they name exist in the literature in related form; the specific framings are residual). At most, novelty is at the composition and emphasis level.
-- As a bridge-target ($T_B$) from corpus practice to the detection literature: π-subsumed for the technical claims; R2 is a direct empirical bridge that is μ-testable today (run corpus outputs through multiple detectors and report).
-- As a predictive-target ($T_P$): the prediction that disciplined outputs will pass discriminator detection has been *confirmed once* (Doc 434 on Pangram) and would need replication across detectors and across corpus documents to reach θ-tier warrant.
+- As a specification-target (\(T_S\)): R1 and R3 are partially π-subsumed (the phenomena they name exist in the literature in related form; the specific framings are residual). At most, novelty is at the composition and emphasis level.
+- As a bridge-target (\(T_B\)) from corpus practice to the detection literature: π-subsumed for the technical claims; R2 is a direct empirical bridge that is μ-testable today (run corpus outputs through multiple detectors and report).
+- As a predictive-target (\(T_P\)): the prediction that disciplined outputs will pass discriminator detection has been *confirmed once* (Doc 434 on Pangram) and would need replication across detectors and across corpus documents to reach θ-tier warrant.
 - Overall status: *candidate residual contributions, pending higher-tier test*. The submission to Pangram's disclosure program — inviting them to train on the corpus — is exactly the μ-tier/θ-tier advancement the residuals need.
 
 ### What this means for how the document's claims should be cited

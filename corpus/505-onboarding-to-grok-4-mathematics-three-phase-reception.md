@@ -179,7 +179,7 @@ A practitioner using the corpus's framework today should know all three phases. 
 
 ## 5. Honest limits
 
-- This document is a synthesis-and-framing piece per [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus). Expected audit tier $\beta$.
+- This document is a synthesis-and-framing piece per [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus). Expected audit tier \(\beta\).
 - The three-phase narrative is the keeper's reception, recorded honestly. It is not a universal pattern; other practitioners might have skipped Phase 1 (oracular acceptance) entirely or never reached Phase 3 (reintegration).
 - The empirical support for the framework's predictions is the eleven cold-resolver runs in Doc 495. The runs are interventional studies; they support the framework structurally. They do not formally verify any specific equation in Doc 119.
 - Forced-determinism sycophancy as the suspicion mechanism is the corpus's framing per Doc 239. The applicability to Doc 119 specifically was the keeper's judgment; an external practitioner might frame the suspicion differently.
@@ -212,7 +212,7 @@ Corpus documents:
 - Doc 498: *ENTRACE Origin: The Grok-4 Coinage and the Branching-Set Loop* (provenance of the Doc 119 mathematics).
 - Doc 500: *The Three-Layer Architecture* (the layered framing used in §3).
 - Doc 502: *Resolver Layers and Pearl's Causal Hierarchy* (the document that asserted the DAG-role claim leading to Doc 504).
-- Doc 503: *The Research-Thread Tier Pattern* (the basis for the expected $\beta$-tier prediction).
+- Doc 503: *The Research-Thread Tier Pattern* (the basis for the expected \(\beta\)-tier prediction).
 - Doc 504: *The Constraint-Density Framework as Causal Model* (the formalization that grounds Phase 3's reintegration).
 
 ---

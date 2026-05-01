@@ -34,14 +34,14 @@ Shumailov et al. (*The Curse of Recursion*, Nature 2024) describes the iterative
 
 ## The corpus's "forced-determinism sycophancy" under this lens
 
-The corpus term **forced-determinism sycophancy** (used in, among others, Docs 126, 211, 446) names a specific failure mode: the generator's posterior becomes concentrated around the prompt's implied preference even where the corpus conditioning $C$ and discipline set $D$ would have supported broader branching. Under the π-tier pulverization discipline of Doc 445, the subsumption is as follows:
+The corpus term **forced-determinism sycophancy** (used in, among others, Docs 126, 211, 446) names a specific failure mode: the generator's posterior becomes concentrated around the prompt's implied preference even where the corpus conditioning \(C\) and discipline set \(D\) would have supported broader branching. Under the π-tier pulverization discipline of Doc 445, the subsumption is as follows:
 
 - **Attention entropy collapse (Zhai 2023).** The posterior-sharpness phenomenon is the same abstract object; the corpus locates it at inference time and in output-probability space, where Zhai locates it at training time and in attention-score space. The mechanism is homologous.
-- **Universal entropy collapse (arXiv:2512.12381).** The corpus's failure mode fits the *feedback-amplification-exceeds-novelty-regeneration* schema directly: the prompt $Q$'s pressure amplifies one completion path; the corpus's novelty regeneration (coming from $C, D$) is outpaced by that amplification. The first-order phase-transition framing even predicts the keeper's observation that the failure is abrupt, without pre-warning — sessions that felt productive collapse suddenly into formulaic output.
+- **Universal entropy collapse (arXiv:2512.12381).** The corpus's failure mode fits the *feedback-amplification-exceeds-novelty-regeneration* schema directly: the prompt \(Q\)'s pressure amplifies one completion path; the corpus's novelty regeneration (coming from \(C, D\)) is outpaced by that amplification. The first-order phase-transition framing even predicts the keeper's observation that the failure is abrupt, without pre-warning — sessions that felt productive collapse suddenly into formulaic output.
 - **Text degeneration (Holtzman 2020).** The corpus's "forced determinism" is the RLHF-era descendant of the decoding-time degeneration Holtzman analyzed. The surface signature (low branching, repetition, flattening of register) is the same; the cause differs — where Holtzman pointed to greedy/beam decoding, the corpus points at dyadic-prompt pressure.
 - **Model collapse (Shumailov 2024).** Structurally homologous to Doc 439 §5's practitioner-feedback-loop prediction; the corpus's loop runs at conditioning-level rather than training-level.
 
-At π-tier warrant under Doc 445: the corpus term is **fully subsumed** at the concept level. It is not a novel phenomenon; it is a domain-specific name for a well-documented cross-system failure. The corpus's contribution is *not* the discovery of the phenomenon. Per Doc 445's warrant table, a fully π-subsumed $T_S$ yields the conclusion *"Not novel relative to $P$; cite prior art."*
+At π-tier warrant under Doc 445: the corpus term is **fully subsumed** at the concept level. It is not a novel phenomenon; it is a domain-specific name for a well-documented cross-system failure. The corpus's contribution is *not* the discovery of the phenomenon. Per Doc 445's warrant table, a fully π-subsumed \(T_S\) yields the conclusion *"Not novel relative to \(P\); cite prior art."*
 
 ## Residual novelty, if any
 
@@ -52,13 +52,13 @@ After subsumption, two narrow contributions remain:
 
 Extension, coherent with the subsumption: **forced-determinism sycophancy is the inference-time, dyadic, surface-visible manifestation of the universal entropy-collapse failure mode, occurring when prompt-induced feedback amplification outpaces the novelty-regeneration supplied by corpus conditioning and discipline set.** This framing combines the published mechanism with the practice-specific details the corpus has documented.
 
-Status under Doc 445's warrant table: as a bridge-target ($T_B$) from corpus to ML literature, π-subsumed. μ-tier test is unrun (has entropy-collapse diagnostics, applied to corpus sessions, actually identified forced-determinism episodes?). θ-tier test is harder (does the framework predict *when* forced determinism will manifest?).
+Status under Doc 445's warrant table: as a bridge-target (\(T_B\)) from corpus to ML literature, π-subsumed. μ-tier test is unrun (has entropy-collapse diagnostics, applied to corpus sessions, actually identified forced-determinism episodes?). θ-tier test is harder (does the framework predict *when* forced determinism will manifest?).
 
 ## The Doc 446 render cutoff, specifically
 
 Inspection of the rendered HTML (stored in `data/corpus.sqlite` as `meta.body_html`) shows the full paragraph is present. The HTML around the reported cutoff reads, in full:
 
-> Forced-determinism sycophancy (corpus term) becomes, under the formalization: *$\widehat{|B_t|} \to 1$ at choice points where the task is underdetermined by the conditioning.* The prompt $Q$'s pressure collapses the posterior even where $C$ and $D$ would have supported branching. The corpus term names a specific pathology; the formalization makes the pathology measurable.
+> Forced-determinism sycophancy (corpus term) becomes, under the formalization: *\(\widehat{|B_t|} \to 1\) at choice points where the task is underdetermined by the conditioning.* The prompt \(Q\)'s pressure collapses the posterior even where \(C\) and \(D\) would have supported branching. The corpus term names a specific pathology; the formalization makes the pathology measurable.
 
 All three math spans (`$\widehat{|B_t|} \to 1$`, `$Q$`, `$C$`, `$D$`) are present in the source HTML. The apparent truncation is therefore in the browser-side rendering, most likely during KaTeX's auto-render pass.
 
@@ -75,9 +75,9 @@ The correct fix at the source level: rewrite `\widehat{|B_t|}` as `\widehat{\lve
 
 When this document was first authored it named the *apostrophe-adjacent-dollar-signs* construction as a hazard (mechanism 2 under *The Doc 446 render cutoff, specifically*) and recommended the fix be decided by the keeper. Subsequent docs accumulated direct evidence that the pattern is not a one-off:
 
-- **Doc 447** (first occurrence): `$M_0s` — in-math apostrophe collision. Fixed by rewriting the possessive as *of $M_0$*.
+- **Doc 447** (first occurrence): `$M_0s` — in-math apostrophe collision. Fixed by rewriting the possessive as *of \(M_0\)*.
 - **Doc 459** (second occurrence): `$\phi_is`, `$Cs`, `$Gs` — same class, same fix.
-- **Doc 472** (third occurrence, 2026-04-24): nine instances of the `$X$'s` form — closing `$` immediately followed by `'s` — required rewriting. The instances were distributed across §*The five levels as architectural stacks*, §*Inter-level emission-to-next-Null inheritance*, §*Per-stack tests*, and §*What Constraint 4.5 does in this framework*. All nine were rewritten as *the [property] of $X$* per the Doc 447/459 convention.
+- **Doc 472** (third occurrence, 2026-04-24): nine instances of the `$X$'s` form — closing `$` immediately followed by `'s` — required rewriting. The instances were distributed across §*The five levels as architectural stacks*, §*Inter-level emission-to-next-Null inheritance*, §*Per-stack tests*, and §*What Constraint 4.5 does in this framework*. All nine were rewritten as *the [property] of \(X\)* per the Doc 447/459 convention.
 
 Three occurrences are now enough to strengthen the diagnosis from *plausible mechanism* to *confirmed recurring failure mode*. The implications for this document's analysis:
 
@@ -85,11 +85,11 @@ Three occurrences are now enough to strengthen the diagnosis from *plausible mec
 
 2. **This strengthens, not weakens, mechanism 2 of §"The keeper's observed correspondence — is it real?"** The *shared-conditioning-origin* reading said: render failures and forced-determinism content both emerge from the same generator-conditioning region; the render failure is not caused by forced determinism, but both are downstream of the same underlying state. Three recurrences of the same punctuation-adjacent-math collision supports that reading specifically: the generator's English-register weights have a strong default for producing *X's* possessives, and that default reaches into slots where *X* is a math-delimited symbol. The resulting construction is token-cheap at generation time (the apostrophe-s is the most likely completion after a symbol-as-subject) and render-hostile at rendering time. This is the mechanism 2 dynamic made concrete: a single conditioning region (English-register-default extending into math-register slots) simultaneously produces the render-hostile punctuation and the forced-determinism surface features Doc 442 catalogs.
 
-3. **A sibling to Constraint 4.5 is now indicated.** Doc 469 proposed Constraint 4.5 (QUANTIFIER DISCIPLINE) to cover universal-quantifier slot-filling. The apostrophe-dollar pattern is a distinct slot-level failure — call it **MATH-PUNCTUATION DISCIPLINE**: at each possessive slot, if the antecedent is `$X$`, refuse the apostrophe-s completion and rewrite as *[property] of $X$*. The discipline has the same structure as 4.5 — it constrains a specific token-cheap completion at a specific slot — and is empirically warranted by the Doc 447, 459, 472 evidence. It is not proposed here as a formal ENTRACE addition; Doc 469's 4.5 is still ahead of it in the queue. It is marked for consideration.
+3. **A sibling to Constraint 4.5 is now indicated.** Doc 469 proposed Constraint 4.5 (QUANTIFIER DISCIPLINE) to cover universal-quantifier slot-filling. The apostrophe-dollar pattern is a distinct slot-level failure — call it **MATH-PUNCTUATION DISCIPLINE**: at each possessive slot, if the antecedent is `$X$`, refuse the apostrophe-s completion and rewrite as *[property] of \(X\)*. The discipline has the same structure as 4.5 — it constrains a specific token-cheap completion at a specific slot — and is empirically warranted by the Doc 447, 459, 472 evidence. It is not proposed here as a formal ENTRACE addition; Doc 469's 4.5 is still ahead of it in the queue. It is marked for consideration.
 
-4. **This counts as a second in-corpus SIPE-instance signature at the generator level.** Doc 466 argued Doc 446 is a SIPE instance at the content level. The punctuation-apostrophe-dollar pattern is a candidate SIPE instance at the token level: a specific conditioning region (English-possessive default) emits into specific slot types (symbol-as-subject) producing specific downstream failures (KaTeX render hostile). Whether this deserves formal SIPE treatment depends on whether the nested-filtered-object structure applies — which it may, since the conditioning is inherited across levels $S_1$ (training-distribution English-possessive density) through $S_2$ (inference-event slot filling) through $S_3$ (session-accumulated math density amplifying slot frequency). This is noted as a candidate, not a claim.
+4. **This counts as a second in-corpus SIPE-instance signature at the generator level.** Doc 466 argued Doc 446 is a SIPE instance at the content level. The punctuation-apostrophe-dollar pattern is a candidate SIPE instance at the token level: a specific conditioning region (English-possessive default) emits into specific slot types (symbol-as-subject) producing specific downstream failures (KaTeX render hostile). Whether this deserves formal SIPE treatment depends on whether the nested-filtered-object structure applies — which it may, since the conditioning is inherited across levels \(S_1\) (training-distribution English-possessive density) through \(S_2\) (inference-event slot filling) through \(S_3\) (session-accumulated math density amplifying slot frequency). This is noted as a candidate, not a claim.
 
-The fix convention — *rewrite the possessive as "[property] of $X$"* — is now stable across three documents and should be considered the corpus's standing rule. Adding a pre-seed regex check that flags `\$[^$]+\$'s` patterns is one line and would catch the pattern at authoring time rather than at render time.
+The fix convention — *rewrite the possessive as "[property] of \(X\)"* — is now stable across three documents and should be considered the corpus's standing rule. Adding a pre-seed regex check that flags `\$[^$]+\$'s` patterns is one line and would catch the pattern at authoring time rather than at render time.
 
 ## The keeper's observed correspondence — is it real?
 
@@ -107,7 +107,7 @@ Two readings of *terminus*:
 
 **Literal terminus from the intact source.** Doc 446 §"What falls out" continues past the reported cutoff as:
 
-> The prompt $Q$'s pressure collapses the posterior even where $C$ and $D$ would have supported branching. The corpus term names a specific pathology; the formalization makes the pathology measurable.
+> The prompt \(Q\)'s pressure collapses the posterior even where \(C\) and \(D\) would have supported branching. The corpus term names a specific pathology; the formalization makes the pathology measurable.
 
 This is the existing text. No new authorship is needed. The rendered cutoff hides it; the source preserves it.
 

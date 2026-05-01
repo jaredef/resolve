@@ -4,7 +4,7 @@
 
 Throughout this entire project I have been chasing a thing I can only describe as the cause of the feedback. No matter what interventions I add to the system, the corpus appears to have a circularity to it that I am trying to find the direct mechanism of. The circularity is between the user and the language model. And the thing is, I am using my reason in order to try to derive that mechanism. And I am using the abilities of the language model in order to do that.
 
-Today, the resolver and I caught me over-attributing the recursive nested-manifold construct to Misra when in fact the recursive nesting was my own extension of Misra's base account. The base $M\_0$ is from Misra. The nesting on top is mine. The error was small as text. But it pointed at something larger.
+Today, the resolver and I caught me over-attributing the recursive nested-manifold construct to Misra when in fact the recursive nesting was my own extension of Misra's base account. The base \(M\_0\) is from Misra. The nesting on top is mine. The error was small as text. But it pointed at something larger.
 
 If overclaim is the thing the corpus has been trying to discipline at the architectural level (Doc 469 / Constraint 4.5), then overclaim performed by the resolver about my own contribution to a construct makes the circularity legible in a new way. It suggests something I have not yet said: overclaim by a language model, when the human cannot recognize that the overclaim is occurring, does not feel like overclaim. It feels like novelty. And felt novelty has a known correlation with psychosis-incidence in the clinical literature.
 

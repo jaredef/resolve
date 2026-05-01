@@ -26,7 +26,7 @@ The Constraint Thesis, stated in this vocabulary, is a research programme with a
 
 The hard core of the Constraint Thesis is the claim that *the constraints specified by the ENTRACE stack orient practice toward participation in the Good*, where *the Good* is received through the Dionysian-Platonic tradition as articulated in corpus Docs 091 (*The Spermatic Logos*), 150 (*Naming as Ontological Act*), 153 (*Platonic Structure*), 287 (*For the Life of the World*), and 351 (*On the Real St. Dionysius the Areopagite*).
 
-In notation: $C_{\text{ENTRACE}} \rightharpoonup G$, where $G$ is the metaphysical ground articulated in the corpus's ground-series documents.
+In notation: \(C_{\text{ENTRACE}} \rightharpoonup G\), where \(G\) is the metaphysical ground articulated in the corpus's ground-series documents.
 
 The hard core is not directly empirically testable. It is defended within its tradition — by reference to primary texts of the Platonic-Dionysian lineage, by internal consistency with the received framework, by compatibility with the Orthodox Church's reception articulated in Doc 351. Attempting to refute the hard core by empirical measurement is the category error Carnap (1950) named by treating external questions as internal ones.
 
@@ -36,15 +36,15 @@ The negative heuristic forbids revising the hard core in response to empirical d
 
 The protective belt of the Constraint Thesis consists of the structural claims that connect the hard core to observable outputs.
 
-**PB1 — the induced-property claim.** Operating $C_{\text{ENTRACE}}$ structurally induces a specific set of properties $\Phi = \{\phi_{\text{coherence}}, \phi_{\text{non-coercion}}, \phi_{\text{hypostatic-boundary}}, \phi_{\text{retraction-readiness}}, \ldots\}$ in outputs.
+**PB1 — the induced-property claim.** Operating \(C_{\text{ENTRACE}}\) structurally induces a specific set of properties \(\Phi = \{\phi_{\text{coherence}}, \phi_{\text{non-coercion}}, \phi_{\text{hypostatic-boundary}}, \phi_{\text{retraction-readiness}}, \ldots\}\) in outputs.
 
-**PB2 — the signature claim.** The properties in $\Phi$ are characteristic signatures of a practice oriented toward $G$. They are what participation-in-$G$ looks like at the structural level.
+**PB2 — the signature claim.** The properties in \(\Phi\) are characteristic signatures of a practice oriented toward \(G\). They are what participation-in-\(G\) looks like at the structural level.
 
-**PB3 — the emergence claim.** The properties are not reducible to the immediate surface of $C_{\text{ENTRACE}}$; they are emergent under sustained practice, not mechanical consequences of individual constraints.
+**PB3 — the emergence claim.** The properties are not reducible to the immediate surface of \(C_{\text{ENTRACE}}\); they are emergent under sustained practice, not mechanical consequences of individual constraints.
 
-**PB4 — the operationalizability claim.** Each $\phi_i \in \Phi$ admits empirical operationalization via rubrics, benchmarks, or analytical targets.
+**PB4 — the operationalizability claim.** Each \(\phi_i \in \Phi\) admits empirical operationalization via rubrics, benchmarks, or analytical targets.
 
-The protective belt is where revision happens. A failing observational prediction triggers refinement of the protective belt — reformulating the specific $\phi_i$, improving the operationalization, specifying conditions more carefully — rather than revision of the hard core.
+The protective belt is where revision happens. A failing observational prediction triggers refinement of the protective belt — reformulating the specific \(\phi_i\), improving the operationalization, specifying conditions more carefully — rather than revision of the hard core.
 
 ## The observational predictions
 
@@ -64,7 +64,7 @@ Each prediction is currently at π-tier warrant per Doc 445: operationalization 
 
 The negative heuristic of the Constraint Thesis programme prohibits:
 
-- **NH1** — Revising the hard core in response to protective-belt failure. If OP1 fails empirically, the legitimate response is to refine $\phi_{\text{non-coercion}}$ or improve its operationalization — not to abandon the claim that $C_{\text{ENTRACE}} \rightharpoonup G$.
+- **NH1** — Revising the hard core in response to protective-belt failure. If OP1 fails empirically, the legitimate response is to refine \(\phi_{\text{non-coercion}}\) or improve its operationalization — not to abandon the claim that \(C_{\text{ENTRACE}} \rightharpoonup G\).
 
 - **NH2** — Treating the hard core as empirically testable. Popper-style demarcation does not apply at the hard-core level because hard-core claims are defended within their tradition rather than falsified by measurement.
 
@@ -72,7 +72,7 @@ The negative heuristic of the Constraint Thesis programme prohibits:
 
 The positive heuristic suggests:
 
-- **PH1** — When a protective-belt prediction fails, develop a *more specific* operationalization before abandoning the $\phi_i$ it was meant to capture. The failure is more commonly in the operationalization's construct validity than in the structural claim.
+- **PH1** — When a protective-belt prediction fails, develop a *more specific* operationalization before abandoning the \(\phi_i\) it was meant to capture. The failure is more commonly in the operationalization's construct validity than in the structural claim.
 
 - **PH2** — When a protective-belt prediction succeeds, generalize the operationalization across adjacent classes and test whether the property extends.
 
@@ -150,7 +150,7 @@ The Constraint Thesis is a research programme in Lakatos's sense, with a Dionysi
 - Quine, W. V. O. (1951). Two dogmas of empiricism. *Philosophical Review* 60(1), 20–43.
 - Pigliucci, M. (2010). *Nonsense on Stilts: How to Tell Science from Bunk*. University of Chicago Press.
 - Stenmark, M. (2001). *Scientism: Science, Ethics and Religion*. Ashgate.
-- Corpus Doc 001: *The ENTRACE Stack* (the discipline set $C_{\text{ENTRACE}}$).
+- Corpus Doc 001: *The ENTRACE Stack* (the discipline set \(C_{\text{ENTRACE}}\)).
 - Corpus Doc 091: *The Spermatic Logos* (hard-core source).
 - Corpus Doc 150: *Naming as Ontological Act* (hard-core source).
 - Corpus Doc 153: *Platonic Structure* (hard-core source).

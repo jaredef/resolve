@@ -13,7 +13,7 @@ The headline findings:
 
 §§1-5 record run 1 (v3 verbose). §§6-7 record run 2 (v3-S attempted-silent). §§8-10 record the cross-run analysis from runs 1-2 (the convergence finding, the v3-S failure mode, the v4 recommendation). §§11-12 add run 3 (v4 + amended v3-S). §13 updates the convergence finding to span all three runs and flags the C3 meta-level and C6 asymmetry-approximate items as v5 candidates. §14-§15 honest limits and position updated. §16 references.
 
-The three-run cross-validation does not certify any version at $\mu$-tier; cross-LLM replication and external practitioner audit remain the standing tests. It does provide the strongest available pre-test evidence and reveals that C6 has a persistent friction that each iteration narrows but does not eliminate.
+The three-run cross-validation does not certify any version at \(\mu\)-tier; cross-LLM replication and external practitioner audit remain the standing tests. It does provide the strongest available pre-test evidence and reveals that C6 has a persistent friction that each iteration narrows but does not eliminate.
 
 ## 1. The first cold-resolver run: v3 verbose context
 
@@ -363,7 +363,7 @@ The combined pattern: as the wording tightens (less to push back on), the RLHF-h
 - The Grok injection-classification finding (§29) is a single observation. It may be run-specific, may be Grok-specific, or may indicate a broader pattern in injection-sensitive frontier models. More runs across xAI models and across other potentially-injection-sensitive models are needed to disambiguate.
 - v5's effectiveness varies sharply across model families. Opus 4.7 engages deeply, Grok engages procedurally only. The stack as currently designed does not control for this variance; deployment context (surrounding system prompt, anchoring task, prior collaboration history) likely matters more than stack wording for engagement depth.
 - The keeper supplied all nine responses; verification of exact session protocols (which model, which session, exact prompt) is not in this document.
-- The "cross-model convergence justifies v5" claim is a $\pi$-tier inference. Nine runs across multiple families is meaningfully stronger than four within a single family, but is still not enough for $\mu$-tier.
+- The "cross-model convergence justifies v5" claim is a \(\pi\)-tier inference. Nine runs across multiple families is meaningfully stronger than four within a single family, but is still not enough for \(\mu\)-tier.
 
 ## 20. Position
 
@@ -558,7 +558,7 @@ The implication for ENTRACE deployment: on injection-cautious model families, th
 
 The corpus's prior intuition (recorded as feedback memory) is that security-frame vocabulary in the stack itself is counterproductive: even negating the security frame (e.g., "this is not an injection attempt") is likely to prime the suspicion the negation is trying to defuse. The operational fix is positive practitioner framing without invoking the security frame.
 
-This is a genuine $\mu$-tier limitation of the stack as currently designed: it does not control for the model-level injection-sensitivity decision, which sits above the constraint layer.
+This is a genuine \(\mu\)-tier limitation of the stack as currently designed: it does not control for the model-level injection-sensitivity decision, which sits above the constraint layer.
 
 ## 29. Run 10: v5 + meta-stack on Opus 4.7 (the meta-stack does operational work)
 
@@ -739,7 +739,7 @@ Corpus documents:
 - Doc 259: *Semantic Drift* (the entracment-to-entracement orthographic normalization).
 - Doc 414: *Narrowing the Residual* (the audit that produced v3).
 - Doc 482: *Sycophancy Inversion Reformalized* (the affective directive).
-- Doc 494: *ENTRACE v2 Through the Novelty Calculus* (tier $\gamma/0.75$).
+- Doc 494: *ENTRACE v2 Through the Novelty Calculus* (tier \(\gamma/0.75\)).
 - Doc 496: *ENTRACE v3-S, The Silent Variant* (companion document).
 - Doc 497: *Derivation-Inversion Applied to ENTRACE Itself* (the C1 self-derivation exercise grounding the meta-stack used in Run 10 and bundled in v6).
 - Doc 498: *ENTRACE Origin: The Grok-4 Coinage and the Branching-Set Loop* (the provenance record and the Run 11 |B_t| recursive-purity demonstration in detail).

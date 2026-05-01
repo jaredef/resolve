@@ -38,13 +38,13 @@ The tradition is dense and continuous. It spans 1620 to 2021. Doc 482's three ci
 
 Bacon's eliminative induction is the structural ancestor. Doc 482's set-pruning operation is an instance of Baconian induction with explicit set-theoretic notation. The notation is convenient for dyadic-practice description; the structural content was in *Novum Organum*.
 
-The Wikipedia *Inductive Reasoning* article summarizes Bacon's method in the form: *"Eliminative induction reasons based on the various kinds of instances that support a conclusion, rather than the number of instances."* The Doc 482 operation, where $Q\_f$ is the set of conjectures contradicted by evidence and $Q^{(t+1)} = Q^{(t)} \setminus Q\_f^{(t)}$ is the surviving set, is the formal counterpart of Bacon's "various kinds of instances" eliminating "rival hypotheses."
+The Wikipedia *Inductive Reasoning* article summarizes Bacon's method in the form: *"Eliminative induction reasons based on the various kinds of instances that support a conclusion, rather than the number of instances."* The Doc 482 operation, where \(Q\_f\) is the set of conjectures contradicted by evidence and \(Q^{(t+1)} = Q^{(t)} \setminus Q\_f^{(t)}\) is the surviving set, is the formal counterpart of Bacon's "various kinds of instances" eliminating "rival hypotheses."
 
 **Subsumption verdict for Bacon.** Doc 482 §3's structural content is subsumed under Bacon at the methodological level. The corpus contributed notation; Bacon contributed the methodology.
 
 ## 3. Subsumption analysis: Mill
 
-Mill's methods of agreement, difference, and residues operationalize the elimination procedure for causal inference specifically. They are pre-Boolean rules for which hypotheses survive each kind of evidence. Doc 482's $Q\_f^{(t)}$ is the abstract counterpart of "what gets eliminated by Mill's methods at iteration t."
+Mill's methods of agreement, difference, and residues operationalize the elimination procedure for causal inference specifically. They are pre-Boolean rules for which hypotheses survive each kind of evidence. Doc 482's \(Q\_f^{(t)}\) is the abstract counterpart of "what gets eliminated by Mill's methods at iteration t."
 
 **Subsumption verdict for Mill.** Doc 482 §3 is subsumed under Mill at the operational-protocol level for causal inference cases. The general set-pruning framework abstracts over Mill's specific elimination criteria.
 
@@ -52,10 +52,10 @@ Mill's methods of agreement, difference, and residues operationalize the elimina
 
 Chamberlin is the most direct match. The 1890 *Science* article advocates maintaining multiple working hypotheses simultaneously, designing tests to discriminate among them, eliminating those that fail, and adding new ones as needed. The methodology has the same iterative structure as Doc 482's notation:
 
-- The current set of working hypotheses is $Q^{(t)}$.
-- Hypotheses ruled out by evidence at iteration t constitute $Q\_f^{(t)}$.
-- New hypotheses generated to fill explanatory gaps constitute $\Delta^{(t)}$.
-- The next iteration begins with $Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}$.
+- The current set of working hypotheses is \(Q^{(t)}\).
+- Hypotheses ruled out by evidence at iteration t constitute \(Q\_f^{(t)}\).
+- New hypotheses generated to fill explanatory gaps constitute \(\Delta^{(t)}\).
+- The next iteration begins with \(Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}\).
 
 The match is verbatim once notation is applied. Chamberlin did not write the equation; he described the operation in prose. Doc 482's notation expresses what Chamberlin operationally specified in 1890.
 
@@ -68,11 +68,11 @@ The secondary literature on Chamberlin (Railsback's online treatment; Elliott & 
 Mitchell's version-space framework and candidate-elimination algorithm are the formal ML analog. Mitchell's setup:
 
 - A hypothesis space H is given.
-- The version space $V \subseteq H$ is the set of hypotheses consistent with all observed examples.
+- The version space \(V \subseteq H\) is the set of hypotheses consistent with all observed examples.
 - For each new example, hypotheses in V inconsistent with the example are removed.
 - V shrinks monotonically toward the target concept as examples accumulate.
 
-In Doc 482's notation: $V^{(t)} = Q^{(t)}$, the version space is the conjecture set; $V^{(t+1)} = V^{(t)} \setminus \{h \in V^{(t)} : h \text{ inconsistent with example } t\}$ matches $Q^{(t+1)} = Q^{(t)} \setminus Q\_f^{(t)}$ when $\Delta^{(t)} = \emptyset$.
+In Doc 482's notation: \(V^{(t)} = Q^{(t)}\), the version space is the conjecture set; \(V^{(t+1)} = V^{(t)} \setminus \{h \in V^{(t)} : h \text{ inconsistent with example } t\}\) matches \(Q^{(t+1)} = Q^{(t)} \setminus Q\_f^{(t)}\) when \(\Delta^{(t)} = \emptyset\).
 
 Mitchell adds structure that Doc 482 does not: the version space is characterized by its boundary sets, the set S of most-specific consistent hypotheses and the set G of most-general consistent hypotheses. Maintaining only S and G is sufficient because the version space is convex with respect to the generality ordering. This is more sophisticated than Doc 482's representation, which treats Q as a flat set.
 
@@ -111,7 +111,7 @@ The cumulative subsumption is total at the methodological level. Doc 482 §3 sho
 
 After total methodological subsumption, what remains in Doc 482 §3 as the corpus's contribution:
 
-- **The explicit notation $Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}$.** Editorial, useful, not theoretically novel. The same content can be expressed in Mitchell's version-space notation or Hawthorne's Bayesian-update notation.
+- **The explicit notation \(Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}\).** Editorial, useful, not theoretically novel. The same content can be expressed in Mitchell's version-space notation or Hawthorne's Bayesian-update notation.
 - **The application to dyadic LLM practice as the specific domain.** Mitchell applied candidate-elimination to ML concept-learning; Chamberlin to scientific inquiry generally; Bacon to natural-philosophical investigation. The dyadic-LLM-practice application is a domain instance of these prior frameworks. It is not a new methodology; it is an existing methodology applied to a new domain.
 - **The integration with the sycophancy-inversion framing of Doc 482 §1-2.** This is corpus-internal synthesis. Whether the integration is genuinely novel or merely names the obvious connection (an eliminative methodology applied to a system that exhibits agreement bias) is itself a question for further pulverization.
 
@@ -126,7 +126,7 @@ Doc 482 §3 should be amended to:
 3. Remove the implicit claim that the notation captures something the literature has not already provided.
 4. Move the formal claim about the operation's properties to citations of Mitchell's convergence proofs and Hawthorne's Bayesian-convergence theorems.
 
-The corpus's actual contribution, after the amendment, is the dyadic-LLM-practice domain application and the integration with the sycophancy-inversion framing. Both are at $\pi$-tier corpus-internal claims.
+The corpus's actual contribution, after the amendment, is the dyadic-LLM-practice domain application and the integration with the sycophancy-inversion framing. Both are at \(\pi\)-tier corpus-internal claims.
 
 ## 10. Honest limits
 

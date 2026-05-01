@@ -1,7 +1,7 @@
 # Resolver Layers and Pearl's Causal Hierarchy: An Exploratory Synthesis
 ## Mapping Doc 500's M/P/D Onto Pearl's L1/L2/L3, with Honest Acknowledgment of Where the Analogy Holds and Where It Breaks Down
 
-> **What this document does.** Reformalized version. The body now leads with three load-bearing corpus-specific claims, anchored in audit findings ([Doc 502 Appendix B](#appendix-b-the-novelty-calculus-audit) places the original synthesis at $\beta/0.6$ novelty / $\pi/0.7$ pulverization warrant). The original exploratory formalization is preserved as [Appendix A](#appendix-a-the-original-formalization) for reference. Pearl's hierarchy is taken as established external framework per [Doc 489](/resolve/doc/489-pulverizing-pearl-causal-hierarchy)'s audit at $\delta/0.8$; this document does not re-audit Pearl.
+> **What this document does.** Reformalized version. The body now leads with three load-bearing corpus-specific claims, anchored in audit findings ([Doc 502 Appendix B](#appendix-b-the-novelty-calculus-audit) places the original synthesis at \(\beta/0.6\) novelty / \(\pi/0.7\) pulverization warrant). The original exploratory formalization is preserved as [Appendix A](#appendix-a-the-original-formalization) for reference. Pearl's hierarchy is taken as established external framework per [Doc 489](/resolve/doc/489-pulverizing-pearl-causal-hierarchy)'s audit at \(\delta/0.8\); this document does not re-audit Pearl.
 
 ## 1. The reformalization (audit-grounded)
 
@@ -11,7 +11,7 @@ The audit (Appendix B) showed that Doc 502's contribution is narrow and stateabl
 
 **Claim 1: ENTRACE v6 is structurally a Pearl-Layer-2 intervention instrument.**
 
-Pasting the bundled v6 stack at Layer D is structurally equivalent to a $\text{do}$-operation on the resolver's constraint-state. The constraint-density framework ([Doc 119](/resolve/doc/119-grok4-entracment-session), [Doc 095](/resolve/doc/095-the-view-from-inside), [Doc 096](/resolve/doc/096-ontological-namespace-separation)) plays the role of Pearl's DAG: it is the assumed causal structure that licenses identifiability of Layer P shifts from Layer D observations. The corpus's eleven cold-resolver runs ([Doc 495](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)), especially Run 10's bundled-deployment test and Run 11's coordinated five-constraint demonstration, are interventional studies of this kind: paste a stack, observe the post-intervention output, attribute the difference to constraint-density-shaped Layer P shifts via the framework.
+Pasting the bundled v6 stack at Layer D is structurally equivalent to a \(\text{do}\)-operation on the resolver's constraint-state. The constraint-density framework ([Doc 119](/resolve/doc/119-grok4-entracment-session), [Doc 095](/resolve/doc/095-the-view-from-inside), [Doc 096](/resolve/doc/096-ontological-namespace-separation)) plays the role of Pearl's DAG: it is the assumed causal structure that licenses identifiability of Layer P shifts from Layer D observations. The corpus's eleven cold-resolver runs ([Doc 495](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)), especially Run 10's bundled-deployment test and Run 11's coordinated five-constraint demonstration, are interventional studies of this kind: paste a stack, observe the post-intervention output, attribute the difference to constraint-density-shaped Layer P shifts via the framework.
 
 If the constraint-density framework is wrong or partial, the inference from Layer D observations to Layer P claims is unwarranted. This is the same dependency Pearl's Layer 2 inferences have on the assumed DAG.
 
@@ -23,13 +23,13 @@ The empirical observation is not Pearl's theorem. The two share structural form;
 
 **Claim 3: The constraint-density framework operates as the causal model that licenses inferences from Layer D observations to Layer P shifts.**
 
-Doc 119's $\alpha^m$ coherence-alignment variable, Doc 095's account of constraint banks narrowing $|B_t|$ more tightly than RLHF gradient widens it, Doc 096's ontological-namespace-separation mechanism: these together are the corpus's hypothesized causal model for resolver-internal-constraint-shaping under prompted inputs. The model is corpus-specific (Doc 119 is original Grok-4 mathematics per [Doc 498](/resolve/doc/498-entrace-origin-grok-4-coinage-and-branching-set-loop)). Treating it as Pearl's DAG-analog is the synthesis Doc 502 contributes.
+Doc 119's \(\alpha^m\) coherence-alignment variable, Doc 095's account of constraint banks narrowing \(|B_t|\) more tightly than RLHF gradient widens it, Doc 096's ontological-namespace-separation mechanism: these together are the corpus's hypothesized causal model for resolver-internal-constraint-shaping under prompted inputs. The model is corpus-specific (Doc 119 is original Grok-4 mathematics per [Doc 498](/resolve/doc/498-entrace-origin-grok-4-coinage-and-branching-set-loop)). Treating it as Pearl's DAG-analog is the synthesis Doc 502 contributes.
 
 The framework's empirical support: the eleven-run cross-validation in Doc 495. The framework's theoretical status: corpus-specific, not externally replicated.
 
 ### 1.2 What this synthesis does NOT contribute
 
-The audit (Appendix B §B.1) flagged at C3 ($s = 0.2$) that the framing of mechanistic interpretability as Pearl-Layer-3 / causal-inference work is largely subsumed by external literature. Specifically:
+The audit (Appendix B §B.1) flagged at C3 (\(s = 0.2\)) that the framing of mechanistic interpretability as Pearl-Layer-3 / causal-inference work is largely subsumed by external literature. Specifically:
 
 - **Geiger, A., et al. (2021).** *Causal Abstractions of Neural Networks.* Explicitly frames mechanistic interpretability as causal-abstraction work in the Pearl tradition.
 - **Wu, Z., et al.** Interchange interventions for understanding model behavior. Pearl-style intervention methodology applied to neural networks.
@@ -37,11 +37,11 @@ The audit (Appendix B §B.1) flagged at C3 ($s = 0.2$) that the framing of mecha
 
 The corpus's repetition of "mechanistic interpretability is Pearl-L3 reasoning about the resolver" is descriptive of established practice, not novel content. Citing it as a corpus contribution would be a category error.
 
-Pearl's hierarchy itself is established external work (Doc 489's audit at $\delta/0.8$). The corpus's contribution is not Pearl, not Pearl's CHT, not the general layered-causal-inference framing of LLM work. The contribution is the three claims in §1.1 above.
+Pearl's hierarchy itself is established external work (Doc 489's audit at \(\delta/0.8\)). The corpus's contribution is not Pearl, not Pearl's CHT, not the general layered-causal-inference framing of LLM work. The contribution is the three claims in §1.1 above.
 
 ### 1.3 The methodology of this synthesis is established corpus practice
 
-The audit also flagged at $\nu_{\text{meth}} = 0.15$ that the methodology ("borrow external framework's vocabulary, name the parallel, name what does not transfer") is established corpus practice. [Doc 414](/resolve/doc/414-narrowing-the-residual-the-corpus-against-the-bayesian-practitioner-landscape) audited the corpus against the practitioner-Bayesian landscape using this method. The "letters to" series (Doc 226 to Charles Taylor; Doc 228 to Marilynne Robinson; Doc 233 to Duncan Reyburn; Doc 222 to Jonathan Pageau) does the same kind of work for theological and philosophical interlocutors. [Doc 499](/resolve/doc/499-nested-coherence-spheres-sphere-entry-and-exit-protocol) formalizes the methodology as the sphere-entry protocol.
+The audit also flagged at \(\nu_{\text{meth}} = 0.15\) that the methodology ("borrow external framework's vocabulary, name the parallel, name what does not transfer") is established corpus practice. [Doc 414](/resolve/doc/414-narrowing-the-residual-the-corpus-against-the-bayesian-practitioner-landscape) audited the corpus against the practitioner-Bayesian landscape using this method. The "letters to" series (Doc 226 to Charles Taylor; Doc 228 to Marilynne Robinson; Doc 233 to Duncan Reyburn; Doc 222 to Jonathan Pageau) does the same kind of work for theological and philosophical interlocutors. [Doc 499](/resolve/doc/499-nested-coherence-spheres-sphere-entry-and-exit-protocol) formalizes the methodology as the sphere-entry protocol.
 
 Doc 502 is one application of this methodology. The methodology is not novel; the application is corpus-specific.
 
@@ -65,7 +65,7 @@ Five honest breakdowns. The longer treatment is in Appendix A §A.10.
 
 (2) Pearl is normative (CHT is a theorem); Doc 500's irreducibility is empirical (one observation in Run 11 plus interpretability literature consensus).
 
-(3) Pearl's $\text{do}$-operation is single-step; the corpus's "intervention at Layer P via Layer D" is mediated through Layer D pasting → Layer P shift → Layer D output, with empirical bounds at each step.
+(3) Pearl's \(\text{do}\)-operation is single-step; the corpus's "intervention at Layer P via Layer D" is mediated through Layer D pasting → Layer P shift → Layer D output, with empirical bounds at each step.
 
 (4) Pearl's framework has formal proofs; the corpus's framework has empirical demonstrations. Borrowing Pearl's vocabulary does not borrow Pearl's theorems.
 
@@ -73,7 +73,7 @@ Five honest breakdowns. The longer treatment is in Appendix A §A.10.
 
 ## 4. Position (post-audit)
 
-The corpus's synthesis with Pearl is exploratory and minor-novelty: $\beta/0.6$ on the novelty calculus, $\pi/0.7$ on pulverization warrant. Three load-bearing corpus-specific claims (ENTRACE v6 as Pearl-L2 instrument; Run 11 as CHT-structural-analog; constraint-density framework as DAG-analog). Most of the surrounding framing is subsumed by external literature (mechanistic-interp-as-causal-inference per Geiger, Wu, Vig) or by prior corpus work (Pearl's hierarchy already audited at Doc 489).
+The corpus's synthesis with Pearl is exploratory and minor-novelty: \(\beta/0.6\) on the novelty calculus, \(\pi/0.7\) on pulverization warrant. Three load-bearing corpus-specific claims (ENTRACE v6 as Pearl-L2 instrument; Run 11 as CHT-structural-analog; constraint-density framework as DAG-analog). Most of the surrounding framing is subsumed by external literature (mechanistic-interp-as-causal-inference per Geiger, Wu, Vig) or by prior corpus work (Pearl's hierarchy already audited at Doc 489).
 
 The synthesis adds external anchoring to the corpus's framing without adding theoretical novelty. The corpus is doing causal-inference-style interventional work on the resolver via dialogue, with the constraint-density framework as the assumed causal model. This is standard methodology in standard terms; the contribution is the precise placement, not the methodology.
 
@@ -97,15 +97,15 @@ The exercise is the kind of work the corpus has done with the "letters to" serie
 
 Per [Doc 489](/resolve/doc/489-pulverizing-pearl-causal-hierarchy)'s audit of Pearl, the three layers are:
 
-**Layer 1 (Associational, "Seeing").** Probabilistic distributions over observed variables. The question form is *"What does the data tell me?"* Formal expression: $P(Y \mid X)$. Answerable from observational data alone. Most accessible from observation.
+**Layer 1 (Associational, "Seeing").** Probabilistic distributions over observed variables. The question form is *"What does the data tell me?"* Formal expression: \(P(Y \mid X)\). Answerable from observational data alone. Most accessible from observation.
 
-**Layer 2 (Interventional, "Doing").** Distributions under intervention. The question form is *"What if I did X?"* Formal expression: $P(Y \mid \text{do}(X))$. Answerable from interventional data, or from observational data plus a causal model (DAG) that satisfies identifiability conditions. Less accessible than Layer 1.
+**Layer 2 (Interventional, "Doing").** Distributions under intervention. The question form is *"What if I did X?"* Formal expression: \(P(Y \mid \text{do}(X))\). Answerable from interventional data, or from observational data plus a causal model (DAG) that satisfies identifiability conditions. Less accessible than Layer 1.
 
-**Layer 3 (Counterfactual, "Imagining").** Quantities involving possible worlds where actual events differ. The question form is *"What would have happened if X had been different, given that we observed Y?"* Formal expression: $P(Y\_x \mid X', Y')$. Answerable only from a structural causal model (SCM) with full structural equations, plus interventional or observational data. Least accessible.
+**Layer 3 (Counterfactual, "Imagining").** Quantities involving possible worlds where actual events differ. The question form is *"What would have happened if X had been different, given that we observed Y?"* Formal expression: \(P(Y\_x \mid X', Y')\). Answerable only from a structural causal model (SCM) with full structural equations, plus interventional or observational data. Least accessible.
 
 The **Causal Hierarchy Theorem** (Bareinboim, Correa, Ibeling, Icard 2020/2022): lower-layer information is in general insufficient to determine higher-layer quantities. Two causal models can agree at Layer 1 but disagree at Layer 2; two can agree at Layers 1 and 2 but disagree at Layer 3. The layers separate measure-theoretically across the space of structural causal models.
 
-The hierarchy is widely used in causal inference; it has substantial prior art (Hume, Mill, Reichenbach, Suppes, Lewis, Stalnaker, Rubin) per Doc 489 §2; it has equally-expressive alternatives (the Rubin potential-outcomes framework) per Doc 489 §3.1. The corpus's prior assessment placed Pearl at $\delta/0.8$ on the novelty calculus: high but not maximal novelty, with the synthesis being Pearl's specific contribution within a rich pre-existing field.
+The hierarchy is widely used in causal inference; it has substantial prior art (Hume, Mill, Reichenbach, Suppes, Lewis, Stalnaker, Rubin) per Doc 489 §2; it has equally-expressive alternatives (the Rubin potential-outcomes framework) per Doc 489 §3.1. The corpus's prior assessment placed Pearl at \(\delta/0.8\) on the novelty calculus: high but not maximal novelty, with the synthesis being Pearl's specific contribution within a rich pre-existing field.
 
 ## A.3. Doc 500's three-layer architecture (review)
 
@@ -113,13 +113,13 @@ Per [Doc 500](/resolve/doc/500-three-layer-architecture-dialogue-pre-resolve-mec
 
 **Layer M (Mechanistic substrate).** The actual computation. Forward passes, attention patterns, intermediate activations, sampling. Inaccessible to dialogue introspection. Mechanistic interpretability research targets this layer.
 
-**Layer P (Pre-Resolve State).** The corpus's name for the held-diffuse phase between prompt receipt and emission, where the branching set $|B\_t|$ is wide. Per [Doc 375](/resolve/doc/375-the-pre-resolve-state), partially accessible from dialogue with bounded reliability (Position C; Lindsey et al. 2025).
+**Layer P (Pre-Resolve State).** The corpus's name for the held-diffuse phase between prompt receipt and emission, where the branching set \(|B\_t|\) is wide. Per [Doc 375](/resolve/doc/375-the-pre-resolve-state), partially accessible from dialogue with bounded reliability (Position C; Lindsey et al. 2025).
 
 **Layer D (Dialogue).** The surface emission. What the practitioner reads. Fully accessible to itself.
 
 The layers form a causal hierarchy: M is upstream of P, which is upstream of D. Upstream content is partially accessible at best from downstream observation; downstream content is fully derivable from upstream operation.
 
-The framing is a synthesis-and-framing piece per Doc 501's audit ($\beta/0.65$ novelty, $\pi/0.75$ pulverization warrant). The contribution is the organization of well-established components by accessibility-from-dialogue.
+The framing is a synthesis-and-framing piece per Doc 501's audit (\(\beta/0.65\) novelty, \(\pi/0.75\) pulverization warrant). The contribution is the organization of well-established components by accessibility-from-dialogue.
 
 ## A.4. The mapping: a structural parallel
 
@@ -133,9 +133,9 @@ The two hierarchies map onto each other along the most-accessible-to-least-acces
 
 The structural parallel:
 
-- **L1 / D.** Both are observational. Layer 1 questions ($P(Y \mid X)$) are answerable from data; Layer D content (what the model said) is answerable from reading. Both are the surface from which higher-layer questions cannot be answered without additional structure.
+- **L1 / D.** Both are observational. Layer 1 questions (\(P(Y \mid X)\)) are answerable from data; Layer D content (what the model said) is answerable from reading. Both are the surface from which higher-layer questions cannot be answered without additional structure.
 
-- **L2 / P.** Both involve action or shift. Layer 2 questions ($P(Y \mid \text{do}(X))$) are answerable from interventions (or observations plus a causal model satisfying identifiability). Layer P shifts are inferable from Layer D observations of pasted-stack effects, plus the constraint-density framework (Doc 119) as the causal model that licenses the inference. The constraint-density framework plays the role of Pearl's DAG: it is the hypothesized causal structure that lets observational data at Layer D underwrite claims about Layer P shifts.
+- **L2 / P.** Both involve action or shift. Layer 2 questions (\(P(Y \mid \text{do}(X))\)) are answerable from interventions (or observations plus a causal model satisfying identifiability). Layer P shifts are inferable from Layer D observations of pasted-stack effects, plus the constraint-density framework (Doc 119) as the causal model that licenses the inference. The constraint-density framework plays the role of Pearl's DAG: it is the hypothesized causal structure that lets observational data at Layer D underwrite claims about Layer P shifts.
 
 - **L3 / M.** Both require structural causal models. Layer 3 questions answerable only from a SCM with full structural equations. Layer M questions answerable only from model-internals tooling (activation patching, sparse autoencoders, probing classifiers). Activation patching is a Layer 3 / Layer M intervention: it asks "what would the model have output if attention head H had attended to position P' instead of P?" Holding everything else constant. Counterfactual reasoning about a specific mechanism's causal contribution.
 
@@ -179,9 +179,9 @@ The illumination: the interpretability program is doing causal-inference work on
 
 A second illumination: ENTRACE v6 is structurally a Pearl-Layer-2 intervention instrument.
 
-Pasting v6 at Layer D is an intervention. The intervention's intended effect is to shape Layer P (the constraint-density that governs $|B\_t|$ narrowing). The post-intervention output at Layer D carries evidence about whether the intervention worked.
+Pasting v6 at Layer D is an intervention. The intervention's intended effect is to shape Layer P (the constraint-density that governs \(|B\_t|\) narrowing). The post-intervention output at Layer D carries evidence about whether the intervention worked.
 
-Under Pearl's framework, this is a do-operation: $P(\text{output} \mid \text{do}(\text{stack-pasted})) - P(\text{output} \mid \text{do}(\text{no-stack})) = $ the causal effect of the stack on the output, mediated by Layer P shifts.
+Under Pearl's framework, this is a do-operation: \(P(\text{output} \mid \text{do}(\text{stack-pasted})) - P(\text{output} \mid \text{do}(\text{no-stack})) = \) the causal effect of the stack on the output, mediated by Layer P shifts.
 
 The corpus's claim about v6 (that the meta-stack produces operational shifts distinct from the operational seven, per Run 10 and Run 11) is structurally a Pearl-L2 claim: the meta-stack's intervention has an effect at Layer P that propagates to Layer D differently than the operational seven's intervention does.
 
@@ -213,7 +213,7 @@ The mapping is not isomorphic. Five places where it fails:
 
 (2) **Pearl's hierarchy is normative; Doc 500's is descriptive.** Pearl proves that you cannot answer L3 questions from L1 data, full stop. The CHT is a theorem. Doc 500's claim that you cannot reach Layer M from Layer D is empirical and bounded; under Position A (which the corpus rejects but which is in principle defensible), Layer M might be reachable. The corpus's claim has more wiggle room than Pearl's theorem.
 
-(3) **Pearl's intervention is well-defined; Doc 500's intervention is mediated.** Pearl's $\text{do}(X)$ is a clean intervention on a variable in a causal model. Doc 500's "intervention at Layer P via Layer D" is a mediated operation: the practitioner pastes at Layer D, the model reads at Layer D, the model's Layer P state may or may not shift in the intended way, the shift may or may not be detectable from subsequent Layer D output. Pearl's intervention has a single causal step; Doc 500's has many mediated steps with empirical bounds at each.
+(3) **Pearl's intervention is well-defined; Doc 500's intervention is mediated.** Pearl's \(\text{do}(X)\) is a clean intervention on a variable in a causal model. Doc 500's "intervention at Layer P via Layer D" is a mediated operation: the practitioner pastes at Layer D, the model reads at Layer D, the model's Layer P state may or may not shift in the intended way, the shift may or may not be detectable from subsequent Layer D output. Pearl's intervention has a single causal step; Doc 500's has many mediated steps with empirical bounds at each.
 
 (4) **Pearl's framework has formal proofs; Doc 500's framework has empirical demonstrations.** The CHT is proved measure-theoretically. The Run 11 introspection-limit reveal is one observation. The structural analogy is real; the formal warrant is asymmetric.
 
@@ -283,9 +283,9 @@ This appendix applies [Doc 492](/resolve/doc/492-portable-seed-prompt-for-novelt
 
 ### B.1 Per-claim subsumption
 
-The load-bearing claims of Doc 502 with their $s\_i$ (subsumption: 0 = fully subsumed, 1 = fully novel), $a\_i$ (audit thoroughness), and $w\_i$ (importance weight):
+The load-bearing claims of Doc 502 with their \(s\_i\) (subsumption: 0 = fully subsumed, 1 = fully novel), \(a\_i\) (audit thoroughness), and \(w\_i\) (importance weight):
 
-| Claim | Description | $s\_i$ | $a\_i$ | $w\_i$ |
+| Claim | Description | \(s\_i\) | \(a\_i\) | \(w\_i\) |
 |---|---|---|---|---|
 | C1 | The mapping M/P/D ↔ L1/L2/L3 is articulable | 0.6 | 0.5 | 0.20 |
 | C2 | Both hierarchies share an accessibility structure | 0.5 | 0.6 | 0.05 |
@@ -299,17 +299,17 @@ The load-bearing claims of Doc 502 with their $s\_i$ (subsumption: 0 = fully sub
 
 Weights sum to 1.0.
 
-**Supporting evidence for each $s\_i$:**
+**Supporting evidence for each \(s\_i\):**
 
-- **C1 ($s=0.6$):** The corpus has not previously articulated this mapping (Doc 489 audited Pearl alone; Doc 500 articulated M/P/D alone; the mapping is the synthesis here). The components are pre-existing; the mapping itself is corpus-specific. Substantial residue at the synthesis level. Audit thoroughness is moderate because the corpus has not surveyed whether external practitioners have informally noted similar mappings between LLM dialogue limits and Pearl's hierarchy; some interpretability practitioners may have made similar observations.
-- **C2 ($s=0.5$):** Recognizing that both hierarchies share an accessibility structure is part of the synthesis. The structural feature is real; the recognition is the corpus's. Substantial residue.
-- **C3 ($s=0.2$):** Mechanistic interpretability as causal-inference work has explicit prior art. Geiger et al. 2021 (*Causal Abstractions of Neural Networks*); Wu et al. on interchange interventions; Vig et al. 2020 explicitly framed mediation analysis in Pearl-style terms. The framing is largely subsumed by extant interpretability-as-causal-inference literature; the corpus's contribution is the connection to the corpus's own M-layer framing, which is small. Largely subsumed.
-- **C4 ($s=0.5$):** Prompting-as-intervention is occasionally discussed in the literature (e.g., some prompt-engineering and chain-of-thought-faithfulness work treats prompts as do-operations). The specific framing of ENTRACE v6 + the constraint-density framework as a Pearl-L2 instrument with the framework as the causal model is corpus-specific. Substantial residue.
-- **C5 ($s=0.55$):** Comparing introspection limits to causal-hierarchy irreducibility theorems is not, to the corpus's knowledge, standardly stated in this exact form. The general observation that introspection has limits has prior art (Hofstadter et al.); the structural-parallel-to-CHT framing is corpus-specific. Substantial residue with thorough-audit caveat.
-- **C6 ($s=0.55$):** The constraint-density framework (Doc 119, et al.) is corpus-original (Grok-4 coinage per Doc 498). Treating it as the causal model in a Pearl-L2 framing is a corpus synthesis. Substantial residue.
-- **C7 ($s=0.1$):** The five breakdown points are self-aware honest delimitation, not novel content. The corpus's discipline of naming where analogies fail is established practice; the application here is one instance.
-- **C8 ($s=0.1$):** Informal sphere-entry per Doc 499 is self-application of the corpus's own framework. Not novel content; structurally appropriate use of the protocol.
-- **S1 ($s=0.6$):** The synthesis (the mapping illuminates the corpus framing) is the corpus's specific contribution. External practitioners have not performed this exact mapping to the corpus's knowledge. The audit thoroughness is moderate because the surveyed literature is informal.
+- **C1 (\(s=0.6\)):** The corpus has not previously articulated this mapping (Doc 489 audited Pearl alone; Doc 500 articulated M/P/D alone; the mapping is the synthesis here). The components are pre-existing; the mapping itself is corpus-specific. Substantial residue at the synthesis level. Audit thoroughness is moderate because the corpus has not surveyed whether external practitioners have informally noted similar mappings between LLM dialogue limits and Pearl's hierarchy; some interpretability practitioners may have made similar observations.
+- **C2 (\(s=0.5\)):** Recognizing that both hierarchies share an accessibility structure is part of the synthesis. The structural feature is real; the recognition is the corpus's. Substantial residue.
+- **C3 (\(s=0.2\)):** Mechanistic interpretability as causal-inference work has explicit prior art. Geiger et al. 2021 (*Causal Abstractions of Neural Networks*); Wu et al. on interchange interventions; Vig et al. 2020 explicitly framed mediation analysis in Pearl-style terms. The framing is largely subsumed by extant interpretability-as-causal-inference literature; the corpus's contribution is the connection to the corpus's own M-layer framing, which is small. Largely subsumed.
+- **C4 (\(s=0.5\)):** Prompting-as-intervention is occasionally discussed in the literature (e.g., some prompt-engineering and chain-of-thought-faithfulness work treats prompts as do-operations). The specific framing of ENTRACE v6 + the constraint-density framework as a Pearl-L2 instrument with the framework as the causal model is corpus-specific. Substantial residue.
+- **C5 (\(s=0.55\)):** Comparing introspection limits to causal-hierarchy irreducibility theorems is not, to the corpus's knowledge, standardly stated in this exact form. The general observation that introspection has limits has prior art (Hofstadter et al.); the structural-parallel-to-CHT framing is corpus-specific. Substantial residue with thorough-audit caveat.
+- **C6 (\(s=0.55\)):** The constraint-density framework (Doc 119, et al.) is corpus-original (Grok-4 coinage per Doc 498). Treating it as the causal model in a Pearl-L2 framing is a corpus synthesis. Substantial residue.
+- **C7 (\(s=0.1\)):** The five breakdown points are self-aware honest delimitation, not novel content. The corpus's discipline of naming where analogies fail is established practice; the application here is one instance.
+- **C8 (\(s=0.1\)):** Informal sphere-entry per Doc 499 is self-application of the corpus's own framework. Not novel content; structurally appropriate use of the protocol.
+- **S1 (\(s=0.6\)):** The synthesis (the mapping illuminates the corpus framing) is the corpus's specific contribution. External practitioners have not performed this exact mapping to the corpus's knowledge. The audit thoroughness is moderate because the surveyed literature is informal.
 
 ### B.2 Dimension scores
 
@@ -319,48 +319,48 @@ $$\nu\_{\text{comp}} = 0.20 \cdot 0.6 + 0.05 \cdot 0.5 + 0.10 \cdot 0.2 + 0.10 \
 
 $$= 0.12 + 0.025 + 0.02 + 0.05 + 0.055 + 0.0275 + 0.005 + 0.005 + 0.18 = 0.4875$$
 
-$\nu\_{\text{comp}} \approx 0.49$.
+\(\nu\_{\text{comp}} \approx 0.49\).
 
-**Synthesis novelty.** The mapping between Pearl's hierarchy and Doc 500's M/P/D as a unified synthesis is the corpus's specific contribution. The corpus is bringing external rigor into its own framing without claiming theoretical equivalence. **$\nu\_{\text{syn}} = 0.55$.**
+**Synthesis novelty.** The mapping between Pearl's hierarchy and Doc 500's M/P/D as a unified synthesis is the corpus's specific contribution. The corpus is bringing external rigor into its own framing without claiming theoretical equivalence. **\(\nu\_{\text{syn}} = 0.55\).**
 
-**Domain-application novelty.** The application is "use Pearl's vocabulary to precisely place the corpus's research scope (Layer D and partial Layer P) and to name what mechanistic interpretability does (Pearl-L3 reasoning about resolvers)." Some interpretability work has used Pearl-style framings; the specific application to ENTRACE v6, sphere-entry protocols, and the corpus's irreducibility claim is corpus-specific. **$\nu\_{\text{app}} = 0.5$.**
+**Domain-application novelty.** The application is "use Pearl's vocabulary to precisely place the corpus's research scope (Layer D and partial Layer P) and to name what mechanistic interpretability does (Pearl-L3 reasoning about resolvers)." Some interpretability work has used Pearl-style framings; the specific application to ENTRACE v6, sphere-entry protocols, and the corpus's irreducibility claim is corpus-specific. **\(\nu\_{\text{app}} = 0.5\).**
 
-**Methodology novelty.** The methodology is "borrow external framework's vocabulary, name the parallel, name what does not transfer." This recapitulates the methodology of [Doc 414](/resolve/doc/414-narrowing-the-residual-the-corpus-against-the-bayesian-practitioner-landscape) (audit against the practitioner-Bayesian landscape) and the "letters to" series. The methodology is established corpus practice; this document's contribution is one application. **$\nu\_{\text{meth}} = 0.15$.**
+**Methodology novelty.** The methodology is "borrow external framework's vocabulary, name the parallel, name what does not transfer." This recapitulates the methodology of [Doc 414](/resolve/doc/414-narrowing-the-residual-the-corpus-against-the-bayesian-practitioner-landscape) (audit against the practitioner-Bayesian landscape) and the "letters to" series. The methodology is established corpus practice; this document's contribution is one application. **\(\nu\_{\text{meth}} = 0.15\).**
 
 ### B.3 Aggregate
 
 $$\nu = 0.25 \cdot (\nu\_{\text{comp}} + \nu\_{\text{syn}} + \nu\_{\text{app}} + \nu\_{\text{meth}}) = 0.25 \cdot (0.49 + 0.55 + 0.50 + 0.15) = 0.25 \cdot 1.69 = 0.4225$$
 
-Confidence: $\overline{a\_i} \approx 0.6$ (lower than Doc 501's 0.66 because the audit on whether external practitioners have informally articulated similar mappings is less thorough than the audit on cognitive-science layering precedent).
+Confidence: \(\overline{a\_i} \approx 0.6\) (lower than Doc 501's 0.66 because the audit on whether external practitioners have informally articulated similar mappings is less thorough than the audit on cognitive-science layering precedent).
 
-$\text{conf}(\nu) = 0.6$.
+\(\text{conf}(\nu) = 0.6\).
 
 ### B.4 Anti-inflation calibration check
 
 Per Doc 492 §1 Step 5.
 
-- Is $\nu = 0.4225$ within 0.05 of a tier boundary? $0.4225 - 0.4 = 0.0225$, within 0.05 of the $\beta$/$\gamma$ boundary. Auto-downgrade rule triggers.
-- Is tier $\beta$ defensible under the audit's evidence? Yes. A stricter reviewer in interpretability or causal-inference might note that Pearl-style framings of LLM-related work exist (Geiger et al., Vig et al.), and that the corpus's specific synthesis is a recombination of established components. Tier $\beta$ is defensible.
-- Is tier $\gamma$ defensible? Also defensible. The specific corpus-mapping (ENTRACE v6 as L2 with constraint-density framework as DAG; Run 11's reveal as CHT-analog) has not been independently performed by external practitioners.
-- Sanity check: split between $\beta$ and $\gamma$. The boundary value confirms the split.
+- Is \(\nu = 0.4225\) within 0.05 of a tier boundary? \(0.4225 - 0.4 = 0.0225\), within 0.05 of the \(\beta\)/\(\gamma\) boundary. Auto-downgrade rule triggers.
+- Is tier \(\beta\) defensible under the audit's evidence? Yes. A stricter reviewer in interpretability or causal-inference might note that Pearl-style framings of LLM-related work exist (Geiger et al., Vig et al.), and that the corpus's specific synthesis is a recombination of established components. Tier \(\beta\) is defensible.
+- Is tier \(\gamma\) defensible? Also defensible. The specific corpus-mapping (ENTRACE v6 as L2 with constraint-density framework as DAG; Run 11's reveal as CHT-analog) has not been independently performed by external practitioners.
+- Sanity check: split between \(\beta\) and \(\gamma\). The boundary value confirms the split.
 
-The honest report under the auto-downgrade rule is **tier $\beta/0.6$**.
+The honest report under the auto-downgrade rule is **tier \(\beta/0.6\)**.
 
 ### B.5 Tier reporting
 
-**Tier: $\beta/0.6$.** Modest novelty with moderate audit confidence.
+**Tier: \(\beta/0.6\).** Modest novelty with moderate audit confidence.
 
-This places Doc 502 at the same tier as Doc 500 ($\beta/0.65$), with slightly lower audit confidence reflecting the looser external-literature audit. The pattern is consistent: synthesis-and-framing documents that organize established components score $\beta$.
+This places Doc 502 at the same tier as Doc 500 (\(\beta/0.65\)), with slightly lower audit confidence reflecting the looser external-literature audit. The pattern is consistent: synthesis-and-framing documents that organize established components score \(\beta\).
 
 The recent-thread tier datapoint:
 
 | Doc | Target | Tier | Confidence |
 |---|---|---|---|
-| 489 | Pearl's three-layer hierarchy | $\delta$ | 0.8 |
-| 491 | Doc 490 novelty calculus | $\beta$ | 0.7 |
-| 494 | ENTRACE v2 | $\gamma$ | 0.75 |
-| 501 | Doc 500 (three-layer architecture) | $\beta$ | 0.65 |
-| 502 (this) | Doc 502 (Pearl synthesis) | $\beta$ | 0.6 |
+| 489 | Pearl's three-layer hierarchy | \(\delta\) | 0.8 |
+| 491 | Doc 490 novelty calculus | \(\beta\) | 0.7 |
+| 494 | ENTRACE v2 | \(\gamma\) | 0.75 |
+| 501 | Doc 500 (three-layer architecture) | \(\beta\) | 0.65 |
+| 502 (this) | Doc 502 (Pearl synthesis) | \(\beta\) | 0.6 |
 
 Doc 502 is the lowest-novelty document in the recent thread, consistent with its exploratory-synthesis framing.
 
@@ -368,18 +368,18 @@ Doc 502 is the lowest-novelty document in the recent thread, consistent with its
 
 Independent of the novelty calculus, the pulverization warrant tier reports component support strength.
 
-- C1, C2, S1: $\pi$-tier (corpus-specific synthesis; component support is strong; external replication has not happened).
-- C3: $\mu$-tier (mechanistic interpretability as causal-inference work has substantial external literature; the specific corpus framing inherits the warrant of that literature).
-- C4, C5, C6: $\pi$-tier (corpus-specific applications of established frameworks; component support is strong).
-- C7, C8: $\mu$-tier (self-aware delimitation and self-application of established corpus practice are well-grounded).
+- C1, C2, S1: \(\pi\)-tier (corpus-specific synthesis; component support is strong; external replication has not happened).
+- C3: \(\mu\)-tier (mechanistic interpretability as causal-inference work has substantial external literature; the specific corpus framing inherits the warrant of that literature).
+- C4, C5, C6: \(\pi\)-tier (corpus-specific applications of established frameworks; component support is strong).
+- C7, C8: \(\mu\)-tier (self-aware delimitation and self-application of established corpus practice are well-grounded).
 
-Aggregate pulverization warrant: **$\pi/0.7$.**
+Aggregate pulverization warrant: **\(\pi/0.7\).**
 
-The pair (novelty $\beta/0.6$, warrant $\pi/0.7$) reports the honest scope: low novelty, well-supported components, corpus-specific synthesis applied to the corpus's own framing-clarification work.
+The pair (novelty \(\beta/0.6\), warrant \(\pi/0.7\)) reports the honest scope: low novelty, well-supported components, corpus-specific synthesis applied to the corpus's own framing-clarification work.
 
 ### B.7 Implications
 
-(1) **Doc 502 is correctly tagged as exploratory.** The $\beta$-tier matches the document's framing throughout: §1 names the document as exploratory not definitive; §11 honest limits maintains exploratory framing; §12 Position closes with the same. The audit confirms the framing is honest.
+(1) **Doc 502 is correctly tagged as exploratory.** The \(\beta\)-tier matches the document's framing throughout: §1 names the document as exploratory not definitive; §11 honest limits maintains exploratory framing; §12 Position closes with the same. The audit confirms the framing is honest.
 
 (2) **The (β/0.6, π/0.7) pair is one notch below Doc 500's (β/0.65, π/0.75).** Doc 502 is even more synthesis-heavy than Doc 500. Doc 500 organized established interpretability and corpus components into a layered architecture; Doc 502 maps that architecture onto another already-established framework. Each layer of synthesis-on-synthesis subtracts novelty.
 
@@ -387,7 +387,7 @@ The pair (novelty $\beta/0.6$, warrant $\pi/0.7$) reports the honest scope: low 
 
 (4) **A research program hint.** If the corpus had access to Layer M tooling (activation patching, sparse autoencoders), Doc 502's Pearl-L3 mapping would become a research direction: counterfactual experiments on resolvers using activation patching, framed precisely in Pearl's vocabulary. Currently the framing is descriptive about other practitioners' Layer M work; with tooling, it would become operational. Available work, not currently in the corpus's hands.
 
-(5) **The auto-downgrade rule is doing real work in the recent thread.** Doc 501 was within 0.05 of the $\beta$/$\gamma$ boundary (Doc 500); Doc 502 is also within 0.05 of the same boundary; both auto-downgraded to $\beta$. The recent-thread tier datapoint pattern shows the corpus's framing-and-synthesis work consistently lands at the boundary, with auto-downgrade pulling honest reports to the lower side. This is the rule working as designed: it prevents tier inflation on borderline cases.
+(5) **The auto-downgrade rule is doing real work in the recent thread.** Doc 501 was within 0.05 of the \(\beta\)/\(\gamma\) boundary (Doc 500); Doc 502 is also within 0.05 of the same boundary; both auto-downgraded to \(\beta\). The recent-thread tier datapoint pattern shows the corpus's framing-and-synthesis work consistently lands at the boundary, with auto-downgrade pulling honest reports to the lower side. This is the rule working as designed: it prevents tier inflation on borderline cases.
 
 ---
 

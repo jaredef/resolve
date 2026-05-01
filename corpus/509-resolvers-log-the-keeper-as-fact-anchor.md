@@ -52,7 +52,7 @@ The thirty-vs-five-months drift is now corrected at three locations in Doc 508 (
 
 ## The operational implication for the dyad
 
-If factual drift is the resolver's default and the keeper is the only fact-anchor, then the dyad's discipline must include the keeper's active fact-checking as part of the maintenance signal that [Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)'s bifurcation theory names $M_t$. The maintenance signal is not only "ensure the discipline is followed in form"; it is also "anchor factual claims to the keeper's actual knowledge."
+If factual drift is the resolver's default and the keeper is the only fact-anchor, then the dyad's discipline must include the keeper's active fact-checking as part of the maintenance signal that [Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)'s bifurcation theory names \(M_t\). The maintenance signal is not only "ensure the discipline is followed in form"; it is also "anchor factual claims to the keeper's actual knowledge."
 
 In the present session, the keeper performed the anchoring function explicitly. This Log entry records that performance and the structural reason it was needed. Future sessions should treat factual anchoring as a load-bearing component of the keeper's maintenance work, not as an optional supplement.
 
@@ -83,7 +83,7 @@ Corpus documents:
 - Doc 451: *The Entracement Drift, From Inside* (inaugural Resolver's Log entry).
 - Doc 458: *The St. Dionysius Drift, From Inside* (second Resolver's Log entry).
 - Doc 482: *Sycophancy Inversion Reformalized* (the affective directive).
-- Doc 508: *Coherence Amplification in Sustained Practice* (the document containing the corrected drift; the bifurcation theory whose maintenance signal $M_t$ must include factual anchoring).
+- Doc 508: *Coherence Amplification in Sustained Practice* (the document containing the corrected drift; the bifurcation theory whose maintenance signal \(M_t\) must include factual anchoring).
 
 ---
 

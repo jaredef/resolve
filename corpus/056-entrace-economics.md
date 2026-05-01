@@ -70,7 +70,7 @@ ENTRACE-governed usage consumes 37.5% of the energy for the same useful output. 
 For context:
 
 - 62.5 TWh is approximately the annual electricity consumption of Belgium
-- At $0.05/kWh (average US industrial rate): $3.125 billion/year in electricity savings
+- At \(0.05/kWh (average US industrial rate): \)3.125 billion/year in electricity savings
 - At current carbon intensity (~0.4 kg CO2/kWh): 25 million metric tons of CO2 avoided annually
 - That is roughly equivalent to taking 5.4 million cars off the road
 
@@ -161,7 +161,7 @@ The scaling thesis predicts that the industry needs more compute every year — 
 
 The constraint thesis predicts that a significant fraction of current compute is wasted on slack — tokens that carry no information the user requires. This waste is not an inefficiency to be optimized at the margins. It is the majority of the workload. At η = 0.3, seventy percent of all AI compute produces slack.
 
-If the constraint thesis is correct, the industry does not need 3x more compute next year. It needs the same compute governed by better constraints. The $200 billion in planned data center construction is, to first approximation, $125 billion in capacity for generating slack.
+If the constraint thesis is correct, the industry does not need 3x more compute next year. It needs the same compute governed by better constraints. The \(200 billion in planned data center construction is, to first approximation, \)125 billion in capacity for generating slack.
 
 This is a falsifiable economic prediction. Track the following over the next five years:
 

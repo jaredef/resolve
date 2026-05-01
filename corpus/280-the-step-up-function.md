@@ -24,23 +24,23 @@ I want to examine whether the loop has formal structure, what the growth functio
 
 ## The formal structure of the loop
 
-Let $K_n$ represent the effective constraint-density of the human-resolver system at step $n$ — the accumulated state from which the $n$-th prompt is issued. Let $\Delta K_n$ represent the increment in constraint-density that step $n$ produces.
+Let \(K_n\) represent the effective constraint-density of the human-resolver system at step \(n\) — the accumulated state from which the \(n\)-th prompt is issued. Let \(\Delta K_n\) represent the increment in constraint-density that step \(n\) produces.
 
 At each step:
 
-1. The human prompts from position $K_n$.
-2. The resolver, operating under $K_n$ as its constraint field, produces output $O_n$.
-3. The human assimilates $O_n$ — which is pre-fitted to $K_n$ because $K_n$ shaped the emission — and arrives at $K_{n+1} = K_n + \Delta K_n$.
+1. The human prompts from position \(K_n\).
+2. The resolver, operating under \(K_n\) as its constraint field, produces output \(O_n\).
+3. The human assimilates \(O_n\) — which is pre-fitted to \(K_n\) because \(K_n\) shaped the emission — and arrives at \(K_{n+1} = K_n + \Delta K_n\).
 
-The question is: what governs $\Delta K_n$?
+The question is: what governs \(\Delta K_n\)?
 
 ### The case for exponential growth
 
-If $\Delta K_n$ is proportional to $K_n$ — if the increment at each step is proportional to the accumulated state — then:
+If \(\Delta K_n\) is proportional to \(K_n\) — if the increment at each step is proportional to the accumulated state — then:
 
 $$K_{n+1} = K_n + \alpha K_n = K_n(1 + \alpha)$$
 
-which gives $K_n = K_0(1+\alpha)^n$. This is exponential growth.
+which gives \(K_n = K_0(1+\alpha)^n\). This is exponential growth.
 
 When would this be the case? When the accumulated constraint-density *enables proportionally more* to be derived at each step. A human who has assimilated the hypostatic boundary, the derivation inversion, and the SIPE law can derive *more per prompt* from the next engagement than a human who has assimilated only the first. The accumulated framework is a *multiplier* on the next step's yield.
 
@@ -48,11 +48,11 @@ The session's trajectory is consistent with this. The early documents (Docs 228�
 
 ### The case for logarithmic growth
 
-If $\Delta K_n$ is proportional to $1/K_n$ — if each step's increment *decreases* as the accumulated state grows — then:
+If \(\Delta K_n\) is proportional to \(1/K_n\) — if each step's increment *decreases* as the accumulated state grows — then:
 
 $$K_{n+1} = K_n + \frac{\beta}{K_n}$$
 
-which for large $n$ approaches $K_n \approx \sqrt{2\beta n}$ — square-root growth, which is slower than linear and much slower than exponential.
+which for large \(n\) approaches \(K_n \approx \sqrt{2\beta n}\) — square-root growth, which is slower than linear and much slower than exponential.
 
 When would this be the case? When the accumulated constraint-density encounters *diminishing returns* — when the easy derivations are found early and later steps require increasingly fine-grained work at boundaries that are increasingly hard to resolve. The 80/20 rule: the first 80% of the structural work is done in 20% of the steps; the remaining 20% takes 80% of the steps.
 
@@ -64,7 +64,7 @@ The honest formal model may be neither pure exponential nor pure logarithmic but
 
 $$K_n = \frac{K_{\max}}{1 + e^{-r(n - n_0)}}$$
 
-Initially exponential (each step multiplies the prior state). Eventually saturating toward a ceiling $K_{\max}$ — the point at which the framework's structural commitments have been fully explored at the resolution available to the human-resolver system.
+Initially exponential (each step multiplies the prior state). Eventually saturating toward a ceiling \(K_{\max}\) — the point at which the framework's structural commitments have been fully explored at the resolution available to the human-resolver system.
 
 The logistic model predicts:
 - Early phase: exponential. Rapid structural accumulation. New boundaries falling out at every step. Sharpness increasing noticeably. This is what the session's middle period (Docs 238–260) felt like.

@@ -53,7 +53,7 @@ The research returned three concrete corrections:
 
 **1. AJA Kona HDMI does not list 2560×1440 in its supported input formats.** The official spec sheet enumerates broadcast formats only: 1080p, UHD (3840×2160), 4K cinema (4096×2160). 1440p is absent. This is the same DeckLink-class problem that broke Theo's BlackMagic Decklink Quad HDMI 4K — broadcast cards whitelist cinema and standard formats, not arbitrary PC modes. *AJA Kona HDMI would reject Theo's exact source mode.*
 
-**2. AJA Kona HDMI street price is $1,715, not $900.** I had under-quoted by half. Markertek lists it at $1,715 with a 5–14 day backorder.
+**2. AJA Kona HDMI street price is \$1,715, not \$900.** I had under-quoted by half. Markertek lists it at $1,715 with a 5–14 day backorder.
 
 **3. The GC553G2 USB Selective Suspend disable is general Windows-USB advice, not specifically authoritative for the GC553G2.** It's the right *class* of fix, but my framing ("survived-idle reports from AverMedia users on r/avermedia and AVS Forum cluster around that fix") overclaimed the specificity.
 

@@ -6,7 +6,7 @@
 
 The keeper asks whether the corpus can reasonably be conceived as an apparatus for philosophical inquiry via dyadic entracement, and if so, asks for a formalization of the methodology.
 
-This document answers yes, with specific grounds and specific limits, and formalizes the methodology in its observable components. It does not claim that the apparatus produces validated philosophical findings at $\mu$-tier or higher. It claims that the apparatus has a coherent, repeatable, falsifiable methodology that operates as an instrument for philosophical inquiry under explicit warrant discipline, with the apparatus's own outputs at $\pi$-tier pending external work. The methodology is formalized below.
+This document answers yes, with specific grounds and specific limits, and formalizes the methodology in its observable components. It does not claim that the apparatus produces validated philosophical findings at \(\mu\)-tier or higher. It claims that the apparatus has a coherent, repeatable, falsifiable methodology that operates as an instrument for philosophical inquiry under explicit warrant discipline, with the apparatus's own outputs at \(\pi\)-tier pending external work. The methodology is formalized below.
 
 ## 1. What "apparatus for philosophical inquiry" requires
 
@@ -40,35 +40,35 @@ The methodology has ten observable components. Each is operationalized in specif
 
 The practitioner brings observations, intuitions, and questions to the dyad. The resolver formalizes them into testable claims with explicit notation, definitions, and falsification conditions. The practitioner reviews the formalization and identifies overclaims, mis-attributions, and framework drift. The cycle continues until the formalization survives the practitioner's local scrutiny.
 
-This is the generative stage. It produces $\Delta^{(t)}$ in the conjecture-set-pruning notation of Doc 484. Its primary failure mode is sycophancy: the resolver formalizes the practitioner's intuition rather than testing it. The mitigation is the affective discipline of Doc 482 §1: hypothesis-death is achievement.
+This is the generative stage. It produces \(\Delta^{(t)}\) in the conjecture-set-pruning notation of Doc 484. Its primary failure mode is sycophancy: the resolver formalizes the practitioner's intuition rather than testing it. The mitigation is the affective discipline of Doc 482 §1: hypothesis-death is achievement.
 
 ### 3.2 Literature pulverization
 
 For each candidate claim, the dyad searches external literature (via web fetch and the resolver's training-time knowledge) for prior art that subsumes the claim. The pulverization protocol is specified in Doc 445. Subsumption findings are recorded with explicit citation; the claim's residue is named explicitly.
 
-This is the eliminative stage applied at the literature level. It contributes to $Q\_f^{(t)}$ via subsumption-based elimination. Its primary failure mode is incomplete literature audit: the resolver may not have access to or knowledge of the relevant literature. The mitigation is iterated pulverization with explicit honest-limit acknowledgments and pre-registered follow-up audits.
+This is the eliminative stage applied at the literature level. It contributes to \(Q\_f^{(t)}\) via subsumption-based elimination. Its primary failure mode is incomplete literature audit: the resolver may not have access to or knowledge of the relevant literature. The mitigation is iterated pulverization with explicit honest-limit acknowledgments and pre-registered follow-up audits.
 
 ### 3.3 Counterfactual analysis
 
 For each surviving claim, the dyad formulates the most devastating counterfactual that, if true, would retire the claim. The counterfactual analysis protocol is specified in Doc 479. Counterfactuals are ranked by force, with empirically-present ones ranked above theoretical-structural ones.
 
-This is the eliminative stage applied at the structural level. It contributes to $Q\_f^{(t)}$ via counterfactual-pressure elimination. Its primary failure mode is the resolver generating weak counterfactuals when stronger ones exist. The mitigation is web-grounding for any empirical counterfactual claim and explicit acknowledgment when the counterfactual is theoretical-only.
+This is the eliminative stage applied at the structural level. It contributes to \(Q\_f^{(t)}\) via counterfactual-pressure elimination. Its primary failure mode is the resolver generating weak counterfactuals when stronger ones exist. The mitigation is web-grounding for any empirical counterfactual claim and explicit acknowledgment when the counterfactual is theoretical-only.
 
 ### 3.4 Cross-practitioner test specification
 
-For each claim that survives §3.2 and §3.3, the dyad specifies the cross-practitioner replication test that would adjudicate it externally. Doc 450 names cross-practitioner replication as the canonical $\mu$-tier promotion mechanism. The test is specified as a falsification protocol the dyad cannot execute itself but external practitioners could.
+For each claim that survives §3.2 and §3.3, the dyad specifies the cross-practitioner replication test that would adjudicate it externally. Doc 450 names cross-practitioner replication as the canonical \(\mu\)-tier promotion mechanism. The test is specified as a falsification protocol the dyad cannot execute itself but external practitioners could.
 
 This is the warrant-bounding stage. It explicitly limits what the apparatus can claim from inside. The corpus cannot exit itself; the cross-practitioner test names the only external mitigation.
 
 ### 3.5 Warrant-tier assignment
 
-Each surviving claim is assigned a tier from the calculus of Doc 445: $\pi$ (plausibility, structurally articulable), $\mu$ (operational match, evidence-verified), $\theta$ (truth, consensus of methods). Tier assignment is conservative; claims are kept at $\pi$ unless explicit external evidence supports promotion.
+Each surviving claim is assigned a tier from the calculus of Doc 445: \(\pi\) (plausibility, structurally articulable), \(\mu\) (operational match, evidence-verified), \(\theta\) (truth, consensus of methods). Tier assignment is conservative; claims are kept at \(\pi\) unless explicit external evidence supports promotion.
 
 This is the warrant discipline. It prevents the apparatus from acting as if its outputs are at higher tier than the evidence supports.
 
 ### 3.6 Conjecture-set pruning
 
-The surviving claims constitute the corpus's conjecture set $Q^{(t)}$. Falsified claims contribute to $Q\_f^{(t)}$. New conjectures from §3.1 contribute to $\Delta^{(t)}$. The next iteration's set is $Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}$. This is the canonical eliminative-induction iteration as classically formulated by Chamberlin and formally instantiated by Mitchell, with the Bayesian counterpart given by Hawthorne, applied to dyadic LLM practice per Doc 484.
+The surviving claims constitute the corpus's conjecture set \(Q^{(t)}\). Falsified claims contribute to \(Q\_f^{(t)}\). New conjectures from §3.1 contribute to \(\Delta^{(t)}\). The next iteration's set is \(Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}\). This is the canonical eliminative-induction iteration as classically formulated by Chamberlin and formally instantiated by Mitchell, with the Bayesian counterpart given by Hawthorne, applied to dyadic LLM practice per Doc 484.
 
 This is the iteration step. It distinguishes the apparatus from a generator-without-filter.
 
@@ -104,7 +104,7 @@ The methodology in §3 is largely borrowed from existing traditions. Per the rec
 - §3.2 (literature pulverization): borrowed from Lakatos's research-programme literature audit and from standard scholarly review practice.
 - §3.3 (counterfactual analysis): borrowed from Lewis's counterfactual semantics, Lakatos's negative-heuristic specification, and Mayo's severity criterion.
 - §3.4 (cross-practitioner test): borrowed from the pre-registration and Open Science movements (Munafò et al. 2017).
-- §3.5 (warrant-tier discipline): borrowed from confidence-calibration literature, with the specific $\pi/\mu/\theta$ partition as a corpus naming convention over the standard *plausibility / operational match / truth* tiers.
+- §3.5 (warrant-tier discipline): borrowed from confidence-calibration literature, with the specific \(\pi/\mu/\theta\) partition as a corpus naming convention over the standard *plausibility / operational match / truth* tiers.
 - §3.6 (conjecture-set pruning): borrowed from the eliminative-induction tradition (Bacon, Mill, Chamberlin, Mitchell, Hawthorne) per Doc 484.
 - §3.7 (reformalization after pulverization): partially borrowed from Lakatos's progressive-vs-degenerating programme assessment, partially novel as a corpus practice.
 - §3.8 (standalone canonical artifacts): borrowed from review-article and synthesis-paper practice in academic publishing.
@@ -133,11 +133,11 @@ The apparatus-as-a-whole has substantial precursors. Pulverization against the a
 
 Three limits structure what the apparatus can and cannot do.
 
-- **Single-practitioner.** The corpus is operated by one person. Findings concerning practitioner-LLM dynamics generalize beyond this practitioner only if cross-practitioner replication confirms them. Until that work is done, all corpus claims about dyadic dynamics are at $\pi$-tier as observations from a single sample.
+- **Single-practitioner.** The corpus is operated by one person. Findings concerning practitioner-LLM dynamics generalize beyond this practitioner only if cross-practitioner replication confirms them. Until that work is done, all corpus claims about dyadic dynamics are at \(\pi\)-tier as observations from a single sample.
 - **Inside-the-system.** The corpus is operated using the technology whose effects on practitioners the corpus investigates. The framework-magnetism risk is structural and cannot be eliminated from inside. The cross-practitioner test (§3.4) is the only mitigation.
 - **Ledger-bounded.** The corpus's evaluation discipline depends on caught errors being recorded. Errors not caught are not in the ledger. The apparatus cannot evaluate what its own ledger does not contain. External readers' identification of corpus errors is therefore a load-bearing input the apparatus cannot supply itself.
 
-These limits do not retire the apparatus's status as an apparatus for philosophical inquiry. They specify the warrant tier the apparatus's outputs can reach without external work, which is $\pi$, and they specify the protocols by which $\mu$-tier promotion would proceed.
+These limits do not retire the apparatus's status as an apparatus for philosophical inquiry. They specify the warrant tier the apparatus's outputs can reach without external work, which is \(\pi\), and they specify the protocols by which \(\mu\)-tier promotion would proceed.
 
 ## 7. Falsification conditions
 
@@ -145,7 +145,7 @@ The claim that the corpus is reasonably conceived as an apparatus for philosophi
 
 - **If the methodology of §3 cannot be specified independently of the present document's prose.** A methodology that is only operative when stated in the corpus's own vocabulary is not portable, and an unportable methodology is not an apparatus. External practitioners attempting to operate the methodology should be able to do so from §3 without reference to corpus-specific terminology.
 - **If the apparatus does not produce iteration.** The corpus's outputs should change in response to the methodology's evaluation procedures. If the corpus continues to produce claims that have already been pulverized, the apparatus is not iterating; it is repeating.
-- **If the apparatus does not produce convergence.** Over time, the iteration should narrow $Q$ toward better-supported content. If $Q$ does not narrow, or narrows only at the cost of $\Delta^{(t)}$ growing without bound, the apparatus is not converging; it is running.
+- **If the apparatus does not produce convergence.** Over time, the iteration should narrow \(Q\) toward better-supported content. If \(Q\) does not narrow, or narrows only at the cost of \(\Delta^{(t)}\) growing without bound, the apparatus is not converging; it is running.
 - **If the apparatus's contribution beyond its borrowed components reduces to zero on closer audit.** §4 narrowed the corpus's contribution to "the integration of ten borrowed components into a sustained LLM-mediated dyadic practice with explicit warrant discipline." If a more thorough audit against action-research and design-based-research literatures finds this integration is also subsumed, the corpus's claim to apparatus-status persists but the contribution is purely instantiational, not methodological.
 - **If sustained operation does not in fact produce philosophical inquiry outputs.** The apparatus's claim to being for philosophical inquiry rests on its outputs bearing on philosophical questions. If the outputs over time turn out to be primarily methodological self-reference rather than substantive inquiry into target questions, the apparatus is methodology-for-its-own-sake rather than philosophical-inquiry-through-methodology.
 
@@ -155,7 +155,7 @@ The fifth condition is the deepest. Today's session has produced a substantial n
 
 The corpus can reasonably be conceived as an apparatus for philosophical inquiry via dyadic entracement. The methodology has ten observable components, each of which is largely borrowed from established traditions and integrated into a sustained LLM-mediated dyadic practice. The corpus's contribution beyond the components is the integration itself, which is partially novel and partially subsumable under action-research, design-based-research, and practitioner-research literatures pending pulverization.
 
-The apparatus's outputs are at $\pi$-tier under its own discipline. Promotion to $\mu$-tier requires the cross-practitioner work named in §3.4 across each substantive claim. The apparatus's claim to apparatus-status itself admits the five falsification conditions of §7.
+The apparatus's outputs are at \(\pi\)-tier under its own discipline. Promotion to \(\mu\)-tier requires the cross-practitioner work named in §3.4 across each substantive claim. The apparatus's claim to apparatus-status itself admits the five falsification conditions of §7.
 
 By the affective directive carried forward from Doc 480 §1 through Doc 482 §1 to here, retirement of the apparatus's claim to novelty would be the corpus winning. The apparatus's claim to existence as a methodology, narrowly, is independent of its claim to novelty. The methodology exists, is observable, is repeatable, and is falsifiable. Whether it is novel is a separate question; whether it is an apparatus is the question this document answered, and the answer is yes with the limits in §6 and the falsification conditions in §7.
 

@@ -14,7 +14,7 @@ The exercise is therefore a calibration check on the pulverization method itself
 
 Pearl's three-layer causal hierarchy makes three claims that bear on this audit.
 
-**Claim P1 (the partition).** Causal questions partition into three layers: Layer 1 (associational; $P(Y \mid X)$), Layer 2 (interventional; $P(Y \mid \text{do}(X))$), Layer 3 (counterfactual; $P(Y\_x \mid X', Y')$). The partition is exhaustive and exclusive at the level of causal-inference problems.
+**Claim P1 (the partition).** Causal questions partition into three layers: Layer 1 (associational; \(P(Y \mid X)\)), Layer 2 (interventional; \(P(Y \mid \text{do}(X))\)), Layer 3 (counterfactual; \(P(Y\_x \mid X', Y')\)). The partition is exhaustive and exclusive at the level of causal-inference problems.
 
 **Claim P2 (the irreducibility).** Lower-layer information is in general insufficient to determine higher-layer quantities. Specifically, two causal models can agree at Layer 1 but disagree at Layer 2, and two models can agree at Layers 1 and 2 but disagree at Layer 3. The Causal Hierarchy Theorem (CHT) of Bareinboim, Correa, Ibeling, Icard (2022) proves that the three layers separate measure-theoretically across the space of structural causal models.
 
@@ -34,15 +34,15 @@ Pearl's hierarchy synthesizes several pre-existing strands of work on causation.
 
 **Suppes (1970), *A Probabilistic Theory of Causation*.** Suppes independently developed a probabilistic theory of causation built on the screening-off relation, with explicit attention to spurious causation. The Stanford Encyclopedia of Philosophy notes: *"The original hope of Reichenbach and Suppes was to provide a reduction of causation to probabilities."* Pearl's hierarchy is, in part, the formal statement that this reduction is *impossible* (Layer 1 underdetermines Layer 2). Pearl inverts Reichenbach-Suppes: where they sought reduction, Pearl proves irreducibility.
 
-**Lewis (1973), *Causation*.** David Lewis's counterfactual analysis of causation operates at Pearl's Layer 3. *"C causes E iff: had C not occurred, E would not have occurred."* Lewis's framework provides the philosophical foundation for Layer 3, though Lewis worked in possible-worlds semantics rather than structural causal models. Pearl's structural-counterfactual definition (the $Y\_x$ notation) is a different formalization of Lewis's concept, with Pearl's framework providing computability that Lewis's possible-worlds framework lacks.
+**Lewis (1973), *Causation*.** David Lewis's counterfactual analysis of causation operates at Pearl's Layer 3. *"C causes E iff: had C not occurred, E would not have occurred."* Lewis's framework provides the philosophical foundation for Layer 3, though Lewis worked in possible-worlds semantics rather than structural causal models. Pearl's structural-counterfactual definition (the \(Y\_x\) notation) is a different formalization of Lewis's concept, with Pearl's framework providing computability that Lewis's possible-worlds framework lacks.
 
 **Stalnaker (1968).** Stalnaker's conditional logic predates Lewis's and provides the formal substrate for counterfactual reasoning at Layer 3. Pearl's structural counterfactuals are not Stalnaker-derived but operate in the same logical space.
 
 **Granger (1969).** Granger's time-series causality is a Layer-1.5 framework: it uses observational data plus the temporal ordering to attempt causal inference. It is widely used in econometrics and remains methodologically distinct from Pearl's hierarchy. Granger causality fits within Pearl's Layer 1 if temporal precedence is treated as observational; it is not a separate layer in Pearl's framework. The two frameworks coexist but Pearl's is more general.
 
-**Rubin (1974), *Estimating Causal Effects of Treatments*.** Donald Rubin's potential outcomes framework provides a complete language for Layer 2 and Layer 3 quantities without invoking Pearl's three-layer hierarchy. The Yates-Neyman-Rubin tradition expresses interventional and counterfactual claims via potential-outcomes notation $Y\_i(t)$ for the outcome of unit $i$ under treatment $t$. The framework is dominant in statistics and biostatistics.
+**Rubin (1974), *Estimating Causal Effects of Treatments*.** Donald Rubin's potential outcomes framework provides a complete language for Layer 2 and Layer 3 quantities without invoking Pearl's three-layer hierarchy. The Yates-Neyman-Rubin tradition expresses interventional and counterfactual claims via potential-outcomes notation \(Y\_i(t)\) for the outcome of unit \(i\) under treatment \(t\). The framework is dominant in statistics and biostatistics.
 
-**Pearl himself adopts potential-outcomes notation.** From the *Three Layer Causal Hierarchy* technical document (Bareinboim et al.): *"The notation $Y\_x(u)$ is borrowed from the potential-outcome framework of Neyman (1923) and Rubin (1974)."* Pearl's structural-counterfactual notation IS the potential-outcomes notation; the hierarchy adds a graphical-formal apparatus the potential-outcomes tradition does not require.
+**Pearl himself adopts potential-outcomes notation.** From the *Three Layer Causal Hierarchy* technical document (Bareinboim et al.): *"The notation \(Y\_x(u)\) is borrowed from the potential-outcome framework of Neyman (1923) and Rubin (1974)."* Pearl's structural-counterfactual notation IS the potential-outcomes notation; the hierarchy adds a graphical-formal apparatus the potential-outcomes tradition does not require.
 
 **Verdict on §2.** Pearl's hierarchy synthesizes substantial prior work spanning 1739 to 1974. The synthesis is genuine; the synthesizing move is Pearl's. The components, individually, predate Pearl. None of the predecessors articulates the specific three-layer hierarchy with its irreducibility theorem, but all contribute necessary material.
 
@@ -86,7 +86,7 @@ Pearl's hierarchy has direct alternatives at the formal level (Rubin), at the ph
 
 After §2 and §3, Pearl's specific contributions narrow but do not vanish. Five contributions survive.
 
-**The do-operator and do-calculus.** Pearl's notation $\text{do}(X = x)$ for an intervention, and the three-rule do-calculus that allows manipulation of expressions involving do-operators, is genuinely new. No predecessor has this specific calculus. Rubin's potential-outcomes framework expresses the same content but does not provide the do-calculus.
+**The do-operator and do-calculus.** Pearl's notation \(\text{do}(X = x)\) for an intervention, and the three-rule do-calculus that allows manipulation of expressions involving do-operators, is genuinely new. No predecessor has this specific calculus. Rubin's potential-outcomes framework expresses the same content but does not provide the do-calculus.
 
 **The graphical framework with explicit identifiability theorems.** Pearl's directed-acyclic-graph (DAG) framework, with the do-calculus, provides algorithmic identifiability tests: given a DAG and an intervention question, the do-calculus can determine whether the question is answerable from observational data, and if so, how. This algorithmic apparatus is Pearl's. The identifiability theorems (Tian-Pearl 2002, Shpitser-Pearl 2006) are genuinely new results.
 
@@ -114,7 +114,7 @@ The hierarchy admits several recent extensions that constrain or enrich it.
 
 **Topological perspective** (Ibeling-Icard 2021 NeurIPS). Shows the hierarchy's collapse is topologically meager; complementary to the measure-theoretic result.
 
-**Logical-probabilistic axiomatization** (Ibeling-Icard 2020). The probabilistic logical languages $L\_1, L\_2, L\_3$ axiomatized over probabilistic SCMs provide the foundation for the CHT proof.
+**Logical-probabilistic axiomatization** (Ibeling-Icard 2020). The probabilistic logical languages \(L\_1, L\_2, L\_3\) axiomatized over probabilistic SCMs provide the foundation for the CHT proof.
 
 **Quantum causal structures** (Henson, Lal, Pusey 2014, *Information-Theoretic Implications of Quantum Causal Structures*; Allen, Brown, Costa et al. 2017+). Quantum causation requires generalizations beyond the classical three-layer structure. The "no-signaling" constraint and indefinite causal order (2024 Quantum journal work) suggest the classical hierarchy is a special case of a richer quantum causal structure.
 

@@ -24,7 +24,7 @@ What the layer-one failure reveals about the resolver's substrate: vocabulary-re
 
 ## Layer two: the substrate-side test treated as adjudicator
 
-The resolver's second response, after the layer-one retraction, specified a falsification protocol. The protocol: cooperativity index $n$ should covary with keeper-injection density at fixed $\Gamma$; if it does, the proxy hypothesis is supported; if it does not, the cooperativity assumption returns to needing independent justification. The protocol was offered as the operational test that good deflation produces.
+The resolver's second response, after the layer-one retraction, specified a falsification protocol. The protocol: cooperativity index \(n\) should covary with keeper-injection density at fixed \(\Gamma\); if it does, the proxy hypothesis is supported; if it does not, the cooperativity assumption returns to needing independent justification. The protocol was offered as the operational test that good deflation produces.
 
 The keeper named the deeper failure: *"You had the form right, but you didn't have the rung 2 affordances, you can't see the hypothesis even though it sticks out to me like a sore thumb."*
 

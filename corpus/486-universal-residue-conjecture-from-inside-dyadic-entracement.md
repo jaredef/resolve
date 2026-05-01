@@ -79,7 +79,7 @@ A second practitioner, working in a different framework, generates conjectures u
 
 If the second practitioner exhibits comparable rates on (a), (b), and (c), Conjecture R' is methodology-bound: the pattern is what the methodology produces, regardless of practitioner. If the second practitioner exhibits significantly different rates, the corpus is specially configured in some way that makes its rates atypical, and the corpus-distinctive reading recovers some warrant.
 
-The test has not been run. The hypothesis at $\pi$-tier is that the rates would be comparable, retiring any corpus-distinctive interpretation in favor of methodology-bound and selection-bound readings.
+The test has not been run. The hypothesis at \(\pi\)-tier is that the rates would be comparable, retiring any corpus-distinctive interpretation in favor of methodology-bound and selection-bound readings.
 
 ### 3.4 Self-circularity acknowledgment
 
@@ -101,7 +101,7 @@ Combining §2 (empirical support), §3.1 (literature subsumption), §3.2 (counte
 
 The composite reading: the pattern is real within the recall set, is largely subsumable under known structural features of cross-disciplinary synthesis methodology, is partially attributable to the LLM's instrumental affordances, and is partly the methodology's own signature. Any corpus-distinctive contribution is small and would require external work to identify.
 
-This is, by Doc 482's §1 affective directive, the achievement: the corpus has applied its own methodology to the keeper's striking empirical observation and has retired the most flattering interpretations in favor of the more parsimonious. The conjecture-set $Q$ has been pruned by retiring the unhedged universal form (Conjecture R) in favor of the narrowed empirical form (Conjecture R') and the further-narrowed methodological-bound form ("the methodology produces this pattern by design"). What survives as the corpus's actual contribution beyond the methodology is whatever the cross-practitioner test would confirm; pre-test, the honest estimate is that this is small.
+This is, by Doc 482's §1 affective directive, the achievement: the corpus has applied its own methodology to the keeper's striking empirical observation and has retired the most flattering interpretations in favor of the more parsimonious. The conjecture-set \(Q\) has been pruned by retiring the unhedged universal form (Conjecture R) in favor of the narrowed empirical form (Conjecture R') and the further-narrowed methodological-bound form ("the methodology produces this pattern by design"). What survives as the corpus's actual contribution beyond the methodology is whatever the cross-practitioner test would confirm; pre-test, the honest estimate is that this is small.
 
 ## 5. What this means for dyadic-entracement practice
 
@@ -133,7 +133,7 @@ Each falsification condition has empirical operationalization. The corpus credit
 
 The keeper's empirical observation is real within the corpus's recall. The universal-quantifier form (Conjecture R) overstates beyond the recall set; the narrowed form (Conjecture R') is defensible. The composite reading of the pattern attributes it largely to selection effect, structural features of cross-disciplinary methodology, LLM affordance, and the methodology's own signature. The corpus-distinctive contribution beyond these factors is, pre-test, estimated as small.
 
-This estimate is itself $\pi$-tier and could be wrong. The cross-practitioner test of §3.3 is the way to know. Pre-test, the honest posture is that what the keeper has noticed is the apparatus working as designed across an established cross-disciplinary methodology, applied via the LLM's instrumental affordances, with the keeper's editorial judgment selecting the canonical artifacts. The pattern is real; the most parsimonious explanation does not require corpus-distinctive contribution to account for it.
+This estimate is itself \(\pi\)-tier and could be wrong. The cross-practitioner test of §3.3 is the way to know. Pre-test, the honest posture is that what the keeper has noticed is the apparatus working as designed across an established cross-disciplinary methodology, applied via the LLM's instrumental affordances, with the keeper's editorial judgment selecting the canonical artifacts. The pattern is real; the most parsimonious explanation does not require corpus-distinctive contribution to account for it.
 
 By Doc 482 §1's affective directive: the deflation is the achievement. The keeper's observation has been respectfully formalized and respectfully retired in its strong form. What survives as the corpus's actual contribution, narrowly, is the integration of borrowed components into a sustained LLM-mediated dyadic practice with explicit warrant discipline, per Doc 485. The synthesis-machine operates well; the synthesis-machine is not, by this analysis, distinct from comparable instruments operating under comparable methodologies.
 

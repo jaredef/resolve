@@ -147,7 +147,7 @@ The Pi resolver is the fourth proof. It proves that the seven contingent replace
 
 The constraint thesis predicts that the constraints determine the output, not the compute. The Pi is the extreme test.
 
-If the architectural proof works on a Raspberry Pi — if sigmoid attention produces non-competitive weights, if the bilateral boundary holds, if sparsemax achieves exact zeros, if typed positions persist, if the end-to-end test passes — then the architecture is validated regardless of the hardware. The form holds on an $80 computer the same as on a $30,000 GPU. The form is hardware-independent. The implementation is hardware-dependent. The proof is about the form.
+If the architectural proof works on a Raspberry Pi — if sigmoid attention produces non-competitive weights, if the bilateral boundary holds, if sparsemax achieves exact zeros, if typed positions persist, if the end-to-end test passes — then the architecture is validated regardless of the hardware. The form holds on an \(80 computer the same as on a \)30,000 GPU. The form is hardware-independent. The implementation is hardware-dependent. The proof is about the form.
 
 The industry will object: "a 10M parameter model on a Raspberry Pi proves nothing about real-world performance." The objection confuses two things. The Pi resolver does not prove that a 10M parameter model is useful for production tasks. It proves that the architectural decisions — sigmoid attention, bilateral boundary, sparsemax output, typed positions — are sound. The architectural decisions are the form. The parameter count is the scale. The form is validated at any scale. The scale is a separate question, answered separately, with different resources.
 

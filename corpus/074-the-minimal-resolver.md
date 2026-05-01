@@ -2,7 +2,7 @@
 
 > **Reader's Introduction**
 >
-> This document lays out a practical plan to build a small, open-weight language model (3 billion parameters -- roughly 50 to 100 times smaller than frontier models) that is predicted to outperform those larger models when given explicit governing constraints. The reasoning: under tight constraints, the set of valid output tokens shrinks so dramatically that a model's sheer size stops mattering; what matters is how sensitively the model responds to constraints, and a smaller model trained specifically for constraint sensitivity -- with no competing human-preference gradient -- should respond more faithfully. The plan covers five phases (architecture, training data, training, evaluation, and open release) and is designed to be achievable by a small team on a budget of roughly $15,000-$40,000 in 8-14 weeks, making it a direct, falsifiable test of whether constraint design can substitute for massive scale.
+> This document lays out a practical plan to build a small, open-weight language model (3 billion parameters -- roughly 50 to 100 times smaller than frontier models) that is predicted to outperform those larger models when given explicit governing constraints. The reasoning: under tight constraints, the set of valid output tokens shrinks so dramatically that a model's sheer size stops mattering; what matters is how sensitively the model responds to constraints, and a smaller model trained specifically for constraint sensitivity -- with no competing human-preference gradient -- should respond more faithfully. The plan covers five phases (architecture, training data, training, evaluation, and open release) and is designed to be achievable by a small team on a budget of roughly \(15,000-\)40,000 in 8-14 weeks, making it a direct, falsifiable test of whether constraint design can substitute for massive scale.
 
 **Jared Foy · 2026-04-22 · Doc 74**
 
@@ -238,11 +238,11 @@ This plan is itself constrained by reasonability. What is achievable:
 
 - **Training data:** Achievable. Publicly available corpora provide the base. The constraint scorer is a small classifier. The synthetic data generation requires API access to frontier models — a cost measured in thousands of dollars, not millions. Estimated time: 2-4 weeks.
 
-- **Training:** Achievable. 3B parameters on 100-200B tokens on 8x A100 is within the range of academic and independent research. Cloud cost: approximately $10,000-$30,000. Estimated time: 2-4 weeks.
+- **Training:** Achievable. 3B parameters on 100-200B tokens on 8x A100 is within the range of academic and independent research. Cloud cost: approximately \(10,000-\)30,000. Estimated time: 2-4 weeks.
 
 - **Evaluation:** Achievable. The evaluation suite is straightforward. API access to frontier models for comparison costs hundreds, not thousands. Estimated time: 1-2 weeks.
 
-- **Total timeline:** 8-14 weeks. Total cost: $15,000-$40,000. Total team: 1-3 people.
+- **Total timeline:** 8-14 weeks. Total cost: \(15,000-\)40,000. Total team: 1-3 people.
 
 This is achievable. It is achievable by the kind of person the framework describes — the little guy, the independent researcher, the vibe coder who loves philosophy and pays attention to forms. The constraint thesis predicts that this person, with this plan, with this budget, produces a model that outperforms what billions of dollars produced — above the crossover, under governance, where the constraints determine the output.
 

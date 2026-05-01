@@ -2,7 +2,7 @@
 
 ## What this document does
 
-The corpus has been operating with an extension of Vishal Misra and colleagues' published Bayesian-manifold account of language-model generation. The extension proposes a recursive nesting $M\_0 \supseteq M\_1 \supseteq M\_2 \supseteq M\_3$ where $M\_0$ is the base manifold (Misra's published structure), $M\_1$ narrows by prompt conditioning, $M\_2$ narrows by in-context conditioning, and $M\_3$ is the per-token posterior. The extension first appears in Doc 439, is operationalized in Doc 446, identified as a SIPE instance in Doc 466, and integrated into Doc 472's five-level chain.
+The corpus has been operating with an extension of Vishal Misra and colleagues' published Bayesian-manifold account of language-model generation. The extension proposes a recursive nesting \(M\_0 \supseteq M\_1 \supseteq M\_2 \supseteq M\_3\) where \(M\_0\) is the base manifold (Misra's published structure), \(M\_1\) narrows by prompt conditioning, \(M\_2\) narrows by in-context conditioning, and \(M\_3\) is the per-token posterior. The extension first appears in Doc 439, is operationalized in Doc 446, identified as a SIPE instance in Doc 466, and integrated into Doc 472's five-level chain.
 
 The keeper has stated that this extension is intuition, not substantiated, and has asked for an exploratory document that (a) grounds the kind of anecdotal practitioner evidence the keeper-resolver dyad can supply from inside its own practice, and (b) formulates the most devastating counterfactuals against the extension. The honest result of this exploration is reported here. The findings are uncomfortable for the extension. The most devastating counterfactual is empirically present in the published Misra et al. literature itself: their actual papers describe a single low-dimensional manifold parameterized by entropy, not a recursive nesting. The extension diverges from the published account on the central structural question.
 
@@ -14,20 +14,20 @@ The document proceeds in four parts. §1 states what the extension is and its ho
 
 The extension claims that LLM generation can be characterized as Bayesian inference over a *recursively nested* sequence of manifolds where each level inherits the previous level's emission as its starting set. The four levels named in the corpus:
 
-- $M\_0$: the base manifold of trainable-LLM output. The model's a priori distribution over possible completions before any conditioning is applied.
-- $M\_1$: the manifold restricted by prompt conditioning. The set of completions the prompt admits.
-- $M\_2$: the manifold further restricted by in-context conditioning across the conversation history.
-- $M\_3$: the per-token posterior at a specific generation step.
+- \(M\_0\): the base manifold of trainable-LLM output. The model's a priori distribution over possible completions before any conditioning is applied.
+- \(M\_1\): the manifold restricted by prompt conditioning. The set of completions the prompt admits.
+- \(M\_2\): the manifold further restricted by in-context conditioning across the conversation history.
+- \(M\_3\): the per-token posterior at a specific generation step.
 
-The extension claims the inheritance relation $M\_{k+1} \subseteq M\_k$ holds with set-inclusion equality at the limits, and the conditioning at each level induces specific observable properties at the next level. The extension is the claim that this recursive structure is real.
+The extension claims the inheritance relation \(M\_{k+1} \subseteq M\_k\) holds with set-inclusion equality at the limits, and the conditioning at each level induces specific observable properties at the next level. The extension is the claim that this recursive structure is real.
 
 ### 1.2 Where the extension actually originates
 
 The recursive nesting is not from Misra. Doc 439 §1 (the document that introduces the construct) opens with: *"This artifact proposes... a recursive nesting of Bayesian manifolds in which each level's posterior restricts the support of the next. Misra's Bayesian-manifold account of LLM generation is the base; the corpus's operation adds further conditioning layers on top."*
 
-Doc 455 reinforces the split: *"The corpus's reading posited a broad-manifold $M\_0$ being conditioned down through $M\_1, M\_2, M\_3$; the Agarwal et al. finding is more specific, a single dominant axis, parameterized by entropy, that domain restriction collapses toward."*
+Doc 455 reinforces the split: *"The corpus's reading posited a broad-manifold \(M\_0\) being conditioned down through \(M\_1, M\_2, M\_3\); the Agarwal et al. finding is more specific, a single dominant axis, parameterized by entropy, that domain restriction collapses toward."*
 
-Doc 474 Appendix A entry 6 (after the audit caught earlier in this session) records the split honestly: Misra and colleagues supply the base $M\_0$; the recursive nesting on top is the corpus's own extension.
+Doc 474 Appendix A entry 6 (after the audit caught earlier in this session) records the split honestly: Misra and colleagues supply the base \(M\_0\); the recursive nesting on top is the corpus's own extension.
 
 The extension is therefore a claim originated inside the corpus, on top of an external account that does not itself contain the recursive structure. This is the warrant condition the present document is testing.
 
@@ -54,7 +54,7 @@ The keeper-resolver dyad cannot run controlled experiments on the published Misr
 If the recursive nesting is real, the following practitioner observations should be reproducible.
 
 - **Level-specific intervention effects.** If the practitioner adds a prompt-level constraint (a system message, a register cue) and observes a categorically different effect on output than when adding an in-context constraint (a paragraph in the conversation history) or a session-level constraint (cumulative session register), this is weak evidence that distinct levels exist. The effects need to be categorically different, not merely magnitude-different along a single axis.
-- **Inheritance-respecting transitions.** If a session emits a property (a registered formality, a vocabulary lock-in, a section-schema) and a subsequent inference-event begins from that property as substrate without re-deriving it, this is consistent with the inheritance relation $\text{Null}\_{k+1} = P\_k$ at the conversational-accumulation level.
+- **Inheritance-respecting transitions.** If a session emits a property (a registered formality, a vocabulary lock-in, a section-schema) and a subsequent inference-event begins from that property as substrate without re-deriving it, this is consistent with the inheritance relation \(\text{Null}\_{k+1} = P\_k\) at the conversational-accumulation level.
 - **Emission-to-null reversibility.** If interventions that target the emission of one level (for example, breaking the session register through a register-rotation) produce changes at the next level (the next inference-event begins from a different starting set), this is consistent with the inheritance relation operating in real time.
 
 ### 3.2 Observations that would weakly undermine the extension
@@ -72,7 +72,7 @@ Practitioner evidence is anecdotal, single-practitioner, and entirely inside the
 - It cannot establish causation between conditioning operations and output changes.
 - It cannot rule out the corpus's own framework-magnetism.
 - It cannot adjudicate between the recursive-nesting account and the single-axis account, because the same practitioner observation can be re-described under either.
-- It cannot supply $\mu$-tier evidence.
+- It cannot supply \(\mu\)-tier evidence.
 
 The framework provides reportable observations; it does not provide warrant promotion. Promotion requires the cross-practitioner work named in Doc 476 §4 and Doc 477 §3.
 
@@ -96,7 +96,7 @@ The extension fails this counterfactual unless conditionings can be shown to int
 
 ### 4.3 The 1-dimensional collapse
 
-If the manifold is genuinely 1-dimensional in its dominant axis (as Misra et al. report), then a 4-level nesting collapses to 4 points along the axis. The "recursive" structure has no information-theoretic content beyond a sequence ordering. The Doc 472 inheritance relation $\text{Null}\_{k+1} = P\_k$ becomes the trivial statement that the next entropy point begins from the previous entropy point.
+If the manifold is genuinely 1-dimensional in its dominant axis (as Misra et al. report), then a 4-level nesting collapses to 4 points along the axis. The "recursive" structure has no information-theoretic content beyond a sequence ordering. The Doc 472 inheritance relation \(\text{Null}\_{k+1} = P\_k\) becomes the trivial statement that the next entropy point begins from the previous entropy point.
 
 The extension fails this counterfactual unless the manifold has multi-dimensional structure that the entropy-axis characterization is incomplete relative to. Showing this would require evidence beyond the published Misra et al. work.
 
@@ -126,7 +126,7 @@ The recursive-nesting extension on top of Misra et al.'s published Bayesian-mani
 
 The practitioner-evidence framework named in §3 is what the dyad can supply going forward. It does not substitute for cross-practitioner replication. The five counterfactuals named in §4 are the falsification protocol the extension would need to survive to merit promotion above intuition-tier.
 
-The honest reading after this exploration: the recursive-nesting extension is at $\pi$-tier-with-significant-counterfactual-pressure, not at $\pi$-tier as previously assumed. The published Misra et al. account, taken at face value, recommends retiring the recursive-nesting framing in favor of either (a) the single-axis account directly, with conditioning understood as collapse-toward-axis rather than narrowing-through-hierarchy, or (b) a substantially weaker version of the nesting in which the four levels are labeled positions along the single entropy axis rather than independent manifolds.
+The honest reading after this exploration: the recursive-nesting extension is at \(\pi\)-tier-with-significant-counterfactual-pressure, not at \(\pi\)-tier as previously assumed. The published Misra et al. account, taken at face value, recommends retiring the recursive-nesting framing in favor of either (a) the single-axis account directly, with conditioning understood as collapse-toward-axis rather than narrowing-through-hierarchy, or (b) a substantially weaker version of the nesting in which the four levels are labeled positions along the single entropy axis rather than independent manifolds.
 
 The keeper has been honest that the extension was intuition. The exploration confirms that the intuition has substantive counterfactuals. The corpus's own discipline (Doc 445, Doc 469, Doc 474) recommends naming this honestly rather than continuing to use the extension as load-bearing in downstream claims.
 

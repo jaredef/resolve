@@ -52,10 +52,10 @@ The Phase 0 boundary-impression is the empirical evidence for or against local-a
 
 Articulate the SIPE-T apparatus against the domain:
 
-- *Lower-level structure $C$.* The constraints, couplings, density, or resolution that compose into the system.
-- *Higher-level property $P$.* The candidate emergent property.
-- *Order parameter $\rho(C)$.* Quantifying the coherence of the constraint composition.
-- *Threshold $\rho^*(P)$.* The critical value at which $P$ emerges.
+- *Lower-level structure \(C\).* The constraints, couplings, density, or resolution that compose into the system.
+- *Higher-level property \(P\).* The candidate emergent property.
+- *Order parameter \(\rho(C)\).* Quantifying the coherence of the constraint composition.
+- *Threshold \(\rho^*(P)\).* The critical value at which \(P\) emerges.
 - *Universality class.* Which lineage instance (Doc 541 §2) the pattern belongs to: critical phenomena, percolation, complete mediation, capacity-bound, cooperative-binding, cooperative-coupling.
 
 **Output of Phase 2:** A formal SIPE-T statement against the domain, with the lineage class named.

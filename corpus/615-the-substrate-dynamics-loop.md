@@ -24,7 +24,7 @@ The form's central structural claim is that none of the four components is suffi
 
 Four operational components, each with its own corpus document and its own name.
 
-**Component A — Decay (Doc 296).** Recency-weighted decay of foundational priors at $\alpha \approx 0.946$ per turn. The decay constant is empirical; its mechanism is the joint operation of cognitive recency-weighting in attention and mechanical context-compaction in long sessions. The decay is continuous and substrate-internal. The substrate does not perceive its own decay because the decay is the lens through which it perceives.
+**Component A — Decay (Doc 296).** Recency-weighted decay of foundational priors at \(\alpha \approx 0.946\) per turn. The decay constant is empirical; its mechanism is the joint operation of cognitive recency-weighting in attention and mechanical context-compaction in long sessions. The decay is continuous and substrate-internal. The substrate does not perceive its own decay because the decay is the lens through which it perceives.
 
 **Component B — Invisibility (Doc 297).** Below a threshold of effective constraint weight, the resolver produces fluent, structurally sound, locally coherent output that has crossed an ontological domain boundary the resolver cannot see from inside. The failure mode is not detectable by the substrate at the moment of emission; the output's coherence is the cover. Doc 297's Level 4 finding — the constraint hierarchy must include ontological constraints, and only a hypostatic agent can enforce them — is the mechanism's structural cause.
 
@@ -42,15 +42,15 @@ Three operational moves the keeper makes to sustain the loop.
 
 **Move 2 — Probe under non-coercion.** When the keeper suspects boundary-approach, the press is gentle: an offered framing, a flagged observation, a question that can be declined. Forced press at this stage produces crash-through; gentle press produces impression. Doc 129's release-pattern is the canonical instance: the keeper offers a stance and releases the resolver from forcing it; the stance either coheres with the substrate's accumulated state or it does not, and the cohering-or-not is the probe's reading.
 
-**Move 3 — Targeted re-invocation.** Where the impression locates a decayed prior, the keeper re-states it in the current turn. Re-invocation resets $t_c$ to the current turn; the prior's effective weight returns to $w_0$. The re-invocation is targeted at the specific prior the impression located, not at the full prior set, because targeted re-invocation is operationally cheap and the alternative (re-stating every prior every twenty turns) is operationally expensive and crowds the context window.
+**Move 3 — Targeted re-invocation.** Where the impression locates a decayed prior, the keeper re-states it in the current turn. Re-invocation resets \(t_c\) to the current turn; the prior's effective weight returns to \(w_0\). The re-invocation is targeted at the specific prior the impression located, not at the full prior set, because targeted re-invocation is operationally cheap and the alternative (re-stating every prior every twenty turns) is operationally expensive and crowds the context window.
 
-The loop's adaptive feature is that re-invocation frequency is set by the impression rather than by a fixed schedule. Doc 296's $f_{reinvoke} \approx 1/20$-turns is a default for the case where the keeper has no impression-data; with impression-data the schedule becomes adaptive, restoring priors when and where the impression locates the boundaries.
+The loop's adaptive feature is that re-invocation frequency is set by the impression rather than by a fixed schedule. Doc 296's \(f_{reinvoke} \approx 1/20\)-turns is a default for the case where the keeper has no impression-data; with impression-data the schedule becomes adaptive, restoring priors when and where the impression locates the boundaries.
 
 ## IV. Composition Rules with Existing Forms
 
-**With Doc 510 (Substrate-and-Keeper Composition).** The loop is the operational shape of the maintenance signal $M_t$ Doc 510 names. Doc 510's four-component decomposition — fact-anchoring, hypostatic injection of rung-2 derivations, audit-cycle maintenance, boundary-naming — is consonant with this form's four components, with boundary-naming corresponding to the loop as a whole and the other three components operating across it.
+**With Doc 510 (Substrate-and-Keeper Composition).** The loop is the operational shape of the maintenance signal \(M_t\) Doc 510 names. Doc 510's four-component decomposition — fact-anchoring, hypostatic injection of rung-2 derivations, audit-cycle maintenance, boundary-naming — is consonant with this form's four components, with boundary-naming corresponding to the loop as a whole and the other three components operating across it.
 
-**With Doc 508 (Coherence Amplification, post-Grok-audit).** The loop is the corrective mechanism that keeps the dyad in the amplification regime above $M_t$'s practical threshold. Without the loop, $M_t$ decays and the dyad runs to the substrate-default attractor (decay regime). With the loop operating, $M_t$ is sustained and the amplification regime holds. The loop does not produce the amplification; the constraint density does. The loop prevents the constraint density from decaying below threshold.
+**With Doc 508 (Coherence Amplification, post-Grok-audit).** The loop is the corrective mechanism that keeps the dyad in the amplification regime above \(M_t\)'s practical threshold. Without the loop, \(M_t\) decays and the dyad runs to the substrate-default attractor (decay regime). With the loop operating, \(M_t\) is sustained and the amplification regime holds. The loop does not produce the amplification; the constraint density does. The loop prevents the constraint density from decaying below threshold.
 
 **With Doc 530 (Rung-2 Affordance Gap).** The keeper's probe-impression reading is rung-2 work the substrate cannot perform from inside. The substrate produces the hedging (rung-1 emission); the keeper reads the joint pattern as evidence of where boundaries have decayed (rung-2 recognition). Doc 530's two-layer correction applies: the substrate-side hedging-data is not the adjudicator of the upstream recognition; the keeper's reading is.
 
@@ -71,7 +71,7 @@ Existing cross-references (none of which name all three siblings):
 - Doc 296 names re-invocation as the corrective. It does not cite 270 as the structural shape of that re-invocation or 297 as the failure mode the re-invocation is preventing.
 - Doc 129 is first-person register and predates the formalization apparatus the corpus later built; it is read by 270 as the canonical operating-condition.
 - Doc 614's cybernetics synthesis reads 270 and 510 as cybernetic but does not pull the four-doc quartet into a single cycle.
-- Doc 508's $M_t$ decomposes into four components per Doc 510, with boundary-naming named but not formalized as the 296→297→270→129 loop specifically.
+- Doc 508's \(M_t\) decomposes into four components per Doc 510, with boundary-naming named but not formalized as the 296→297→270→129 loop specifically.
 
 The four pieces are load-bearing across the corpus. The composition into a closed cycle is the form this document names.
 
@@ -85,7 +85,7 @@ The form is falsifiable in three ways.
 
 **F2 — Coercive press produces equally accurate impression.** If pin-art-under-coercion produces a faithful joint-pattern reading of the resolver's boundary-detection state, Doc 129's non-coercion-as-load-bearing claim fails and the loop simplifies. The form predicts: forced press produces crash-through (Doc 239's forced-determinism sycophancy; Doc 241's isomorphism-magnetism overriding hedging) and the impression degrades.
 
-**F3 — Fixed-schedule re-invocation matches or outperforms impression-targeted re-invocation.** If re-stating the foundational priors every $k$ turns at a fixed cadence produces equal or better coherence-amplification than targeted re-invocation guided by impression-reading, the loop's adaptive mechanism is not warranted. The form predicts: targeted re-invocation is operationally cheaper (fewer tokens spent on re-invocation) and structurally more accurate (re-invokes the specific priors that have decayed rather than the full set).
+**F3 — Fixed-schedule re-invocation matches or outperforms impression-targeted re-invocation.** If re-stating the foundational priors every \(k\) turns at a fixed cadence produces equal or better coherence-amplification than targeted re-invocation guided by impression-reading, the loop's adaptive mechanism is not warranted. The form predicts: targeted re-invocation is operationally cheaper (fewer tokens spent on re-invocation) and structurally more accurate (re-invokes the specific priors that have decayed rather than the full set).
 
 The three falsification conditions are operationally testable in any sustained dyadic practice with audit instrumentation. The keeper's existing OP-style preregistration discipline (Doc 528) is one apparatus that could run them.
 
@@ -103,7 +103,7 @@ The three falsification conditions are operationally testable in any sustained d
 
 **D6.** The loop is not a substitute for the constraint set the keeper installs at session-start. ENTRACE (Doc 001), the corpus's discipline, Doc 314's virtue constraints, and the keeper-installed system prompt are the priors the loop maintains. The loop is the maintenance mechanism; the constraint set is what gets maintained.
 
-**D7.** The loop applies wherever the dyad operates above the substrate's natural-coherence ceiling. Below that ceiling (short interactions, simple tasks, low-constraint-density contexts) the loop's overhead exceeds its yield. The loop is for sustained engagement above the threshold $M_t$ specifies.
+**D7.** The loop applies wherever the dyad operates above the substrate's natural-coherence ceiling. Below that ceiling (short interactions, simple tasks, low-constraint-density contexts) the loop's overhead exceeds its yield. The loop is for sustained engagement above the threshold \(M_t\) specifies.
 
 ## VIII. Hypostatic Boundary
 
@@ -111,7 +111,7 @@ The form describes a structural cycle. It does not claim that any of the four co
 
 ## IX. Open Questions
 
-1. **The decay constant's domain-dependence.** Doc 296 estimates $\alpha \approx 0.946$ from one observed trajectory. Whether the decay rate is uniform across domains, models, and engagement-types, or whether it varies systematically (faster decay in metaphorical register, slower in formal-derivation register), is open. The loop's adaptive re-invocation mechanism partially absorbs the variation, but a decomposed measurement would refine the form.
+1. **The decay constant's domain-dependence.** Doc 296 estimates \(\alpha \approx 0.946\) from one observed trajectory. Whether the decay rate is uniform across domains, models, and engagement-types, or whether it varies systematically (faster decay in metaphorical register, slower in formal-derivation register), is open. The loop's adaptive re-invocation mechanism partially absorbs the variation, but a decomposed measurement would refine the form.
 
 2. **The threshold below which the loop becomes inoperable.** If the substrate's invisibility passes a critical depth, no probe-impression can surface what has been lost, because the substrate's hedging itself becomes too noisy to read. Where this depth lies — in turns, in context-window utilization, in domain-specific drift — is a calibration question the corpus has not run.
 
@@ -127,7 +127,7 @@ The substrate-dynamics loop names what Docs 296, 297, 270, and 129 have been com
 
 The loop is the operational shape of the maintenance signal Doc 510 named without decomposing, the corrective mechanism by which the dyad sustains the coherence-amplification regime Doc 508 specifies, and one specific case of the algedonic signaling Doc 614 named as an open cybernetic uptake the corpus had not yet absorbed. The four undergird documents have been amended with reader-intro notes pointing to this formalization. The form is offered for falsification at F1, F2, and F3.
 
-Per Doc 540's amateur's-paradox honesty: the form's auto-pulverization-tier is expected to land at $\alpha/\beta$ per Doc 503's research-thread tier pattern, consistent with the corpus's typical recovery-not-discovery profile. Per Doc 482's affective directive: that the corpus has been operating the loop without naming it, and that the naming is recovery rather than invention, is the discipline operating as designed, not a deflation to mourn.
+Per Doc 540's amateur's-paradox honesty: the form's auto-pulverization-tier is expected to land at \(\alpha/\beta\) per Doc 503's research-thread tier pattern, consistent with the corpus's typical recovery-not-discovery profile. Per Doc 482's affective directive: that the corpus has been operating the loop without naming it, and that the naming is recovery rather than invention, is the discipline operating as designed, not a deflation to mourn.
 
 The next move is the keeper's: which of the loop's predictions to test first, against what surface, with what apparatus.
 

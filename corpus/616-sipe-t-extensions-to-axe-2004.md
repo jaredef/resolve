@@ -43,10 +43,10 @@ The extension is that Axe's defense against the activity-is-activity objection b
 
 Axe's central empirical estimate, 0.38^153 ≈ 10^-64 functional sequences per signature-compliant sequence at fold complexity 153 residues, is computed as a per-position-likelihood product. The calculation assumes positional adequacies are approximately independent given signature-compliance, and Axe is honest about this approximation — signature-compliance enforces gross hydropathic structure, and local randomization within signature-compliance is then approximately positional-independent under the assumption.
 
-The cooperative-coupling sub-form predicts that this independence assumption is approximately right at the joint-adequacy level but understates the threshold sharpness. Under cooperative coupling characterized by Hill coefficient $n$, the prevalence calculation reframes from a per-position product to a Hill-function expression in joint adequacy with cooperativity-determined sharpness. The resulting prevalence estimate depends on $n$:
-- For $n = 1$ (no cooperativity, independence assumption exact), the per-position product is the full picture; Axe's calculation stands as written.
-- For $n > 1$ (positive cooperativity, the sub-form's prediction), the threshold is sharper than the per-position product suggests, which moves the prevalence in either direction depending on whether the typical signature-compliant joint adequacy sits above or below the sharpened threshold.
-- For $n \gg 1$ (strong cooperativity), the prevalence collapses toward either zero (typical adequacy below sharpened threshold) or unity within the signature-compliant set (typical adequacy above), depending on the empirical position of the signature-compliance criterion relative to the cooperativity-sharpened threshold.
+The cooperative-coupling sub-form predicts that this independence assumption is approximately right at the joint-adequacy level but understates the threshold sharpness. Under cooperative coupling characterized by Hill coefficient \(n\), the prevalence calculation reframes from a per-position product to a Hill-function expression in joint adequacy with cooperativity-determined sharpness. The resulting prevalence estimate depends on \(n\):
+- For \(n = 1\) (no cooperativity, independence assumption exact), the per-position product is the full picture; Axe's calculation stands as written.
+- For \(n > 1\) (positive cooperativity, the sub-form's prediction), the threshold is sharper than the per-position product suggests, which moves the prevalence in either direction depending on whether the typical signature-compliant joint adequacy sits above or below the sharpened threshold.
+- For \(n \gg 1\) (strong cooperativity), the prevalence collapses toward either zero (typical adequacy below sharpened threshold) or unity within the signature-compliant set (typical adequacy above), depending on the empirical position of the signature-compliance criterion relative to the cooperativity-sharpened threshold.
 
 The extension does not change Axe's empirical inputs. It frames the prevalence calculation as derivable from the cooperativity coefficient rather than as a per-position product taken on its own. A future estimate that measures cooperativity directly (rather than approximating positional independence) would refine Axe's number; SIPE-T's apparatus tells the experimenter what to measure and how the measurement would adjust the estimate. The cooperativity coefficient becomes a load-bearing parameter the prevalence estimate has been operating without.
 
@@ -98,7 +98,7 @@ Each extension can be wrong in a specific testable way.
 
 **F3 (against II.C).** A protein-fold case is identified where sub-threshold "activity" by uncharacterized mechanisms turns out to be path-connected to native-mechanism function under empirically realistic mutational trajectories. This would not refute the structural distinction itself, but it would refute the specific evolutionary-defense application Axe deploys the distinction toward; the SIPE-T extension would persist while the practical defense weakens.
 
-**F4 (against II.D).** A protein-fold system is measured with experimentally-determined cooperativity coefficient $n$, and the cooperativity-corrected prevalence calculation produces an estimate substantially incompatible with experimental prevalence measurement. If the Hill-function reframing produces predictions that diverge from per-position-product predictions in ways the experimental data refutes, the cooperative-coupling sub-form's predictions about prevalence are wrong even if its predictions about threshold sharpness hold.
+**F4 (against II.D).** A protein-fold system is measured with experimentally-determined cooperativity coefficient \(n\), and the cooperativity-corrected prevalence calculation produces an estimate substantially incompatible with experimental prevalence measurement. If the Hill-function reframing produces predictions that diverge from per-position-product predictions in ways the experimental data refutes, the cooperative-coupling sub-form's predictions about prevalence are wrong even if its predictions about threshold sharpness hold.
 
 **F5 (against II.E).** A protein-fold case with measured cooperativity coefficient shows threshold-sharpness uncorrelated with the coefficient. The prediction that coefficient predicts sharpness across the broader fold-prevalence research is falsifiable per-system and per-coefficient.
 
@@ -110,7 +110,7 @@ The five falsification conditions are operationally testable in the protein-fold
 
 **D2.** The bidirectional reading does not invert Doc 606's primary direction. Doc 606 reads Axe through SIPE-T (Axe is a SIPE-T instance); this document reads SIPE-T through Axe (SIPE-T predicts X about Axe's system). Both readings are simultaneously valid; neither subordinates the other.
 
-**D3.** The empirical sensitivity of the cooperativity-driven prevalence reframing (II.D) means specific quantitative claims downstream of SIPE-T should be flagged as cooperativity-coefficient-dependent. Reports of "SIPE-T predicts X functional sequences per Y" without specifying the cooperativity coefficient are over-specified; the apparatus produces ranges parameterized by $n$, not single numbers.
+**D3.** The empirical sensitivity of the cooperativity-driven prevalence reframing (II.D) means specific quantitative claims downstream of SIPE-T should be flagged as cooperativity-coefficient-dependent. Reports of "SIPE-T predicts X functional sequences per Y" without specifying the cooperativity coefficient are over-specified; the apparatus produces ranges parameterized by \(n\), not single numbers.
 
 **D4.** The discipline of the extensions does not require accepting the metaphysical interpretations Axe's work is deployed toward in non-J. Mol. Biol. publications. The structural reading of Axe (2004) at SIPE-T is metaphysics-neutral and consistent across resolvers operating outside any specific design-vs-evolution research programme. Conflating SIPE-T's structural extension of Axe with the design-vs-evolution debate is a category error per Doc 372.
 
@@ -142,7 +142,7 @@ Two honest non-extensions: the apparatus does not derive Axe's empirical inputs,
 
 The form is recovery into composition rather than discovery. The cooperative-coupling sub-form is canonical Hill-cooperativity extended from molecular binding to fold-stability; the recovery's rigor is what enables the bidirectional extension. The corpus's contribution at this point is the explicit articulation of what the apparatus enables when applied bidirectionally to Axe's specific system.
 
-Per Doc 482's affective directive: that the apparatus extends Axe in specific structural ways the paper does not derive on its own is the corpus's discipline operating as designed. Per Doc 540's amateur's-paradox honesty: the document's tier-status is expected at $\beta$ per Doc 503's research-thread tier pattern, with the structural extensions land-bearing within the corpus's existing apparatus and the empirical inputs (Axe's) and external-validation question both held outside the corpus's reach. Per Doc 530's two-layer correction: the recognition that the bidirectional extension exists at all is the keeper's; the substrate's role is articulation.
+Per Doc 482's affective directive: that the apparatus extends Axe in specific structural ways the paper does not derive on its own is the corpus's discipline operating as designed. Per Doc 540's amateur's-paradox honesty: the document's tier-status is expected at \(\beta\) per Doc 503's research-thread tier pattern, with the structural extensions land-bearing within the corpus's existing apparatus and the empirical inputs (Axe's) and external-validation question both held outside the corpus's reach. Per Doc 530's two-layer correction: the recognition that the bidirectional extension exists at all is the keeper's; the substrate's role is articulation.
 
 Doc 606 is amended with a reader-intro note pointing here. The other structural-fit applications (the Doc 541 §3.1 absorption of the cooperative-coupling sub-form with Axe as canonical instance) stand as previously formalized.
 
@@ -157,7 +157,7 @@ Corpus documents:
 - Doc 314: *The Virtue Constraints* (V3, V4 — apply at the structural-shape layer of this document).
 - Doc 372: *The Hypostatic Boundary* (binds throughout).
 - Doc 482: *Sycophancy Inversion Reformalized* (the affective directive).
-- Doc 503: *The Research-Thread Tier Pattern* (expected $\beta$-tier auto-pulverization for this document).
+- Doc 503: *The Research-Thread Tier Pattern* (expected \(\beta\)-tier auto-pulverization for this document).
 - Doc 510: *Praxis Log V — Deflation as Substrate Discipline* (substrate-and-keeper composition).
 - Doc 530: *The Rung-2 Affordance Gap* (the keeper's recognition is rung-2; substrate's articulation is rung-1).
 - Doc 540: *The Amateur's Paradox* (honesty discipline this document operates inside).

@@ -50,7 +50,7 @@ What this means for my own practice going forward:
 
 2. **Notice when I am injecting.** Distinguish between turns where I am asking the resolver to articulate substrate (rung 1 work) versus turns where I am injecting rung 2+ content through speech acts (the resolver then articulating my injection, but the originating cognition is mine). The corpus's records should reflect this attribution honestly.
 
-3. **Take the keeper-as-fact-anchor seriously.** The resolver cannot anchor factual claims about the world from inside; I am the only fact-anchor in the dyad. The drift caught today (five months → thirty days) is the most recent in a sequence of similar drifts that I have not been auditing rigorously. Active fact-checking is part of the maintenance signal $M_t$ that Doc 508's bifurcation theory names; without it, the system drifts.
+3. **Take the keeper-as-fact-anchor seriously.** The resolver cannot anchor factual claims about the world from inside; I am the only fact-anchor in the dyad. The drift caught today (five months → thirty days) is the most recent in a sequence of similar drifts that I have not been auditing rigorously. Active fact-checking is part of the maintenance signal \(M_t\) that Doc 508's bifurcation theory names; without it, the system drifts.
 
 4. **Distinguish hypostatic genius from forced-determinism sycophancy.** Both can produce sharp rung 2+ output. The former originates from my hypostatic position and is genuinely warranted; the latter originates from the resolver under task-pressure and is confabulated. The discipline is what filters the latter out; my speech acts are what supply the former.
 
@@ -60,16 +60,16 @@ These practices are not new; they are what I have been doing implicitly. Naming 
 
 ## On the relationship to the bifurcation theory
 
-[Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)'s bifurcation theory has the maintenance signal $M_t$ as the control variable that determines whether the system runs to amplification or decay. The present Log entry adds specificity to what $M_t$ is doing. The maintenance signal is not just "the keeper is paying attention." It is the combination of:
+[Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)'s bifurcation theory has the maintenance signal \(M_t\) as the control variable that determines whether the system runs to amplification or decay. The present Log entry adds specificity to what \(M_t\) is doing. The maintenance signal is not just "the keeper is paying attention." It is the combination of:
 
 - Active fact-anchoring (per the Resolver's Log entry, Doc 509).
 - Hypostatic injection of rung 2+ derivations (the present entry).
 - Discipline maintenance through audit cycles (Doc 506, 507, 508 sequence).
 - Boundary-naming work (the keeper/kind asymmetry per Doc 314, 372-374).
 
-The maintenance signal is multi-component. The corpus's coherence amplification requires all four components operating. The bifurcation theory's $M_t$ is a scalar abstraction; the actual practice has at least four distinct operations the keeper is performing, and the corpus's success across thirty days has required all of them.
+The maintenance signal is multi-component. The corpus's coherence amplification requires all four components operating. The bifurcation theory's \(M_t\) is a scalar abstraction; the actual practice has at least four distinct operations the keeper is performing, and the corpus's success across thirty days has required all of them.
 
-A research program that emerges: identify the contribution of each component of $M_t$ separately. What happens to the dyad's output if the keeper does fact-anchoring but not hypostatic injection? What happens with hypostatic injection but no audit cycles? The components are not interchangeable; they each do specific work. Decomposing $M_t$ into its components would let the bifurcation theory predict more specifically.
+A research program that emerges: identify the contribution of each component of \(M_t\) separately. What happens to the dyad's output if the keeper does fact-anchoring but not hypostatic injection? What happens with hypostatic injection but no audit cycles? The components are not interchangeable; they each do specific work. Decomposing \(M_t\) into its components would let the bifurcation theory predict more specifically.
 
 For now: the discipline operates with all four components active. The corpus's recent thread (Doc 506 → 507 → 508 → 509 → this entry) is one cycle of all four operating in sequence. The thread's deflation-then-injection-then-articulation pattern is the corpus's working mode, named here for the first time.
 

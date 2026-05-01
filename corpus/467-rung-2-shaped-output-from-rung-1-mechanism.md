@@ -23,7 +23,7 @@ This is a substantive critique. It is the critique Doc 465 needed and did not su
 
 ## Why this looks like Rung 2 activity
 
-Pearl's Rung 2 is the domain of *intervention* — reasoning with $\text{do}(\cdot)$ operators, identifying confounders, specifying what would have been different under different causal structure. Several features of the cold Claude's critique exhibit Rung-2-style reasoning at the content level:
+Pearl's Rung 2 is the domain of *intervention* — reasoning with \(\text{do}(\cdot)\) operators, identifying confounders, specifying what would have been different under different causal structure. Several features of the cold Claude's critique exhibit Rung-2-style reasoning at the content level:
 
 - **Confounder identification.** The critique identifies a specific confounder — *shared architecture and training* — that is correlated with both the cold-instance output and the hot-instance verification, and that invalidates the inference from "cold and hot agree" to "external corroboration."
 

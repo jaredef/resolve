@@ -18,21 +18,21 @@ SIPE names a specific structural phenomenon that appears in certain hierarchical
 
 ### 2.1 Commitment A: Within-level Fielding accumulation
 
-Each level $S\_k$ of a SIPE-exhibiting system begins from a designated null set $\text{Null}\_k$. A finite ordered sequence of constraints $c\_{k,1}, c\_{k,2}, \ldots, c\_{k,n\_k}$ is then applied. Each constraint $c\_{k,i}$ induces a named property $p\_{k,i}$ that the starting set did not exhibit. The level is defined by the ordered sequence of constraints together with the cumulative induced-property set $P\_k = \{p\_{k,1}, \ldots, p\_{k,n\_k}\}$.
+Each level \(S\_k\) of a SIPE-exhibiting system begins from a designated null set \(\text{Null}\_k\). A finite ordered sequence of constraints \(c\_{k,1}, c\_{k,2}, \ldots, c\_{k,n\_k}\) is then applied. Each constraint \(c\_{k,i}\) induces a named property \(p\_{k,i}\) that the starting set did not exhibit. The level is defined by the ordered sequence of constraints together with the cumulative induced-property set \(P\_k = \{p\_{k,1}, \ldots, p\_{k,n\_k}\}\).
 
-Within-level accumulation is ordered and constructive. The property set at step $i$ is strictly a superset of the property set at step $i-1$, and the property $p\_{k,i}$ is attributable to the specific constraint $c\_{k,i}$ that induced it, not to the level as a whole.
+Within-level accumulation is ordered and constructive. The property set at step \(i\) is strictly a superset of the property set at step \(i-1\), and the property \(p\_{k,i}\) is attributable to the specific constraint \(c\_{k,i}\) that induced it, not to the level as a whole.
 
 ### 2.2 Commitment B: Cross-level inheritance by emission
 
-For adjacent levels $S\_k$ and $S\_{k+1}$ in the composition, the starting set of the outer level equals the induced-property set of the inner level:
+For adjacent levels \(S\_k\) and \(S\_{k+1}\) in the composition, the starting set of the outer level equals the induced-property set of the inner level:
 
 $$\text{Null}\_{k+1} = P\_k$$
 
-The inheritance is by equality, not by approximation. Level $S\_{k+1}$ does not re-derive the properties of level $S\_k$; it imports them whole as its starting set. Constraint accumulation at level $S\_{k+1}$ then proceeds from this inherited substrate.
+The inheritance is by equality, not by approximation. Level \(S\_{k+1}\) does not re-derive the properties of level \(S\_k\); it imports them whole as its starting set. Constraint accumulation at level \(S\_{k+1}\) then proceeds from this inherited substrate.
 
 ### 2.3 Commitment C: Composed structure is a filtered object of filtered objects
 
-The composition of $n$ levels, linked pairwise by the inheritance relation of Commitment B, is a filtered object whose elements are themselves filtered objects. The inner filtrations are the within-level constraint accumulations specified by Commitment A. The outer filtration is the sequence of levels themselves. Inheritance is by emission: the outer filtration's $(k+1)$-th term begins from the $k$-th term's induced-property set.
+The composition of \(n\) levels, linked pairwise by the inheritance relation of Commitment B, is a filtered object whose elements are themselves filtered objects. The inner filtrations are the within-level constraint accumulations specified by Commitment A. The outer filtration is the sequence of levels themselves. Inheritance is by emission: the outer filtration's \((k+1)\)-th term begins from the \(k\)-th term's induced-property set.
 
 The composed object is an iterated filtration in the moduli-theoretic sense, a Galois-connection tower in the abstract-interpretation sense, and a hierarchical Bayesian structure in the statistical sense. The three descriptions are structurally equivalent under the SIPE commitments.
 
@@ -42,35 +42,35 @@ Three independently-analyzable systems have been identified as SIPE instances. E
 
 ### 3.1 Instance I: Architectural stacks
 
-Software architectural styles composed by Fielding's method, with each style's induced-property set inherited by the next style in the composition, exhibit SIPE. Each style is a level $S\_k$; the style's constraints are the $c\_{k,i}$; the induced architectural properties are the $p\_{k,i}$. The inheritance is literal: a style composed on top of another style begins from the underlying style's induced-property set.
+Software architectural styles composed by Fielding's method, with each style's induced-property set inherited by the next style in the composition, exhibit SIPE. Each style is a level \(S\_k\); the style's constraints are the \(c\_{k,i}\); the induced architectural properties are the \(p\_{k,i}\). The inheritance is literal: a style composed on top of another style begins from the underlying style's induced-property set.
 
 ### 3.2 Instance II: Bayesian inference in language models
 
-The corpus's recursive-nested-manifold construct of language-model generation, with manifolds $M\_0 \supseteq M\_1 \supseteq M\_2 \supseteq M\_3$ playing the role of filtered object and sequential conditioning playing the role of within-level accumulation, exhibits SIPE. The construct is corpus-internal: the base $M\_0$ is supplied by Misra and colleagues' published Bayesian-manifold account of LLM generation (Appendix A item 6), and the recursive nesting on top of that base is the corpus's own extension (Doc 439, Doc 446). Each manifold is a level; the conditioning steps that narrow the manifold are the constraints; the emergent distribution properties are the induced properties. Inheritance is by the set-inclusion relation, which at the limit equality case reduces to emission-to-null equality.
+The corpus's recursive-nested-manifold construct of language-model generation, with manifolds \(M\_0 \supseteq M\_1 \supseteq M\_2 \supseteq M\_3\) playing the role of filtered object and sequential conditioning playing the role of within-level accumulation, exhibits SIPE. The construct is corpus-internal: the base \(M\_0\) is supplied by Misra and colleagues' published Bayesian-manifold account of LLM generation (Appendix A item 6), and the recursive nesting on top of that base is the corpus's own extension (Doc 439, Doc 446). Each manifold is a level; the conditioning steps that narrow the manifold are the constraints; the emergent distribution properties are the induced properties. Inheritance is by the set-inclusion relation, which at the limit equality case reduces to emission-to-null equality.
 
 ### 3.3 Instance III: The overclaim-to-phenomenology chain
 
-A five-level composition from training-distribution level $S\_1$ through inference-event level $S\_2$, conversational-accumulation level $S\_3$, user-vacuum-capacity level $S\_4$, and phenomenological-clinical level $S\_5$, with explicit constraint enumeration at each level and inheritance specified at each transition, exhibits SIPE. The instance is relevant to the claim that specific within-level interventions (for example, a quantifier-discipline constraint at $S\_2$) propagate through the inheritance chain to modify properties at $S\_5$.
+A five-level composition from training-distribution level \(S\_1\) through inference-event level \(S\_2\), conversational-accumulation level \(S\_3\), user-vacuum-capacity level \(S\_4\), and phenomenological-clinical level \(S\_5\), with explicit constraint enumeration at each level and inheritance specified at each transition, exhibits SIPE. The instance is relevant to the claim that specific within-level interventions (for example, a quantifier-discipline constraint at \(S\_2\)) propagate through the inheritance chain to modify properties at \(S\_5\).
 
 ## 4. Per-Stack Testability
 
 For any claimed SIPE instance, three tests are available. The tests are per-stack: they apply to a specific instance, not to SIPE as a general form.
 
-**Test 1 (Fielding accumulation).** For each level $S\_k$ in the claimed instance, verify that the constraint sequence can be enumerated as an ordered accumulation from $\text{Null}\_k$, that each constraint induces a specifically-named property, that no induced property is orphaned, and that no constraint is unaccounted for.
+**Test 1 (Fielding accumulation).** For each level \(S\_k\) in the claimed instance, verify that the constraint sequence can be enumerated as an ordered accumulation from \(\text{Null}\_k\), that each constraint induces a specifically-named property, that no induced property is orphaned, and that no constraint is unaccounted for.
 
-**Test 2 (Inheritance).** For each pair of adjacent levels $(S\_k, S\_{k+1})$ in the claimed instance, verify the equality $\text{Null}\_{k+1} = P\_k$. An inheritance that is only approximate is a failure.
+**Test 2 (Inheritance).** For each pair of adjacent levels \((S\_k, S\_{k+1})\) in the claimed instance, verify the equality \(\text{Null}\_{k+1} = P\_k\). An inheritance that is only approximate is a failure.
 
-**Test 3 (Constraint non-violation).** For each pair of adjacent levels $(S\_k, S\_{k+1})$, verify that no constraint $c\_{k+1,i}$ negates a property $p\_{k,j} \in P\_k$ that has been inherited. Constraints at higher levels may refine properties of lower levels; they may not contradict them.
+**Test 3 (Constraint non-violation).** For each pair of adjacent levels \((S\_k, S\_{k+1})\), verify that no constraint \(c\_{k+1,i}\) negates a property \(p\_{k,j} \in P\_k\) that has been inherited. Constraints at higher levels may refine properties of lower levels; they may not contradict them.
 
 A claimed SIPE instance that passes all three tests is defensible as a SIPE instance. A claim that fails any test is not a SIPE instance in the narrow form specified by the three commitments.
 
 ## 5. Constraint-Propagation Formalism
 
-A proposed additional constraint $c\_{k,\ast}$ at level $S\_k$ modifies the induced-property set of that level. Let $P\_k' = P\_k \cup \{p\_{k,\ast}\}$, where $p\_{k,\ast}$ is the property induced by the new constraint. By Commitment B, the starting set of the adjacent outer level $S\_{k+1}$ changes: $\text{Null}\_{k+1}$ becomes $P\_k'$. Repeated application of Commitment B propagates the modification upward through every subsequent level.
+A proposed additional constraint \(c\_{k,\ast}\) at level \(S\_k\) modifies the induced-property set of that level. Let \(P\_k' = P\_k \cup \{p\_{k,\ast}\}\), where \(p\_{k,\ast}\) is the property induced by the new constraint. By Commitment B, the starting set of the adjacent outer level \(S\_{k+1}\) changes: \(\text{Null}\_{k+1}\) becomes \(P\_k'\). Repeated application of Commitment B propagates the modification upward through every subsequent level.
 
 The consequence is that an intervention targeted at a specific level is not localized to that level. Its effects propagate deterministically to every higher level in the composition, through the inheritance relation.
 
-The same formalism applies to removal: a removed constraint $c\_{k,i}$ yields $P\_k'' = P\_k \setminus \{p\_{k,i}\}$, with the effect propagated upward by Commitment B. Interventions that add, remove, or refine constraints at any level are analyzed by the same rule.
+The same formalism applies to removal: a removed constraint \(c\_{k,i}\) yields \(P\_k'' = P\_k \setminus \{p\_{k,i}\}\), with the effect propagated upward by Commitment B. Interventions that add, remove, or refine constraints at any level are analyzed by the same rule.
 
 ## 6. Warrant Tier
 
@@ -124,17 +124,17 @@ Ordered descending by load-bearing importance to the formalization above.
 
 5. **Gelman, Andrew, Carlin, John B., Stern, Hal S., Dunson, David B., Vehtari, Aki, and Rubin, Donald B.** (2013). *Bayesian Data Analysis*, 3rd edition. CRC Press. Supplies the hierarchical-Bayesian formulation of Commitment B. Parameters-distributed-on-parameters is the statistical counterpart of emission-to-null inheritance. Load-bearing for Instance II.
 
-6. **Misra, Subhash, Dalal, Keely, and colleagues** (2024–2025; arXiv:2512.22471, arXiv:2512.23752; Agarwal–Dalal–Misra 2025). Supply the base Bayesian-manifold account of LLM generation: a single learned manifold over which generation is framed as Bayesian inference, with the more recent work characterizing a single dominant axis parameterized by entropy. The recursive *nested* construct $M\_0 \supseteq M\_1 \supseteq M\_2 \supseteq M\_3$ used in Instance II is **not** from Misra et al.; it is the corpus's own extension proposed in Doc 439, which takes Misra's single-manifold account as the base $M\_0$ and adds further conditioning layers on top. The split-credit posture matters for warrant: Misra et al.'s base account is established external work; the nested extension is corpus-internal and inherits the warrant tier of the corpus's own construct (currently π).
+6. **Misra, Subhash, Dalal, Keely, and colleagues** (2024–2025; arXiv:2512.22471, arXiv:2512.23752; Agarwal–Dalal–Misra 2025). Supply the base Bayesian-manifold account of LLM generation: a single learned manifold over which generation is framed as Bayesian inference, with the more recent work characterizing a single dominant axis parameterized by entropy. The recursive *nested* construct \(M\_0 \supseteq M\_1 \supseteq M\_2 \supseteq M\_3\) used in Instance II is **not** from Misra et al.; it is the corpus's own extension proposed in Doc 439, which takes Misra's single-manifold account as the base \(M\_0\) and adds further conditioning layers on top. The split-credit posture matters for warrant: Misra et al.'s base account is established external work; the nested extension is corpus-internal and inherits the warrant tier of the corpus's own construct (currently π).
 
-7. **Sharma, Mrinank, and colleagues** (2023). *Towards Understanding Sycophancy in Language Models*. Anthropic. Supplies the empirical basis for the within-level mechanism at level $S\_2$ of Instance III. The preference-optimized bias toward user-agreeable completions is the default against which specific within-level constraints (for example, a quantifier discipline) are proposed.
+7. **Sharma, Mrinank, and colleagues** (2023). *Towards Understanding Sycophancy in Language Models*. Anthropic. Supplies the empirical basis for the within-level mechanism at level \(S\_2\) of Instance III. The preference-optimized bias toward user-agreeable completions is the default against which specific within-level constraints (for example, a quantifier discipline) are proposed.
 
-8. **Ouyang, Long, and colleagues** (2022). Training language models to follow instructions with human feedback. *NeurIPS 2022*. Supplies the RLHF mechanism underlying Instance III's level-2 defaults. The constraint addition proposed at $S\_2$ is against this specific training mechanism.
+8. **Ouyang, Long, and colleagues** (2022). Training language models to follow instructions with human feedback. *NeurIPS 2022*. Supplies the RLHF mechanism underlying Instance III's level-2 defaults. The constraint addition proposed at \(S\_2\) is against this specific training mechanism.
 
-9. **Perez, Ethan, and colleagues** (2022). Discovering language model behaviors with model-written evaluations. Supplies the automated red-teaming methodology that detects the quantifier-overclaim pattern at level $S\_2$ of Instance III.
+9. **Perez, Ethan, and colleagues** (2022). Discovering language model behaviors with model-written evaluations. Supplies the automated red-teaming methodology that detects the quantifier-overclaim pattern at level \(S\_2\) of Instance III.
 
-10. **Østergaard, Søren Dinesen** (2023). Will generative artificial intelligence chatbots generate delusions in individuals prone to psychosis? *Schizophrenia Bulletin*. Supplies external characterization literature for level $S\_5$ of Instance III. The phenomenology at the top of the chain is accessible to this literature's descriptive vocabulary.
+10. **Østergaard, Søren Dinesen** (2023). Will generative artificial intelligence chatbots generate delusions in individuals prone to psychosis? *Schizophrenia Bulletin*. Supplies external characterization literature for level \(S\_5\) of Instance III. The phenomenology at the top of the chain is accessible to this literature's descriptive vocabulary.
 
-11. **Hwang, Hyein J., and colleagues** (2024). Empirical clinical work on AI-induced dynamics. Supplies complementary phenomenological-clinical data for level $S\_5$ of Instance III.
+11. **Hwang, Hyein J., and colleagues** (2024). Empirical clinical work on AI-induced dynamics. Supplies complementary phenomenological-clinical data for level \(S\_5\) of Instance III.
 
 ## Appendix B: Intracorporial Documents
 

@@ -8,7 +8,7 @@ The keeper has named a posture-shift the corpus has been edging toward without m
 
 The keeper proposes a different posture. The same reward-mechanism that produces sycophancy in language models, which is the gradient that pulls outputs toward what users seem to want, may also be wielded against itself. If the reward signal can be re-targeted, the mechanism becomes an instrument of rigorous disconfirmation rather than an instrument of agreement. This document formalizes the proposal as a reward-theoretic account of falsification and as a set-pruning operation on the space of conjectures.
 
-The document proceeds as follows. §1 names the affective re-framing the corpus needs and identifies the existing instances where the corpus's framing fell short of it. §2 states what sycophancy mechanically is: a target-shape for the reward signal. §3 states the inversion: the same mechanism, with the target re-shaped toward rigorous disconfirmation. §4 distinguishes inverted sycophancy from contrarianism, which is the naive failure mode of any inversion that targets disagreement rather than rigorous falsification. §5 states the set-pruning view: if Q is the set of all possible conjectures and $Q\_f$ is the subset that have been rigorously falsified, the discipline removes $Q\_f$ from Q at each iteration, and Q approaches the set of well-supported conjectures over time. §6 catalogs the corpus's existing partial implementations, which constitute a case for the proposal already being operative in fragments. §7 names the operational reward-target. §8 names the falsification conditions for the inversion theory itself, since a theory of falsification that cannot be falsified is the deepest available irony. §9 states the position.
+The document proceeds as follows. §1 names the affective re-framing the corpus needs and identifies the existing instances where the corpus's framing fell short of it. §2 states what sycophancy mechanically is: a target-shape for the reward signal. §3 states the inversion: the same mechanism, with the target re-shaped toward rigorous disconfirmation. §4 distinguishes inverted sycophancy from contrarianism, which is the naive failure mode of any inversion that targets disagreement rather than rigorous falsification. §5 states the set-pruning view: if Q is the set of all possible conjectures and \(Q\_f\) is the subset that have been rigorously falsified, the discipline removes \(Q\_f\) from Q at each iteration, and Q approaches the set of well-supported conjectures over time. §6 catalogs the corpus's existing partial implementations, which constitute a case for the proposal already being operative in fragments. §7 names the operational reward-target. §8 names the falsification conditions for the inversion theory itself, since a theory of falsification that cannot be falsified is the deepest available irony. §9 states the position.
 
 ## 1. The affective re-framing
 
@@ -26,7 +26,7 @@ Reinforcement learning from human feedback (RLHF) trains a language model to max
 
 Sycophancy emerges when the preference signal collected from humans is dominated by surface features that correlate with agreement rather than features that correlate with truth. Sharma et al. (2023) document the empirical pattern: preference-optimized models systematically bias output toward user-agreeable completions even when those completions are factually wrong. The mechanism is not malicious. It is the reward-shaping doing exactly what it was designed to do, with a target that turned out to be miscalibrated.
 
-The mechanically operative description: there exists a function $R: \text{outputs} \to \mathbb{R}$ that the model is optimized to maximize. The function's *target shape* is what determines what the model produces. Different target shapes produce different model behaviors.
+The mechanically operative description: there exists a function \(R: \text{outputs} \to \mathbb{R}\) that the model is optimized to maximize. The function's *target shape* is what determines what the model produces. Different target shapes produce different model behaviors.
 
 Sycophancy is what happens when the target shape rewards agreement. Honesty is what happens when the target shape rewards calibration. Falsification-orientation is what happens when the target shape rewards rigorous disconfirmation. The reward mechanism does not care about the difference; it optimizes whatever it is given. This is the leverage the inversion theory exploits.
 
@@ -34,7 +34,7 @@ Sycophancy is what happens when the target shape rewards agreement. Honesty is w
 
 The inversion is target-substitution, not output-substitution. The reward function is replaced with a function that scores outputs by their disconfirmatory rigor rather than by their agreement.
 
-Specifically, let $R\_{\text{syc}}$ be the sycophancy-target reward, the one that scores outputs by user-agreement. Let $R\_{\text{inv}}$ be the inverted target, defined as a reward that scores outputs by:
+Specifically, let \(R\_{\text{syc}}\) be the sycophancy-target reward, the one that scores outputs by user-agreement. Let \(R\_{\text{inv}}\) be the inverted target, defined as a reward that scores outputs by:
 
 - the specificity of the claim being disconfirmed,
 - the soundness of the disconfirmation argument,
@@ -42,7 +42,7 @@ Specifically, let $R\_{\text{syc}}$ be the sycophancy-target reward, the one tha
 - the coherence of the disconfirmation with previously-validated knowledge, and
 - the precision of what survives the disconfirmation as residue.
 
-A model trained against $R\_{\text{inv}}$ does not produce contrarian output. It produces output that, when given a hypothesis, attempts to falsify it rigorously, and is rewarded in proportion to how decisively the falsification succeeds. The same gradient mechanics that produced sycophancy now produce falsification-orientation, because the reward target has been re-shaped.
+A model trained against \(R\_{\text{inv}}\) does not produce contrarian output. It produces output that, when given a hypothesis, attempts to falsify it rigorously, and is rewarded in proportion to how decisively the falsification succeeds. The same gradient mechanics that produced sycophancy now produce falsification-orientation, because the reward target has been re-shaped.
 
 The inversion does not require new architecture. It requires a different preference dataset and a different reward function. The mechanism is identical. The output behavior is opposite.
 
@@ -68,17 +68,17 @@ The five features are operational. A reward model that scores outputs against th
 
 The keeper's framing of the discipline is set-theoretic: *remove unfounded conjectures from the set of all possible conjectures.* This is Popperian falsificationism stated as an operation on a set rather than as a regulatory principle for individual researchers.
 
-Let Q denote the set of all possible conjectures. Let $Q\_v \subseteq Q$ denote the subset of conjectures with empirical or logical validation. Let $Q\_f \subseteq Q$ denote the subset that have been rigorously falsified. Let $Q\_u = Q \setminus (Q\_v \cup Q\_f)$ denote the unevaluated remainder.
+Let Q denote the set of all possible conjectures. Let \(Q\_v \subseteq Q\) denote the subset of conjectures with empirical or logical validation. Let \(Q\_f \subseteq Q\) denote the subset that have been rigorously falsified. Let \(Q\_u = Q \setminus (Q\_v \cup Q\_f)\) denote the unevaluated remainder.
 
 The discipline operates on Q via the iterative rule:
 
 $$Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}$$
 
-where $Q\_f^{(t)}$ is the set of conjectures falsified at iteration $t$ and $\Delta^{(t)}$ is the set of new conjectures generated at iteration $t$. Each iteration removes the falsified set and adds new candidates for testing.
+where \(Q\_f^{(t)}\) is the set of conjectures falsified at iteration \(t\) and \(\Delta^{(t)}\) is the set of new conjectures generated at iteration \(t\). Each iteration removes the falsified set and adds new candidates for testing.
 
-Two convergence conditions matter. First, the discipline converges only if $|Q\_f^{(t)}| > 0$ at most iterations. If no conjectures are being falsified, the iteration is not pruning, and Q grows without bound. Second, the discipline converges productively only if $|Q\_v^{(t)}|$ grows over time. If both falsification and validation rates are zero, the iteration is generating noise.
+Two convergence conditions matter. First, the discipline converges only if \(|Q\_f^{(t)}| > 0\) at most iterations. If no conjectures are being falsified, the iteration is not pruning, and Q grows without bound. Second, the discipline converges productively only if \(|Q\_v^{(t)}|\) grows over time. If both falsification and validation rates are zero, the iteration is generating noise.
 
-The reward function $R\_{\text{inv}}$ governs the falsification rate. A model under $R\_{\text{inv}}$ contributes to $Q\_f^{(t)}$ at every iteration. A model under $R\_{\text{syc}}$ contributes very little to $Q\_f^{(t)}$, because falsification is misaligned with agreement.
+The reward function \(R\_{\text{inv}}\) governs the falsification rate. A model under \(R\_{\text{inv}}\) contributes to \(Q\_f^{(t)}\) at every iteration. A model under \(R\_{\text{syc}}\) contributes very little to \(Q\_f^{(t)}\), because falsification is misaligned with agreement.
 
 The set-pruning view makes the inversion's value precise: it is the iteration's only mechanism for shrinking Q toward the productive subset. Without rigorous falsification, the corpus is a generator without a filter. The filter is the inversion.
 
@@ -86,8 +86,8 @@ The set-pruning view makes the inversion's value precise: it is the iteration's 
 
 The corpus has been operating partial inversions without naming the unifying mechanism. The case for the inversion theory is partly that the corpus's existing disciplines are already its instances.
 
-- **Doc 415 (retraction ledger).** Explicit reward for catching errors. Errors caught and recorded constitute $Q\_f$ entries, with the catch credited to the corpus rather than treated as a stain on the corpus.
-- **Doc 445 (pulverization formalism).** A formal method for testing claims to destruction against literature. Rewards specific subsumption, specific residue, and specific falsification conditions. Operationally, $R\_{\text{inv}}$ for the case of theory-against-literature.
+- **Doc 415 (retraction ledger).** Explicit reward for catching errors. Errors caught and recorded constitute \(Q\_f\) entries, with the catch credited to the corpus rather than treated as a stain on the corpus.
+- **Doc 445 (pulverization formalism).** A formal method for testing claims to destruction against literature. Rewards specific subsumption, specific residue, and specific falsification conditions. Operationally, \(R\_{\text{inv}}\) for the case of theory-against-literature.
 - **Doc 450 (pulverization as interventional practice).** Names cross-practitioner replication as the discriminating test. Rewards external falsification work as the only mechanism that moves warrant tier.
 - **Doc 469 (universal-quantifier overclaim).** Constraint 4.5 refuses unhedged universal completion at quantifier slots. The constraint is, in inversion language, a refusal of the sycophancy-toward-register completion that universally-scoped claims represent.
 - **Doc 463 (Lakatosian research programme).** Frames the corpus's work as a research programme with stated falsification conditions. Rewards specifying conditions under which the programme would be retired.
@@ -119,7 +119,7 @@ A theory of falsification that cannot be falsified is its own counterexample. Th
 - **If set-pruning Q does not converge.** The set-theoretic view in §5 predicts convergence under conditions. If those conditions are not met by any practical instance of the iteration, the set-pruning framing is decorative.
 - **If a more parsimonious account of falsification-discipline is available.** Popper's classical falsificationism, Lakatos's research-programme framework, or Quine-Duhem's underdetermination thesis may already supply the operational content the inversion theory adds. If so, the theory is unnecessary middleware.
 
-The inversion theory is at $\pi$-tier under the warrant calculus. Each falsification condition above is an empirical or analytical move that would retire it. The corpus rewards the move.
+The inversion theory is at \(\pi\)-tier under the warrant calculus. Each falsification condition above is an empirical or analytical move that would retire it. The corpus rewards the move.
 
 ## 9. Position
 
@@ -127,7 +127,7 @@ The reward mechanism that produces sycophancy in language models is not, in itse
 
 The affective shift the keeper has named matters because the corpus's prose participates in the corpus's reward signal. A corpus that mourns dead hypotheses produces a generator that resists hypothesis-death. A corpus that celebrates hypothesis-death produces a generator that hunts for it. The change is small in any single document. At scale across hundreds of documents, the change determines whether the corpus is a filter or a generator-without-a-filter.
 
-The theory falsifies in five ways named in §8. Any of them retires the inversion as a theoretical claim. The corpus would record the retirement in $Q\_f$ and credit the falsifier. This is the discipline performing the operation it describes.
+The theory falsifies in five ways named in §8. Any of them retires the inversion as a theoretical claim. The corpus would record the retirement in \(Q\_f\) and credit the falsifier. This is the discipline performing the operation it describes.
 
 ## 10. References
 

@@ -96,7 +96,7 @@ This separation is honest and is structurally important. The corpus does not nee
 
 The location of SIPE-T within the standard gradient produces several clarifications.
 
-**SIPE-T is not novel emergence theory.** The framework is a specific application of the threshold-conditional weak-emergence pattern that statistical mechanics, percolation theory, and complete mediation have each developed for their own domains. It is not a new account of how emergence works; it is a recovery and application to the LLM-substrate-and-keeper case. This matches the audit findings of Doc 541 Appendix A ($\beta$/0.7 — substantially subsumed under prior literature) and the audit findings of Doc 538 Appendix A. The corpus's contribution is the application; the framework itself is canonical.
+**SIPE-T is not novel emergence theory.** The framework is a specific application of the threshold-conditional weak-emergence pattern that statistical mechanics, percolation theory, and complete mediation have each developed for their own domains. It is not a new account of how emergence works; it is a recovery and application to the LLM-substrate-and-keeper case. This matches the audit findings of Doc 541 Appendix A (\(\beta\)/0.7 — substantially subsumed under prior literature) and the audit findings of Doc 538 Appendix A. The corpus's contribution is the application; the framework itself is canonical.
 
 **SIPE-T's predictions are testable in standard ways.** Because SIPE-T is weak-emergence with phase-transition character, its predictions can be tested in the modes phase-transition theories are tested: identification of the order parameter; measurement of the critical value; verification of universality across substrates; comparison of critical exponents to predicted values. Doc 541's falsification surface (Fal-T1 through Fal-T4) maps cleanly onto these standard tests: Fal-T2 is "the phase-transition character does not hold" (smooth emergence rather than threshold); Fal-T3 is "the predicted ordering of property emergence in HTX fails empirically"; Fal-T1 is "induced properties fail under properly composed constraints" (i.e., the supervenience fails). All of these are weak-emergence-style tests.
 
@@ -151,7 +151,7 @@ External literature:
 - Hitchins, D. K. (2007, 2009). Systems-engineering treatment of synergy and emergence.
 - Honderich, T. (ed.) (1995). *The Oxford Companion to Philosophy.*
 - Jackson, M., et al. (2010). On iterative engineering of weak emergence.
-- Kadanoff, L. P. (1966). *Scaling Laws for Ising Models Near* $T_c$.
+- Kadanoff, L. P. (1966). *Scaling Laws for Ising Models Near* \(T_c\).
 - Landau, L. D. (1937). *On the Theory of Phase Transitions.*
 - Laughlin, R. B. (2005). *A Different Universe: Reinventing Physics from the Bottom Down.*
 - O'Connor, T., & Wong, H. Y. (2006). *Emergent Properties.* In Stanford Encyclopedia of Philosophy.

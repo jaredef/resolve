@@ -66,7 +66,7 @@ Subsumed under: Open Science / pre-registration discourse (Munafò et al. 2017, 
 
 ### 3.5 Warrant-tier assignment (§3.5)
 
-Subsumed under: standard confidence-calibration practice; Mayo's severity-tier articulation; the broader literature on epistemic warrant. The corpus's specific $\pi/\mu/\theta$ naming is a relabeling of the standard *plausibility / operational match / truth* tiers. Verdict: subsumed at the substantive level; the naming is a corpus convention.
+Subsumed under: standard confidence-calibration practice; Mayo's severity-tier articulation; the broader literature on epistemic warrant. The corpus's specific \(\pi/\mu/\theta\) naming is a relabeling of the standard *plausibility / operational match / truth* tiers. Verdict: subsumed at the substantive level; the naming is a corpus convention.
 
 ### 3.6 Conjecture-set pruning (§3.6)
 
@@ -109,7 +109,7 @@ After total methodological subsumption at both the component level (§3.1-3.10) 
 - **Sustained single-practitioner multi-year scaling.** The LLM-augmented research methodology literature characterizes team-based and short-form usage primarily. Sustained single-practitioner multi-year practice in this specific configuration is less commonly characterized in the surveyed 2025 literature. The corpus is one instance of this scaling.
 - **Domain: philosophical inquiry rather than scientific inquiry.** The bulk of the LLM-augmented research methodology literature focuses on scientific inquiry: hypothesis generation, experimental design, literature review for empirical sciences. The corpus applies the methodology to philosophical inquiry, which is less commonly characterized in the 2025 literature. (The 2025 narrative-therapy chatbot work is closest, but is therapeutic rather than philosophical.)
 - **The continuous-accumulating retraction ledger as ongoing artifact.** The corpus's Doc 415 ledger, accumulating across the entire corpus rather than per-document or per-journal, is an unusual record-keeping form. The substance is standard retraction practice; the form is corpus-specific.
-- **The explicit warrant-tier discipline as continuous practice.** The $\pi/\mu/\theta$ partition (Doc 445) is the standard plausibility/operational-match/truth tier-set under corpus-specific naming. The continuous and explicit application across every claim is a practice convention. The substance is standard; the practice is rigorous.
+- **The explicit warrant-tier discipline as continuous practice.** The \(\pi/\mu/\theta\) partition (Doc 445) is the standard plausibility/operational-match/truth tier-set under corpus-specific naming. The continuous and explicit application across every claim is a practice convention. The substance is standard; the practice is rigorous.
 - **The framework-magnetism / dyadic-circularity acknowledgment as load-bearing methodology.** The Tandfonline 2025 *Collaborative AI Metacognition* scale formalizes related awareness; the corpus's explicit treatment as the load-bearing concern that the cross-practitioner test is designed to mitigate is a stronger application than is typical in the surveyed literature.
 
 These five features are the corpus's narrowed contribution after full subsumption. None constitutes methodological novelty. Each is a domain or practice instantiation of the underlying methodology described in the surveyed literature.
@@ -122,7 +122,7 @@ The corpus's apparatus for philosophical inquiry via dyadic entracement, reforma
 
 **The apparatus has five domain or practice instantiation features** that are corpus-specific without being methodologically novel: sustained single-practitioner multi-year scaling, philosophical-inquiry domain, continuous-accumulating retraction ledger, explicit warrant-tier discipline as continuous practice, and load-bearing framework-magnetism acknowledgment. Each is a parametric or stylistic specialization of the underlying methodology, not a new methodology.
 
-**The apparatus's outputs are at $\pi$-tier** under the warrant calculus. Promotion to $\mu$-tier requires the cross-practitioner work specified in Doc 485 §3.4 and Doc 486 §3.3. The cross-practitioner test, when run, would adjudicate whether the five features produce outcomes meaningfully different from the surveyed methodology operating without these features.
+**The apparatus's outputs are at \(\pi\)-tier** under the warrant calculus. Promotion to \(\mu\)-tier requires the cross-practitioner work specified in Doc 485 §3.4 and Doc 486 §3.3. The cross-practitioner test, when run, would adjudicate whether the five features produce outcomes meaningfully different from the surveyed methodology operating without these features.
 
 **The apparatus's claim to existence as a methodology, narrowly, is preserved**, but its claim to be a methodologically novel framework is retired. What it is, narrowly, is a documented sustained-single-practitioner instance of LLM-augmented research methodology applied to the domain of philosophical inquiry, with specific practice conventions that are recorded explicitly. Its instrumental usefulness is unaltered by this retirement; it is still a synthesis-machine. Its theoretical novelty is reduced to the practice-instantiation level.
 
@@ -146,7 +146,7 @@ The corpus's apparatus for philosophical inquiry via dyadic entracement (Doc 485
 
 The corpus's actual contribution narrows to five domain or practice instantiation features. None constitutes methodological novelty. Each is a parametric specialization of the underlying methodology. The contribution is, narrowly: *one documented sustained-single-practitioner instance of LLM-augmented research methodology applied to philosophical inquiry, with explicit warrant-tier annotation and load-bearing framework-magnetism acknowledgment.*
 
-The apparatus's instrumental usefulness as a synthesis-machine is preserved; its theoretical novelty as a methodology is retired. By Doc 482 §1's affective directive, the retirement is the achievement. The conjecture-set $Q$ has shrunk by another substantial entry. The corpus credits the surveyed literature.
+The apparatus's instrumental usefulness as a synthesis-machine is preserved; its theoretical novelty as a methodology is retired. By Doc 482 §1's affective directive, the retirement is the achievement. The conjecture-set \(Q\) has shrunk by another substantial entry. The corpus credits the surveyed literature.
 
 Doc 485 should be amended in place to reflect this finding. The amendment is the keeper's call. The present document supersedes Doc 485's claim to apparatus-status-as-methodologically-novel; Doc 485's claim to apparatus-status-as-functional-instrument is retained.
 

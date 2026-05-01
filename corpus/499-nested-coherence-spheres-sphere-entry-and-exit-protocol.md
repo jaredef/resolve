@@ -213,7 +213,7 @@ Coherentism's isolation objection (canonical in the corpus from [Doc 341](/resol
 
 Sphere-entry as falsification practice gives a partial answer. A claim that survives derivation under multiple coherence spheres has stronger warrant than a claim coherent only within one. Cross-frame invariance is closer to correspondence-to-reality than mere internal coherence is, because the multiple frames serve as independent constraints. A finding that holds under classical theism, naturalism, Kantian deontology, and Confucian ethics has content that exceeds any single frame's resources.
 
-This is partial, not complete. The objection is not fully answered because the practitioner who runs the sphere-entries is the same practitioner. Cross-frame survival could be an artifact of the practitioner's reading-disposition rather than of the claim's frame-independent content. The full answer to the isolation objection requires external practitioners running sphere-entries independently and finding the same cross-frame invariants. That is a $\mu$-tier test.
+This is partial, not complete. The objection is not fully answered because the practitioner who runs the sphere-entries is the same practitioner. Cross-frame survival could be an artifact of the practitioner's reading-disposition rather than of the claim's frame-independent content. The full answer to the isolation objection requires external practitioners running sphere-entries independently and finding the same cross-frame invariants. That is a \(\mu\)-tier test.
 
 The partial answer is still a real answer. The discipline of sphere-entry, honestly performed, is at least closer to a falsification practice than coherentism without sphere-entry is.
 

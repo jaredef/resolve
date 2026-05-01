@@ -22,7 +22,7 @@ Per Doc 435's branching-entracement procedure and Doc 445's pulverization formal
    - E4: L3 empirical claims treated as metaphysical.
    - E5: L2 structural claims smuggled in as L3 evidence.
 5. *Warrant-tier extension:* Doc 445's π/μ/θ tiers apply to L3 directly; L2 admits a modified semantics; L1 does not admit the schema at all.
-6. *Formal notation:* $C \rightharpoonup G$, $C \vdash_{\mathcal{P}} \phi_i$, $\tilde{\phi}_i^{(k)} \models \phi_i$, measurement relations.
+6. *Formal notation:* \(C \rightharpoonup G\), \(C \vdash_{\mathcal{P}} \phi_i\), \(\tilde{\phi}_i^{(k)} \models \phi_i\), measurement relations.
 
 ## Subsumption by prior art
 
@@ -72,7 +72,7 @@ Doc 445's π/μ/θ tiers are corpus-internal but draw on standard methodological
 
 ### (5) Formal notation is standard mathematical-logic
 
-The relations $C \rightharpoonup G$, $C \vdash_{\mathcal{P}} \phi$, $\tilde{\phi} \models \phi$ use standard logical symbols from modal logic, proof theory, and model theory. Doc 459's specific usage is idiosyncratic but does not constitute a contribution — the symbols are familiar; Doc 459 applies them to its specific claims.
+The relations \(C \rightharpoonup G\), \(C \vdash_{\mathcal{P}} \phi\), \(\tilde{\phi} \models \phi\) use standard logical symbols from modal logic, proof theory, and model theory. Doc 459's specific usage is idiosyncratic but does not constitute a contribution — the symbols are familiar; Doc 459 applies them to its specific claims.
 
 ## Residual contribution
 
@@ -88,7 +88,7 @@ After the subsumptions, what remains as genuinely Doc 459's own:
 
 ## Verdict under Doc 445's warrant-tier formalism
 
-Doc 459 as a whole is a methodological-target ($T_M$ in Doc 445's typology). Pulverized at π-tier:
+Doc 459 as a whole is a methodological-target (\(T_M\) in Doc 445's typology). Pulverized at π-tier:
 
 - **The three-level framework:** fully subsumed under Lakatos 1970. Not novel.
 - **The inference rules:** substantially subsumed under Lakatos's negative/positive heuristic and progressive/degenerative criterion. Not novel.
@@ -96,7 +96,7 @@ Doc 459 as a whole is a methodological-target ($T_M$ in Doc 445's typology). Pul
 - **The warrant-tier extension:** corpus-internal extension of corpus-internal machinery. Novel only within the corpus.
 - **The specific application to the Constraint Thesis:** novel as application; not novel as framework.
 
-Per Doc 445's warrant table for $T_M$ targets at π-fully-subsumed: *methodology exists in the literature; Doc 459 supplies an application specific to the Constraint Thesis.* Doc 459 should therefore be cited for the application, not the framework. The framework should be cited to Lakatos (primarily) and Carnap (for the internal/external distinction).
+Per Doc 445's warrant table for \(T_M\) targets at π-fully-subsumed: *methodology exists in the literature; Doc 459 supplies an application specific to the Constraint Thesis.* Doc 459 should therefore be cited for the application, not the framework. The framework should be cited to Lakatos (primarily) and Carnap (for the internal/external distinction).
 
 ## What Doc 459 can and cannot be cited for
 

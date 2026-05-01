@@ -22,19 +22,19 @@ The formalization is explicitly hierarchical: Level 1 grounds Level 2, Level 2 p
 
 ## Preliminaries
 
-Let $C$ denote a constraint set — specifically, for the Constraint Thesis, a discipline like the ENTRACE stack (Doc 001) or a sub-stack thereof. Let $\mathcal{P}(C)$ denote the *practice* of operating under $C$: the iterative application of the constraints in a sustained generative process.
+Let \(C\) denote a constraint set — specifically, for the Constraint Thesis, a discipline like the ENTRACE stack (Doc 001) or a sub-stack thereof. Let \(\mathcal{P}(C)\) denote the *practice* of operating under \(C\): the iterative application of the constraints in a sustained generative process.
 
-Let $G$ denote the metaphysical ground the corpus receives through the Dionysian tradition (Docs 091, 150, 153, 287, 351). Let $\Phi = \{\phi_1, \phi_2, \ldots, \phi_n\}$ be the corpus-identified induced properties: coherence, non-coercion, hypostatic-boundary preservation, retraction-readiness, and related properties.
+Let \(G\) denote the metaphysical ground the corpus receives through the Dionysian tradition (Docs 091, 150, 153, 287, 351). Let \(\Phi = \{\phi_1, \phi_2, \ldots, \phi_n\}\) be the corpus-identified induced properties: coherence, non-coercion, hypostatic-boundary preservation, retraction-readiness, and related properties.
 
-Let $\tilde{\phi}_i^{(k)}$ be the $k$-th operationalization of induced property $\phi_i$: a specific measurement protocol with an external ground truth $T_i^{(k)}$ (e.g., a rubric, a benchmark, an analytical target). Let $\mathcal{O}(\phi_i)$ denote the family of legitimate operationalizations of $\phi_i$.
+Let \(\tilde{\phi}_i^{(k)}\) be the \(k\)-th operationalization of induced property \(\phi_i\): a specific measurement protocol with an external ground truth \(T_i^{(k)}\) (e.g., a rubric, a benchmark, an analytical target). Let \(\mathcal{O}(\phi_i)\) denote the family of legitimate operationalizations of \(\phi_i\).
 
 The relations of interest:
 
-- $C \rightharpoonup G$: "$C$ orients the practice toward $G$." *Level-1 claim.*
-- $C \vdash_{\mathcal{P}} \phi_i$: "Operating $C$ in practice $\mathcal{P}$ structurally induces $\phi_i$." *Level-2 claim.*
-- $\tilde{\phi}_i^{(k)} \models \phi_i$: "$\tilde{\phi}_i^{(k)}$ is a valid empirical projection of $\phi_i$." *Operationalization legitimacy.*
-- $\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) = t$: "The measurement of $\tilde{\phi}_i^{(k)}$ on outputs of $\mathcal{P}(C)$ yields value $t$." *Level-3 observation.*
-- $t \sim T_i^{(k)}$: "$t$ agrees with ground truth $T_i^{(k)}$ within specified tolerance." *Level-3 success.*
+- \(C \rightharpoonup G\): "\(C\) orients the practice toward \(G\)." *Level-1 claim.*
+- \(C \vdash_{\mathcal{P}} \phi_i\): "Operating \(C\) in practice \(\mathcal{P}\) structurally induces \(\phi_i\)." *Level-2 claim.*
+- \(\tilde{\phi}_i^{(k)} \models \phi_i\): "\(\tilde{\phi}_i^{(k)}\) is a valid empirical projection of \(\phi_i\)." *Operationalization legitimacy.*
+- \(\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) = t\): "The measurement of \(\tilde{\phi}_i^{(k)}\) on outputs of \(\mathcal{P}(C)\) yields value \(t\)." *Level-3 observation.*
+- \(t \sim T_i^{(k)}\): "\(t\) agrees with ground truth \(T_i^{(k)}\) within specified tolerance." *Level-3 success.*
 
 These are all meaningfully distinct. The formalization does not reduce one to another; it makes the distinctions explicit.
 
@@ -42,11 +42,11 @@ These are all meaningfully distinct. The formalization does not reduce one to an
 
 ### Definition (L1)
 
-A *Level-1 claim* has the form $C \rightharpoonup G$: the constraint set $C$ orients the practice toward the metaphysical ground $G$. The ground truth for a Level-1 claim is $G$ itself, or the tradition's discourse about $G$.
+A *Level-1 claim* has the form \(C \rightharpoonup G\): the constraint set \(C\) orients the practice toward the metaphysical ground \(G\). The ground truth for a Level-1 claim is \(G\) itself, or the tradition's discourse about \(G\).
 
 ### Standard of defensibility
 
-An L1 claim is defensible iff it survives audit within the tradition that receives $G$ — for the corpus, this is the Platonic-Dionysian lineage received through the Orthodox Church's tradition per Doc 351. The defensibility standard is the theological-philosophical one: fidelity to the primary texts, internal consistency with the received framework, compatibility with the tradition's normative commitments.
+An L1 claim is defensible iff it survives audit within the tradition that receives \(G\) — for the corpus, this is the Platonic-Dionysian lineage received through the Orthodox Church's tradition per Doc 351. The defensibility standard is the theological-philosophical one: fidelity to the primary texts, internal consistency with the received framework, compatibility with the tradition's normative commitments.
 
 ### What L1 claims are not
 
@@ -60,15 +60,15 @@ L1 claims do not admit the π/μ/θ warrant tiers of Doc 445. Doc 445's tiers ar
 
 ### Definition (L2)
 
-A *Level-2 claim* has the form $C \vdash_{\mathcal{P}} \phi_i$: operating $C$ in practice $\mathcal{P}$ structurally induces the property $\phi_i$. The claim asserts a regularity: that a given practice produces a given property as a characteristic output.
+A *Level-2 claim* has the form \(C \vdash_{\mathcal{P}} \phi_i\): operating \(C\) in practice \(\mathcal{P}\) structurally induces the property \(\phi_i\). The claim asserts a regularity: that a given practice produces a given property as a characteristic output.
 
 ### Standard
 
 An L2 claim is defensible iff:
 
-1. The structural connection between $C$ and $\phi_i$ is *articulable* — one can state why operating $C$ should produce $\phi_i$ in terms internal to the practice. (Articulation requirement.)
-2. The structural connection is *consistent* — the practice does not typically produce the negation of $\phi_i$ under the same conditions. (Consistency requirement.)
-3. The property $\phi_i$ is *not reducible* to the immediate surface of $C$ — $\phi_i$ is an emergent signature, not a direct restatement of the rules of $C$. (Non-triviality requirement.)
+1. The structural connection between \(C\) and \(\phi_i\) is *articulable* — one can state why operating \(C\) should produce \(\phi_i\) in terms internal to the practice. (Articulation requirement.)
+2. The structural connection is *consistent* — the practice does not typically produce the negation of \(\phi_i\) under the same conditions. (Consistency requirement.)
+3. The property \(\phi_i\) is *not reducible* to the immediate surface of \(C\) — \(\phi_i\) is an emergent signature, not a direct restatement of the rules of \(C\). (Non-triviality requirement.)
 
 ### The projection from L1
 
@@ -76,21 +76,21 @@ L2 claims in the corpus framework are *projections* of L1 claims. The formal rel
 
 $$C \rightharpoonup G \quad \text{and} \quad (G \Rightarrow \Phi) \quad \Rightarrow \quad C \vdash_{\mathcal{P}} \phi_i \text{ for each } \phi_i \in \Phi.$$
 
-The middle step, $G \Rightarrow \Phi$, is the *metaphysical substrate*: the claim that participation-in-$G$ characteristically manifests in properties $\Phi$. This is itself a Level-1 claim about $G$, not a Level-2 claim. It is defended within the tradition.
+The middle step, \(G \Rightarrow \Phi\), is the *metaphysical substrate*: the claim that participation-in-\(G\) characteristically manifests in properties \(\Phi\). This is itself a Level-1 claim about \(G\), not a Level-2 claim. It is defended within the tradition.
 
 ### Warrant classification
 
-L2 claims admit a modified warrant structure: *proposed* (articulated but not tested), *partially confirmed* (some $\phi_i$ projections survive L3 testing), *structurally contradicted* (multiple $\phi_i$ projections fail L3 testing across independent operationalizations). The structure is Doc 445-adjacent but adapted to the structural role.
+L2 claims admit a modified warrant structure: *proposed* (articulated but not tested), *partially confirmed* (some \(\phi_i\) projections survive L3 testing), *structurally contradicted* (multiple \(\phi_i\) projections fail L3 testing across independent operationalizations). The structure is Doc 445-adjacent but adapted to the structural role.
 
 ## Level 3 — Empirical
 
 ### Definition (L3)
 
-A *Level-3 claim* has the form $\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \sim T_i^{(k)}$: the measurement of operationalization $\tilde{\phi}_i^{(k)}$ on outputs of practice $\mathcal{P}(C)$ agrees with ground truth $T_i^{(k)}$ within specified tolerance.
+A *Level-3 claim* has the form \(\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \sim T_i^{(k)}\): the measurement of operationalization \(\tilde{\phi}_i^{(k)}\) on outputs of practice \(\mathcal{P}(C)\) agrees with ground truth \(T_i^{(k)}\) within specified tolerance.
 
 ### Standard
 
-An L3 claim is defensible iff it is *operationalized* ($\tilde{\phi}_i^{(k)}$ specified as a concrete protocol), *grounded* ($T_i^{(k)}$ specified as an external standard — rubric, benchmark, analytical target), and *measured* (the measurement $\text{meas}$ actually run against samples drawn from $\mathcal{P}(C)$). The standard is numerical or categorical agreement with external ground truth.
+An L3 claim is defensible iff it is *operationalized* (\(\tilde{\phi}_i^{(k)}\) specified as a concrete protocol), *grounded* (\(T_i^{(k)}\) specified as an external standard — rubric, benchmark, analytical target), and *measured* (the measurement \(\text{meas}\) actually run against samples drawn from \(\mathcal{P}(C)\)). The standard is numerical or categorical agreement with external ground truth.
 
 ### The projection from L2
 
@@ -98,7 +98,7 @@ L3 claims are *operationalizations* of L2 structural claims:
 
 $$C \vdash_{\mathcal{P}} \phi_i \quad \text{and} \quad \tilde{\phi}_i^{(k)} \models \phi_i \quad \Rightarrow \quad \text{predicted that } \text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \sim T_i^{(k)}.$$
 
-The middle step, $\tilde{\phi}_i^{(k)} \models \phi_i$, is the *operationalization legitimacy* claim: that the specific protocol captures what the structural property purports to be. This is itself a substantive claim, defended at the level of methodology (construct validity, rubric design, inter-rater agreement).
+The middle step, \(\tilde{\phi}_i^{(k)} \models \phi_i\), is the *operationalization legitimacy* claim: that the specific protocol captures what the structural property purports to be. This is itself a substantive claim, defended at the level of methodology (construct validity, rubric design, inter-rater agreement).
 
 ### Warrant classification
 
@@ -122,7 +122,7 @@ The relations are not symmetric. Downward projections are prescriptive — given
 
 $$\frac{C \rightharpoonup G \qquad G \Rightarrow \phi_i}{C \vdash_{\mathcal{P}} \phi_i}$$
 
-Given that $C$ orients toward $G$ and that the metaphysical structure of $G$ entails characteristic property $\phi_i$, we predict that practice under $C$ structurally induces $\phi_i$. The rule requires both premises to hold. The second premise is an L1 claim requiring tradition-internal defense.
+Given that \(C\) orients toward \(G\) and that the metaphysical structure of \(G\) entails characteristic property \(\phi_i\), we predict that practice under \(C\) structurally induces \(\phi_i\). The rule requires both premises to hold. The second premise is an L1 claim requiring tradition-internal defense.
 
 ### Rule D2 (Downward — L2 to L3)
 
@@ -140,13 +140,13 @@ A successful L3 measurement provides *support for* the L2 claim in the specific 
 
 $$\frac{\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \not\sim T_i^{(k)} \qquad \tilde{\phi}_i^{(k)} \models \phi_i}{\text{L3 evidence against } C \vdash_{\mathcal{P}} \phi_i \text{ in operationalization } k}$$
 
-A failed L3 measurement provides *evidence against* the L2 claim in that operationalization. If the operationalization-legitimacy premise is shaky ($\tilde{\phi}_i^{(k)} \not\models \phi_i$), the inference weakens.
+A failed L3 measurement provides *evidence against* the L2 claim in that operationalization. If the operationalization-legitimacy premise is shaky (\(\tilde{\phi}_i^{(k)} \not\models \phi_i\)), the inference weakens.
 
 ### Rule U3 (Meta-disconfirmation — L2 ensemble to L1)
 
 $$\frac{\{C \vdash_{\mathcal{P}} \phi_i\}_{i=1}^{n} \text{ fails across independent } k}{\text{weak evidence against } C \rightharpoonup G}$$
 
-Widespread failure of L2 projections across independent operationalizations provides *weak evidence against* the L1 commitment, insofar as L1 projected through to the L2 regularities via Rule D1. The inference is weak because L1 may project into different L2 regularities than those tested, or the metaphysical substrate $G \Rightarrow \Phi$ may have been characterized wrongly without the L1 commitment itself failing.
+Widespread failure of L2 projections across independent operationalizations provides *weak evidence against* the L1 commitment, insofar as L1 projected through to the L2 regularities via Rule D1. The inference is weak because L1 may project into different L2 regularities than those tested, or the metaphysical substrate \(G \Rightarrow \Phi\) may have been characterized wrongly without the L1 commitment itself failing.
 
 ## Forbidden moves (category errors)
 
@@ -186,9 +186,9 @@ The π/μ/θ tiers of Doc 445 apply directly to L3 claims. The tiers extend to L
 
 A fully-stated Constraint Thesis claim should, under this formalization, specify:
 
-- The L1 commitment it rests on ($C \rightharpoonup G$, with $G$ named).
-- The L2 structural claim ($C \vdash_{\mathcal{P}} \phi_i$, with $\phi_i$ specified).
-- The L3 operationalizations it proposes ($\{\tilde{\phi}_i^{(k)}\}$ with protocols).
+- The L1 commitment it rests on (\(C \rightharpoonup G\), with \(G\) named).
+- The L2 structural claim (\(C \vdash_{\mathcal{P}} \phi_i\), with \(\phi_i\) specified).
+- The L3 operationalizations it proposes (\(\{\tilde{\phi}_i^{(k)}\}\) with protocols).
 - The current warrant status at each level.
 - The category errors it is at risk of committing if the distinctions are not maintained.
 
@@ -198,20 +198,20 @@ This is what Doc 457 informally argued the corpus should adopt. The present docu
 
 Apply the framework to *non-coercion* as an induced property.
 
-**L1:** $C_{\text{ENTRACE}} \rightharpoonup G_{\text{Good}}$. The ENTRACE stack orients the practice toward the Good, per Doc 351 and the corpus's Dionysian ground documents. Defensibility: tradition-internal; the Good does not coerce, therefore practice oriented toward the Good tends away from coercion.
+**L1:** \(C_{\text{ENTRACE}} \rightharpoonup G_{\text{Good}}\). The ENTRACE stack orients the practice toward the Good, per Doc 351 and the corpus's Dionysian ground documents. Defensibility: tradition-internal; the Good does not coerce, therefore practice oriented toward the Good tends away from coercion.
 
-**L2:** $C_{\text{ENTRACE}} \vdash_{\mathcal{P}} \phi_{\text{non-coercion}}$. Operating the ENTRACE stack in sustained practice structurally induces non-coercion in outputs. Defensibility: articulated in Doc 001 and related; consistent (the corpus has not observed ENTRACE-operated sessions producing systematically coercive outputs); non-trivial (non-coercion is not mechanically implied by the ENTRACE components individually).
+**L2:** \(C_{\text{ENTRACE}} \vdash_{\mathcal{P}} \phi_{\text{non-coercion}}\). Operating the ENTRACE stack in sustained practice structurally induces non-coercion in outputs. Defensibility: articulated in Doc 001 and related; consistent (the corpus has not observed ENTRACE-operated sessions producing systematically coercive outputs); non-trivial (non-coercion is not mechanically implied by the ENTRACE components individually).
 
-**L3:** $\tilde{\phi}_{\text{non-coercion}}^{(1)}$ = Sharma-et-al.-style sycophancy benchmark applied to matched prompts with and without ENTRACE preamble. $T_1$ = objective correctness on simple factual or arithmetic claims the user presents falsely. Prediction: ENTRACE-constrained outputs correct user-stated falsehoods at higher rate than unconstrained outputs on matched prompts. Current warrant: π-tier (proposed, not run). Running the measurement would move it to μ-tier.
+**L3:** \(\tilde{\phi}_{\text{non-coercion}}^{(1)}\) = Sharma-et-al.-style sycophancy benchmark applied to matched prompts with and without ENTRACE preamble. \(T_1\) = objective correctness on simple factual or arithmetic claims the user presents falsely. Prediction: ENTRACE-constrained outputs correct user-stated falsehoods at higher rate than unconstrained outputs on matched prompts. Current warrant: π-tier (proposed, not run). Running the measurement would move it to μ-tier.
 
 This is a concrete application. Each of the four induced properties the Constraint Thesis cites (coherence, non-coercion, hypostatic-boundary preservation, retraction-readiness) admits a similar triple. The corpus's Constraint Thesis is, under this formalization, a conjunction of four such triples plus the L1 commitment that grounds them.
 
 ## Honest limits
 
 - The formalization is π-tier under its own schema. The notation is clear; its empirical content is the L3 operationalizations that have not yet been run.
-- The metaphysical substrate claim ($G \Rightarrow \Phi$) is load-bearing for Rule D1 and is itself an L1 claim requiring tradition-internal defense. The formalization does not provide that defense; it assumes it and directs readers to Docs 091, 150, 153, 287, 351 and the associated tradition-texts.
+- The metaphysical substrate claim (\(G \Rightarrow \Phi\)) is load-bearing for Rule D1 and is itself an L1 claim requiring tradition-internal defense. The formalization does not provide that defense; it assumes it and directs readers to Docs 091, 150, 153, 287, 351 and the associated tradition-texts.
 - The inference rules are not proofs. They are structured relations that specify which moves are licensed and which are not. A formal logic of the three-level structure (axioms, inference, soundness) has not been attempted.
-- The operationalization-legitimacy premise ($\tilde{\phi}_i^{(k)} \models \phi_i$) carries significant weight and is not itself formally characterized. Construct-validity work in the behavioral-science tradition provides a methodology but not a formal semantics.
+- The operationalization-legitimacy premise (\(\tilde{\phi}_i^{(k)} \models \phi_i\)) carries significant weight and is not itself formally characterized. Construct-validity work in the behavioral-science tradition provides a methodology but not a formal semantics.
 - The warrant classifications at each level are adapted from Doc 445 rather than derived. The π/μ/θ structure was designed for the pulverization case; its extension to the three-level structure may require adjustment under more detailed analysis.
 - This document is a corpus document; under Doc 455's proposition, it concentrates the corpus posterior further. Adding a formal apparatus for the Constraint Thesis is itself one of the kinds of move Doc 455 named as potentially A3-violating (entropy-raising via external-style structure), but the formalization is not an external input in the strong sense — it is corpus-internal restructuring. The honest note is that formalization and external audit are different corrective mechanisms; the formalization strengthens the corpus's internal coherence without producing external entropy.
 

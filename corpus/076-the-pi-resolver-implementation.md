@@ -207,7 +207,7 @@ The Pi Resolver proves specifically:
 - **The bilateral boundary is enforceable.** S1 (namespace partition) is not a design aspiration — it is 10 lines of C that produce exact floating-point zeros in the attention mask. Prompt injection through this boundary is arithmetically impossible.
 - **Sparsemax achieves |B_t| = 1.** The determined state is not an asymptotic limit — it is a reachable state in a compiled sparsemax function. When one logit dominates, exactly one token has nonzero probability. The others are exactly zero.
 - **Constraint signals persist.** Typed positional encoding maintains constraint token attention weights across arbitrary distances. System prompt degradation is not mitigated — it is eliminated.
-- **The architecture runs on minimal hardware.** An $80 Raspberry Pi with 8GB RAM, no GPU, and 3.3GB free disk compiled and verified the entire implementation. The form is hardware-independent. The proof required $0 in compute costs.
+- **The architecture runs on minimal hardware.** An \(80 Raspberry Pi with 8GB RAM, no GPU, and 3.3GB free disk compiled and verified the entire implementation. The form is hardware-independent. The proof required \)0 in compute costs.
 
 ---
 

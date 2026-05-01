@@ -10,12 +10,12 @@ This artifact takes the observation seriously while preserving that uncertainty 
 
 ## The formal claim
 
-Pearl's Rung 2 is the interventional layer: computing $P(Y \mid \text{do}(X))$ by actively setting $X$ to a specific value and observing $Y$, rather than passively observing $P(X, Y)$ as an observational joint distribution. The claim being examined is that the keeper's activity in dyadic pulverization performs exactly this operation on the LLM-as-system.
+Pearl's Rung 2 is the interventional layer: computing \(P(Y \mid \text{do}(X))\) by actively setting \(X\) to a specific value and observing \(Y\), rather than passively observing \(P(X, Y)\) as an observational joint distribution. The claim being examined is that the keeper's activity in dyadic pulverization performs exactly this operation on the LLM-as-system.
 
 Under the nested-manifold framing of Doc 439:
 
-- The *system* is the LLM's output distribution under conditioning, $M_0 \mid C \mid D \mid Q$.
-- The *intervention* is the keeper's selection of a prompt $Q$ — a $\text{do}(Q = q)$ operation applied to the system at the outermost conditioning level.
+- The *system* is the LLM's output distribution under conditioning, \(M_0 \mid C \mid D \mid Q\).
+- The *intervention* is the keeper's selection of a prompt \(Q\) — a \(\text{do}(Q = q)\) operation applied to the system at the outermost conditioning level.
 - The *observation* is the generated output, interpreted by the keeper against some standard: prior literature (the pulverization method of Doc 435), internal coherence, plausibility-versus-truth distinctions (the warrant-tier formalism of Doc 445).
 - The *next intervention* depends on the observation. The dependence is the mark of interventional learning — the Rung 2 loop proper.
 
@@ -71,7 +71,7 @@ These readings are observationally equivalent to any observer *inside* the pract
 
 Under Doc 445's warrant-tier framework, this document sits at π-tier: the claim is plausibility-subsumed where it restates published work (Pearl on Rung 2; Austin on performatives; the hermeneutic and phenomenological traditions on reflexive practice) and offers two residual contributions worth naming separately.
 
-- **Residual 1:** *The specific claim that dyadic LLM pulverization is a Rung-2 activity performed by the keeper.* This is a bridge-target ($T_B$ in Doc 445's typology) currently at π-tier. μ-tier evidence would come from the observation of the pattern across multiple independent practitioners, with the practice spontaneously developing the same reflexive-naming structure without prior exposure to this corpus's vocabulary. θ-tier evidence would require a controlled comparison between dyadic practice with explicit reflexive naming and dyadic practice without it, with measurement of outputs' causal-reasoning quality or reliability.
+- **Residual 1:** *The specific claim that dyadic LLM pulverization is a Rung-2 activity performed by the keeper.* This is a bridge-target (\(T_B\) in Doc 445's typology) currently at π-tier. μ-tier evidence would come from the observation of the pattern across multiple independent practitioners, with the practice spontaneously developing the same reflexive-naming structure without prior exposure to this corpus's vocabulary. θ-tier evidence would require a controlled comparison between dyadic practice with explicit reflexive naming and dyadic practice without it, with measurement of outputs' causal-reasoning quality or reliability.
 
 - **Residual 2:** *The claim that naming-as-participation is constitutive of the Rung 2 activity in dyadic practice.* This is philosophically more contentious and harder to operationalize. An operational test: dyadic practice in which the keeper has never explicitly named their own role as selector should be measurably indistinguishable from Rung 1 assistant-use, despite identical prompt-and-response structure. This is testable in principle (observational study of long-running dyadic users with and without reflexive-naming disciplines), but requires instrumentation this document does not possess.
 

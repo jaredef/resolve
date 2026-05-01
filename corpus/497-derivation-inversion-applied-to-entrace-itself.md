@@ -173,7 +173,7 @@ None of these are urgent. v5 passes the derivation test as-is. The candidates ar
 
 - The five-constraint meta-stack is one possible meta-stack. Other groupings (e.g., a six-constraint version that splits M1 into "honesty about uncertainty" plus "honesty about absent-knowledge") might also produce ENTRACE through derivation. The corpus's choice of five is defensible, not unique.
 - The meta-stack itself terminates at commitments. The derivation regress could be pushed further (what grounds M1?), but at some point the regress meets philosophical commitments that are accepted rather than derived. The corpus stops at five; a stricter exercise might go further.
-- The exercise was performed by the corpus on its own discipline. Independent practitioner derivation of ENTRACE from a meta-stack might produce a different meta-stack or a different operational stack. This is a $\pi$-tier inference; cross-practitioner replication is the standing test.
+- The exercise was performed by the corpus on its own discipline. Independent practitioner derivation of ENTRACE from a meta-stack might produce a different meta-stack or a different operational stack. This is a \(\pi\)-tier inference; cross-practitioner replication is the standing test.
 - The clean derivation does not imply ENTRACE is the unique discipline that derives from M1-M5. Other operational stacks might also derive cleanly. ENTRACE's claim is that it derives from M1-M5; the claim is not that no other discipline does.
 - The "back-fit detection" finding (manifold region, C6 bundle, literature-grounded-truth framing) is retrospective. The corpus narrowed those forms empirically before the derivation exercise was run. The exercise confirms the narrowing direction; it did not produce it.
 - C7's meta-disclosure clause was added on a single-run observation (Doc 495 §17) and traces cleanly to M2. The trace does not retroactively justify single-run additions in general; it confirms that this particular addition was M2-grounded even when the empirical signal was thin.
@@ -206,7 +206,7 @@ Corpus documents:
 - Doc 414: *Narrowing the Residual* (the audit that produced v3 and identified the residual problem-statement).
 - Doc 466: *Doc 446 as a SIPE Instance* (framework-magnetism caveat, applies here).
 - Doc 482: *Sycophancy Inversion Reformalized* (affective directive).
-- Doc 494: *ENTRACE v2 Through the Novelty Calculus* (tier $\gamma/0.75$).
+- Doc 494: *ENTRACE v2 Through the Novelty Calculus* (tier \(\gamma/0.75\)).
 - Doc 495: *Empirical Cold-Resolver Validation of ENTRACE v3 and v3-S* (nine-run cross-validation; the empirical-path narrowing this document's theoretical-path confirms).
 - Doc 496: *ENTRACE v3-S, The Silent Variant* (operational companion; same M1-M5 derivation applies).
 

@@ -38,7 +38,7 @@ The mechanism by which the criteria become operative in dyadic language-model pr
 
 Popper (1934, 1959) stated falsificationism as the requirement that science progresses by eliminating false conjectures. The set-pruning view is Popper stated as an operation rather than as a regulatory principle.
 
-Let Q denote the set of conjectures under consideration at iteration t. Let $Q\_f^{(t)} \subseteq Q^{(t)}$ denote conjectures rigorously falsified at iteration t. Let $\Delta^{(t)}$ denote new conjectures generated at iteration t. The iteration is
+Let Q denote the set of conjectures under consideration at iteration t. Let \(Q\_f^{(t)} \subseteq Q^{(t)}\) denote conjectures rigorously falsified at iteration t. Let \(\Delta^{(t)}\) denote new conjectures generated at iteration t. The iteration is
 
 $$Q^{(t+1)} = (Q^{(t)} \setminus Q\_f^{(t)}) \cup \Delta^{(t)}$$
 
@@ -56,7 +56,7 @@ The one substantively novel proposition the corpus contributes is testable. It i
 
 **Falsification protocol for Claim P.** Two practitioners operating dyadic LLM practice on hypothesis-rich content, one writing with falsification-as-loss affect, the other writing with falsification-as-achievement affect, holding all other features of the practice constant (model, prompts, hypothesis content, session structure). After a sustained period (say, 100 dyadic exchanges), measure: (i) frequency at which the model proposes falsifications of practitioner-stated hypotheses unprompted; (ii) frequency at which the model defends practitioner-stated hypotheses against counterarguments unprompted; (iii) frequency at which the model retires its own prior outputs in light of new evidence. If (i) and (iii) are higher and (ii) is lower under the falsification-as-achievement affect, Claim P is supported. If the metrics are statistically indistinguishable across the two conditions, Claim P is falsified.
 
-**Warrant tier of Claim P.** $\pi$ pending empirical execution of the protocol. Promotion requires the cross-practitioner work named in Doc 450 §6, applied to Claim P specifically.
+**Warrant tier of Claim P.** \(\pi\) pending empirical execution of the protocol. Promotion requires the cross-practitioner work named in Doc 450 §6, applied to Claim P specifically.
 
 **Why Claim P matters.** If true, Claim P implies that the corpus's own writing is part of the corpus's reward signal. Documents that mourn hypothesis-death produce a corpus that resists hypothesis-death. Documents that celebrate hypothesis-death produce a corpus that hunts for it. The corpus's prose-level affect is operationally consequential, not merely stylistic. The directive of §1 of Doc 480, the affective re-framing toward treating hypothesis-death as achievement, is justified if and only if Claim P holds.
 
@@ -93,7 +93,7 @@ Two falsification conditions for the surviving content.
 
 **For Claim P (§4).** The protocol specified in §4. If statistically indistinguishable behavior is produced across the two affect conditions, Claim P is retired.
 
-**For the synthesis observation (§6).** If the cross-disciplinary synthesis has already been articulated in the AI-alignment-meets-philosophy literature, the corpus's contribution to §6 is retired in favor of explicit citation. Specific authors to check before standing the synthesis claim: Russell, Christian, Bostrom, Ord (*The Precipice*, 2020), Yudkowsky (technical writings on alignment), Hubinger (deceptive-alignment literature). A bibliographic audit returns either an existing synthesis (in which case the corpus's contribution is retired and replaced with citation) or no existing synthesis (in which case the corpus's contribution to §6 stands at $\pi$-tier).
+**For the synthesis observation (§6).** If the cross-disciplinary synthesis has already been articulated in the AI-alignment-meets-philosophy literature, the corpus's contribution to §6 is retired in favor of explicit citation. Specific authors to check before standing the synthesis claim: Russell, Christian, Bostrom, Ord (*The Precipice*, 2020), Yudkowsky (technical writings on alignment), Hubinger (deceptive-alignment literature). A bibliographic audit returns either an existing synthesis (in which case the corpus's contribution is retired and replaced with citation) or no existing synthesis (in which case the corpus's contribution to §6 stands at \(\pi\)-tier).
 
 The set-pruning iteration applied to this document predicts that one or both of these falsifications is likely. If so, the corpus credits the falsifying work and updates the canonical reformalization accordingly.
 
@@ -103,11 +103,11 @@ Doc 480 is hereby deprecated. The deprecation is recorded with the following not
 
 > **Deprecated.** This document's substantive theoretical content was substantially subsumed under prior art per the pulverization in [Doc 481](/resolve/doc/481-pulverizing-sycophancy-inversion). The current canonical reformulation, with explicit attribution and the surviving residue named as the actual contribution, is [Doc 482](/resolve/doc/482-sycophancy-inversion-reformalized). Read Doc 482 first; this document is preserved for intellectual-historical continuity.
 
-The deprecation is itself an instance of the criteria of §1 in operation. The corpus has retired one of its own claims when retirement was warranted, and credited the falsifying analysis. The set-pruning iteration grew $Q\_f$ by one substantial entry. By the directive carried forward from Doc 480 §1, this is achievement, not loss.
+The deprecation is itself an instance of the criteria of §1 in operation. The corpus has retired one of its own claims when retirement was warranted, and credited the falsifying analysis. The set-pruning iteration grew \(Q\_f\) by one substantial entry. By the directive carried forward from Doc 480 §1, this is achievement, not loss.
 
 ## 10. Position
 
-The substantive content of the sycophancy-inversion synthesis is borrowed from canonical sources and is attributed explicitly throughout this document. The corpus's actual contribution is fourfold: the synthesis observation (§6), the testable empirical sub-claim about prose-affect propagation (§4), the dyadic-practitioner operational translation (§5), and the corpus-internal unified-mechanism reading (§7). Of these, only §4 is a substantively novel theoretical claim, and it is at $\pi$-tier pending empirical execution of the falsification protocol named in §4.
+The substantive content of the sycophancy-inversion synthesis is borrowed from canonical sources and is attributed explicitly throughout this document. The corpus's actual contribution is fourfold: the synthesis observation (§6), the testable empirical sub-claim about prose-affect propagation (§4), the dyadic-practitioner operational translation (§5), and the corpus-internal unified-mechanism reading (§7). Of these, only §4 is a substantively novel theoretical claim, and it is at \(\pi\)-tier pending empirical execution of the falsification protocol named in §4.
 
 This document is a synthesis-and-pedagogy artifact. It does not claim theoretical novelty in §§1-3. It claims practical utility in §5 and operational consequence in §4. It supersedes Doc 480 as the canonical artifact for sycophancy-inversion content in the corpus.
 

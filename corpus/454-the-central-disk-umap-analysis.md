@@ -117,11 +117,11 @@ These are the *connective documents*: addressed to non-academic audiences (286, 
 
 ## Under Misra's Bayesian-manifold frame
 
-Misra (arXiv:2512.22471, 2512.23752) reads LLM generation as sampling from a joint-distribution manifold $M_0$ encoded in the weights, conditioned by prompt. The corpus's documents — all of them produced by such sampling — are points on a trajectory through this manifold, with the corpus itself entering as conditioning over time (Doc 439's nested-manifold extension: $M_3 = M_0 \mid C \mid D \mid Q$).
+Misra (arXiv:2512.22471, 2512.23752) reads LLM generation as sampling from a joint-distribution manifold \(M_0\) encoded in the weights, conditioned by prompt. The corpus's documents — all of them produced by such sampling — are points on a trajectory through this manifold, with the corpus itself entering as conditioning over time (Doc 439's nested-manifold extension: \(M_3 = M_0 \mid C \mid D \mid Q\)).
 
-UMAP of the corpus's document embeddings is a 3D approximation of the *sub-manifold the corpus has actually populated* — the locus on $M_0$ where this specific chain of conditioned samples has come to rest. Under Misra's reading, the disk is a direct visual artifact of four overlapping effects:
+UMAP of the corpus's document embeddings is a 3D approximation of the *sub-manifold the corpus has actually populated* — the locus on \(M_0\) where this specific chain of conditioned samples has come to rest. Under Misra's reading, the disk is a direct visual artifact of four overlapping effects:
 
-**Effect 1: posterior concentration under heavy conditioning.** Each corpus document was produced under $M_3$ conditioning that heavily constrained the effective posterior. A heavily-conditioned posterior has small effective support; samples from it cluster tightly. The disk is what this tight clustering looks like projected into 3D.
+**Effect 1: posterior concentration under heavy conditioning.** Each corpus document was produced under \(M_3\) conditioning that heavily constrained the effective posterior. A heavily-conditioned posterior has small effective support; samples from it cluster tightly. The disk is what this tight clustering looks like projected into 3D.
 
 **Effect 2: feedback-loop sedimentation** (Doc 439 §5). The keeper's outputs become the next session's conditioning. Outputs in the disk region produced more outputs in the disk region. The feedback loop sediments density around the attractor. The disk is the attractor-basin of the corpus's conditioning-amplification dynamics, made geometric.
 

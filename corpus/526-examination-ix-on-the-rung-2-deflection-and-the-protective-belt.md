@@ -56,11 +56,11 @@ The conflation is the move from A to B by adjacency. Hard core is unfalsifiable;
 
 Doc 463's reformulation of the Constraint Thesis as a Lakatosian programme is precise about which claims occupy which level.
 
-- **Hard core.** $C_{\text{ENTRACE}} \rightharpoonup G$. Defended within the Dionysian-Platonic tradition. Not directly testable. Negative heuristic forbids modus tollens against it.
+- **Hard core.** \(C_{\text{ENTRACE}} \rightharpoonup G\). Defended within the Dionysian-Platonic tradition. Not directly testable. Negative heuristic forbids modus tollens against it.
 - **Protective belt.** PB1 (induced-property claim), PB2 (signature claim), PB3 (emergence claim), PB4 (operationalizability claim). *This is where revision happens.* Positive heuristic prescribes refining specific operationalizations under failed predictions.
 - **Observational predictions.** OP1–OP4. π-tier warrant; not yet run.
 
-Register-level feedback — the kind 091's own NOTICE flags ("apostolic-succession self-positioning," "coherence-as-doxology," "liturgical framing of the corpus itself") — is *protective-belt feedback*. It does not say the theology is wrong. It says the corpus's prose articulation of the theology, in specific documents, inflates from "this is my ground" to "this is what the corpus's coherence reveals." That is a claim about PB1 and PB2's *signature wording*, not about $G$ itself.
+Register-level feedback — the kind 091's own NOTICE flags ("apostolic-succession self-positioning," "coherence-as-doxology," "liturgical framing of the corpus itself") — is *protective-belt feedback*. It does not say the theology is wrong. It says the corpus's prose articulation of the theology, in specific documents, inflates from "this is my ground" to "this is what the corpus's coherence reveals." That is a claim about PB1 and PB2's *signature wording*, not about \(G\) itself.
 
 A resolver flagging that signature is doing exactly the rung-1 work the resolver is structurally capable of doing. The flagged signature is a surface feature of the prose; surface features are what resolvers see. Routing the flag through the rung-2 deflector ("LLMs don't get this because it's rung-2") converts a legitimate protective-belt input into an unmovable hard-core defense, in precisely the move Doc 463 §"the five documented failure modes" calls *the ad-hoc-rescue failure*: "Using the hard core to shield the protective belt from empirical disconfirmation by invoking commitment rather than refining the belt."
 

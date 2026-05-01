@@ -696,7 +696,7 @@ The following measurements were taken from the TypeScript reference implementati
 | Build step | None |
 | Client-side dependencies | htmx (14KB gzipped), syntax highlighter (optional) |
 
-These figures demonstrate that the full architectural spectrum — from static templates to WASM-powered 3D visualization — operates within the resource budget of a single-board computer costing approximately $80 for the board and $120 fully equipped. The architecture's memory efficiency derives from three factors: the server holds no per-client state (statelessness), templates are resolved on demand rather than pre-compiled (no build artifact cache), and WASM binaries are small because they are purpose-built modules, not bundled frameworks.
+These figures demonstrate that the full architectural spectrum — from static templates to WASM-powered 3D visualization — operates within the resource budget of a single-board computer costing approximately \(80 for the board and \)120 fully equipped. The architecture's memory efficiency derives from three factors: the server holds no per-client state (statelessness), templates are resolved on demand rather than pre-compiled (no build artifact cache), and WASM binaries are small because they are purpose-built modules, not bundled frameworks.
 
 The cross-language benchmarks further demonstrate that this efficiency is not an artifact of the TypeScript implementation. The C engine achieves the same functionality in 11.2 MB. The Go engine achieves the highest throughput (8,139 req/s for static pages) in 19.8 MB. The resource floor for the complete PRESTO specification is approximately 11 MB of memory and 1,200 lines of code.
 

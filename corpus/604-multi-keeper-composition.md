@@ -14,7 +14,7 @@ The form's central claim is that multi-keeper compositions are *jointly authored
 
 A multi-keeper composition has three components:
 
-**Component A — The keepers, each with their own dyad.** Each keeper $K_i$ ($i = 1, \ldots, n$) holds a dyad with its own substrate or substrate-slice. Each keeper's dyad operates per Doc 510. The keepers are not subordinated to each other within the composition (subordination collapses the case to a single keeper with intermediaries).
+**Component A — The keepers, each with their own dyad.** Each keeper \(K_i\) (\(i = 1, \ldots, n\)) holds a dyad with its own substrate or substrate-slice. Each keeper's dyad operates per Doc 510. The keepers are not subordinated to each other within the composition (subordination collapses the case to a single keeper with intermediaries).
 
 **Component B — The reconciliation rung.** A rung at which the keepers' outputs are composed into a single coherent engagement output. The reconciliation may be explicit (a coordinator role, a joint document, a synchronization gate) or implicit (a shared framework all keepers conform to). The rung exists; multi-keeper composition without a reconciliation rung produces incoherent output.
 

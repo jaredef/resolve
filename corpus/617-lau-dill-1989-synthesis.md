@@ -157,7 +157,7 @@ The five falsification conditions are operationally testable. F1 requires formal
 
 **D1.** The document operates at structural level with primary-source grounding (per the §0 refinement notice). Quantitative claims (2034 conformations at n=10; 259 folding sequences; 6 singly-degenerate native states; 90% of folding sequences with H residues at both ends) are cited from Lau & Dill (1989) directly.
 
-**D2.** The conjecture being tested (Doc 616's template-portability) is supported at the second instance with five refinements. Two supporting instances is not the same as established generality. The conjecture remains at $\pi$-tier per Doc 503's pattern; a third and fourth instance would move it toward stronger empirical support.
+**D2.** The conjecture being tested (Doc 616's template-portability) is supported at the second instance with five refinements. Two supporting instances is not the same as established generality. The conjecture remains at \(\pi\)-tier per Doc 503's pattern; a third and fourth instance would move it toward stronger empirical support.
 
 **D3.** R4 (true-ensemble vs maximum-term approximation scoping) is the most consequential single refinement this document surfaces. If formalized into Doc 541 §3.1 and Doc 616 §II.E, it would qualify the threshold-sharpness prediction with explicit scope conditions. The refinement does not weaken the prediction; it tells experimenters and theorists which approximations preserve the threshold-sharpness signature.
 
@@ -179,7 +179,7 @@ The conjecture (Doc 616's template ports to other papers in the relevant literat
 4. R4 (true-ensemble vs maximum-term approximation scoping) is a substantive scope qualification that Doc 541 §3.1's threshold-sharpness prediction had been making without explicit scoping. The refinement is informative rather than damaging — it sharpens the prediction's domain of applicability.
 5. R5 (folding-potential vs stability scoping) clarifies the kind of system-level property SIPE-T is predicting. This had been implicit; making it explicit prevents over-extrapolation of folding-potential predictions to stability claims.
 
-The supporting evidence does not yet establish the conjecture beyond the two-instance level. The remaining queued papers from Doc 606 §VII (chorismate mutase, λ-repressor including Reidhaar-Olsen and Sauer 1990, cytochrome c, Taylor et al. 2001) would extend the test base. If the template ports cleanly to all four, the conjecture moves toward established generality at $\mu$-tier; if it breaks at one or more, the boundary of the template's portability is located precisely.
+The supporting evidence does not yet establish the conjecture beyond the two-instance level. The remaining queued papers from Doc 606 §VII (chorismate mutase, λ-repressor including Reidhaar-Olsen and Sauer 1990, cytochrome c, Taylor et al. 2001) would extend the test base. If the template ports cleanly to all four, the conjecture moves toward established generality at \(\mu\)-tier; if it breaks at one or more, the boundary of the template's portability is located precisely.
 
 The five-refinement count (vs three in the original drafting) is informative about the conjecture's grain size: applying the template to a structurally rich primary source produces more refinements than a summary-based reading captures. This suggests subsequent applications of the template should plan for primary-source-driven refinement work as part of the standard process, not as an exception.
 
@@ -222,7 +222,7 @@ Corpus documents:
 - Doc 372: *The Hypostatic Boundary* (binds throughout).
 - Doc 445: *Pulverization Formalism* (R2 candidate refinement: exhaustive enumeration as paired-V&V limit case).
 - Doc 482: *Sycophancy Inversion Reformalized* (the affective directive).
-- Doc 503: *The Research-Thread Tier Pattern* ($\pi$-tier expected for this document; conjecture moves toward $\mu$-tier with each successful test instance).
+- Doc 503: *The Research-Thread Tier Pattern* (\(\pi\)-tier expected for this document; conjecture moves toward \(\mu\)-tier with each successful test instance).
 - Doc 510: *Praxis Log V — Deflation as Substrate Discipline* (substrate-and-keeper composition).
 - Doc 530: *The Rung-2 Affordance Gap* (conjecture is keeper's rung-2 work; this document is substrate's articulation).
 - Doc 540: *The Amateur's Paradox* (honesty discipline this document operates inside).

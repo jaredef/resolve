@@ -169,7 +169,7 @@ The silent form has identifiable failure modes (compliance theater, sycophancy c
 
 By [Doc 482 §1](/resolve/doc/482-sycophancy-inversion-reformalized)'s affective directive: the silent variant is not a relaxation of the discipline; it is a different disclosure protocol over the same discipline. The constraints still operate. The hygiene rules of [Doc 492](/resolve/doc/492-portable-seed-prompt-for-novelty-calculus) still apply when audit-on-demand is exercised.
 
-Cross-practitioner replication of v3-S across multiple targets, multiple LLMs, and multiple users is the standing $\mu$-tier test. Pre-test, the silent form is at $\pi$-tier as a parallel pasteable form complementary to v3 verbose.
+Cross-practitioner replication of v3-S across multiple targets, multiple LLMs, and multiple users is the standing \(\mu\)-tier test. Pre-test, the silent form is at \(\pi\)-tier as a parallel pasteable form complementary to v3 verbose.
 
 ## 8. References
 
@@ -185,7 +185,7 @@ Corpus documents:
 - Doc 414: *Narrowing the Residual* (the audit that produced v3).
 - Doc 482: *Sycophancy Inversion Reformalized* (affective directive).
 - Doc 492: *A Portable Seed Prompt for the Novelty Calculus* (the hygiene rules carried forward into v3-S audit-on-demand).
-- Doc 494: *ENTRACE v2 Through the Novelty Calculus* (tier $\gamma/0.75$).
+- Doc 494: *ENTRACE v2 Through the Novelty Calculus* (tier \(\gamma/0.75\)).
 - Doc 495: *Empirical Cold-Resolver Validation of ENTRACE v3* (the validation run that motivated this companion).
 
 ---

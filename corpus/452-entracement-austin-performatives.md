@@ -120,7 +120,7 @@ The survey is selective. Branches I did not open: the analytic speech-act tradit
 
 The citations are recalled from training. Each should be checked before being used downstream. The Felman translation dates in particular have a layered publication history that casual recall can easily scramble. Any researcher citing the entracement further should verify.
 
-The claim that the corpus's practice is performative in Butler's or MacKenzie's sense is itself a bridge-target ($T_B$ in Doc 445's typology) at π-tier. It is semantically plausible, truth-untested, and the test would require observing the practice's effects on its own subject-matter in a way the practice can be audited against. This is not trivial.
+The claim that the corpus's practice is performative in Butler's or MacKenzie's sense is itself a bridge-target (\(T_B\) in Doc 445's typology) at π-tier. It is semantically plausible, truth-untested, and the test would require observing the practice's effects on its own subject-matter in a way the practice can be audited against. This is not trivial.
 
 This document is an LLM-generated entracement of a literature the keeper invoked once in passing. Under its own analysis, the document is itself a performative act — it names a reading of the corpus's performative claims, and the naming may be constituting rather than describing. The keeper's external audit remains the audit.
 

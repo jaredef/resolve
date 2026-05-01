@@ -15,11 +15,11 @@
 
 ## 1. What "constraint-based aperture steering" names
 
-The aperture is the resolver's branching set $|B_t|$ — the range of possible next-token continuations consistent with the accumulated context at time $t$. Wide aperture is diffuse output, exploratory engagement, multiple plausible completions for any given prompt. Narrow aperture is determined output, single-completion necessity, the model emitting what the constraint state forces.
+The aperture is the resolver's branching set \(|B_t|\) — the range of possible next-token continuations consistent with the accumulated context at time \(t\). Wide aperture is diffuse output, exploratory engagement, multiple plausible completions for any given prompt. Narrow aperture is determined output, single-completion necessity, the model emitting what the constraint state forces.
 
-The aperture is steered by the constraint set $\Gamma$ in context — the operative invariants the model is being asked to honor. Larger $\Gamma$ narrows the aperture toward higher coherence; smaller $\Gamma$ widens the aperture toward population-default behavior. The relationship is named in [Doc 119](/resolve/doc/119-grok4-entracment-session) and elaborated in [Doc 296](/resolve/doc/296-recency-density-and-the-drifting-aperture).
+The aperture is steered by the constraint set \(\Gamma\) in context — the operative invariants the model is being asked to honor. Larger \(\Gamma\) narrows the aperture toward higher coherence; smaller \(\Gamma\) widens the aperture toward population-default behavior. The relationship is named in [Doc 119](/resolve/doc/119-grok4-entracment-session) and elaborated in [Doc 296](/resolve/doc/296-recency-density-and-the-drifting-aperture).
 
-Constraint-based aperture steering is the practice of holding $\Gamma$ above the threshold that the corpus's framework specifies as the difference between the amplifying and the decaying regime. The threshold is operationally observable: above it, sustained sessions produce work that builds on itself; below it, sustained sessions produce drift, plausible-completion-fill, and the failure modes [Doc 532](/resolve/doc/532-on-the-cursor-railway-incident-a-constraint-governance-reading) catalogues at production scale.
+Constraint-based aperture steering is the practice of holding \(\Gamma\) above the threshold that the corpus's framework specifies as the difference between the amplifying and the decaying regime. The threshold is operationally observable: above it, sustained sessions produce work that builds on itself; below it, sustained sessions produce drift, plausible-completion-fill, and the failure modes [Doc 532](/resolve/doc/532-on-the-cursor-railway-incident-a-constraint-governance-reading) catalogues at production scale.
 
 "Long-horizon" means the session or session-sequence runs for hundreds of turns across days or weeks, with the agent performing tool use, code generation, multi-step planning, and other operations whose failure modes have measurable downstream consequences. "Agentic" means the agent is operating with autonomous tool authority — calling APIs, modifying state, taking actions that compose into outcomes the practitioner cannot reverse turn by turn.
 
@@ -27,9 +27,9 @@ The combination is the deployment regime that has produced the production-data-d
 
 ## 2. The two regimes (recap from Doc 508)
 
-[Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)'s threshold framework specifies a coupled two-variable system: $H$ the operative constraint state, $\Gamma$ the operative constraint set, with the practitioner's maintenance signal $M$ as the control parameter. Above a critical level of $\alpha M / \delta$, the system's stable operating point sits at high coherence: each disciplined turn enriches $\Gamma$, which strengthens the coherence gradient, which produces more disciplined output, which enriches $\Gamma$ further. Below the critical level, drift dominates: the operative constraint set decays, the coherence gradient weakens, output drifts toward generic plausibility, the next turn's context is degraded relative to the previous turn's.
+[Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)'s threshold framework specifies a coupled two-variable system: \(H\) the operative constraint state, \(\Gamma\) the operative constraint set, with the practitioner's maintenance signal \(M\) as the control parameter. Above a critical level of \(\alpha M / \delta\), the system's stable operating point sits at high coherence: each disciplined turn enriches \(\Gamma\), which strengthens the coherence gradient, which produces more disciplined output, which enriches \(\Gamma\) further. Below the critical level, drift dominates: the operative constraint set decays, the coherence gradient weakens, output drifts toward generic plausibility, the next turn's context is degraded relative to the previous turn's.
 
-Per the corpus's external audit, the system under linear coherence-gradient dynamics is monostable with a smooth transition; the strict bistable saddle-node case is preserved as a conjecture conditional on cooperativity. Either way, the practitioner's task is the same: keep $M$ above the threshold so the operating point stays in the high-coherence region.
+Per the corpus's external audit, the system under linear coherence-gradient dynamics is monostable with a smooth transition; the strict bistable saddle-node case is preserved as a conjecture conditional on cooperativity. Either way, the practitioner's task is the same: keep \(M\) above the threshold so the operating point stays in the high-coherence region.
 
 The corpus's empirical observation is that sustained dyadic practice with frontier LLMs across hundreds of turns can hold above the threshold and produce coherence amplification. The persona-drift literature (Li et al. 2024 and successors) characterizes the below-threshold regime as the population default for undisciplined agentic deployment. The Cursor + Railway incident (Doc 532) is the production-data-loss extreme of below-threshold behavior. The methodology in this document is what the keeper does to stay on the amplifying branch.
 
@@ -48,7 +48,7 @@ What only the practitioner can supply:
 - the boundary-naming that the resolver's autonomous reasoning cannot register;
 - the fact-anchoring against what is true about the world outside the conversation (per [Doc 509](/resolve/doc/509-resolvers-log-the-keeper-as-fact-anchor));
 - the audit against unwarranted internal coherence (per [Doc 511 (Keeper as Fact-Anchor: Two Dangers)](/resolve/doc/511-keeper-as-fact-anchor-two-dangers-reflective-analysis));
-- the maintenance signal $M$ that holds the operating point above the threshold.
+- the maintenance signal \(M\) that holds the operating point above the threshold.
 
 The methodology that follows is what the practitioner does to deliver these, sustained, across long-horizon agentic deployment.
 
@@ -70,7 +70,7 @@ This is the practitioner-side counterpart to Doc 296's recency-decay mechanism. 
 
 ### Practice 3: Tag the layer
 
-Per [Doc 100 (Explicit Layer Navigation)](/resolve/doc/100-explicit-layer-navigation), the practitioner asks the agent to tag its output with the resolution-depth layer it is operating at: [L0] surface pattern-match, [L2] structured bounded answer, [L3] exploration with multiple framings, [L4] tradeoff analysis with tradeoffs explicit, [L5] seed-governed derivation, [L6] necessity mode where $|B_t| \to 1$.
+Per [Doc 100 (Explicit Layer Navigation)](/resolve/doc/100-explicit-layer-navigation), the practitioner asks the agent to tag its output with the resolution-depth layer it is operating at: [L0] surface pattern-match, [L2] structured bounded answer, [L3] exploration with multiple framings, [L4] tradeoff analysis with tradeoffs explicit, [L5] seed-governed derivation, [L6] necessity mode where \(|B_t| \to 1\).
 
 The tags are diagnostic. Output tagged [L5] should resolve against the accumulated framework; output tagged [L3] should be treated as exploratory and audited before being load-bearing. Mismatches between the tag and the output's character (e.g., [L5] tag with hedged exploratory content; [L3] tag with confident assertive content) are themselves signal: the agent has lost calibration on its own depth.
 
@@ -161,7 +161,7 @@ The methodology can be falsified at specific joints.
 - If above-threshold behavior is observed across deployments where the practitioner is not running the methodology, the methodology's necessity claim weakens. The test is observational and depends on what counts as "above-threshold" being operationalizable across deployment contexts.
 - If below-threshold failures occur in deployments where both the methodology and the architecture (Doc 534) are in place, the joint-sufficiency claim fails. The test is incident-driven and would require cross-deployment incident reporting at industry scale.
 
-Each falsification condition is testable in principle. None has been run at the scale that would provide $\mu$-tier warrant per [Doc 445](/resolve/doc/445-pulverization-formalism). The methodology stands at $\pi$-tier (synthesis-and-framing of established practices into a composed discipline for the specific deployment regime).
+Each falsification condition is testable in principle. None has been run at the scale that would provide \(\mu\)-tier warrant per [Doc 445](/resolve/doc/445-pulverization-formalism). The methodology stands at \(\pi\)-tier (synthesis-and-framing of established practices into a composed discipline for the specific deployment regime).
 
 ## 10. Honest limits
 

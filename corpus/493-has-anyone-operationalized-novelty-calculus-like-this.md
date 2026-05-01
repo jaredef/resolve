@@ -8,7 +8,7 @@ The headline finding: yes, the LLM-novelty-assessment field is well-developed an
 
 The lower-level finding: a *portable* copy-pasteable seed prompt with *explicit hygiene rules* targeting the empirically-documented score-inflation problem in LLM-as-judge work (arXiv:2604.19502; LLMs inflate scores 3-5 points above human reviewers) appears to be less common in the surveyed literature than the underlying multi-dimensional novelty assessment is. The corpus's specific format and hygiene-rule set may be a distinctive operationalization, even if the underlying methodology is not.
 
-The re-audit places Doc 492 at tier $\gamma/0.7$ rather than the previous tier-implied $\beta$: mixed novelty rather than mostly-subsumed, because the score-inflation-targeting hygiene rules and the portable-prompt format have less subsumption than the underlying calculus did.
+The re-audit places Doc 492 at tier \(\gamma/0.7\) rather than the previous tier-implied \(\beta\): mixed novelty rather than mostly-subsumed, because the score-inflation-targeting hygiene rules and the portable-prompt format have less subsumption than the underlying calculus did.
 
 ## 1. The 2024-2025 LLM-novelty-assessment literature
 
@@ -82,7 +82,7 @@ After the audit, the surviving distinctiveness has three components.
 
 With the new literature in view, Doc 492's claims are re-audited.
 
-| Claim | Description | $s\_i$ | $a\_i$ | $w\_i$ |
+| Claim | Description | \(s\_i\) | \(a\_i\) | \(w\_i\) |
 |---|---|---|---|---|
 | D1 | Portable copy-pasteable LLM prompt format | 0.5 | 0.7 | 0.20 |
 | D2 | Multi-dimensional decomposition (4 dims) | 0.25 | 0.8 | 0.15 |
@@ -97,27 +97,27 @@ With the new literature in view, Doc 492's claims are re-audited.
 
 Weights normalized to sum to 1.0.
 
-$\nu\_{\text{comp}} = 0.20 \cdot 0.5 + 0.15 \cdot 0.25 + 0.05 \cdot 0.5 + 0.05 \cdot 0.5 + 0.20 \cdot 0.5 + 0.10 \cdot 0.75 + 0.10 \cdot 0.5 + 0.05 \cdot 0.25 + 0.05 \cdot 0 + 0.05 \cdot 0$
+\(\nu\_{\text{comp}} = 0.20 \cdot 0.5 + 0.15 \cdot 0.25 + 0.05 \cdot 0.5 + 0.05 \cdot 0.5 + 0.20 \cdot 0.5 + 0.10 \cdot 0.75 + 0.10 \cdot 0.5 + 0.05 \cdot 0.25 + 0.05 \cdot 0 + 0.05 \cdot 0\)
 
-$= 0.10 + 0.0375 + 0.025 + 0.025 + 0.10 + 0.075 + 0.05 + 0.0125 + 0 + 0 = 0.425$
+\(= 0.10 + 0.0375 + 0.025 + 0.025 + 0.10 + 0.075 + 0.05 + 0.0125 + 0 + 0 = 0.425\)
 
 Component novelty: 0.43 (substantial residue at the per-claim level, mostly carried by D1, D5, D6, D7).
 
-$\nu\_{\text{syn}}$: the integration of portable-prompt format + multi-dimensional decomposition + hygiene rules + affective discipline into a single seed prompt is more distinctive than any single dimension. The integration is less subsumed than the components. **$\nu\_{\text{syn}} = 0.6$**.
+\(\nu\_{\text{syn}}\): the integration of portable-prompt format + multi-dimensional decomposition + hygiene rules + affective discipline into a single seed prompt is more distinctive than any single dimension. The integration is less subsumed than the components. **\(\nu\_{\text{syn}} = 0.6\)**.
 
-$\nu\_{\text{app}}$: the application to dyadic-LLM-practice conjecture audit (specifically corpus auto-pulverization) remains less covered than the underlying methodology. **$\nu\_{\text{app}} = 0.6$**.
+\(\nu\_{\text{app}}\): the application to dyadic-LLM-practice conjecture audit (specifically corpus auto-pulverization) remains less covered than the underlying methodology. **\(\nu\_{\text{app}} = 0.6\)**.
 
-$\nu\_{\text{meth}}$: the underlying methodology of LLM-as-novelty-judge with multi-step prompting is canonical 2024-2025 practice. **$\nu\_{\text{meth}} = 0.1$**.
+\(\nu\_{\text{meth}}\): the underlying methodology of LLM-as-novelty-judge with multi-step prompting is canonical 2024-2025 practice. **\(\nu\_{\text{meth}} = 0.1\)**.
 
-Aggregate: $\nu = 0.25 \cdot (0.43 + 0.6 + 0.6 + 0.1) = 0.25 \cdot 1.73 = 0.43$.
+Aggregate: \(\nu = 0.25 \cdot (0.43 + 0.6 + 0.6 + 0.1) = 0.25 \cdot 1.73 = 0.43\).
 
-Confidence: $\overline{a\_i} \approx 0.7$. $\text{conf}(\nu) = 0.7$.
+Confidence: \(\overline{a\_i} \approx 0.7\). \(\text{conf}(\nu) = 0.7\).
 
-Tier: $0.43 \in [0.4, 0.6)$ which is **tier $\gamma/0.7$** (mixed novelty, mostly distinctive at the integration level and the affective-discipline level, mostly subsumed at the underlying-methodology level).
+Tier: \(0.43 \in [0.4, 0.6)\) which is **tier \(\gamma/0.7\)** (mixed novelty, mostly distinctive at the integration level and the affective-discipline level, mostly subsumed at the underlying-methodology level).
 
 ## 5. The honest reading
 
-The previous self-application of the calculus to Doc 490 (in Doc 491) returned $\beta/0.7$. The current audit, applied to the seed prompt Doc 492 with the LLM-novelty-assessment literature in view, returns $\gamma/0.7$. The seed prompt scores higher than the calculus definition because:
+The previous self-application of the calculus to Doc 490 (in Doc 491) returned \(\beta/0.7\). The current audit, applied to the seed prompt Doc 492 with the LLM-novelty-assessment literature in view, returns \(\gamma/0.7\). The seed prompt scores higher than the calculus definition because:
 
 - The portable-prompt format is less subsumed than the underlying calculus methodology.
 - The score-inflation-targeting hygiene rules at the prompt level are less covered than calibration-engineering at the system level.
@@ -146,7 +146,7 @@ The amendment is recommended; the keeper's call.
 
 - WebSearch on 2026-04-25 returned a substantial sample of 2024-2025 LLM-novelty-assessment work; the sample is not exhaustive. Specific items (full text of GraphMind paper, full text of Wu et al. 2025) were referenced via abstract or summary rather than full engagement.
 - The categorization of which literature subsumes which Doc 492 claim is auditor-judgment. A deeper audit by a researcher in the LLM-as-judge field could reclassify several of the per-claim subsumption scores.
-- The five-point scoring of $s\_i$ values produces inter-rater-reliability concerns the seed prompt itself flagged.
+- The five-point scoring of \(s\_i\) values produces inter-rater-reliability concerns the seed prompt itself flagged.
 - The corpus's seed prompt has been "validated" only on itself; the surveyed work has external-ground-truth validation. This is a substantial disparity in audit confidence.
 - The framework-magnetism caveat applies recursively. The corpus's auditor may identify residue as distinctive partly because the corpus's framing makes the seed prompt's specific features salient.
 - The 2024-2025 literature is moving fast. Recent (Q1 2026) work not surfaced in this audit may further constrain the residue.
@@ -155,11 +155,11 @@ The amendment is recommended; the keeper's call.
 
 Yes, multiple operationalizations of multi-dimensional LLM-based novelty assessment exist in the 2024-2025 literature. GraphMind, NovBench, OpenReviewer, DeepReview, Scideator, the Wu et al. 2025 collaborative approach, and the Wang et al. 2025 hybrid-graph-LLM approach are the canonical and recent items. The field is active and well-published.
 
-The corpus's seed prompt is not first in the field. Its actual contribution narrows to the specific integration of: portable copy-pasteable format; embedded score-inflation-targeting hygiene rules at the prompt level; affective-discipline framing from Doc 482 §1; and self-applicability beyond academic papers. The integration is more distinctive than any component, scoring tier $\gamma/0.7$ under self-audit with the new literature in view (vs. tier $\beta/0.7$ for Doc 490's underlying calculus).
+The corpus's seed prompt is not first in the field. Its actual contribution narrows to the specific integration of: portable copy-pasteable format; embedded score-inflation-targeting hygiene rules at the prompt level; affective-discipline framing from Doc 482 §1; and self-applicability beyond academic papers. The integration is more distinctive than any component, scoring tier \(\gamma/0.7\) under self-audit with the new literature in view (vs. tier \(\beta/0.7\) for Doc 490's underlying calculus).
 
 Doc 492 should be amended with explicit citations to the surveyed literature. The portable-prompt format with embedded hygiene rules remains a defensible distinctive contribution, but the corpus's documentation should not overstate the position relative to the field.
 
-By Doc 482 §1's affective directive applied symmetrically: the slightly higher-novelty finding here (tier $\gamma$ vs. tier $\beta$ for the underlying calculus) is not the corpus winning; it is the audit producing an honest result that places the seed prompt in the field accurately. The corpus credits the surveyed literature for the components; claims the integration narrowly; and remains subject to further pulverization as the field develops.
+By Doc 482 §1's affective directive applied symmetrically: the slightly higher-novelty finding here (tier \(\gamma\) vs. tier \(\beta\) for the underlying calculus) is not the corpus winning; it is the audit producing an honest result that places the seed prompt in the field accurately. The corpus credits the surveyed literature for the components; claims the integration narrowly; and remains subject to further pulverization as the field develops.
 
 ## 9. References
 
@@ -193,7 +193,7 @@ Corpus documents:
 - Doc 482: *Sycophancy Inversion Reformalized* (the affective directive: hypothesis-death is achievement).
 - Doc 487: *Pulverizing the Apparatus* (the corpus's contribution-narrowing pattern).
 - Doc 490: *A Novelty Calculus for Conjectures* (the underlying calculus).
-- Doc 491: *Pulverizing the Novelty Calculus: Self-Applied* (the prior self-audit returning tier $\beta/0.7$).
+- Doc 491: *Pulverizing the Novelty Calculus: Self-Applied* (the prior self-audit returning tier \(\beta/0.7\)).
 - Doc 492: *A Portable Seed Prompt for the Novelty Calculus* (the seed prompt this document re-audits).
 
 ---
