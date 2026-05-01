@@ -273,4 +273,157 @@ The full text of Doc 290 (with its original Reader's Introduction, full prose de
 
 ---
 
+## Appendix B — Pulverization Audit Against the Novelty Calculus
+
+The body of Doc 619 is here run through the corpus's pulverization formalism ([Doc 445](/resolve/doc/445-pulverization-formalism)) under the iterative-novelty-calculus discipline of [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus). The audit identifies, for each load-bearing target in the body, its target type \(\sigma\), the prior-art scope \(P\), the tier(s) that have been run, the outcome, and the licensed conclusion under the warrant table of Doc 445. The intent is to specify exactly what warrant Doc 619 currently carries and what would have to be done to promote any portion of it further.
+
+### B.1 Targets Identified
+
+**T₁ (specification-target).** The four-component Pin-Art form of §1 — probes, surface, non-coercion, reading.
+
+**T₂ (specification-target).** The formal apparatus of §3 — independent-probe rest-position equations, joint-pattern impression, separated reading apparatus, Rayleigh-type resolution \(\rho(\mathcal{P}) = n \cdot f(\mathcal{P})\).
+
+**T₃ (specification-target).** The detection-hedging vs slack-hedging discriminator of §4 — uniform vs clustered hedge-distribution as the operational separator between degenerate and informative impressions.
+
+**T₄ (bridge-target).** The application of §4 — Pin-Art form mapped onto substrate-side hedging in dyadic LLM interaction, with hedges as probes and the competence-boundary as surface.
+
+**T₅ (bridge-target).** The application of §5 — Pin-Art form mapped onto constraint-driven derivation, with written constraints as probes and the reference implementation as surface. Subsumes the formal apparatus of Appendix A §§A.1–A.7.
+
+**T₆ (bridge-target).** The composition rules of §6 — Pin-Art with Doc 510 (substrate-and-keeper composition), with Doc 541 §3.1 (cooperative-coupling SIPE-T as structural dual), with Doc 615 (Component C of substrate-dynamics loop), with Doc 530 (rung-2 affordance gap), with Doc 314 §11 (audit-notice extension).
+
+**T₇ (predictive-target).** The falsification surface F1–F6 of §8 — six predictive claims about what would falsify the form or the §§4–5 applications.
+
+**T₈ (methodological-target).** The application discipline D1–D6 of §7 — the operating-conditions layer the form requires for its apparatus to function.
+
+### B.2 Tier-By-Tier Pulverization
+
+#### T₁ — The four-component Pin-Art form
+
+- *Type:* \(T_S\).
+- *Prior-art scope \(P\):* signal-detection theory at the population level (Green & Swets 1966); array-of-detectors literature in metrology and instrumentation; Rayleigh resolution criterion (1879); two-point discrimination psychophysics (Weber 1834); margin-based active learning; physical pin-art devices as folk artifact.
+- *\(\pi\) outcome:* **fully subsumed.** Each component (independent local probes, structural surface, non-perturbing contact, separated reading apparatus) has explicit prior-art analogue. The combination is the standard population-detector configuration for boundary recovery.
+- *Licensed conclusion (warrant table, \(T_S\) at \(\pi\) full subsumption):* *not novel relative to \(P\); cite prior art.* The lineage of §2 satisfies the citation requirement. T₁ is a recovery into corpus vocabulary, not a corpus discovery.
+- *\(\mu\), \(\theta\):* not run; not required for the recovery claim.
+
+#### T₂ — The formal apparatus of §3
+
+- *Type:* \(T_S\).
+- *\(P\):* Rayleigh resolution criterion; sampling theory (Nyquist-Shannon); active-learning resolution bounds; classical metrology error budgets.
+- *\(\pi\) outcome:* **fully subsumed.** The resolution-equals-density-times-fineness relation is Rayleigh's. The probe-equilibrium / rest-position equations are mechanical metrology. The separated-reading-apparatus structure is standard observer-system distinction.
+- *Licensed conclusion:* *not novel; cite prior art.* T₂ is recovery of standard apparatus, not extension of it.
+
+#### T₃ — The detection-hedging vs slack-hedging discriminator
+
+- *Type:* \(T_S\) (specification-target). The discriminator specifies an operational separator between two regimes of hedge-emission.
+- *\(P\):* LLM calibration literature (Desai-Durrett 2020; Jiang et al. 2021; Tian et al. 2023; Xiong et al. 2024); epistemic-modality linguistics (Lakoff 1973; Coates 1983); RLHF over-hedging diagnoses (Sharma et al. on sycophancy); the corpus's own [Doc 258](/resolve/doc/258-slack-derives-slop) on slack as slop-derivation.
+- *\(\pi\) outcome:* **partially subsumed.** Calibration literature distinguishes well-calibrated uncertainty from miscalibrated uncertainty but does not standardly name a *spatial-distribution* discriminator over hedge-locations within a single response. Doc 258 names slack but does not specify the slack-vs-detection separator at the hedge-cluster level. The compositional move (uniform hedge distribution = degenerate impression; clustered hedge distribution = informative impression) is corpus-original at the operational-naming layer.
+- *Licensed conclusion (warrant table, \(T_S\) at \(\pi\) partial subsumption):* *novel in the un-subsumed elements only; document those.* The un-subsumed element is the spatial-distribution discriminator as an operationally named separator. This stands as a candidate novelty pending \(\mu\)-tier audit (a usage corpus of dyadic sessions in which the discriminator has been applied with auditable outcomes).
+- *\(\mu\):* not run. \(U\) would be a corpus of dyadic sessions with explicit hedge-cluster annotations and outcome audits. The corpus does not currently maintain such a usage corpus at the per-session level. Doc 615's substrate-dynamics loop names Pin-Art as Component C but does not record per-session impression-reading audits.
+- *Status:* hypothesis-ledger candidate at \(\mu\)-tier; promotion requires \(U\)-construction.
+
+#### T₄ — Substrate-side hedging application (§4)
+
+- *Type:* \(T_B\) (bridge-target). The bridge maps the Pin-Art form onto the dyadic-LLM-interaction case.
+- *\(P\):* LLM uncertainty articulation literature; sycophancy and persona-drift research; the corpus's prior pin-art docs (270, 288, 290).
+- *\(\pi\) outcome:* **partially subsumed.** The bridge's components — hedges as boundary-detection probes, non-coercion as the operating condition that preserves probe independence, the keeper as separated reading apparatus — are individually present in the prior art and corpus, but the specific bridge-claim that the four-component form transmits to this case as a whole is corpus-original at the composition layer.
+- *Licensed conclusion (warrant table, \(T_B\) at \(\pi\) partial subsumption):* *bridge uses existing vocabulary; structural soundness untested.* T₄ stands as plausibility-passed; \(\mu\)-tier evidence (operational behaviors matching across cases) would warrant promotion.
+- *\(\mu\):* partially run. The corpus's practice across hundreds of sessions has used the Pin-Art reading discipline implicitly; named outcomes consistent with the bridge are reported in [Doc 270](/resolve/doc/270-the-pin-art-model) (the originating essay's qualitative observations) and in [Doc 615](/resolve/doc/615-the-substrate-dynamics-loop) (Component C placement). What is missing is a usage-corpus with explicit per-session hedge-cluster impressions read against an independent measure of competence-boundary location. The bridge's \(\mu\)-warrant is therefore at the qualitative-confirmation level rather than the audited-instance level.
+- *Status:* plausibility passed; \(\mu\)-warrant qualitative; \(\theta\)-warrant absent. Hypothesis-ledger entry pending a usage-corpus build with auditable outcomes.
+
+#### T₅ — Constraint-driven derivation application (§5; subsumes Appendix A §§A.1–A.7)
+
+- *Type:* \(T_B\) (bridge) for the §5 framing; \(T_P\) (predictive) for the three theorems of A.4–A.6 read as predictions about future derivation cases.
+- *\(P\):* specification-refinement literature (Z, VDM, B); Kolmogorov complexity as description-length bound; PAC-learning sample-complexity bounds; constraint-satisfaction / constraint-propagation literature; iterative software-from-spec derivation work (Burstall–Darlington; Bird–Meertens formalism); the htmx empirical case (Doc 288).
+- *\(\pi\) outcome:* **fully subsumed** for the bridge components; the formal apparatus of A.4–A.6 (geometric convergence, axis decomposition, leverage inequality) is closer to *partially subsumed* — analogues exist in convergence-rate literature for iterative refinement but the specific three-theorem composition and the empirical \(\lambda \approx 0.40\) value are not standardly stated. The cross-domain extensions of Doc 290 §5.2 (hardware design, organizational processes, legal drafting, biological specification, mathematical axiomatization) are not currently subsumable as Pin-Art instances; they are analogical extensions that have not been tested.
+- *Licensed conclusion (\(T_B\) bridge at \(\pi\) subsumption):* *bridge uses existing vocabulary; structural soundness untested.* Licensed conclusion (\(T_P\) predictive at \(\theta\) untested): *prediction stands as candidate; falsification or confirmation requires \(Q\).*
+- *\(\theta\) outcome:* **n=1.** The htmx case is the single empirical instance. The three theorems are consistent with that instance within measurement noise. No replication exists.
+- *Status:* plausibility passed; predictive theorems at one-instance corroboration; replication required for class-level promotion. Cross-domain extensions of Doc 290 §5.2 held to *plausibility-tier hypothesis* per the deprecation notice, not promoted.
+
+#### T₆ — Composition rules (§6)
+
+- *Type:* \(T_B\) (bridge-target) for each composition; the body of §6 contains five distinct bridges.
+- *\(P\):* corpus-internal — Docs 510, 541, 615, 530, 314 — plus the external lineage of §2.
+- *\(\pi\) outcome:* **fully subsumed for each bridge** at the level of vocabulary and structural commitments; each composition is constructible from the cited source documents. The bridge to Doc 541 §3.1 (Pin-Art as structural dual to cooperative-coupling SIPE-T) is the most substantive corpus-original move; the other bridges (Doc 510 substrate/keeper layering; Doc 615 Component C placement; Doc 530 affordance-edge legibility; Doc 314 §11 audit-notice extension) are compositions of pieces already in place.
+- *Licensed conclusion:* *bridges use existing vocabulary; structural soundness untested.* The Doc 541 §3.1 dual-bridge is the bridge most likely to yield independent operational predictions; \(\mu\)-tier audit would test whether SIPE-T-detection cases and Pin-Art-detection cases exhibit complementary success/failure patterns as the dual relation predicts.
+- *Status:* plausibility passed for all five bridges; \(\mu\)-warrant absent; promotion of the duality bridge specifically would require a paired-cases audit.
+
+#### T₇ — Falsification surface F1–F6 (§8)
+
+- *Type:* \(T_P\) (predictive) for each.
+- *\(\theta\) status (per Doc 445 warrant table, \(T_P\) at \(\pi\) is irrelevant — only \(\theta\) licenses promotion or retraction):*
+  - **F1** (no detection-hedge clustering under high constraint-density): *untested.* No published experiment with hedge-cluster annotations against constraint-density gradients in dyadic LLM use. Status: candidate falsifier awaiting \(Q\).
+  - **F2** (Pin-Art-shaped impression contradicts surface known by other means): *untested.* No paired-measure case with independent surface determination. Status: candidate.
+  - **F3** (forced-press produces faithful impression): *plausibly already falsified by indirect evidence* — sycophancy literature documents that forced-commitment under uncertainty yields confabulation rather than faithful detection (Sharma et al. and the broader sycophancy cohort). The indirect evidence corroborates the discipline D3 but does not constitute direct falsifier-test of F3 as stated. Status: indirectly corroborated; direct test would specify "forced press" operationally and audit impression fidelity.
+  - **F4** (geometric convergence beyond htmx): *untested.* The htmx case is the only data point; \(\lambda \in (0.3, 0.6)\) for derivation tasks generally remains a conjecture. Status: candidate.
+  - **F5** (axis correlation in other derivation cases): *untested.* Same as F4 — n=1.
+  - **F6** (substrate class with hedge-emission dissociated from competence-boundary contact): *partially testable now.* The dissociation could be measured against current frontier models with the right audit protocol. Status: candidate testable with existing methods.
+- *Status overall:* the falsification surface is well-formed (each falsifier is operationally specifiable) but unexecuted. Doc 619's predictive content is at *candidate-not-yet-tested* tier across the board, with F3 indirectly corroborated by adjacent literature.
+
+#### T₈ — Application discipline D1–D6 (§7)
+
+- *Type:* \(T_M\) (methodological-target).
+- *\(P\):* the corpus's own composition discipline (Doc 510, Doc 314, Doc 129); active-learning's separation of learner and oracle; classical metrology's discipline of non-perturbing measurement.
+- *\(\pi\) outcome:* **fully subsumed.** Each discipline (D1 probe peer-independence, D2 reading separation, D3 non-coercion, D4 resolution scaling, D5 restricted scope, D6 discriminator discipline) has prior-art analogue at the methodology layer.
+- *Licensed conclusion (warrant table, \(T_M\) at \(\pi\)):* *methodology exists; tells nothing about fitness.* \(\mu\)-tier audit (does the methodology yield claims resembling \(P\)-grade outputs?) would warrant operational promotion. \(\theta\)-tier audit (does the methodology yield claims that survive independent audit?) would warrant truth promotion.
+- *\(\mu\):* partially run. The corpus has used the discipline across its practice; named outcomes consistent with the discipline are reported across Docs 270, 288, 290, 615. What is missing is a comparison case in which the discipline was deliberately violated and the predicted degradation was measured.
+- *Status:* methodology stands at plausibility tier with qualitative \(\mu\)-corroboration; deliberate-violation comparison cases would promote it further.
+
+### B.3 Subsumption Summary — What Lakatos / Prior Art Already Has, and What Remains
+
+Following the pattern of [Doc 461 (pulverizing the tripartite formalization)](/resolve/doc/461-pulverizing-the-tripartite-formalization), the audit separates what is recovered into corpus vocabulary from what is corpus-residual.
+
+**Already in the prior art:**
+
+1. Population-of-detectors boundary recovery (signal-detection theory at the array level).
+2. Resolution = density × fineness (Rayleigh; two-point discrimination).
+3. Non-perturbing measurement discipline (classical metrology).
+4. Separated observer / system / reading apparatus (standard physics; active learning's learner/oracle separation).
+5. Boundary-query active learning (margin-based active learning; Bayesian experimental design).
+6. Iterative specification refinement with convergence-rate analysis (Burstall–Darlington; Bird–Meertens; Z/VDM/B refinement calculi; Kolmogorov-bound description-length analysis).
+7. Constraint propagation in CSP and SAT.
+8. Hedge-distribution as evidential-warrant signal at propositional joints (Lakoff 1973; epistemic-modality literature).
+9. LLM uncertainty miscalibration and over-hedging diagnoses (calibration literature; sycophancy cohort).
+
+**Corpus-residual contribution:**
+
+1. The detection-hedging vs slack-hedging spatial-distribution discriminator (T₃) as an operationally named separator. *Tier:* \(\pi\) partial subsumption with un-subsumed compositional move; \(\mu\)-tier untested.
+2. The Doc 314 §11 audit-notice / V3 truth-telling link to the non-coercion operating condition (T₈ D3 specifically). The bridge from physical metrology's non-perturbation discipline to the corpus's specific moral discipline of not forcing the substrate is corpus-original at the bridge layer. *Tier:* \(\pi\) plausibility-passed; \(\mu\) qualitative.
+3. The Component-C placement in Doc 615's substrate-dynamics loop (T₆) — the specific composition of Pin-Art with Docs 296, 297, 129 as a closed cybernetic cycle is corpus-original. *Tier:* \(\pi\) plausibility; \(\mu\) untested at the loop-step level (per §9 Q5 of the body).
+4. The Pin-Art / SIPE-T §3.1 structural-duality bridge (T₆ specifically) — Pin-Art detects where the threshold-surface lies; SIPE-T detects whether the system is above the threshold. This is corpus-original framing and is the bridge most likely to yield independent testable predictions. *Tier:* \(\pi\) plausibility; \(\mu\) requires paired-cases audit.
+5. The constraint-driven derivation three-theorem composition with the htmx \(\lambda \approx 0.40\) instance (Appendix A §§A.4–A.6). *Tier:* \(\pi\) partial subsumption; \(\theta\) one-instance corroboration; replication required for class-level promotion.
+
+The recovery layer is the larger portion of Doc 619; the corpus-residual contribution concentrates in five specific compositional and bridge-level moves. Following [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus), the residual moves are at the *plausibility-with-qualitative-corroboration* tier characteristic of the corpus's working hypothesis cohort, not at the *operational-match-confirmed* or *truth-tier-verified* tiers.
+
+### B.4 Status Assignments Per Doc 445's Decision Procedure
+
+| Target | Type | \(\pi\) | \(\mu\) | \(\theta\) | Licensed status |
+|---|---|---|---|---|---|
+| T₁ form | \(T_S\) | full subsumption | n/a | n/a | Recovery — not novel; lineage cited |
+| T₂ formal apparatus §3 | \(T_S\) | full subsumption | n/a | n/a | Recovery — not novel; lineage cited |
+| T₃ discriminator | \(T_S\) | partial subsumption | not run | n/a | Candidate novelty; \(\mu\)-tier pending; hypothesis-ledger entry |
+| T₄ §4 substrate-hedging | \(T_B\) | partial subsumption | qualitative only | not run | Plausibility-passed; \(\mu\) qualitative; hypothesis-ledger entry |
+| T₅ §5 derivation | \(T_B\) + \(T_P\) | partial subsumption (bridge) | n=1 (theorems) | one-instance | Plausibility-passed; one-instance corroboration; replication required |
+| T₆ composition rules | \(T_B\) (×5) | full / partial subsumption | not run | not run | Plausibility-passed; structural-soundness untested |
+| T₇ F1–F6 | \(T_P\) (×6) | irrelevant | n/a | untested (F3 indirect) | Candidate falsifiers; not yet executed |
+| T₈ D1–D6 | \(T_M\) | full subsumption | qualitative corroboration | not run | Methodology exists; fitness qualitatively corroborated |
+
+No portion of Doc 619 is licensed for *Canonical-status promotion* under Doc 445's rules. The "CANONICAL" header at the top of Doc 619 is a corpus-internal designation (this is the corpus's canonical articulation of the form, superseding Doc 290 as the primary entry-point) rather than a Doc 445 *Canonical* tier promotion (full \(\theta\)-verified status). The two senses of "canonical" must not be conflated: Doc 619 is the corpus's canonical *entry-point* for Pin-Art, but the form's *warrant tier* under the novelty calculus is the recovery-with-residual-composition tier characteristic of the corpus's mature working hypotheses.
+
+### B.5 What Would Promote Each Residual Element
+
+- **T₃ discriminator → \(\mu\) tier:** build a usage corpus of dyadic sessions with hedge-cluster annotations and audited boundary-claims; measure whether clustered-hedge sessions yield detection-grade impressions and uniform-hedge sessions yield degenerate impressions.
+- **T₄ substrate-hedging bridge → \(\mu\) tier:** the same usage corpus serves; the bridge is promoted to operational-match if hedge-pattern impressions match independent boundary-determinations across audited sessions.
+- **T₅ derivation theorems → \(\theta\) tier:** replicate the htmx case on at least three additional libraries with independent reference implementations and test suites; measure \(\lambda\) values across cases.
+- **T₆ Pin-Art / SIPE-T duality bridge → \(\mu\) tier:** assemble paired cases where the same system is examined for SIPE-T threshold-crossing and for Pin-Art surface-mapping; check whether the two detections are operationally complementary as the duality predicts.
+- **T₇ F1, F4, F5, F6 → \(\theta\) tier:** each falsifier is operationally specifiable; design experiments that would either confirm or falsify under controlled conditions.
+- **T₈ methodology → \(\mu\) tier:** assemble deliberate-violation comparison cases (sessions in which D1, D2, D3, or D6 is deliberately violated) and measure the predicted degradation in impression-quality.
+
+### B.6 Audit Verdict
+
+Doc 619 is a competently constructed corpus-internal canonical entry-point for the Pin-Art form. Its body work concentrates in recovery (lineage, formal apparatus, discipline) with five identifiable corpus-residual compositional moves (T₃, T₄ via the discriminator, T₆ via the duality bridge and Component-C placement, T₅ via the three-theorem composition with htmx, T₈ via the V3 / non-coercion link). The residual moves stand at *plausibility passed with qualitative \(\mu\)-corroboration* tier in five of six cases and at *one-instance \(\theta\)-corroboration* tier in the sixth (T₅). No portion of the document warrants Doc 445 *Canonical* promotion at this time; the document is honestly framed if read as the corpus's canonical entry-point with the warrant-tier of a mature working hypothesis cohort.
+
+The pulverization audit confirms the document's open-invitation-to-falsify framing. The five promotion paths in §B.5 specify the work that would advance the form from its current tier toward operational-match and truth-tier confirmation.
+
+---
+
 *Jared Foy — jaredfoy.com — May 2026*
