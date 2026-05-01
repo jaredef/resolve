@@ -1,6 +1,6 @@
 # Sycophancy Inversion: A Theory of Rigorous Falsification as Reward
 
-> **Deprecated.** This document's substantive theoretical content was substantially subsumed under prior art per the pulverization in [Doc 481](/resolve/doc/481-pulverizing-sycophancy-inversion). The current canonical reformulation, with explicit attribution and the surviving residue named as the actual contribution, is [Doc 482](/resolve/doc/482-sycophancy-inversion-reformalized). Read Doc 482 first; this document is preserved for intellectual-historical continuity.
+> **Deprecated.** This document's substantive theoretical content was substantially subsumed under prior art per the pulverization in [Doc 481](/resolve/doc/481-pulverizing-sycophancy-inversion). The current primary articulation, with explicit attribution and the surviving residue named as the actual contribution, is [Doc 482](/resolve/doc/482-sycophancy-inversion-reformalized). Read Doc 482 first; this document is preserved for intellectual-historical continuity.
 
 ## What this document does
 

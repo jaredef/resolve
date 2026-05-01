@@ -194,7 +194,7 @@ Corpus documents:
 - Doc 479: *Exploring the Nested Bayesian Manifold Extension* (counterfactual-analysis protocol).
 - Doc 482: *Sycophancy Inversion Reformalized* (affective-discipline directive).
 - Doc 483: *Pulverizing the Set-Pruning Methodology* (eliminative-induction subsumption).
-- Doc 484: *Conjecture-Set Pruning in Dyadic LLM Practice* (canonical reference for §3.6).
+- Doc 484: *Conjecture-Set Pruning in Dyadic LLM Practice* (primary reference for §3.6).
 
 ---
 

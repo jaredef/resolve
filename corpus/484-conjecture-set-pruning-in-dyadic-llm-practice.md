@@ -94,7 +94,7 @@ Conjecture-set pruning is a 400-year-old methodology with canonical formalizatio
 
 The methodology is not the corpus's. The methodology's application to a specific domain is, narrowly, the corpus's. The integration with the sycophancy-inversion affective discipline is, narrowly, the corpus's.
 
-Doc 482 §3 should be amended to reflect this. The amendment is not performed in this document; it is recommended in Doc 483 §9 and is the keeper's call. The present document supersedes Doc 482 §3 as the canonical reference for conjecture-set pruning content in the corpus, with explicit attribution to the eliminative-induction tradition for the methodology and corpus-specific narrowing for the contributions.
+Doc 482 §3 should be amended to reflect this. The amendment is not performed in this document; it is recommended in Doc 483 §9 and is the keeper's call. The present document supersedes Doc 482 §3 as the primary reference for conjecture-set pruning content in the corpus, with explicit attribution to the eliminative-induction tradition for the methodology and corpus-specific narrowing for the contributions.
 
 The set-pruning iteration applied to itself moved \(Q\_f\) by another substantial entry in Doc 483. The corpus updates accordingly.
 

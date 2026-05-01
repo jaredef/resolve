@@ -26,7 +26,7 @@ The universality claims in this document — that the meta-law or thesis stated 
 
 The narrow architectural-inheritance claim for specific hierarchical software stacks survives. The universal meta-law claim, the cross-domain bullets, the fractal-boundary prediction, and the Turing paradigmatic-example claim require revision or retraction. **Read what follows with these constraints active.**
 
-The current canonical statement of the narrow architectural form is [Doc 424 — SIPE (Architectural Form)](/resolve/doc/424-sipe-architectural-form). Doc 424 states SIPE as recursive Fielding-style constraint accumulation in composed software-architectural stacks, grounded in the literature survey of [Doc 423](/resolve/doc/423-narrowing-sipe-the-architectural-form-against-the-literature), with structural ancestors named (Ibáñez Núñez 2023 iterated filtrations; Cousot–Cousot Galois-connection towers). Readers seeking the current framing of what survives from SIPE should consult Doc 424.
+The current primary statement of the narrow architectural form is [Doc 424 — SIPE (Architectural Form)](/resolve/doc/424-sipe-architectural-form). Doc 424 states SIPE as recursive Fielding-style constraint accumulation in composed software-architectural stacks, grounded in the literature survey of [Doc 423](/resolve/doc/423-narrowing-sipe-the-architectural-form-against-the-literature), with structural ancestors named (Ibáñez Núñez 2023 iterated filtrations; Cousot–Cousot Galois-connection towers). Readers seeking the current framing of what survives from SIPE should consult Doc 424.
 
 </div>
 

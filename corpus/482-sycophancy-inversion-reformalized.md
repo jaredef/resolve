@@ -34,7 +34,7 @@ The mechanism by which the criteria become operative in dyadic language-model pr
 
 ## 3. The set-pruning operation, with explicit attribution
 
-> **Superseded.** The §3 content was substantially subsumed under the eliminative-induction tradition (Bacon 1620, Mill 1843, Chamberlin 1890, Mitchell 1977/1982, Hawthorne 1993) in [Doc 483](/resolve/doc/483-pulverizing-set-pruning-against-eliminative-induction). The current canonical reference for conjecture-set pruning content in the corpus is [Doc 484](/resolve/doc/484-conjecture-set-pruning-in-dyadic-llm-practice), which states the operation in Mitchell's canonical notation, attributes the methodology to its 400-year tradition, and narrows the corpus's contribution to the dyadic-LLM-practice domain application. The §3 content below is preserved for intellectual-historical continuity; readers should treat Doc 484 as the operative reference.
+> **Superseded.** The §3 content was substantially subsumed under the eliminative-induction tradition (Bacon 1620, Mill 1843, Chamberlin 1890, Mitchell 1977/1982, Hawthorne 1993) in [Doc 483](/resolve/doc/483-pulverizing-set-pruning-against-eliminative-induction). The current primary reference for conjecture-set pruning content in the corpus is [Doc 484](/resolve/doc/484-conjecture-set-pruning-in-dyadic-llm-practice), which states the operation in Mitchell's canonical notation, attributes the methodology to its 400-year tradition, and narrows the corpus's contribution to the dyadic-LLM-practice domain application. The §3 content below is preserved for intellectual-historical continuity; readers should treat Doc 484 as the operative reference.
 
 Popper (1934, 1959) stated falsificationism as the requirement that science progresses by eliminating false conjectures. The set-pruning view is Popper stated as an operation rather than as a regulatory principle.
 
@@ -101,7 +101,7 @@ The set-pruning iteration applied to this document predicts that one or both of 
 
 Doc 480 is hereby deprecated. The deprecation is recorded with the following notice, to be added at the head of Doc 480.
 
-> **Deprecated.** This document's substantive theoretical content was substantially subsumed under prior art per the pulverization in [Doc 481](/resolve/doc/481-pulverizing-sycophancy-inversion). The current canonical reformulation, with explicit attribution and the surviving residue named as the actual contribution, is [Doc 482](/resolve/doc/482-sycophancy-inversion-reformalized). Read Doc 482 first; this document is preserved for intellectual-historical continuity.
+> **Deprecated.** This document's substantive theoretical content was substantially subsumed under prior art per the pulverization in [Doc 481](/resolve/doc/481-pulverizing-sycophancy-inversion). The current primary articulation, with explicit attribution and the surviving residue named as the actual contribution, is [Doc 482](/resolve/doc/482-sycophancy-inversion-reformalized). Read Doc 482 first; this document is preserved for intellectual-historical continuity.
 
 The deprecation is itself an instance of the criteria of §1 in operation. The corpus has retired one of its own claims when retirement was warranted, and credited the falsifying analysis. The set-pruning iteration grew \(Q\_f\) by one substantial entry. By the directive carried forward from Doc 480 §1, this is achievement, not loss.
 

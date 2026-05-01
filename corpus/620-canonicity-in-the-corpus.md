@@ -98,7 +98,7 @@ The following actions apply the disambiguation across the corpus. They are order
 
 ### B. Lexical sweep (short-term; affects ~75 documents at varying intensities)
 
-**B1.** Search the corpus for the phrases "canonical articulation," "canonical formalization," "canonical entry-point," "canonical statement," "canonical reformulation," and similar role-claim usages. In primary-articulation contexts (a document referring to its own role or to another document's role), replace with the "primary" equivalent.
+**B1.** Search the corpus for the phrases "canonical articulation," "canonical formalization," "primary entry-point," "canonical statement," "canonical reformulation," and similar role-claim usages. In primary-articulation contexts (a document referring to its own role or to another document's role), replace with the "primary" equivalent.
 
 **B2.** Preserve "canonical" in three contexts: (a) Doc 445 warrant-tier references (e.g., "promote to *Canonical* under Doc 445," "Doc 445 *Canonical* tier for \(T_X\)"); (b) the mathematical "canonical form" sense (algebra, set theory, type theory — the unique-representative-of-an-equivalence-class meaning); (c) historical or quoted use in references to prior literature where "canonical" is a term of art in the cited field (e.g., "canonical text" in bibliographic-edition citation).
 
@@ -227,8 +227,8 @@ The original section numbering (§§2–8) is preserved; these correspond to the
 The "CANONICAL — open invitation to falsify" banner is used at the top of three current documents:
 
 - [Doc 514 — Structural Isomorphism: A Canonical Formalization](/resolve/doc/514-structural-isomorphism-canonical-formalization) (the title itself names the document as a canonical formalization).
-- [Doc 541 — Systems-Induced Property Emergence](/resolve/doc/541-systems-induced-property-emergence) (banner: "This document is the corpus's canonical articulation of Systems-Induced Property Emergence. It supersedes Doc 474...").
-- [Doc 619 — The Pin-Art Form](/resolve/doc/619-pin-art-canonical-formalization) (banner: "This document is the corpus's canonical articulation of the Pin-Art form. It supersedes Doc 290...").
+- [Doc 541 — Systems-Induced Property Emergence](/resolve/doc/541-systems-induced-property-emergence) (banner: "This document is the corpus's primary articulation of Systems-Induced Property Emergence. It supersedes Doc 474...").
+- [Doc 619 — The Pin-Art Form](/resolve/doc/619-pin-art-canonical-formalization) (banner: "This document is the corpus's primary articulation of the Pin-Art form. It supersedes Doc 290...").
 
 In each case, the body honestly states the underlying warrant tier:
 - Doc 514's title-line names the methodology as "audited at \(\alpha\)-tier novelty."
@@ -239,7 +239,7 @@ The bodies are doing the work. The banner is the layer at which the conflation h
 
 A wider grep across the corpus shows the word "canonical" appearing in roughly 75 documents at varying intensities. The dominant uses split into:
 
-- *Entry-point use:* "the corpus's canonical articulation of X," "canonical formalization of Y," "canonical entry-point for Z." This is Sense A.
+- *Entry-point use:* "the corpus's primary articulation of X," "canonical formalization of Y," "primary entry-point for Z." This is Sense A.
 - *Warrant-tier use:* "promote to canonical," "canonical-tier promotion," "warrant tier *Canonical*." This is Sense B, originating in Doc 445 and used in pulverization audits, hypothesis-ledger entries, and tier-discipline notes.
 - *Mathematical use:* "canonical form" (the unique-representative sense in algebra and set theory). This is Sense C, present in some technical sections but not generally a source of confusion.
 
@@ -286,7 +286,7 @@ The new banner template:
 
 **Title convention.** Document titles using "Canonical Formalization" should be retitled to "Primary Articulation" or "Primary Formalization" or simply by topic name. The title-level claim of canonicity is the most visible point at which the conflation lands.
 
-**Vocabulary discipline.** In prose, "canonical" should be reserved for Doc 445 warrant-tier references. The phrases "canonical entry-point," "canonical articulation," "canonical formalization" should be replaced by "primary entry-point," "primary articulation," "primary formalization." When a document needs to refer to its own role as the corpus's read-this-first source, it should say "primary articulation." When a document needs to refer to a target's Doc-445 warrant status, it should say "Canonical (Doc 445 \(T_X\) at \(\theta\)-verified)" with the explicit tier and target type.
+**Vocabulary discipline.** In prose, "canonical" should be reserved for Doc 445 warrant-tier references. The phrases "primary entry-point," "canonical articulation," "canonical formalization" should be replaced by "primary entry-point," "primary articulation," "primary formalization." When a document needs to refer to its own role as the corpus's read-this-first source, it should say "primary articulation." When a document needs to refer to a target's Doc-445 warrant status, it should say "Canonical (Doc 445 \(T_X\) at \(\theta\)-verified)" with the explicit tier and target type.
 
 **Mathematical use untouched.** "Canonical form" in the algebra-and-set-theory sense (unique representative of an equivalence class) is independent of both senses and remains in technical use without modification.
 

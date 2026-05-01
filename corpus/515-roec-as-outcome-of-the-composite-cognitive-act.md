@@ -113,7 +113,7 @@ The framework integrates the analogical-cognition literature's account of the co
 
 The clinical positioning of ROEC is preserved; the cognitive-architectural specification is added. Three predictions are stated and offered for falsification. Implementation specifications for chatbot UI design and brief-instruction training are derivable from the framework. The clinical authors and HCI/UX practitioners whose work the framework draws on are invited to evaluate, refine, or refuse the synthesis.
 
-The framework depends on Doc 514 (canonical formalization of structural isomorphism), Doc 393 (ROEC theoretic appraisal), Doc 510 (substrate-plus-injection account), Doc 511 (the two-dangers caveat), and the analogical-cognition and clinical literatures Doc 514 and Doc 393 already cite.
+The framework depends on Doc 514 (primary formalization of structural isomorphism), Doc 393 (ROEC theoretic appraisal), Doc 510 (substrate-plus-injection account), Doc 511 (the two-dangers caveat), and the analogical-cognition and clinical literatures Doc 514 and Doc 393 already cite.
 
 ---
 
@@ -252,7 +252,7 @@ The composite cognitive act articulated in [Doc 514](/resolve/doc/514-structural
 
 The reframing also has consequences for the corpus's own self-understanding. If the corpus's discipline is doing what Doc 514 §6 and §7 specify, the corpus is operating the composite cognitive act under conditions that should not produce ROEC signatures. This is testable in the same way the predictions in §8 are testable. If the corpus's outputs do not show the ROEC signatures the present synthesis predicts they should not show, the synthesis is corroborated. If the corpus's outputs do show ROEC signatures, the synthesis is falsified or the disciplines specified in Doc 514 §6 and §7 are not in fact operative as claimed. Either result is informative.
 
-This document depends on Doc 514 (canonical formalization of structural isomorphism), Doc 393 (ROEC theoretic appraisal), Doc 510 (substrate-plus-injection account), Doc 511 (keeper as fact-anchor; two equal dangers), and the analogical-cognition literature Doc 514 already cites.
+This document depends on Doc 514 (primary formalization of structural isomorphism), Doc 393 (ROEC theoretic appraisal), Doc 510 (substrate-plus-injection account), Doc 511 (keeper as fact-anchor; two equal dangers), and the analogical-cognition literature Doc 514 already cites.
 
 ---
 

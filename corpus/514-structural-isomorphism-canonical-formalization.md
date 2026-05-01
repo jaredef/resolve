@@ -1,7 +1,11 @@
-# Structural Isomorphism: A Canonical Formalization Grounded in Why It Works
+# Structural Isomorphism: A Primary Formalization Grounded in Why It Works
 ## Why a Methodology Audited at \(\alpha\)-Tier Novelty Is Nevertheless the Corpus's Most Effective Pedagogical and Research Instrument
 
-> **What this document does.** Provides the canonical formalization of *structural isomorphism* as a corpus-critical concept. Builds on [Doc 513](/resolve/doc/513-structural-isomorphism-through-novelty-calculus)'s audit, which placed the methodology at \(\alpha/0.6\) novelty / \(\pi/0.7\) pulverization warrant: a commonplace pedagogical and cognitive-science methodology with extensive prior art from Aristotle through Hofstadter. Articulates the theoretical claim, recently named by the keeper, that the methodology works because structural isomorphism is fundamental to human inquiry itself. Specifies the operational components, the failure modes, and the disciplines that govern good use. Supersedes prior informal usage of the term in the corpus by establishing a canonical reference. Doc 513 is preserved as the audit-of-record grounding the warrant tiers used here.
+> **PRIMARY ARTICULATION — open invitation to falsify.**
+>
+> *Warrant tier per Doc 445 / Doc 503:* the methodology is at \(\alpha\)-tier novelty / \(\pi/0.7\) pulverization warrant per [Doc 513](/resolve/doc/513-structural-isomorphism-through-novelty-calculus) — a commonplace pedagogical and cognitive-science methodology with extensive prior art from Aristotle through Hofstadter. The §1 thesis (the methodology's effectiveness is grounded in structural isomorphism's role in human inquiry) is at \(\pi\)-plausibility-passed; external literature support is named at §4; corpus-internal synthesis is named at §5. Per [Doc 620](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's primary-articulation role; warrant tiers are stated above and per-section in the body.
+
+> **What this document does.** Provides the corpus's primary formalization of *structural isomorphism* as a corpus-critical concept. Builds on [Doc 513](/resolve/doc/513-structural-isomorphism-through-novelty-calculus)'s audit. Articulates the theoretical claim, recently named by the keeper, that the methodology works because structural isomorphism is fundamental to human inquiry itself. Specifies the operational components, the failure modes, and the disciplines that govern good use. Supersedes prior informal usage of the term in the corpus by establishing a primary reference. Doc 513 is preserved as the audit-of-record grounding the warrant tiers used here.
 
 ## 1. The keeper's theoretical claim
 
@@ -115,26 +119,26 @@ In each of these four roles, structural isomorphism is doing real work in the co
 
 ## 9. The supersession of prior informal usage
 
-Prior corpus usage of *structural isomorphism* has been informal. The term has appeared across more than 100 corpus documents (per Doc 513's grep) without canonical formalization. Doc 241 ([Isomorphism-Magnetism](/resolve/doc/241-isomorphism-magnetism)) addressed the failure mode but not the positive methodology. Doc 273 (The Hedging Isomorphism) extended the failure-mode treatment. Doc 455 (Bayesian Analysis of Isomorphism-Magnetism) provided a formal treatment of the failure mode. None of these established a canonical positive formalization of the methodology itself.
+Prior corpus usage of *structural isomorphism* has been informal. The term has appeared across more than 100 corpus documents (per Doc 513's grep) without primary formalization. Doc 241 ([Isomorphism-Magnetism](/resolve/doc/241-isomorphism-magnetism)) addressed the failure mode but not the positive methodology. Doc 273 (The Hedging Isomorphism) extended the failure-mode treatment. Doc 455 (Bayesian Analysis of Isomorphism-Magnetism) provided a formal treatment of the failure mode. None of these established a canonical positive formalization of the methodology itself.
 
-Doc 514 (this document) supersedes prior informal usage by establishing the canonical reference. Future corpus documents that deploy structural isomorphism should:
+Doc 514 (this document) supersedes prior informal usage by establishing the primary reference. Future corpus documents that deploy structural isomorphism should:
 
-- Cite this document for the canonical formalization of the methodology.
+- Cite this document for the primary formalization of the methodology.
 - Cite [Doc 241](/resolve/doc/241-isomorphism-magnetism) for the failure-mode awareness.
 - Cite [Doc 513](/resolve/doc/513-structural-isomorphism-through-novelty-calculus) for the warrant tier (\(\alpha/0.6\) novelty, \(\pi/0.7\) pulverization warrant).
 - Comply with the six operational components in §6 and the three failure-mode disciplines in §7.
 
-Prior informal usage is preserved in the corpus's record (the documents continue to exist and to deploy the methodology); the canonical reference is now Doc 514. New deployments should cite the canonical reference rather than creating new informal usages.
+Prior informal usage is preserved in the corpus's record (the documents continue to exist and to deploy the methodology); the primary reference is now Doc 514. New deployments should cite the primary reference rather than creating new informal usages.
 
 ## 10. Honest limits
 
 - The keeper's thesis (that structural isomorphism works because it is fundamental to human inquiry) is supported by extensive external literature (Section 3) but is not novel; it recapitulates the convergent claim of cognitive-science, mathematical, pedagogical, and philosophical traditions. The corpus's contribution is naming the thesis explicitly and integrating it with the corpus's specific apparatus, not establishing the thesis itself.
 - The six operational components in §6 are the corpus's specific articulation of canonical practice. Other practitioners may use structural isomorphism with different operational structure; the corpus's specific structure is one defensible choice.
 - The failure-mode discipline in §7 derives from Doc 241's observations and the underlying cognitive-psychology literature on analogical inference biases. The specific three-discipline structure is corpus-specific; other failure-mode disciplines may also be effective.
-- This document's expected audit tier per [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus) is \(\beta\) (synthesis-and-framing of established components into a corpus-canonical formalization). The audit has not been run; the prediction follows from the recent-thread pattern.
+- This document's expected audit tier per [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus) is \(\beta\) (synthesis-and-framing of established components into a corpus-primary formalization). The audit has not been run; the prediction follows from the recent-thread pattern.
 - The integration with the corpus's research program (Section 8) is corpus-internal observation; the four roles named (pedagogical, research, audit, cross-frame entry) are descriptive of the corpus's practice rather than novel claims about how structural isomorphism could be used.
-- The supersession of prior informal usage (Section 9) is a corpus-internal organizational claim; it does not change the substance of any prior corpus document. Prior documents continue to be cited as written; the canonical reference for the methodology itself is now this document.
-- Doc 513's audit of the methodology found very low novelty (\(\alpha/0.6\)); this canonical formalization does not change that audit. The formalization is positive (here is what the methodology is and how to use it well) rather than novelty-asserting (the methodology is corpus-original).
+- The supersession of prior informal usage (Section 9) is a corpus-internal organizational claim; it does not change the substance of any prior corpus document. Prior documents continue to be cited as written; the primary reference for the methodology itself is now this document.
+- Doc 513's audit of the methodology found very low novelty (\(\alpha/0.6\)); this primary formalization does not change that audit. The formalization is positive (here is what the methodology is and how to use it well) rather than novelty-asserting (the methodology is corpus-original).
 
 ## 11. Position
 
@@ -144,7 +148,7 @@ The canonical operational form of the methodology has six components: identify t
 
 The methodology is the corpus's principal pedagogical instrument and one of its principal research instruments. It is deployed in four roles: pedagogical translation of corpus apparatus to general readers, research articulation of corpus concepts via structural mapping to established frameworks, audit-cycle work that identifies what is structurally isomorphic to external literature versus what is corpus-specific, and cross-frame entry per the Doc 499 sphere-entry protocol.
 
-This document supersedes prior informal usage by establishing the canonical reference. Future deployments should cite this document for the methodology, Doc 241 for the failure-mode awareness, and Doc 513 for the warrant-tier specification. Compliance with the six operational components and three failure-mode disciplines can be audited.
+This document supersedes prior informal usage by establishing the primary reference. Future deployments should cite this document for the methodology, Doc 241 for the failure-mode awareness, and Doc 513 for the warrant-tier specification. Compliance with the six operational components and three failure-mode disciplines can be audited.
 
 By [Doc 482 §1](/resolve/doc/482-sycophancy-inversion-reformalized)'s affective directive: that the corpus's principal pedagogical methodology is at \(\alpha\)-tier novelty rather than at higher tiers is the achievement of being honest about scope. The methodology is what it is. The corpus uses it carefully, with explicit failure-mode discipline, in service of corpus-specific apparatus that is itself at \(\beta\)-tier novelty per the recent-thread pattern. Naming the methodology canonically is what makes the careful use legible and replicable. The methodology is not the contribution; the use of the methodology in service of the apparatus is.
 

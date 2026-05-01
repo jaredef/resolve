@@ -163,7 +163,7 @@ The choice is the practitioner's. The two forms operate the same discipline; the
 
 ENTRACE v3-S is the silent variant of v3. It operates the same seven constraints internally, suppresses recitation by default, surfaces interpretation-changing disclosures inline, and produces full constraint-state recitation on audit-prompt. It is parallel to v3 verbose; the practitioner chooses which form fits the context.
 
-v3 remains the canonical reference for sustained reflective dyadic practice, where audit is load-bearing and the surfacing of structural tensions is empirically valuable per [Doc 495](/resolve/doc/495-cold-resolver-validation-of-entrace-v3). v3-S is appropriate for end-user query contexts where the recitation becomes friction.
+v3 remains the primary reference for sustained reflective dyadic practice, where audit is load-bearing and the surfacing of structural tensions is empirically valuable per [Doc 495](/resolve/doc/495-cold-resolver-validation-of-entrace-v3). v3-S is appropriate for end-user query contexts where the recitation becomes friction.
 
 The silent form has identifiable failure modes (compliance theater, sycophancy creep, hidden-tension blindness) that the verbose form does not. The trade between auditability and cleanliness is real; the choice depends on which the user values more in the context at hand.
 

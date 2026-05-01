@@ -140,7 +140,7 @@ The corpus's actual contribution, after the amendment, is the dyadic-LLM-practic
 
 Doc 482 §3's set-pruning methodology is substantially subsumed under the eliminative-induction tradition spanning Bacon (1620), Mill (1843), Chamberlin (1890), Popper (1934, already cited), Mitchell (1977/1982), and Hawthorne (1993). The corpus's contribution is the dyadic-LLM-practice domain application and the explicit notation; the methodology itself is approximately 400 years old.
 
-The recommended amendment to Doc 482 §3 is in §9 above. The corpus credits the prior art and updates the canonical reformulation accordingly. By Doc 482's §1 affective directive, this is the achievement.
+The recommended amendment to Doc 482 §3 is in §9 above. The corpus credits the prior art and updates the primary articulation accordingly. By Doc 482's §1 affective directive, this is the achievement.
 
 The set-pruning iteration applied to itself succeeded. The conjecture-set Q has shrunk by one substantial entry: the claim that Doc 482 §3's set-pruning operation was a corpus contribution beyond Popper / Bayesian / Lakatos has been retired. The corpus has updated and credited the falsifying tradition.
 

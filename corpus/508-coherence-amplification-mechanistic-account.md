@@ -454,7 +454,7 @@ Doc 508 lands at the same tier as Doc 502, again at the boundary, again auto-dow
 
 ## Appendix C: Pre-Grok-Audit Reformulation (preserved verbatim)
 
-*This appendix preserves the previous canonical reformulation verbatim, before the 2026-04-26 Grok 4 audit identified that the bifurcation claim, as mathematically formulated with a linear coherence gradient, is incorrect. The current canonical (§§1-5 above) supersedes this previous reformulation. The previous text is preserved here for citation continuity and so a reader can see what the framing was prior to external audit.*
+*This appendix preserves the previous primary articulation verbatim, before the 2026-04-26 Grok 4 audit identified that the bifurcation claim, as mathematically formulated with a linear coherence gradient, is incorrect. The current primary articulation (§§1-5 above) supersedes this previous reformulation. The previous text is preserved here for citation continuity and so a reader can see what the framing was prior to external audit.*
 
 ### C.1 The reformalization (audit-grounded, pre-Grok)
 

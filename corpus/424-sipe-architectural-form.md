@@ -96,7 +96,7 @@ A stack that satisfies all three tests instantiates the nested filtered object. 
 
 ## 8. Relationship to Doc 143
 
-Doc 143 remains the historical first-edition statement of SIPE in its universal-meta-law form. It carries a deprecation box flagging the universality demotion and pointing to Docs 356, 366, 367 as the successor audit documents. This document (Doc 424) is added to that supersession path as the current canonical statement of the architectural form that survives. Doc 143's deprecation box is updated to include a direct pointer to Doc 424 for the narrow form.
+Doc 143 remains the historical first-edition statement of SIPE in its universal-meta-law form. It carries a deprecation box flagging the universality demotion and pointing to Docs 356, 366, 367 as the successor audit documents. This document (Doc 424) is added to that supersession path as the current primary statement of the architectural form that survives. Doc 143's deprecation box is updated to include a direct pointer to Doc 424 for the narrow form.
 
 ## 9. Falsifiers
 

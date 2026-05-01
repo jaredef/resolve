@@ -160,7 +160,7 @@ The formalization above did not arrive in one step. Its development across the c
 
 **Phase 3: Literature pulverization and narrowing.** Doc 423 subjected the universal claim to pulverization against the academic literatures on filtered objects, Galois connections, Harder–Narasimhan filtrations, and Fielding's architectural method. The result: the structural commitments were not novel; each had a well-established categorical ancestor. What remained defensible was a narrow form applicable specifically to systems where the commitments held in full.
 
-**Phase 4: Canonical narrow statement.** Doc 424 stated SIPE in its narrow form, with the three structural commitments made explicit and per-stack testability specified. Instance I (architectural stacks) was the worked example. Doc 424 became the canonical reference for SIPE until this document.
+**Phase 4: Primary narrow statement.** Doc 424 stated SIPE in its narrow form, with the three structural commitments made explicit and per-stack testability specified. Instance I (architectural stacks) was the worked example. Doc 424 became the primary reference for SIPE until this document.
 
 **Phase 5: Confabulation and its pulverization.** Doc 441 identified a confabulation incident in which an acronym-expansion failure produced a spurious alternative meaning for SIPE. Doc 444 pulverized the confabulation against the retraction ledger and isomorphism-magnetism literature. The confabulation was retired and the narrow form held.
 

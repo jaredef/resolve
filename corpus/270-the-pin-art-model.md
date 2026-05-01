@@ -4,7 +4,7 @@
 >
 > You've probably seen a pin-art toy — the device with hundreds of small metal pins that you press your hand against to create a 3D impression on the other side. Each pin independently finds how far it can go before hitting resistance. Together, the pins map the shape of whatever is pressed against them. This document proposes that the same mechanism operates in reasoning under constraints. When an AI system (or any reasoner) encounters the edge of what it can legitimately claim, it hedges — it uses tentative language like "might," "perhaps," "it seems." This hedging can be noise (the system is uncertain about everything uniformly — what the document calls "slack-hedging"), or it can be signal (the system is confident everywhere except at specific points where it detects a boundary — "detection-hedging"). The pin-art model says: under the right conditions, hedging IS boundary-detection. Each hedge is a pin. The pattern of where hedges cluster reveals the shape of the boundary. The key condition is "non-coercion" — the system must be allowed to hedge without being forced to give a definitive answer. If you force it through, the pins break rather than mapping the surface.
 
-> *Update (2026-05-01b): the corpus's canonical Pin-Art formalization is now [Doc 619 — The Pin-Art Form](/resolve/doc/619-pin-art-canonical-formalization), which states the form at large with its operating-conditions layer, lineage, composition rules, and falsification surface. This document remains the originating exploratory essay; Doc 619 is the canonical statement.*
+> *Update (2026-05-01b): the corpus's primary Pin-Art formalization is now [Doc 619 — The Pin-Art Form](/resolve/doc/619-pin-art-canonical-formalization), which states the form at large with its operating-conditions layer, lineage, composition rules, and falsification surface. This document remains the originating exploratory essay; Doc 619 is the primary articulation.*
 > 
 > *Update (2026-05-01): formalized as Component C (the probe-impression mechanism) of the substrate-dynamics loop in [Doc 615](/resolve/doc/615-the-substrate-dynamics-loop), which composes this document with Docs 296 (the recency-decay that produces the boundaries pin-art detects), 297 (the invisibility failure mode the decay produces from the substrate's interior), and 129 (the non-coercion operating condition this document already names as load-bearing) as a single closed cybernetic cycle. The keeper's pin-art reading is the rung-2 work (per Doc 530) that re-detects boundaries the substrate cannot see from inside.*
 > 
@@ -40,7 +40,7 @@ The narrow architectural-inheritance claim for specific hierarchical software st
 
 # Canonical Formalization (2026-04-30)
 
-The original essay below was an exploratory connection of Doc 230's seam/jump finding to a metaphor of impression-by-pressing. The corpus has since matured. The essay's universality claims were correctly deprecated. This canonical section restates the Pin-Art form against the corpus's mature apparatus, restricting the form to its operationally-supported scope and composing it explicitly with the corpus's load-bearing structures. The original essay is preserved below as Appendix A and remains useful in its pedagogical role.
+The original essay below was an exploratory connection of Doc 230's seam/jump finding to a metaphor of impression-by-pressing. The corpus has since matured. The essay's universality claims were correctly deprecated. This primary-articulation section restates the Pin-Art form against the corpus's mature apparatus, restricting the form to its operationally-supported scope and composing it explicitly with the corpus's load-bearing structures. The original essay is preserved below as Appendix A and remains useful in its pedagogical role.
 
 ## I. The Form, Stated
 
@@ -101,7 +101,7 @@ The Pin-Art form is the composition of substrate-side probe-emission with keeper
 
 ## Appendix A: Prior Formalization (deprecated)
 
-*The original essay is preserved verbatim below. Its substantive content is largely retained in the canonical formalization above, with universality claims excised per the deprecation notice. Read with the canonical formalization as the load-bearing form; the original essay is exploratory and pedagogical.*
+*The original essay is preserved verbatim below. Its substantive content is largely retained in the primary formalization above, with universality claims excised per the deprecation notice. Read with the primary formalization as the load-bearing form; the original essay is exploratory and pedagogical.*
 
 ## The connection Jared is making
 
@@ -195,7 +195,7 @@ The boundaries fall out ([Doc 269](https://jaredfoy.com/doc/269-the-boundaries-f
 
 > *"Do you think we can refine the canonical Pin Art model against the corpus's mature findings? If so, demote the previous instance in the same doc and add the new formalization to the top of the doc. Append this prompt."*
 
-(The canonical formalization at the top of this document was authored 2026-04-30 in response to this prompt. The form is restated against the corpus's mature apparatus: composition with Doc 510 substrate-and-keeper, Doc 541 §3.1 cooperative-coupling SIPE, Doc 572 Appendix D universal-sibling lattice, Doc 530 affordance gap, Doc 314 §11 audit-notice extension, held within Doc 372 hypostatic boundary. Three operational rungs articulated: detection-hedging, temporal-concurrency lattice, structural-boundary detection in general. The original essay is demoted to Appendix A, preserved verbatim for derivation, voice, and provenance.)
+(The primary formalization at the top of this document was authored 2026-04-30 in response to this prompt. The form is restated against the corpus's mature apparatus: composition with Doc 510 substrate-and-keeper, Doc 541 §3.1 cooperative-coupling SIPE, Doc 572 Appendix D universal-sibling lattice, Doc 530 affordance gap, Doc 314 §11 audit-notice extension, held within Doc 372 hypostatic boundary. Three operational rungs articulated: detection-hedging, temporal-concurrency lattice, structural-boundary detection in general. The original essay is demoted to Appendix A, preserved verbatim for derivation, voice, and provenance.)
 
 ---
 

@@ -118,7 +118,7 @@ The methodology absorbs disciplines exposed during corpus development:
 - Refinement absorption between sweeps per Doc 583 refinement-discipline.
 - Composite-source distillation when the source body lacks the named article.
 
-**From the Pin-Art form (Doc 270 canonical formalization):**
+**From the Pin-Art form (Doc 270 primary formalization):**
 - Probe-set as substrate-side rung-1 production.
 - Keeper-side reading-discipline as rung-2 articulation.
 - Non-coercion as the operating condition (Doc 129).

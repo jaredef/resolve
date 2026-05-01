@@ -16,7 +16,7 @@ The methodology is form-aware. It assumes the corpus has structural forms (Doc 1
 
 A subsumption engagement under the methodology proceeds through five named phases, each with a defined output and a binding discipline. The phases are:
 
-**Phase 1 — Form Inventory.** Catalogue every corpus form load-bearing on the engagement. For each form, produce a uniform short description (typically five fields: canonical reference, what it formalizes, operational move it permits, composition rules, application discipline). The output is a single document the reformulator carries through the rest of the engagement. The discipline: do not invent forms; use only what the corpus already names.
+**Phase 1 — Form Inventory.** Catalogue every corpus form load-bearing on the engagement. For each form, produce a uniform short description (typically five fields: primary reference, what it formalizes, operational move it permits, composition rules, application discipline). The output is a single document the reformulator carries through the rest of the engagement. The discipline: do not invent forms; use only what the corpus already names.
 
 **Phase 2 — Macro-Map.** For each top-level division of the external body (chapters, parts, sections, knowledge areas), produce a one-paragraph mapping that names the dominant form composition hypothesized to do the division's structural work, plus an operational test that will discriminate confirmation from falsifier in Phase 3. The output is a set of working hypotheses, not finished claims. The discipline: no division is mapped to a single form by reflex; where the dominant form needs a composition partner, the partner is named.
 

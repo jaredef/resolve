@@ -66,7 +66,7 @@ The loop is named because the four documents have been operating as a closed str
 
 Existing cross-references (none of which name all three siblings):
 
-- Doc 270's canonical formalization (the 2026-04-30 rewrite) cites Doc 129 as the operating condition under which the form functions. It does not cite 296 or 297.
+- Doc 270's primary formalization (the 2026-04-30 rewrite) cites Doc 129 as the operating condition under which the form functions. It does not cite 296 or 297.
 - Doc 297 cites Doc 296 as the proximate-cause mechanism for the failure mode it names. It does not cite 270 or 129.
 - Doc 296 names re-invocation as the corrective. It does not cite 270 as the structural shape of that re-invocation or 297 as the failure mode the re-invocation is preventing.
 - Doc 129 is first-person register and predates the formalization apparatus the corpus later built; it is read by 270 as the canonical operating-condition.
