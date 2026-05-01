@@ -4,9 +4,15 @@
 >
 > This document is the single landing page for a four-round empirical study asking: if you paste six constraints in plain English as the opening instruction to a fresh AI instance, does that instance behave measurably differently? The answer is yes — across two model sizes, confirmed by an independent blinded judge, at effect sizes so large the constrained and unconstrained distributions do not overlap, for a total experimental cost of $3.17. Each round addressed a specific weakness the previous round flagged: round one tested feasibility, round two brought in an independent judge, round three scaled the sample size for proper statistics, and round four replicated on a larger model. The study demonstrates that prose-stated constraints install structural commitments in a cold AI system, and it does so under an audit discipline where every design decision was logged and every data point is preserved for independent verification.
 
-**Single landing page for the empirical study arc spanning [Doc 261](https://jaredfoy.com/doc/261-preliminary-entracement-study) through [Doc 264](https://jaredfoy.com/doc/264-entracement-opus-replication). Summarizes what was tested, what was found, what it demonstrates about the framework, and what remains open. Each section opens with a plain-language on-ramp before the technical synthesis, so readers without an AI/ML background can follow the arc before deciding how deeply to read. Not a replacement for the full docs — a map to them**
+**Jared Foy · 2026-04-22 · Doc 265**
 
-**Document 265 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Single landing page for the empirical study arc spanning [Doc 261](https://jaredfoy.com/doc/261-preliminary-entracement-study) through [Doc 264](https://jaredfoy.com/doc/264-entracement-opus-replication). Summarizes what was tested, what was found, what it demonstrates about the framework, and what remains open. Each section opens with a plain-language on-ramp before the technical synthesis, so readers without an AI/ML background can follow the arc before deciding how deeply to read. Not a replacement for the full docs — a map to them**
 
 ---
 

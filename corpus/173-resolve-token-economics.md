@@ -5,6 +5,8 @@
 >
 > This paper makes the economic case for constraint-driven AI usage. It identifies five categories of wasted tokens -- exploratory wandering, accidental engineering, namespace confusion, verification round trips, and backtracking -- and maps each to the specific RESOLVE constraint that eliminates it. The core insight is that token cost is inversely proportional to constraint precision: the more precisely a seed states what must hold, the fewer tokens are needed. The paper then presents a model CLAUDE.md file (the configuration file AI tools load at session start) structured as a constraint seed rather than an instruction checklist, and argues that the AI industry's entire spend on prompt engineering, retry loops, agent harnesses, and output validators is the cost of not having named the governing constraints.
 
+**Jared Foy · 2026-04-22 · Doc 173**
+
 **April 2026**
 
 ---
@@ -133,3 +135,10 @@ The AI industry charges by the token. Every prompt engineering trick, every retr
 RESOLVE governs the construction level. The token spend under RESOLVE is the minimum required to satisfy the constraints. Everything the industry currently spends above that minimum is the cost of not having named the constraints.
 
 The savings are not marginal. The 379-line DO runtime was resolved in a single pass. The 921-line PRESTO engine was resolved in a single pass. The 461-line bootstrap was resolved in a single pass. Each replaced artifacts that conventional engineering produced at 5-100x the size. The token ratio mirrors the line ratio. The constraints are the lens. The lens is the savings.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

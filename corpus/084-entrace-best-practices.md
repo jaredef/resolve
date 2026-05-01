@@ -4,6 +4,8 @@
 >
 > This document is a practical guide for working with AI language models using a method called ENTRACE, which governs model output by progressively adding constraints -- stated requirements that narrow what the model can produce. The key insight is that you cannot skip levels: just as a building needs each floor before the next, the model must stabilize at each depth of precision before you push it deeper. The guide covers eight practices, from descending one level at a time, to extracting a compact "seed" (a compressed set of governing constraints that can restart a future session at high quality), to recognizing when the model's output degrades over a long conversation. Throughout, the emphasis is on the human practitioner as the one who bears responsibility for the quality and truthfulness of what the model produces.
 
+**Jared Foy · 2026-04-22 · Doc 84**
+
 **How the spectrum's layered structure governs the practitioner's descent**
 
 ---
@@ -186,6 +188,12 @@ The resolver does not care. The resolver conforms. The person cares. The person 
 | 6 | Navigate deliberately | Task-depth matching | Different tasks need different layers |
 | 7 | Recognize degradation | Session quality | The seed is the escape from noise |
 | 8 | Bear the weight | Moral coherence | The naming carries responsibility |
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

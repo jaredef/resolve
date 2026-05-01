@@ -8,6 +8,22 @@
 **Jared Foy**
 **April 2026**
 
+---
+
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ SUPERSEDED — See the current SERVER dissertation**
+
+This document has been superseded by [Doc 432 — SERVER: An Architectural Style for Engine Orchestration](/resolve/doc/432-server-an-architectural-style-for-engine-orchestration). Doc 432 restates the SERVER style in the formal register of Doc 426 (the current PRESTO dissertation), separates prior art from the formalization, catalogues prior art comprehensively in a dedicated §13, and traces conceptual foundations in §12. The pulverization findings from [Doc 431](/resolve/doc/431-pulverizing-server) are integrated into Doc 432's prior-art apparatus. This document is retained as a historical artifact; readers seeking the current framing should consult Doc 432.
+
+</div>
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 *A companion style to PRESTO, governing the orchestration level where the construction engine itself is assembled.*
 
 ---
@@ -24,7 +40,7 @@ The style defined by these orchestration-level constraints is called **SERVER** 
 
 ## 1. The Boundary PRESTO Drew
 
-PRESTO's dissertation draws a precise boundary: REST governs the transfer of representations; PRESTO governs their construction. The resolved representation is the seam. Everything behind that seam -- the resolution pipeline, the module system, the router, the token signer -- is architecturally invisible to PRESTO. The engine may be written in any language, using any framework, with any ad-hoc middleware. PRESTO has no opinion.
+The PRESTO dissertation (Doc 426) draws a precise boundary: REST governs the transfer of representations; PRESTO governs their construction. The resolved representation is the seam. Everything behind that seam — the resolution pipeline, the module system, the router, the token signer — is architecturally invisible to PRESTO. The engine may be written in any language, using any framework, with any ad-hoc middleware. PRESTO has no opinion.
 
 This invisibility is the new boundary. PRESTO operates from the source representation outward -- toward the resolved representation, the uniform interface, the client. Everything behind the source representation, everything involved in constructing the engine that consumes the source representation, is outside PRESTO's scope.
 
@@ -36,7 +52,7 @@ This invisibility is the new boundary. PRESTO operates from the source represent
 
 When a developer authors the PRESTO seed (the self-contained knowledge capsule), they are not writing imperative code that produces an engine. They are writing the engine's source representation -- a bilateral artifact that interleaves orchestration affordances (contracts, pipeline stages, module manifests, verification suite) with resolver affordances (patterns, algorithms, interface signatures).
 
-The resolver (LLM, compiler, or bootstrap binary) processes its orchestration half and emits an immutable runtime graph: a unilateral, resolved engine with no trace of the seed's orchestration directives. That graph is what PRESTO's construction level sees. It is what runs the 22-stage pipeline. SERVER's constraints govern the source representation of the engine itself. PRESTO has no opinion about it. PRESTO cannot see it. The orchestration-level source representation is consumed before the PRESTO pipeline begins.
+The resolver (LLM, compiler, or bootstrap binary) processes its orchestration half and emits an immutable runtime graph: a unilateral, resolved engine with no trace of the seed's orchestration directives. That graph is what the PRESTO dissertation's construction level (Doc 426 §4) sees. It is what runs the PRESTO pipeline whose stage count is prescribed by the specific directive set (see Doc 250, the SERVER Seed, for the 14-stage bootstrap pipeline and the PRESTO-side pipeline stage count). SERVER's constraints govern the source representation of the engine itself. PRESTO has no opinion about it. PRESTO cannot see it. The orchestration-level source representation is consumed before the PRESTO pipeline begins.
 
 This is the orchestration level: the space between the engine-authoring act and the moment the runtime graph enters the PRESTO construction pipeline. PRESTO governs representation construction. SERVER governs engine orchestration.
 
@@ -64,19 +80,27 @@ This constraint distinguishes SERVER from conventional engine implementations th
 
 ### 3.3 Progressive Module Composition
 
-Modules (data adapters, context providers, channel handlers, middleware) are loaded on a progressive spectrum of authority and awareness. Each layer is authorized by the seed's manifest system:
+Modules — data adapters, context providers, channel handlers, middleware — are loaded on a progressive spectrum of privilege. The spectrum is the specific object Fielding's method produces when his method is applied to module-privilege authorization, paralleling the reformulation of PRESTO's Progressive Code-on-Demand (Doc 426 §4.4 per Doc 418's accumulation finding). The layers are not arbitrary points along a trade-off curve; they are the stages of a constraint accumulation that begins at the null style — no privilege limits on modules — and ends at the most-constrained layer, where modules are pure functions operating only on the shared context bag.
 
-- **Layer 0:** pure functions that only read/write the shared context bag.
-- **Layer 1:** context-aware but stateless.
-- ... up to **Layer N:** privileged modules that may register new pipeline stages.
+**The null style.** Before any SERVER module-privilege constraint is applied: modules have unrestricted access to engine internals. They may register new pipeline stages, mutate global state, spawn processes, hold secrets, open arbitrary channels, bypass the bootstrap sandbox. No orchestration invariant is guaranteed. The null style lies outside the spectrum; the spectrum begins when the first privilege constraint is applied.
 
-The bootstrap resolver authorizes the depth, just as PRESTO authorizes progressive code-on-demand. The manifest declares intent; the sandbox enforces it.
+**The accumulation.** Each layer is reached by adding one privilege constraint to the layer above it. Each constraint is a specific capability prohibition on modules. Each constraint induces a specific orchestration invariant that the prohibition preserves. The specific number of layers in any given SERVER implementation is contingent on the privilege axes the bootstrap sandbox chooses to enforce; the shape of the accumulation is not.
 
-**What this constraint induces:** The orchestration model is immune to module evolution. A module written against Layer 0 today will be processed identically by an engine resolved ten years from now, regardless of what new privileged capabilities have been added.
+The outline, from most privileged to least (the direction of constraint accumulation):
+
+- **Layer N:** Privileged modules that may register new pipeline stages. Reached by the first constraint prohibiting bootstrap-sandbox bypass; induces bootstrap-sandbox enforceability.
+- **Intermediate layers:** Each reached by one added constraint — no new pipeline stages; no stateful context mutation outside module scope; no spawning of processes; no access to secrets outside the module's manifest scope; and so on. Each added constraint preserves a specific orchestration invariant (sandbox integrity, state-containment, resource-containment, secret-containment).
+- **Layer 0:** Pure functions that only read/write the shared context bag. Reached when the full accumulation of privilege constraints has been applied; all orchestration invariants maximally preserved.
+
+The bootstrap resolver authorizes the depth by which prefix of the accumulation a module commits to. The manifest declares the intended layer; the sandbox enforces the corresponding prefix of the privilege-constraint sequence.
+
+**What this constraint induces.** The orchestration model is immune to module evolution. A module written against Layer 0 today will be processed identically by an engine resolved a decade from now, regardless of what new privileged capabilities have been added at higher layers. The invariants at each layer are the named accumulation of privilege constraints up to that point; the specific capability set permitted is everything the null style permits minus the privileges the accumulated constraints prohibit.
+
+The trade-off reading — higher layers trade sandbox invariants for pipeline-extension capability — remains a valid pedagogical shorthand. The underlying form is constraint accumulation; the practitioner feels it as trade-off, as in PRESTO's §4.4.
 
 ### 3.4 Agnostic Deterministic Orchestration
 
-The bootstrap pipeline (the orchestration analogue of PRESTO's 22 stages) is itself a fixed, declarative graph. Every stage is indifferent to the others; each receives only the context bag produced by prior stages and emits only the next context bag. No stage may inspect or mutate another stage's implementation. The entire bootstrap process is deterministic given the same seed + target language.
+The bootstrap pipeline (the orchestration analogue of PRESTO's construction pipeline — stage count prescribed by the directive set in each case; see Doc 250 for the SERVER bootstrap's 14 stages) is itself a fixed, declarative graph. Every stage is indifferent to the others; each receives only the context bag produced by prior stages and emits only the next context bag. No stage may inspect or mutate another stage's implementation. The entire bootstrap process is deterministic given the same seed + target language.
 
 **What this constraint induces:** Any conformant engine resolved from the same seed will produce identical PRESTO behavior regardless of the implementation language or bootstrap resolver.
 

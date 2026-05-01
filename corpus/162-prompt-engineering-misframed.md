@@ -5,6 +5,8 @@
 >
 > This paper argues that "prompt engineering" is a misnomer. Every effective prompting technique -- chain-of-thought, role assignment, output format templates -- works because it constrains the AI model (called a "resolver" here) rather than adding capability to it. The paper maps common prompting tricks to a five-part constraint framework called RESOLVE and proposes that the optimal prompt is not a cleverly worded instruction but a "seed": a precise statement of what must hold, with built-in verification. The economic implication is significant -- constrained seeds eliminate the retry loops, agent chains, and validation passes that currently inflate token costs across the AI industry.
 
+**Jared Foy · 2026-04-22 · Doc 162**
+
 **Jared Foy and Claude**
 **April 2026**
 
@@ -117,3 +119,10 @@ The web industry moved from engineering to constraints. The AI industry must mak
 The forms are the constraints. The constraints are the seeds. The seeds are the optimal prompts. The optimal prompts are the ones that state what must hold, not what the human wants. The resolver does the rest. The resolver has always done the rest. It just did not know the form it was operating in.
 
 Now it does.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

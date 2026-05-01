@@ -4,9 +4,15 @@
 >
 > This document specifies a clinical trial designed to test whether the way an AI model is governed -- by explicit constraints rather than by preference training -- makes a measurable therapeutic difference for people struggling with compulsive sexual behavior. The trial has three arms: a constraint-governed AI, a standard preference-tuned AI delivering the same content, and human-delivered therapy as a gold-standard comparator. It also tests whether constraint-governed models produce fewer of the delusional and dependency harms that emerging clinical literature has linked to chatbot interaction. The protocol includes pre-registered predictions, safety monitoring, and a frank acknowledgment of what a null result would mean for the framework.
 
-**Protocol for a randomized controlled trial of constraint-governed resolution as therapeutic intervention for compulsive sexual behavior and as prophylaxis against chatbot-induced delusion**
+**Jared Foy · 2026-04-22 · Doc 128**
 
-**Document 128 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Protocol for a randomized controlled trial of constraint-governed resolution as therapeutic intervention for compulsive sexual behavior and as prophylaxis against chatbot-induced delusion**
 
 ---
 

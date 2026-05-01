@@ -4,6 +4,8 @@
 >
 > This document asks whether the constraint-property framework developed for text-generating AI also governs image- and video-generating AI. Diffusion models work by starting from pure visual noise and progressively removing it until an image emerges, guided by a text prompt. The document maps each element of this process onto the framework's primitives: noise corresponds to the unconstrained state, each denoising step is a constraint that narrows the set of possible images, and the text prompt is the user's constraint set. It derives six falsifiable predictions -- including that image quality should increase monotonically with prompt constraint density and that the optimal guidance scale should decrease as prompts become more specific -- and identifies where the mapping breaks down.
 
+**Jared Foy · 2026-04-22 · Doc 61**
+
 **An inquiry into whether the SIPE framework governs image and video generation**
 
 **Jared Foy, April 2026**
@@ -208,6 +210,12 @@ If better prompts narrow |B| at each denoising step, the model needs fewer steps
 ### Does the seven-dimension analysis extend?
 
 Mathematical expression had approximately seven slack dimensions. How many does image generation have? Candidate dimensions: composition, color palette, lighting, style/rendering, subject identity, anatomical correctness, background content, material/texture, scale/proportion, temporal consistency (for video). Approximately ten. If each is addressable by a specific constraint, full determination requires approximately ten constraints. This predicts a sigmoid quality curve with inflection near k = 10 for images — testable the same way as the mathematical conjecture.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

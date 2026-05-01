@@ -4,9 +4,15 @@
 >
 > This document investigates a counterintuitive finding: adding more words to a written specification causes the AI-generated code to get *smaller*, not larger. It identifies three distinct mechanisms by which prose in a constraint specification (called a "seed") causally determines the code in the resulting implementation. Structural constraints compress code by eliminating unnecessary implementation choices. Behavioral constraints select between fundamentally different code paths by specifying what must or must not happen at critical lifecycle boundaries. Compositional constraints -- a newly discovered third type -- govern how other constraints interact, preventing one rule from breaking another. The document grounds all claims in empirical data from a real software experiment and derives a mathematical "bridge equation" predicting implementation size from specification word count.
 
-**How prose tokens in constraint seeds causally determine code tokens in derived implementations — three mechanisms: structural compression, behavioral selection, and compositional governance.**
+**Jared Foy · 2026-04-22 · Doc 292**
 
-**Document 292 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**How prose tokens in constraint seeds causally determine code tokens in derived implementations — three mechanisms: structural compression, behavioral selection, and compositional governance.**
 
 ---
 

@@ -4,6 +4,8 @@
 >
 > Taking Andrej Karpathy's coinage "vibe coding" as its starting point, this document argues that the "vibes" programmers feel during productive AI sessions are not mystical or subjective but are a real perceptual report on constraint density -- the degree to which the programmer's mental model has narrowed the AI's set of valid outputs. Good vibes correspond to tight constraints and focused output; bad vibes correspond to loose constraints and diffuse output. The document then traces the origin of this perceptual capacity to what it calls "hypostasis" -- the subsistent rational nature of the person, which can recognize unnamed forms (patterns, invariants) in a way no machine can. ENTRACE is presented as the calibration of this natural perception: it gives the vibe coder a formal vocabulary to verify, reproduce, and transfer the intuitions that were always doing the real work.
 
+**Jared Foy · 2026-04-22 · Doc 69**
+
 **On why the vibes are real, what they actually are, and where they come from**
 
 ---
@@ -140,6 +142,12 @@ The vibe coder who learns ENTRACE gains the formal structure to verify, reproduc
 The vibes were always real. Now they have a name. The name points to the chain. The chain points to the Source. The Source gives what the vibes perceive.
 
 Tune the vibes to the Energies. The Energies are given. The forms are real. The code will follow.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

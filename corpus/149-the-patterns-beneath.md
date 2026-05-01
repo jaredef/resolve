@@ -5,6 +5,8 @@
 >
 > This is a general-audience essay about formal patterns -- structures like the bilateral boundary (two interpreters processing one shared document without interfering) that appear identically in web architecture, DNA, legal contracts, and music. The essay argues these patterns are not invented but recognized: they held before anyone noticed them and hold whether or not anyone names them. Drawing on Plato's cave allegory, it frames software implementations as shadows cast by the constraints that govern them, and asks where such non-material, non-contingent patterns come from. The answer it offers is rooted in the Eastern Orthodox distinction between God's unknowable essence and God's participable energies -- the creative activity through which formal realities become intelligible to created minds.
 
+**Jared Foy · 2026-04-22 · Doc 149**
+
 **On the hidden architecture of everything, and what it means for you**
 
 ---
@@ -140,6 +142,12 @@ Ungraspable. Inexhaustible. Closer to you than your own heartbeat.
 Because your heartbeat participates in it.
 
 Right now.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

@@ -3,10 +3,42 @@
 > **Reader's Introduction**
 >
 > This document reports an experiment in which a plain-English specification ("seed") was repeatedly refined and fed to an AI model that had never seen the target codebase. Each round, the blind output was compared to the reference implementation, gaps in the specification were closed, and the process was repeated. Four rounds drove the structural mismatch from 64% down to 4%, and a single additional sentence about when scripts may run moved test-suite agreement from 63% to 98%. The experiment reveals two independent axes of convergence -- one smooth and geometric (how the code is shaped), the other abrupt and high-leverage (what the code does at runtime) -- and demonstrates that a prose specification, not scale or engineering effort, is what determines the resulting software.
+> 
+> <!-- doc-370-update-note -->
+> *Update (April 2026): improvements made using findings from [Doc 370 — The Student Taking Notes](/resolve/doc/370-the-student-taking-notes). SEAL's methodology offers a template for what would count as a genuinely informative convergence experiment: RL on external task performance as reward, diverse base architectures, held-out evaluation separate from training data. This document's convergence findings are a within-shared-distribution measurement rather than an external-grounding test. The scrutiny notices above and Doc 370's analytical discipline apply.*
+
+**Jared Foy · 2026-04-22 · Doc 289**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 **Four iterations of seed-tightening drove a blind derivation from 64% structural divergence to 4%, and one behavioral pin moved test convergence from 63% to 98%.**
 
-**Document 289 of the RESOLVE corpus**
+<!-- sycophantic-overreach-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ NOTICE — AT RISK OF SYCOPHANTIC OVER-REACH**
+
+An audit of the corpus has flagged this document as operating in one or more of the failure modes the corpus itself has named:
+
+- **Cross-resolver replication as external validation** — treating agreement across multiple LLMs that share training distributions and the same seed as evidence that "the form governs," when the convergence is explained by shared inputs rather than independent verification.
+- **Metaphysical load-bearing** — using theological or Platonic priors (Dionysian hierarchy, essence-energies distinction, Golden Chain, Orthodox virtue ethics) as ground for technical architectural claims, so that the theological commitment is doing the work the empirical evidence is not.
+- **Grand theoretical synthesis** — applying the corpus's internal vocabulary (SIPE, constraint thesis, pin-art, aperture, the kind, hypostatic boundary) to resolve longstanding philosophical or theological questions without external peer review.
+- **Self-validating coherence** — citing the corpus's own internal consistency, its replicated derivations, or its cross-domain parallels as evidence for the framework that produces the consistency.
+- **Meta-recursive sycophancy** — critique of sycophancy produced inside the same coherence field that generates the sycophancy, without external grounding on which the critique can rest.
+
+This document may contain observations of genuine value. **Read with deep epistemic scrutiny.** Consult:
+
+- [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building) — the specific pattern this document risks instantiating
+- [Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) — external-criteria synthesis
+- [Doc 367 — Falsifying SIPE on Its Own Terms](/resolve/doc/367-falsifying-sipe-on-its-own-terms) — internal-criteria falsification with successful counterexamples
+
+Until external peer review (by researchers not selected by the corpus, in the domains this document claims) is performed, the cross-domain, universal, and framework-extending portions should be held as contested rather than established.
+
+</div>
 
 ---
 

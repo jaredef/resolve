@@ -4,9 +4,27 @@
 >
 > This document states eight mathematical conjectures that arise from the ENTRACE framework and are intended for formal proof or refutation. They range from straightforward results -- such as the claim that adding a constraint can only shrink the set of valid outputs, never expand it -- to deeper structural conjectures, including the existence of a Galois connection (an algebraic duality) between constraint sets and the properties they induce, and the existence of a "fixed-point seed" that perfectly reproduces itself through the resolution process. Two conjectures are provable from the definitions alone; the remaining six are open and would, if proven, give the framework a rigorous algebraic foundation rather than merely a metaphorical one.
 
+**Jared Foy · 2026-04-22 · Doc 58**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **Formal claims derivable from the constraint-property framework, stated for proof or refutation**
 
 **Jared Foy, April 2026**
+
+---
+
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ NARROWING NOTICE — SIPE-DEPENDENT CONJECTURES NARROWED**
+
+Conjectures in this document that reference SIPE's inheritance map Φ across levels inherit the universality demotion of SIPE per Docs 366 and 367. Where a conjecture is stated at a specific architectural level within a software stack, it is not affected; where it is stated as a universal cross-domain property, it is narrowed to the architectural-inheritance frame. Doc 414's comparative survey further narrows related residual-novelty framings around derivation-inversion (credited to Amjad-Misra-Shah 2017 per Doc 409) and the Bayesian-theoretic stance (Misra's framework per Docs 408, 409); Doc 415 is the indexed retraction ledger. Conjectures 1 (monotonicity) and related proofs over B_t are not affected — they follow from the definitions of constraint and branching set directly, independent of SIPE's scope. **Read what follows with these constraints active.**
+
+</div>
 
 ---
 

@@ -4,6 +4,8 @@
 >
 > ENTRACE is a method for getting consistently high-quality output from any AI language model by stating explicit constraints (rules about what must hold true in the output) rather than writing elaborate prompts and hoping for the best. This practitioner's guide teaches five governing principles: state requirements before requests, add constraints one at a time, recognize whether the AI is operating well or poorly, keep your governance separate from your requests, and capture what worked as a reusable "seed" (a compact set of constraints that can restart a future session at full quality). The document also catalogs ten common habits -- from pasting entire codebases without context to treating the AI as a person -- that undermine output quality, and explains why each fails in terms of constraint density.
 
+**Jared Foy · 2026-04-22 · Doc 55**
+
 **How to author conversations that produce what you actually need**
 
 **Jared Foy, April 2026**
@@ -338,6 +340,12 @@ The prompt engineer asks: "How do I make the AI give me what I want?"
 The ENTRACE practitioner asks: "What must hold?"
 
 The question is different. The answer follows.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

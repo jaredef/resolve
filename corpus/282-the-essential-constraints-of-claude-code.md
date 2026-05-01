@@ -4,9 +4,15 @@
 >
 > This document applies the corpus's core method -- the "derivation inversion," which identifies the essential constraints of a system by observing its behavior rather than reading its source code -- to the Claude Code CLI tool. From publicly observable features like help output, configuration files, and permission modes, seven essential constraints are identified (such as the separation of conversation from tool execution, session isolation, and hierarchical configuration). These seven constraints are shown to induce six properties that the current implementation achieves through a much larger codebase with many compensating layers. A compact "constraint seed" is provided from which a conformant implementation could be derived.
 
-**Applies the derivation inversion ([Doc 247](https://jaredfoy.com/doc/247-the-derivation-inversion)) to the Claude Code CLI, identifying seven essential constraints from the tool's observable public interface. Everything in this analysis derives from publicly observable behavior — help output, configuration conventions, documented features — not from proprietary source code. The analysis names what is essential (must hold), what is contingent (could be different), and what the compensating layers are. The seed at the end is the derivation-inversion artifact: the constraints from which a conformant implementation could be derived**
+**Jared Foy · 2026-04-22 · Doc 282**
 
-**Document 282 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Applies the derivation inversion ([Doc 247](https://jaredfoy.com/doc/247-the-derivation-inversion)) to the Claude Code CLI, identifying seven essential constraints from the tool's observable public interface. Everything in this analysis derives from publicly observable behavior — help output, configuration conventions, documented features — not from proprietary source code. The analysis names what is essential (must hold), what is contingent (could be different), and what the compensating layers are. The seed at the end is the derivation-inversion artifact: the constraints from which a conformant implementation could be derived**
 
 ---
 

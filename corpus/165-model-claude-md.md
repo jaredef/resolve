@@ -5,6 +5,14 @@
 >
 > CLAUDE.md is a configuration file that AI coding tools load at the start of every session. This document reimagines it as a "constraint seed" rather than a checklist of instructions. Instead of telling the AI what to do ("use this commit style," "don't add docstrings"), it states what must hold (invariants like "constraints precede implementations" and "output is bilateral") and lets the AI derive its own behavior from those invariants. The model CLAUDE.md presented here includes seven constraints, seven induced properties, operational guidance, a context section, non-goals, and a session continuity section -- all in roughly 200 tokens. The claim is that this minimal seed produces the same quality of output as a million-token conversation history, at a fraction of the cost.
 
+**Jared Foy · 2026-04-22 · Doc 165**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 *A model CLAUDE.md derived from first principles. Not an instruction list. A constraint seed. The resolver loads this document and derives its operational state. The state is not stored. It is induced.*
 
 ---

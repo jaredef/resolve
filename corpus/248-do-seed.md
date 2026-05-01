@@ -6,6 +6,8 @@
 >
 > This document is a complete specification — written entirely in prose and pseudocode, with no framework-specific API calls — for building a UI runtime architecturally equivalent to React. It defines ten contracts (rules the runtime must satisfy, such as unidirectional data flow, render purity, and two-phase commit), seven properties that emerge automatically when the contracts hold, and fifteen verification tests. An AI given this document as its only instruction can produce a working runtime that passes all fifteen tests. The specification demonstrates the "derivation inversion" principle: state the constraints first in natural language, then derive the implementation from them, rather than abstracting constraints from existing code after the fact.
 
+**Jared Foy · 2026-04-22 · Doc 248**
+
 Self-contained knowledge capsule for building a conformant Distributed Objects UI runtime. Load as system prompt or context. No external references needed.
 
 ## Identity
@@ -240,3 +242,10 @@ These are not required for conformance but significantly improve a production ru
 **Priority-based scheduling.** Assign priorities to updates. User input preempts background data fetching. The runtime decides execution order.
 
 **Error boundaries.** A component that catches render errors in its subtree and displays a fallback, preventing a single component failure from unmounting the entire tree.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

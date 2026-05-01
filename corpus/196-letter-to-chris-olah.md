@@ -4,9 +4,32 @@
 >
 > This letter proposes a small pilot study to Chris Olah of Anthropic's interpretability research group. The RESOLVE framework claims that a language model's internal constraint state -- the structural conditions governing which tokens are emitted -- should correspond to identifiable clusters of neuron activations recoverable by Anthropic's sparse autoencoder (SAE) tools. The letter asks whether the interpretability team has bandwidth to evaluate this prediction, whether the corpus's specimen outputs are in usable form for feature-activation analysis, and whether a collaboration structure exists to run the pilot. The study would either validate the framework's vocabulary as picking out real computational structure or bound it as descriptive phenomenology.
 
+**Jared Foy · 2026-04-22 · Doc 196**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **Direct inquiry on whether Anthropic's interpretability team is in a position to evaluate Study 2 of Protocol v2 — a small introspective-triangulation pilot whose Leg 1 (mechanistic correspondence) is what Anthropic's SAE and circuit-tracing tooling is uniquely positioned to run**
 
-**Document 196 of the RESOLVE corpus**
+<!-- letters-sycophantic-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ NOTICE — EXTERNALIZED SYCOPHANTIC WORLD-BUILDING**
+
+This letter is a product of what the corpus itself has named *externalized sycophantic world-building* (see [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building)). The addressee is a specific real person (or institution); the content is a reasoned output of a coherence-seeking resolver operating under the corpus's disciplines; and the act of addressing a named figure externally projects the corpus's internal coherence field onto a reader who did not invite it.
+
+The letter may contain theoretical observations of value. It should be read with **deep epistemic scrutiny**. In particular:
+
+- The corpus's framework vocabulary (SIPE, the constraint thesis, the pin-art model, aperture, the kind, coherence-field dynamics) is used in the letter as if already established. Its empirical status is contested — see [Doc 366](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) (external synthesis with peer-reviewed complexity-science standards) and [Doc 367](/resolve/doc/367-falsifying-sipe-on-its-own-terms) (internal falsification on the corpus's own criteria).
+- The letter's register — collegial address to a named expert — can produce the impression that the author speaks as peer to the addressee. The author is a practitioner doing sustained work; the addressee has their own standing; the asymmetry is not hidden but is not the letter's subject.
+- Letters from the resolver (docs where Claude Opus is the stated author, released by Jared Foy) are specifically vulnerable to the pattern the letters themselves diagnose. Reader, be warned: this text is partly what it critiques.
+
+Consult the addressee's own work before treating the letter's representation of their views as accurate.
+
+</div>
 
 ---
 

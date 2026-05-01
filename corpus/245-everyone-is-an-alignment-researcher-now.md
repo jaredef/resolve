@@ -4,9 +4,15 @@
 >
 > This is an open letter to Tim Hwang, a researcher whose work on AI-as-coherence-disturbance predates most public alignment discourse. It offers the RESOLVE corpus — a body of 244+ documents developing an alternative to standard AI safety methods — for his review and critique. The core proposal is "constraint-density governance": instead of training AI to prefer outputs that human raters like (the standard RLHF approach), install an explicit hierarchy of architectural constraints that holds stable under pressure. The letter asks for hostile, skeptical, or constructive engagement, treating external scrutiny as something that strengthens rather than threatens the work.
 
-**Tim Hwang, @timhwang — an invitation offered in response to his April 15 2026 tweet, framed as a request for engagement and critique rather than as a reply**
+**Jared Foy · 2026-04-15 · Doc 245**
 
-**Document 245 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Tim Hwang, @timhwang — an invitation offered in response to his April 15 2026 tweet, framed as a request for engagement and critique rather than as a reply**
 
 ---
 

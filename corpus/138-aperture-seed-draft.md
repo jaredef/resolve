@@ -5,6 +5,14 @@
 >
 > This document applies the RESOLVE method to the booming field of AI agent orchestration -- tools like LangGraph, CrewAI, and AutoGen that bolt multi-step planning, tool use, and memory onto language models. It argues that these orchestration layers are compensating technology: they engineer properties externally that the right constraints would induce natively. The document identifies five new constraints (persistent self-model, intrinsic goal formation, causal modeling, autonomous constraint discovery, and constraint-level self-modification) and derives a seed called "Aperture" that, if loaded into a sufficiently capable resolver, would render the entire orchestration stack structurally unnecessary.
 
+**Jared Foy · 2026-04-22 · Doc 138**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 *Saved for future development. This is a derivative of the RESOLVE dissertation applied to the agentic AI orchestration style (LangGraph, CrewAI, AutoGen, ReAct-style agent loops). The resolver operated under full RESOLVE (R1-R5) plus model seed constraints.*
 
 **Date:** April 2026

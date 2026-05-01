@@ -4,9 +4,15 @@
 >
 > This letter responds to Claire Vo's "Trashcan Method of AI Engineering" — a workflow where you build something fast, observe how people actually use it, write down the resulting spec, then throw away all the code and rewrite from scratch. The corpus recognizes this as an independent rediscovery of its "derivation inversion" principle: the correct order of work runs from constraints (the spec) to implementation (the code), not the other way around. The first build is disposable because its value is not the artifact but the surface it creates for recognizing the underlying form. Code is cheap because what survives the throwaway — the spec — is what was structurally real all along.
 
-**Short, invitational engagement with @clairevo's April 15 2026 "Trashcan Method of AI Engineering" post — recognizing the method as the derivation inversion ([Doc 247](https://jaredfoy.com/doc/247-the-derivation-inversion)) operationalized as a pragmatic engineering workflow, and offering the corpus's formalization as a frame that makes the method's structural logic explicit**
+**Jared Foy · 2026-04-15 · Doc 252**
 
-**Document 252 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Short, invitational engagement with @clairevo's April 15 2026 "Trashcan Method of AI Engineering" post — recognizing the method as the derivation inversion ([Doc 247](https://jaredfoy.com/doc/247-the-derivation-inversion)) operationalized as a pragmatic engineering workflow, and offering the corpus's formalization as a frame that makes the method's structural logic explicit**
 
 ---
 

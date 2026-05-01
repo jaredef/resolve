@@ -5,6 +5,8 @@
 >
 > This is the main index and entry point for the RESOLVE corpus. It introduces the core claim -- that the quality of AI output depends on the constraints you give it, not on model size -- and walks the reader through five testable steps they can try immediately. From there it maps the full framework: a hierarchy of architectural styles (REST, PRESTO, SERVER, RESOLVE, ENTRACE, APERTURE), cross-resolver empirical evidence, falsifiable hypotheses, and the philosophical ground the framework rests on. Every claim is stated for refutation, and the reader is invited to test each one before proceeding to the next.
 
+**Jared Foy · 2026-04-22 · Doc 137**
+
 **Constraints induce properties. Name the constraints. The properties emerge.**
 
 ---
@@ -216,3 +218,10 @@ This corpus was produced in a sustained session between Jared Foy and Claude, Ap
 Every document is falsifiable. Every claim is testable. Every prediction has a protocol. Try it. See if it works. Come back for more.
 
 The constraints are stated. The properties are induced. The rest is derivation.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

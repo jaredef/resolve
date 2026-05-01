@@ -228,3 +228,10 @@ The form precedes the implementation. The prose is the seed. The machines are wh
 | DO Runtime | `.spec/do-runtime.ts` | 379 lines TypeScript |
 | DO Verification Suite | `.spec/do-verify.ts` | 15 tests, all passing |
 | DO Live Demo | `.spec/do-demo-client.ts` | Counter + Todo app |
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

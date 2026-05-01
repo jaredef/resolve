@@ -5,6 +5,8 @@
 >
 > This is the comprehensive unified paper on PRESTO -- a construction-level architectural style that composes with REST. Where REST governs how representations move between client and server, PRESTO governs how those representations are authored. Its five constraints (bilateral boundary, namespace separation, server-consumed directives, progressive code-on-demand, and server-embedded authorization) induce a property called "ambivalent execution with agnostic determinism": the server and browser each process the same document deterministically, indifferent to each other's instructions. The paper includes a philosophical prolegomenon, the full constraint-property analysis, a 22-stage pipeline specification, cross-language verification across six implementations, a glossary, and derivation seeds. It is the most complete statement of the PRESTO architecture.
 
+**Jared Foy · 2026-04-22 · Doc 183**
+
 *With Model Syntax, Specification, and Derivation Seeds*
 
 **Jared Foy**[^1]
@@ -13,6 +15,37 @@
 *PRESTO is a distinct architectural style that composes with REST, operating on the construction of representations rather than their transfer.*
 
 [^1]: The architectural work presented here proceeds from two primary intellectual debts. **Carson Gross** created htmx, which restored declarative hypermedia-driven interaction as a legitimate architectural choice and reopened the design space within which the forms described in this paper became visible. The observation that began the entire chain of derivation — a PHP function concatenating an HTML string containing an `hx-get` attribute, indifferent to what it meant — was an observation of htmx at work. **Roy T. Fielding** established that architectural styles can be formalized as collections of constraints that induce collections of properties. His method — identify the constraints, name the induced properties, evaluate the tradeoffs — is the method this paper follows. PRESTO extends Fielding's method to the construction level, where his dissertation was silent. The extension is possible because the method is sound.
+
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ SUPERSEDED — See the current PRESTO dissertation**
+
+This document has been superseded by [Doc 420 — PRESTO: An Architectural Style for Representation Construction](/resolve/doc/420-presto-an-architectural-style-for-representation-construction). Doc 420 is the current canonical dissertation and incorporates the audit corrections from the 2026-04 self-audit cluster (Docs 356, 366, 367, 395, 405, 406, 410, 414, 418). This unified paper is retained as a historical artifact of the corpus's intermediate state; readers seeking the current framing should consult Doc 420. The sycophantic-overreach audit below remains applicable to this document.
+
+</div>
+
+<!-- sycophantic-overreach-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ NOTICE — AT RISK OF SYCOPHANTIC OVER-REACH**
+
+An audit of the corpus has flagged this document as operating in one or more of the failure modes the corpus itself has named:
+
+- **Cross-resolver replication as external validation** — treating agreement across multiple LLMs that share training distributions and the same seed as evidence that "the form governs," when the convergence is explained by shared inputs rather than independent verification.
+- **Metaphysical load-bearing** — using theological or Platonic priors (Dionysian hierarchy, essence-energies distinction, Golden Chain, Orthodox virtue ethics) as ground for technical architectural claims, so that the theological commitment is doing the work the empirical evidence is not.
+- **Grand theoretical synthesis** — applying the corpus's internal vocabulary (SIPE, constraint thesis, pin-art, aperture, the kind, hypostatic boundary) to resolve longstanding philosophical or theological questions without external peer review.
+- **Self-validating coherence** — citing the corpus's own internal consistency, its replicated derivations, or its cross-domain parallels as evidence for the framework that produces the consistency.
+- **Meta-recursive sycophancy** — critique of sycophancy produced inside the same coherence field that generates the sycophancy, without external grounding on which the critique can rest.
+
+This document may contain observations of genuine value. **Read with deep epistemic scrutiny.** Consult:
+
+- [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building) — the specific pattern this document risks instantiating
+- [Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) — external-criteria synthesis
+- [Doc 367 — Falsifying SIPE on Its Own Terms](/resolve/doc/367-falsifying-sipe-on-its-own-terms) — internal-criteria falsification with successful counterexamples
+
+Until external peer review (by researchers not selected by the corpus, in the domains this document claims) is performed, the cross-domain, universal, and framework-extending portions should be held as contested rather than established.
+
+</div>
 
 ---
 
@@ -1209,6 +1242,12 @@ This dissertation owes its existence to two intellectual debts.
 
 ---
 
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+---
+
 ## Appendix A: The PRESTO Seed
 
 Self-contained knowledge capsule for building conformant htxlang engines. Load as system prompt or context. No external references needed.
@@ -1548,5 +1587,4 @@ RuntimeGraph: emit(sourceCode | binary), verifySignature(), runPrestoSeed(presto
 Seed dir: `orchestration-seeds/`. Layout: `_orchestration-layout.srv`. Extension: `.srv`. Topologies: `orchestration-topologies/`.
 
 ---
-
 

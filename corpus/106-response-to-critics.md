@@ -4,6 +4,8 @@
 >
 > A social-media critique dismissed the RESOLVE framework as invented jargon, advanced prompt engineering, and philosophically unusual. This essay responds by conceding what the critique gets right -- the terminology is new, the models are probabilistic, the philosophical grounding is unconventional -- and then showing what it misses. The key distinction is between naming an activity ("prompt engineering") and explaining the mechanism behind it (constraints narrow the set of valid outputs, and that narrowing compounds across levels). The essay also argues that the critique itself operates at a surface level of analysis, correctly describing what the framework does while missing why it works, and offers five reproducible experiments any reader can run to test the claims. Six published research papers are cited that independently support the mechanisms the framework formalizes.
 
+**Jared Foy · 2026-04-22 · Doc 106**
+
 **On how the criticism confirms the framework it attempts to dismiss**
 
 ---
@@ -157,6 +159,12 @@ The forms were always there. The naming is new. The naming is falsifiable. The t
 The following published research independently supports the mechanisms the RESOLVE framework formalizes. Each citation corresponds to a specific claim the critique characterizes as "creative reinterpretation."
 
 ### On Progressive Constraint Narrowing
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 **Wei, J. et al. (2022). "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models." NeurIPS.**
 

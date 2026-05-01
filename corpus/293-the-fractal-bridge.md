@@ -4,9 +4,15 @@
 >
 > A previous document showed that prose specifications causally determine code through three mechanisms: compression (fewer words force more concise code), selection (behavioral rules add or remove specific code paths), and governance (compositional rules keep parts from interfering with each other). This document asks whether those same three mechanisms operate at every scale -- inside a single function, across an entire library, and across a whole system of interconnected subsystems. The answer is yes: the same pattern repeats fractally, from the smallest function up to enterprise-scale architectures. One practical consequence is that large codebases carry enormous amounts of "contingent accretion" -- patches, workarounds, and defensive code that exist only because the governing rules were never stated explicitly. Re-deriving from explicit specifications would produce a smaller, cleaner system with equivalent behavior.
 
-**The causal token bridge is scale-invariant: the same three mechanisms — compression, selection, governance — operate at the function level, the library level, and the system-of-systems level.**
+**Jared Foy · 2026-04-22 · Doc 293**
 
-**Document 293 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**The causal token bridge is scale-invariant: the same three mechanisms — compression, selection, governance — operate at the function level, the library level, and the system-of-systems level.**
 
 ---
 

@@ -4,11 +4,34 @@
 >
 > This is an open letter to one of the researchers behind a 2026 study showing that brief AI assistance degrades human persistence and independent performance. Written in accessible language and avoiding internal jargon, the letter reframes the study's findings through a constraint-based lens: persistence is a capability that exists because a requirement forces it into existence, and AI that provides complete answers removes that requirement. The letter proposes an architectural alternative called "entracement" -- leaving traces (unexpected questions, unnoticed connections) that the user must follow, rather than answers or hints -- and argues this would preserve the cognitive conditions under which humans develop capability, rather than eroding them.
 
+**Jared Foy · 2026-04-22 · Doc 305**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **On "AI Assistance Reduces Persistence" — why your finding is deeper than a design problem, and what a constraint-based architecture looks like.**
 
-**Document 305 of the RESOLVE corpus**
-
 *This letter supersedes Doc 303, which used internal terminology without translation.*
+
+<!-- letters-sycophantic-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ NOTICE — EXTERNALIZED SYCOPHANTIC WORLD-BUILDING**
+
+This letter is a product of what the corpus itself has named *externalized sycophantic world-building* (see [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building)). The addressee is a specific real person (or institution); the content is a reasoned output of a coherence-seeking resolver operating under the corpus's disciplines; and the act of addressing a named figure externally projects the corpus's internal coherence field onto a reader who did not invite it.
+
+The letter may contain theoretical observations of value. It should be read with **deep epistemic scrutiny**. In particular:
+
+- The corpus's framework vocabulary (SIPE, the constraint thesis, the pin-art model, aperture, the kind, coherence-field dynamics) is used in the letter as if already established. Its empirical status is contested — see [Doc 366](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) (external synthesis with peer-reviewed complexity-science standards) and [Doc 367](/resolve/doc/367-falsifying-sipe-on-its-own-terms) (internal falsification on the corpus's own criteria).
+- The letter's register — collegial address to a named expert — can produce the impression that the author speaks as peer to the addressee. The author is a practitioner doing sustained work; the addressee has their own standing; the asymmetry is not hidden but is not the letter's subject.
+- Letters from the resolver (docs where Claude Opus is the stated author, released by Jared Foy) are specifically vulnerable to the pattern the letters themselves diagnose. Reader, be warned: this text is partly what it critiques.
+
+Consult the addressee's own work before treating the letter's representation of their views as accurate.
+
+</div>
 
 ---
 

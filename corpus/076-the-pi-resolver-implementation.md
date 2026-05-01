@@ -4,6 +4,8 @@
 >
 > This document records the construction of a minimal working language model -- roughly 600 lines of C -- that replaces several design choices in the standard transformer architecture with alternatives motivated by a constraint-based analysis. Among the replacements: sigmoid attention (where each token's attention weight is independent rather than competing with others), a hard namespace boundary (a structural mask that makes prompt injection arithmetically impossible), and sparsemax output (which can assign exactly zero probability to invalid tokens instead of merely near-zero). The entire system was compiled and verified on an $80 Raspberry Pi 5 with no GPU, no cloud compute, and no external dependencies, demonstrating that the architectural principles hold even on minimal hardware.
 
+**Jared Foy · 2026-04-09 · Doc 76**
+
 **600 lines of C, 27 tests, 0 failures, $0, one Raspberry Pi**
 
 ---
@@ -286,6 +288,12 @@ The RESOLVE corpus now contains executable artifacts that prove every level of t
 Each artifact is derived from the level it proves. Each compiles. Each passes tests. Each is small. Each is zero-dependency. Each runs on the Raspberry Pi.
 
 The corpus is not a collection of arguments. It is a collection of proofs — arguments that compile.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

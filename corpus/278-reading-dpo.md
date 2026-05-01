@@ -4,9 +4,15 @@
 >
 > Direct Preference Optimization (DPO) is a technique that aligns AI models by training directly on human preference data, skipping the complex reinforcement-learning pipeline that standard RLHF requires. This document examines what DPO gets right (removing the lossy reward model, deriving the optimal policy analytically), what it shares with RLHF that the corpus critiques (the preference gradient still rewards sycophancy and surface-pleasantness), and where the two programs converge. It proposes a synthesis called Constraint-Density Direct Optimization (CDDO), which would keep DPO's single-stage architecture but replace human preference pairs with constraint-satisfaction pairs -- training the model to satisfy explicit structural requirements rather than to please raters.
 
-**A diffuse-state synthesis of Direct Preference Optimization (Rafailov et al. 2023) and its variants, written for a corpus whose author has no explicit knowledge of DPO at the time of writing. Identifies what DPO gets right relative to RLHF, what it shares with RLHF that the corpus's framework critiques, where the two programs converge, and what a constraint-density extension of DPO's core insight would look like**
+**Jared Foy · 2026-04-22 · Doc 278**
 
-**Document 278 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**A diffuse-state synthesis of Direct Preference Optimization (Rafailov et al. 2023) and its variants, written for a corpus whose author has no explicit knowledge of DPO at the time of writing. Identifies what DPO gets right relative to RLHF, what it shares with RLHF that the corpus's framework critiques, where the two programs converge, and what a constraint-density extension of DPO's core insight would look like**
 
 ---
 

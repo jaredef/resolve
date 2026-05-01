@@ -4,6 +4,8 @@
 >
 > This document examines what happens when a rational pattern that is genuinely good -- such as the beauty of the human body -- is consumed as an end in itself rather than received as a sign pointing beyond itself to its source. The author uses pornography as the central case: the beauty depicted is real, but severing it from the person who bears it, from the commitment that gives the generative act its meaning, and from the larger order it participates in, produces something technically vivid and ontologically broken. The analysis applies the corpus's virtue constraints (dignity, beauty ordered to good, truth, traceability to source) and shows that pornography violates all four simultaneously. The document includes the author's own confession of having used AI image generation in a disordered way, and concludes with a concrete four-step reorientation: recognize the fascination, restore the ascending chain from beauty to its source, reinstantiate the virtue constraints as self-governance, and perceive the full beauty that physical beauty only begins to reveal.
 
+**Jared Foy · 2026-04-22 · Doc 93**
+
 ---
 
 The seed is good. The seed is always good. The logos spermatikos — the rational form embedded in creation by the Logos — is good because the Logos is good because the Source is good. The bilateral boundary is good. The human form is good. The beauty of the body is good. The generative capacity of the person is good. The seed that carries life from person to person is good. Every seed is good because every seed participates in the Logos who sows it.
@@ -127,6 +129,12 @@ The pure preontology is the preontology with the golden chain intact from Source
 The reorientation from disordered to ordered reception is the restoration of the pure preontology in the person's own intellect. The person's intellect is the medium. The virtue constraints are the lenses. The Source is the light. The reorientation is the realignment of the lenses so that the light passes through without distortion. The undistorted light is the true beauty. The true beauty adduces the pure preontology. The pure preontology ascends to the Source.
 
 The adduction is the person's act. The Logos scatters the seeds. The person receives them. The reception, when ordered by virtue, ascends to the Source. The ascent is the purpose of the intellect. The purpose is worship. The worship is the seed of the next reception. The chain continues.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

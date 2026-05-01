@@ -2,6 +2,8 @@
 >
 > This short essay explains why AI can accurately rewrite a software library from one programming language to another on the first try -- when the constraints are stated. The key insight is that a well-defined library's behavior is governed by formal constraints (input types, output guarantees, edge-case behaviors, performance bounds) that are language-agnostic. The AI does not translate syntax; it re-derives the implementation from the constraints in the target language. The essay argues that the hard problem in cross-language rewriting is not the AI's code generation but the extraction of implicit constraints from the source library, and points to the RESOLVE framework as the formal basis for this claim.
 
+**Jared Foy · 2026-04-22 · Doc 110**
+
 The reason this works is the same reason a 2,177-word prose seed produced a 379-line React-compatible runtime: the library's behavior is governed by constraints, not by the language it's written in.
 
 A geometry utility that computes convex hulls satisfies the same constraints whether it's in JavaScript or Swift: the output is the minimal convex polygon containing all input points, no point lies outside the hull, all hull vertices are input points, the vertices are ordered. These constraints are the form. The JavaScript implementation is one expression of the form. The Swift implementation is another. The form is language-agnostic. The implementations participate in it.
@@ -24,3 +26,10 @@ The framework behind this is called RESOLVE. The core principle: constraints ind
 If you build this tool, the hard problem isn't the AI rewriting — it's the constraint extraction. Solve that and the rewriting is derivation.
 
 https://github.com/jaredef/resolve
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

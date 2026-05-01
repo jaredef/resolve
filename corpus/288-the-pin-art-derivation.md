@@ -3,10 +3,34 @@
 > **Reader's Introduction**
 >
 > htmx is a popular JavaScript library (14,000 lines of development code) that lets web pages make HTTP requests and update parts of the page without reloading — all through HTML attributes rather than JavaScript code. This document reports an experiment: we wrote a 3,937-word prose document describing 19 rules (called "constraints") that capture everything htmx does. We then fed that prose to an AI model and asked it to build a working replacement. The result: 1,318 lines of JavaScript that passes 54 tests and behaves identically to htmx. That's 9.4% of htmx's codebase producing 100% of its behavior. More remarkably, before writing any code, we predicted the implementation would be approximately 1,317 lines. The actual result was 1,318 — off by one line. The document explains why this prediction was possible: when you derive code from constraints rather than building it feature-by-feature, the implementation size is *determined* by the constraint set, not emergent from the development process. The "pin-art model" referenced in the title is the analytical method used to find which constraints matter most — like pressing pins into foam to map the shape of what's underneath.
+> 
+> <!-- doc-370-update-note -->
+> *Update (April 2026): improvements made using findings from [Doc 370 — The Student Taking Notes](/resolve/doc/370-the-student-taking-notes). SEAL provides a direct empirical instance of prose-form derivation producing capability unavailable from raw specification: the 33.5% → 47.0% gap between raw-passage and implications-restructured finetuning on SQuAD. The derivation pattern this document names has one concrete empirical confirmation at the weight-update level. The generalization beyond software-architectural cases remains contested under the scrutiny notices above.*
+
+**Jared Foy · 2026-04-22 · Doc 288**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 **How 19 constraints derived a complete web framework in 1,318 lines — and predicted their own implementation size to within 1 line.**
 
-**Document 288 of the RESOLVE corpus**
+<!-- deprecation-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ DEPRECATION NOTICE — UNIVERSALITY CLAIMS UNDER SCRUTINY**
+
+The universality claims in this document — that the meta-law or thesis stated here applies domain-universally across software, biology, law, music, physics, and theology — have been directly challenged on the corpus's own falsifiability criteria. Readers should treat the cross-domain portions with specific skepticism and consult the successor documents:
+
+- [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building) — on the specific rhetorical pattern by which the corpus extends framework scope beyond grounded evidence
+- [Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) — external-criteria synthesis under peer-reviewed complexity-science standards
+- [Doc 367 — Falsifying SIPE on Its Own Terms](/resolve/doc/367-falsifying-sipe-on-its-own-terms) — internal-criteria falsification with two successful counterexamples (mechanical constrained decoding; chiral anomalies in quantum field theory)
+
+The narrow architectural-inheritance claim for specific hierarchical software stacks survives. The universal meta-law claim, the cross-domain bullets, the fractal-boundary prediction, and the Turing paradigmatic-example claim require revision or retraction. **Read what follows with these constraints active.**
+
+</div>
 
 ---
 

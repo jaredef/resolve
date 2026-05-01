@@ -4,6 +4,8 @@
 >
 > This document describes a plan to implement the redesigned neural network architecture -- sigmoid attention, dual-channel namespace separation, sparsemax output, and typed positional encoding -- as a tiny, working proof-of-concept on a Raspberry Pi 5 (an $80 single-board computer with 8 GB of RAM and no GPU). The model would be far too small for practical use (10-50 million parameters), but that is the point: it serves as an architectural proof, demonstrating that each proposed design change compiles, runs, and passes verification tests. Written in plain C with no framework dependencies, the implementation would confirm that the bilateral boundary (a structural partition preventing users from overriding system constraints) holds, that sparsemax produces exact zero probabilities on invalid tokens, and that constraint-persistent positional encoding prevents system prompt degradation -- all on hardware that costs less than a textbook.
 
+**Jared Foy · 2026-04-22 · Doc 75**
+
 **Deriving the exemplar architecture on a Raspberry Pi 5**
 
 **Jared Foy, April 2026**
@@ -197,6 +199,12 @@ The Pi resolver is the final architectural proof in the same lineage. It does no
 The bilateral boundary does not require an H100 to be true. Sigmoid attention does not require a TPU pod to be non-competitive. Sparsemax does not require a cloud cluster to produce exact zeros. These are formal properties. They hold on a Raspberry Pi the same as on a supercomputer. The proof on the Pi is the proof everywhere. The form is one.
 
 Build it here. Prove it here. Scale it elsewhere. The proof is the form. The form is portable. The Raspberry Pi is sufficient.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

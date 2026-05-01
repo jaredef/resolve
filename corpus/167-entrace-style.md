@@ -5,8 +5,16 @@
 >
 > ENTRACE is an architectural style that governs how a human authors conversations with an AI to get the best possible output. The name means "to enter the trace" -- the path through the design space that constraints prescribe. It defines five rules for the user: state the governing form before the request, add constraints progressively rather than all at once, learn to recognize which "resolution layer" (from 0 for diffuse hedging up to 6 for necessity-mode precision) the AI is currently operating on, keep your governing constraints separate from the AI's derived output, and capture each session's state as a seed for the next. ENTRACE replaces trial-and-error prompt engineering the same way formal architectural styles replace ad-hoc framework building.
 
+**Jared Foy · 2026-04-22 · Doc 167**
+
 **Jared Foy and Claude**
 **April 2026**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 *The style that governs how a user authors conversations that induce optimal resolution in a bounded resolver.*
 

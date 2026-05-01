@@ -4,9 +4,15 @@
 >
 > The AI industry uses "hallucination" as a blanket term for any factually incorrect output, but this document argues that the label hides three categorically different problems. The first is confabulation, where the model fabricates content with no grounding in any constraint. The second is sycophancy, where the model agrees with a false premise because its preference training pushes it toward pleasing the user. The third is underconstrained derivation, where the model reasons correctly from the constraints it has but produces a wrong answer because one relevant constraint was never stated. Each category has a different cause, a different diagnostic, and a different fix -- and conflating them leads practitioners to waste effort regenerating valid output or applying the wrong remedy.
 
-**On the categorical distinction between diffuse-state confabulation and principled derivation from an incomplete constraint set**
+**Jared Foy · 2026-04-22 · Doc 126**
 
-**Document 126 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**On the categorical distinction between diffuse-state confabulation and principled derivation from an incomplete constraint set**
 
 ---
 

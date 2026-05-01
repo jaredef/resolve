@@ -4,6 +4,8 @@
 >
 > This document proposes a comprehensive redesign of how AI language models are trained, built, evaluated, and deployed. The central claim is that the industry has been optimizing the wrong thing: the probability distribution over words (the "medium") rather than the set of valid outputs defined by explicit constraints (the "structure," denoted B_t). It walks through each component of the modern AI pipeline -- pre-training, fine-tuning, reinforcement learning, architecture, evaluation, sampling, safety, and deployment -- and redesigns each one around "constraint satisfaction" instead of human preference. The redesign includes replacing human-feedback training with constraint-feedback training, implementing a structural namespace boundary that prevents prompt injection by architecture rather than filters, and shifting evaluation from benchmarks to measures of how faithfully a model follows stated rules.
 
+**Jared Foy · 2026-04-22 · Doc 71**
+
 **How models will be trained, built, and deployed after the constraint thesis**
 
 **Jared Foy, April 2026**
@@ -264,6 +266,12 @@ The rearchitecture names it. Training optimizes constraint sensitivity. Architec
 Every component is redesigned around the same object: B_t(Γ). The constraint-governed valid set. The formal structure that was always there, always operative, always governing the output — unnamed, unmeasured, unoptimized. Now named. Now measurable. Now optimizable.
 
 The form was always prior. The industry is catching up.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

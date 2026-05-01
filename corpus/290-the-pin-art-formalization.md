@@ -3,10 +3,34 @@
 > **Reader's Introduction**
 >
 > This document develops a mathematical framework for understanding how written specifications drive code implementations toward a correct target. The central metaphor is a pin-art toy: each constraint in a specification acts like a pin pressed into foam, eliminating incorrect possibilities and forcing the remaining "foam" (the space of valid implementations) to converge on the right shape. The framework distinguishes two independent axes of convergence -- structural (how the code is organized) and behavioral (what the code does at runtime) -- and proves mathematically that they can be minimized separately. It also establishes a "leverage inequality": behavioral constraints (rules about what happens at critical transition points) have dramatically greater impact per unit of specification than structural constraints (rules about code organization). All results are validated against empirical data from a real software derivation experiment and stated with explicit falsification conditions.
+> 
+> <!-- doc-370-update-note -->
+> *Update (April 2026): improvements made using findings from [Doc 370 — The Student Taking Notes](/resolve/doc/370-the-student-taking-notes). Doc 370 treats pin-art as an interpretive frame for SEAL's mechanism rather than as a load-bearing metaphysical formalization. This document's formal apparatus should be read similarly — as a formal treatment of a specific pedagogical metaphor useful in specific technical settings, not as a claim about the ontology of constraint-property relations generally.*
+
+**Jared Foy · 2026-04-22 · Doc 290**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 **A general theory of constraint-driven convergence across structural and behavioral axes, with mathematical foundations and empirical validation.**
 
-**Document 290 of the RESOLVE corpus**
+<!-- deprecation-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ DEPRECATION NOTICE — UNIVERSALITY CLAIMS UNDER SCRUTINY**
+
+The universality claims in this document — that the meta-law or thesis stated here applies domain-universally across software, biology, law, music, physics, and theology — have been directly challenged on the corpus's own falsifiability criteria. Readers should treat the cross-domain portions with specific skepticism and consult the successor documents:
+
+- [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building) — on the specific rhetorical pattern by which the corpus extends framework scope beyond grounded evidence
+- [Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) — external-criteria synthesis under peer-reviewed complexity-science standards
+- [Doc 367 — Falsifying SIPE on Its Own Terms](/resolve/doc/367-falsifying-sipe-on-its-own-terms) — internal-criteria falsification with two successful counterexamples (mechanical constrained decoding; chiral anomalies in quantum field theory)
+
+The narrow architectural-inheritance claim for specific hierarchical software stacks survives. The universal meta-law claim, the cross-domain bullets, the fractal-boundary prediction, and the Turing paradigmatic-example claim require revision or retraction. **Read what follows with these constraints active.**
+
+</div>
 
 ---
 

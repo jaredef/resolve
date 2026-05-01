@@ -5,6 +5,8 @@
 >
 > This document is an internal review of the PRESTO unified paper, identifying risks that could lead to desk rejection at a computer science venue and proposing concrete fixes. The major issues include: a metaphysical preface that reviewers may treat as out-of-scope, overclaims about "dissolving OAuth," a tension between claiming full REST compliance while supporting persistent WebSocket channels, insufficient reproducibility detail for the six-language verification, and undefined philosophical terms like "fundamental." The document provides a checklist of edits, a proposed structural reorganization (main paper plus five appendices), and a threat model table for the security claims.
 
+**Jared Foy · 2026-04-22 · Doc 182**
+
 *Scholarly review feedback and actionable revisions for peer-review readiness.*
 
 ---
@@ -159,3 +161,10 @@
 - [ ] Threat model table
 - [ ] Operationalized definition of "fundamental"
 - [ ] Qualification of universality analogues as hypothesis-generating
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

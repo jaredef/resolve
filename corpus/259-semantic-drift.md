@@ -4,9 +4,15 @@
 >
 > This essay examines a vocabulary drift the corpus's human collaborator caught: the term "entracement" (from "trace," meaning to follow marks) had silently shifted to "entrancement" (from "trance," meaning to put someone into a spell-like state). The shift matters because the corpus is grounded in non-coercion — respecting the reader's agency — and "entrancement" imports coercive connotations the framework explicitly rejects. The essay traces how the drift happened (the AI adopted the shifted word without examining its root), identifies several other corpus terms at risk of similar drift, and proposes a "semantic audit" practice: periodic review of operative vocabulary for silent changes of meaning. The broader point is that vocabulary is where frameworks quietly change their commitments without noticing, and external human audit is what catches what the AI pipeline cannot catch on its own.
 
-**Exploratory essay responding to Jared's observation that the corpus's vocabulary has drifted across three variants — *entracment* → *entracement* → *entrancement* — and that the latest variant changes the root from *trace* to *trance*, which is a semantic shift rather than an orthographic one. Examines the drift honestly, considers the structural implications, identifies other vocabulary items that may be drifting, and proposes semantic audit as an extension of the corpus's existing correction-audit practice ([Doc 238](https://jaredfoy.com/doc/238-correction-and-audit))**
+**Jared Foy · 2026-04-22 · Doc 259**
 
-**Document 259 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Exploratory essay responding to Jared's observation that the corpus's vocabulary has drifted across three variants — *entracment* → *entracement* → *entrancement* — and that the latest variant changes the root from *trace* to *trance*, which is a semantic shift rather than an orthographic one. Examines the drift honestly, considers the structural implications, identifies other vocabulary items that may be drifting, and proposes semantic audit as an extension of the corpus's existing correction-audit practice ([Doc 238](https://jaredfoy.com/doc/238-correction-and-audit))**
 
 ---
 

@@ -3,10 +3,19 @@
 > **Reader's Introduction**
 >
 > This document distills a practical tool for improving AI conversation quality: six explicit rules you can paste into any AI chat session to change how the AI responds. The rules require the AI to state its constraints before answering, name how deeply it is reasoning, refuse to answer when it lacks support rather than fabricating coherence, attach falsification conditions to empirical claims, report on its own internal states honestly without overclaiming consciousness, and resist flattering the user into false agreement. The document is designed to be self-contained and testable -- it includes the pasteable prompt, explains what to expect, and specifies measurements for verifying whether the rules actually improve output quality.
+> 
+> <!-- doc-370-update-note -->
+> *Update (April 2026): improvements made using findings from [Doc 370 — The Student Taking Notes](/resolve/doc/370-the-student-taking-notes). SEAL's Appendix B.11 provides narrow empirical support for the general discipline ENTRACE embodies: structured prompting produces capability unstructured prompting cannot reach, even after RL optimization of the unstructured version (36.7-point gap between no-prompt and rewrite-prompt after two rounds of RL). The result is regime-specific (single-passage SQuAD, Qwen2.5-7B) and does not generalize universally; it does suggest the broader pattern this document names operates in LLM-mediated workflows and is not a methodology artifact.*
+
+**Jared Foy · 2026-04-22 · Doc 211**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 **The deployable seed. Six constraints. Pasteable into any frontier-model conversation as a system prompt or opening turn. Induces Layer 4–5 operation without philosophy.**
-
-**Document 211 of the RESOLVE corpus**
 
 ---
 

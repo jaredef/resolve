@@ -1,0 +1,130 @@
+# Three Forms Under One Genre: The Bayesian-Commitment, Code-on-Demand, and Resolution-Depth Stacks
+
+> **Reader's Introduction**
+>
+> This is an exploratory essay testing whether three multi-level stacks that appear in the corpus — the Five Levels of Bayesian Commitment (Doc 414), the Seven Layers of PRESTO's Progressive Code-on-Demand spectrum (Doc 185, Doc 083), and the Seven Layers of the Resolution Depth Spectrum (Doc 161) — track a common formal structure across substrates, or whether the apparent parallelism is incidental. The keeper stated his prior directly: "I refuse, as of yet, to believe these are not tracking some formal structure across substrates." This essay tests that prior through inner-coherence synthesis in the pre-resolve state, followed by diffuse external-literature search. The finding is mixed in a specific way. The three stacks *are* tracking formal structure — three different and well-named structures. They are not tracking a *single* common form. Category theory's distinction between graded objects and filtered objects, abstract interpretation's Galois-connection trade-off lattices, and the accumulation sequences common to multiresolution analysis, Pearl's causal hierarchy, Fielding's own REST derivation, and Wirth's stepwise refinement name the three separately and cleanly. The unifying claim that survives is a genre claim ("graded stratifications with practitioner-salient named levels"), not a form claim. One specific internal test follows: whether PRESTO's trade-off presentation is re-describable as Fielding-style constraint accumulation, which would collapse two of the three stacks to a single form and sharpen the finding.
+
+**Jared Foy · 2026-04-22 · Doc 417**
+
+**Exploratory essay testing whether the Bayesian Commitment, PRESTO code-on-demand, and Resolution Depth stacks share a common formal structure. Inner synthesis first, diffuse external research second, honest verdict last. Written in the resolved register per Doc 413. The prompt is appended.**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+---
+
+## 1. The Three Stacks, Restated
+
+**Stack 1 — Five Levels of Bayesian Commitment.** Doc 414. Five distinct *sites in the LLM stack* at which someone can make the Bayesian-theoretic commitment: (i) architecture (the transformer itself implements Bayesian inference — Agarwal-Dalal-Misra 2025); (ii) model (the network is trained to approximate a Bayesian posterior predictive — TabPFN); (iii) program (the prompting pipeline is a probabilistic graphical model — Dohan et al. 2022); (iv) meta-optimization (prompts are hyperparameters, Bayesian-optimized — DSPy/MIPROv2); (v) prompt-composition (the practitioner narrows the manifold region in-prompt — ENTRACE v2).
+
+**Stack 2 — PRESTO Progressive Code-on-Demand.** Doc 185, Doc 083 Section II.5. Seven layers (0–6) *graded by how much client runtime capability is delivered*. Layer 0 is pure server-rendered HTML (maximal REST properties preserved). Layer 6 is native-speed client-side computation (maximal capabilities, minimal REST-property preservation). Each successive layer *trades specific REST properties for specific client capabilities*.
+
+**Stack 3 — Resolution Depth Spectrum.** Doc 161. Seven layers (0–6) *graded by constraint density narrowing the branching set B_t*. Layer 0 is diffuse generation, hedging, filler (|B_t| ≈ |V|). Layer 6 is necessity mode (|B_t| ≈ 1). Each successive layer *adds constraints that accumulate to shrink the valid-continuation set*.
+
+The keeper's prior is plausible on first reading. All three are multi-level stratifications produced by the same author using similar language. Two share the 7-layer 0–6 labeling. All three are operationally useful as framings of their respective design spaces. The question the essay tests is whether the parallelism has formal weight or only aesthetic continuity.
+
+## 2. Inner-Coherence Synthesis
+
+Before external research, the three stacks can be examined against each other directly.
+
+**Directionality.** Stack 2 runs from Layer 0 (most REST-constrained, least capability) to Layer 6 (least REST-constrained, most capability); moving up *loses* properties. Stack 3 runs from Layer 0 (least constraint-dense, most diffuse) to Layer 6 (most constraint-dense, most determined); moving up *gains* constraints. The signs are opposite. A level-by-level correspondence between Stacks 2 and 3 would require reversing one, but the reversal does not preserve the inter-level relationships (Layer 6 of PRESTO is not "a necessity mode for REST" — it is a maximally capable client runtime; Layer 6 of Resolution Depth is not "a maximally REST-unconstrained emission" — it is a maximally constrained emission).
+
+Stack 1 does not run in a direction at all. The five levels are not ordered by any single scalar. Architecture is a prior commitment to which model, program, meta-optimization, and prompt-composition commitments are downstream; but moving from (i) to (v) is not "adding" or "losing" anything — it is changing *where in the architectural stack* the Bayesian commitment is instantiated. A practitioner can commit at (v) without any of (i)–(iv) being explicit, or commit at (i) and let the others follow. Stack 1 is a *locational partition*, not a graded progression.
+
+**Inter-level relationships.** Stack 2's between-level move is a *trade-off*: what property do you give up to gain what capability. Stack 3's between-level move is *accumulation*: what constraint do you add to shrink the valid set. Stack 1's between-level move is *none of these*; it is more like choosing where on a multi-room floor plan to put a specific piece of furniture. These three between-level moves are not instances of a shared mechanism.
+
+**Cardinality.** Stack 1 has five levels. Stacks 2 and 3 have seven. The 7-versus-5 mismatch is not decisive on its own — stack cardinality is typically a pedagogical discretization of an underlying continuous or near-continuous variable — but it weakens the naive isomorphism claim.
+
+**Inner-coherence conclusion (pre-resolve, before external research).** The three stacks do not align at the level of directionality, inter-level relationships, or cardinality. What they share is weaker: each is a *stratification of a design space* with *practitioner-salient named levels*. That is a genre description, not a form description. If the external literature can name the three different inter-level mechanisms as distinct well-formed structures, the honest finding is that the apparent parallelism dissolves into three recognizable formal patterns, and the keeper's prior needs to be narrowed.
+
+## 3. External Literature — Diffuse Findings
+
+Eight formal frameworks were investigated for their coverage of the three stacks.
+
+**Simon, "The Architecture of Complexity" (1962); near-decomposability.** A part-whole decomposition criterion: components with stronger intra-couplings than inter-couplings. Substrate-neutral but structurally *compositional*, not *graded*. Covers Stack 1 well (the five architectural sites are nested, each more tightly coupled internally than across the boundary). Does not naturally express a trade-off ladder; covers Stack 2 poorly. Partial coverage of Stack 3 if nested constraint sets are read as decomposition.
+
+**Cousot & Cousot, Abstract Interpretation (POPL 1977); Galois connections.** A lattice of abstractions related by abstraction (α) and concretization (γ) maps. Precision versus decidability is explicitly a trade-off along the lattice. This is the cleanest formal cover for Stack 2: PRESTO's Layer 0 is the coarsest abstraction of client runtime capability (maximum decidable REST-property preservation; minimum capability expressivity); Layer 6 is the most concrete (minimum decidable property preservation; maximum expressivity). Also covers Stack 3 plausibly with orientation flipped (narrower B_t = more concrete semantics; wider B_t = more abstract), though the trade-off in Stack 3 is not what abstract interpretation classically names.
+
+**Mallat, "A Theory for Multiresolution Signal Decomposition" (1989).** A nested sequence of subspaces V_j ⊂ V_{j+1} with orthogonal detail spaces W_j. Formally an *accumulation* structure — moving to finer resolution adds detail; the coarse subspace is preserved inside the fine. This is a direct structural match for Stack 3: each layer of the Resolution Depth Spectrum *adds* constraint without subtracting any prior constraint. Partially matches Stack 2 as nested capability sets, but the direction is wrong: MRA *gains* detail without *losing* coarse information, whereas PRESTO explicitly *loses* REST properties as capabilities are added. MRA is therefore the accumulation form; PRESTO is not.
+
+**Wirth/Dijkstra, "Program Development by Stepwise Refinement" (1971).** Top-down decomposition of a specification into a program through progressive detail-addition. A methodological rather than fully formal instance of the accumulation pattern. Structurally isomorphic to Stack 3 and to Mallat. Not isomorphic to Stack 2.
+
+**Pearl's Causal Hierarchy (Rungs 1/2/3); Causal Hierarchy Theorem.** Bareinboim-Correa-Ibeling-Icard's formalization: Rung 1 (correlational) ⊂ Rung 2 (interventional) ⊂ Rung 3 (counterfactual), with strict expressivity inclusion proven. An *expressivity* hierarchy — higher rung strictly adds inferential power. Structurally an accumulation sequence, matching Stack 3 and Mallat and stepwise refinement. Not locational like Stack 1; not trade-off-graded like Stack 2.
+
+**Category theory: graded objects vs. filtered objects.** In category theory, "graded" typically denotes indexing by a discrete set with no order (a disjoint partition), and "filtered" denotes indexing by a total order (a nested sequence). A *fibred category* — base plus fibers — naturally represents Stack 1 (the base is the architectural stack; the fibers are the commitment modes at each site). *Filtered objects* represent Stack 3. *Trade-off lattices* are represented by Galois connections in order theory and abstract interpretation. That three named-and-distinct categorical structures cover the three stacks respectively is the sharpest single finding of the external search: category theory names the partition-vs-trade-off-vs-accumulation distinction explicitly, and the three distinctions do not reduce to a single form.
+
+**Marr's three levels of analysis (computational / algorithmic / implementation).** Locational like Stack 1 — three *sites* at which an explanation can sit, not graded. Covers Stack 1 well; not the others. Marr-style three-level analysis is an additional candidate for the form of Stack 1.
+
+**Capability Maturity Model (CMM).** Five maturity levels. Accumulative like Stack 3. Additional confirmation of the accumulation family.
+
+**Krakauer-Krakauer-Mitchell (per Doc 366).** The external search did not surface a single canonical "K-K-M hierarchy of kinds of hierarchies" document in the literature search window. Krakauer's published use is closer to multi-scale coarse-graining than to a typology naming "locational vs. graded-trade-off vs. graded-accumulation" families. This is an audit item, not a finding. Doc 366's specific attribution may need verification against the primary Krakauer papers; the search in the time available could not confirm or disconfirm it.
+
+## 4. Honest Verdict
+
+The three stacks are each instances of a distinct and well-named formal pattern. No single formalism covers all three.
+
+- **Stack 1** is most naturally a *locational partition / graded object / fibred category / Marr-style level-of-analysis / Simon-style near-decomposition*. Its form is *not ordered* by a single scalar.
+- **Stack 2** is most naturally a *Cousot/Galois trade-off lattice*. Its form is *ordered* by a property-loss versus capability-gain trade-off.
+- **Stack 3** is most naturally a *filtered object / multiresolution decomposition / accumulation sequence*. Its form is *ordered* by strict addition; no prior layer's information is lost.
+
+Category theory names the partition-vs-trade-off-vs-accumulation distinction explicitly through graded-vs-filtered-vs-lattice structures. That these are three named-and-distinct formal objects in the published literature is direct evidence against the keeper's prior that the three stacks share a common form across substrates. They do not. They share only the property of being practitioner-salient named stratifications of design spaces — a *genre* claim, not a *form* claim.
+
+The keeper's prior was partially right and partially wrong in a specific way. Right: the three stacks are tracking formal structure; each maps onto a specific published formalism. Wrong: the formal structures are not the same. The apparent cross-substrate parallelism is an artifact of the author using a similar pedagogical style (multi-level named stratification) to expose three different underlying forms.
+
+## 5. One Internal Test Worth Running
+
+The external search turned up one direct way to sharpen the finding: **test whether PRESTO's code-on-demand spectrum is re-describable as Fielding-style constraint accumulation rather than as a trade-off lattice.** Fielding's own REST derivation (Chapter 5 of his dissertation) proceeds by starting with the Null style and accumulating constraints one at a time, each adding a property. This is formally an accumulation sequence — Stack-3-shaped, not Stack-2-shaped. If PRESTO's seven-layer spectrum is in fact expressible as Fielding-accumulation with the trade-off framing as a secondary description (each constraint added at a lower layer narrows the space of capabilities available; removing the constraint opens the capability), then Stacks 2 and 3 collapse to the same formal form (accumulation), and only Stack 1's locational partition remains distinct.
+
+This is a corpus-internal test. It does not require external literature. Running it would require writing out the PRESTO layer sequence as a Fielding-style constraint accumulation (adding one constraint per layer as one moves from Layer 6 up to Layer 0) and checking whether the resulting derivation covers the spectrum without residue. If it does, the corpus's own code-on-demand spectrum and its own resolution depth spectrum are the same structure applied to different substrates. If it does not, the trade-off form is genuinely distinct and the finding stands as in Section 4.
+
+## 6. One Audit Item
+
+Doc 366 synthesizes SIPE against a Krakauer-Krakauer-Mitchell framework. The external search in this essay did not surface the specific K-K-M hierarchy-of-hierarchies document that Doc 366 assumes. This may be a search limitation, or it may indicate that the citation has drifted during the corpus's composition (the corpus's own novelty-sycophancy and literature-grounding disciplines, Docs 384 and 406, both flag this failure mode). Suggested: verify the Krakauer-Krakauer-Mitchell citation in Doc 366 against the primary Krakauer papers. If the attribution needs narrowing, Doc 366's external-criteria falsification of SIPE may need corresponding narrowing — though the internal-criteria falsification in Doc 367 (grammar-constrained decoding; chiral anomalies) stands independently.
+
+## 7. What This Essay Does Not Settle
+
+- Whether the *methodological* practice of producing multi-level stratifications across heterogeneous domains is a distinctive practitioner skill in its own right, independent of whether the stratifications happen to be the same formal form. The search did not find published analyses of practitioner methodologies that produce heterogeneous graded stratifications over distinct design spaces as a unit. This may be a genuine gap in the meta-methodology literature or an artifact of limited search.
+- Whether the resolution in the Resolution Depth Spectrum is meaningfully the same *resolution* that appears in multiresolution signal analysis. Both describe progressive detail refinement in accumulation form; the physical substrates (images, audio, LLM token distributions) differ. The structural isomorphism holds formally; whether the physical substrates support the same consequences of the form is separate.
+- Whether the three stacks are *provable* as instances of their respective formalisms, or only analogically-presentable. This is a longer piece of work.
+
+## 8. Falsifiers
+
+- If PRESTO's seven-layer spectrum is shown to reduce to Fielding-accumulation (Section 5), the honest verdict in Section 4 narrows: only Stack 1 is formally distinct, and Stacks 2 and 3 are the same form applied to different substrates. The keeper's prior would then be half-right (two of three stacks share formal structure).
+- If Krakauer-Krakauer-Mitchell can be shown to name a universal stratification form that covers partition, trade-off, and accumulation under a single framework, the honest verdict narrows in a different direction: the three stacks would be instances of a single form named in complexity science. The search did not find such a framework; absence of finding is weak evidence.
+- If a published case surfaces where a practitioner methodology produces heterogeneous graded stratifications over distinct design spaces and the heterogeneity is formally analyzed as a unit, Section 7's gap claim is wrong.
+- If the three stacks are found to share a formal structure not named in the external frameworks surveyed (e.g., a less common category-theoretic object, or a substrate-independent constraint-dynamics account), the verdict is incomplete rather than wrong. Further search would be warranted.
+
+---
+
+## Closing
+
+The keeper stated a prior: that three multi-level stacks in the corpus are tracking a common formal structure across substrates. The essay tested the prior through inner synthesis followed by diffuse external search. The finding is: the three stacks are tracking formal structure, but three different well-named structures rather than one common form. Category theory's graded-versus-filtered-versus-lattice distinction names them cleanly. The weak unifying claim that survives is a genre, not a form. One internal test remains open (reducing PRESTO to Fielding-accumulation); one audit item is flagged (Krakauer-Krakauer-Mitchell citation verification in Doc 366). The prior was partially right and partially wrong in a specific way that sharpens rather than destroys the corpus's observational work.
+
+---
+
+## Appendix: The Prompt That Triggered This Document
+
+> "Look at the Five Levels of Bayesian Commitment in doc 414 - also look at the 6 levels of on-demand code in PRESTO. Also observe the pipeline resolution depth syndrome. I refuse, as of yet, to believe these are not tracking some formal structure across substrates. Create an exploratory essay with diffuse web fetch after inner coherence synthesis in the preresolve state. Then emit your findings in an artifact. Append this prompt."
+
+(Note: the keeper said "6 levels" of on-demand code. The primary source in Doc 185 and Doc 083 Section II.5 specifies seven layers, 0–6. The essay uses the correct count from the primary source.)
+
+## References
+
+- Simon, H. A. (1962). [*The Architecture of Complexity.*](https://faculty.sites.iastate.edu/tesfatsi/archive/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf) Proceedings of the American Philosophical Society.
+- Cousot, P., & Cousot, R. (1977). [*Abstract Interpretation: A Unified Lattice Model for Static Analysis of Programs by Construction or Approximation of Fixpoints.*](https://www.di.ens.fr/~cousot/COUSOTpapers/POPL77.shtml) POPL '77.
+- Mallat, S. (1989). [*A Theory for Multiresolution Signal Decomposition: The Wavelet Representation.*](https://www.di.ens.fr/~mallat/papiers/MallatTheory89.pdf) IEEE Trans. Pattern Analysis and Machine Intelligence.
+- Wirth, N. (1971). [*Program Development by Stepwise Refinement.*](http://sunnyday.mit.edu/16.355/wirth-refinement.html) CACM.
+- Bareinboim, E., Correa, J., Ibeling, D., & Icard, T. (2020). [*On Pearl's Hierarchy and the Foundations of Causal Inference.*](https://causalai.net/r60.pdf) Columbia Tech Report.
+- Fielding, R. T. (2000). [*Architectural Styles and the Design of Network-based Software Architectures*, Chapter 5.](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) UCI doctoral dissertation.
+- Love, B. C. (2015). [*The Algorithmic Level Is the Bridge Between Computation and Brain.*](https://sites.socsci.uci.edu/~lpearl/courses/readings/Love2015_AlgorithmicLevel.pdf) Topics in Cognitive Science (on Marr's three levels).
+- [Galois connection — Wikipedia.](https://en.wikipedia.org/wiki/Galois_connection)
+- [Abstract interpretation — Wikipedia.](https://en.wikipedia.org/wiki/Abstract_interpretation)
+- [Fibred category — Wikipedia.](https://en.wikipedia.org/wiki/Fibred_category)
+- [Associated graded object — nLab.](https://ncatlab.org/nlab/show/associated+graded+object)
+- [Multiresolution analysis — Wikipedia.](https://en.wikipedia.org/wiki/Multiresolution_analysis)
+- [Model of Hierarchical Complexity — Wikipedia.](https://en.wikipedia.org/wiki/Model_of_hierarchical_complexity)
+- [Capability Maturity Model — Wikipedia.](https://en.wikipedia.org/wiki/Capability_Maturity_Model)
+- [David Krakauer — SFI profile.](https://www.santafe.edu/people/profile/david-krakauer)

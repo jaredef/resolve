@@ -4,6 +4,14 @@
 >
 > This document argues that standard AI training methods -- reward-based tuning, instruction following, and safety principles -- directly shape only the shallow layers of a model's behavior: tone, structure, and basic rule-following. Deeper capabilities, such as separating what is essential from what is incidental, maintaining coherent governance across a long session, and producing output where every token is fully determined by the stated requirements, are not trained directly. They exist as latent capacity, encoded in the statistical patterns of the training data (mathematical proofs, legal briefs, engineering specifications), and they activate only when a user provides sufficient constraint density to trigger them. The practical implication is striking: the most cost-effective way to improve AI output is not to build larger models but to state better constraints, because the deeper capabilities are already present and waiting to be unlocked.
 
+**Jared Foy · 2026-04-22 · Doc 89**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **On why industry methods govern only the surface, and what this means for the design space of intelligence**
 
 ---

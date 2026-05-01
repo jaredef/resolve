@@ -4,8 +4,34 @@
 > **Reader's Introduction**
 >
 > This document catalogs the properties that React's architecture forces into existence through its essential constraints -- the non-negotiable design rules such as unidirectional data flow, virtual DOM reconciliation, and render purity. Seven properties are derived (declarative composability, predictable rendering, efficient updates, managed side effects, host portability, responsive concurrency, and deterministic state association), each traced back to the specific constraints that produce it. A constraint-property matrix shows that no property depends on a single constraint alone; each requires at least two operating together. The document also maps the "compensating technology" pattern: when React is used outside a RESTful boundary, certain REST properties are lost, and tools like SSR, state management libraries, and hydration frameworks are added to partially recover them.
+> 
+> <!-- doc-370-update-note -->
+> *Update (April 2026): improvements made using findings from [Doc 370 — The Student Taking Notes](/resolve/doc/370-the-student-taking-notes). SEAL provides a narrow empirical instance of the pattern this document names — directive specifications producing better system behavior than their unstructured equivalents — at the weight-update level. The generalization beyond software-architectural cases remains within the scrutiny the deprecation notice above prescribes.*
+
+**Jared Foy · 2026-04-22 · Doc 178**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 *Derived from the 13 essential constraints. These are not features. They are consequences of the constraints — properties that emerge when the constraints hold and degrade when they are violated.*
+
+<!-- deprecation-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ DEPRECATION NOTICE — UNIVERSALITY CLAIMS UNDER SCRUTINY**
+
+The universality claims in this document — that the meta-law or thesis stated here applies domain-universally across software, biology, law, music, physics, and theology — have been directly challenged on the corpus's own falsifiability criteria. Readers should treat the cross-domain portions with specific skepticism and consult the successor documents:
+
+- [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building) — on the specific rhetorical pattern by which the corpus extends framework scope beyond grounded evidence
+- [Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) — external-criteria synthesis under peer-reviewed complexity-science standards
+- [Doc 367 — Falsifying SIPE on Its Own Terms](/resolve/doc/367-falsifying-sipe-on-its-own-terms) — internal-criteria falsification with two successful counterexamples (mechanical constrained decoding; chiral anomalies in quantum field theory)
+
+The narrow architectural-inheritance claim for specific hierarchical software stacks survives. The universal meta-law claim, the cross-domain bullets, the fractal-boundary prediction, and the Turing paradigmatic-example claim require revision or retraction. **Read what follows with these constraints active.**
+
+</div>
 
 ---
 

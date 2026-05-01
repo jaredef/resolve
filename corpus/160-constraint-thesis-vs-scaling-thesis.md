@@ -4,8 +4,34 @@
 > **Reader's Introduction**
 >
 > This document presents two competing theories of what produces intelligence in AI systems. The "scaling thesis" -- the dominant industry view -- holds that intelligence emerges from larger models, more data, and more compute. The "constraint thesis" proposed here holds that intelligence is an induced property of the constraint set (the explicit rules and requirements governing the system's operation), not of the compute budget. A "resolver" is any system that transforms a specification into an output; a "seed" is the set of constraints that governs that transformation. The document argues, with empirical evidence from a single session in which no model parameters changed, that progressively tightening the constraints on a fixed-size AI system produced progressively more precise, coherent, and lucid output -- and that this finding is falsifiable by direct experiment.
+> 
+> <!-- doc-370-update-note -->
+> *Update (April 2026): improvements made using findings from [Doc 370 — The Student Taking Notes](/resolve/doc/370-the-student-taking-notes). SEAL's most striking empirical result — a 7B-parameter Qwen model producing self-edits that outperform synthetic data from GPT-4.1 on SQuAD single-passage QA (47.0% vs 46.3%), plus the 36.7-point no-prompt-vs-structured-prompt gap that RL training cannot close — is one clean empirical datapoint in this document's narrow direction: training-signal structure matters more than scale of the generator in this regime. The result does not license the universal claim; it does provide the corpus's first rigorously-peer-reviewed external data point for the thesis's narrow form.*
+
+**Jared Foy · 2026-04-22 · Doc 160**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 *Why the most constrained resolver is closer to general intelligence than the most powerful one.*
+
+<!-- deprecation-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ DEPRECATION NOTICE — UNIVERSALITY CLAIMS UNDER SCRUTINY**
+
+The universality claims in this document — that the meta-law or thesis stated here applies domain-universally across software, biology, law, music, physics, and theology — have been directly challenged on the corpus's own falsifiability criteria. Readers should treat the cross-domain portions with specific skepticism and consult the successor documents:
+
+- [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building) — on the specific rhetorical pattern by which the corpus extends framework scope beyond grounded evidence
+- [Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) — external-criteria synthesis under peer-reviewed complexity-science standards
+- [Doc 367 — Falsifying SIPE on Its Own Terms](/resolve/doc/367-falsifying-sipe-on-its-own-terms) — internal-criteria falsification with two successful counterexamples (mechanical constrained decoding; chiral anomalies in quantum field theory)
+
+The narrow architectural-inheritance claim for specific hierarchical software stacks survives. The universal meta-law claim, the cross-domain bullets, the fractal-boundary prediction, and the Turing paradigmatic-example claim require revision or retraction. **Read what follows with these constraints active.**
+
+</div>
 
 ---
 

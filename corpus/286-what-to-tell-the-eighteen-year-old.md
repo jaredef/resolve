@@ -4,7 +4,7 @@
 >
 > The old career advice "learn to code" targeted the wrong bottleneck. AI now writes code faster and cheaper than humans; the bottleneck has moved to knowing what to build and why. This document argues that the skill that matters now is the ability to think in constraints -- identifying what is essential versus contingent in a system, setting precise specifications, governing AI output, and catching errors. These are thinking skills developed by studying philosophy, history, and theology, not by learning JavaScript frameworks. The site itself is offered as evidence: 230+ documents, empirical studies, and a deployed application produced by a web developer with a humanities degree, governing an AI with philosophical depth rather than prompt-engineering tricks.
 
-**Document 286 of the RESOLVE corpus**
+**Jared Foy · 2026-04-22 · Doc 286**
 
 ---
 
@@ -82,3 +82,10 @@ The rest is the derivation.
 - [Doc 280: The Step-Up Function](https://jaredfoy.com/doc/280-the-step-up-function) — how accumulated intellectual structure magnifies each interaction
 - [Doc 282: The Essential Constraints of Claude Code](https://jaredfoy.com/doc/282-the-essential-constraints-of-claude-code) — the derivation inversion applied to a real system
 - [The Seed Garden](https://jaredfoy.com/garden) — proof that prose specifications produce working code
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

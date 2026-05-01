@@ -5,6 +5,14 @@
 >
 > Roy Fielding's 2000 dissertation defined REST, the architectural style underlying the World Wide Web. This document collects observations made while reading that dissertation alongside the development of the PRESTO style and the htxlang specification. It identifies several contributions Fielding did not address, including a "bilateral authorial model" (the developer writes a single document that addresses two interpreters simultaneously), a temporal-latency dimension introduced by code-on-demand, and an argument that React's component model is structurally the "Distributed Objects" style Fielding himself evaluated unfavorably. Together, the annotations build the case that REST's design space has been under-explored and that a coherent developer mental model for working within its constraints has been missing until now.
 
+**Jared Foy · 2026-04-22 · Doc 192**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **Companion document to: An Architectural Style for Progressive Representational State Transfer with On-Demand Code**
 **Jared Foy, April 2026**
 

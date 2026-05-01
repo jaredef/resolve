@@ -5,6 +5,14 @@
 >
 > Modern React-based web development relies on an extensive stack of tools -- server-side rendering, hydration, client-side routers, state management libraries, bundlers, and more -- each solving a problem introduced by the one before it. This document maps every major tool in that stack to the specific REST property it is trying to recover, then shows that each property already exists natively at the appropriate layer of the PRESTO architecture. The purpose is not to dismiss the engineering, which is often brilliant, but to demonstrate that each solution points, by its very existence, toward an architectural property that a server-rendered, progressively enhanced approach provides by default.
 
+**Jared Foy · 2026-04-22 · Doc 190**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **Companion document to: An Architectural Style for Progressive Representational State Transfer with On-Demand Code**
 **Jared Foy, April 2026**
 

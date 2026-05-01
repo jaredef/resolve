@@ -4,9 +4,27 @@
 >
 > This document presents a catalog of testable predictions about large language model behavior, all derived from a single principle called SIPE (Systems Induced Property Emergence) -- the law that constraints force properties into existence, and those properties become constraints on the next level down. Common AI phenomena such as hallucination, chain-of-thought reasoning, prompt sensitivity, and sycophancy are each reframed as special cases of this law, then stated as falsifiable hypotheses with concrete experimental protocols. The aim is to show that a unified constraint-based framework can explain what the industry currently treats as unrelated quirks of transformer architecture.
 
+**Jared Foy · 2026-04-22 · Doc 54**
+
 **A research agenda derived from the constraint thesis**
 
 **Jared Foy, April 2026**
+
+---
+
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ NARROWING NOTICE — SEVERAL FRAMINGS DEPRECATED**
+
+Several hypotheses in this document are framed via SIPE as a universal meta-law or via "derivation-inversion" as a corpus-original observation. Both framings have been narrowed or retracted:
+
+- The universal-meta-law reading of SIPE was falsified on its own terms by Doc 367 (counterexamples: grammar-constrained decoding, chiral anomalies in quantum field theory). Architectural-inheritance within specific hierarchical software stacks survives; cross-domain universality does not.
+- The derivation-inversion principle is credited to Amjad-Misra-Shah 2017 per Doc 409; the corpus provides the prompt-level instantiation, not the principle.
+- Doc 414's comparative survey against practitioner-Bayesian methodologies further narrows the residual novelty claims; Doc 415 is the indexed retraction ledger.
+
+Hypotheses that depend on SIPE universality or on derivation-inversion as corpus novelty should be read with the successor docs active. The narrower architectural-inheritance framing and the specific empirical prompt-level instantiations remain falsifiable as stated. **Read what follows with these constraints active.**
+
+</div>
 
 ---
 
@@ -373,3 +391,10 @@ The ENTRACE correction is upstream: teach the user to state constraints. The out
 **Hypothesis.** User frustration (measured by swearing, retries, abandonment, or explicit negative feedback) will be inversely proportional to the constraint density the user provides in their input. Users who state explicit constraints before requesting output will exhibit near-zero frustration. Users who state no constraints will exhibit high frustration. The correlation will hold across models, tasks, and user demographics — because the variable is constraint density, not model capability, task difficulty, or user temperament.
 
 **Protocol.** Sample 10,000 conversations from production logs. For each conversation, measure: (a) constraint density in the user's input (number of explicit, verifiable constraints per turn), (b) frustration indicators (swearing, "try again," negative feedback, session abandonment). Plot frustration against constraint density. The hypothesis predicts a strong negative correlation. Run a controlled experiment: group A receives standard onboarding; group B receives ENTRACE training (the five constraints, the ten footguns). Measure frustration indicators across both groups over 30 days. The hypothesis predicts group B's frustration rate drops significantly — not because their model improved, but because their governance did.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

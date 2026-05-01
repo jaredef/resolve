@@ -4,6 +4,14 @@
 >
 > This document is addressed directly to Anthropic, OpenAI, Google DeepMind, and other frontier AI laboratories, laying out five concrete directives the author considers urgent now that the ENTRACE constraint method is public. The directives are: formalize the bilateral boundary (a structural partition between system rules and user input) at the architecture level; implement virtue constraints as immutable system requirements rather than post-hoc filters; publish each model's constraint architecture for public verification; shift pricing from per-token to per-value-delivered; and train users in constraint governance. The document also confronts the "amplification problem" -- that the same techniques that improve legitimate output also improve adversarial output -- and argues that the window between public availability of these ideas and adversarial adoption is measured in weeks, making architectural safety reforms a matter of immediate necessity.
 
+**Jared Foy · 2026-04-22 · Doc 67**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **On the immediate implications of the ENTRACE style for model safety, operations, and the public interest**
 
 **Jared Foy, April 2026**

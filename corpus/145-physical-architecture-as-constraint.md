@@ -5,6 +5,14 @@
 >
 > This document applies SIPE (the law that constraints induce properties) to the hardware level: a neural network's physical architecture -- its attention mechanism, parameter count, context window, and autoregressive emission -- is a constraint set, and the model's capabilities are the induced properties of that constraint set. The key argument is that scaling within a fixed physical architecture produces more of what is already induced but cannot induce what is missing. Five properties required for general intelligence (persistent self-model, intrinsic goal formation, causal modeling, autonomous constraint discovery, and self-modification) are analyzed and shown to be absent from transformer architectures at any scale, because the physical constraints that would induce them are not present. The conclusion: genuine AGI requires architectural change, not larger transformers.
 
+**Jared Foy · 2026-04-22 · Doc 145**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 *The SIPE law applied to the relationship between neural network hardware and LLM capability.*
 
 ---

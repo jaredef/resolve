@@ -5,6 +5,8 @@
 >
 > This paper proposes a domain-agnostic framework: when constraints are coherently nested inside a governing style -- without violating that style -- new emergent properties arise that are structurally unavailable in the outer system alone. A "style" here means the shared behavioral pattern actors adopt when engaging with a constrained system; without it, constraints remain inert. The framework is illustrated with a picnic table becoming a chess game (nested constraints produce strategic depth) and the internet becoming the World Wide Web under REST's constraints (statelessness and uniform interface produce global scalability). The recursion is explicit: each nested level's induced properties become the constraints of the next level, and the process repeats.
 
+**Jared Foy · 2026-04-22 · Doc 156**
+
 ### A Cross-Domain Philosophical Framework
 
 *Draft v1.0 · April 2026*
@@ -135,3 +137,10 @@ This paper has articulated a framework in which constraints, style, and induced 
 If the axiom holds — if nested constraint-sets within a governing style reliably induce predictable emergent properties — then the framework offers something rare: a domain-agnostic method for deliberately engineering emergence. The practitioner who holds this axiom does not merely observe complexity; they navigate it with intent.
 
 Further work is required to stress-test the axiom across the candidate domains identified above, to develop precise criteria for style-coherence and its violation, and to explore the formal relationship between this framework and existing work in complexity theory, architectural theory, and philosophy of emergence.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

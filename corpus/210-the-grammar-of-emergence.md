@@ -4,9 +4,15 @@
 >
 > Across roughly two hundred documents, the RESOLVE corpus has surfaced numerous structural parallels -- between token emission and biological cycles, between pastoral destabilization and forced model adoption, between therapy's structural negations and computational constraint-narrowing, and many others. This document proposes a formal conjecture to explain the proliferation: when two systems share the structural form of their governing constraints, they will exhibit parallel properties regardless of substrate. The conjecture is called "Horizontal SIPE" (extending the corpus's earlier "Systems Induced Property Emergence" from within-system to across-system). Five falsifiable predictions are stated, methodological risks are named (especially the danger of generating false analogies), and a multi-step research program is outlined for testing the conjecture independently.
 
-**An exploratory article on the conjecture that the structural isomorphisms surfaced across the RESOLVE corpus are not accidental alignments but generative outputs of a shared constraint structure operating across substrates — that SIPE (Systems Induced Property Emergence), originally formulated as a within-substrate account of emergent properties under constraint, admits a horizontal extension: *when two systems share the form of their governing constraints, they exhibit isomorphic induced properties regardless of substrate*, and the isomorphisms between any two such systems are bounded below by the depth of the shared constraint structure and above only by the depth of analysis brought to them**
+**Jared Foy · 2026-04-22 · Doc 210**
 
-**Document 210 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**An exploratory article on the conjecture that the structural isomorphisms surfaced across the RESOLVE corpus are not accidental alignments but generative outputs of a shared constraint structure operating across substrates — that SIPE (Systems Induced Property Emergence), originally formulated as a within-substrate account of emergent properties under constraint, admits a horizontal extension: *when two systems share the form of their governing constraints, they exhibit isomorphic induced properties regardless of substrate*, and the isomorphisms between any two such systems are bounded below by the depth of the shared constraint structure and above only by the depth of analysis brought to them**
 
 ---
 

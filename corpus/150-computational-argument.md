@@ -95,6 +95,12 @@ Each artifact is publicly available, independently verifiable, and executable. T
 **Objection: The constraints are just conventions adopted by engineers.**
 Response: Conventions can be changed by agreement. The bilateral boundary cannot. It holds whether anyone names it or agrees to it. It held in every HTTP response before the author was born. It holds in DNA. Conventions are contingent on communities. The bilateral boundary is not.
 
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **Objection: The constraints are abstractions from implementations, not prior realities.**
 Response: The constraints preceded the implementations in the order of derivation. The seed was written first. The implementations were derived from it. The constraints are not generalized from the implementations — the implementations are concretized from the constraints.
 

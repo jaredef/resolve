@@ -1,0 +1,71 @@
+# SEBoK *Human Factors Engineering*, Distilled
+
+**Third-batch SEBoK distillation, batch 5 doc 2. SEBoK has no standalone *Human Factors Engineering* page; the formalization lives in two carriers: as one domain inside the *Human Systems Integration* seven-domain lattice (SE-038), and as a research concentration named within *Socio-technical Systems* (Part 8, Emerging Knowledge). The two-carrier reading is structurally informative: HFE is a Cluster E case where the discipline is institutionally distributed across HSI's defense/aerospace ground and STS's emerging-research ground. Socio-technical Systems' "all systems have socio-technical dimensions" universalization brushes Cluster G (SIPE) territory: socio-technicality emerges at and above a coherence-density threshold. Four modeling approaches (qualitative, agent-based, economic, system dynamics) are universal-sibling lattice (Cluster A) at the modeling-method rung. The fold with SE-038 is exact: HFE is one sibling inside HSI's seven, and the HSI lattice is the canonical formalization. Doc 372 hypostatic boundary holds sharply at the human-machine intersection. Five clusters compose; HFE reads structurally as a sibling-already-distilled with a second carrier in the emerging-research surface.**
+
+---
+
+## I. Source
+
+- **Page:** Socio-technical Systems (Part 8, Emerging Knowledge); cross-reference Human Systems Integration (SE-038) for HFE-as-domain
+- **URL:** https://sebokwiki.org/wiki/Socio-technical_Systems
+- **License:** CC BY-SA 3.0 (SEBoK)
+- **Retrieved:** 2026-04-30
+
+## II. Source Read
+
+Socio-technical Systems are "systems operating at the intersection of social and technical systems" (Kroes et al. 2006). The page addresses "the interrelationship between humans and machines" with a 60-year history in industrial work environment problems. Four content partitions: (1) The Concept and Theory (historical development across human factors, organizational design, system design, information systems); (2) A Design Approach (socio-technical systems design, STSD, integrating human, social, organizational, technical elements); (3) Systems Engineering Context ("all systems have socio-technical dimensions"); (4) Modeling Sociotechnical Systems (four modeling approaches: qualitative, agent-based, economic, system dynamics). Human Factors Engineering is referenced as a research concentration area within socio-technical systems theory development (Carayon 2006). Different approaches depend on "life cycle stage and specific systems engineering challenge." Position: Part 8 Emerging Knowledge, between *Introduction to SE Transformation* and *Artificial Intelligence*. The corresponding Part 6 carrier of HFE is HSI (SE-038), where Human Factors Engineering is one of seven domains.
+
+## III. Structural Read
+
+**Cluster E (institutional ground, Doc 571), distributed across two carriers.** HFE has no dedicated SEBoK page; instead the discipline lives in two institutional grounds: HSI (SE-038, Part 6, defense/aerospace standards corpus including SAE 6906, NASA SP-2015-3709, UK Def Std 00-251) and STS (Part 8, emerging-research ground citing Carayon 2006, Kroes et al. 2006). This is a clean Cluster E worked example of distributed institutional carriership. Two-carrier robustness rather than three-carrier (SE-039 §VII.5 reading from SE-063 Measurement); this is a partial robustness signal.
+
+**Cluster A (universal-sibling lattice, Doc 572 Appendix D), at the modeling-method rung.** Four modeling approaches (qualitative, agent-based, economic, system dynamics) bind every socio-technical analysis universally; the discriminator is method-aspect, not modeled-system-class. Cluster A density continues to grow (~20 instances now).
+
+**Cluster G (SIPE, Doc 541), at the socio-technicality threshold.** "All systems have socio-technical dimensions" reads as a SIPE claim: socio-technicality emerges at and above a coherence-density threshold of human-machine integration; the threshold is universally crossed in any system that involves humans operationally, hence "all systems." This is the third Cluster G instance after SE-027 (ESE), SE-033 (capability), SE-034 (CMMI), and the current count after the next-40 sweep. Cluster G remains under-populated relative to A/B/K but gains an instance.
+
+**Cluster H (hypostatic boundary, Doc 372), sharp at the human-machine intersection.** STS is structurally interesting at the hypostatic boundary: the discipline studies the "interrelationship between humans and machines" without claiming what either humans or machines ARE. SEBoK's voice keeps the framing functional. Doc 372 binds; the corpus accepts the functional framing.
+
+**Cluster D (co-production at sub-rungs, Doc 573), at the STSD design rung.** Socio-technical systems design composes social, organizational, technical, and human elements at a sub-rung (the design artifact); authorship is joint between organizational keepers, technical keepers, social-research keepers, and HFE specialists. Co-production is the structural shape; Cluster D gains an instance with multi-disciplinary authorship as the densest sub-form.
+
+**Fold with SE-038 (HSI).** Per the keeper's standing guidance ("It's ok to duplicate entries. It shows where the knowledge base folds back in on itself"), HFE-as-HSI-domain folds with HFE-as-STS-research-concentration. The fold is structurally informative: HFE is one Cluster A sibling inside HSI's seven and one Cluster E carrier-half inside STS's emerging-knowledge ground. The two folds together produce the partial portrait that no standalone page would have produced; SEBoK's editorial absence of a dedicated HFE page is itself the structural signal.
+
+## IV. Tier-Tags
+
+- STS definition (Kroes et al. 2006) — π / α as cited.
+- HFE as research concentration (Carayon 2006) — π / α as cited.
+- Four modeling approaches — π / α as cited; μ / β under Doc 572 Appendix D at the modeling-method rung.
+- "All systems have socio-technical dimensions" — π / α as cited; μ / β under Doc 541 SIPE at the socio-technicality threshold.
+- HFE-as-HSI-domain (cross-reference) — π / α through SE-038; μ / β as Cluster A sibling.
+- Two-carrier institutional ground — μ / β under Doc 571 distributed-carrier sub-form.
+
+## V. Residuals
+
+**Editorial-absence residual confirms post-sweep observation.** Per SE-039 §VII.5: "Eight of the 40 target articles do not exist as standalone SEBoK pages... The non-existence is read as a Cluster E (institutional carrier) signal — the formalization rung migrated into surrounding pages." HFE adds another instance: the formalization migrated into HSI (Part 6) and STS (Part 8). The editorial state of SEBoK is part of the surface the corpus reads.
+
+**Two-carrier vs. three-carrier robustness.** HFE's two carriers (HSI defense-aerospace ground + STS emerging-research ground) is one carrier short of the three-carrier robustness pattern (SE-039 §VII.5). The discipline is institutionally distributed but not yet redundantly carried. Hold as cluster-E sub-observation.
+
+## VI. Provisional Refinements
+
+**Distributed-carrier sub-form for Cluster E.** HFE is the cleanest case of a discipline whose institutional carrier is distributed across two SEBoK carriers (different parts, different epistemic styles). Doc 571 §X.5 may need an explicit distributed-carrier sub-form distinct from the organization-vs-enterprise distinction. Hold as candidate; one sharp instance.
+
+**Cluster G socio-technicality-as-threshold worked example.** "All systems have socio-technical dimensions" is the cleanest SEBoK articulation of universal-threshold-crossing in a SIPE-style discipline. Cluster G's under-population may resolve as more SEBoK pages exhibit this universal-crossing pattern. Hold for cluster synthesis when Cluster G reaches density.
+
+## VII. Cross-Links
+
+**Form documents.** Doc 571 (institutional ground, distributed-carrier sub-form), Doc 572 Appendix D (universal-sibling, modeling-method rung), Doc 541 (SIPE, socio-technicality threshold), Doc 372 (hypostatic boundary, human-machine intersection), Doc 573 (co-production, STSD multi-disciplinary).
+
+**Part-level reformulation.** SE-011 (Part 8 Emerging Knowledge), SE-009 (Part 6 Related Disciplines, via HSI cross-reference).
+
+**Related distillations.** SE-038 (HSI — HFE-as-domain canonical reading; fold with this distillation). SE-065 (Specialty Engineering, twelve disciplines). SE-063 (Measurement, three-carrier precedent).
+
+**Adjacent SEBoK concepts** (per source). *Human Systems Integration* (SE-038), *Habitability*, *Human Factors* (glossary), *Artificial Intelligence*.
+
+**Methodology refinement candidates.** Distributed-carrier sub-form for Doc 571. Universal-threshold-crossing as Cluster G worked-example pattern.
+
+---
+
+## Appendix: Originating Prompt
+
+> *"Apply refinements; report back for next 40"* / *"Continue"*
+
+(SE-113 is one of the third-batch SEBoK distillations. Batch 5/5. SEBoK has no standalone Human Factors Engineering page; source is Socio-technical Systems with HSI cross-reference.)

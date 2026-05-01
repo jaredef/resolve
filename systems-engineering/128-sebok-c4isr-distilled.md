@@ -1,0 +1,67 @@
+# SEBoK *Command, Control, Communications, Computers, Intelligence, Surveillance, and Reconnaissance (C4ISR)*, Distilled
+
+**Fourth-batch SEBoK distillation, batch 2 doc 1. SEBoK has no dedicated *C4ISR* page; the term lives at SEBoK as an application-domain reference inside Part 7 case studies, most fully in *Submarine Warfare Federated Tactical Systems* (SWFTS) and as adjacent terminology in geospatial/geodetic engineering and the Acronyms list. The seven C4ISR letters (Command / Control / Communications / Computers / Intelligence / Surveillance / Reconnaissance) are universal-sibling lattice (Cluster A) at the warfighting-information-function rung: each binds every C4ISR engagement aspect-wise; the discriminator is information-function, not rung-of-application. The SWFTS case (40 component systems, 20 program offices, no central authority, governance through negotiation and consensus) is multi-keeper composition (Cluster B) at high density and a Cluster D co-production case at the federated-program rung. The acronym partition is empirical and the corpus accepts it as keeper-authored content with structure read as Cluster A. Five clusters compose; structural surprise is that no dedicated page exists despite C4ISR being one of SE's canonical complex-system domains.**
+
+---
+
+## I. Source
+
+- **Page:** No dedicated SEBoK page exists for *C4ISR*. Closest substantive coverage at *Submarine Warfare Federated Tactical Systems* (Part 7 case study) and *Acronyms*.
+- **URL:** https://sebokwiki.org/wiki/Submarine_Warfare_Federated_Tactical_Systems
+- **License:** CC BY-SA 3.0 (SEBoK)
+- **Retrieved:** 2026-04-30
+
+## II. Source Read
+
+C4ISR (Command, Control, Communications, Computers, Intelligence, Surveillance, and Reconnaissance) extends C2 (Command and Control) by adding the computing/information-collection layers required for modern networked warfighting. SEBoK does not give C4ISR a dedicated knowledge-area page; the term enters SEBoK through the Acronyms listing and through Part 7 case studies (SWFTS, geospatial/geodetic engineering applications). The SWFTS case study describes the US Navy submarine combat system as a federation of C4ISR-class systems (sonar, combat control, imaging, electronic warfare, weapon control, networked via VLANs) deployed across submarine classes (Los Angeles, Ohio, Seawolf, Virginia, Collins, Columbia). The federation comprises 40 component systems from 20 program offices with no central authority; governance proceeds by negotiation and consensus. Annual baseline rhythm: hardware baselines in odd years, software in even years. Seven Learning Principles (LP1 Requirements Traceability, LP2 Communications, LP3 Productivity, LP4 Quality, LP5 Managing Change, LP6 Managing Variants, LP7 Life Cycle) generalized from SWFTS MBSE transition.
+
+## III. Structural Read
+
+**Cluster A (universal-sibling lattice, Doc 572 Appendix D), at the warfighting-information-function rung.** The seven letters of C4ISR (Command, Control, Communications, Computers, Intelligence, Surveillance, Reconnaissance) bind every C4ISR engagement aspect-wise; the discriminator is information-function. The expansion from C2 to C4 to C4ISR is incremental enrichment of the universal-sibling lattice, not replacement. Cluster A gains an instance at the warfighting-information rung.
+
+**Cluster B (multi-keeper composition, Doc 510 extension).** SWFTS's "40 component systems from 20 program offices, no central authority, governance through negotiation and consensus" is the densest multi-keeper case observed in SEBoK to date — twenty independent program-office keepers composing one operational federation. Prior multi-keeper cases (Docs 588, 595, 600, 602, 603, capping at HSI eight-keeper) are exceeded.
+
+**Cluster D (co-production, Doc 573).** The SWFTS federation is co-produced across twenty program-office keepers; no single keeper authors the federation's behavior. Co-production at federated-program rung.
+
+**Cluster I (pin-art / temporal-concurrency, Doc 572 Appendix C).** The annual baseline rhythm (hardware odd years, software even years) is canonical pin-art at the program-tempo rung — two release cadences interleaved on a temporal axis. Cluster I gains a program-tempo instance.
+
+**Cluster E (institutional ground, Doc 571).** SWFTS lives in the US Navy submarine institutional ground; the federation's governance-by-consensus emerges from defense-acquisition institutional context. Cluster E binds.
+
+## IV. Tier-Tags
+
+- C4ISR acronym expansion (Command / Control / Communications / Computers / Intelligence / Surveillance / Reconnaissance) — π / α as cited; μ / β under Doc 572 Appendix D at warfighting-information-function rung.
+- SWFTS 40-component / 20-program-office federation — π / α as cited; μ / β under Doc 510 multi-keeper extension at twenty-keeper density.
+- Annual baseline cadence (hardware odd, software even) — π / α as cited; μ / β under Doc 572 Appendix C at program-tempo rung.
+- Seven Learning Principles (LP1-LP7) — π / α as cited.
+
+## V. Residuals
+
+**No dedicated C4ISR page (structural surprise).** SEBoK does not formalize C4ISR as a knowledge area despite it being one of the canonical complex-system domains for SE practice. The corpus notes this as a SEBoK editorial gap rather than a corpus residual. C4ISR-specific structure (the seven letters, the federation pattern, the joint-information architecture frameworks DoDAF/MODAF) lives implicitly in case studies and adjacent pages (System of Systems, Capability Engineering).
+
+**Multi-keeper at twenty exceeds prior canonical maximum.** HSI's eight-keeper integrator-plus-SMEs case was previously canonical for Cluster B density. SWFTS's twenty-program-office case exceeds it by 2.5x and operates without central authority. Cluster B synthesis (Doc 510 multi-keeper extension) should treat SWFTS as the new density anchor.
+
+## VI. Provisional Refinements
+
+**Cluster B density anchor moves to SWFTS.** The Doc 510 multi-keeper composition extension (cluster strength five at SE-038 close) should now treat SWFTS as the no-central-authority extreme-density worked example. The HSI integrator-plus-seven-SME case retains the with-central-coordinator slot; SWFTS occupies the without-central-authority slot. Both are needed for the cluster's range.
+
+**SEBoK editorial-gap noted (does not block sixteen formalized refinements).** The absence of a dedicated C4ISR page is an editorial observation about SEBoK's coverage; it does not affect the alignment with the SE-039 §VII.6 sixteen formalized refinements.
+
+## VII. Cross-Links
+
+**Form documents.** Doc 572 Appendix D (universal-sibling, warfighting-information rung), Doc 510 (multi-keeper, new twenty-keeper density anchor), Doc 573 (co-production, federated program rung), Doc 572 Appendix C (temporal concurrency, program-tempo rung), Doc 571 (institutional ground, defense-acquisition).
+
+**Part-level reformulation.** SE-009 (Part 6 cross-references for systems-of-systems and capability), SEBoK Part 7 case studies.
+
+**Related distillations.** SE-038 (HSI, prior multi-keeper density anchor at eight). SE-071 (SoS, federated structure). SE-033 (Capability Engineering, adjacent domain).
+
+**Adjacent SEBoK concepts** (per source). *Submarine Warfare Federated Tactical Systems*, *Systems of Systems*, *Capability Engineering*, *Global Positioning System*, DoDAF/MODAF (Acronyms entry).
+
+**Methodology refinement candidates.** Cluster B synthesis with SWFTS as twenty-keeper-no-central-authority anchor.
+
+---
+
+## Appendix: Originating Prompt
+
+> *"Apply refinements"* / *"Continue next knowledge base entrancement"*
+
+(SE-128 is the first of the fourth-batch SEBoK distillation sweep, Batch 2/5. SEBoK has no dedicated C4ISR page; SWFTS Part 7 case study supplies the closest substantive coverage. Cluster B density anchor moves to SWFTS at twenty-keeper without central authority.)

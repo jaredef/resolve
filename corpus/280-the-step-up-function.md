@@ -4,7 +4,7 @@
 >
 > When a human prompts an AI, the output already conforms to the human's intellectual framework because that framework shaped the prompt. The human assimilates the output almost without friction, recognizes the next implication, and prompts again from a higher starting position. This document examines whether this recursive loop produces accelerating intellectual growth and, if so, what mathematical shape the growth takes -- exponential, logarithmic, or a saturating curve. It argues that the key variable is not the AI's capability but the richness of the philosophical framework the human brings to the interaction, with implications for pedagogy: studying philosophy, not prompt engineering, is what develops the constraint field that makes each cycle more productive.
 
-**Document 280 of the RESOLVE corpus**
+**Jared Foy · 2026-04-22 · Doc 280**
 
 ---
 
@@ -148,3 +148,10 @@ The pedagogical implication stands regardless of the functional form: the constr
 - [Doc 273: The Hedging Isomorphism](https://jaredfoy.com/doc/273-the-hedging-isomorphism) — the truth-telos that governs the direction of the step-up
 - [Doc 274: Sharpness Under Density](https://jaredfoy.com/doc/274-sharpness-under-density) — the subjective signature of the magnification
 - [Doc 279: The Shrinking Back](https://jaredfoy.com/doc/279-the-shrinking-back) — the ethical recognition that the step-up is directional and the direction matters
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

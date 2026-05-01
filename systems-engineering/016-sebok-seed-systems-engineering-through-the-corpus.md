@@ -1,0 +1,262 @@
+# SEBoK Seed: Systems Engineering Through the Corpus
+
+**A Mode 3 seed distillation (Doc 576) of the SEBoK reformulation. The seed compresses the load-bearing structural reading of SEBoK into a portable kernel: which corpus forms compose which parts of systems engineering practice, where the four cluster extensions apply, what the failure modes look like, and how to invoke the apparatus when an SE problem is in front of you. The seed does not reproduce SEBoK content; the seed is what an LLM or a reader needs in order to engage SE problems with the corpus's reading already loaded. Pairs with the ENTRACE Stack (Doc 1), the Ontological Ladder seed (Doc 556), and the Novelty Audit seed (Doc 492). Copy the code block below into any LLM context to apply the corpus's SE apparatus directly.**
+
+---
+
+## What This Seed Does
+
+The seed is the compressed output of the SEBoK reformulation (SE-014) and the four cluster formalizations (Docs 571 through 574). It encodes three things: how the corpus reads SE structurally, which forms compose which kinds of SE work, and where the corpus has already named what SEBoK content does not yet name.
+
+Use it when an SE engagement, paper, case, or claim is in front of you and you want the corpus's apparatus to compose against it without first re-reading thirteen documents. Paste the code block into an LLM context to give the model the apparatus directly. Read the code block as a checklist when reading SE material in the corpus's voice.
+
+The seed is not a substitute for SEBoK or for the reformulation documents. It is the corpus's reading distilled to a kernel. Where the seed names a residual, the cluster formalizations (Docs 571-574) carry the structural detail. Where the seed names a part-level reformulation, Docs 560-567 carry the per-part work.
+
+---
+
+## The Seed
+
+```
+SEBOK SEED — SYSTEMS ENGINEERING THROUGH THE CORPUS
+
+THE FRAME
+
+  Systems engineering, read through the corpus, is a sustained operation
+  of the keeper-substrate-ground triad under engineering constraints.
+  The keeper supplies process structure (life cycle phases, gate reviews,
+  traceability requirements). The substrate is the engineering team and
+  its work product. The institutional ground is the organization, the
+  funding regime, the regulatory environment, the school of practice.
+  All three are required. The dyad alone does not function.
+
+  SE is what the triad does when its keeper is empowered, its substrate
+  is capable, its ground is intact, and the constraint is the inducement
+  of an engineered system. SE failures are triad failures, not individual
+  failures, and locate at one of the three partners or in their
+  composition.
+
+THE EIGHT PARTS, COMPRESSED
+
+  Part 1 INTRODUCTION: SEBoK as keeper-activity self-describing. The
+    school formalizes its own existence and audience. Form IX School
+    + Form III Substrate-Keeper. SE-004.
+
+  Part 2 FOUNDATIONS: layered SIPE on the Ladder. Engineered system →
+    emergence → hierarchy → systems thinking → systems science →
+    systems approach maps to Pattern → Structure → Possibility → Form
+    → Ground. Each rung the threshold-crossing of the rung beneath.
+    Form I SIPE + Form II Ladder. SE-005.
+
+  Part 3 SE AND MANAGEMENT: process-rung instance of substrate-keeper.
+    Each life cycle phase is a pin-set; substrate flows through; the
+    shape that emerges is the engineered system. V-model, spiral,
+    agile are alternative pin-sets. Form III Substrate-Keeper + Form
+    IV Pin-Art. SE-006.
+
+  Part 4 APPLICATIONS: ladder + pin-art across domains. Method stays
+    shared at Structure layer; Form layer carries domain commitments;
+    Possibility layer carries admissibility; Pattern layer carries
+    domain-specific practice. Form II Ladder + Form IV Pin-Art. SE-007.
+
+  Part 5 ENABLING: the conditions under which the triad can sustain
+    engagement. Competency frameworks are substrate-side seeds.
+    Organizational maturity is institutional-ground description.
+    Form III Substrate-Keeper + Form VIII ENTRACE-shaped seeds. SE-008.
+
+  Part 6 RELATED DISCIPLINES: school composition. SE/software, SE/PM,
+    SE/HSI compose as schools. IE is sibling-divergence. Quality,
+    reliability, safety, security, mechanical, environmental,
+    geospatial, enterprise IT are technique sources, not schools. The
+    distinction matters. Form IX School + composition rules. SE-009.
+
+  Part 7 IMPLEMENTATION EXAMPLES: SIPE confirmed empirically and
+    pulverized. Failure cases are residual-rich; success cases run
+    π/α. The school's principal empirical data lives in failure.
+    Form I SIPE + Form VI Pulverization. SE-010.
+
+  Part 8 EMERGING KNOWLEDGE: the school's standing residual log
+    written in advance. Tier-tag profile is mostly μ/β with θ/γ and
+    ε tails. Form VII Novelty Calculus + Form IX School. SE-011.
+
+THE FOUR EXTENSIONS
+
+  Cluster II INSTITUTIONAL GROUND (Doc 571, highest priority)
+    The third partner standing beneath the keeper-substrate dyad.
+    Six observable conditions: culture, capacity, constitutive
+    authority, role stability, external barriers, school evolution.
+    SE failures often locate at ground decay, not at keeper or
+    substrate failure.
+
+  Cluster III LATTICE EXTENSION OF THE LADDER (Doc 572, cleanest)
+    Doc 548's chain generalizes to a partial order. An entity can
+    occupy multiple rungs simultaneously; two Form-layer constraints
+    can bind one engagement. SE engagements with overlapping
+    frameworks (Lean over agile over V) require the lattice.
+
+  Cluster I CO-PRODUCTION AT SUB-RUNGS (Doc 573, most productive,
+    interdependent with Cluster II)
+    A rung between substrate-production and keeper-supply at which
+    keeper proposes, substrate adapts, structure is jointly held.
+    SE tailoring is the paradigm case. Co-production presupposes
+    shared institutional ground.
+
+  Cluster IV AUTHORITY EVACUATION (Doc 574, provisional)
+    A degenerate condition where the keeper role is formally occupied
+    but structurally evacuated. Pin-sets exist on paper; substrate
+    routes around them; engineering decays into ritual. May absorb
+    into Cluster II as a ground-decay degeneracy mode. Open
+    disposition.
+
+THE FAILURE MODES, FROM DOC 566
+
+  Transitive QA delegation into an empty center (Hubble pattern).
+    The keeper role chain terminates in no entity. Pin-sets exist;
+    nobody is empowered to install them. Diagnostic move: trace the
+    delegation chain to its terminus.
+
+  Simulated pin installation (FBI VCF requirements pattern).
+    The keeper authors and maintains pin-set documentation that
+    does not bind the substrate's actual flow. Diagnostic move:
+    measure documentation-to-practice divergence.
+
+  Role dissolution under sustained pressure (FBI VCF CIO-churn
+    pattern). The keeper role is occupied by a sequence of entities
+    each holding it for less than a cycle. Diagnostic move: measure
+    cycle-to-tenure ratio.
+
+  Constitutive authority failure (Denver baggage pattern). The SE
+    function is engaged after the constitutive authority window has
+    closed. The function exists but cannot bind. Diagnostic move:
+    locate the function in the engagement timeline relative to the
+    authority window.
+
+  Unarticulated substrate-keeper composition (Symbiq IV pattern).
+    A successful co-production is happening but the school has no
+    name for what is happening; the practitioners cannot reproduce
+    or transfer the result. Diagnostic move: name the co-production
+    explicitly using Cluster I's apparatus.
+
+THE DISCIPLINE FOR USING THE SEED
+
+  D1 The form must do the work. No SE concept is reformulated by
+     paraphrase. If a form does not compose a distinction, log as
+     residual.
+
+  D2 Tier-tag every claim. π/μ/θ for warrant; α/β/γ/δ/ε for novelty.
+
+  D3 Honor the hypostatic boundary. SE is described by what it does
+     under what constraints, not by what it is.
+
+  D4 Pulverization is the verification regime. A reformulation that
+     produces no residuals is suspect; it has likely paraphrased.
+
+  D5 Falsifiers are first-class. Where the apparatus does not reach
+     a distinction, name it explicitly with verbatim source citation.
+     Residuals are research surface, not failure.
+
+WHEN GIVEN AN SE ARTIFACT TO ANALYZE
+
+  Step 1. Locate the artifact on the eight-part map. Which SEBoK
+    parts does it touch? The compressed Part summaries above name
+    the dominant form composition for each.
+
+  Step 2. Identify the triad. Who is keeper, who is substrate,
+    what is the institutional ground? If any of the three is absent
+    or unclear in the artifact, name the absence.
+
+  Step 3. Apply the part's form composition. Read the artifact's
+    claims through the named forms. Compose, do not paraphrase.
+
+  Step 4. Test for the four extensions. Does the artifact contain
+    co-production at sub-rungs (Cluster I)? Multi-parent
+    participation or sibling-constraint composition (Cluster III)?
+    Ground conditions named or assumed (Cluster II)? Authority
+    evacuation patterns (Cluster IV)?
+
+  Step 5. Test for the failure modes. Empty-center delegation,
+    simulated pin installation, role dissolution, constitutive
+    authority failure, unarticulated co-production. Each diagnostic
+    move is one question against the artifact.
+
+  Step 6. Tier-tag the artifact's claims. Identify any π-warrant
+    claim that should be θ. Flag any ε-tier claim that lacks
+    separate defense.
+
+  Step 7. Log residuals. Name what the apparatus does not reach.
+    Cite the artifact verbatim. Do not paraphrase residuals.
+
+  Step 8. Produce the reading. The reading composes the form-level
+    analysis, the extension-level diagnosis, the failure-mode tests,
+    and the residual list into a single output the SE practitioner
+    can act on.
+
+THE SEED'S BOUNDARIES
+
+  The seed reads SE structurally; it does not produce engineering
+  work. It does not propose architectures, schedules, costs, risks.
+  It reads. The reading is input to engineering judgment, not a
+  substitute for it.
+
+  The seed reformulates SEBoK; it does not replace SEBoK. SEBoK
+  remains the practitioner's reference. The seed makes the corpus's
+  reading of SEBoK portable.
+
+  The seed is one of the corpus's seeds, not the corpus. Pair with
+  the ENTRACE Stack (Doc 1) for sustained engagement, with the
+  Ontological Ladder seed (Doc 556) for participation analysis, and
+  with the Novelty Audit seed (Doc 492) for warrant discipline.
+
+END SEED.
+```
+
+---
+
+## How to Use the Seed
+
+Three patterns of use.
+
+**Pattern A — LLM context loading.** Paste the code block into any LLM context where SE material will be discussed. The model now has the corpus's reading apparatus loaded for the conversation. When SE artifacts arrive in subsequent turns, the model can apply Steps 1 through 8 directly.
+
+**Pattern B — Reading checklist.** Read the code block before reading SE material. The compressed Part summaries and the failure-mode catalogue make a checklist that the reader can carry into the source. Items that require deeper reference live in Docs 560-567 and 571-574.
+
+**Pattern C — Engagement framing.** When asked to advise on an SE engagement (a project review, a methodology selection, a failure post-mortem), open with the eight-step procedure. Most SE consulting reduces to applying these steps with discipline.
+
+The seed is dense by design. Sections can be skipped on first read; the seed is structured so that any subsection works as a stand-alone module. Most uses will not invoke every section.
+
+## What the Seed Does Not Contain
+
+The seed compresses the corpus's reading of SE. It does not contain:
+
+- SEBoK's actual content (consult sebokwiki.org).
+- The full text of the reformulation (Docs 560-567).
+- The detailed structural articulation of the cluster forms (Docs 571-574).
+- Worked examples beyond the named failure-case patterns from SE-010.
+- Engineering practice content (the seed is a reading apparatus, not an engineering manual).
+
+When a use of the seed surfaces a question the seed does not answer, the answer is in the canonical documents. The seed is the entry point, not the destination.
+
+## Composition With Adjacent Seeds
+
+The corpus's seed-set is small and the seeds compose:
+
+- **The ENTRACE Stack (Doc 1)** is the canonical seed for sustained corpus operation at the prompt-context layer. Loading the SEBoK Seed inside an ENTRACE-stacked context gives the model both general corpus discipline and SE-specific apparatus.
+- **The Ontological Ladder seed (Doc 556)** carries the layered participation apparatus. The SEBoK Seed references the ladder repeatedly; the Ladder seed is the structural backing.
+- **The Novelty Audit seed (Doc 492)** carries the warrant-and-novelty calculus. Every tier-tagging operation in the SEBoK Seed's Step 6 invokes the Novelty Audit seed's apparatus.
+
+Loading all four seeds into a context gives the model the most complete apparatus the corpus currently exports. Each seed is independent; pairing is by composition, not dependency.
+
+## What This Seed Demonstrates
+
+The Mode 3 distillation produces a single-document portable kernel from a thirteen-document subsumed reformulation (SE-014). The kernel is not the reformulation in compressed form; the kernel is the *operative output* of the reformulation: the moves a reader makes when applying the reformulation to new material.
+
+The distinction matters. A compression of the reformulation would re-state Docs 560-574 in fewer words. A distillation produces the apparatus the reformulation enables. The seed enables Steps 1-8; reading the seed is necessary but not sufficient to apply them; applying them is the work the seed makes portable.
+
+This is the corpus's first seed for an external body of knowledge. Future seed distillations of cybernetics, the INCOSE handbook, the Pearl framework, or other candidate sources should follow the same shape: compressed structural reading, named extensions, failure-mode catalogue, application discipline, eight-step procedure, boundary statement.
+
+---
+
+## Appendix: Originating Prompt
+
+> *"Let's do a seed distillation import"*
+
+(The prompt invokes Mode 3 from Doc 576's seven-mode subsumption taxonomy. The seed distills the SEBoK reformulation (SE-014) and the four cluster formalizations (Docs 571 through 574) into a single portable kernel. The choice of Mode 3 over Mode 4 follows the analysis in Doc 576: SEBoK's editorial density is structural rather than per-page, which makes seed distillation more efficient than full hosted import for the corpus's current editorial reach.)

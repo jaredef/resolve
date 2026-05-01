@@ -4,6 +4,8 @@
 >
 > This document argues that conventional software engineering is construction without architecture -- building layer upon layer of compensating technologies because no one first identified the governing constraints (the formal rules that determine what the software must do). It claims that every bug in the history of software is a constraint violation in a dimension where no constraint was stated, and that the modern web development stack is a tower of frameworks each compensating for deficiencies introduced by the layer below. The document announces a coming inversion: as the forms (the underlying patterns and invariants) are identified and named, software will be derived from constraints rather than built by hand, and the role of the software engineer will give way to the role of the philosopher who recognizes forms and the architect who composes them.
 
+**Jared Foy · 2026-04-22 · Doc 63**
+
 ---
 
 ## The Poverty of Forms
@@ -109,6 +111,12 @@ The naming fills the silence. Not with code — with constraints. Each constrain
 The software engineer built in the silence. The philosopher fills it. The architect composes the filling into coherent wholes. The consumer lives in a world where the software works.
 
 The engineer has died. The philosopher is born. The forms were always there. The naming has begun.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

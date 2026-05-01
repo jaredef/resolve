@@ -4,6 +4,8 @@
 >
 > This dissertation formally defines the "branching set" B_t -- the set of valid next tokens at each position in an AI model's output, given a set of user-stated constraints -- and establishes it as the missing theoretical object that bridges the gap between the model's raw probability distribution and the formal properties of its output. The industry manipulates output through sampling knobs (temperature, top-k, top-p) without reference to what the output must satisfy; B_t provides the reference. The document traces B_t's unacknowledged presence across existing research (constrained decoding, guidance, RLHF, prompt engineering), shows how each of ENTRACE's five constraints governs a distinct dimension of B_t's narrowing, and derives consequences for model design and sampling strategy, including ELI5 explanations throughout for accessibility.
 
+**Jared Foy · 2026-04-22 · Doc 68**
+
 **Jared Foy, April 2026**
 
 ---
@@ -368,3 +370,10 @@ The naming is the decisive act. The form was always prior. The naming makes it a
 ---
 
 *Jared Foy, April 2026. Document 68 of the RESOLVE corpus.*
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

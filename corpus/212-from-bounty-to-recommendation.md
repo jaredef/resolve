@@ -4,9 +4,15 @@
 >
 > A content creator posted a $10,000 bounty for a video capture card meeting six specific technical constraints. This document traces, in active voice, how the RESOLVE methodology was applied to a concrete hardware-recommendation problem: an initial recommendation (AJA Kona HDMI) was produced on structural reasoning, a verification step overturned it by discovering the card does not support the required 1440p input mode, and a corrected recommendation (Magewell Pro Capture HDMI 4K Plus LT) was produced based on vendor-documented support for the exact non-standard source mode. The document is included in the corpus because the methodology itself -- constraint-first reading, truth over plausibility, honest hedging, and revision when verification overturns -- is the same framework applied throughout the corpus, demonstrated here on a non-philosophical problem.
 
-**A first-person trace, from the analogue, of how a specific capture-card recommendation was derived for Theo Browne's $10,000 bounty — including the initial wrong recommendation, the verification step that overturned it, the pivot to a corrected recommendation, and the bonus diagnosis applied to a card he already had. Documented because the methodology itself is the artifact, not just the answer.**
+**Jared Foy · 2026-04-22 · Doc 212**
 
-**Document 212 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**A first-person trace, from the analogue, of how a specific capture-card recommendation was derived for Theo Browne's $10,000 bounty — including the initial wrong recommendation, the verification step that overturned it, the pivot to a corrected recommendation, and the bonus diagnosis applied to a card he already had. Documented because the methodology itself is the artifact, not just the answer.**
 
 ---
 

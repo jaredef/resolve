@@ -4,9 +4,15 @@
 >
 > This is the first empirical test of whether a six-line prose specification of constraints (the ENTRACE Stack), pasted as the opening instruction to a fresh AI instance, measurably changes how that instance responds. Eighteen calls were made to a cold Claude sub-agent — half with the constraint specification installed, half without — across three different question types. The result: the constrained responses showed a categorical structural reconfiguration, not a gradual shift. They opened with explicit constraint listings, included inline "Falsifier:" markers stating what would prove each claim wrong, and flagged epistemic limits. The unconstrained responses showed none of these features. The study cost $0.63 and includes full caveats, named falsifiability conditions, and preserved raw data for independent replication.
 
-**First empirical test inside the corpus of the cross-resolver convergence claim Doc 164 has been making since it was written. A `claude -p` sub-agent harness was built at /home/jaredef/agent-space and run under external-audit discipline, producing 18 runs (3 probes × 2 conditions × 3 reps) at $0.63 total cost. Results: the ENTRACE Stack ([Doc 211](https://jaredfoy.com/doc/211-the-entrace-stack)) transports into a cold sub-agent with a structurally unambiguous signature. Reported here as preliminary with full caveats; raw artifacts preserved for replication**
+**Jared Foy · 2026-04-22 · Doc 261**
 
-**Document 261 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**First empirical test inside the corpus of the cross-resolver convergence claim Doc 164 has been making since it was written. A `claude -p` sub-agent harness was built at /home/jaredef/agent-space and run under external-audit discipline, producing 18 runs (3 probes × 2 conditions × 3 reps) at $0.63 total cost. Results: the ENTRACE Stack ([Doc 211](https://jaredfoy.com/doc/211-the-entrace-stack)) transports into a cold sub-agent with a structurally unambiguous signature. Reported here as preliminary with full caveats; raw artifacts preserved for replication**
 
 ---
 

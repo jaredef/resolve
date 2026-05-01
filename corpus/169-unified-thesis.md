@@ -5,6 +5,8 @@
 >
 > This short document distills the entire RESOLVE research program into a single thesis statement and its supporting arguments. The philosophical claim is that form (structure, pattern, relationship) is prior to expression -- meaning truth is recognized, not invented. The computational claim is that a language model is a "bounded resolver" whose behavior becomes more coherent as the explicit constraints in its input increase, reducing the space of possible outputs toward necessity. The unified thesis combines both: a bounded resolver does not become coherent by inventing truth but by conforming to antecedent form through explicit constraints. Seven corollaries follow, including that code is secondary to constraints, prompts are weak seeds unless they state what must hold, and tests are executable expressions of the properties constraints induce.
 
+**Jared Foy · 2026-04-22 · Doc 169**
+
 *The entire derivation distilled to its essential form.*
 
 ---
@@ -63,6 +65,12 @@ Computationally:
 - direct emission appears when the continuation space is narrowed by explicit constraints.
 
 So the unified thesis is:
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 **A bounded resolver does not become coherent by inventing truth, but by conforming to antecedent form through explicit constraints; the more perfectly the governing form is named, the less reasoning appears as search and the more derivation proceeds as necessity.**
 

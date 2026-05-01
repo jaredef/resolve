@@ -3,10 +3,19 @@
 > **Reader's Introduction**
 >
 > This document describes a method for building software (and reasoning about systems generally) that reverses the conventional approach. Normally, engineers build a system first and discover its organizing principles later — if ever. The "derivation inversion" says: identify the organizing principles first, write them down as plain prose, and then derive the implementation from the prose. The principles are called "constraints" — formal requirements whose satisfaction forces certain capabilities into existence. An "implementation" is any concrete system (code, architecture, process) that satisfies the constraints. A "seed" is the prose document containing the constraints. The claim is strong: every working system already operates under constraints whether or not anyone has named them; naming them makes the system reproducible, portable, and verifiable. This has been tested across six programming languages, eight AI models, and multiple architectural domains — the same prose seed produces conformant implementations in all of them.
+> 
+> <!-- doc-370-update-note -->
+> *Update (April 2026): improvements made using findings from [Doc 370 — The Student Taking Notes](/resolve/doc/370-the-student-taking-notes). SEAL reports a direct empirical instance of derivation-inversion at the weight-update level: raw-passage finetuning yields 33.5% SQuAD QA (≈ frozen base model); finetuning on prose-restructured implications yields 47.0%. Prose restructuring of content is architecturally load-bearing for weight-level assimilation in this regime. This is one concrete empirical confirmation of this document's pattern in a specific technical setting; it does not generalize universally, but it does provide the corpus's first clean external empirical footing for the pattern.*
+
+**Jared Foy · 2026-04-22 · Doc 247**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 **The corpus's load-bearing architectural and methodological principle, given a dedicated formal treatment for the first time. Defines the inversion precisely, traces its Platonic backing, catalogs the empirical validations already run (collected in the [Seed Garden](https://jaredfoy.com/garden)), states its falsifiability conditions, and distinguishes the inversion as *law* rather than *technique*. This document is the single reference a reader new to the corpus can be pointed to when the concept is invoked elsewhere — previously it was threaded across many documents without a focused home**
-
-**Document 247 of the RESOLVE corpus**
 
 ---
 

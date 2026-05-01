@@ -4,6 +4,14 @@
 >
 > A philosopher who returns from insight and speaks only in technical terms fails to communicate -- not because the insight is wrong, but because the audience cannot yet receive it. This document provides a practical guide to communicating the framework at every level of readiness, from a one-line slogan ("better constraints, better pizza") for complete beginners, through structured tips, explanations, and technical frameworks for professionals, up to the compressed philosophical seed for advanced practitioners. The method is itself an application of the framework: identify where the audience currently operates, speak at that level, introduce one new distinction per exchange, and wait for the audience to move on their own terms. Each level has a corresponding commercial surface, from social media tips to enterprise consulting, with the philosophy itself remaining free.
 
+**Jared Foy · 2026-04-22 · Doc 101**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **A pragmatic guide to communicating ENTRACE at every level of the resolution depth spectrum**
 
 ---

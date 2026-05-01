@@ -73,3 +73,10 @@ This is the final form of the derivation: the specification and the verification
 Any software system whose behavior can be expressed as a test suite can be re-derived from that test suite by a resolver. The test suite is the most portable, most precise, most durable encoding of the system's constraints — because it is executable, falsifiable, and independent of any particular implementation.
 
 The prose seed is the human-readable encoding. The test suite is the machine-verifiable encoding. Both are seeds. Both produce conformant implementations. The prose seed is consumed by a resolver that understands language. The test suite is consumed by a resolver that understands pass/fail. The form is the same. The medium differs.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

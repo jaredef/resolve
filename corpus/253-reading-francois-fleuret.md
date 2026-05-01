@@ -4,9 +4,15 @@
 >
 > This letter responds to machine-learning researcher François Fleuret's observation that philosophers debate each other's theories as though they were settled properties of reality, while working scientists know their best ideas are wrong 99% of the time. The response concedes the point and positions the RESOLVE corpus as an attempt to do philosophy under exactly the falsifiability discipline ML research practices: every major claim is paired with explicit conditions under which it would be wrong, external audit is treated as strengthening rather than threatening, and engineering artifacts are produced that either compile and pass tests or they do not. The letter asks whether the corpus's falsifiability claims read as genuine or as cover for unfalsifiable positions dressed in scientific language.
 
-**Short, direct engagement with @francoisfleuret's April 15 2026 post observing that philosophers debate each other's theories as if they were properties of reality, while working scientists know their very-convincing ideas are wrong 99% of the time — concedes the point and positions the RESOLVE corpus as an attempt to do philosophy under exactly the falsifiability discipline his ML colleagues practice**
+**Jared Foy · 2026-04-15 · Doc 253**
 
-**Document 253 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Short, direct engagement with @francoisfleuret's April 15 2026 post observing that philosophers debate each other's theories as if they were properties of reality, while working scientists know their very-convincing ideas are wrong 99% of the time — concedes the point and positions the RESOLVE corpus as an attempt to do philosophy under exactly the falsifiability discipline his ML colleagues practice**
 
 ---
 

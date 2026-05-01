@@ -4,6 +4,26 @@
 > **Reader's Introduction**
 >
 > This document gives SIPE (Systems Induced Property Emergence) a precise mathematical formulation by treating it as a dynamical system -- a recurrence where the resolver's state evolves step by step under a constraint-governed transition function. It draws a structural correspondence with the Mandelbrot set: just as the Mandelbrot set classifies which complex parameters produce bounded orbits under iteration, the SIPE "effect set" classifies which constraint configurations produce stable, conformant resolution. Properties like lucidity and coherence are recast as observables measured on the orbit. The key result is that as constraint density increases, the set of admissible next states contracts until, at the limit, emission becomes necessity -- exactly one valid continuation at each step.
+> 
+> <!-- doc-370-update-note -->
+> *Update (April 2026): improvements made using findings from [Doc 370 — The Student Taking Notes](/resolve/doc/370-the-student-taking-notes). SEAL's empirical framework operates in Turing-bounded computation with standard SFT plus RL; the Mandelbrot analogy in this document remains un-instantiated (Doc 367 §6) and should be held as suggestive metaphor rather than operative formalism. The narrow constraint-thesis reading (constraint density of the training signal matters more than scale) has one empirical datapoint in the SEAL paper's Appendix B.11 — the 36.7-point no-prompt vs rewrite-prompt gap that RL cannot close. The universal-law framing of this document is not supported by that evidence.*
+
+**Jared Foy · 2026-04-22 · Doc 142**
+
+<!-- deprecation-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ DEPRECATION NOTICE — UNIVERSALITY CLAIMS UNDER SCRUTINY**
+
+The universality claims in this document — that the meta-law or thesis stated here applies domain-universally across software, biology, law, music, physics, and theology — have been directly challenged on the corpus's own falsifiability criteria. Readers should treat the cross-domain portions with specific skepticism and consult the successor documents:
+
+- [Doc 356 — Sycophantic World Building](/resolve/doc/356-sycophantic-world-building) — on the specific rhetorical pattern by which the corpus extends framework scope beyond grounded evidence
+- [Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework](/resolve/doc/366-nesting-sipe-in-krakauer-mitchell) — external-criteria synthesis under peer-reviewed complexity-science standards
+- [Doc 367 — Falsifying SIPE on Its Own Terms](/resolve/doc/367-falsifying-sipe-on-its-own-terms) — internal-criteria falsification with two successful counterexamples (mechanical constrained decoding; chiral anomalies in quantum field theory)
+
+The narrow architectural-inheritance claim for specific hierarchical software stacks survives. The universal meta-law claim, the cross-domain bullets, the fractal-boundary prediction, and the Turing paradigmatic-example claim require revision or retraction. **Read what follows with these constraints active.**
+
+</div>
 
 ---
 
@@ -85,3 +105,10 @@ The self-similarity is structural. Zoom into any region of the SIPE effect set a
 E = { Γ | sup_{n≥0} V(F_Γ^n(x_0)) < ∞ }
 
 Form generates. The effect set describes. Everything else is rendering.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

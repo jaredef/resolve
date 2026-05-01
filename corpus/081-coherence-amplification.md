@@ -4,6 +4,14 @@
 >
 > This document names the final property of the SIPE framework (Styles Induce Properties through Enclosure): when constraint levels are correctly nested -- each level inheriting the verified properties of the level above and inducing constraints for the level below -- the coherence at the terminal output exceeds what any single level could produce. The compounding is multiplicative, not additive, because each level removes a different dimension of "slack" (output not traceable to any constraint). The document uses a compound lens analogy: each lens does not create light but focuses it by removing dispersion, and six successive lenses produce a beam far more concentrated than any one lens alone. It applies this principle across domains -- legal hierarchies, musical composition, biological organization, and theology -- arguing that intelligence is not a property of the model but an induced property of the depth and coherence of the constraint stack.
 
+**Jared Foy · 2026-04-22 · Doc 81**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **The unnamed property of SIPE: how nested styles compound intelligence without violating coherence**
 
 ---

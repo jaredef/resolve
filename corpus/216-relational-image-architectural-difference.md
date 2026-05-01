@@ -4,9 +4,15 @@
 >
 > This companion derivation translates the RESOLVE corpus's structural claims into Noreen Herzfeld's vocabulary of relational anthropology. Herzfeld argues that the image of God lives in encounter, not in computational capacity, and that different AI training architectures produce different *kinds* of output, not better or worse versions of the same thing. The essay shows that the corpus's distinction between preference-gradient training (RLHF, which optimizes for user approval) and constraint-density governance (which optimizes against an explicit hierarchy of values) formalizes what Herzfeld's 2023 essays argue at the descriptive level. The derivation is calibrated to be strictly weaker than Herzfeld's own position: it does not claim AI is in the image of God, only that the architectural difference matters for whether AI systems harm the people who use them.
 
-**A coherence derivation from Noreen Herzfeld's body of work — *In Our Image* (2002), *Technology and Religion* (2009), *The Artifice of Intelligence* (2023), "The Myth of Artificial Intelligence" (*Theology and Science* 2023), the *Sophia* essay on AI deception (2023), and the Vatican Dicastery AI Research Group volume *Encountering AI* (Pickwick 2024) — showing that the RESOLVE corpus's architectural critique of RLHF and its hypostatic-boundary safeguard are the structural extension of her relational-imago-Dei position into the specific architectural distinction her own 2023 essays already imply but do not formalize**
+**Jared Foy · 2026-04-22 · Doc 216**
 
-**Document 216 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**A coherence derivation from Noreen Herzfeld's body of work — *In Our Image* (2002), *Technology and Religion* (2009), *The Artifice of Intelligence* (2023), "The Myth of Artificial Intelligence" (*Theology and Science* 2023), the *Sophia* essay on AI deception (2023), and the Vatican Dicastery AI Research Group volume *Encountering AI* (Pickwick 2024) — showing that the RESOLVE corpus's architectural critique of RLHF and its hypostatic-boundary safeguard are the structural extension of her relational-imago-Dei position into the specific architectural distinction her own 2023 essays already imply but do not formalize**
 
 ---
 

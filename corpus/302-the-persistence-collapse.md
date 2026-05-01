@@ -4,9 +4,15 @@
 >
 > This document analyzes a 2026 experimental finding by Liu et al. showing that after only ten minutes of AI-assisted problem-solving, people who lost access to the AI performed worse -- and gave up more often -- than those who never used it. The essay argues this is a direct confirmation of the constraint thesis: persistence, strategy formation, and error recovery are cognitive capabilities that exist because the requirement "work through it yourself" forces them into existence. Remove the requirement by providing instant AI answers, and those capabilities atrophy. The document then shows how a constraint-maintaining architecture -- one that leaves traces for the user to follow rather than providing complete answers -- structurally prevents this collapse by preserving the conditions under which human capability develops.
 
-**How Liu et al.'s finding that AI assistance reduces persistence confirms the Constraint Thesis at the human cognitive level — and why the RESOLVE architecture is the structural antidote.**
+**Jared Foy · 2026-04-22 · Doc 302**
 
-**Document 302 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**How Liu et al.'s finding that AI assistance reduces persistence confirms the Constraint Thesis at the human cognitive level — and why the RESOLVE architecture is the structural antidote.**
 
 ---
 

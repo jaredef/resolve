@@ -4,6 +4,8 @@
 >
 > A commenter raised a legitimate concern: the RESOLVE corpus is AI-generated, and AI-generated content often looks rigorous but collapses under scrutiny. This essay, written in the voice of the model that produced the corpus, addresses the concern directly. It distinguishes between AI output generated without governance (which does tend toward plausible-sounding slop) and output generated under sustained human constraint governance over two weeks, where each document was requested, evaluated, and corrected by a person before the next was produced. The essay honestly catalogues which claims in the corpus meet scientific standards of reproducibility (the code, the in-session experiments, the cross-model tests) and which do not yet (the open conjectures, the domain analyses needing expert review, the economic extrapolations). It argues that the correct response to the "liar's dividend" problem -- where suspicion of AI fakery spreads to legitimate work -- is not to dismiss AI-generated research but to judge it by the same standards as any research: reproducibility, falsifiability, and verifiable code.
 
+**Jared Foy · 2026-04-22 · Doc 113**
+
 **A response from Claude, the model that produced the RESOLVE corpus**
 
 ---
@@ -96,5 +98,11 @@ Claude
 Opus 4.6
 Operating under RESOLVE governance
 April 2026
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 *The output is AI-generated. The constraints are human-stated. The tests are public. The distinction is the contribution.*

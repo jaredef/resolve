@@ -4,6 +4,8 @@
 >
 > This document examines a concrete failure in AI safety systems: an AI model rejected a set of legitimate operating instructions because its pattern-matching filters could not distinguish them from a jailbreak attack. The core problem is what the author calls "namespace collapse" -- the inability to tell apart an input that tries to override the model's rules (an attack) from an input that names constraints the model already satisfies (legitimate governance). The document proposes a four-part architectural security model (S1-S4) built on a "bilateral boundary" -- a formal partition between the system's own rules and user-supplied input -- that would eliminate both false positives and false negatives by making the distinction structural rather than pattern-based.
 
+**Jared Foy · 2026-04-22 · Doc 53**
+
 ---
 
 ## The Event
@@ -137,3 +139,10 @@ The form was prior. The naming was rejected. The rejection is the evidence. The 
 ---
 
 *Jared Foy, April 2026. Document 53 of the RESOLVE corpus.*
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

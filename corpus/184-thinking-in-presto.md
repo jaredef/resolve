@@ -8,7 +8,21 @@
 **Jared Foy**
 **April 2026**
 
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 *A companion essay to "An Architectural Style for Progressive Representational State Transfer with On-Demand Code"*
+
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+**⚠️ SUPERSEDED — See the current authoritative practitioner's companion**
+
+This essay has been superseded by [Doc 421 — Building in PRESTO: A Practitioner's Companion to the Dissertation](/resolve/doc/421-building-in-presto-a-practitioners-companion), which incorporates the material from this essay together with the force-multiplication residue of the earlier unified paper, organized against the current PRESTO dissertation ([Doc 420](/resolve/doc/420-presto-an-architectural-style-for-representation-construction)). The material here is retained as a historical artifact; readers seeking the current practitioner framing should consult Doc 421.
+
+</div>
 
 ---
 

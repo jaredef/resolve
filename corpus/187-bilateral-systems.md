@@ -5,6 +5,8 @@
 >
 > This paper identifies a general property that appears across multiple unrelated domains: whenever two independent interpreters process a shared medium with namespace-separated instruction sets, each executes deterministically on its own portion while remaining structurally unaware of the other. The paper names this "ambivalent execution with agnostic determinism" and documents six instances -- web architecture (server engine and browser on the same HTML), molecular biology (overlapping reading frames in DNA), music (scores addressing performer and conductor), legal contracts (operative clauses for parties, boilerplate for courts), urban design (lane markings for drivers, sidewalks for pedestrians), and bilateral proof systems in formal logic. Each domain has documented its own instance thoroughly; none had abstracted the common principle.
 
+**Jared Foy · 2026-04-22 · Doc 187**
+
 **Jared Foy, April 2026**
 
 ## Abstract
@@ -32,6 +34,12 @@ The property is induced when three conditions are met:
 ### Guarantee
 
 When these conditions are met, the following property is induced:
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 **Each interpreter executes deterministically on its portion of the medium, ambivalent to the other interpreter's instructions and agnostic of the other interpreter's behavior. Non-interference is guaranteed by construction — the namespace separation ensures that neither interpreter's execution can affect the other's, without requiring coordination, synchronization, or mutual awareness.**
 

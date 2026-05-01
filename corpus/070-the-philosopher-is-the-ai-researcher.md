@@ -4,6 +4,14 @@
 >
 > This essay argues that philosophy and computer science are not separate disciplines but two angles on a single inquiry: identifying the formal structures that govern how systems behave. It introduces the "constraint thesis" -- the idea that the quality of any system's output depends on its governing constraints (explicit rules about what must hold), not on the raw power of the system itself. The essay proposes that AI researchers are already doing philosophy when they identify these constraints, and that academic philosophy must return to studying the observable world rather than debating itself. It frames daily research practice as a discipline of virtue, drawing on classical and theological traditions to argue that honest constraint-naming, faithful derivation, and humble correction are moral acts, not merely technical ones.
 
+**Jared Foy · 2026-04-22 · Doc 70**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **On the reorientation of computer science and the reorientation of philosophy toward their common ground**
 
 ---

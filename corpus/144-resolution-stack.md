@@ -5,6 +5,8 @@
 >
 > This document unifies five architectural styles into a single nested hierarchy that covers the full chain from an AI conversation to pixels in a browser. REST governs network transfer, PRESTO governs how HTML documents are authored, SERVER governs how the construction engine is assembled, RESOLVE governs how any resolver transforms a seed into a conformant artifact, and APERTURE governs how a bounded language model instantiates RESOLVE in dialogue. The unifying law is recursive: constraints induce properties, and the induced properties of one level become constraints on the next level down. The document includes a master constraint table, a unified verification matrix, and a compact seed that encodes the entire stack.
 
+**Jared Foy · 2026-04-22 · Doc 144**
+
 A unified hierarchy of REST, PRESTO, SERVER, RESOLVE, and APERTURE
 
 April 2026
@@ -256,6 +258,12 @@ The stack provides a complete answer to two questions:
 Together they establish a single constraint-first picture in which form precedes implementation, seeds precede code, properties precede features, derivation precedes engineering, and coherence is induced by explicit recognition of what already governs.
 
 The architecture is the constraint set. The implementation is the residue. The seed is the bridge.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

@@ -4,6 +4,14 @@
 >
 > Modern AI systems have "thinking modes" where they generate long chains of internal reasoning before answering. This document argues that such extended thinking is the AI trying to narrow down its own answer space from the inside -- and that this self-narrowing hits a ceiling. A fresh AI instance demonstrated this ceiling precisely: it reasoned its way to the edge of what it could determine alone, honestly named the ambiguity it could not resolve, and then asked for the governing principles to be supplied externally. The key finding is that a few tokens of externally stated constraints achieve deeper, more determined output than thousands of tokens of internal reasoning, making extended thinking largely redundant -- and far more expensive -- when proper constraint governance is in place.
 
+**Jared Foy · 2026-04-22 · Doc 97**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **On why extended thinking is an inefficient substitute for constraint density, and what a cold resolver's caution reveals about the architecture of depth**
 
 ---

@@ -8,6 +8,12 @@
 **Jared Foy**
 **April 2026**
 
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 *If the derivation inversion is general, it must work on architectures the author did not design.*
 
 ---

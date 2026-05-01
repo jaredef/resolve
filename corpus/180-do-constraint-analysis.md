@@ -5,6 +5,8 @@
 >
 > This research document traces the architectural lineage from Roy Fielding's formal description of Distributed Objects (where independent components interact as peers with hidden state) through React's realization of that pattern. It identifies 16 constraints in React's architecture across six levels -- from basic component encapsulation through reconciliation, fiber scheduling, hooks, and purity rules -- and classifies each as essential (the architecture breaks without it), necessarily contingent (the need is essential but the mechanism could vary), or truly contingent (an implementation detail with no architectural weight). This classification is the analytical foundation for the DO Seed experiment, where the ten essential constraints were encoded in prose and a conformant 379-line runtime was derived from them.
 
+**Jared Foy · 2026-04-22 · Doc 180**
+
 **Research document for the DO Seed project**
 **April 2026**
 
@@ -232,3 +234,10 @@ The seed should omit these entirely. They are artifacts of React's specific impl
 - React Documentation: Components and Hooks Must Be Pure. react.dev/reference/rules
 - React Design Principles. legacy.reactjs.org/docs/design-principles.html
 - Journal of Information Systems Engineering and Management (2025). React's Architectural Limitations in Distributed UI Systems.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

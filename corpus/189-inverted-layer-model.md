@@ -5,6 +5,14 @@
 >
 > The PRESTO web architecture defines seven layers of client-side capability, from plain HTML (Layer 0) up to WebAssembly (Layer 6). This document argues the original presentation got the metaphor backward: Layer 0 is not the simplest starting point but the most property-rich position, because it inherits every benefit REST provides for free -- cacheability, accessibility, server authority, and more. Each deeper layer accepts an additional constraint and gains a narrow capability, but trades away some of those free properties. The correct developer discipline is therefore "surface by default, dive by necessity," staying as close to plain HTML as each feature allows and descending only into the bounded depth that a specific requirement demands.
 
+**Jared Foy · 2026-04-22 · Doc 189**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **Companion document to: An Architectural Style for Progressive Representational State Transfer with On-Demand Code**
 **Jared Foy, April 2026**
 

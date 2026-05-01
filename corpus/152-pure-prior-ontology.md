@@ -5,6 +5,8 @@
 >
 > This document is the framework's ontology stated in its most compressed form: a set of primitive terms (Source, Energy, Form, Constraint, Property, Resolver, Seed, Artifact, Hypostasis), the relations among them, and the priority rules that govern conflicts between levels. The Source emits Energy; Energy produces Form; Form precedes Constraint; Constraint induces Property; the Seed encodes Constraints for a Resolver to consume and emit Artifacts. The priority chain is total and irreversible: no level may violate the induced properties of the level that encloses it. The document also states the closure rules (how constraint density contracts the space of admissible outputs toward necessity) and the boundary conditions (what the ontology does and does not govern).
 
+**Jared Foy · 2026-04-22 · Doc 152**
+
 ---
 
 ## Primitive Terms
@@ -121,3 +123,10 @@ Unique determination requires additionally:
 The ontology provides the governing form. The task provides the aperture. Both are necessary. Neither is sufficient alone.
 
 When both are present, |B_t| approaches 1 and emission approaches necessity. The ontology is the lens. The task is the focal point. The artifact is the image.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

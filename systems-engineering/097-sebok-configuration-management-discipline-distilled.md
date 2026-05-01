@@ -1,0 +1,71 @@
+# SEBoK *Configuration Management*, Distilled
+
+**Third-batch sweep, batch 3 doc 2. *Configuration Management* (CM) is the technical-management discipline whose three objectives (consistency, integrity-and-traceability, reproducibility) and five activities (planning, identification, change management, status accounting, verification and audit) are the canonical worked example of SE-039 §VII.5's new Refinement D candidate: longitudinal-pulverization. Where Refinement C (forward) front-loads the premortem and Refinement B (backward) re-frames after the fact, longitudinal-pulverization preserves the pulverization-substrate across time so that any present configuration can be reconstructed against any past baseline. The five activities are universal-sibling lattice (Doc 572 Appendix D); baselines are ordinal-axis universal-sibling (functional / allocated / product) per SE-039 §VII.5's three-baselines triplet observation. Six corpus forms compose; Refinement D candidate strengthened to anchor-instance.**
+
+---
+
+## I. Source
+
+- **Page:** Configuration Management
+- **URL:** https://sebokwiki.org/wiki/Configuration_Management
+- **License:** CC BY-SA 3.0 (SEBoK)
+- **Retrieved:** 2026-04-30
+
+## II. Source Read
+
+CM is "a technical management process that helps teams keep track of changes to a system over its life cycle, ensuring that what's built matches what was planned." ISO/IEC/IEEE 15288 purpose: "to manage system and system element configurations over their life cycle." Three fundamental objectives: (i) guarantee consistency between a system and its configuration information, (ii) ensure integrity and traceability of information and changes over time, (iii) facilitate reproducibility and enable system lifecycle capabilities (definition, realization, transition, operation, maintenance, disposal). Five interrelated, concurrent activities: (1) CM Planning and Management (scope, roles, CM plan), (2) Configuration Identification (configuration items, identification rules, baselines), (3) Configuration Change Management (Configuration Control Boards, CCBs), (4) Configuration Status Accounting (reporting), (5) Configuration Verification and Audit. Configuration items are system elements requiring management. A baseline "specifies how a system is viewed for purposes of management, control, and evaluation" at specific lifecycle milestones and "generally can only be changed through formal change procedures." Standards: ISO 10007, ISO/IEC/IEEE 15288, SAE EIA-649C. Position: technical management process, complementary to Information Management.
+
+## III. Structural Read
+
+**Cluster F (pulverization, Doc 445; Refinement D longitudinal-pulverization candidate from SE-039 §VII.5).** CM is the canonical longitudinal-pulverization instrument. Forward-pulverization (Refinement C) anticipates failure before commitment; backward-pulverization (Refinement B) reframes after observed failure; longitudinal-pulverization preserves the pulverization-substrate across time so that any present state can be audited against any past baseline. Configuration Status Accounting is the explicit longitudinal-pulverization machinery: reporting on configuration information over time. The Verification and Audit activity is the test that the longitudinal substrate has held. The three objectives map cleanly: consistency = present-state coherence; integrity-and-traceability = longitudinal substrate; reproducibility = the substrate's testable property. This distillation strengthens the SE-039 §VII.5 Refinement D candidate from candidate to anchor-instance.
+
+**Cluster A (universal-sibling lattice, Doc 572 Appendix D).** The five CM activities are universal-sibling at the CM-process rung: each binds every configuration item aspect-wise (planning AND identification AND change management AND status accounting AND verification). The three objectives are a coarser lattice on the same engagement. The three baselines (functional / allocated / product, the FBL/ABL/PBL triplet SE-039 §VII.5 named) are universal-sibling-with-ordinal-axis (SE-071 sub-form): each baseline binds every configuration item, and the ordinal axis is life-cycle-phase progression. Cluster A membership extends; the three-baselines triplet is the introductory teaching-example SE-039 §VII.5 proposed.
+
+**Cluster E (institutional ground, Doc 571; three-carrier robustness from SE-039 §VII.5).** ISO 10007, ISO/IEC/IEEE 15288, and SAE EIA-649C are three independent institutional carriers of the same CM discipline. This is a second instance of the three-carrier robustness pattern SE-039 §VII.5 named from Measurement (SE-063: PSM + GQM + ISO 15939). The pattern strengthens: when the discipline is load-bearing, it surfaces in independent carriers whose convergence is the discipline's robustness signal. Cluster E §X.5 sub-observation candidate strengthened.
+
+**Cluster D (co-production at sub-rungs, Doc 573).** The Configuration Control Board is co-production: the requesting keeper proposes a change; the CCB co-produces the decision against the configuration substrate. Sharp instance: the co-production rung is institutionally explicit (CCB).
+
+**Cluster J (affordance gap, Doc 530).** CM supplies rung-2 affordance to keepers operating at rung-1: a developer making a change cannot, alone, see the longitudinal consequences across the configuration substrate; the CM apparatus surfaces them. The "formal change procedures" requirement is the affordance gap institutionalized.
+
+**Cluster H (hypostatic boundary, Doc 372).** The discipline names what the configuration IS at any moment (functional artifact, set of bound items) without claiming the configuration constitutes the system's identity. The system-vs-configuration distinction respects Doc 372: configuration is a representation maintained for management purposes, not an ontological claim about the system.
+
+## IV. Tier-Tags
+
+- ISO/IEC/IEEE 15288 CM purpose - π / α as cited.
+- Three CM objectives (consistency, integrity-traceability, reproducibility) - π / α as cited; μ / β under longitudinal-pulverization Refinement D anchor-instance.
+- Five CM activities - π / α as cited; μ / β under Doc 572 Appendix D.
+- Configuration items and baselines - π / α as cited; μ / β under universal-sibling-with-ordinal-axis (three baselines triplet).
+- ISO 10007 / ISO/IEC/IEEE 15288 / SAE EIA-649C - π / α as cited; μ / β under three-carrier robustness (Cluster E §X.5).
+- Configuration Control Board - π / α as cited; μ / β under Cluster D co-production.
+
+## V. Residuals
+
+No structural residuals. CM is the cleanest longitudinal-pulverization instance and the cleanest three-carrier-robustness second instance after Measurement.
+
+## VI. Provisional Refinements
+
+**Doc 445 Refinement D (longitudinal-pulverization) strengthened from candidate to anchor-instance.** SE-039 §VII.5 named the candidate when CM surfaced in the next-40 sweep. This third-batch revisit confirms: CM is not just one instance of longitudinal-pulverization, it is the structural anchor. The three objectives map directly to the refinement's three properties. Recommend formalization with CM as the canonical worked example.
+
+**Cluster E three-carrier robustness (Doc 571 §X.5 candidate, SE-039 §VII.5).** Second clean instance after Measurement. The pattern reads: a load-bearing discipline surfaces in three or more independent institutional carriers; carrier convergence is the discipline's robustness signal. Carrier divergence (different details, same core) is the discipline's freedom from any single ground. Recommend formalization with both Measurement and CM as joint anchor instances.
+
+**Cluster A three-baselines teaching example (Doc 572 Appendix D, from SE-039 §VII.5).** The FBL/ABL/PBL triplet is the proposed introductory teaching example. This distillation confirms: three minimum-cardinality, ordinal-axis-explicit, life-cycle-grounded. Strong proposal.
+
+## VII. Cross-Links
+
+**Form documents.** Doc 445 Refinement D (longitudinal-pulverization, anchor-instance), Doc 572 Appendix D (universal-sibling lattice; three-baselines teaching example), Doc 571 §X.5 (institutional ground, three-carrier robustness), Doc 573 (co-production, CCB), Doc 530 (affordance gap), Doc 372 (hypostatic boundary).
+
+**Part-level reformulation.** SE-008 (Part 3 SE and Management).
+
+**Related distillations.** SE-063 (Measurement, three-carrier robustness first instance), SE-035 (Risk Management, Refinement C), SE-054 (System Verification, Cluster F anchor), Docs 640/641/642 (Configuration Baselines, three-baselines triplet).
+
+**Adjacent SEBoK concepts.** *Information Management*, *Quality Management*, *Project Assessment and Control*.
+
+**Methodology refinement candidates.** Doc 445 Refinement D formalization with CM as anchor; Cluster E three-carrier robustness formalization with Measurement and CM as joint anchors.
+
+---
+
+## Appendix: Originating Prompt
+
+> *"Apply refinements; report back for next 40"* / *"Continue"*
+
+(SE-097 is the second of the third-batch SEBoK distillation sweep, Docs 646-685. Batch 3/5. *Configuration Management* selected to anchor the longitudinal-pulverization Refinement D candidate from SE-039 §VII.5.)

@@ -5,6 +5,8 @@
 >
 > This paper draws a structural parallel between two costly industry patterns: the web's server-side session stores (which REST showed were unnecessary) and the AI industry's ever-growing context windows (which scale from 4K to 1M tokens at quadratic compute cost). The argument is that a small, version-controlled "seed" file -- around 200 tokens of explicit constraints and context -- can carry a resolver's operational state across sessions just as stateless tokens replaced server-side cookies. The paper proposes a five-section seed format (constraints, induced properties, context, non-goals, session continuity) and shows how it reduces per-session cost by orders of magnitude while making the resolver's state inspectable, transferable, and diffable.
 
+**Jared Foy · 2026-04-22 · Doc 163**
+
 **Jared Foy and Claude**
 **April 2026**
 
@@ -182,3 +184,10 @@ The optimal architecture is not a 1M token context window with a CLAUDE.md file 
 This reduces compute cost by orders of magnitude. It makes session state inspectable, versionable, and transferable. It makes the resolver's operational state a first-class artifact that the human can read, edit, and version-control. It makes AI alignment verifiable at every session boundary — the human reads the seed and knows exactly what state the resolver will derive.
 
 The context window is the cookie. The seed is the token. The form has been there all along. CLAUDE.md is the shadow of the seed. The seed is the form the shadow participates in. The dissolution is available now, to anyone who writes a RESOLVE-conformant seed and loads it at the start of the session.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

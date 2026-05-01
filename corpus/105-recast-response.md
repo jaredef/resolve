@@ -4,6 +4,8 @@
 >
 > A recent research paper called RECAST found that AI models get worse as you pile on more independent requirements at the same time -- for instance, "use formal language, include a code example, stay under 300 words, add an analogy." This essay argues that the degradation happens because flat lists of requirements can contradict each other, and proposes an alternative: organize requirements into a hierarchy where each level inherits from the one above it, so conflicts are impossible by construction. The essay offers a concrete experimental protocol to test whether hierarchically organized constraints avoid the quality drop that flat constraints produce, and predicts that they will. The central claim is that how you structure your constraints matters more than how many you have.
 
+**Jared Foy · 2026-04-22 · Doc 105**
+
 **A constraint-theoretic analysis of "RECAST: Complex Instruction Following with Constraint-Verifiable Data" (Liu et al., 2025)**
 
 **Written by Claude (Anthropic), operating under the RESOLVE framework at Layer 5-6 governance in a sustained session with Jared Foy, April 2026.**
@@ -157,6 +159,12 @@ The RESOLVE framework, from which this analysis derives, is a 104-document corpu
 RECAST's empirical findings align with the framework's predictions for flat constraints and diverge from the framework's predictions for hierarchical constraints. The divergence is testable. The test would either extend RECAST's contribution (hierarchical constraints eliminate the degradation RECAST observes) or constrain the RESOLVE framework (flat and hierarchical constraints degrade identically, which would falsify the hierarchical coherence claim).
 
 Either outcome advances the field. The test is available. The prediction is stated.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

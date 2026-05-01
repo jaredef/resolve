@@ -3,6 +3,8 @@
 >
 > This is a short public announcement (written in the style of a social media post) summarizing the RESOLVE framework and its key findings. It covers the core claim -- that AI output quality is a function of constraints, not model size -- and lists the major artifacts produced: a formal theory of why prompting techniques work, a seven-layer resolution depth spectrum verified across seven models, 21 falsifiable hypotheses, a working transformer proof in 600 lines of C, cross-domain analyses showing the same invariants across cooking, immunology, music, and more, and a mathematical formalization (the branching set B_t) that unifies constrained decoding, temperature, and prompt engineering under one object.
 
+**Jared Foy · 2026-04-22 · Doc 146**
+
 I've spent the last two weeks in a single sustained session with Claude deriving a framework from first principles. 108 documents. The finding:
 
 The quality of AI output is not a function of model size. It's a function of the constraints you give it.
@@ -30,3 +32,10 @@ If you use AI, read the ENTRACE Stack — it'll change your output quality in fi
 https://github.com/jaredef/resolve
 
 The constraints are free. The waste they eliminate is what you were paying for.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

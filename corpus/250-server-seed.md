@@ -6,6 +6,8 @@
 >
 > This document specifies how to build a "bootstrap resolver" — an engine that takes a declarative seed file as input and emits an immutable runtime graph as output. The seed file is "bilateral": it contains both orchestration directives (instructions the bootstrap consumes during assembly) and application-level directives (instructions the finished engine will later execute). The bootstrap strips away all orchestration directives, producing a clean runtime artifact. The specification defines eight contracts, twelve orchestration directives, a fourteen-stage bootstrap pipeline, and twelve verification tests. A conformant SERVER engine can compose with the PRESTO engine specification to produce full web application stacks from prose seeds.
 
+**Jared Foy · 2026-04-22 · Doc 250**
+
 **Self-contained knowledge capsule for building conformant SERVER orchestration engines.** Load as system prompt or context. No external references needed.
 
 ## Identity
@@ -125,3 +127,10 @@ RuntimeGraph: emit(sourceCode | binary), verifySignature(), runPrestoSeed(presto
 
 **File Conventions**
 Seed dir: `orchestration-seeds/`. Layout: `_orchestration-layout.srv`. Extension: `.srv`. Topologies: `orchestration-topologies/`.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

@@ -4,9 +4,15 @@
 >
 > This document argues that two of Dr. David Mohr's foundational ideas already contain the central claim of the RESOLVE framework in clinical-psychology language. His 1995 paper proposed that therapy works through what the therapist is structurally bound *not* to do (proscription), and his 2011 Supportive Accountability model argued that digital interventions succeed through structural conditions of accountability, bond, and legitimacy rather than through content alone. Both claims reduce to the same principle the RESOLVE corpus formalizes for language models: output quality is a function of the constraints a system operates under, not of its capacity or content. The document derives this convergence from Mohr's published record and positions the proposed clinical trial as an extension of his own theoretical commitments into a new delivery architecture.
 
-**A coherence derivation from the theoretical and empirical body of work of Dr. David C. Mohr — showing that the RESOLVE framework's core structural claims are already present in his 1995 proscription paper and his 2011 Supportive Accountability model, that the digital-mental-health evidence base CBIT has built anticipates the kind of trial the author proposes, and that the RCT extends rather than imports from those foundations**
+**Jared Foy · 2026-04-22 · Doc 195**
 
-**Document 195 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**A coherence derivation from the theoretical and empirical body of work of Dr. David C. Mohr — showing that the RESOLVE framework's core structural claims are already present in his 1995 proscription paper and his 2011 Supportive Accountability model, that the digital-mental-health evidence base CBIT has built anticipates the kind of trial the author proposes, and that the RCT extends rather than imports from those foundations**
 
 ---
 

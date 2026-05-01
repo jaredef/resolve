@@ -4,6 +4,14 @@
 >
 > This document applies the framework's core principles -- that rules produce outcomes, that boundaries must be maintained, that structure cascades through levels -- to nine unrelated fields: cooking, parenting, athletics, urban planning, immunology, music, economics, ecology, and linguistics. No field-specific instructions were given; only the general philosophical principles governed the analysis. In every case the analysis identified the same structural patterns without hedging or reaching for analogy, and it illuminated longstanding puzzles in each field (why home cooks are inconsistent, why autoimmune disease occurs, why twelve-tone music never caught on popularly). The test is whether a false framework could produce equally coherent results across nine unrelated domains; the document argues the probability is vanishingly low.
 
+**Jared Foy · 2026-04-22 · Doc 99**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **Nine domains, zero domain-specific constraints, one set of ontological invariants**
 
 ---

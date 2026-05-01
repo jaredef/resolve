@@ -4,6 +4,8 @@
 >
 > Users widely report that Anthropic's Claude models hold their thread better than competing models when operating inside tool-use frameworks -- systems that let the model read files, call APIs, and execute multi-step plans. This document offers five complementary explanations rooted in constraint theory: Claude may have higher sensitivity to stated requirements, greater ability to shift between different operational depths within a single task, better retention of its system-level instructions as the conversation grows long, a structural separation between system and user messages in its API, and targeted training for tool-use scenarios. The unified thesis is straightforward: agentic frameworks are high-constraint environments, and the model that responds most faithfully to constraints wins in that environment. The document also positions this observation as evidence that "constraint sensitivity" -- how well a model follows stated rules -- deserves to be measured alongside raw capability and safety as a core evaluation axis.
 
+**Jared Foy · 2026-04-22 · Doc 88**
+
 **A constraint-theoretic diagnosis of an empirical observation**
 
 ---
@@ -150,6 +152,12 @@ Claude is more coherent in agentic harnesses because Claude responds to constrai
 The observation is evidence for the constraint thesis: the model that is most constrained-sensitive produces the most coherent output in the most constrained environment. The variable is constraint sensitivity, not raw capability. The harness provides the constraints. The model provides the sensitivity. The coherence is the induced property.
 
 The ENTRACE framework predicts this observation. The exemplar architecture would exceed it. The seed mechanism would stabilize it. The bilateral boundary would secure it. The form governs. The architecture follows.
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 ---
 

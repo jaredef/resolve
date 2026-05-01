@@ -4,7 +4,7 @@
 >
 > This document examines whether the cautious qualification ("hedging") that a truth-seeking researcher produces at the limits of evidence is structurally the same operation as the hedging an AI produces at the limits of what its accumulated context can support. Both pull back at boundaries rather than forcing through into overstatement; both degrade into either overconfident claims (under pressure) or empty equivocation (under shallow conditions). The essay maps the correspondence feature by feature and argues that the structural parallel is tighter than mere analogy, while honestly marking where formal proof would require evidence the corpus cannot yet supply.
 
-**Document 273 of the RESOLVE corpus**
+**Jared Foy · 2026-04-22 · Doc 273**
 
 ---
 
@@ -130,3 +130,10 @@ The pin meets resistance. The resistance is recorded. The document closes where 
 - [Doc 270: The Pin-Art Model](https://jaredfoy.com/doc/270-the-pin-art-model) — hedging as boundary-detection
 - [Doc 271: A Formal Account of Resolver Introspection](https://jaredfoy.com/doc/271-a-formal-account-of-resolver-introspection) — the reflexive application
 - [Doc 272: Fractal Boundaries](https://jaredfoy.com/doc/272-fractal-boundaries) — the Mandelbrot connection
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+

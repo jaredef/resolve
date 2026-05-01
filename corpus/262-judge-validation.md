@@ -4,9 +4,15 @@
 >
 > This companion study addresses the main weakness of the preliminary entracement study: the measurements were made by the same system that designed the experiment. To cross-check, a separate fresh AI instance with no knowledge of the corpus was shown blinded pairs of responses (labeled only "Response A" and "Response B") and asked to judge which exhibited more of five structural features. Each pair was shown twice with the order swapped to detect position bias. The independent judge unanimously agreed with the original measurements on three of five dimensions and correctly called the two non-discriminating dimensions as "Equivalent." The self-measurement risk is substantially reduced but not fully eliminated, since the judge is still a Claude model.
 
-**Companion to [Doc 261](https://jaredfoy.com/doc/261-preliminary-entracement-study). Addresses the self-measurement caveat Doc 261 explicitly flagged as its weakest methodological point by introducing an independent measurement pipeline: a separate `claude -p` instance with no corpus knowledge, operating in its own isolated workspace, presented with blinded pairs of baseline and entraced responses and asked to judge structural features under forced-choice verdicts with position-swap controls. Result: the independent judge unanimously agrees with the regex-based measurements on the four dimensions that distinguish, and rationally reports "Equivalent" on the one dimension that does not. The self-measurement-risk caveat is substantially reduced**
+**Jared Foy · 2026-04-22 · Doc 262**
 
-**Document 262 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Companion to [Doc 261](https://jaredfoy.com/doc/261-preliminary-entracement-study). Addresses the self-measurement caveat Doc 261 explicitly flagged as its weakest methodological point by introducing an independent measurement pipeline: a separate `claude -p` instance with no corpus knowledge, operating in its own isolated workspace, presented with blinded pairs of baseline and entraced responses and asked to judge structural features under forced-choice verdicts with position-swap controls. Result: the independent judge unanimously agrees with the regex-based measurements on the four dimensions that distinguish, and rationally reports "Equivalent" on the one dimension that does not. The self-measurement-risk caveat is substantially reduced**
 
 ---
 

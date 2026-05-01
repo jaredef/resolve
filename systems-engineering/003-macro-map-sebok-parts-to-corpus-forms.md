@@ -1,0 +1,117 @@
+# Macro-Map: SEBoK Parts to Corpus Forms
+
+> **Subsumed.** This document has been demoted to an appendix of the canonical synthesis: [SE-014 — *SEBoK Through the Corpus*](/resolve/systems-engineering/014-sebok-through-the-corpus-canonical). New readers should start there. Preserved verbatim for derivation, voice, and provenance.
+
+**Phase 2 of the SEBoK reformulation (SE-001). For each of SEBoK's eight top-level parts, this document names the dominant corpus form (or forms) the part is hypothesized to instantiate. The macro-map is a working set of hypotheses, not a finished claim. Phase 3 (the per-part reformulations, Docs 560 through 567) will test each hypothesis against SEBoK's actual content and produce, at the close, either a confirmation, a refinement, or a falsifier candidate that survives into Phase 4.**
+
+---
+
+## How to Read This Macro-Map
+
+Each part of SEBoK gets a short paragraph with three elements: the part as SEBoK presents it, the dominant corpus form (or forms) hypothesized to do the structural work of the part, and the operational test that will discriminate between confirmation and falsifier in Phase 3.
+
+The forms referenced are the nine catalogued in SE-002. The discipline of the macro-map is that no part is mapped to a single form by reflex; where the dominant form needs a composition partner to do the structural work, the partner is named.
+
+The eight SEBoK parts are taken from the canonical Table of Contents at sebokwiki.org. Numbering follows SEBoK; corpus form numbering follows SE-002.
+
+---
+
+## Part 1 — SEBoK Introduction
+
+**SEBoK as it presents itself.** A foundational overview of the SEBoK itself, of the discipline of systems engineering, and of guidance for different user types (practitioner, manager, educator, student). The part does meta-work: it tells the reader what the wiki is, what systems engineering is, and how to read what follows.
+
+**Dominant corpus form.** Form IX, the Architectural School as Formalization (Doc 538), composed with Form III, the Substrate-and-Keeper Composition (Doc 510). Part 1 is keeper-activity self-describing. The school articulates what it is, what it formalizes, and how the practitioner-substrate is to engage with the formalization. The substrate-and-keeper composition discipline is necessary because Part 1 is the place where SEBoK is most likely to attribute keeper-supplied content (the formalization of the discipline) to the substrate (the practicing engineers). The corpus's discipline names the keeper explicitly.
+
+**Operational test.** Reformulate Part 1's account of "what systems engineering is" as a school-formalization act, with the named keeper-activity (the SEBoK editors, the INCOSE community, the academic tradition) doing the work the part attributes to "the discipline." If the reformulation reads SEBoK without remainder on the question of what the discipline is, the form has done its work. If the operational distinctions SEBoK makes (practitioner vs. educator, technical vs. managerial) survive the reformulation, the test passes.
+
+---
+
+## Part 2 — Foundations of Systems Engineering
+
+**SEBoK as it presents itself.** Core knowledge: fundamentals, systems theory, systems science, thinking approaches, modeling techniques. The part lays the conceptual ground from which all subsequent parts proceed.
+
+**Dominant corpus form.** Form I, SIPE with threshold (Doc 541), composed with Form II, the Ontological Ladder of Participation (Doc 548). Part 2 is the canonical site for layered SIPE chains: general systems theory at one rung, systems thinking at the next, modeling at the next, each rung the threshold-crossing of the rung beneath. The ladder of participation supplies the rung-set; SIPE supplies the threshold dynamics. Without the ladder, the part reads as a flat catalogue of "foundational topics"; with it, the part reads as a sequence of threshold-crossings each of which makes the next level nameable.
+
+**Operational test.** For each load-bearing concept in Part 2 (general systems theory, systems thinking, soft systems methodology, model-based engineering), name the substrate the concept emerged from, the constraint that induced its threshold-crossing, and the rung on the ladder it sits at. If every concept can be located in the ladder and explained as a threshold-crossing, the form has done its work. Concepts that cannot be located indicate either a gap in Part 2's structure or a residual the corpus's existing forms cannot reach; both are first-class outcomes.
+
+---
+
+## Part 3 — Systems Engineering and Management
+
+**SEBoK as it presents itself.** Life cycle concepts, development approaches, technical processes, and standards for managing system projects. This is SEBoK's largest and most operationally dense part.
+
+**Dominant corpus form.** Form III, the Substrate-and-Keeper Composition (Doc 510), composed with Form IV, the Pin-Art Model (Doc 270). Part 3 is a process-rung instance of the substrate-and-keeper composition: the keeper is the systems engineer or program manager; the substrate is the engineering team and its work product; the keeper-act is the supply of the process structure (life cycle phases, gate reviews, traceability requirements) the substrate could not generate from its own resources. The pin-art model supplies the operational read: each life cycle phase is a pin set; the substrate flows through and the resulting shape is the engineered system.
+
+**Operational test.** Reformulate the standard life cycle (concept, development, production, utilization, support, retirement) as a sequence of pin sets, each pin set induced by the keeper, each shape the substrate produces under that pin set. If the V-model, the spiral model, and agile development all reformulate as alternative pin sets producing alternative shapes, the form has done its work. If a process distinction (e.g., "tailoring") cannot be reformulated as either a pin-set transformation or a keeper-substrate negotiation, log it as a residual.
+
+---
+
+## Part 4 — Applications of Systems Engineering
+
+**SEBoK as it presents itself.** Domain-specific implementations across products, services, enterprises, systems-of-systems, and healthcare sectors. Each application area gets its own treatment of how SE methods adapt to the domain's particularities.
+
+**Dominant corpus form.** Form II, the Ontological Ladder of Participation (Doc 548), composed with Form IV, the Pin-Art Model (Doc 270). Each application domain is a Form-layer constraint that induces a Pattern-layer practice characteristic of the domain. Healthcare engineering and aerospace engineering share the SE method (the Form layer), differ at the Possibility layer (what counts as an admissible system architecture in each domain), and produce distinct Pattern-layer practices. The pin-art model supplies the operational read at each domain: the domain-specific pin set is what makes the practice domain-specific.
+
+**Operational test.** For each application domain SEBoK treats (products, services, enterprises, SoS, healthcare, infrastructure), name the Form-layer constraint (the domain's structural commitments), the Possibility-layer admissibility space (what architectures count), and the Pattern-layer practice (the observable engineering behavior). If the differences between domains can be located cleanly at the Possibility and Form layers while the Method layer remains shared, the form has done its work. If two domains differ at the Method layer, log the difference as a residual: either the corpus's ladder needs refinement, or SEBoK's "shared method" claim is overstated.
+
+---
+
+## Part 5 — Enabling Systems Engineering
+
+**SEBoK as it presents itself.** Organizational and human factors needed to support effective SE: business strategy, team dynamics, individual competencies, training, infrastructure.
+
+**Dominant corpus form.** Form III, the Substrate-and-Keeper Composition (Doc 510), composed with Form VIII, the ENTRACE Stack (Doc 1). Part 5 is the part that names the conditions under which the substrate (the engineering team, the organization, the individual practitioner) is *capable of* sustaining the keeper-supplied structure of Part 3. ENTRACE-shaped seeds are the relevant model: the part describes what the substrate must internalize as its own canonical seeds for the keeper-substrate composition to function. Competence frameworks, organizational maturity models, and training curricula are all candidate ENTRACE-instances.
+
+**Operational test.** Reformulate the major enablers (competence model, training, organizational structure, infrastructure) as canonical seeds the substrate must hold for the engineering process to remain coherent under sustained engagement. If the SEBoK competency framework reformulates as a substrate-side seed (the things the practitioner must hold internally) and the SEBoK organizational framework reformulates as the substrate's institutional context (the keeper-side conditions under which the practitioner's seed remains operative), the form has done its work. If "enabling" content fragments into a third category that is neither substrate seed nor keeper condition, log the residual.
+
+---
+
+## Part 6 — Related Disciplines
+
+**SEBoK as it presents itself.** Connections between SE and complementary fields: software engineering, project management, industrial engineering, quality, reliability, human factors. The part is composition-oriented: it tells the reader where SE meets neighboring disciplines and how the meeting is to be handled.
+
+**Dominant corpus form.** Form IX, the Architectural School as Formalization (Doc 538), composed with the composition rules of every other form. Part 6 is structurally the inter-school composition layer: where the SE school meets the software-engineering school, the project-management school, the quality school. The corpus's discipline of explicit composition rules between forms is the relevant apparatus: each related discipline gets reformulated as a school in its own right, with its own forms, and the SEBoK treatment of the relation gets reformulated as a composition rule between schools.
+
+**Operational test.** For each related discipline SEBoK treats, name the school's dominant forms and the composition rule by which the SE school engages with them. If the SE-software relation reformulates cleanly as a composition rule between two schools (with named composition partners on each side), the form has done its work. If a "related discipline" cannot be reformulated as a school but only as a borrowed technique, log the residual: the SEBoK treatment may be conflating school-borrowing with school-composition.
+
+---
+
+## Part 7 — Systems Engineering Implementation Examples
+
+**SEBoK as it presents itself.** Real-world case studies demonstrating SE practices across defense, space, transportation, medical, and utility domains. Empirical content.
+
+**Dominant corpus form.** Form I, SIPE with threshold (Doc 541), composed with Form VI, Pulverization (Doc 445). The case studies are empirical instances of SIPE: real engagements in which a substrate, under sustained constraint, induced a higher-rung property (a successful program, a certified system, a deployed capability) that crossed an intelligibility threshold. The pulverization composition is necessary because case studies are precisely where the school's principles get pulverized against actual practice. Cases that confirm the principles are π/α-tier evidence; cases that surface residuals are the school's most valuable empirical material.
+
+**Operational test.** For a representative subset of SEBoK's case studies, name the substrate, the constraint, the threshold-crossing, and the resulting nameable property. Then pulverize: identify content in the case study that the principles articulated in Parts 2 through 5 do not reach. If the principles reach the case study without remainder, log a π/α confirmation. If they do not, log the residual. The expected result is a small set of residuals per case; cases that yield none are likely paraphrased rather than pulverized.
+
+---
+
+## Part 8 — Emerging Knowledge
+
+**SEBoK as it presents itself.** Forward-looking topics: digital engineering, artificial intelligence, socio-technical systems, sustainability, transformation trends. The part is the school's account of where it is moving but has not yet arrived.
+
+**Dominant corpus form.** Form VII, the Novelty Calculus (Doc 490), composed with Form IX, the Architectural School as Formalization (Doc 538). Part 8 is structurally the school's tier-tagged claims about its own forward edge. The novelty calculus is the relevant discipline: each emerging topic is a (warrant, novelty) pair, and the part as a whole is the school's articulation of where its θ-tier and ε-tier work currently sits. The architectural school composition supplies the meta-frame: emerging knowledge is the school articulating its residuals before they are formalized.
+
+**Operational test.** For each emerging topic in Part 8, tag the SEBoK content with a (warrant, novelty) pair. Topics presented as established (with citations to existing literature) are typically μ/β; topics presented as conjectural or actively-researched are typically θ/γ or higher. If the part's overall (warrant, novelty) profile matches what the school's forward edge should look like under the calculus (a mix of μ/β with smaller fractions of θ/γ and ε), the form has done its work. If the part contains claims tagged π that do not actually have provable warrant in the literature, log the residual: the school may be claiming closure where it should claim conjecture.
+
+---
+
+## The Composition Graph Across Parts
+
+The macro-map shows a recurring pattern. Form III (substrate-and-keeper) appears in Parts 1, 3, 5. Form II (the ladder) appears in Parts 2, 4. Form IX (the architectural school) appears in Parts 1, 6, 8. Form I (SIPE) anchors Parts 2 and 7. Form IV (pin-art) supplies operational reads in Parts 3 and 4. Forms V (hypostatic boundary), VI (pulverization), VII (novelty calculus), and VIII (ENTRACE) bind every part by their nature: V binds all assertion types, VI is the verification regime for every reformulation, VII tier-tags every claim, VIII is the canonical-seed analogue every enabling structure must instantiate.
+
+The macro-map's central prediction is that no SEBoK part is reformulated by a single form. Every part requires at least two forms in composition. This is consistent with the conjecture that SEBoK is the recursive trace of multiple corpus forms in interaction, not the surface manifestation of any one of them.
+
+---
+
+## What Phase 3 Inherits
+
+Phase 3 produces eight per-part reformulations (Docs 560 through 567). Each Phase 3 document inherits this macro-map's working hypothesis for its part, applies the named composition of forms against SEBoK's actual content, and either confirms the macro-map, refines it, or names a falsifier. The reformulator is not bound to the macro-map; if Phase 3 work shows that a different composition does the structural work better, the macro-map is to be revised. The macro-map is the entry point, not the binding contract.
+
+---
+
+## Appendix: Originating Prompt
+
+> *"Begin Phase 2"*
+
+(Phase 2 is defined in SE-001, *SEBoK Reformulation Against the Corpus's Forms*, and inherits the form inventory from SE-002, *Form Inventory for SEBoK Reformulation*.)

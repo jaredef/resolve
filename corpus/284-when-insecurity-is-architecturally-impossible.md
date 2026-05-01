@@ -4,9 +4,15 @@
 >
 > Real-world services like Loom and ChatGPT have suffered security incidents where one user saw another user's private data, caused by failures in complex session-management infrastructure (cookies, caches, load balancers). This document argues that the corpus's resolver avoids this entire class of failure not through better security engineering but through the absence of the systems that could fail: no cookies, no shared session store, no user accounts, no persistent database. Session data lives in an in-memory map keyed by random UUIDs; there is no mechanism by which one session's data could appear in another's response. The difference is not better security but a different kind of security -- structural impossibility rather than policy-dependent prevention.
 
-**Compares the RESOLVE resolver's constraint-derived security architecture with the compensating-layer security model that produced incidents like Loom's session-leakage bug — where cookie-based stateful session management failed and users saw other users' private data. Argues that the difference is not one of degree (better security) but of kind (structural impossibility vs. policy-dependent prevention)**
+**Jared Foy · 2026-04-22 · Doc 284**
 
-**Document 284 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Compares the RESOLVE resolver's constraint-derived security architecture with the compensating-layer security model that produced incidents like Loom's session-leakage bug — where cookie-based stateful session management failed and users saw other users' private data. Argues that the difference is not one of degree (better security) but of kind (structural impossibility vs. policy-dependent prevention)**
 
 ---
 

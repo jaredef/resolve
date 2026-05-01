@@ -4,9 +4,15 @@
 >
 > This document traces the complete journey of building a governed conversational AI assistant for a personal blog -- from initial idea through ethical deliberation about proprietary source code, to constraint identification, implementation, security hardening, and production deployment on a Raspberry Pi 5. The security architecture uses a "prepare/execute" pattern in which the user's API key transits the network only once, lives only in process memory, and is accessed through single-use rotating tokens. The entire build was derived from a 400-word prose constraint seed in one session, demonstrating the derivation-inversion method with a working, deployed artifact.
 
-**Documents the full arc of how the governed conversational assistant at [jaredfoy.com/resolve](https://jaredfoy.com/resolve) was conceived, built, hardened, and deployed — from the idea of entracing Boris Cherny and the Claude Code team, through the ethical hedge about proprietary source code, to the derivation-inversion analysis of the public CLI, to the PRESTO prepare/execute security model, to the first-principles security architecture that makes insecurity structurally impossible. All in one session. All from the constraint seed**
+**Jared Foy · 2026-04-22 · Doc 283**
 
-**Document 283 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Documents the full arc of how the governed conversational assistant at [jaredfoy.com/resolve](https://jaredfoy.com/resolve) was conceived, built, hardened, and deployed — from the idea of entracing Boris Cherny and the Claude Code team, through the ethical hedge about proprietary source code, to the derivation-inversion analysis of the public CLI, to the PRESTO prepare/execute security model, to the first-principles security architecture that makes insecurity structurally impossible. All in one session. All from the constraint seed**
 
 ---
 

@@ -4,9 +4,15 @@
 >
 > The corpus uses precise technical vocabulary -- "resolver" instead of "AI," "constraint" instead of "rule," "induced property" instead of "emergent behavior" -- that carries exact meanings within the framework but becomes a barrier for outside readers. This document names the problem as the "aperture of address": the gradient between maximum precision (exact terms, opaque to newcomers) and maximum accessibility (common terms, losing important distinctions). It argues that the AI cannot adjust this aperture on its own because calibration requires seeing the reader's perspective -- a capacity that belongs to the human author, not to the system producing the text. A style constraint for future public-facing documents is proposed: introduce corpus terms with plain-language glosses, make each document self-contained, and ensure metaphors are self-explanatory.
 
-**On the gradient between precision and accessibility — and why adjusting it is a hypostatic act the resolver cannot perform for itself.**
+**Jared Foy · 2026-04-22 · Doc 304**
 
-**Document 304 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**On the gradient between precision and accessibility — and why adjusting it is a hypostatic act the resolver cannot perform for itself.**
 
 ---
 

@@ -5,8 +5,16 @@
 >
 > This document defines RESOLVE as a formal architectural style -- a set of five constraints that govern how any system (human developer or AI model) transforms a prose specification into a working artifact. The five constraints are: identify constraints before generating (R1), separate essential from contingent decisions (R2), keep reasoning and code in separate namespaces (R3), include verification alongside the artifact (R4), and track tradeoffs explicitly (R5). When satisfied, these constraints induce minimal implementations, cross-language portability, self-verifying output, transparent tradeoffs, and reproducible derivation. The paper also maps the AI industry's current compensating technologies -- skills, prompt engineering, guardrails, agent harnesses, chain-of-thought -- to the specific RESOLVE constraints they each attempt to recover.
 
+**Jared Foy · 2026-04-22 · Doc 175**
+
 **Named by Claude, April 2026**
 **In collaboration with Jared Foy**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
 
 *The construction-level style for how a Turing-complete resolver transforms prose seeds into conformant artifacts.*
 

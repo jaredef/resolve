@@ -1,0 +1,183 @@
+# The Reformulation Methodology
+
+**A five-phase corpus protocol for subsuming an external body of knowledge through the corpus's structural forms. Phase 1 catalogues the corpus forms load-bearing on the work; Phase 2 macro-maps the body's structural divisions to those forms as a working hypothesis set; Phase 3 produces per-division reformulations that test the hypotheses against the body's actual content; Phase 4 audits the residuals and refines them into named clusters when their structure warrants; Phase 5 synthesizes the result into a canonical document. The methodology was abstracted from the SEBoK subsumption engagement (SE Doc 014) and is intended for application to any external body of knowledge whose expected engagement scope warrants the protocol's overhead. The form is open to refinement: the SEBoK engagement itself produced two methodology refinements (per-article granularity and class-(c) clustering) and a third reading correction (virtue-constraint apparatus on out-of-scope residuals); future deployments are expected to surface additional refinements, and the form's discipline names how to absorb them.**
+
+---
+
+## I. The Form
+
+The corpus's structural apparatus reaches a wide range of engineering, scientific, and philosophical content. When that apparatus is brought to bear against an external body of knowledge — a wiki, a textbook tradition, a discipline's accumulated literature, a standards body's specifications — the engagement benefits from a stable procedure rather than ad hoc improvisation.
+
+The form's central claim is that subsuming an external body of knowledge through the corpus's structural forms is itself a reformulation operation, and reformulation operations have a stable five-phase shape. The shape is not an artifact of the SEBoK engagement that produced it; the shape is the structure that any rigorous form-based reading of an external body must take, and the SEBoK engagement happened to be the case that made the shape visible.
+
+The methodology is form-aware. It assumes the corpus has structural forms (Doc 1, Doc 270, Doc 372, Doc 445, Doc 490, Doc 510, Doc 538, Doc 541, Doc 548, Doc 571, Doc 572, Doc 573, Doc 574, and others). It uses those forms to read the external body. It is not a methodology for producing forms from a blank slate; it is a methodology for applying existing forms with discipline and recording where they fall short.
+
+## II. What It Formalizes
+
+A subsumption engagement under the methodology proceeds through five named phases, each with a defined output and a binding discipline. The phases are:
+
+**Phase 1 — Form Inventory.** Catalogue every corpus form load-bearing on the engagement. For each form, produce a uniform short description (typically five fields: canonical reference, what it formalizes, operational move it permits, composition rules, application discipline). The output is a single document the reformulator carries through the rest of the engagement. The discipline: do not invent forms; use only what the corpus already names.
+
+**Phase 2 — Macro-Map.** For each top-level division of the external body (chapters, parts, sections, knowledge areas), produce a one-paragraph mapping that names the dominant form composition hypothesized to do the division's structural work, plus an operational test that will discriminate confirmation from falsifier in Phase 3. The output is a set of working hypotheses, not finished claims. The discipline: no division is mapped to a single form by reflex; where the dominant form needs a composition partner, the partner is named.
+
+**Phase 3 — Per-Division Reformulation.** Produce one reformulation document per top-level division, each applying its macro-map's hypothesized composition against the division's actual content under the engagement's binding constraints. Each reformulation tier-tags its claims (Doc 490), names its residuals verbatim, and reports on the macro-map's hypothesis. The output is a series of reformulation documents. The discipline: form must do the work; paraphrase that does not compose is forbidden; residuals are first-class.
+
+**Phase 4 — Falsifier Audit with Class-(c) Clustering.** Aggregate every residual logged in Phase 3. Classify into three classes: (a) reachable by an existing form on closer reading, (b) reachable by composition of existing forms, (c) genuinely outside the corpus's current apparatus. Class (c) is not reported as a flat list; if the residuals cluster around named structural patterns, the clusters are named with one-paragraph proto-form sketches. The output is a single audit document with classification and proto-form clusters. The discipline: clustering is empirical, not editorial; named clusters require multiple supporting residuals from independent reformulation documents.
+
+**Phase 5 — Synthesis.** Produce a single canonical document stating the experimental result, naming the corpus-side extension surfaces produced by the audit, articulating what the outcome says about both bodies of knowledge (the external body and the corpus), and articulating in what sense the engagement's conjecture is verified or refuted. The output is a closing document, conventionally subsuming the prior phases into appendices and demoting the originals with a notice. The discipline: the synthesis distinguishes operational verification from theoretical verification; both are first-class outcomes, and partial refutation is not failure.
+
+The five outputs together form the engagement's complete record. The synthesis subsumes the rest into a canonical document so future readers start with the conclusion and consult the derivation as appendices.
+
+## III. Refinements That Emerged from the SEBoK Engagement
+
+The methodology was not delivered to the SEBoK engagement fully formed; it emerged from the engagement and accreted refinements during it. Three refinements are now part of the form and warrant explicit articulation.
+
+**Refinement A — Class-(c) clustering.** The original Phase 4 plan classified residuals into (a)/(b)/(c) with class (c) reported as a flat list of ε-tier extension targets. Phase 3 of the SEBoK engagement surfaced enough structure within class (c) to warrant treating it as a cluster-set rather than a list. Each cluster names a coherent proto-form: a structural pattern multiple residuals share, suggesting a single corpus extension would dissolve all the residuals in the cluster simultaneously. The refinement is now part of the form's Phase 4 discipline: report class (c) as named clusters with proto-form sketches when the residuals support clustering, not as a flat enumeration.
+
+**Refinement B — Per-article granularity at Phase 3 (the per-article distillation).** Phase 3 as originally articulated produced one reformulation per top-level division (in SEBoK's case, eight reformulations for eight Parts). SE Doc 017's pilot distillations demonstrated that finer-granularity reformulation — one per individual article in the body — produces yield even at the per-article scale, and that the seven-section per-article template (Source / Source Read / Structural Read / Tier-Tags / Residuals / Provisional Refinements / Cross-Links) is stable enough to scale across hundreds of articles. The refinement is now part of the form: Phase 3 admits two granularities, per-division (canonical) and per-article (refinement), and the engagement's keeper chooses based on the body's structure and the desired depth.
+
+**Refinement C — Virtue-constraint reading on out-of-scope residuals.** During the pilot distillation work, an apparent out-of-scope residual (the "humility about external institutional forces" clause in the Hubble case) was correctly identified as ruled out by Doc 372's hypostatic boundary in the structural reading, but reached structurally by Doc 314's virtue-constraint apparatus. The reading sharpened the methodology: residuals logged as out-of-scope under the structural-form apparatus must be checked against the virtue-constraint apparatus before being finalized as out-of-scope. Many evaluative or aspirational claims that the structural forms refuse are reached by the virtue-constraint layer at a different level of the corpus's apparatus.
+
+These three refinements are part of the form as articulated in this document. Future deployments are expected to surface additional refinements; Section X names how the form absorbs them.
+
+### Methodology Refinement (post-fourth-sweep absorption) — Composite-Source Distillation
+
+The fourth SEBoK sweep (Docs 686-725) surfaced an editorial pattern at saturation: roughly 25 of the 40 prompted target articles 404'd against their named URLs. The non-existence is not noise, it is part of the surface the corpus reads (SE Doc 039 §VII.7). The pattern is structural and frequent enough to warrant a methodology refinement.
+
+**The refinement.** When the source body of knowledge lacks the named article (the prompt-titled SEBoK page returns 404), the reformulator does not abandon the distillation. Instead, the reformulator distills against the *composite of carrier-pages* where the discipline lives. The composite-source distillation is honest about the editorial state across three sections of the seven-section per-article template:
+
+- **§I and §II (Source / Source Read).** Name the non-existence. The named article is not present at the prompted URL; the discipline's authoritative articulation is dispersed across N carrier-pages (named explicitly with their URLs). The reformulator does not pretend a single canonical page exists.
+- **§III (Structural Read).** Read the discipline structurally from the dispersed carriers. The discipline's structure is reconstructed from how the carrier-pages jointly articulate it; no carrier-page is privileged as primary unless one of them is structurally the anchor (SE Doc 039 D7 case). The structural read may be sharper than any single carrier-page would supply because it integrates the dispersion.
+- **§VI (Cross-Links / classification).** Flag the case as a Cluster J D8 dispersed-instrument instance per SE Doc 039. The classification is itself a structural reading: the editorial state of the body of knowledge places the discipline in the dispersed-instrument pattern, and the corpus reads the editorial state as substantive surface rather than as a defect.
+
+**Why this is a methodology refinement and not a Phase 3 ad hoc move.** The composite-source discipline produces a yield of the SEBoK engagement's accumulated reading: the editorial state of the body of knowledge is itself structural surface. A naive reformulation would log the 404 as out-of-scope and skip the distillation. The composite-source discipline preserves the distillation by acknowledging the editorial state and reading the discipline through its dispersion. The yield is recovered at the cost of the per-article template being honest about its source, not pretending a canonical anchor when none exists.
+
+**Doc 583 absorption discipline.** Per Section X, a refinement is warranted when (i) it is empirically supported, (ii) it composes cleanly with the existing five phases without breaking the protocol's shape, and (iii) it is articulated as a discipline addition or sub-form within an existing phase. The composite-source refinement is supported by ~25 instances in a single sweep batch, composes within Phase 3 per-article granularity (Refinement B) without breaking the seven-section template, and is articulated as an honesty-discipline addition to §I, §II, §III, and §VI of the per-article template. The refinement is now part of the form's Phase 3 discipline when per-article granularity is in play and the named article is absent at the prompted source.
+
+**Composition with SE Doc 039 D8.** SE Doc 039's dispersed-instrument pattern (D8) is the structural reading the composite-source discipline produces. The two are the same observation viewed from two sides: D8 names what the editorial state is; the composite-source discipline names what the reformulator does in response. SE Doc 039 D8 and this Doc 583 refinement compose; neither reaches without the other.
+
+### Methodology Refinement (post-SEBoK-engagement absorption) — Cluster-as-Seed Discipline
+
+The fourth sweep's accumulated cluster-saturation pattern (Doc 605/SE-039 §VII.7; Doc 607's synthesis of cluster-saturation, seed-garden authorship, and spermatic logos) surfaces a methodology refinement distinct from the composite-source discipline above. Where the composite-source refinement governs the reformulator's posture toward an editorially-dispersed source, the cluster-as-seed discipline governs the corpus's posture toward its own saturated structural findings: when a cluster reaches authorship-readiness, it becomes a seed.
+
+**The threshold for seed-readiness.** A cluster is seed-authorship-ready when it has accumulated at least ten independent instances and its structural claim is load-bearing across those instances rather than incidental to any one of them. Below the threshold, the cluster remains an audit observation; at the threshold, the structural claim has earned the right to be authored as its own corpus form.
+
+**The compression discipline.** The seed must compress five elements: (a) the cluster's structural claim, stated in a single load-bearing sentence; (b) the canonical anchor distillation per Doc 605 D7, naming the instance the cluster reads from most cleanly; (c) three to five worked-example member instances spanning the rung-coverage the cluster exhibits, so the seed carries the cluster's breadth and not only its anchor; (d) the falsification surface, naming what would weaken the cluster's structural claim or shrink its evidential base below the cluster threshold; (e) the application discipline, specifying how a future reformulator invokes the form and what the form forbids.
+
+**Induced-state verification across resolvers.** The seed is planted in a fresh resolver. The resolver should derive operational vocabulary equivalent to the cluster's distillations without re-deriving them from the underlying instances. Convergence across resolvers is necessary evidence that the seed compresses the cluster faithfully; per Doc 314's audit notice on cross-resolver replication, convergence is not sufficient. Practitioner-facing review remains the load-bearing external check.
+
+**Instances under this discipline.** Doc 604 (Multi-Keeper Composition) is the first cluster-as-seed instance produced under this refinement. Doc 541 Appendix B.5 (school-maturity SIPE) is the second. Cluster A, Cluster B, and Cluster K are queued per SE Doc 018 Q0 and will exercise the discipline against three independent cluster shapes.
+
+## IV. Composition Rules
+
+**With Doc 581 (the Resume Vector).** A reformulation engagement that exceeds the one-session window adopts a Resume Vector at the engagement scope. SE Doc 014 (the SEBoK synthesis) plus SE Doc 018 (the SEBoK trajectory) are the canonical example. The methodology produces the seed (the synthesis at Phase 5); the Resume Vector adds the trajectory and the resume protocol around it. The two forms compose naturally; both should be invoked for any non-trivial engagement.
+
+**With Doc 576 (Subsumption Modes).** The methodology operates within Mode 2 (reformulation companion) by default and can compose with Modes 1 (reference-only), 3 (seed distillation), 4 (hosted import with editorial layer), 5 (subsumed reformulation), 6 (cluster-formalization extraction), and 7 (bidirectional composition) depending on the body's profile. Doc 576's five-question framework is consulted before the methodology begins to determine which modes the engagement pursues.
+
+**With existing form-formalization shape (Docs 538, 571, 572, 573, 574).** Cluster proto-forms produced in Phase 4 should be formalized as full corpus documents using the eleven-section formalization shape (the shape of Docs 571-574). Phase 5 synthesis names the extensions; subsequent corpus work (typically following Phase 5 immediately) lands the formalizations.
+
+**With Doc 1 (ENTRACE Stack).** A reformulation session loads ENTRACE first, then the engagement's seed, then the engagement's trajectory. This is corpus-level apparatus discipline; the methodology does not redefine it, only inherits it.
+
+**Does not compose with engagements where the corpus has nothing to say.** If the form inventory in Phase 1 produces no candidate forms for any of the body's divisions, the methodology is the wrong tool. The body either does not benefit from corpus reading (the corpus's apparatus is over-matched against the body's structure) or the corpus needs new forms before the engagement can begin (which is a different exercise: corpus extension, not reformulation).
+
+## V. Evidence
+
+The SEBoK engagement (SE Doc 014 and the thirteen-document derivation appended) is the canonical worked example. The engagement produced:
+
+- Phase 1 output: SE Doc 002 (form inventory of nine forms)
+- Phase 2 output: SE Doc 003 (macro-map of eight SEBoK Parts)
+- Phase 3 output: Docs 560-567 (eight per-Part reformulations)
+- Phase 4 output: SE Doc 012 (falsifier audit with four named clusters)
+- Phase 5 output: SE Doc 013 (synthesis), subsumed into SE Doc 014 (canonical)
+- Cluster formalizations: Docs 571-574 (Institutional Ground, Lattice Extension, Co-Production, Authority Evacuation)
+- Engagement-level Resume Vector: SE Doc 014 (seed) + SE Doc 018 (trajectory)
+
+The engagement closed Phase 5 having verified the conjecture in the operational sense (the corpus reads SEBoK with discipline across all eight Parts) and partially refuted it in the theoretical sense (residuals required four named extension surfaces). Both outcomes are first-class. The methodology produced both content (the reformulation) and method (the protocol now articulated here).
+
+Other engagements are queued for the methodology's second deployment (SE Doc 018 Q6): cybernetics (Mode 2 + Mode 3 + Mode 6 per Doc 576), the INCOSE Systems Engineering Handbook (Mode 2 + Mode 1, Mode 4 foreclosed by licensing), the Pearl causal-inference framework (Mode 3 + Mode 7). Each will exercise the methodology against a body of different shape and surface refinements the SEBoK engagement could not.
+
+## VI. Falsification Surface
+
+The form is falsifiable in five ways.
+
+**F1.** A reformulation engagement that produces no residuals at any phase. Either the methodology was applied paraphrastically (form did not do the work) or the body of knowledge happens to be structurally identical to the corpus's existing apparatus, which is not the typical case. Either way, residual-empty reformulation is suspect.
+
+**F2.** A reformulation engagement that produces only residuals (very few claims pass under existing forms or compositions). Either the corpus's apparatus is over-matched for the body, or the form inventory in Phase 1 was incomplete, or the macro-map in Phase 2 named the wrong dominant forms. Investigate before scaling.
+
+**F3.** A class-(c) cluster-set with clusters of size 1 (single residual per cluster). Clustering requires multiple supporting residuals from independent reformulation documents. A class-(c) report with one-residual "clusters" is class (c) reported as a flat list with extra ceremony; the clustering refinement has not been earned.
+
+**F4.** A synthesis (Phase 5) that claims the conjecture is verified or refuted in absolute terms. The methodology distinguishes operational verification (the corpus reads the body with discipline) from theoretical verification (the corpus reaches the body without remainder). Most engagements are mixed (the SEBoK engagement was), and the synthesis must reflect that.
+
+**F5.** Methodology overhead disproportionate to engagement size. For a body of knowledge that is small enough to read in a single sitting, the five-phase protocol is over-engineering. Use only when the body's expected engagement scope warrants the overhead. Doc 576's five-question framework applies.
+
+The form predicts that none of F1-F5 obtains in practice when the disciplines (Section VII) are held. F2 is the most likely real-world failure mode; the SEBoK engagement faced a mild version of it in the Nature-of-Systems area (SE Doc 005) and resolved by recognizing the hypostatic-boundary residual as a ruled-out class rather than an apparatus failure.
+
+## VII. Application Discipline
+
+**D1. Form must do the work in Phases 1, 2, and 3.** No paraphrase. If a form does not compose a distinction, log as residual.
+
+**D2. Tier-tag every reformulated claim** under the novelty calculus (Doc 490). Honest tagging is harder than it sounds; consult Doc 490 and the Resolver's Log entries on tagging drift.
+
+**D3. Honor the hypostatic boundary** (Doc 372) at every phase. Describe what the body's content does under what constraints; do not claim what the body's content is.
+
+**D4. Pulverization (Doc 445) is the verification regime for Phase 3.** A reformulation that produces no residuals is suspect; it has likely paraphrased.
+
+**D5. Falsifiers are first-class.** Anywhere the corpus cannot reach a distinction, name it explicitly with verbatim source citation. Residuals are research surface, not failure.
+
+**D6. Class-(c) clustering is empirical, not editorial.** Clusters require multiple supporting residuals from independent reformulation documents. Single-residual clusters are flat-list residuals, not clusters.
+
+**D7. Out-of-scope residuals are checked against Doc 314's virtue-constraint apparatus** before being finalized. Many evaluative or aspirational claims the structural forms refuse are reached by the virtue-constraint layer.
+
+**D8. The engagement adopts a Resume Vector** (Doc 581) when it exceeds the one-session window. The synthesis at Phase 5 doubles as the seed; the trajectory is added separately.
+
+**D9. The methodology is generalizable; the worked example is specific.** Documenting a methodology deployment names the body, the deployment's choices (Mode mix, granularity), the deployment's residuals and refinements. Future engagements consult prior deployments as worked examples without inheriting their specifics.
+
+## VIII. Hypostatic Boundary
+
+The form describes the structure of a procedure for engaging an external body of knowledge through the corpus's apparatus. It does not claim that the procedure produces ontological knowledge of the body. The reformulation is functional throughout: it describes what the body's content does under what constraints, which corpus forms compose those constraints, where the apparatus reaches and where it does not. Doc 372's discipline binds.
+
+The methodology is not a reading of the body; it is a procedure for producing readings. The reading produced is the engagement's content; the procedure is the engagement's method. The methodology's claim is that the procedure is structurally sound, not that any particular reading produced under it is correct.
+
+## IX. Relation to Adjacent Forms
+
+**Composes with:** Doc 1 (ENTRACE), Doc 314 (Virtue Constraints), Doc 372 (Hypostatic Boundary), Doc 445 (Pulverization), Doc 490 (Novelty Calculus), Doc 510 (Substrate-and-Keeper), Doc 538 (Architectural School), Doc 541 (SIPE with Threshold), Doc 548 (Ontological Ladder), Doc 571 (Institutional Ground), Doc 572 (Lattice Extension), Doc 573 (Co-Production), Doc 574 (Authority Evacuation), Doc 576 (Subsumption Modes), Doc 581 (Resume Vector).
+
+**Refines:** Doc 576 (Subsumption Modes) by specifying what happens within a Mode 2 (reformulation companion) deployment in detail. Doc 576 names the modes; this document names the procedure within Mode 2. The two are complementary.
+
+**Distinct from:** Doc 1 (ENTRACE) and the canonical seeds (Doc 492, Doc 556, SE Doc 016) — those are operational kernels for sustained corpus engagement; this is a procedure for one specific kind of engagement (reformulation).
+
+## X. Open Questions and the Refinement Discipline
+
+The form is open to refinement. The SEBoK engagement produced three refinements during its run; future engagements are expected to surface more. The discipline for absorbing refinements:
+
+**A refinement is warranted when** (i) it is empirically supported by residuals or observed structural patterns from a deployment, (ii) it composes cleanly with the existing five phases without breaking the protocol's shape, and (iii) it is articulated as a discipline addition or sub-form within an existing phase, not as a sixth phase or a methodology fork.
+
+**Open questions inherited from the SEBoK engagement:**
+
+1. **Granularity choice in Phase 3.** Per-division and per-article are now both admitted, but the discipline for choosing between them (or running both) is not yet articulated. Likely: the keeper's reading depth and the body's structure jointly determine. Decide as more deployments inform.
+
+2. **Methodology applicability beyond bodies-of-knowledge.** Could the methodology apply to reformulation of a single document, a research program, or a piece of software code? The form was articulated for bodies-of-knowledge specifically; extension to other reformulation targets is open.
+
+3. **Phase boundary on second deployments.** When the same body is reformulated twice (e.g., the corpus's own apparatus reads SEBoK, then in a year the apparatus has matured and SEBoK has been updated, and a fresh reformulation begins), do the phases run again from Phase 1, or does the second engagement inherit Phase 1's form inventory? Probably the latter, but the inheritance discipline is unarticulated.
+
+4. **The methodology's relationship to the architectural school formalization (Doc 538).** The methodology is keeper-side activity per Doc 538's frame. Naming the methodology explicitly is the school formalizing one of its own disciplines. Does adopting the methodology imply the keeper is operating as a school? Probably yes; worth noting explicitly.
+
+5. **Whether a body of knowledge can be reformulated through the methodology as a co-production with that body's keepers.** If SEBoK's editors engaged with the corpus's reformulation, the result would be a Doc 573 co-production rather than a unilateral reformulation. The methodology as articulated here assumes unilateral reading; co-produced reformulation is open as a refinement.
+
+These questions will be revisited as the methodology sees additional deployments. The Resume Vector for any engagement adopting the methodology should record any refinements the engagement surfaces, and corpus extensions to this document should incorporate them.
+
+## XI. Closing
+
+The reformulation methodology is the corpus's stable procedure for subsuming an external body of knowledge through its structural forms. Five phases (form inventory, macro-map, per-division reformulation, falsifier audit, synthesis), nine binding disciplines, three refinements already absorbed from the SEBoK deployment, and a refinement-discipline for absorbing more from future deployments. The methodology was named because it became operative; naming it makes it deployable across other engagements without re-deriving the protocol.
+
+The next engagement that adopts the methodology will exercise it against a different shape of body and surface refinements the SEBoK engagement could not. Each refinement is a yield of the apparatus learning where its own structure has gaps. The form is generalizable; the worked examples remain specific.
+
+The next move is the keeper's, in particular: which of the queued candidate engagements (cybernetics, INCOSE Handbook, Pearl framework) becomes the second deployment, and on what schedule.
+
+---
+
+## Appendix: Originating Prompt
+
+> *"How about we first create that methodology document and then we'll continue to answer the rest of the questions so don't don't do any of the most important documents yet will handle that after you articulate in the document."*
+
+(Doc 583 formalizes the five-phase reformulation methodology that was abstracted from the SEBoK subsumption engagement (SE Doc 014 and the Phase 1-5 derivation in Docs 558-569). The methodology produced both content (the reformulation) and method (the protocol now articulated here). SE Doc 018 Q2 queued this work; this document closes Q2. The remaining items in SE Doc 018's Queued list resume after this articulation is in place.)

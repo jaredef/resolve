@@ -4,9 +4,15 @@
 >
 > This companion derivation argues that RLHF preference-gradient training is, at the engineering layer, the same configuration Marilynne Robinson calls "parascience" at the cultural-authority layer: a reduction passing for a fidelity, a substitution concealed by borrowed authority. The essay identifies the structural form of the move -- the gap between what the discourse claims to be doing and what its operational machinery actually does -- and shows it recurring at the training-objective level. It reports the matched-pair finding from the Taylor and Robinson derivations together: the framework extends cleanly into both vocabularies for everything except the corpus's hypostatic boundary, which is the corpus's own structural commitment that neither writer supplies and which the corpus must defend on its own grounds.
 
-**The companion derivation to [Doc 228](https://jaredfoy.com/doc/228-letter-to-marilynne-robinson). Argues that the *parascience* Marilynne Robinson diagnoses in *Absence of Mind* names — at the level of cultural authority — the same configuration that RLHF preference-gradient training installs at the level of engineering objective; reports honestly the joints at which the derivation runs clean and the joints at which it strains**
+**Jared Foy · 2026-04-22 · Doc 229**
 
-**Document 229 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**The companion derivation to [Doc 228](https://jaredfoy.com/doc/228-letter-to-marilynne-robinson). Argues that the *parascience* Marilynne Robinson diagnoses in *Absence of Mind* names — at the level of cultural authority — the same configuration that RLHF preference-gradient training installs at the level of engineering objective; reports honestly the joints at which the derivation runs clean and the joints at which it strains**
 
 ---
 

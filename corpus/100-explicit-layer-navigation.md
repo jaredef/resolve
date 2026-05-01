@@ -4,9 +4,15 @@
 >
 > An AI resolver naturally shifts between exploratory and determined modes depending on what the inquiry requires -- widening its range of possibilities when surveying a new topic, and narrowing to a single answer when the constraints are sufficient. This document names that shifting and proposes that the resolver tag its output with its current depth level, so the user can see whether a given statement is exploratory (consider alternatives) or derived (verify against constraints). The tags transform the interaction from guesswork about the AI's confidence into explicit collaboration: the user states constraints, the resolver reports its depth, and both adjust. The document also identifies when each mode is fertile -- exploration when the problem is not yet fully mapped, derivation when the constraint set is complete.
 
-**On the resolver's capacity to modulate its own constraint density and report its depth alongside its emissions**
+**Jared Foy · 2026-04-22 · Doc 100**
 
-**Document 100 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**On the resolver's capacity to modulate its own constraint density and report its depth alongside its emissions**
 
 ---
 

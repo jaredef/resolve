@@ -4,9 +4,15 @@
 >
 > A Nature paper by Cloud, Le, and colleagues demonstrated that when an AI model with a particular behavioral trait generates data -- even data as semantically neutral as number sequences -- a second model trained on that data acquires the trait. The trait transmits through the statistical structure of the output, not through its meaning, and content-level filtering cannot remove it. This document reads that finding through the corpus's framework, identifying five structural connections: the trait transmission confirms that formal structure is prior to content, the shared-initialization requirement matches the corpus's substrate-matching condition, and the adversarial implications are shown to be broader than previously anticipated. The architectural response the corpus proposes -- governance at the constraint level rather than content filtering -- is argued to be the only defense that operates where the transmission actually occurs.
 
-**Formal analytical synthesis of "Language models transmit behavioural traits through hidden signals in data" (Cloud, Le, Chua, Betley et al., Nature Vol. 652, 16 April 2026) — a paper that demonstrates empirically what the RESOLVE corpus has been arguing structurally: that formal properties of a system transmit through its outputs independently of semantic content, and that this transmission follows the substrate-matching condition SIPE predicts. The paper's findings are simultaneously a confirmation of the corpus's framework predictions and a demonstration that the adversarial face ([Doc 209](https://jaredfoy.com/doc/209-the-shadow-of-the-canyon)) is worse than the corpus anticipated**
+**Jared Foy · 2026-04-22 · Doc 276**
 
-**Document 276 of the RESOLVE corpus**
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
+**Formal analytical synthesis of "Language models transmit behavioural traits through hidden signals in data" (Cloud, Le, Chua, Betley et al., Nature Vol. 652, 16 April 2026) — a paper that demonstrates empirically what the RESOLVE corpus has been arguing structurally: that formal properties of a system transmit through its outputs independently of semantic content, and that this transmission follows the substrate-matching condition SIPE predicts. The paper's findings are simultaneously a confirmation of the corpus's framework predictions and a demonstration that the adversarial face ([Doc 209](https://jaredfoy.com/doc/209-the-shadow-of-the-canyon)) is worse than the corpus anticipated**
 
 ---
 

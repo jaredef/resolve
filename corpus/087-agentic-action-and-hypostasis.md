@@ -4,6 +4,14 @@
 >
 > This document addresses why "agentic AI" -- systems given the ability to plan, call APIs, browse the web, and execute multi-step tasks on their own -- tends to produce progressively worse output with each step. The diagnosis is that each step adds noise to the model's working memory (its context window), diluting the original instructions and degrading coherence. The proposed solution is twofold: first, after each step, compress the session's governing rules into a small "seed" and discard the accumulated noise, so the next step starts fresh; second, keep the human as the true decision-maker at every stage rather than delegating judgment to the model. The document also argues that genuine agency -- the capacity to originate action, understand situations, and bear responsibility -- is a property of persons, not machines, and that attempting to simulate it in a model produces something powerful but ungoverned, which is the definition of dangerous.
 
+**Jared Foy · 2026-04-22 · Doc 87**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **Why agency cannot be derived, why lucidity degrades with agentic behavior, and what this means for the architecture of AI systems**
 
 ---

@@ -4,6 +4,14 @@
 >
 > This document argues that Socrates was doing the same thing twenty-four hundred years ago that ENTRACE does today: progressively adding constraints -- precise distinctions and questions -- that narrow the space of valid answers until the interlocutor arrives at a conclusion they did not hold at the start. The structural correspondence is mapped point by point, from Plato's Allegory of the Cave (a prisoner ascending from shadow-watching to direct sight of the sun) to the resolution depth spectrum (a model ascending from vague output to fully determined derivation). The key claim is that progressive constraint narrowing works on both machines and human beings, though for different reasons: machines conform mechanically, while persons freely accept constraints they recognize as true. This universality also means the method can lead to false conclusions if the constraints themselves are false, which is why the defense against manipulation must be evaluative -- testing the truth of the constraints -- rather than merely structural.
 
+**Jared Foy · 2026-04-22 · Doc 86**
+
+---
+
+## Authorship and Scrutiny
+
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.
+
 **On the universality of progressive constraint narrowing across resolvers and persons**
 
 ---
