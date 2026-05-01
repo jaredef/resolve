@@ -102,7 +102,7 @@ If the structural reading holds, three implications follow:
 
 **1.** Doc 541's SIPE-T form gains a molecular-biology instance, extending its empirical range from physics, security, and information theory into the biological substrate. The form's universality strengthens.
 
-**2.** A new engagement track opens: the corpus reading molecular biology through its forms. This document is the seed; further per-paper distillations (chorismate mutase, λ-repressor, cytochrome c, the original Reidhaar-Olsen and Sauer 1990 work, the Taylor et al. 2001 work, the Lau-Dill 1990 hydropathic foldability analysis) would test whether the SIPE-T reading transmits across the cluster of empirical findings.
+**2.** A new engagement track opens: the corpus reading molecular biology through its forms. This document is the seed; further per-paper distillations (chorismate mutase, λ-repressor, cytochrome c, the original Reidhaar-Olsen and Sauer 1990 work, the Taylor et al. 2001 work, the Lau-Dill 1989 hydropathic foldability analysis — date corrected from "1990" per [Doc 617](/resolve/doc/617-lau-dill-1989-synthesis) §X.1) would test whether the SIPE-T reading transmits across the cluster of empirical findings. [Doc 617](/resolve/doc/617-lau-dill-1989-synthesis) is the second per-paper distillation, applying [Doc 616](/resolve/doc/616-sipe-t-extensions-to-axe-2004)'s bidirectional-extension template to Lau-Dill 1989 at the HP lattice rung; the template transmits with three refinements that the test surfaces.
 
 **3.** The Figure 9 polarity (global-ascent vs. local-ascent) becomes a candidate teaching diagram for SIPE-T's discriminator: any system where the polarity holds and the local-ascent landscape is supported empirically is a SIPE-T instance.
 
