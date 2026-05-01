@@ -17,6 +17,15 @@
 
 **A general theory of constraint-driven convergence across structural and behavioral axes, with mathematical foundations and empirical validation.**
 
+<!-- canonical-successor-notice -->
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+**SUPERSEDED — CANONICAL SUCCESSOR PUBLISHED**
+
+This document has been superseded by [Doc 619 — The Pin-Art Form](/resolve/doc/619-pin-art-canonical-formalization), the corpus's canonical Pin-Art formalization. Doc 619 names the form at large (probe-impression boundary detection under non-coercion) with the operating-conditions layer that distinguishes detection-hedging from slack-hedging, supplies the lineage in optical resolution, signal-detection theory, perceptual psychophysics, active learning, percolation, and hedge-distribution linguistics, and states the form's restricted scope at the front. The formal apparatus of this document — the geometric-convergence theorem, the axis-independence theorem, and the behavioral-leverage inequality — is preserved as Doc 619 Appendix A and continues as the corpus's working formalization for the constraint-driven derivation application specifically. The cross-domain extensions of §5.2 below are held to plausibility tier without empirical replication; the narrow architectural-inheritance claim for hierarchical software stacks survives. New readers should start with Doc 619; this document is preserved for the empirical-derivation voice of the original treatment.
+
+</div>
+
 <!-- deprecation-notice-inserted -->
 <div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
 
