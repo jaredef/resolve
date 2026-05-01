@@ -157,4 +157,145 @@ The disambiguation is a methodology proposal at \(\pi\)-tier under Doc 445; it s
 
 ---
 
+## Appendix A — Pulverization Audit Against the Novelty Calculus
+
+The body of Doc 620 is here run through [Doc 445](/resolve/doc/445-pulverization-formalism)'s tiered pulverization (\(\pi\) plausibility / \(\mu\) operational-match / \(\theta\) truth) under [Doc 503](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus)'s iterative-novelty-calculus discipline. The audit specifies the warrant tier of each load-bearing target in the body and identifies the corpus-residual contribution against the broader prior art on role-vs-warrant disambiguation.
+
+### A.1 Targets Identified
+
+**T₁ (specification-target).** The two-senses identification of §3 — Sense A as position-in-document-graph role; Sense B as Doc 445 warrant tier.
+
+**T₂ (specification-target).** The orthogonality claim of §3 — the 2×2 matrix asserting that role and warrant are independent.
+
+**T₃ (methodological-target).** The disambiguation proposal of §4 — reserve "Canonical" for Sense B, adopt "PRIMARY ARTICULATION" for Sense A, with a warrant-tier line beneath the new banner.
+
+**T₄ (specification-target).** The new-banner template of §4 — the specific phrasing and structure of the proposed banner-plus-warrant-line composition.
+
+**T₅ (bridge-target).** The composition rules of §6 — the disambiguation's relations to Doc 415 (retraction ledger), Doc 503 (tier categories), Doc 372 (hypostatic boundary), Doc 314 (V3 truth-telling).
+
+**T₆ (predictive-target).** The §7 falsifiers F1–F3 — predictions about what would falsify or render unnecessary the disambiguation proposal.
+
+**T₇ (specification-target).** The implementation specification of §5 — the per-document changes to Docs 514, 541, 619 and the going-forward convention.
+
+### A.2 Prior-Art Scope
+
+The role-vs-warrant disambiguation pattern has explicit prior art in several adjacent fields:
+
+- **Library and archival science.** AACR2 and RDA distinguish *authorized access point* (the cataloger-assigned canonical name for an entity, a role) from *verified record status* (the audit state of the metadata, a warrant). "Authority control" itself is the maintenance discipline that keeps the role-name stable across warrant changes.
+- **Bibliographic editions.** Critical-edition scholarship distinguishes the *received text* (the canonical text-as-published, a role) from the *authorial intent* or *autograph reading* (the warrant claim about what the author wrote). The two can disagree; the disagreement drives the apparatus criticus.
+- **IETF Standards Track.** RFCs occupy specification-document roles; their warrant maturity is named separately along the *Proposed Standard / Draft Standard / Internet Standard* ladder. The role is "this is the spec"; the warrant is "this much of the spec has been deployed and verified."
+- **Software documentation.** "Official documentation" (role) is distinct from "stable API" (warrant). A document can be the official entry-point for a feature whose API is marked experimental or unstable.
+- **Type theory / programming-language theory.** "Canonical form" (the unique normal-form representative under reduction) is a Sense-C technical use; it does not interact with the corpus's Sense-A / Sense-B conflation but stands as evidence that "canonical" already carries multiple precise senses in adjacent fields.
+- **Religious-studies usage.** "Canon" as authoritative-collection vs "canonical" as scripturally-binding is the original equivocation that produced the word's modern range. The role/warrant separation has been operating in textual-tradition discipline for centuries.
+- **Versioned documentation conventions.** Read-the-Docs / Sphinx-style "stable" vs "latest" tags separate the *promoted* version (role: this is what most users should read) from the *current* version (warrant: this is what the latest commits build). The two can diverge intentionally.
+
+The structural pattern across the prior art: a document or artifact's *position-in-an-organization* (role) is maintained on a discipline distinct from the *epistemic status of the artifact's content* (warrant). The two are linked by an explicit labeling apparatus that prevents one from being read as the other.
+
+### A.3 Tier-by-Tier Audit
+
+#### T₁ — Two-senses identification
+
+- *Type:* \(T_S\) (specification of a distinction).
+- *\(\pi\) outcome:* **fully subsumed.** The role-vs-warrant distinction has explicit analogues in library science (AACR2 authorized access point vs verified record), in bibliographic editions (received text vs authorial reading), in IETF practice (RFC role vs Standards Track maturity), and in software documentation (official entry-point vs stable-API marker). The distinction is a recovery into corpus vocabulary of a discipline-pattern that is widely deployed.
+- *Licensed conclusion (warrant table, \(T_S\) at \(\pi\) full subsumption):* *not novel; cite prior art.* The §A.2 lineage is the citation.
+- *Status:* recovery.
+
+#### T₂ — Orthogonality claim (the 2×2)
+
+- *Type:* \(T_S\).
+- *\(\pi\) outcome:* **fully subsumed.** The orthogonality of role and warrant is a precondition of the prior-art disciplines named in T₁: AACR2 authority control would be incoherent if the role-name were not maintainable independent of warrant audits; IETF Standards Track would not need maturity labels if the spec-document role implied verified deployment. The orthogonality is a structural feature of the prior art, not a corpus discovery.
+- *Licensed conclusion:* recovery.
+- *\(\mu\):* qualitative — the audit observation that all three corpus "CANONICAL"-marked docs sit in the lower-left cell (primary-articulation role with sub-canonical warrant) is itself an instance of the orthogonality holding within the corpus. n=3 within-corpus instances.
+- *Status:* recovery, with within-corpus qualitative \(\mu\)-instances.
+
+#### T₃ — The disambiguation proposal
+
+- *Type:* \(T_M\) (methodological-target).
+- *\(P\):* the §A.2 prior-art conventions as the operating analogues; the corpus's existing banner discipline as the target practice.
+- *\(\pi\) outcome:* **partially subsumed.** The general move (separate role-label from warrant-label) is fully present in prior art. The specific lexical choice ("PRIMARY ARTICULATION" as the role-label; warrant-tier line as the apparatus) is a corpus-internal lexical commitment without exact prior-art counterpart. The compositional move (banner phrase plus immediately-beneath warrant-tier line) is a specific apparatus design at the corpus's banner layer.
+- *Licensed conclusion (warrant table, \(T_M\) at \(\pi\) partial):* *methodology exists; tells nothing about fitness.* Promotion to *operational-match* requires \(\mu\)-tier evidence (does the new banner reliably distinguish role from warrant in reader practice?). Promotion to *truth* requires \(\theta\)-tier evidence (does the new banner survive audit by independent readers tested for the conflation?).
+- *\(\mu\), \(\theta\):* not run. The proposal has not been deployed; reader-comprehension data does not exist.
+- *Status:* candidate methodology at \(\pi\)-tier; deployment-and-audit would promote.
+
+#### T₄ — The banner template
+
+- *Type:* \(T_S\).
+- *\(\pi\) outcome:* **fully subsumed.** The banner-plus-status-line pattern is the same structural composition as IETF "Status of This Memo" boilerplate, as Sphinx documentation version-banner widgets, and as the AACR2 access-point-plus-record-status display convention. The corpus's specific phrasing is a lexical instance, not a structural innovation.
+- *Licensed conclusion:* recovery at the structural layer; corpus-internal lexical commitment at the phrasing layer.
+- *Status:* recovery.
+
+#### T₅ — Composition rules with corpus disciplines
+
+- *Type:* \(T_B\) (bridge-target) for each of the four bridges (Doc 415, Doc 503, Doc 372, Doc 314).
+- *\(\pi\) outcome:* **fully subsumed for each bridge** at the level of vocabulary and structural commitments. Each bridge follows directly from the disambiguation: separating role from warrant is a V3 move (Doc 314), the warrant-tier-line apparatus aligns with Doc 503's tier categories and Doc 445's audit procedure, the retraction ledger (Doc 415) operates on warrant-tier claims independent of document role, and the hypostatic boundary (Doc 372) is unaffected by administrative discipline at the document-graph layer.
+- *Licensed conclusion (\(T_B\) at \(\pi\) full subsumption):* *bridges use existing vocabulary; structural soundness untested.* The bridges are constructible from the cited source documents but their operational behavior is not audited. The Doc 314 V3 bridge specifically — that the proposal removes a structural pressure toward V3 violation — is the bridge most likely to yield independent operational predictions; \(\mu\)-tier audit would test whether banner-disambiguated documents exhibit reduced overstatement-pressure compared to undisambiguated ones.
+- *Status:* plausibility passed; \(\mu\)-warrant absent.
+
+#### T₆ — Falsifiers F1–F3
+
+- *Type:* \(T_P\) (predictive) for each.
+- *\(\theta\) status:*
+  - **F1** (reader survey distinguishing role from warrant under new banner): *untested.* No reader-comprehension data exists.
+  - **F2** (entanglement case where role and warrant are not orthogonal): *untested.* The 2×2's lower-right cell (primary-articulation role contingent on warrant outcome) is conceptually possible but no instance has been identified in the current corpus.
+  - **F3** (existing word "canonical" can carry both senses if other disciplines suffice): *partially corroborated by Doc 619 Appendix B.* The existence of the §B.6 clarifying paragraph is itself evidence that the word can carry both senses with auxiliary discipline — but the necessity of the clarifying paragraph is also evidence that the word does not carry both senses cleanly without that auxiliary discipline. Status: ambiguous evidence; the audit-paragraph workaround functions but at a documented cognitive cost to the reader.
+- *Status overall:* falsification surface is well-formed; all three falsifiers are operationally specifiable; F3 has indirect within-corpus evidence pointing both ways.
+
+#### T₇ — Implementation specification
+
+- *Type:* \(T_S\).
+- *\(\pi\) outcome:* **fully subsumed.** The specific per-document changes (retitle 514, banner-change 541, banner-change 619, going-forward convention) are implementation moves rather than novel specifications; the IETF Standards Track ladder and Read-the-Docs version-tag conventions provide direct precedent for retroactive role-relabeling across an existing document graph.
+- *Licensed conclusion:* recovery; the implementation is a deployment of the T₃ methodology rather than a separate specification.
+- *Status:* recovery; pending T₃ adoption decision.
+
+### A.4 Subsumption Summary — What Prior Art Already Has, What Remains
+
+**Already in the prior art:**
+
+1. The role-vs-warrant disambiguation pattern (library science authority control; bibliographic editions' received-text/authorial-reading; IETF role-vs-Standards-Track; software documentation's official-vs-stable; versioned-docs stable/latest tags).
+2. The orthogonality of role and warrant as a structural feature of those disciplines (T₂).
+3. The banner-plus-status-line apparatus design (IETF "Status of This Memo"; Sphinx version banners; AACR2 display conventions).
+4. The retroactive role-relabeling pattern across an existing document graph (IETF maturity reclassification; software-docs version retagging).
+
+**Corpus-residual contribution:**
+
+1. The specific identification of the conflation as it has been operating in the corpus's "CANONICAL — open invitation to falsify" banner, with the within-corpus instances (T₂ \(\mu\)-evidence: Docs 514, 541, 619 sitting in the lower-left cell). *Tier:* \(\pi\) within-corpus observation; documentary rather than empirical.
+2. The link from the disambiguation to Doc 314 V3 truth-telling — the framing that the conflation creates a structural pressure toward V3 violation at the banner layer. This is corpus-original at the bridge layer (T₅ specifically). *Tier:* \(\pi\) plausibility-passed; \(\mu\)-untested.
+3. The proposed lexical commitment to "PRIMARY ARTICULATION" as the role-label (T₃, T₄) — a corpus-internal naming choice without exact prior-art counterpart. *Tier:* candidate; alternatives (REFERENCE DOCUMENT, ENTRY-POINT, PRIMARY SOURCE) noted in §7 Q1.
+4. The composition with Doc 445's tier vocabulary and Doc 503's tier categories — the explicit warrant-tier line that names tier per Doc 445 target type and per Doc 503 corroboration profile. *Tier:* \(\pi\) plausibility-passed.
+
+The recovery layer dominates Doc 620. The corpus-residual contribution concentrates in the four moves above, of which the V3 bridge (#2) and the within-corpus instance-observation (#1) are the most substantive.
+
+### A.5 Status Assignments
+
+| Target | Type | \(\pi\) | \(\mu\) | \(\theta\) | Licensed status |
+|---|---|---|---|---|---|
+| T₁ two-senses identification | \(T_S\) | full subsumption | n/a | n/a | Recovery — not novel; lineage cited |
+| T₂ orthogonality | \(T_S\) | full subsumption | n=3 within-corpus | n/a | Recovery; qualitatively corroborated |
+| T₃ disambiguation proposal | \(T_M\) | partial subsumption | not run | not run | Methodology exists; fitness untested |
+| T₄ banner template | \(T_S\) | full subsumption | n/a | n/a | Recovery |
+| T₅ composition bridges | \(T_B\) (×4) | full subsumption | not run | not run | Bridges plausibility-passed; structural soundness untested |
+| T₆ F1–F3 falsifiers | \(T_P\) (×3) | irrelevant | n/a | F3 ambiguous; F1, F2 untested | Candidate falsifiers; F3 indirectly probed |
+| T₇ implementation spec | \(T_S\) | full subsumption | n/a | n/a | Recovery; pending adoption |
+
+No portion of Doc 620 warrants Doc 445 *Canonical* promotion. The proposal stands as a candidate procedural change at \(\pi\)-tier with within-corpus qualitative \(\mu\)-evidence on the orthogonality claim and ambiguous F3 evidence on the necessity of the disambiguation itself.
+
+### A.6 What Would Promote Each Residual Element
+
+- **T₃ disambiguation methodology → \(\mu\) tier:** deploy the new banner across Docs 514, 541, 619 and run a reader-comprehension comparison (informal at first; formal if external review is sought). If readers presented with the new banner reliably distinguish role from warrant, the methodology is operationally promoted.
+- **T₅ Doc 314 V3 bridge → \(\mu\) tier:** track whether banner-disambiguated documents exhibit reduced overstatement-pressure across the corpus's subsequent practice (e.g., fewer post-hoc clarifying paragraphs of the kind Doc 619 §B.6 added).
+- **T₆ F3 falsifier → \(\theta\) tier:** an explicit reader-survey or external-audit comparison of the disambiguated and undisambiguated banner conventions would resolve the currently-ambiguous F3 evidence one way or the other.
+- **T₃ alternative labels (Q1) → \(\mu\) tier:** if "PRIMARY ARTICULATION" is rejected on aesthetic or conceptual grounds, the alternative-label search is itself a \(\mu\)-tier inquiry: which lexical commitment best preserves the role-vs-warrant separation under reader practice?
+
+### A.7 Audit Verdict
+
+Doc 620 is a competently constructed methodology proposal that recovers a widely-deployed role-vs-warrant disambiguation pattern into the corpus's vocabulary and applies it specifically to the corpus's banner discipline. The body work concentrates in recovery (the two-senses identification, the orthogonality claim, the banner template, the implementation specification) with four identifiable corpus-residual moves: the within-corpus instance-observation, the Doc 314 V3 bridge, the lexical commitment to "PRIMARY ARTICULATION," and the composition with Doc 445 / Doc 503 tier vocabulary.
+
+The corpus-residual moves stand at *plausibility passed* tier across the board, with within-corpus qualitative \(\mu\)-evidence on the orthogonality claim. No portion warrants Doc 445 *Canonical* promotion at this time. The document is honestly framed if read as a methodology proposal at \(\pi\)-tier with the deployment-and-audit work specified in §A.6 as the promotion path.
+
+The pulverization audit confirms — by the same discipline the proposal would ratify at the banner layer — that Doc 620 itself is a primary-articulation-role candidate at sub-Canonical warrant tier. The recursion is consistent: the document proposing the disambiguation is itself an instance of the kind of document the disambiguation would distinguish.
+
+A note on recursion: this document, like the pulverization audits of Doc 619 Appendix B and the Doc 461 / Doc 491 self-applications before it, is an instance of the corpus's tier-discipline being applied to a corpus-internal proposal. The recursive application is an internal coherence check rather than external validation; the proposal's external warrant rests on the prior-art lineage of §A.2 and on the deployment-and-audit work of §A.6.
+
+---
+
 *Jared Foy — jaredfoy.com — May 2026*
