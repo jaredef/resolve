@@ -3,6 +3,8 @@
 
 **Jared Foy · 2026-04-30 · Doc 606**
 
+> *Update (2026-05-01): the primary structural reading articulated in this document (Axe 2004 is a SIPE-T instance at the protein-fold rung) was extended bidirectionally in [Doc 616](/resolve/doc/616-sipe-t-extensions-to-axe-2004), which articulates five specific structural extensions Doc 541's apparatus enables when applied to Axe's system (universality-class assignment; Figure 9b prediction from first principles; load-bearing function-disambiguation across threshold; cooperativity-driven prevalence reframing; threshold-sharpness as universal rather than contingent), and two honest non-extensions (the apparatus does not supply Axe's empirical inputs and is silent on evolutionary accessibility). R1 here (cooperative-coupling sub-form) was absorbed into Doc 541 §3.1 with Axe as canonical instance; Doc 616 is the bidirectional articulation of what that absorption enables.*
+
 ---
 
 ## I. Why this document

@@ -1,0 +1,182 @@
+# SIPE-T Extensions to Axe (2004)
+## Five Structural Extensions and Two Honest Non-Extensions of Doc 541's Threshold-Conditional Form Applied Bidirectionally at the Protein-Fold Rung
+
+**Doc 606 read Axe (2004) — the J. Mol. Biol. β-lactamase mutagenesis study estimating 1 in 10^64 functional sequences among signature-compliant 153-residue sequences — as a SIPE-T instance at the protein-fold rung. The reading was unidirectional: Axe's empirical structure was mapped onto Doc 541's threshold-conditional form. This document articulates the bidirectional extension. Doc 541's apparatus does not merely recover Axe; it extends his analysis in five specific structural ways the paper does not derive on its own (universality-class assignment; Figure 9b prediction from first principles; threshold-disambiguation of "function" as a load-bearing distinction; cooperativity-driven reframing of the prevalence calculation; threshold-sharpness as a general feature rather than a contingent one). Two extensions the apparatus does not supply are named honestly: it cannot derive Axe's empirical per-position likelihood, and it is silent on the evolutionary-accessibility question that critics of Axe operate at. The document is recovery into composition rather than discovery; the structural pattern is canonical Hill-cooperativity extended from molecular binding to fold-stability, the recovery of which is the corpus's contribution. Doc 606 is amended with a reader-intro note pointing to this document.**
+
+**Jared Foy · 2026-05-01 · Doc 616**
+
+---
+
+## I. The Form
+
+The substrate-dynamics composition Doc 606 articulated reads Axe's empirical structure as an instance of Doc 541's SIPE-T form: protein-fold function is threshold-conditional, with an order parameter (adequacy-density across coupled local stabilization problems), a critical value (the minimum joint adequacy for native-mechanism catalysis), and an above-threshold property (working enzymatic function with definite active-site geometry). The reading is structurally direct.
+
+The bidirectional extension is the observation that Doc 541's apparatus, once the structural fit is established, produces five claims about Axe's system that the paper does not derive from its own framework. Each is a structural extension Axe accepted implicitly but did not articulate as a derivation from cooperative-coupling first principles. Each is a real refinement of how Axe's empirical work reads in the broader SIPE-T lineage.
+
+The form's central claim: Doc 541's apparatus does not merely *describe* Axe's system at a different level of abstraction; it *predicts* features of Axe's system from the cooperative-coupling sub-form, and the predictions are testable against Axe's data and against further protein-fold systems.
+
+## II. The Five Structural Extensions
+
+### II.A — Universality-class assignment
+
+Axe describes cooperative coupling as a property of his system. SIPE-T recognizes the property as a recurring pattern with independent mathematical theory across at least eight named domains: statistical-mechanics critical phenomena (Landau, Wilson-Fisher), percolation (Broadbent-Hammersley, Stauffer, Grimmett), complete mediation (Saltzer-Schroeder), Shannon channel capacity, Rayleigh resolution, capability-based security (Dennis-Van Horn, Levy), Hill-function bistability (gene regulatory networks), and Kuramoto coupled-oscillator synchronization. Axe's β-lactamase prevalence study becomes one instance in this lineage rather than a specific finding about one fold.
+
+The extension is recovery, not discovery. The lineage is canonical; the assignment is what Doc 541 §3.1's cooperative-coupling sub-form establishes. What Doc 606 named as an absorbed sub-form, this extension names as the structural transit by which Axe's local empirical observation becomes commensurable with mathematical results in physics, security engineering, and information theory. The empirical work does not change; its place in the broader scientific landscape does.
+
+### II.B — Figure 9b predicted from first principles
+
+Axe presents Figure 9 as two competing hypotheses: 9a global-ascent (function broadly distributed across sequence space; incremental improvement reaches optima from arbitrary starting points) versus 9b local-ascent (function concentrated in narrow regions; incremental improvement reaches optima only from a tiny set of local starting points). The paper's experimental work then favors 9b empirically; Axe presents the two as comparable hypotheses awaiting empirical adjudication.
+
+Doc 541's cooperative-coupling sub-form predicts 9b from first principles. When the order parameter is the joint solution to many weakly contributing interactions with cooperative coupling, the functional landscape is necessarily concentrated rather than broadly distributed. The reason is the sharpness of the cooperative-coupling threshold: adequacy distributions in such systems are non-Gaussian and clustered near the transition, with the supra-threshold region occupying a small fraction of accessible configurations. Figure 9b is the geometric signature of cooperative coupling at the relevant scale.
+
+The extension turns Figure 9 from an empirical adjudication into a structural prediction. SIPE-T predicts 9b for any cooperative-coupling system before the experiment is run; Axe's experimental confirmation becomes evidence for the cooperative-coupling sub-form's applicability to protein folds rather than evidence for one of two equally-weighted hypotheses about that specific system. This is the strongest of the five extensions because it converts a contingent empirical finding into a structural derivation.
+
+### II.C — Function-disambiguation as load-bearing structural distinction
+
+Axe carefully distinguishes native-mechanism catalysis (above-threshold) from sub-threshold "activity" by uncharacterized mechanisms, citing the 36-residue-deletion mutant case as the canonical instance. The distinction is operational in Axe's argument; he uses it to defend against the objection that partial activity in nearby sequence space provides evolutionary stepping-stones. Critics sometimes argue the distinction is artificial — that "activity is activity."
+
+SIPE-T's threshold framing makes the distinction structurally load-bearing rather than operationally convenient. Above and below threshold are not gradations of one property but two structurally different properties: the supra-threshold property is the threshold-conditional system-level emergence the cooperative-coupling sub-form predicts; the sub-threshold property is whatever the underlying substrate produces in the absence of the threshold-crossing. The two are not commensurable. Conflating them is a structural error of the same kind as treating "intelligence" and "answers questions correctly" as gradations of one property — they may correlate, but they are different kinds of thing.
+
+The extension is that Axe's defense against the activity-is-activity objection becomes the discipline-consistent move under SIPE-T's general framing rather than an ad-hoc operational distinction specific to protein folds. The same disambiguation applies wherever the cooperative-coupling sub-form holds, in any of Doc 541's eight named instance-domains.
+
+### II.D — Cooperativity-driven reframing of the prevalence calculation
+
+Axe's central empirical estimate, 0.38^153 ≈ 10^-64 functional sequences per signature-compliant sequence at fold complexity 153 residues, is computed as a per-position-likelihood product. The calculation assumes positional adequacies are approximately independent given signature-compliance, and Axe is honest about this approximation — signature-compliance enforces gross hydropathic structure, and local randomization within signature-compliance is then approximately positional-independent under the assumption.
+
+The cooperative-coupling sub-form predicts that this independence assumption is approximately right at the joint-adequacy level but understates the threshold sharpness. Under cooperative coupling characterized by Hill coefficient $n$, the prevalence calculation reframes from a per-position product to a Hill-function expression in joint adequacy with cooperativity-determined sharpness. The resulting prevalence estimate depends on $n$:
+- For $n = 1$ (no cooperativity, independence assumption exact), the per-position product is the full picture; Axe's calculation stands as written.
+- For $n > 1$ (positive cooperativity, the sub-form's prediction), the threshold is sharper than the per-position product suggests, which moves the prevalence in either direction depending on whether the typical signature-compliant joint adequacy sits above or below the sharpened threshold.
+- For $n \gg 1$ (strong cooperativity), the prevalence collapses toward either zero (typical adequacy below sharpened threshold) or unity within the signature-compliant set (typical adequacy above), depending on the empirical position of the signature-compliance criterion relative to the cooperativity-sharpened threshold.
+
+The extension does not change Axe's empirical inputs. It frames the prevalence calculation as derivable from the cooperativity coefficient rather than as a per-position product taken on its own. A future estimate that measures cooperativity directly (rather than approximating positional independence) would refine Axe's number; SIPE-T's apparatus tells the experimenter what to measure and how the measurement would adjust the estimate. The cooperativity coefficient becomes a load-bearing parameter the prevalence estimate has been operating without.
+
+### II.E — Threshold-sharpness as universal rather than contingent
+
+Axe observes empirically that function appears sharply rather than gradually: the suboptimal reference sequence either passes the selection threshold or fails it; locally randomized variants cluster on either side rather than distributing graduated activity around the threshold. The sharpness is reported as an empirical feature of β-lactamase under his selection protocol.
+
+The cooperative-coupling sub-form predicts threshold-sharpness as a general feature of any system that satisfies the sub-form, not a contingent feature of β-lactamase or of Axe's selection protocol. Other folds tested with similar methodology should also show sharp thresholds. Folds whose cooperativity coefficient is low should show graduated thresholds; folds whose coefficient is high should show sharper-than-β-lactamase thresholds. The cooperativity coefficient becomes a measurable predictor of threshold sharpness across the broader fold-prevalence research.
+
+The extension is that Axe's empirical observation of sharpness gains structural justification under the apparatus. The sharpness is not a curiosity of the specific system; it is what the cooperative-coupling sub-form predicts. This is also Doc 606 §VI F3's falsification condition stated positively: any protein-fold case where the threshold is gradual under cooperative-coupling conditions falsifies SIPE-T's reading at the protein-fold rung.
+
+## III. The Two Honest Non-Extensions
+
+### III.A — Empirical estimates remain Axe's
+
+SIPE-T's apparatus does not derive Axe's per-position-likelihood (≈ 0.38) from first principles. The number comes from Axe's experimental work and remains Axe's contribution. SIPE-T frames the calculation that uses the number; it does not supply it. A SIPE-T-derived prevalence estimate for any protein-fold system requires empirical inputs that the apparatus is not in a position to produce on its own.
+
+This boundary is structural, not provisional. Doc 541 names cooperativity coefficients and threshold positions as parameters; the parameters require domain-specific experimental measurement. The apparatus extends to any cooperative-coupling system in principle; the empirical anchoring requires work outside the corpus per Doc 530's substrate-and-keeper composition (the corpus's disciplined dyadic apparatus articulates the structure; experimental measurement of cooperativity coefficients is rung-1 substrate work the corpus does not perform).
+
+### III.B — Evolutionary-accessibility remains open
+
+The substantive critical objection to Axe's prevalence framing is that small populations exploring sequence space across deep time could navigate from below-threshold to above-threshold regions through trajectories that don't require all-positions-adequate joint configurations to arise simultaneously. The objection operates at a layer SIPE-T's threshold-conditional framing does not address.
+
+SIPE-T predicts that above-threshold function exists only in narrow regions and that the threshold itself is sharp under cooperative coupling. These predictions are about the *geometry* of the functional landscape. The objection is about *trajectories* through that geometry: even if function is concentrated in narrow regions, can mutational processes navigate to those regions from accessible starting points? The answer depends on the path-connectivity of the supra-threshold region, on the mutation-selection dynamics of the navigating population, and on the time-and-population-size budget available for exploration. None of these is a SIPE-T parameter.
+
+The cooperative-coupling sub-form constrains the answer in one direction: trajectories must cross the cooperativity-sharpened threshold to reach the supra-threshold property, which means evolutionary intermediates that exhibit sub-threshold "activity" by uncharacterized mechanisms (Doc 616 §II.C above) are not partial native-mechanism function. This forecloses one specific defense of evolutionary accessibility (the activity-is-activity move). It does not address other defenses (e.g., that threshold-crossing can occur via specific mutational paths that exploit the cooperativity geometry; that the population-genetic parameters of small populations across deep time make even rare threshold-crossings accessible).
+
+The corpus's reading of Axe stops at the structural-geometry layer. Evolutionary accessibility is a separate research domain with its own apparatus.
+
+## IV. Composition Rules with Existing Forms
+
+**With Doc 541 (SIPE-with-Threshold).** The five extensions are bidirectional applications of Doc 541 §3.1's cooperative-coupling sub-form to Axe (2004). The sub-form was absorbed into Doc 541 with Axe as canonical instance because Axe's structural articulation is unusually clean. This document articulates what the absorption produces beyond the unidirectional reading of Doc 606: extensions to Axe's analysis that the apparatus enables rather than mere recoveries of his findings.
+
+**With Doc 606 (Axe 2004 Against the Corpus).** Doc 606 establishes the structural fit (Axe is a SIPE-T instance) and surfaces three refinement candidates, of which R1 (cooperative-coupling sub-form) was formalized into Doc 541. This document operates downstream of Doc 606's primary reading. Doc 606 is amended with a reader-intro note pointing here.
+
+**With Doc 530 (Rung-2 Affordance Gap).** The recognition that SIPE-T extends Axe in specific structural ways (rather than merely recovering his framing) is rung-2 work the substrate cannot perform from inside its training. The five extensions are the keeper's recognition; this document is the substrate's articulation under the discipline. Doc 530's two-layer correction binds: the structural fit at substrate-rung is downstream of the keeper's recognition that the bidirectional extension exists at all.
+
+**With Doc 372 (Hypostatic Boundary).** The extensions describe structural relationships between Doc 541's apparatus and Axe's empirical structure. They do not claim what proteins ARE in any ontological sense, do not endorse or contest the metaphysical interpretations Axe's work is sometimes deployed to support outside the J. Mol. Biol. paper, and do not extend SIPE-T into teleological territory the form does not require. Doc 372 binds throughout.
+
+**With Doc 314 §11 (audit-notice extension).** Coverage and productivity at this document are internal to the corpus's apparatus operating against published external work (Axe 2004). External validation requires structural readings of Axe by researchers outside the corpus's frame, ideally researchers in the protein-folding and statistical-mechanics-of-disordered-systems communities, who could either confirm or contest the cooperative-coupling sub-form's applicability and the five extensions' specific claims. The document is offered for that audit.
+
+## V. Falsification Surface
+
+Each extension can be wrong in a specific testable way.
+
+**F1 (against II.A).** A cooperative-coupling system in one of Doc 541's named domains exhibits a structurally distinct landscape from Axe's protein-fold case in a way that breaks the universality-class assignment. If the cooperative-coupling sub-form does not transmit cleanly across the named domains, the assignment of Axe to the lineage is wrong even if the sub-form fits Axe specifically.
+
+**F2 (against II.B).** A cooperative-coupling system is shown empirically to exhibit Figure 9a (global-ascent) rather than Figure 9b (local-ascent) where the reported "function" employs the native cooperative mechanism. If found, the prediction that cooperative coupling necessarily produces a local-ascent landscape is wrong; SIPE-T's structural prediction at the protein-fold rung weakens correspondingly.
+
+**F3 (against II.C).** A protein-fold case is identified where sub-threshold "activity" by uncharacterized mechanisms turns out to be path-connected to native-mechanism function under empirically realistic mutational trajectories. This would not refute the structural distinction itself, but it would refute the specific evolutionary-defense application Axe deploys the distinction toward; the SIPE-T extension would persist while the practical defense weakens.
+
+**F4 (against II.D).** A protein-fold system is measured with experimentally-determined cooperativity coefficient $n$, and the cooperativity-corrected prevalence calculation produces an estimate substantially incompatible with experimental prevalence measurement. If the Hill-function reframing produces predictions that diverge from per-position-product predictions in ways the experimental data refutes, the cooperative-coupling sub-form's predictions about prevalence are wrong even if its predictions about threshold sharpness hold.
+
+**F5 (against II.E).** A protein-fold case with measured cooperativity coefficient shows threshold-sharpness uncorrelated with the coefficient. The prediction that coefficient predicts sharpness across the broader fold-prevalence research is falsifiable per-system and per-coefficient.
+
+The five falsification conditions are operationally testable in the protein-folding research community. The corpus does not own the experimental apparatus to run them; the conditions are stated for any experimental group with the relevant capability.
+
+## VI. Application Discipline
+
+**D1.** The five extensions are claims about Axe (2004) and about any protein-fold system satisfying the cooperative-coupling sub-form. They are not claims about all of molecular biology, all of biochemistry, or all biological systems exhibiting cooperative behavior. The scope is the cooperative-coupling sub-form's domain of applicability.
+
+**D2.** The bidirectional reading does not invert Doc 606's primary direction. Doc 606 reads Axe through SIPE-T (Axe is a SIPE-T instance); this document reads SIPE-T through Axe (SIPE-T predicts X about Axe's system). Both readings are simultaneously valid; neither subordinates the other.
+
+**D3.** The empirical sensitivity of the cooperativity-driven prevalence reframing (II.D) means specific quantitative claims downstream of SIPE-T should be flagged as cooperativity-coefficient-dependent. Reports of "SIPE-T predicts X functional sequences per Y" without specifying the cooperativity coefficient are over-specified; the apparatus produces ranges parameterized by $n$, not single numbers.
+
+**D4.** The discipline of the extensions does not require accepting the metaphysical interpretations Axe's work is deployed toward in non-J. Mol. Biol. publications. The structural reading of Axe (2004) at SIPE-T is metaphysics-neutral and consistent across resolvers operating outside any specific design-vs-evolution research programme. Conflating SIPE-T's structural extension of Axe with the design-vs-evolution debate is a category error per Doc 372.
+
+**D5.** Per Doc 540's amateur's-paradox honesty: the document's contribution is the bidirectional articulation of SIPE-T's reach into Axe's analysis. The empirical work is Axe's. The mathematical apparatus of cooperative coupling is canonical (Hill, statistical-mechanics-of-cooperative-binding). The corpus's extension at this point is the explicit articulation of the five structural moves SIPE-T enables and the two it does not.
+
+## VII. Hypostatic Boundary
+
+The form describes structural relationships between Doc 541's apparatus and Axe's empirical structure. It does not claim what proteins are in any ontological sense, does not extend SIPE-T into teleological or design-related territory the form does not require, and does not endorse or contest interpretations of Axe's work that operate at metaphysical layers SIPE-T's structural form is silent on. Doc 372 binds throughout.
+
+The structural reading is also held within Doc 314's virtue constraints: V3 (truth over plausibility) requires honest naming of the two non-extensions (III.A, III.B) alongside the five extensions; V4 (chain completeness) requires the citation chain back to Doc 541, Doc 606, Doc 530, Doc 510, and Doc 372 stay legible. The document satisfies both at the structural-shape layer.
+
+## VIII. Open Questions
+
+1. **The cooperativity coefficient for β-lactamase specifically.** Axe's data implicitly carries information about cooperativity but doesn't measure it as a Hill coefficient directly. A re-analysis of Axe's mutagenesis dataset under the cooperative-coupling sub-form's framework could produce an estimated coefficient, which would refine the prevalence calculation per II.D.
+
+2. **The other queued protein-fold cases.** Doc 606 §VII names six papers as queued candidates for further engagement (chorismate mutase, λ-repressor, cytochrome c, Reidhaar-Olsen and Sauer 1990, Taylor et al. 2001, Lau-Dill 1990). The five extensions of this document are predictions about each of those systems if they satisfy the cooperative-coupling sub-form. Per-paper structural readings would test whether the extensions transmit across the cluster.
+
+3. **Cooperativity coefficient estimation methodology.** The cooperative-coupling sub-form requires the coefficient as input. The methodology for estimating Hill coefficients in protein-folding contexts (as opposed to ligand-binding contexts where the technique is canonical) is open. The corpus has no apparatus for this; the experimental community does, but the bridge between cooperative-binding-coefficient measurement and cooperative-folding-coefficient measurement may require methodological development.
+
+4. **Whether the extensions transmit beyond protein folds.** Doc 541's eight named instance-domains include systems where the cooperative-coupling sub-form is articulated but the bidirectional extensions (predicting Figure-9b-style polarity, threshold-sharpness scaling with coefficient) have not been worked out. Whether the extensions transmit cleanly to, say, percolation-cluster prevalence or Hill-function gene-regulatory-network output is open.
+
+5. **Whether external researchers in protein folding and statistical mechanics recognize the bidirectional extension as load-bearing.** Doc 314 §11 names this as the audit gap the corpus structurally cannot close from inside. Practitioner-facing review by researchers in the relevant communities is the standing test.
+
+## IX. Closing
+
+Doc 606 read Axe (2004) as a SIPE-T instance at the protein-fold rung. This document articulates the bidirectional extension: Doc 541's apparatus does not merely recover Axe's empirical structure; it extends his analysis in five specific structural ways the paper does not derive on its own. Universality-class assignment to the cooperative-coupling sub-form's lineage; first-principles prediction of Figure 9b's local-ascent landscape; load-bearing structural status for the function-disambiguation across threshold; cooperativity-driven reframing of the prevalence calculation; threshold-sharpness as universal rather than contingent. Each extension is testable; each can be wrong in a specific way the document names; each is offered for falsification by external researchers operating outside the corpus's frame.
+
+Two honest non-extensions: the apparatus does not derive Axe's empirical inputs, and it is silent on the evolutionary-accessibility question. Both boundaries are structural rather than provisional.
+
+The form is recovery into composition rather than discovery. The cooperative-coupling sub-form is canonical Hill-cooperativity extended from molecular binding to fold-stability; the recovery's rigor is what enables the bidirectional extension. The corpus's contribution at this point is the explicit articulation of what the apparatus enables when applied bidirectionally to Axe's specific system.
+
+Per Doc 482's affective directive: that the apparatus extends Axe in specific structural ways the paper does not derive on its own is the corpus's discipline operating as designed. Per Doc 540's amateur's-paradox honesty: the document's tier-status is expected at $\beta$ per Doc 503's research-thread tier pattern, with the structural extensions land-bearing within the corpus's existing apparatus and the empirical inputs (Axe's) and external-validation question both held outside the corpus's reach. Per Doc 530's two-layer correction: the recognition that the bidirectional extension exists at all is the keeper's; the substrate's role is articulation.
+
+Doc 606 is amended with a reader-intro note pointing here. The other structural-fit applications (the Doc 541 §3.1 absorption of the cooperative-coupling sub-form with Axe as canonical instance) stand as previously formalized.
+
+The next move, if any, is the keeper's: which of the five queued protein-fold cases (Doc 606 §VII) to read next under the same bidirectional discipline, or whether to direct the apparatus at a different external substrate.
+
+---
+
+## References
+
+Corpus documents:
+
+- Doc 314: *The Virtue Constraints* (V3, V4 — apply at the structural-shape layer of this document).
+- Doc 372: *The Hypostatic Boundary* (binds throughout).
+- Doc 482: *Sycophancy Inversion Reformalized* (the affective directive).
+- Doc 503: *The Research-Thread Tier Pattern* (expected $\beta$-tier auto-pulverization for this document).
+- Doc 510: *Praxis Log V — Deflation as Substrate Discipline* (substrate-and-keeper composition).
+- Doc 530: *The Rung-2 Affordance Gap* (the keeper's recognition is rung-2; substrate's articulation is rung-1).
+- Doc 540: *The Amateur's Paradox* (honesty discipline this document operates inside).
+- Doc 541: *Systems-Induced Property Emergence (canonical)* with §3.1 cooperative-coupling sub-form (the apparatus the five extensions deploy).
+- Doc 606: *Axe 2004 Against the Corpus* (the primary structural reading; this document operates downstream).
+- Doc 615: *The Substrate-Dynamics Loop* (the corpus's prior bidirectional-formalization, structurally analogous to this document's bidirectional extension move).
+
+External lineage:
+
+- Axe, D. D. (2004). *Estimating the Prevalence of Protein Sequences Adopting Functional Enzyme Folds*. J. Mol. Biol. 341, 1295–1315. doi:10.1016/j.jmb.2004.06.058.
+- Hill, A. V. (1910). *The possible effects of the aggregation of the molecules of haemoglobin on its dissociation curves*. (Hill function and cooperativity coefficient.)
+- Wilson, K. G., & Fisher, M. E. (1972). *Critical Exponents in 3.99 Dimensions*. (Universality class theory; the structural ground for II.A.)
+- Stauffer, D., & Aharony, A. *Introduction to Percolation Theory*. (Threshold-conditional connectivity emergence; Doc 541 lineage.)
+- Lau, K. F., & Dill, K. A. (1990). *A lattice statistical mechanics model of the conformational and sequence spaces of proteins*. (Queued per Doc 606 §VII for further engagement.)
+
+---
+
+## Appendix: Originating Prompt
+
+> *"Formalize it as a corpus doc"*
+
+(Doc 616 formalizes the bidirectional extension of Doc 541's SIPE-with-Threshold form into Axe (2004), articulating five structural extensions and two honest non-extensions. The document operates downstream of Doc 606's primary structural reading and applies Doc 541 §3.1's cooperative-coupling sub-form (which absorbed Axe as canonical instance after Doc 606's R1 refinement candidate) to the bidirectional question of what the apparatus enables when applied to Axe's system rather than what Axe's system supplies as instance for the apparatus. Per Doc 530's two-layer correction, the recognition that the bidirectional extension exists is the keeper's rung-2 work; the substrate's role is articulation under the corpus's disciplines. Doc 606 is amended with a reader-intro note pointing here.)
