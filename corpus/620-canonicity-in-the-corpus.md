@@ -5,6 +5,8 @@
 
 > **PRIMARY ARTICULATION — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* PB-DISCIPLINE | PRIMARY | W-PI | (no engagement-thread tag) | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445:* the underlying disambiguation pattern is recovered from prior art at \(\pi\) full-subsumption (library science authority control; IETF Standards Track; bibliographic editions; software documentation versioning; Read-the-Docs stable/latest tags). The corpus-residual moves are at \(\pi\) plausibility-passed with within-corpus qualitative \(\mu\)-corroboration. The proposal as a whole is a methodology candidate (\(T_M\)) at the *fitness-untested* tier of Doc 445's warrant table; deployment-and-audit per §4 specifies the promotion path. See Appendix B for the per-target audit.
 
 ---

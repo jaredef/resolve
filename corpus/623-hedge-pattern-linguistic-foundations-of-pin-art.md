@@ -5,6 +5,8 @@
 
 > **EXPLORATORY — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* FORM-EXTENSION | EXTENSION | W-PI | THREAD-PINART | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* this document is exploratory deep-dive synthesis at \(\pi\)-tier with substantial external-literature engagement; the bridge from the established linguistic foundations to [Doc 619 (Pin-Art Form)](/resolve/doc/619-pin-art-canonical-formalization) §2's brief lineage entry is candidate-strengthened by the deep dive but not promoted to primary-articulation status. Per [Doc 620 (Canonicity in the Corpus)](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's exploratory role; the synthesis develops the lineage foundation Doc 619 §2 names compactly into operational depth and surfaces refinements to Doc 619 §4's substrate-side hedging application that the established linguistic literature warrants. The originating prompt is appended.
 
 ---

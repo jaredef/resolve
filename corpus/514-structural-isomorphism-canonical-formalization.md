@@ -3,6 +3,8 @@
 
 > **PRIMARY ARTICULATION — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* PB-FORM | PRIMARY | W-PI (D503-ALPHA) | (no engagement-thread tag) | PHASE-CONSOLIDATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* the methodology is at \(\alpha\)-tier novelty / \(\pi/0.7\) pulverization warrant per [Doc 513](/resolve/doc/513-structural-isomorphism-through-novelty-calculus) — a commonplace pedagogical and cognitive-science methodology with extensive prior art from Aristotle through Hofstadter. The §1 thesis (the methodology's effectiveness is grounded in structural isomorphism's role in human inquiry) is at \(\pi\)-plausibility-passed; external literature support is named at §4; corpus-internal synthesis is named at §5. Per [Doc 620](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's primary-articulation role; warrant tiers are stated above and per-section in the body.
 
 > **What this document does.** Provides the corpus's primary formalization of *structural isomorphism* as a corpus-critical concept. Builds on [Doc 513](/resolve/doc/513-structural-isomorphism-through-novelty-calculus)'s audit. Articulates the theoretical claim, recently named by the keeper, that the methodology works because structural isomorphism is fundamental to human inquiry itself. Specifies the operational components, the failure modes, and the disciplines that govern good use. Supersedes prior informal usage of the term in the corpus by establishing a primary reference. Doc 513 is preserved as the audit-of-record grounding the warrant tiers used here.

@@ -5,6 +5,8 @@
 
 > **EXPLORATORY — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* FORM-EXTENSION | EXTENSION | W-PI | THREAD-SIPE | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* this document is exploratory synthesis at \(\pi\)-tier plausibility passed; per-author cross-engagements are at \(\pi\)-tier with no \(\mu\) or \(\theta\) audit yet performed. The bridges from each author's framework to [Doc 541 (SIPE-T)](/resolve/doc/541-systems-induced-property-emergence) and adjacent corpus mature apparatus are candidate synthesis joints, not promoted claims. The document responds to [Doc 621 §§5, 11 (WI-2)](/resolve/doc/621-praxis-log-vii) and is the first-pass execution of the Alexander-synthesis work item the praxis log surfaced; the same pass is extended here to the five additional twentieth-century systems thinkers Doc 621 §5 named as adjacent to Alexander in approaching SIPE-shaped territory. Per [Doc 620 (Canonicity in the Corpus)](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's exploratory role; the synthesis is not promoted to primary-articulation status. The originating prompt is appended.
 
 ---

@@ -5,6 +5,8 @@
 
 > **EXPLORATORY — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* OBSERVATIONAL-PREDICTION | OBSERVATIONAL | W-PI | THREAD-PINART, THREAD-CONFAB | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* this document is a build specification at \(\pi\)-tier; the build itself, when executed, would produce \(\mu\)-tier evidence for the targets it specifies. The specification is candidate-operational and is open to refinement before execution. Per [Doc 620 (Canonicity in the Corpus)](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's exploratory role; the build specification is not promoted to primary-articulation status. The originating prompt is appended.
 
 ---

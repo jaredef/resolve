@@ -5,6 +5,8 @@
 
 > **EXPLORATORY — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* FORM-EXTENSION | EXTENSION | W-MU | THREAD-CONFAB, THREAD-MISRA, THREAD-SIPE, THREAD-PINART | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* this document executes three investigation moves the keeper directed in response to the prior reconnaissance: (a) explicit mapping from [Doc 446](/resolve/doc/446-sipe-formal-construct) to the current primary-articulation [Doc 541 (SIPE-T)](/resolve/doc/541-systems-induced-property-emergence) — π-tier with substantial structural-correspondence work; (b) operational test of the posterior-concentration prediction (Doc 466 §Implication 4) via existing empirical literature — supplies μ-tier evidence at one removed (the prediction is corroborated by published empirical work the corpus did not itself execute); (c) cross-practitioner derivation search resolving the Doc 466 §Implication-5 isomorphism-magnetism concern — substantial cross-practitioner evidence found, including from the same researcher (Vishal Misra) whose work was the trigger context for the SIPE confabulation. Per [Doc 620](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's exploratory role; the synthesis is not promoted to primary-articulation status. The originating prompt is appended.
 
 ---

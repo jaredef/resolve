@@ -5,6 +5,8 @@
 
 > **EXPLORATORY — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* FORM-EXTENSION | EXTENSION | W-PI | THREAD-PINART | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* exploratory deep-dive synthesis at \(\pi\)-tier with primary-source engagement of Zadeh (1965). The bridge from fuzzy-set-theoretic apparatus to [Doc 619 (Pin-Art Form)](/resolve/doc/619-pin-art-canonical-formalization) §3's formal apparatus is candidate-strengthened by the synthesis; the structural correspondence at §3 becomes substantially more articulated than the Lakoff/hedge-typology expansion already given at [Doc 623](/resolve/doc/623-hedge-pattern-linguistic-foundations-of-pin-art). Per [Doc 620 (Canonicity in the Corpus)](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's exploratory role; the synthesis is not promoted to primary-articulation status. The originating prompt is appended.
 
 ---

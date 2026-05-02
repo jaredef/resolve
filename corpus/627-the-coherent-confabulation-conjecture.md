@@ -5,6 +5,8 @@
 
 > **EXPLORATORY — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* PB-DISCIPLINE | PRIMARY | W-PI | THREAD-CONFAB, THREAD-MISRA | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* exploratory analysis at \(\pi\)-tier hypothesis. The conjecture cluster surfaced by the keeper at [Doc 626 (Praxis Log VIII)](/resolve/doc/626-praxis-log-viii) is developed against the corpus's mature apparatus with one empirical instance ([Doc 444](/resolve/doc/444-pulverizing-the-sipe-confabulation), the SIPE-confabulation pulverization). The trace-methodology of §5 specifies the work that would advance the conjecture toward \(\mu\)-tier corroboration. The structural-isomorphism extension (§4) is marked at the keeper's explicit speculative tier. Per [Doc 620](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's exploratory role; the analysis is not promoted to primary-articulation status. The originating prompts are appended.
 
 ---

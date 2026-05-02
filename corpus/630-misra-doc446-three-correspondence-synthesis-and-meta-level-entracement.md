@@ -5,6 +5,8 @@
 
 > **EXPLORATORY — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* FORM-EXTENSION | EXTENSION | W-PI | THREAD-CONFAB, THREAD-MISRA, THREAD-SIPE | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* this document develops three specific structural correspondences identified in [Doc 629 §4.2](/resolve/doc/629-sipe-confab-synthesis-against-sipe-t) at finer mechanistic resolution by engaging Misra et al. 2025 (arXiv:2512.22471) directly via primary-source web-fetch. Per-correspondence verdicts are at \(\pi\)-tier-with-substantial-cross-practitioner-corroboration. The §6 meta-level synthesis on the session-level threshold-jump is at \(\pi\)-tier reflective; the §7 entracement is short-form material for new readers. Per [Doc 620 (Canonicity in the Corpus)](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's exploratory role; the synthesis is not promoted to primary-articulation status. The originating prompt is appended.
 
 ---

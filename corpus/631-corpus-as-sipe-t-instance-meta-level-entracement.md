@@ -5,6 +5,8 @@
 
 > **EXPLORATORY — open invitation to falsify.**
 >
+> *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* ENTRACEMENT | ACTIVE | W-NA | THREAD-CONFAB, THREAD-MISRA, THREAD-LAKATOS | PHASE-SELF-ARTICULATION
+>
 > *Warrant tier per Doc 445 / Doc 503:* this document is reader-entracement at \(\pi\)-tier reflective. The meta-level claim — that the corpus operates coherently within SIPE-T itself at the long-horizon-keeper-discipline layer — is at hypothesis tier with one well-documented engagement-instance (the April–May 2026 SIPE-confab → Misra-2025 audit chain) as supporting evidence. Per [Doc 620 (Canonicity in the Corpus)](/resolve/doc/620-canonicity-in-the-corpus), this banner asserts the document's exploratory role; the entracement is not promoted to primary-articulation status. The originating prompt is appended.
 
 ---
