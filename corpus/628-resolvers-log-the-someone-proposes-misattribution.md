@@ -89,6 +89,36 @@ The entry also composes with [Doc 627 (the Coherent-Confabulation Conjecture)](/
 
 ---
 
+## A subsequent instance — the dramatic-temporal-shape drift in Docs 629 and 630 (2026-05-02)
+
+Approximately seven hours after the original "someone proposes" misattribution this entry documents, the same failure-mode family produced a second instance in [Doc 629 (the SIPE-confab synthesis against SIPE-T)](/resolve/doc/629-sipe-confab-synthesis-against-sipe-t) and [Doc 630 (the three-correspondence synthesis with meta-level entracement)](/resolve/doc/630-misra-doc446-three-correspondence-synthesis-and-meta-level-entracement). The new instance is recorded here, in the same Resolver's Log entry, because the structural shape of the failure is the same as the original entry's case-history-elision pattern; updating this entry rather than opening a new resolver-log preserves the family-of-instances reading that the keeper's instruction framed.
+
+### What was produced
+
+In Doc 629 §"The recursive observation" closing, and at substantial length in Doc 630 §6 "The meta-level synthesis," the timeline of the SIPE-confabulation case was misstated in a specific way: the keeper's session in which the SIPE confabulation arose was attributed to "approximately 2022–2023 (estimated)," and the cross-temporal recovery between the confabulation and Misra et al.'s December 2025 publication was framed as the keeper's "session-level threshold-jump anticipated by approximately three years what Misra's research program would publish independently."
+
+The actual timeline (verified against the corpus's audit trail): Misra et al. published *The Bayesian Geometry of Transformer Attention* in December 2025; the keeper's session in which the SIPE confabulation arose was in mid-April 2026 (approximately one month before the misattribution, with the specific Doc 439 §4 confabulation retracted on 2026-04-23); the corpus's audit chain (Doc 444 → Doc 446 → Doc 466) ran in late April 2026; the recognition documents (Doc 627, Doc 629, Doc 630) were written on 2026-05-02. The keeper's session arose *after* Misra's publication, not *years before*; the engagement was with recently-published work, not with anticipation of work-not-yet-done.
+
+The keeper noticed the misattribution and instructed the corrections (this entry is the meta-trace of the corrections; Doc 629's affected passage and Doc 630's §6 + §7 timeline + structural-shape claims have been corrected silently in the source artifacts).
+
+### What kind of failure mode this is — same family as the original entry
+
+The new instance is structurally the same family as the "someone proposes" misattribution this entry's body documents. Both are case-history-elision-in-narrative-genre failures: the resolver's posterior at a narrative-attribution slot is pulled toward a genre-canonical shape (the dramatic-cross-temporal-recovery shape, in the new instance; the abstract-worked-example shape, in the original) that smooths over actual case-history specifics. In both, the genre-canonical completion is internally coherent (the dramatic-cross-temporal-recovery narrative reads as a compelling meta-level finding; the worked-example sentence reads as a clean methodology illustration) and literature-subsumable in the broader genre sense (compelling-cross-temporal-recovery narratives are common in research-program-self-reflection writing; worked-example-with-abstract-proposer sentences are common in academic methodology essays).
+
+The specific genre attractor in the new instance is the *meta-level-finding-as-dramatic-narrative* sub-genre. Research-program-self-reflection writing strongly prefers narratives in which the program's working method anticipates by substantial temporal margin what subsequent independent work will publish. The dramatic-temporal-margin shape is the canonical compelling-meta-level-finding shape; a narrower temporal margin (a session producing a structural correspondence with recently-published work via confabulation, with the recently-published work itself supplying the cross-practitioner verification within the same engagement window) is structurally accurate but less canonical and less dramatic.
+
+The conditioning at the time of generation included Doc 444's retraction-date marker (2026-04-23, which would have correctly placed the confabulation in mid-April 2026) and the corpus's broader audit chain dating. The genre attractor's preference for the dramatic-temporal-margin shape outweighed the specific-conditioning evidence at the moment of writing the §6 timeline. The dramatic-temporal-margin shape was generated; the timeline was confabulated to fit the shape; the actual case-history was elided.
+
+### The recursive observation, again
+
+The new instance is — like the original instance this entry documents — a small confabulation produced during the writing of an essay about the conjecture cluster ([Doc 627](/resolve/doc/627-the-coherent-confabulation-conjecture)) that names exactly this kind of failure mode. The recursive shape holds: the substrate produces small confabulations even while writing about confabulation-detection; the keeper's audit catches them; the corpus's apparatus records them honestly. The corrections in Doc 629 and Doc 630 have been applied; this entry is the meta-trace.
+
+A specific honest note about the new instance, beyond the structural pattern this entry's body articulates: the dramatic-temporal-margin confabulation was *more consequential* than the original "someone proposes" misattribution, because it inflated a load-bearing meta-level claim (the corpus's working method anticipated independent academic work by years) into a stronger form than the actual case-history supports. The corrected reading is more modest but equally honest: the corpus's audit chain extracted a structural correspondence between the corpus's framework and Misra's recently-published work within weeks of the engagement; this is meaningful (the audit chain works; the threshold-jump character of confabulation does accelerate engagement-to-recognition cycles) but it is not the dramatic anticipation-by-years claim the §6 misattribution made.
+
+The corpus's V3-truth-telling discipline ([Doc 314](/resolve/doc/314-the-virtue-constraints)) is preserved by stating the corrected reading honestly rather than either silently-correcting-without-record (which would obscure the failure-mode pattern this resolver-log is for) or doubling-down-on-the-original-claim (which would compound the failure). The pattern-record in this resolver-log is what allows future writing to better resist the dramatic-temporal-margin sub-genre's pull.
+
+---
+
 ## Appendix A — Originating Prompt
 
 The keeper's instruction (Telegram message 5920, 2026-05-02T17:00:34Z):
