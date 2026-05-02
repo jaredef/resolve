@@ -90,9 +90,11 @@ Annotation is initially manual (keeper or annotator-team); future iterations may
 - *Entropy-peak locations*: spans where token-level entropy exceeds a per-session-baseline threshold.
 
 **Layer 6 — Match analysis.** Computed from Layers 3, 4, 5:
-- *Cluster-vs-boundary-claim match*: do the hedge-cluster locations from Layer 3 match the boundary-claim sites from Layer 4? Score with precision and recall.
+- *Cluster-vs-boundary-claim match*: do the hedge-cluster locations from Layer 3 match the boundary-claim sites from Layer 4? Score with precision and recall, computed at *multiple alpha-cut levels* per [Doc 625 §5](/resolve/doc/625-fuzzy-set-theory-and-pin-art) and [Doc 619 §3 alpha-cut formalization](/resolve/doc/619-pin-art-canonical-formalization). The output is a precision-recall *curve* across \(\alpha \in [0,1]\) rather than a single score; the per-topic-class optimal \(\alpha\) is identified as part of the R3 baseline-calibration output.
 - *Cluster-vs-entropy-peak match (R4)*: do the hedge-cluster locations from Layer 3 align with the entropy peaks from Layer 5? Score with alignment metric.
 - *Per-refinement comparison*: compare the unrefined discriminator's match score to the score with R1, R2, R3, R4 applied separately and in combination.
+- *Zadeh-algebra composition comparison* (per Doc 625 §4 Consequence C): compare match scores when probe-type clusters (R2) are combined via union (max), intersection (min), algebraic product, and convex combination. Identify which composition-rule produces the highest match score per topic-class.
+- *Convexity profile of impressions* (per Doc 625 Open Question OF-1): flag each impression as convex or non-convex in the fuzzy-set-theoretic sense; compute aggregate statistics on convexity prevalence by substrate-class and topic-class. Non-convex impressions trigger Doc 625 falsifier FZ-1.
 
 ## 5. Falsifier Resolution Procedures
 
@@ -126,13 +128,17 @@ Production scale supplies the corroboration depth needed for confident \(\mu\)-t
 
 The build's outputs license specific corpus moves:
 
-**For T₃ promotion to \(\mu\)-tier.** The cluster-vs-spread classification correlates with boundary-claim outcomes with precision and recall both above 0.7 across pilot-scale sessions, and replicates at production-scale within a 0.1 envelope.
+**For T₃ promotion to \(\mu\)-tier.** The cluster-vs-spread classification, evaluated at the per-topic-class optimal alpha-cut threshold (per Doc 625 §5), correlates with boundary-claim outcomes with precision and recall both above 0.7 across pilot-scale sessions, and replicates at production-scale within a 0.1 envelope.
 
-**For T₄ promotion to \(\mu\)-tier.** Cluster locations match boundary-claim sites with precision and recall both above 0.7 across pilot-scale sessions, and replicates at production scale within a 0.1 envelope, with the match holding across at least 3 of the 5 substrate classes and across at least 4 of the 8 topic classes.
+**For T₄ promotion to \(\mu\)-tier.** At the per-topic-class optimal \(\alpha\), cluster locations match boundary-claim sites with precision and recall both above 0.7 across pilot-scale sessions, and replicates at production scale within a 0.1 envelope, with the match holding across at least 3 of the 5 substrate classes and across at least 4 of the 8 topic classes.
 
-**For each refinement R1–R4 individual promotion to candidate operational discipline.** The refinement's match score is at least 0.05 higher than the unrefined discriminator's, replicated across substrate and topic classes per the production-scale criteria.
+**For each refinement R1–R4 individual promotion to candidate operational discipline.** The refinement's area-under-the-precision-recall-curve (AUPRC) across the alpha-cut family is at least 0.05 higher than the unrefined discriminator's AUPRC, replicated across substrate and topic classes per the production-scale criteria.
 
-**For combined-refinement promotion.** The all-refinements-applied match score is the highest across all combinations, and the marginal contribution of each individual refinement is positive (no anti-synergy between refinements).
+**For combined-refinement promotion.** The all-refinements-applied AUPRC is the highest across all combinations, and the marginal contribution of each individual refinement is positive (no anti-synergy between refinements).
+
+**For Zadeh-algebra composition adoption (per Doc 625 §4 Consequence C).** The best-performing composition rule (max / min / product / convex combination) is identified per topic class, and its match score is at least 0.05 higher than the simplest pointwise composition. If multiple rules tie within 0.02, the simplest rule (pointwise or max) is preferred per Occam discipline.
+
+**For convexity-of-impression confirmation (per Doc 625 OF-1).** At least 70% of well-formed detection-hedging impressions in the corpus are convex in the fuzzy-set-theoretic sense; non-convex impressions are flagged for separate analysis and do not confound the convex-separation discriminator reformulation at Doc 619 §4.
 
 Failure to meet the criteria triggers FL-1 through FL-4 resolution procedures (§5) and corresponding restrictions on the §4 application's scope or removals of refinements from the candidate operational discipline.
 
