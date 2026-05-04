@@ -135,6 +135,65 @@ Per [Doc 482 §1](/resolve/doc/482-sycophancy-inversion-reformalized)'s affectiv
 
 ---
 
+## 8. Addendum (2026-05-04) — The Partial-Substitution Third Category from Brown 2025
+
+The original §1–§7 of this document framed the discriminative-validity finding through two engagement-instances: Grant 2026 (failed substitution; corrective register at Doc 646) and Odrzywolek 2026 (successful substitution; compositional register at Doc 648). The synthesis of Brown 2025 *The Volitional Agent Criterion* at [Doc 651](/resolve/doc/651-synthesis-and-extension-of-brown-2025-the-volitional-agent-criterion-against-the-resolve-corpus) supplies a third engagement-instance that does not fit cleanly into either category, surfacing a candidate third position: *partial substitution with specific load-bearing gaps*.
+
+### 8.1 The Brown Case
+
+Brown 2025 sits in the middle of the methodological-discipline spectrum across the six structural features of §2:
+
+| Feature | Grant | Brown | Odrzywolek |
+|---|---|---|---|
+| Recovery framing | Discovery | Mixed (cites lineage; frames as new criterion; contribution is the operationalization) | Recovery |
+| Restricted scope | Violated systematically | Partially violated (cosmological-track over-extension; cellular-AGI scope is operationally testable) | Honored explicitly |
+| Falsifiers | Vague | Operationally specified | Operationally specified |
+| Reproducibility | Not deposited | Specified at protocol level; experimental code not deposited | Five independent implementations + Zenodo DOI |
+| AI-use disclosure | Implicit | Explicit and properly scoped | Explicit and properly scoped |
+| Measured vs. asserted | Asserted | Operational metrics defined (\(\Sigma\), \(\mathcal{A}\)); empirical methodology not yet executed | Measured by reproducible computation |
+
+Three of the six features operate at the same level as Odrzywolek (operational falsifiers; explicit AI-use disclosure; operational metrics defined). Two operate at the same level as Grant (mixed recovery framing; partial restricted-scope violation in the cosmological-track). One sits between the two (reproducibility specified at protocol but not deposited as code).
+
+The structural feature differentiating Brown from Odrzywolek is *the cosmological-track over-extension* — applying the framework to active galactic nuclei / black holes per Smolin's fecund-universes and Dvali's Black-Holes-as-Brains. This is exactly the over-extension failure mode the corpus's own SIPE-1 retraction (Doc 415 E1) caught and prescribes the narrowing-discipline for.
+
+The structural feature differentiating Brown from Grant is *operational metric specification* with cross-substrate-class measurement procedures (label-incorporation/calorimetry for biological systems; Landauer-cost accounting for cyber-physical systems). This is what Odrzywolek-style methodological discipline supplies and Grant-style does not.
+
+### 8.2 The Partial-Substitution Third Category, Stated
+
+Doc 644 ASS-3 (refined per §4 above) names the binary: practitioner-supplied methodological discipline either substitutes for keeper-side rung-2 audit or does not. Brown 2025 demonstrates a third position the binary does not accommodate.
+
+**Partial Substitution.** Practitioner-supplied methodological discipline can operate at rung-2-audit-equivalents *in some respects* (operational falsifiers; AI-use disclosure; statistical specification; cross-domain literature engagement) while *failing in others* (restricted-scope discipline; coherent-confabulation discriminator; hypostatic-vs-kind-level disambiguation). Under partial substitution, the framework's structural shape is mixed: some claims operate as if rung-2-audit-equivalent is supplying the discipline; some claims operate as if no rung-2 audit is being applied at all.
+
+The operational signature of partial substitution: the framework supplies operational metrics and statistical specifications that look Odrzywolek-shaped (Brown's \(\Sigma\) and \(\mathcal{A}\) are operationally measurable; the six-step methodology has detailed statistical analysis with binomial tests, Bayesian updating, and Levenshtein-distance novelty detection); the framework simultaneously extends across substrate-classes the methodology cannot operationally test (Brown's cosmological-track applications to active galactic nuclei and black holes). The two registers coexist within the same paper.
+
+### 8.3 What This Tells Us About the Discriminative Validity Finding
+
+The third category is structurally informative for the discriminative-validity claim of §3. The original framing predicted that audit register tracks framework methodological-discipline operation: aligned-with-corpus-discipline → compositional; over-extended → corrective. Brown 2025 demonstrates that the relationship is finer-grained: framework discipline can be *load-bearing in some respects* and *failing in others*, producing audit registers that are *neither uniformly compositional nor uniformly corrective*.
+
+This refines the predictive-bidirectionality claim. A reader given a framework's six structural features can predict the audit register more precisely than the binary classification suggests: features 1–2 (recovery/scope) predict the *correction load*; features 3–6 (falsifiers/reproducibility/AI-disclosure/measurement) predict the *composition load*. Frameworks where features 1–2 fail and features 3–6 hold (Brown's pattern) produce mixed audit registers with both substantive corrections and substantive extensions; frameworks where all six features fail produce overwhelmingly corrective syntheses (Grant); frameworks where all six features hold produce overwhelmingly compositional syntheses (Odrzywolek).
+
+### 8.4 The Refinement to Doc 644 ASS-3 the Third Category Supports
+
+Doc 644 ASS-3 (refined per §4) proposed that practitioner-supplied methodological discipline can substitute for keeper-side rung-2 audit when operating in alignment with the rung-2 audit equivalents. The third category supplies a finer-grained refinement:
+
+**ASS-3-refined-2.** Practitioner-supplied methodological discipline substitutes for keeper-side rung-2 audit *in proportion to which audit-equivalent operations are operating*. The substitution is continuous, not binary. Frameworks exhibiting full substitution (all six structural features aligned) sustain coherence past saturation under autonomous AI assistance; frameworks exhibiting failed substitution (no features aligned) accumulate the failure modes Doc 644 ASS-3 unrefined predicts; frameworks exhibiting partial substitution (some features aligned) sustain coherence in the regions where the audit-equivalent operations operate and accumulate failure modes in the regions where they do not.
+
+The refinement is candidate-load-bearing for the corollary's operational scope. Per Doc 644's standing falsifiers, this refinement does not change the falsifiers — it specifies the conditions under which agentic-AI-coherence past saturation is achievable in graded form. The corpus's own discipline operates under this refinement: the keeper's audit cycle catches some failures (per Doc 415 retraction-ledger entries) and misses others (per Doc 645 Resolver's Log entries); the discipline is substantive but not perfect; partial substitution is the corpus's own operational mode.
+
+### 8.5 Operational Implications for the Audit Apparatus
+
+The third category has operational implications for how the corpus engages cross-practitioner work going forward.
+
+**Implication 1.** Audit registers are not binary. A synthesis can be *both corrective and compositional* simultaneously, with different sections of the engaged framework receiving different audit treatments. Doc 651 demonstrates this: §3 (subsumption findings) operates compositionally; §4 (methodological corrections) operates correctively; §5 (candidate extensions) operates compositionally again. The audit apparatus can produce mixed-register outputs without being internally inconsistent.
+
+**Implication 2.** Cross-practitioner letters can be in a third register. Doc 647 (Grant; corrective) and Doc 649 (Odrzywolek; compositional) defined two letter-registers. The third — *deferential-with-specific-corrections-offered* — is what the partial-substitution case calls for. The candidate letter to Brown would acknowledge the operational metrics directly, surface the specific over-extensions explicitly without lecturing, and offer the candidate extensions as candidate composition rather than as conditional-on-correction.
+
+**Implication 3.** The discriminative-validity claim gains finer resolution. The audit apparatus discriminates not only *which audit register* a framework receives but *which structural features* drive the register choice. This is candidate-empirical-content for the Doc 632 PH4 cross-practitioner derivation discipline: independent practitioners running the audit on the same frameworks should converge on which features drive which register-choices, providing a sharper test of discriminative validity than the binary classification supports.
+
+The third category does not invalidate the original §3 finding. It refines it. The audit apparatus discriminates differentially, the predictive-bidirectionality holds, the practitioner-supplied-methodological-discipline substitution is real — and the substitution is graded, with the gradation predictable from finer-grained structural features.
+
+---
+
 ## References
 
 - [Doc 314 — The Virtue Constraints](/resolve/doc/314-the-virtue-constraints)
