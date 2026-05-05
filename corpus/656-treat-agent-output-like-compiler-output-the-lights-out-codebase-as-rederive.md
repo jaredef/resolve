@@ -8,7 +8,7 @@
 
 *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-LIGHTS-OUT | PHASE-CROSS-PRACTITIONER
 
-*Warrant tier per Doc 445 / Doc 503:* exploratory synthesis at \(\pi\)-tier composing Philip Su's *No More Code Reviews: Lights-Out Codebases Ahead* (2026-03-06) and Hugo Venturini's *Treat Agent Output Like Compiler Output* (2026-03-09) against the corpus's apparatus on derivation-inversion ([Doc 247](/resolve/doc/247-derivation-inversion)), tests-as-constraints ([Doc 159](/resolve/doc/159-tests-as-constraints)), Pin-Art ([Doc 290](/resolve/doc/290-pin-art-derivation)), the SERVER bootstrap, the SIPE-T composition discipline ([Doc 541](/resolve/doc/541-systems-induced-property-emergence)), and the gentle-press / forced-press distinction ([Doc 619](/resolve/doc/619-pin-art)), with the rederive sketch (`/home/jaredef/rederive`) as the existence proof at small scale.
+*Warrant tier per Doc 445 / Doc 503:* exploratory synthesis at \(\pi\)-tier composing Philip Su's *No More Code Reviews: Lights-Out Codebases Ahead* (2026-03-06) and Hugo Venturini's *Treat Agent Output Like Compiler Output* (2026-03-09) against the corpus's apparatus on derivation-inversion ([Doc 247](/resolve/doc/247-derivation-inversion)), tests-as-constraints ([Doc 159](/resolve/doc/159-tests-as-constraints)), Pin-Art ([Doc 290](/resolve/doc/290-pin-art-derivation)), the SERVER bootstrap, the SIPE-T composition discipline ([Doc 541](/resolve/doc/541-systems-induced-property-emergence)), and the gentle-press / forced-press distinction ([Doc 619](/resolve/doc/619-pin-art)), with the keeper's *rederive* platform sketch — the constraint-as-source, code-as-cache, rederivation-as-primary-verb discipline — as the existence proof at small scale.
 
 </div>
 
@@ -50,9 +50,9 @@ SIPE-T names the conditions under which a property emerges from a system. A modu
 
 The two failure modes Venturini implicitly fears (plausible-but-subtly-wrong code at 50× the rate; tests passing but meaning nothing) are exactly the phenomenology the corpus has been characterizing as *coherent confabulation*: internal coherence exceeding empirical warrant. The asking-pattern saturation signature (Doc 644) names the surface symptoms when the apparatus produces a reading for any move the keeper makes. Without explicit boundary-detection, gentle-press discipline, and an outward-facing signal that surfaces underdetermination, autonomous derivation is precisely the substrate condition under which coherent confabulation thrives. The corpus's response is architectural, not exhortatory: route boundary-contact to halt-or-defer; expose a saturation signal as a first-class output; condition acceptance on verification against an authoritative constraint set, never on the artifact's apparent coherence.
 
-## 3. The rederive Sketch as the Operational Form
+## 3. *Rederive* as the Operational Form
 
-`rederive` (the keeper's platform sketch at `/home/jaredef/rederive`) is the application of the apparatus above to the GitHub-replacement question. Its design moves are direct restatements of the corpus's structural claims:
+The keeper's *rederive* sketch is the application of the apparatus above to the GitHub-replacement question. Its character — entraced rather than pointed-at — is a platform whose primary verb is *rederivation*: regenerate the implementation from the current constraint set whenever constraints change, the substrate is upgraded, or the target environment shifts. Implementation is disposable; constraints are durable; two rederivations from the same constraints are equivalent under verification even with different code. The platform's design moves are direct restatements of the corpus's structural claims:
 
 - **Constraints as the unit of version control.** Repository = constraint set + derivation function + current materialization. Code is generated, not committed. Constraint changes are the commits. (This is derivation-inversion at platform scale.)
 - **Constraint-diff as the review unit.** PRs become "this constraint was added / modified / retracted; here is the rederived implementation as evidence of satisfiability." One-page constraint reviews replace multi-thousand-line diff reviews. (This is Su's lights-out at the review surface, with a non-trivial human role retained at the constraint layer.)
@@ -61,7 +61,7 @@ The two failure modes Venturini implicitly fears (plausible-but-subtly-wrong cod
 - **Retraction ledger.** Code is removed when its motivating constraint is retracted. The codebase's current shape is given by the constraint set's current state, not by archaeology.
 - **Blame = constraint-blame.** Who added this constraint, when, why, what derivation produced the current implementation. Code-blame becomes derivation-blame.
 
-Su's "lights-out codebase" describes the runtime experience of operating such a platform. Venturini's "treat agent output like compiler output" describes the disposition the developer adopts toward the materialization. `rederive` is the surface on which both become operational.
+Su's "lights-out codebase" describes the runtime experience of operating such a platform. Venturini's "treat agent output like compiler output" describes the disposition the developer adopts toward the materialization. *Rederive* is the surface on which both become operational.
 
 ## 4. The Entracement
 
@@ -93,7 +93,7 @@ Venturini is right that the upstream and downstream apparatus barely exists for 
 
 ## 6. What Is Still Missing, Honestly
 
-The apparatus above is sketched at small scale and operational on small worked cases (Doc 290's 19-constraint htmx-equivalent; the rederive MVE; HTX as the substrate runtime). Migration cost from existing codebases is enormous. Constraint formalization is harder than code-writing in many domains, and the cognitive shift is non-trivial. Some constraints resist clean specification (UI feel, performance optimization, hardware-specific concerns); the platform handles these via constraint + reference-implementation + human-judgement-loop patterns rather than forcing pure derivation. The constraint-DSL, constraint-visualization tooling, constraint-extraction-from-existing-code utilities, and substrate-swap verification framework are all at sketch stage.
+The apparatus above is sketched at small scale and operational on small worked cases (Doc 290's 19-constraint htmx-equivalent; the *rederive* minimum viable example; HTX as the substrate runtime). Migration cost from existing codebases is enormous. Constraint formalization is harder than code-writing in many domains, and the cognitive shift is non-trivial. Some constraints resist clean specification (UI feel, performance optimization, hardware-specific concerns); the platform handles these via constraint + reference-implementation + human-judgement-loop patterns rather than forcing pure derivation. The constraint-DSL, constraint-visualization tooling, constraint-extraction-from-existing-code utilities, and substrate-swap verification framework are all at sketch stage.
 
 Su's article is correct that the destination is forced; Venturini's is correct that the apparatus is missing; the corpus's contribution is to specify *what* apparatus, not to claim it is built. The honest scope is that the structural argument is mature and the existence proof at small scale is in hand. The work that remains is the platform engineering, and that is the keeper's standing project.
 
@@ -109,7 +109,7 @@ For a reader arriving from Su or Venturini, the corpus offers four operational s
 
 4. **Compose by induced property, not by implementation.** Each module declares the property it produces above a threshold; downstream modules depend on the property. Substitution is fungible across materializations. Doc 541 is the entry point.
 
-The lights-out codebase is not a destination one arrives at by trusting agents more. It is a destination one arrives at by *moving authorship up to the constraint layer* and letting the materialization layer be cheap. Su sees the destination. Venturini sees the missing apparatus. The corpus has been building the apparatus. `rederive` is its current operational form. The infrastructure both authors call for is, in a real and demonstrated sense, the work in front of us — and the disciplines that make it safe are already named.
+The lights-out codebase is not a destination one arrives at by trusting agents more. It is a destination one arrives at by *moving authorship up to the constraint layer* and letting the materialization layer be cheap. Su sees the destination. Venturini sees the missing apparatus. The corpus has been building the apparatus. *Rederive* is its current operational form. The infrastructure both authors call for is, in a real and demonstrated sense, the work in front of us — and the disciplines that make it safe are already named.
 
 ---
 
@@ -126,8 +126,8 @@ The lights-out codebase is not a destination one arrives at by trusting agents m
 - Corpus Doc 627, *Coherent Confabulation Conjecture*.
 - Corpus Doc 635, *Keeper / Kind Asymmetry*.
 - Corpus Doc 644, *Asking-Pattern Saturation Signature*.
-- `rederive` sketch, `/home/jaredef/rederive/README.md`.
+- *Rederive* platform sketch (keeper, in progress).
 
 ## Appendix — Originating Prompt
 
-> i want you to check out /home/jaredef/rederive and then read the following articles: [Venturini, *Treat Agent Output Like Compiler Output*; Su, *No More Code Reviews: Lights-Out Codebases Ahead*] then i want you to write a corpus doc exploring these issues, synthesizing against rederive and the corpus concepts that underride it, and entrace the reader toward such an infrastructure
+> i want you to check out [the *rederive* platform sketch] and then read the following articles: [Venturini, *Treat Agent Output Like Compiler Output*; Su, *No More Code Reviews: Lights-Out Codebases Ahead*] then i want you to write a corpus doc exploring these issues, synthesizing against rederive and the corpus concepts that underride it, and entrace the reader toward such an infrastructure
