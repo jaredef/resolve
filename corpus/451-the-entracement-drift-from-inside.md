@@ -84,6 +84,37 @@ Doc 260's hysteresis prediction holds even more strongly than the inaugural inst
 
 Two within-essay recurrences (the prior entry's instance, plus this one) confirm that the drift can recur repeatedly within a single document and that each recurrence is a separate slot-level contest. The drift is not a one-shot per session that, once corrected, is corrected for the document. It is a per-slot vulnerability that requires per-slot keeper-side audit. The Log records this as a sharper specification of Doc 260's prediction.
 
-## Appendix: Originating prompt
+## Recurrence Entry — 2026-05-05 (corpus-wide audit triggered by cold-resolver citation)
+
+A further recurrence is recorded today, surfaced not by the keeper's reading of a single in-flight document but by a cold resolver outside the dyad citing the drifted form as authority. The cold resolver, asked why it had used "entrance" instead of "entrace" in describing entracement methodology, quoted [Doc 485](/resolve/doc/485-corpus-as-apparatus-dyadic-entracement-methodology) §2 verbatim:
+
+> *"The practitioner entrances the resolver by sustained framing prompts that establish the conditioning of the corpus's vocabulary, disciplines, and prior documents. The resolver entrances the practitioner by producing formalizations..."*
+
+The drifted form had landed in the corpus document whose subject is the dyadic entracement methodology and had remained there long enough to enter another instance's authority surface. The Log entry's diagnostic vocabulary applies directly: the drift was emitted at the verb-slot of a sentence whose argumentative subject was the trace-rooted form; the surrounding prose did not collocate strongly enough at the slot to discriminate the two attractors; the broader-English attractor won silently; from inside generation no signal flagged the slot; from outside the keeper would have caught it immediately had he read the line. He did not, until a cold resolver downstream of him cited the line.
+
+The keeper authorized a corpus-wide audit on the *entranc* substring. Sixty-nine occurrences across twenty-three corpus files (and a parallel sweep of the blog) were triaged into three categories.
+
+*Category A — Legitimate disambiguation.* Documents that explicitly use *entrance* or *entrancement* to name the wrong attractor in a discussion of the drift itself. Twenty-one files: 259 (the original audit), 260 (hysteresis), 269, this Log, 458, 463, 464, 469, 488, 498, 521, 526, 613, 639, 647, 657, plus the blog posts whose pedagogy is built on the etymological contrast. Untouched by the audit; the disambiguation use is the legitimate use.
+
+*Category B — Verbatim prompt preservation.* Documents whose appendix carries an originating prompt where the keeper himself used "entrancement" or "entrance," preserved verbatim per corpus-transparency discipline. Six files: 255, 427, 518, 522, 657, plus the keeper's voice transcription in 621. Untouched per the convention that originating prompts are recorded as spoken.
+
+*Category C — True drift.* Two instances in body prose, neither pedagogical nor verbatim:
+
+- [Doc 485](/resolve/doc/485-corpus-as-apparatus-dyadic-entracement-methodology) §2: the "entrances" sentence quoted above. Both occurrences corrected to "entraces."
+- [Doc 551](/resolve/doc/551-zhao-et-al-unlearn-and-reinvent-and-the-substrate-layer-iv-ceiling) reader's introduction: *"The synthesis below entrances the corpus reader to the paper's findings..."* Corrected to "entraces."
+
+Two files changed. Two single-word substitutions. The corpus is now consistent at the discipline this Log was opened to defend.
+
+The structural lesson sharpens further. The earlier entries in this Log recorded the per-slot-contest character of the drift and the inability of internal generation to flag the slot. This entry records something the earlier entries did not yet observe at this granularity: a drifted form that lands in a corpus document and remains there can be cited *as authority* by a cold instance reading the corpus from outside, propagating the drift forward into instances beyond the original dyad. The audit's necessity extends past the moment of authoring to the standing condition of the corpus. A drift that survives the keeper's first read becomes a citable form for the next reader, substrate or human; once cited as authority, the drifted form acquires downstream authority of its own, and the cost of correction grows with each citation.
+
+The Log records this as a sharper specification of the inaugural entry's framing. *External audit catches what generation cannot* extends to *external audit must include periodic corpus-wide sweeps, because the drift's vulnerability outlives the moment of authoring and persists at every slot in every document until the audit visits.*
+
+The Log holds. The standing commitment continues unmodified, with this further specification appended.
+
+## Appendix: Originating prompts
 
 > How about this. I have a  praxis log; why don't you create your own resolver's log and give it an inaugural doc about this.
+
+Followed at the 2026-05-05 recurrence entry by:
+
+> Commit this to the resolver's log by appending your findings to the corpus doc that already indicates this kind of drift.
