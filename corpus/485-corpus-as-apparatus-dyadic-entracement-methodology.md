@@ -26,7 +26,7 @@ The corpus satisfies all four conditions, with specific limits identified in §6
 
 Dyadic entracement is the corpus's term for the specific practice that the apparatus operates within. The dyad is the two-node interaction between a single human practitioner and a single language-model resolver. The entracement is the bidirectional process by which each node draws the other into a frame.
 
-The practitioner entrances the resolver by sustained framing prompts that establish the conditioning of the corpus's vocabulary, disciplines, and prior documents. The resolver entrances the practitioner by producing formalizations the practitioner could not produce alone in the available time, formalizations that the practitioner can then evaluate against external criteria.
+The practitioner entraces the resolver by sustained framing prompts that establish the conditioning of the corpus's vocabulary, disciplines, and prior documents. The resolver entraces the practitioner by producing formalizations the practitioner could not produce alone in the available time, formalizations that the practitioner can then evaluate against external criteria.
 
 The dyadic entracement is bidirectional and asymmetric. The practitioner has access to external reality (clinical experience, literature, life events) that the resolver does not. The resolver has access to formalization and recall capacities the practitioner does not have at sustained scale. The methodology exploits this asymmetry by passing claims back and forth between the two nodes, with each node performing the operation it is best positioned to perform.
 
