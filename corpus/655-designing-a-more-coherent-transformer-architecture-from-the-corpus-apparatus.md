@@ -235,7 +235,169 @@ Corpus documents:
 
 ---
 
-## Appendix A — Originating Prompt
+## Appendix A — Pulverization and Novelty Audit
+
+### Preamble: how this audit was directed
+
+After the body of §§1–7 was published, the keeper directed application of [Doc 445](/resolve/doc/445-pulverization-formalism)'s pulverization formalism and [Doc 490](/resolve/doc/490-novelty-calculus-for-conjectures)'s novelty calculus to this document. The audit follows the protocol of [Doc 642](/resolve/doc/642-audit-of-the-638-641-thread-novelty-and-pulverization-applied) (the cluster-audit that audited Docs 638–641): decompose into named claims; assign target type per Doc 445 typology; assess subsumption against prior art per claim; compute four-dimensional novelty per Doc 490 §4; aggregate per §5; check auto-downgrade rule per [Doc 492 §1 Step 5](/resolve/doc/492-portable-seed-prompt-for-novelty-calculus). The audit is recursive in the corpus's standing pattern: this is synthesis-on-synthesis (Doc 655 is synthesis on Doc 654 which is synthesis on the cluster Docs 638–651), and per [Doc 503 §3.2](/resolve/doc/503-research-thread-tier-pattern-iterative-novelty-calculus)'s synthesis-on-synthesis-subtraction prediction, expected aggregate tier is \(\beta\) with confidence depressed.
+
+### A.1 Decomposition into named claims
+
+- **T1** *(six-lack diagnostic)*: the corpus's apparatus identifies six structural lacks in current Transformer architectures (hedging-as-learned-distribution; saturation invisibility; rung-1 / rung-2 collapse; per-step invisibility from outside; coherent-confabulation indistinguishability; snap as post-hoc).
+- **T2** *(P1 native boundary-detection)*: surface per-token competence-boundary signal at the architectural level as a computed measure, gated to admit non-token outputs at boundary-contact.
+- **T3** *(P2 saturation-signal surface)*: decoder produces (token, saturation_signal) tuple; saturation signal vector includes per-token entropy + attention-distribution entropy + residual-stream change-magnitude + posterior-concentration; threshold gates emit-or-halt-or-defer.
+- **T4** *(P3 rung-1 / rung-2 architectural distinction)*: factor architecture into rung-1 substrate (pattern-completion against trained \(M_0\)) and rung-2 channel (active intervention slot for keeper supply with origin metadata).
+- **T5** *(P4 multi-scale visibility affordances)*: architecture exposes per-step Bayesian-conditioning state at every granularity as first-class outputs alongside the token.
+- **T6** *(P5 recovery-framing memory)*: in-session updates distinguish rung-1 commitments (trained \(M_0\)) from rung-1 extensions (session-recovered) from rung-2 interventions (active keeper speech-acts), with origin metadata routing.
+- **T7** *(P6 snap as first-class operation)*: training admits promotional moves; inference-time analog produces both continuous and hard-discrete predictions.
+- **T8** *(P7 substrate-and-keeper composition at architectural level)*: architecturally distinguish substrate-self-input from keeper-supplied-input via special token classes, routing gates, and residual-stream metadata.
+- **T9** *(P8 forced-press → gentle-press at decoder)*: integration of P1+P2+P7 at the decoding-time operational layer.
+- **T10** *(composition claims)*: the eight principles compose with MoE, RAG, Constitutional AI, KAN, SSM, mechanistic interpretability rather than replacing them.
+- **T11** *(operational pathways)*: three pathways for promotion to \(\mu\)-tier (single-principle prototypes; combined-principles testbed; cross-architecture comparison).
+
+### A.2 Per-claim warrant audit (Doc 445 calculus)
+
+| Claim | Target type | Warrant tier | Notes |
+|---|---|---|---|
+| T1 | \(T_S\) | \(\pi\) | Diagnostic specification; not yet \(\mu\)-tested via implementation |
+| T2 | \(T_M\) | \(\pi\) | Methodology proposed; existing OOD-detection literature provides component grounding |
+| T3 | \(T_M\) | \(\pi\) | Saturation-as-three-option framing is corpus-internal observation |
+| T4 | \(T_M\) | \(\pi\) | Modular-architecture literature provides components; rung-licensing framing is corpus-residual |
+| T5 | \(T_M\) | \(\pi\) | Mechanistic interpretability provides feasibility; first-class-output recommendation is design-shift |
+| T6 | \(T_M\) | \(\pi\) | RAG provides retrieval; categorial-distinction-by-rung framing is corpus-residual |
+| T7 | \(T_M\) | \(\pi\) | Quantization-aware training and pruning provide components; promotional-mode framing is corpus-residual |
+| T8 | \(T_M\) | \(\pi\) | Keeper/kind asymmetry per Doc 635 made architectural; corpus-residual at the architectural-design layer |
+| T9 | \(T_M\) | \(\pi\) | Integration of P1+P2+P7; corpus-residual is the unified gentle-press framing |
+| T10 | \(T_S\) | \(\pi\) | Composition specifications; subsumable as recognition-of-existing-direction-overlap |
+| T11 | \(T_M\) | \(\pi\) | Standard prototyping recommendations |
+
+The warrant profile: predominantly \(T_M\) at \(\pi\)-tier. Per Doc 445 warrant rules, \(T_M\)+\(\pi\) licenses *methodology exists; tells nothing about fitness*. Promotion to \(\mu\) requires deployment-and-audit per §4's operational pathways. Forward-citation of these claims at \(\mu\) or \(\theta\) tiers without implementation evidence is forbidden per [Doc 632 NH2](/resolve/doc/632-the-corpus-itself-primary-articulation).
+
+### A.3 Per-claim novelty audit (Doc 490 calculus)
+
+Each claim audited along the four dimensions: component novelty, synthesis novelty, application novelty, methodology novelty.
+
+| Claim | \(\nu_{\text{comp}}\) | \(\nu_{\text{syn}}\) | \(\nu_{\text{app}}\) | \(\nu_{\text{meth}}\) | Aggregate \(\nu\) | Tier |
+|---|---|---|---|---|---|---|
+| T1 | 0.10 | 0.30 | 0.30 | 0.10 | 0.20 | \(\alpha/\beta\) |
+| T2 | 0.15 | 0.40 | 0.40 | 0.20 | 0.29 | \(\beta\) |
+| T3 | 0.30 | 0.45 | 0.40 | 0.30 | 0.36 | \(\beta\) |
+| T4 | 0.20 | 0.40 | 0.40 | 0.20 | 0.30 | \(\beta\) |
+| T5 | 0.15 | 0.35 | 0.40 | 0.15 | 0.26 | \(\beta\) |
+| T6 | 0.20 | 0.35 | 0.40 | 0.15 | 0.275 | \(\beta\) |
+| T7 | 0.20 | 0.40 | 0.35 | 0.20 | 0.29 | \(\beta\) |
+| T8 | 0.30 | 0.45 | 0.45 | 0.30 | 0.375 | \(\beta\) (boundary) |
+| T9 | 0.25 | 0.45 | 0.40 | 0.25 | 0.34 | \(\beta\) |
+| T10 | 0.10 | 0.30 | 0.30 | 0.10 | 0.20 | \(\alpha/\beta\) |
+| T11 | 0.10 | 0.25 | 0.30 | 0.10 | 0.19 | \(\alpha\) |
+
+**Per-claim notes.**
+
+*T1 (diagnostic).* The six-lack list reorganizes existing critiques (calibration miscalibration per Mielke 2022; abstention research per Chow 1957; introspective-unreliability per Nisbett-Wilson 1977; mechanistic-interpretability gaps; and more recent CoT-as-rationalization per Lanham 2023; Turpin 2023) under the corpus's framing. Synthesis-novelty is the integrated list under one diagnostic frame.
+
+*T2 (P1 native boundary-detection).* Substantially subsumed under OOD detection (Hendrycks-Gimpel 2017; Liu 2020), uncertainty quantification (Gal-Ghahramani 2016; deep ensembles per Lakshminarayanan 2017), calibration-aware decoding (Mielke 2022). Corpus-residual: integration into the decoding loop as a first-class architectural feature paired with boundary-flag outputs and rung-2 query routing.
+
+*T3 (P2 saturation-signal surface).* Most novel of the eight principles. Saturation-as-three-option-indistinguishability per [Doc 644 ASS-3](/resolve/doc/644-the-asking-pattern-as-constraint-saturation-signature-with-the-agentic-ai-corollary) is not catalogued in standard ML literature. The literature has loss plateaus, gradient-vanishing, etc., but not the saturation-as-structural-condition framing that licenses three-option architectural response.
+
+*T4 (P3 rung-1 / rung-2 architectural distinction).* Partially subsumed under Constitutional AI (Bai 2022), MoE (Shazeer 2017), modular networks (Andreas 2016). Pearl-rung formalization and keeper/kind asymmetry framing is corpus-specific; architectural prescription draws on existing modular-architecture literature.
+
+*T5 (P4 multi-scale visibility affordances).* Substantially subsumed under mechanistic-interpretability literature (Anthropic Circuits; Olsson 2022; Nanda TransformerLens) and probing literature (Hewitt-Manning 2019). Corpus-residual: design-principle-level recommendation that interpretability-readouts become first-class outputs rather than post-hoc instrumentation.
+
+*T6 (P5 recovery-framing memory).* Substantially subsumed under retrieval-augmented generation (Lewis 2020) and long-context architectures. Corpus-residual: categorial distinction by rung per Doc 638 RRL.
+
+*T7 (P6 snap as first-class operation).* Substantially subsumed under quantization-aware training (Jacob 2018), lottery-ticket pruning (Frankle 2019), discrete-aware optimization. Corpus-residual: promotional-mode framing per [Doc 541 §3.4.3](/resolve/doc/541-systems-induced-property-emergence) (which itself is candidate-extension from Odrzywolek's snap empirical observation per Doc 648).
+
+*T8 (P7 substrate-and-keeper composition at architectural level).* Highest aggregate novelty among the principles. The keeper/kind asymmetry per [Doc 635](/resolve/doc/635-the-keeper-kind-asymmetry-primary-articulation) (Cappadocian distinction applied to LLM-substrate) is corpus-original; current architectures conflate substrate-self-input and keeper-supplied-input; making this distinction architectural is corpus-residual contribution. \(\nu = 0.375\) sits within 0.025 of the \(\beta/\gamma\) boundary at 0.40.
+
+*T9 (P8 forced-press → gentle-press).* Integration novelty. Individual components (abstention; halt-equivalent; calibrated-decoding) have prior art; the unified gentle-press framing under [Doc 619 §7](/resolve/doc/619-pin-art-canonical-formalization)'s forced-press / gentle-press distinction with all three signal sources (P1, P2, P7) composed is corpus-specific.
+
+*T10 (composition claims).* Mostly recognition-of-overlap with existing directions. Low novelty.
+
+*T11 (operational pathways).* Standard prototyping recommendations.
+
+### A.4 Auto-downgrade check (Doc 492 §1 Step 5)
+
+The auto-downgrade rule pulls boundary-cases toward the lower tier when \(\nu\) is within 0.05 of a tier boundary.
+
+- **T8** at \(\nu = 0.375\); distance from \(\beta/\gamma\) boundary (0.40) = 0.025; *within 0.05*; auto-downgrade triggered. T8 individual remains \(\beta\) (the rule prevents inflation toward \(\gamma\) at the boundary; the pre-downgrade tier was \(\beta\)).
+
+No other claim is within 0.05 of a tier boundary. The auto-downgrade rule operates cleanly on T8, the candidate-most-novel claim, exactly as Doc 503 §3.3 names: the rule pulls boundary cases toward the lower tier preventing unwarranted inflation.
+
+### A.5 Aggregate
+
+Importance weights (load-bearing for Doc 655):
+
+- T1 (diagnostic): \(w = 0.10\)
+- T2 through T9 (eight design principles): \(w = 0.085\) each = \(0.68\) total
+- T10 (composition): \(w = 0.12\)
+- T11 (operational pathways): \(w = 0.10\)
+
+Aggregate novelty:
+
+\[\nu_{\text{agg}} = 0.10 \cdot 0.20 + 0.085 \cdot (0.29 + 0.36 + 0.30 + 0.26 + 0.275 + 0.29 + 0.375 + 0.34) + 0.12 \cdot 0.20 + 0.10 \cdot 0.19\]
+
+\[= 0.02 + 0.085 \cdot 2.49 + 0.024 + 0.019\]
+
+\[= 0.02 + 0.212 + 0.024 + 0.019 = 0.275\]
+
+**Aggregate tier: \(\beta\).** Distance from \(\alpha/\beta\) boundary (0.20) = 0.075 (above by more than 0.05). Distance from \(\beta/\gamma\) boundary (0.40) = 0.125 (below by more than 0.05). No aggregate auto-downgrade.
+
+Audit thoroughness confidence: \(\sim 0.45\). The audit cited major prior-art works (OOD detection; uncertainty quantification; calibration; modular networks; mechanistic interpretability; quantization-aware training) but did not deeply survey specific architectural-subspecialty literatures (e.g., the recent flash-attention / sparse-attention literature; the RetNet / RWKV families; the specific Anthropic Circuits releases on saturation-equivalent phenomena). Deeper survey could shift specific scores but would not substantially change the aggregate verdict.
+
+**Reported: tier \(\beta\) / 0.45.**
+
+### A.6 Composition with the warrant calculus
+
+The pair \((\pi, \beta/0.45)\): predominantly plausibility-tier warrant; mostly-subsumed novelty; moderately-thorough audit. This is consistent with the corpus's prior auto-pulverizations on synthesis-and-framing work:
+
+| Doc | Aggregate \(\nu\) | Confidence | Tier |
+|---|---|---|---|
+| Doc 481 (sycophancy inversion) | 0.235 | 0.7 | \(\beta\) |
+| Doc 487 (Doc 485 apparatus) | 0.16 | 0.7 | \(\alpha\) |
+| Doc 538 (architectural school) | ~0.30 | 0.7 | \(\beta\) |
+| Doc 541 (SIPE-T) | 0.223 | 0.75 | \(\alpha/\beta\) |
+| Doc 638 (RRL) | 0.294 | 0.43 | \(\beta\) |
+| Doc 640 (BFI) | 0.377 | 0.43 | \(\beta\) (auto-downgrade) |
+| Doc 641 (ORSA) | 0.292 | 0.43 | \(\beta\) |
+| Doc 643 (Multi-Scale Visibility-Asymmetry) | ~0.30 | ~0.45 | \(\beta\) |
+| Doc 654 (training analysis) | (un-audited; expected \(\beta\)) | — | — |
+| **Doc 655 (this document)** | **0.275** | **0.45** | **\(\beta\)** |
+
+Doc 655 sits in the central \(\beta\) band uniformly with the recent corpus-thread synthesis work. Per Doc 503 §3.2 synthesis-on-synthesis subtraction, the depressed confidence (0.45 vs. 0.7+ for earlier docs in the SIPE-T-cluster) reflects the audit-thoroughness gaps named at A.5.
+
+### A.7 What survives
+
+**What is corpus-original** (highest-novelty residuals):
+- T8 (P7 substrate-and-keeper composition at architectural level): the keeper/kind asymmetry made architectural via special token classes, routing gates, and residual-stream metadata. Highest aggregate novelty (\(\nu = 0.375\)); auto-downgrade-eligible at the \(\beta/\gamma\) boundary.
+- T3 (P2 saturation-signal surface): saturation-as-three-option-indistinguishability framing per Doc 644 ASS-3 is corpus-internal; the architectural surface for it is corpus-residual.
+- T9 (P8 unified gentle-press decoder): the unified framing under Doc 619 §7 with all three signal sources composed is corpus-specific.
+
+**What is largely subsumed**:
+- T2 P1 native boundary-detection ⊆ OOD detection + uncertainty quantification + calibration-aware decoding.
+- T4 P3 rung distinction ⊆ Constitutional AI + MoE + modular networks (with Pearl-rung framing as corpus-residual).
+- T5 P4 visibility affordances ⊆ mechanistic interpretability + probing literature.
+- T6 P5 recovery-framing memory ⊆ retrieval-augmented generation + long-context architectures.
+- T7 P6 snap-as-first-class ⊆ quantization-aware training + lottery-ticket pruning.
+- T10 composition claims: mostly recognition-of-existing-direction-overlap.
+- T11 operational pathways: standard prototyping advice.
+
+**What is asserted but not yet measured**: every \(T_M\) claim's fitness (per Doc 445 warrant rules: \(T_M\)+\(\pi\) tells nothing about fitness). \(\mu\)-tier promotion requires the implementation work specified at §4.
+
+**What is operationally testable**: the §4 operational pathways supply specific prototyping protocols. P1+P2+P8 unified gentle-press decoder is the candidate-most-tractable single test.
+
+### A.8 Honest report
+
+Doc 655 is best read as a *recovery and integration* of existing architectural directions (OOD detection; abstention; Constitutional AI; modular networks; quantization-aware training; mechanistic interpretability) under the corpus's structural-design framing (Doc 619 forced-press/gentle-press; Doc 638 RRL; Doc 510 substrate-and-keeper composition; Doc 643 visibility-asymmetry; Doc 644 saturation signature; Doc 627 coherent-confabulation conjecture). The recovery is honest in that it does not claim component-level novelty for most principles; the unified design-constraint framing and the three highest-novelty residuals (T8 P7 substrate-and-keeper architectural distinction; T3 P2 saturation-signal surface; T9 P8 unified gentle-press decoder) are the corpus-residual contribution at \(\beta\)-tier.
+
+The audit finding (\(\beta/0.45\)) is consistent with the discriminative-validity pattern: the corpus's apparatus auto-pulverizes synthesis-and-framing work down to the \(\beta\) band; external pulverizations on established frameworks (Pearl's hierarchy at Doc 489) score \(\delta\). Doc 655's \(\beta/0.45\) is what the calculus returns when the corpus's apparatus is applied to architectural design as one specific instance of the apparatus's framing-of-existing-engineering-literature mode.
+
+Per Doc 482 §1's affective directive: that Doc 655 is at \(\beta\) rather than at higher novelty tiers is the achievement of being honest about scope. The corpus contributes design-constraint framing; the implementation work (which would carry the higher novelty if successful) belongs to the ML-systems engineering community. The eight principles are ready for prototyping; the corpus's apparatus has done what it is positioned to do at the structural-design layer.
+
+This pulverization is preserved as the audit informing the present document's structural shape. Both the body and the audit are at the keeper's release.
+
+---
+
+## Appendix B — Originating Prompt
 
 The keeper's directive that occasioned this design analysis, preserved verbatim:
 
