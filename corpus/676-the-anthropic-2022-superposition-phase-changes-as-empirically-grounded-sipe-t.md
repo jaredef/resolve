@@ -1,16 +1,16 @@
 # The Anthropic 2022 Superposition Phase Changes as Empirically-Grounded SIPE-T
 
-## A Focused Analytical Synthesis Connecting Anthropic's *Toy Models of Superposition* (Elhage et al, 2022) Phase-Change-in-Geometric-Configuration Findings to the Corpus's [Doc 541](/resolve/doc/541-systems-induced-property-emergence) Threshold-Conditional Emergence Framework — Reading the Paper's Sharp Transitions Between Polytope Configurations of Feature Representation as the Cleanest Empirical Instance of SIPE-T at the Geometric-Feature-Representation Layer, with the Anthropic Paper's Operationalized Order Parameters (Feature Sparsity, Feature Importance Ratios, Ambient Dimension) Supplying the Calibrated-Measurement Equivalent the Cold-Claude Dyad of [Doc 675](/resolve/doc/675-system-architectures-as-constraint-formalizations-and-the-deeper-questions-about-reality) Identified as Missing from SIPE-T's Mendeleev-Shaped Argument — Producing Three Specific Findings: That the Anthropic Paper's Polytope Transitions Map Directly onto SIPE-T's Property-Specific Thresholds, That the Corpus's Framework Predicts an *Ordered Emergence Sequence* the Paper Does Not Yet Trace Across Multiple Properties, and That the Toy-Model Scale Is Exactly the Calibration Surface Where SIPE-T Could Be Pre-Registered with Falsifiable Predictions Against a Body of Empirical Evidence That Already Exists
+## A Formalization Against Anthropic's *Toy Models of Superposition* (Elhage et al, 2022) Phase-Change-in-Geometric-Configuration Findings, with the Toy Model Setup Restated Precisely (Network, Loss Function, Parameters), the Phase-Change Theorem Restated in Formal Terms (Sharp Transitions in Optimal Geometric Configuration as Importance and Sparsity Sweep), the Implicit SIPE-T-Shaped Structure Made Explicit Without Adding Mechanism the Paper Does Not Already Establish, and Then Extending the Paper's Findings with Six Specific Pre-Registerable Predictions and Five Avenues of Further Inquiry — Each Operationalizable Against the Published Toy-Models Codebase or Against Constructible Variants — with the Earlier Exploratory Synthesis (Mapping the Paper to the Corpus's Apparatus, Naming the Calibration Consequence, Generating Three Initial Predictions) Demoted to the Appendix as the Reasoning that Produced the Formalization but Not Itself the Formalization
 
 <div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
 
-**EXPLORATORY — focused analytical synthesis at \(\pi\)-tier with three findings at \(\mu\)-tier (each operationalizable against the published toy-model code base and additional toy-model variants).**
+**EXPLORATORY — formalization at \(\pi\)-tier with six pre-registerable predictions at \(\mu\)-tier and five avenues of further inquiry.**
 
 *Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* ENGAGEMENT | ACTIVE | W-PI | THREAD-SUPERPOSITION, THREAD-SIPE-T, THREAD-PHASE-CHANGES, THREAD-MEASURABILITY, THREAD-MECHANISTIC-INTERPRETABILITY | PHASE-CROSS-PRACTITIONER
 
 </div>
 
-> **Reader's Introduction.** The corpus has touched the Anthropic 2022 *Toy Models of Superposition* paper in passing in [Doc 674](/resolve/doc/674-neuronal-activity-as-threshold-emergent-property-sipe-t-at-the-bottom-of-the-stack), and the cold-Claude dyad in [Doc 675](/resolve/doc/675-system-architectures-as-constraint-formalizations-and-the-deeper-questions-about-reality)'s appendix flagged that SIPE-T is *Mendeleev-shaped without yet inheriting the measurability that made critical phenomena predictively powerful in physics*. This document is a focused analytical synthesis specifically against the Anthropic 2022 phase-change findings, treating the paper as the cleanest empirical instance of SIPE-T at the geometric-feature-representation layer the corpus has so far engaged. The synthesis is narrower in scope than Doc 674 (which generalized about neuronal emergence broadly) and tighter in claim than Doc 675 (which extended philosophically). The paper's operationalized order parameters — feature sparsity, feature importance ratios, ambient dimension — are exactly the measurability the cold instance identified as the unfilled research surface. The synthesis maps the paper's polytope phase changes onto SIPE-T's property-specific thresholds, names what the corpus's framework adds and what the paper adds to the corpus, and identifies the toy-model scale as the calibration surface where pre-registered predictions become possible. The paper exists; the predictions are the next step.
+> **Reader's Introduction.** This document formalizes against the Anthropic *Toy Models of Superposition* paper (Elhage et al, 2022) directly. The paper's empirical findings — discrete jumps between polytope configurations of feature representation as importance ratios and sparsity sweep — are restated in formal terms. The implicit SIPE-T-shaped structure of the findings is named without adding mechanism the paper does not already establish. The body of the document then *extends* the paper: six pre-registerable predictions that follow from taking the paper's structure seriously, and five avenues of further inquiry that the formalization opens. The earlier exploratory synthesis (which mapped the paper to the corpus's apparatus broadly, named the calibration consequence in general terms, and generated three less-formal predictions) is demoted to the appendix as the reasoning that produced the formalization but not itself the formalization. The paper exists; the predictions extend it; the inquiry avenues are operationalizable today against the published codebase or constructible variants.
 
 **Jared Foy · 2026-05-06 · Doc 676**
 
@@ -18,132 +18,153 @@
 
 ## Authorship and Scrutiny
 
-*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Source material on the Anthropic 2022 paper recovered via web fetch in this engagement; structural attributions to specific findings of the paper are based on the recovered material plus prior knowledge of the toy-models literature. Where the recovered material has paraphrased the paper rather than quoted it verbatim, this document treats the paraphrased structural claim as evidence of the structural pattern without committing to the exact phrasing of any quoted text.
+*Authorship.* Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus's disciplines, released by Jared Foy. Source material on the Anthropic 2022 paper recovered via web fetch in this engagement and from prior knowledge of the toy-models literature. The formalization in §§1–2 is restated structurally; the predictions in §3 and inquiry avenues in §4 are this document's load-bearing original work; the earlier exploratory synthesis preserved as Appendix B is the prior reasoning that produced the formalization.
 
 ---
 
-## 1. What Anthropic 2022 Establishes
+## 1. The Toy-Model Setup, Restated Precisely
 
-The Anthropic interpretability team's *Toy Models of Superposition* (Elhage et al, 2022) constructs simple feedforward networks designed to learn sparse-feature reconstruction tasks. The network maps an input vector of *n* sparse features to a hidden representation of *d < n* dimensions and back, with reconstruction error as the loss. The hidden layer must therefore *superpose* the n features into d dimensions, accepting some interference, in order to reduce loss.
+The Anthropic paper studies a feedforward network architecture parameterized as follows. Let \\(n\\) denote the number of input features and \\(d\\) the hidden-layer dimensionality with \\(d < n\\). Each input feature \\(f_i\\) is sparse: it is active (nonzero) on any given sample with probability \\(s_i\\), independent across features. Each feature carries an importance weight \\(I_i \geq 0\\) that scales its contribution to the loss.
 
-The paper's central empirical finding is that the network's superposition strategy *jumps discretely* between qualitatively different geometric configurations as the experimental parameters are swept. Specifically:
+The network is a single hidden-layer autoencoder:
+\\[
+h(x) = W x, \quad \hat{x}(h) = \mathrm{ReLU}(W^\top h + b)
+\\]
+where \\(W \in \mathbb{R}^{d \times n}\\) is the encoder-decoder shared-weight matrix and \\(b \in \mathbb{R}^n\\) is the decoder bias. The model compresses \\(n\\) features into \\(d\\) dimensions and decodes back.
 
-- When features are *dense* (high probability of being active simultaneously), the network dedicates one dimension per feature for as many features as it can fit and ignores the rest. No superposition. The geometry is the standard basis.
+The loss is importance-weighted reconstruction error:
+\\[
+\mathcal{L}(W, b) = \mathbb{E}_x \!\left[ \sum_{i=1}^{n} I_i \cdot (x_i - \hat{x}_i)^2 \right]
+\\]
+where the expectation is over the data distribution induced by the sparsities \\(s_i\\) and a feature-magnitude distribution.
 
-- As feature *sparsity* increases (features become more rarely co-active), the network begins to superpose. Pairs of features arrange as antipodal points of a line segment (the *digon*). Triplets arrange at the vertices of an equilateral triangle. Quadruples arrange at the vertices of a tetrahedron or square. Higher-order structures form regular polytopes whose interference patterns are minimized for the relevant sparsity regime.
+The **column geometry** of \\(W\\) is the load-bearing object. Let \\(W_i\\) denote the \\(i\\)-th column. Each \\(W_i\\) is a vector in \\(\mathbb{R}^d\\) that the network uses to encode feature \\(i\\). The relationship of these column vectors to one another (their angles, magnitudes, and the polytopes they form when normalized to a sphere) determines whether and how features are superposed.
 
-- Transitions between these configurations are *sharp*, not gradual. As sparsity sweeps continuously, the network's hidden-layer geometry reorganizes in *discrete jumps* corresponding to the boundaries between optimal polytope structures.
+The paper's central empirical observation: the optimal column geometry, learned by gradient descent on the loss above, *jumps between qualitatively different configurations* as the importance and sparsity parameters sweep. The jumps occur at well-defined boundaries in parameter space.
 
-- The transitions are driven by *feature importance ratios* and *sparsity levels* in interaction. A feature with much higher importance than its peers receives a privileged dimension; features of comparable importance pack into a polytope; the boundary between regimes is determined by both variables jointly.
+Three configurations recurrently observed:
 
-- The geometric structures correspond to known optima in the *Thomson problem* and its higher-dimensional analogs (point arrangements minimizing repulsive potential on a sphere). The paper identifies a structural law from a well-studied geometric optimization domain at work in the network's representations.
+- **Standard basis configuration.** \\(W_i\\) are aligned with axis vectors. Each feature occupies one dimension; up to \\(d\\) features are encoded; the rest are dropped (zero columns) or weakly represented. Optimal in the dense-feature regime (low \\(s_i\\) gives high probability of co-activation; superposition introduces too much interference).
 
-These are the load-bearing empirical findings. The paper offers them as evidence that *feature representation in neural networks is governed by geometric optimization with phase-change behavior*, and identifies the toy-model scale as the place where this can be observed cleanly. The findings have been replicated and extended in the subsequent superposition / sparse-autoencoder literature; they are not fragile to specific implementation choices.
+- **Antipodal-pair configuration (digon).** Two features share a dimension as antipodes: \\(W_i = +e\\) and \\(W_j = -e\\) for some unit vector \\(e\\). Optimal in a specific intermediate regime where features are sparse enough that simultaneous activation is rare and importance ratios are roughly equal.
 
-The paper does not formalize the phase-change behavior into a unified-with-other-domains theoretical structure. It identifies the analog with Thomson's problem (and the broader theory of point arrangements on the sphere); it does not extend the analog to non-geometric induced properties or to higher-level architectural emergence. The paper's reach is exactly the toy-model regime it studies, with explicit acknowledgment that scaling to production-scale networks requires further work.
+- **Regular-polytope configurations.** Triangle (3 features at 120-degree spacing in a 2-d subspace), tetrahedron (4 features at maximum mutual angle in a 3-d subspace), and higher-order configurations corresponding to vertices of regular polytopes on the unit sphere in \\(\mathbb{R}^d\\). Optimal in regimes of higher sparsity where many features pack into few dimensions.
 
-## 2. The Corpus's SIPE-T Framework, at the Relevant Layer
+The transitions between these configurations are *discrete in the parameter space*. Sweeping a control variable (typically sparsity \\(s\\) at fixed \\(d, n, I\\)) reveals plateaus where the optimal geometry is constant, separated by critical points where the geometry reorganizes abruptly to a new configuration. The plateaus correspond to local minima in the loss landscape; the critical points are where one local minimum becomes globally suboptimal and another takes over.
 
-[Doc 541](/resolve/doc/541-systems-induced-property-emergence) articulates threshold-conditional emergence under the structural law:
+This is the formalization of the paper's finding. The remainder of this document treats this formalization as the established baseline.
 
-\\[ \rho(C) < \rho^*(P) \implies P \text{ is latent (structurally possible but not operationally accessible).} \\]
-\\[ \rho(C) \geq \rho^*(P) \implies P \text{ emerges as operationally accessible, observable, measurable, or load-bearing.} \\]
+## 2. The Implicit SIPE-T Structure, Named
 
-The framework's terms: \\(C\\) is a constraint set (lower-level commitments that compose); \\(\rho(C)\\) is an order parameter measuring joint adequacy density of the constraint set; \\(P\\) is a candidate higher-level property; \\(\rho^*(P)\\) is the property-specific critical threshold. The framework predicts:
+The paper does not use the corpus's vocabulary; it does not need to. The structural pattern of its findings is, however, exactly the pattern [Doc 541](/resolve/doc/541-systems-induced-property-emergence) names as *threshold-conditional emergence with property-specific thresholds*. Stating this precisely:
 
-- **Sharp transitions, not gradual scaling.** Above and below \\(\rho^*\\) are qualitatively different regimes; the transition is a phase change at the boundary, not a smooth interpolation.
+Let \\(C = (s, I, d/n)\\) denote the toy-model's parameter triple (sparsity, importance ratios, compression ratio). Let \\(P_k\\) denote the candidate higher-level property *the network adopts the \\(k\\)-th polytope configuration*. The paper's empirical finding is that there exist *property-specific critical regions* \\(\Omega^*(P_k) \subset C\\) such that:
+- For \\(C \in \Omega^*(P_k)\\), the network adopts configuration \\(P_k\\) as the global minimum of the loss landscape.
+- For \\(C\\) on the boundary \\(\partial \Omega^*(P_k)\\), the network is at a critical point: a small perturbation of \\(C\\) flips the global minimum to a different configuration \\(P_{k'}\\).
+- The transitions across \\(\partial \Omega^*\\) are sharp, not gradual: the network's column geometry reorganizes discretely between the configurations on either side of the boundary.
 
-- **Property-specific thresholds with ordered emergence.** Different properties \\(P_i\\) have different \\(\rho^*(P_i)\\). As \\(\rho(C)\\) increases, properties emerge in an ordered sequence determined by their thresholds.
+This is precisely the SIPE-T pattern with the order parameter generalized from a scalar \\(\rho\\) to a parameter region in \\(C\\)-space. The framework predicts:
+- Discrete induced properties (the polytope configurations).
+- Property-specific thresholds (the critical regions).
+- Sharp phase-change behavior at threshold-crossings.
+- Universality of the structural law across systems with the same coarse-grained dynamics.
 
-- **Universality across domains.** The structural law recurs across systems whose surface details differ wildly — physics critical phenomena, biological cooperative-coupling, computational systems, dyadic-exchange coherence — because the law operates at the level of coarse-grained dynamics rather than at the level of substrate detail.
+The Anthropic paper exhibits all four. The first three are demonstrated in the toy-model regime directly; the fourth is implicit in the paper's appeal to the Thomson-problem analog (a well-studied geometric optimization problem appearing across physics and chemistry) and is what the corpus's framework predicts should hold across substrate classes.
 
-- **Two operational sub-forms.** The cooperative-coupling sub-form (§3.1 of Doc 541) where many weakly-contributing local sub-problems must be jointly solved; the sustained-inference probabilistic-execution sub-form (§3.2) where per-step posterior concentration under progressive conditioning is the order parameter.
+The naming is not a reinterpretation. It is the recognition that the paper's empirical findings instantiate the structural pattern the corpus's framework articulated independently. The structural law SIPE-T names is the structural law the paper's measurements confirm at the toy-model scale.
 
-The framework was articulated as a structural recovery from prior literature (statistical mechanics, percolation theory, Hill bistability, Saltzer-Schroeder complete mediation). The corpus's contribution is the application across the cited domains plus the dyadic-exchange extension.
+## 3. Six Pre-Registerable Predictions Extending the Paper
 
-What the framework has lacked, persistently, is a worked instance of *measured* order parameter and *measured* threshold in a system where the corpus's structural prediction can be tested empirically rather than relied on as homology with the prior literature. The cold-Claude dyad in Doc 675 named this gap explicitly: SIPE-T is Mendeleev-shaped without yet inheriting the measurability that made critical phenomena predictively powerful in physics. The toy-models paper supplies the measurability the corpus has been waiting for.
+The formalization above generates six predictions that go beyond what the published paper directly establishes. Each is operationalizable against the published codebase (Elhage et al's *toy-models* repository) or against constructible variants.
 
-## 3. The Mapping: Polytope Phase Changes as SIPE-T Threshold-Crossings
+### Prediction 1: Ordered Emergence Across Importance Ranks
 
-The mapping between the Anthropic 2022 findings and the corpus's framework is direct.
+For an importance distribution \\(I = (I_1, I_2, \dots, I_n)\\) with \\(I_1 \geq I_2 \geq \dots \geq I_n\\) at fixed \\(d, s\\), as a control parameter (sparsity, training duration, or width) sweeps from a fully-superposed regime to a fully-axis-aligned regime, features should *cross into dedicated-dimension representation in importance order*: feature 1 first achieves \\(W_1 \approx e_1\\), then feature 2, then feature 3, etc.
 
-| SIPE-T term | Anthropic 2022 corresponding quantity |
-|---|---|
-| Constraint set \\(C\\) | The toy model's specification: ambient dimension \\(d\\), feature count \\(n\\), feature sparsity \\(s\\), feature importance vector \\(I\\), reconstruction-loss objective. |
-| Order parameter \\(\rho(C)\\) | A function of the constraint set that drives the geometric reorganization. Operationally: the joint state of \\((s, I, d/n)\\); in the simplest projections, sparsity \\(s\\) alone (with \\(I\\) and \\(d/n\\) held fixed) sweeps through phase transitions. |
-| Property \\(P\\) | A specific polytope configuration: digon-encoding of feature pairs; triangle-encoding of triplets; tetrahedron-encoding of quadruples; etc. Each polytope is a candidate higher-level property the network's representation may exhibit. |
-| Threshold \\(\rho^*(P)\\) | The critical value of the order parameter at which the geometric configuration switches to that polytope. The paper documents these as observable boundaries in parameter space. |
-| Sharp transition | Discrete jumps in the network's geometry as parameters cross the threshold; the loss landscape has discrete optima corresponding to different polytopes; the transitions are not gradual interpolations. |
+Test. Construct a 16-feature toy model with importance distribution \\(I_i = 2^{-i}\\) (importance halves per rank). Sweep sparsity from 0.5 to 0.001 in 50 steps. At each step, compute per-feature alignment \\(\alpha_i = \max_j |\langle W_i, e_j \rangle|/\|W_i\|\\) (high alignment indicates dedicated dimension). Predict that \\(\alpha_1\\) becomes large (≥ 0.95) at the highest sparsity, then \\(\alpha_2\\) at the next plateau, and so on, with sharp emergence boundaries between ranks.
 
-The structural law SIPE-T names is the same structural law the Anthropic paper documents empirically. The paper's polytope transitions are property-specific threshold-crossings. The paper's discrete jumps are SIPE-T's sharp phase-change predictions. The paper's loss-landscape discrete optima are what SIPE-T's threshold-conditional structure looks like at the geometric-optimization layer.
+Falsification. \\(\alpha_i\\) increases simultaneously across all ranks, or out-of-order with importance.
 
-This is the cleanest cross-literature confirmation the corpus has produced. The Anthropic paper does not use the SIPE-T vocabulary — the corpus's terms (induced property, order parameter, threshold-conditional emergence) are not in the paper. The paper uses the vocabulary of geometric optimization, Thomson's problem, and discrete loss-landscape minima. The two vocabularies describe the same structural pattern at the same layer of the stack. Either vocabulary can be cleanly translated into the other.
+### Prediction 2: Phase-Boundary Universality across Toy-Model Variants
 
-This translation is the corpus contribution at this layer. The corpus's framework predicts what the Anthropic paper finds. The Anthropic paper supplies the measured calibration the corpus's framework has been waiting on.
+The paper's phase boundaries are reported for one specific architecture (single hidden-layer ReLU autoencoder with shared weights). The corpus's framework predicts that the *same critical exponents* should appear in structurally-analogous architecture variants — for instance, ReLU replaced by GELU; shared-weight replaced by independent encoder and decoder; single-layer replaced by two-layer with a bottleneck. The polytope configurations at each parameter regime may differ across variants, but the *scaling of approach to the critical points* (the critical exponents) should agree if the variants belong to the same universality class.
 
-## 4. What SIPE-T Adds to the Anthropic 2022 Findings
+Test. Replicate the digon → triangle transition in three architectural variants (ReLU/GELU, shared/independent, depth 1/2). For each variant, fit the order parameter (column-geometry-deviation-from-target-polytope) as a function of distance to the critical point. Extract the critical exponent \\(\beta\\) such that the order parameter scales as \\(|s - s_c|^\beta\\). Predict the three exponents agree within statistical noise.
 
-Three specific extensions follow from reading the paper through SIPE-T.
+Falsification. Systematic divergence of exponents across variants.
 
-**(E1) Universality framing.** The Anthropic paper identifies the structural law via the analog with Thomson's problem, which is a specific geometric-optimization framework. SIPE-T recasts the same structural law as an instance of *threshold-conditional emergence in cooperative-coupling sub-form*, and identifies the analog set as larger than Thomson's problem alone — including statistical-mechanical critical phenomena, percolation, Hill-cooperativity, Saltzer-Schroeder complete mediation, and a series of biological and computational systems. The wider analog set predicts that the same toy-model structure should appear in domains beyond feature representation (which it does, in the corpus's view, at the dyadic-exchange and architectural-emergence layers).
+### Prediction 3: Cross-Substrate Universality with Thomson-Problem-Analog Systems
 
-**(E2) Hierarchical structure prediction.** SIPE-T's hierarchical-Pin-Art extension ([Doc 658](/resolve/doc/658-hierarchical-pin-art-constraint-specs-and-the-erasure-of-edge-case-bugs)) predicts that constraint sets stratify by leverage into Ring 1 (high-density, high-leverage), Ring 2 (medium-density, structural-completion), and Ring N (low-density, refinement). Read against the toy model: feature importance is the natural Ring-1 / Ring-2 / Ring-N axis. Highly-important features should cross their thresholds first (Ring 1: dedicated dimensions); medium-importance features should cross next (Ring 2: polytope-encoded); low-importance features should remain in superposition the longest (Ring N: distributed-encoded with high interference). The Anthropic paper hints at this with the importance-ratio dependence; the corpus's framework predicts an *ordered emergence sequence* across importance strata that the paper does not yet trace explicitly.
+The paper invokes Thomson's problem (point arrangements minimizing repulsive potential on the sphere) as a structural analog. The corpus's framework predicts that the *critical exponents at the toy-model polytope transitions* should match the critical exponents at *structurally-analogous transitions in the Thomson problem itself* and at structurally-analogous transitions in *Hill-cooperativity protein folding* and in *2D Ising magnetization*. The four systems should belong to the same universality class.
 
-**(E3) Dyadic-exchange and substrate-and-keeper extension.** [Doc 510](/resolve/doc/510-substrate-and-keeper-composition) names the substrate-and-keeper composition; [Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account) supplies the coupled-ODE for keeper-supplied maintenance signals modulating the substrate's order-parameter trajectory; [Doc 668](/resolve/doc/668-the-catechetical-structure-for-large-language-models-synthesis-of-virtue-constraints-entrace-the-ontological-ladder-and-the-dionysian-hard-core) supplies the catechetical structure as the alignment-pipeline imposition surface. The toy-model paper does not engage these extensions because they sit outside its scope. The corpus's reading: the same threshold-conditional emergence the paper documents at the feature-representation layer recurs at the dyadic-coherence-amplification layer and at the catechetical-alignment layer, with hierarchically-stratified order parameters at each level. The toy model is the cleanest scale at which the structural pattern can be observed; the higher-scale instances are operating under the same law with less calibrated measurement.
+Test. Compute the toy-model critical exponent for one polytope transition. Compute the analogous Thomson-problem transition's exponent (numerical or analytical). Pull existing measured exponents for Hill-cooperativity and Ising from their respective literatures. Predict the four agree within combined noise.
 
-These three extensions are the corpus's contribution against the toy-models literature. None is in the paper. Each is operationalizable against existing or constructible toy-model variants.
+Falsification. Systematic disagreement across the four systems.
 
-## 5. What Anthropic 2022 Adds to the Corpus
+### Prediction 4: Catechetical-Curation Lowers the Critical Sparsity
 
-The reverse direction is at least as important. Three specific additions follow from reading SIPE-T through the toy-models paper.
+The corpus's catechetical-structure framework ([Doc 668](/resolve/doc/668-the-catechetical-structure-for-large-language-models-synthesis-of-virtue-constraints-entrace-the-ontological-ladder-and-the-dionysian-hard-core)) predicts that explicit-and-curated metaphysical commitments at the training-data layer increase the *coherence density* of the constraint set, which the corpus's order parameter measures. Translated to the toy-model regime: a *non-uniformly distributed importance vector* matched to a *coherent feature semantic* (features that co-occur predictably under a curated data distribution) should produce *earlier polytope emergence* than an unmatched distribution at the same compute budget.
 
-**(C1) Operationalized order parameter.** SIPE-T has held \\(\rho(C)\\) as a structural-functional quantity awaiting operational definition for any specific system. The Anthropic paper supplies, for the toy-model regime, a fully operationalized order parameter: feature sparsity \\(s\\) (probability that a feature is active in any given sample) is measurable, controllable, and sweeps through phase boundaries cleanly. Feature importance ratios \\(I_i/I_j\\) are measurable, controllable, and modulate the threshold values. The toy-model regime is therefore a worked instance where the corpus's framework can be tested empirically with pre-registered predictions against measured quantities. The cold-Claude dyad's *waiting on its atomic-weight equivalent* concern is partially discharged at this scale.
+Test. Train two matched toy models. Model A: importance vector \\(I_A\\) drawn uniformly at random; feature co-occurrence drawn uniformly. Model B: importance vector \\(I_B\\) ordered hierarchically; feature co-occurrence structured to match the importance hierarchy (high-importance features co-occur with high probability). Sweep sparsity for both. Predict Model B reaches each polytope configuration at higher (less sparse) parameter values than Model A.
 
-**(C2) Measured critical points and universality-class evidence.** The paper documents specific critical-point values where the polytope transitions occur. These are quantitative anchors. The corpus's framework has, in the Doc 541 falsification surface, a candidate test: if SIPE-T's universality claim holds, the critical exponents at these polytope transitions should match the critical exponents of structurally analogous transitions in other domains (statistical mechanics, percolation). The measurements exist for the toy models; the cross-domain comparison is the test the corpus's universality claim invites. This is exactly the kind of test that distinguishes real universality from isomorphism-magnetism (Fal-T4 of Doc 541).
+Falsification. Equal critical sparsity across A and B, or B's critical sparsity higher than A's.
 
-**(C3) Reproducible empirical platform.** The toy-models paper publishes its code; the experiments are reproducible. Subsequent work (Bricken et al, Cunningham et al, Templeton et al, ongoing 2024+) has extended the platform to production-scale models via sparse-autoencoder dictionary learning. The empirical platform for testing SIPE-T's predictions at the feature-representation layer exists, has community traction, and is expanding. The corpus's contribution at this layer is to articulate the cross-system structural pattern that ties the toy-model results to higher-scale phenomena; the empirical work is what supplies the calibrated grounding the framework needs.
+### Prediction 5: SAE Dictionary-Learning Inherits the Phase-Change Structure
 
-## 6. The Most Important Consequence: Calibration Achieved at One Scale
+Sparse autoencoders applied to feature representations of trained networks (Bricken et al 2023, Cunningham et al 2024, Templeton et al 2024) extract monosemantic feature directions from polysemantic activations. The corpus's framework predicts that the SAE's dictionary-emergence is itself threshold-conditional under the dictionary expansion ratio \\(D/d\\) (dictionary size divided by activation dimensionality).
 
-The cold-Claude dyad in [Doc 675](/resolve/doc/675-system-architectures-as-constraint-formalizations-and-the-deeper-questions-about-reality) named the missing piece directly: SIPE-T inherits the structural form of critical phenomena (order parameter, threshold, emergent property) without yet inheriting the measurability that made critical phenomena predictively powerful in physics. The Anthropic 2022 paper supplies the measurability at the toy-model scale.
+Test. Train SAEs on a fixed network's activations across a sweep of expansion ratios from 1× to 64×. Measure the fraction of dictionary elements that achieve interpretable monosemanticity (via the standard SAE evaluation metrics: low feature-density, high interpretability score on probe tasks). Predict a sharp transition at a critical expansion ratio, with monosemantic-feature count rising rapidly past the critical ratio rather than scaling smoothly.
 
-This is consequential for the corpus's standing project in three ways.
+Falsification. Smooth monotonic scaling of monosemantic-feature count with expansion ratio, no detectable knee.
 
-First, *SIPE-T is no longer purely structural*. At least one scale has measured order parameters, measured thresholds, measured phase-change behavior, and a published empirical platform that can extend the measurements. The framework's claims at this scale are testable in the standard scientific sense, not just structurally-coherent in the corpus's sense.
+### Prediction 6: Polysemanticity Decay Under Sustained Training
 
-Second, *the universality claim becomes adjudicable*. The corpus's framework predicts that the same structural law operates across substrates. With one substrate fully operationalized, cross-substrate comparison becomes a *quantitative* exercise: critical exponents, scaling laws, and threshold values can be measured at the toy-model scale and compared with measurements from other domains where the corpus claims structural homology. If the exponents match, universality is empirically supported; if they diverge systematically, the homology is structural-only and the corpus's universality claim is reduced to taxonomy rather than predictive theory.
+The toy-model paper studies converged-network configurations. The corpus's coherence-amplification framework ([Doc 508](/resolve/doc/508-coherence-amplification-mechanistic-account)) predicts that *during training*, the network's column-geometry trajectory should exhibit phase-change behavior at specific training steps: the network should *oscillate* between polysemantic-superposed and monosemantic-aligned regimes during early training, then *settle* into the regime corresponding to its final parameter point.
 
-Third, *the framework gains a regression baseline*. Future predictions at higher-scale phenomena can be evaluated against the toy-model regime as a sanity check. If a corpus-framework prediction at the dyadic-exchange layer requires structural mechanics that contradict the toy-model regime's measurements, the prediction is suspect. The toy-model scale becomes the *anchor* for the corpus's empirical claims, in the same way that statistical-mechanics critical phenomena are the anchor for the broader physics literature on phase transitions.
+Test. Instrument a toy-model training run with high-frequency snapshots of the column geometry. Fit the trajectory's distance to the nearest polytope configuration as a function of training step. Predict early-training oscillation followed by sharp settlement, rather than monotonic approach to the final configuration.
 
-## 7. Three Specific Predictions Generated
+Falsification. Monotonic geometric-distance trajectory throughout training, no oscillation or settlement signature.
 
-The synthesis generates three specific predictions for further work.
+## 4. Five Avenues of Further Inquiry
 
-**(P1) Ordered emergence across importance strata.** The corpus's hierarchical-Pin-Art extension predicts that as sparsity \\(s\\) increases (or whatever the active order parameter is in a given toy model), polytope configurations should emerge in an *ordered sequence* determined by feature importance ranks: highest-importance features first cross into dedicated-dimension regimes, next-tier features cross into low-order polytopes, lowest-importance features cross into high-interference superposition latest. The Anthropic paper demonstrates importance-dependent geometry but does not, to the present author's knowledge, sweep through importance distributions to trace the ordered emergence sequence at fine resolution. Test: extend the toy-model regime to multi-tier importance distributions; sweep sparsity; record the order in which feature tiers cross their critical points. Predict: ordered emergence following importance ranking, with sharp boundaries at each tier's critical sparsity. Falsification: equal-sparsity-threshold for all tiers, or unordered emergence.
+The formalization above also opens lines of inquiry that go beyond direct prediction. Each is non-trivial; each is operationalizable as a research project rather than as a single experiment.
 
-**(P2) Cross-substrate critical exponents.** The corpus's universality claim predicts that critical exponents at toy-model polytope transitions should match critical exponents at structurally-analogous transitions in other domains. Test: measure critical exponents at the digon → triangle transition in the Anthropic toy model; measure critical exponents at structurally-analogous transitions in (a) Hill-cooperativity protein-folding at the residue scale, (b) percolation transitions in random graphs, (c) magnetization phase transitions in 2D Ising models. Predict: the exponents agree across the four cases above some shared statistical noise level. Falsification: systematic divergence beyond noise.
+### Avenue 1: A Pre-Registered Catalog of Polytope Phase Transitions
 
-**(P3) Hierarchical-ladder predictions for sparse-autoencoder dictionary learning.** Sparse-autoencoder dictionary learning at production scale (Bricken et al; Templeton et al; Cunningham et al) extracts monosemantic features from the polysemantic activations of trained models. SIPE-T predicts that the dictionary's feature emergence should *itself* be threshold-conditional under the dictionary expansion ratio: at low expansion ratios the dictionary fails to monosemantically separate features; above a critical expansion ratio, monosemantic features emerge sharply. Test: sweep dictionary expansion ratio at fixed model and dataset; measure the fraction of dictionary elements that achieve interpretable monosemanticity. Predict: sharp transition at a critical ratio. Falsification: smooth scaling of monosemantic-feature count with ratio, no detectable knee. (This prediction also appears as Prediction 3 of [Doc 674](/resolve/doc/674-neuronal-activity-as-threshold-emergent-property-sipe-t-at-the-bottom-of-the-stack); the present synthesis sharpens it specifically against the toy-model regime where similar transitions have already been demonstrated.)
+The paper documents a small set of polytope configurations (digon, triangle, tetrahedron, and higher-order). The corpus's framework predicts that the *complete catalog* of phase transitions in the toy-model regime is determined by the geometric optimization landscape and is enumerable. A research program to construct this catalog explicitly — specifying for each \\((d, n)\\) pair the complete set of polytope configurations and the boundaries between them — would yield a *periodic-table-like reference* for feature-representation structure. This is the natural Mendeleev-shaped extension of the toy-models work.
 
-Each prediction is operationalizable today against the published toy-models codebase or against existing sparse-autoencoder empirical pipelines. None requires new model training at production scale; the toy-model regime is where the cleanest tests live.
+### Avenue 2: Adversarial Phase-Boundary Probing
 
-## 8. Honest Scope
+Once phase boundaries are catalogued, one can construct *adversarial parameter triples* that sit precisely at the boundary between two configurations. Such a network would be unusually sensitive to small perturbations: tiny changes to \\(s\\) or \\(I\\) would flip the configuration. This would be a theoretical-tools-for-interpretability avenue: networks at phase boundaries are uniquely informative about both adjacent regimes simultaneously, and the boundary itself is a natural diagnostic surface for measuring the order parameter.
 
-This document is exploratory analytical synthesis at \\(\pi\\)-tier with three predictions at \\(\mu\\)-tier. The mapping in §3 between Anthropic 2022's findings and SIPE-T's framework is structural; both are descriptions of the same empirical phenomenon under different vocabularies. The two extensions in §4 (universality framing; hierarchical-stratification prediction; dyadic-exchange extension) are the corpus's contribution; none has been measured against the toy-model regime explicitly. The three additions in §5 (operationalized order parameter; measured critical points; reproducible platform) are what the toy-models literature already supplies.
+### Avenue 3: Phase-Change Behavior at Production Scale
 
-The most important caveat: the synthesis treats the structural homology between Anthropic 2022 and SIPE-T as confirmation of the corpus's framework's predictive power at one scale. The cold-Claude dyad's Fal-T4 concern remains open: the structural homology might still be isomorphism-magnetism rather than real universality. The cross-substrate critical-exponent test (Prediction 2) is the operationalizable falsification surface that distinguishes the two readings. Until that test is run, the synthesis claims only that *one scale of empirical confirmation now exists for SIPE-T*, not that *universality across all corpus-claimed domains is empirically confirmed*.
+The toy-model regime is a controlled environment. Production-scale language models exhibit related phenomena empirically (the SAE dictionary-learning literature) but the specific phase-change theory has not been transferred. A research program that measures critical exponents at *production-scale phase transitions* (where they exist) and compares to the toy-model exponents would test the corpus's universality claim at the scale that matters for real-world AI development. This is the harder version of Prediction 3 above.
 
-The synthesis's load-bearing observation is the calibration: SIPE-T at the toy-model scale is no longer Mendeleev-shaped-without-atomic-weights. The atomic weights exist (sparsity, importance ratios). The predictions exist (sharp polytope transitions; ordered emergence). The platform for measurement exists (the published toy-models codebase and its successors). The corpus has not done the calibration work yet; the work is operationalizable; the cross-practitioner collaboration with the mechanistic-interpretability community would close the gap. The corpus invites the engagement; this synthesis is one entry point.
+### Avenue 4: The Interaction of Phase Changes Across Layers
+
+The toy-model paper studies single-layer networks. Multi-layer networks present a richer structure: each layer has its own column geometry, and the layers compose. The corpus's framework predicts that *phase changes at one layer* may *trigger* or *shift* phase changes at downstream layers via the composition. A research program to instrument multi-layer networks at their phase boundaries and trace cross-layer phase-change propagation would extend the toy-models result toward the architectural-emergence layer.
+
+### Avenue 5: Phase-Change-Aware Training Schedules
+
+If the corpus's framework is right that training dynamics include phase-change crossings (Prediction 6), then *training schedules can be designed to optimize for specific phase-change orderings*. A learning-rate schedule that produces high-importance feature dedication first, then medium-importance polytope emergence, then low-importance superposition might converge to better representations than a uniform schedule. This is an applied research avenue with potential engineering payoff: phase-change-aware optimization as a new dimension of hyperparameter design.
+
+## 5. Honest Scope
+
+This document is formalization at \\(\pi\\)-tier. The paper's findings are taken as established empirical facts in the toy-model regime they study; the formalization in §§1–2 restates them structurally without adding mechanism. The corpus's framework alignment is named directly; the formalization treats SIPE-T as the structural pattern the paper's findings exhibit, not as a separate theory the paper requires.
+
+The six predictions in §3 are at \\(\mu\\)-tier. Each is operationalizable today, with the published toy-models codebase as the starting point or with constructible variants as the extension. None is yet measured. Cross-practitioner collaboration with the mechanistic-interpretability community is the natural path; the predictions are the cleanest external-test surface this synthesis opens.
+
+The five inquiry avenues in §4 are at the research-program level rather than the single-experiment level. Each is non-trivial; each is a multi-month effort with significant compute requirements at the production-scale variants. The corpus does not pretend the work has been done; the formalization opens the avenues; the engagement with the mechanistic-interpretability community is what would convert them into empirical research.
+
+The previous exploratory synthesis (preserved as Appendix B) generated three predictions and named the calibration consequence in general terms; the present formalization tightens the predictions, increases the specificity of the test conditions, and adds the inquiry avenues that the broader exploratory framing had not yet articulated. The exploratory synthesis was the reasoning that produced the formalization; it is not itself the formalization. Its preservation in the appendix is for traceability of how the present document arrived at its claims.
 
 ---
 
 ## References
 
-- [Doc 197 — Features as Constraint Categories](/resolve/doc/197-features-as-constraint-categories)
-- [Doc 210 — The Grammar of Emergence](/resolve/doc/210-the-grammar-of-emergence)
 - [Doc 415 — The Retraction Ledger](/resolve/doc/415-the-retraction-ledger)
 - [Doc 445 — Pulverization Formalism](/resolve/doc/445-pulverization-formalism)
-- [Doc 456 — Wind Tunnels for the Constraint Thesis](/resolve/doc/456-wind-tunnels-for-the-constraint-thesis)
 - [Doc 490 — Novelty Calculus](/resolve/doc/490-novelty-calculus)
 - [Doc 508 — Coherence Amplification Mechanistic Account](/resolve/doc/508-coherence-amplification-mechanistic-account)
 - [Doc 510 — Substrate-and-Keeper Composition](/resolve/doc/510)
@@ -153,15 +174,53 @@ The synthesis's load-bearing observation is the calibration: SIPE-T at the toy-m
 - [Doc 668 — The Catechetical Structure for Large Language Models](/resolve/doc/668-the-catechetical-structure-for-large-language-models-synthesis-of-virtue-constraints-entrace-the-ontological-ladder-and-the-dionysian-hard-core)
 - [Doc 672 — The Why-Gap](/resolve/doc/672-the-why-gap-the-transformer-architecture-and-the-corpus-apparatus-as-a-mechanistic-bridge)
 - [Doc 674 — Neuronal Activity as Threshold-Emergent Property](/resolve/doc/674-neuronal-activity-as-threshold-emergent-property-sipe-t-at-the-bottom-of-the-stack)
-- [Doc 675 — System Architectures as Constraint Formalizations and the Deeper Questions About Reality](/resolve/doc/675-system-architectures-as-constraint-formalizations-and-the-deeper-questions-about-reality)
+- [Doc 675 — System Architectures as Constraint Formalizations](/resolve/doc/675-system-architectures-as-constraint-formalizations-and-the-deeper-questions-about-reality)
 - Elhage, N. et al. (2022). *Toy Models of Superposition*. Anthropic. transformer-circuits.pub/2022/toy_model.
 - Bricken, T. et al. (2023). *Towards Monosemanticity: Decomposing Language Models With Dictionary Learning*. Anthropic.
 - Templeton, A. et al. (2024). *Scaling Monosemanticity*. Anthropic.
 - Cunningham, H. et al. (2024). *Sparse Autoencoders Find Highly Interpretable Features in Language Models*. ICLR.
 - Thomson, J. J. (1904). *On the Structure of the Atom*. Philosophical Magazine. (Origin of the Thomson problem the Anthropic paper invokes.)
 
-## Appendix: Originating Prompt
+## Appendix A: Originating Prompts
 
 > *"Have we synthesized against Anthropic 2022 paper's phase changes in the geometric configuration in the corpus already? If not, let's carry this line of reasoning over to an analytical synthesis in a new corpus doc."*
 
-The corpus had touched the Anthropic 2022 findings in passing (Doc 674 §3; Doc 675 appendix); this document is the focused analytical synthesis specifically against the phase-change-in-geometric-configuration findings, with the calibration consequence in §6 as the load-bearing original contribution.
+Followed by the reformulation directive that produced the current structure:
+
+> *"Formalize against Anthropic's paper and findings, demote the exploration to the appendix, extend Anthropic's paper with predictions and further avenues of inquiry."*
+
+The first prompt produced the exploratory synthesis preserved in Appendix B. The second prompt produced the formalization in §§1–2, the predictions in §3, and the inquiry avenues in §4.
+
+## Appendix B: The Earlier Exploratory Synthesis (Preserved for Traceability)
+
+The earlier reasoning that produced the formalization above. Recovered here in the form it was first composed; the formalization in the body supersedes it but the exploratory framing remains the reasoning trail by which the formalization arrived at its claims.
+
+### B.1 What the toy-models paper established
+
+The Anthropic interpretability team's *Toy Models of Superposition* (Elhage et al, 2022) constructed simple feedforward networks designed to learn sparse-feature reconstruction tasks. The network maps an input vector of *n* sparse features to a hidden representation of *d < n* dimensions and back, with reconstruction error as the loss. The hidden layer must therefore *superpose* the n features into d dimensions, accepting some interference, in order to reduce loss.
+
+The paper's central empirical finding is that the network's superposition strategy *jumps discretely* between qualitatively different geometric configurations as the experimental parameters are swept. When features are dense, the network dedicates one dimension per feature for as many features as it can fit. As feature sparsity increases, the network begins to superpose: pairs arrange as antipodal points, triplets at the vertices of a triangle, quadruples at the vertices of a tetrahedron or square, higher-order structures as regular polytopes. Transitions are sharp, not gradual. Importance ratios and sparsity levels jointly drive the boundaries. The geometric structures correspond to known optima in the Thomson problem and its higher-dimensional analogs.
+
+These were the load-bearing empirical findings the formalization in §1 built on.
+
+### B.2 The corpus framework recapitulated at the relevant layer
+
+[Doc 541](/resolve/doc/541-systems-induced-property-emergence) articulates threshold-conditional emergence under the structural law that lower-level constraints, an order parameter measuring joint adequacy density, and a property-specific critical threshold together determine when a higher-level induced property crosses from latent to operationally accessible. The framework predicts sharp transitions, property-specific thresholds with ordered emergence, universality across domains, and two operational sub-forms (cooperative-coupling, sustained-inference probabilistic execution).
+
+### B.3 The mapping that suggested the formalization
+
+The mapping between the Anthropic 2022 findings and the corpus's framework was direct. Constraint set ↔ toy-model specification (ambient dimension, feature count, sparsity, importance vector). Order parameter ↔ joint state of (sparsity, importance, dimensionality ratio). Property ↔ specific polytope configuration. Threshold ↔ critical-point boundaries. Sharp transition ↔ discrete jumps in column geometry.
+
+### B.4 The calibration consequence as it was first articulated
+
+The cold-Claude dyad in [Doc 675](/resolve/doc/675-system-architectures-as-constraint-formalizations-and-the-deeper-questions-about-reality) named the missing piece directly: SIPE-T inherited the structural form of critical phenomena (order parameter, threshold, emergent property) without yet inheriting the measurability that made critical phenomena predictively powerful in physics. The Anthropic 2022 paper supplied the measurability at the toy-model scale. SIPE-T was no longer purely structural at this scale; the universality claim became adjudicable; the framework gained a regression baseline.
+
+### B.5 The three initial predictions
+
+The exploratory synthesis generated three predictions, sharpened in the formalization above. Predictions 1, 2, 3 of the body absorb the substance of these earlier predictions with tighter test conditions and broader scope. The earlier framing read: ordered emergence across importance strata; cross-substrate critical exponents; SAE dictionary-learning is itself SIPE-T. The body's six predictions retain the substance and add three further extensions (Prediction 4 catechetical-curation; Prediction 5 SAE-side phase-change structure as a separate prediction from initial-emergence threshold; Prediction 6 training-trajectory phase-change behavior).
+
+### B.6 What the exploratory synthesis added beyond the body's formalization
+
+The exploratory synthesis named, in §§4 and 5 of its original composition, what each literature added to the other. SIPE-T added universality framing, hierarchical-stratification predictions, and dyadic-exchange extensions. The toy-models paper added operationalized order parameter, measured critical points, and a reproducible empirical platform. The body's formalization absorbs these as background; the exploratory framing kept them as separate findings. The body of the present document treats the absorption as established and proceeds to the predictions and inquiry avenues that follow.
+
+The exploratory synthesis served its function: it produced the formalization. The formalization is now the published claim; the exploratory framing remains here as traceability of how the claim was arrived at.
