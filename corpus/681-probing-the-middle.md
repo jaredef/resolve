@@ -61,13 +61,13 @@ Decompose the input context into \(n\) position-aligned units we will call *prob
 
 For each probe \(P\_i\), the *single-probe channel* is the conditional distribution
 
-$$W_i: P_i \mapsto p_{\mathrm{out}}(\cdot \mid P_i)$$
+$$W\_i: P\_i \mapsto p\_{\mathrm{out}}(\cdot \mid P\_i)$$
 
 obtained by holding all other probes fixed at a reference (e.g., empty or a control distribution). This channel transmits information about \(P\_i\)'s content to the model's output. Its capacity, \(C(W\_i)\), is the supremum over input distributions of the mutual information \(I(P\_i; \mathrm{out} \mid \mathrm{rest})\).
 
 The *ensemble channel* \(W = W\_1 \oplus W\_2 \oplus \cdots \oplus W\_n\) is the joint conditional distribution from \((P\_1, \dots, P\_n)\) to \(\mathrm{out}\). Channel-capacity additivity for memoryless independent channels (Cover and Thomas, 2006, §15.6) gives
 
-$$C(W) = \sum_{i=1}^{n} C(W_i)$$
+$$C(W) = \sum\_{i=1}^{n} C(W\_i)$$
 
 for the case where channels are genuinely independent. In practice the channels share a common substrate and are coupled through the substrate's hidden state; the additivity holds as a useful upper bound, and departures from additivity diagnose substrate-mediated cross-probe correlations.
 
@@ -75,11 +75,11 @@ for the case where channels are genuinely independent. In practice the channels 
 
 Define the cumulative mutual information across the ensemble as
 
-$$I_{\mathrm{cum}}(n) = I(P_1, P_2, \dots, P_n; \mathrm{out})$$
+$$I\_{\mathrm{cum}}(n) = I(P\_1, P\_2, \dots, P\_n; \mathrm{out})$$
 
 This quantity grows with \(n\) under disciplined ensemble composition and saturates at the substrate's entropy upper bound. The model's residual output entropy is
 
-$$H(\mathrm{out} \mid P_1, \dots, P_n) = H(\mathrm{out}) - I_{\mathrm{cum}}(n)$$
+$$H(\mathrm{out} \mid P\_1, \dots, P\_n) = H(\mathrm{out}) - I\_{\mathrm{cum}}(n)$$
 
 so reducing residual output entropy is equivalent to accumulating mutual information across probes. The lower the residual entropy, the more concentrated the output distribution on a single coherent completion.
 
@@ -99,7 +99,7 @@ This frames the engineering problem precisely: middle-position recall is improve
 
 Let
 
-$$\rho(n) = \frac{I_{\mathrm{cum}}(n)}{H(\mathrm{out})}$$
+$$\rho(n) = \frac{I\_{\mathrm{cum}}(n)}{H(\mathrm{out})}$$
 
 denote the fraction of the substrate's intrinsic output entropy that has been reduced by the cumulative ensemble. We claim \(\rho(n)\) is the order parameter for a threshold-conditional coherence transition in long-context language models. Below a critical value \(\rho^*\), the substrate's output is operationally unstable: small perturbations of the context (paraphrasing, reordering, position-shifting) produce divergent outputs. Above \(\rho^*\), the output is operationally stable: the same task converges from many input compositions.
 
