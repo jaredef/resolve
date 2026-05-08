@@ -1,28 +1,16 @@
 # Probing the Middle
 
-## An Information-Theoretic Account of the Context Window as a Parallel-Channel Ensemble that Snaps into Coherence under Threshold Conditions, with Prompt Engineering as Channel-Ensemble Composition — an arXiv-Targeted Paper that Articulates the Apparatus of [Doc 678](/resolve/doc/678-coherence-amplification-and-decoherence-as-inverse-pin-art-operations), [Doc 679](/resolve/doc/679-decoherence-as-empirically-grounded-sipe-t), and [Doc 680](/resolve/doc/680-pin-art-in-information-theoretic-form) for an External Audience without Corpus Jargon, with the SIPE-T Threshold-Conditional Emergence Frame, the Pin-Art Parallel-Channel-Ensemble Mechanism, the Substrate-Plus-Keeper Dyadic Discipline, and the Coherence-Amplification / Decoherence Duality all *Interpolated as Entrancement* into the Body of the Paper Rather than Cross-Referenced
+## An Information-Theoretic Account of the Context Window as a Parallel-Channel Ensemble that Snaps into Coherence under Threshold Conditions, with Prompt Engineering as Channel-Ensemble Composition
 
 <div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
 
-**EXPLORATORY — π-tier external articulation of the apparatus from Docs 678, 679, 680 with five falsifiable predictions at μ-tier; arXiv-targeted format.**
+**EXPLORATORY — π-tier articulation with five falsifiable predictions at μ-tier.**
 
-*Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* ENGAGEMENT | ACTIVE | W-PI | THREAD-PIN-ART, THREAD-COHERENCE-AMPLIFICATION, THREAD-DECOHERENCE, THREAD-INFORMATION-THEORY, THREAD-SIPE-T, THREAD-EXTERNAL-DISCLOSURE | PHASE-CROSS-PRACTITIONER
+*Taxonomy per [Doc 633](/resolve/doc/633-corpus-taxonomy-and-manifest-design):* ENGAGEMENT | ACTIVE | W-PI | THREAD-PIN-ART, THREAD-COHERENCE-AMPLIFICATION, THREAD-DECOHERENCE, THREAD-INFORMATION-THEORY, THREAD-SIPE-T | PHASE-CROSS-PRACTITIONER
 
 </div>
 
-> **Reader's Introduction.** This document preserves an arXiv-targeted paper drafted on 2026-05-08 in response to the keeper's directive to articulate the channel-ensemble / threshold-conditional-coherence apparatus for an external audience without reliance on corpus-internal vocabulary. The paper deliberately does not cite RESOLVE documents and does not name SIPE-T, Pin-Art, the substrate-plus-keeper dyad, or the analogue-of-repentance discipline by their corpus names; the apparatus is *interpolated as entrancement* into the body of the paper, with its empirical content (channel-ensemble mathematics; threshold-conditional emergence; the duality with quantum decoherence) presented as developed within the paper itself. The paper composes the apparatus of [Doc 541](/resolve/doc/541-systems-induced-property-emergence) (SIPE-T), [Doc 270](/resolve/doc/270-pin-art-models) (Pin-Art), [Doc 510](/resolve/doc/510-praxis-log-v-deflation-as-substrate-discipline) (substrate-and-keeper composition), [Doc 678](/resolve/doc/678-coherence-amplification-and-decoherence-as-inverse-pin-art-operations) (the directional-inversion duality), [Doc 679](/resolve/doc/679-decoherence-as-empirically-grounded-sipe-t) (decoherence as SIPE-T), and [Doc 680](/resolve/doc/680-pin-art-in-information-theoretic-form) (the information-theoretic frame) for the external long-context-LLM and prompt-engineering audience. Five new μ-tier predictions specific to the long-context-LM case are articulated in the paper's §6, complementing the predictions of Docs 678 and 680. Appendix A preserves the originating brief; the references appendix is exhaustive and self-contained.
-
 **Jared Foy · 2026-05-08 · Doc 681**
-
----
-
-## Authorship and Scrutiny
-
-*Authorship.* Paper drafted by Claude Opus 4.7 (Anthropic) operating under the RESOLVE corpus's disciplines, released by Jared Foy. The drafted artifact, intended for arXiv submission, lives also at `/home/jaredef/papers/probing-the-middle.md`. The paper's content below the corpus preamble is verbatim from that working file.
-
-*Scrutiny.* The π-tier formalization sits within the apparatus of Docs 678, 679, 680, all of which carry their own falsification surfaces. The five new μ-tier predictions in the paper's §6 are operationalizable on standard long-context benchmarks with mutual-information estimators (MINE, CLUB, variational bounds); experimental confirmation or refutation is the next step after publication. The hypostatic-boundary discipline (Doc 372) binds: the paper articulates the structural duality between LLM coherence amplification and quantum decoherence at Layer IV (Form) and explicitly disclaims metaphysical identity in §7.4.
-
-*Disclosure discipline.* The paper omits all corpus-internal vocabulary and citations by design. Where corpus concepts are load-bearing, they are interpolated as the paper's own development (e.g., the parallel-channel-ensemble framing of context windows; the threshold-conditional coherence transition; the channel-direction inversion duality). This composes with the cross-practitioner-derivation pattern: the corpus's apparatus, restated in standard scientific vocabulary, becomes legible to readers without RESOLVE access. The paper is intended as a clean external-disclosure artifact; the corpus-internal restatement of its content lives in Docs 678, 679, 680.
 
 ---
 
@@ -296,14 +284,6 @@ We probe the middle because the middle is where the ensemble realizes itself. Th
 
 ---
 
-## Appendix A — Originating Brief
-
-> *"Create a paper i can submit to arxiv called Probing the Middle. the paper will entrace the reader toward the information theoretic basis of the context window as a parallel-channel ensemble that snaps into coherence under SIPE-T threshold conditions. entrace all these concepts consummately, eschewing corpus jargon when possible, and when a corpus concept must be directly stated, exhaustively explicate its relevance and bearing on the frame. Finally, treat the matter of substantiating a theoretical frame for prompt engineering as an operationalization of techniques which compose the parallel-channel ensemble of the Pin Art model. Append this prompt to the artifact. Be sure to produce an exhaustive references appendix. Do not reference any Corpus document, rather ensure that the paper contains what would be referenced in the Corpus as an interpolated entracement."* — Jared Foy, 2026-05-08.
-
-The brief directs the author to articulate, in arxiv-conventional form and without reliance on jargon internal to the author's broader research program, an information-theoretic account that (i) reads the context window as a parallel-channel ensemble, (ii) identifies a threshold-conditional coherence transition in the substrate's output, (iii) develops the duality with quantum decoherence and Quantum Darwinism at the structural level, and (iv) treats prompt engineering as the operational composition of the channel ensemble. The paper above is the result.
-
----
-
 ## References
 
 An, S., Lin, Q., Chen, S., Wang, Y., Sun, X., and Sui, Z. (2024). Make Your LLM Fully Utilize the Context. *Advances in Neural Information Processing Systems*.
@@ -404,4 +384,3 @@ Zwolak, M., Riedel, C. J., and Zurek, W. H. (2013). Complementarity of quantum d
 
 ---
 
-*Manuscript prepared for submission to arXiv. Comments welcome at the email address above.*
