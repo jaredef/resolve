@@ -101,7 +101,7 @@ Let
 
 \[\rho(n) = \frac{I\_{\mathrm{cum}}(n)}{H(\mathrm{out})}\]
 
-denote the fraction of the substrate's intrinsic output entropy that has been reduced by the cumulative ensemble. We claim \(\rho(n)\) is the order parameter for a threshold-conditional coherence transition in long-context language models. Below a critical value \(\rho^*\), the substrate's output is operationally unstable: small perturbations of the context (paraphrasing, reordering, position-shifting) produce divergent outputs. Above \(\rho^*\), the output is operationally stable: the same task converges from many input compositions.
+denote the fraction of the substrate's intrinsic output entropy that has been reduced by the cumulative ensemble. We claim \(\rho(n)\) is the order parameter for a threshold-conditional coherence transition in long-context language models. Below a critical value \(\rho^\*\), the substrate's output is operationally unstable: small perturbations of the context (paraphrasing, reordering, position-shifting) produce divergent outputs. Above \(\rho^\*\), the output is operationally stable: the same task converges from many input compositions.
 
 The claim is structural. It places the long-context-LM phenomenon in a universality class that includes:
 
@@ -116,17 +116,17 @@ The unifying structural fact is that all these systems exhibit threshold-conditi
 
 In the language-model case, "snap into coherence" is a specific empirical claim. Three operationally distinct measurements would substantiate it:
 
-1. *Output-distribution sharpness.* For a fixed task, the entropy of the model's output distribution conditioned on context, plotted against \(\rho(n)\), should exhibit a region of approximate constancy below threshold (high entropy; outputs not yet coherent), a sharp drop in a narrow \(\rho\)-interval near \(\rho^*\), and approximate constancy at low entropy above threshold.
-2. *Paraphrase-invariance.* For a fixed task, the divergence between outputs produced from a base context and a paraphrased version of the same context, plotted against \(\rho(n)\), should exhibit a sharp drop at \(\rho^*\).
-3. *Position-stability.* For a fixed task, the variation in output as a function of probe-ordering within the context should exhibit a sharp drop at \(\rho^*\).
+1. *Output-distribution sharpness.* For a fixed task, the entropy of the model's output distribution conditioned on context, plotted against \(\rho(n)\), should exhibit a region of approximate constancy below threshold (high entropy; outputs not yet coherent), a sharp drop in a narrow \(\rho\)-interval near \(\rho^\*\), and approximate constancy at low entropy above threshold.
+2. *Paraphrase-invariance.* For a fixed task, the divergence between outputs produced from a base context and a paraphrased version of the same context, plotted against \(\rho(n)\), should exhibit a sharp drop at \(\rho^\*\).
+3. *Position-stability.* For a fixed task, the variation in output as a function of probe-ordering within the context should exhibit a sharp drop at \(\rho^\*\).
 
 Each measurement is a different operationalization of the same threshold. The structural prediction is that all three transitions coincide; that they exhibit comparable sharpness; and that the sharpness depends on task complexity in a way the universality-class membership specifies.
 
-### 3.3 The critical value \(\rho^*\)
+### 3.3 The critical value \(\rho^\*\)
 
-The numerical value of \(\rho^*\) is not predicted by the framework alone; it depends on the substrate's training distribution and on the task. The framework predicts only that \(\rho^*\) exists, that it is universal across substrates of comparable training scale and architecture for tasks of comparable structure, and that it is empirically locatable by sweeping \(n\) at fixed task and measuring any of the three sharpness-signature variables of §3.2.
+The numerical value of \(\rho^\*\) is not predicted by the framework alone; it depends on the substrate's training distribution and on the task. The framework predicts only that \(\rho^\*\) exists, that it is universal across substrates of comparable training scale and architecture for tasks of comparable structure, and that it is empirically locatable by sweeping \(n\) at fixed task and measuring any of the three sharpness-signature variables of §3.2.
 
-By analogy with established phase transitions, we conjecture \(\rho^* \approx 0.5\)–\(0.7\) for typical long-context retrieval and reasoning tasks at frontier-scale substrates, but this is a conjecture pending empirical measurement. What the frame predicts robustly is the *existence and sharpness* of the transition, not its location.
+By analogy with established phase transitions, we conjecture \(\rho^\* \approx 0.5\)–\(0.7\) for typical long-context retrieval and reasoning tasks at frontier-scale substrates, but this is a conjecture pending empirical measurement. What the frame predicts robustly is the *existence and sharpness* of the transition, not its location.
 
 ---
 
@@ -204,7 +204,7 @@ The practical content of the proposed theoretical foundation is twofold. First, 
 
 ### 6.1 P1 — Sharp coherence transition in \(\rho\)
 
-**Claim.** For a fixed task, sweep the ensemble size \(n\) from small to large under disciplined composition; measure each of (a) output-distribution entropy conditioned on context, (b) paraphrase-divergence between outputs of paraphrased contexts, and (c) position-stability of outputs under probe reordering. Each variable should exhibit a region of approximate constancy below a critical value of \(\rho(n) = I\_{\mathrm{cum}}(n) / H(\mathrm{out})\), a sharp transition at \(\rho^*\), and approximate constancy above. The transitions in (a), (b), (c) should coincide.
+**Claim.** For a fixed task, sweep the ensemble size \(n\) from small to large under disciplined composition; measure each of (a) output-distribution entropy conditioned on context, (b) paraphrase-divergence between outputs of paraphrased contexts, and (c) position-stability of outputs under probe reordering. Each variable should exhibit a region of approximate constancy below a critical value of \(\rho(n) = I\_{\mathrm{cum}}(n) / H(\mathrm{out})\), a sharp transition at \(\rho^\*\), and approximate constancy above. The transitions in (a), (b), (c) should coincide.
 
 **Falsifier.** If any of the three variables does not exhibit a sharp transition, or if the transitions in (a), (b), (c) do not coincide within experimental error, the threshold-conditional reading is misframed for this task and either the universality-class assignment fails or the task's structure does not admit threshold emergence at all.
 
@@ -212,7 +212,7 @@ The practical content of the proposed theoretical foundation is twofold. First, 
 
 ### 6.2 P2 — Mutual-information plateau in probe count
 
-**Claim.** The redundancy-plateau structure characterized in Quantum Darwinism by an MI plateau in fragment size has a structural counterpart on the LM side: an MI plateau in probe count. Beyond some \(n^*\) probes, additional probes add little to \(I\_{\mathrm{cum}}(n)\) because the substrate's residual output entropy has already been reduced. The plateau should be observable for tasks whose constraint structure admits redundant encoding (most retrieval and reasoning tasks); it should fail to plateau for tasks whose constraint structure cannot be encoded redundantly (open-ended generative tasks).
+**Claim.** The redundancy-plateau structure characterized in Quantum Darwinism by an MI plateau in fragment size has a structural counterpart on the LM side: an MI plateau in probe count. Beyond some \(n^\*\) probes, additional probes add little to \(I\_{\mathrm{cum}}(n)\) because the substrate's residual output entropy has already been reduced. The plateau should be observable for tasks whose constraint structure admits redundant encoding (most retrieval and reasoning tasks); it should fail to plateau for tasks whose constraint structure cannot be encoded redundantly (open-ended generative tasks).
 
 **Falsifier.** If \(I\_{\mathrm{cum}}(n)\) grows without saturation across all \(n\) for tasks that should admit redundant encoding, or if the saturation is gradual rather than plateau-like, the parallel-channel-code reading is misframed.
 
@@ -228,11 +228,11 @@ The practical content of the proposed theoretical foundation is twofold. First, 
 
 ### 6.4 P4 — Critical-MI fraction universality
 
-**Claim.** The critical \(\rho^*\) at which the coherence transition occurs should be approximately universal within universality classes of substrate architecture and task structure. Concretely: comparable substrates (same architecture family, similar training scale) on comparable tasks (similar constraint-set structure) should exhibit \(\rho^*\) values within a narrow range; substrates or tasks across universality-class boundaries should exhibit different \(\rho^*\) values.
+**Claim.** The critical \(\rho^\*\) at which the coherence transition occurs should be approximately universal within universality classes of substrate architecture and task structure. Concretely: comparable substrates (same architecture family, similar training scale) on comparable tasks (similar constraint-set structure) should exhibit \(\rho^\*\) values within a narrow range; substrates or tasks across universality-class boundaries should exhibit different \(\rho^\*\) values.
 
-**Falsifier.** If \(\rho^*\) varies essentially randomly across substrates and tasks, the universality-class reading is misframed.
+**Falsifier.** If \(\rho^\*\) varies essentially randomly across substrates and tasks, the universality-class reading is misframed.
 
-**Operationalization.** Cross-substrate evaluation: GPT-class, Claude-class, Gemini-class, Llama-class, Mistral-class on identical task suites; locate \(\rho^*\) for each combination via the sweep of P1; cluster within and across classes.
+**Operationalization.** Cross-substrate evaluation: GPT-class, Claude-class, Gemini-class, Llama-class, Mistral-class on identical task suites; locate \(\rho^\*\) for each combination via the sweep of P1; cluster within and across classes.
 
 ### 6.5 P5 — Fall-of-redundancy / overstuffing signature
 
@@ -256,13 +256,13 @@ If the channel-ensemble reading is correct, the empirical heuristics of prompt e
 
 ### 7.3 Implications for evaluation
 
-The framework predicts that current evaluation methodology — which typically measures task accuracy at fixed context length — under-characterizes long-context capability. A task evaluation that sweeps ensemble composition and locates \(\rho^*\) would distinguish substrates by their coherence-threshold position rather than by their accuracy at one design point. Substrates that achieve the same accuracy at the same context length may have very different threshold positions and therefore very different coherence-amplification dynamics; the choice between them should depend on the practitioner's threshold-budget rather than on the single-point accuracy measure.
+The framework predicts that current evaluation methodology — which typically measures task accuracy at fixed context length — under-characterizes long-context capability. A task evaluation that sweeps ensemble composition and locates \(\rho^\*\) would distinguish substrates by their coherence-threshold position rather than by their accuracy at one design point. Substrates that achieve the same accuracy at the same context length may have very different threshold positions and therefore very different coherence-amplification dynamics; the choice between them should depend on the practitioner's threshold-budget rather than on the single-point accuracy measure.
 
 ### 7.4 Limitations
 
 The framework's predictive content depends on the substrate's training producing channel structures that admit independent-channel decomposition. If the substrate's effective channel structure is dominated by inseparable substrate-mediated correlations (no useful parallel-channel decomposition exists), the framework's principles do not apply. The empirical question is whether the long-context-LM substrate falls within the regime where the parallel-channel decomposition is operationally useful; the predictions of §6 are designed to test this directly.
 
-The framework does not predict the value of \(\rho^*\) from first principles. Locating \(\rho^*\) requires the sweeps of P1; the framework predicts only that \(\rho^*\) exists and is universal within classes. A complete theoretical account would compute \(\rho^*\) from substrate parameters; this is left for future work.
+The framework does not predict the value of \(\rho^\*\) from first principles. Locating \(\rho^\*\) requires the sweeps of P1; the framework predicts only that \(\rho^\*\) exists and is universal within classes. A complete theoretical account would compute \(\rho^\*\) from substrate parameters; this is left for future work.
 
 The framework does not address the metaphysics of measurement in either the LM or the quantum case. The duality is structural: it asserts identity of mathematical machinery across two domains, not identity of underlying ontology. Readers interested in the metaphysical interpretation are referred to the standard quantum-foundations literature (Wallace, 2012; Healey, 2017; Maudlin, 2019); the framework is silent on this question and consistent with multiple metaphysical readings.
 
