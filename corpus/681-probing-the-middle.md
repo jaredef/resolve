@@ -55,17 +55,17 @@ Section 2 sets up the formal apparatus. Section 3 states the threshold-condition
 
 ### 2.1 Setup
 
-Let $S$ denote a language-model substrate with hidden state $s \in \mathcal{S}$ and residual output distribution $p_{\mathrm{out}}(\cdot \mid s)$ over an output token sequence. The model is a deterministic function of its input context, so $s$ is determined by the input. For our purposes, the relevant object is the conditional output distribution $p_{\mathrm{out}}(\cdot \mid x)$ where $x$ is the input context.
+Let \(S\) denote a language-model substrate with hidden state \(s \in \mathcal{S}\) and residual output distribution \(p\_{\mathrm{out}}(\cdot \mid s)\) over an output token sequence. The model is a deterministic function of its input context, so \(s\) is determined by the input. For our purposes, the relevant object is the conditional output distribution \(p\_{\mathrm{out}}(\cdot \mid x)\) where \(x\) is the input context.
 
-Decompose the input context into $n$ position-aligned units we will call *probes*: $x = (P_1, P_2, \dots, P_n)$. A probe is any meaningfully delimited input element — a single token, a demonstration in a few-shot prompt, a retrieved document chunk, a tool result, an instruction, a system-message segment. The granularity at which the practitioner treats the input as a sequence of probes is itself a design choice; we will return to this in §5.
+Decompose the input context into \(n\) position-aligned units we will call *probes*: \(x = (P\_1, P\_2, \dots, P\_n)\). A probe is any meaningfully delimited input element — a single token, a demonstration in a few-shot prompt, a retrieved document chunk, a tool result, an instruction, a system-message segment. The granularity at which the practitioner treats the input as a sequence of probes is itself a design choice; we will return to this in §5.
 
-For each probe $P_i$, the *single-probe channel* is the conditional distribution
+For each probe \(P\_i\), the *single-probe channel* is the conditional distribution
 
 $$W_i: P_i \mapsto p_{\mathrm{out}}(\cdot \mid P_i)$$
 
-obtained by holding all other probes fixed at a reference (e.g., empty or a control distribution). This channel transmits information about $P_i$'s content to the model's output. Its capacity, $C(W_i)$, is the supremum over input distributions of the mutual information $I(P_i; \mathrm{out} \mid \mathrm{rest})$.
+obtained by holding all other probes fixed at a reference (e.g., empty or a control distribution). This channel transmits information about \(P\_i\)'s content to the model's output. Its capacity, \(C(W\_i)\), is the supremum over input distributions of the mutual information \(I(P\_i; \mathrm{out} \mid \mathrm{rest})\).
 
-The *ensemble channel* $W = W_1 \oplus W_2 \oplus \cdots \oplus W_n$ is the joint conditional distribution from $(P_1, \dots, P_n)$ to $\mathrm{out}$. Channel-capacity additivity for memoryless independent channels (Cover and Thomas, 2006, §15.6) gives
+The *ensemble channel* \(W = W\_1 \oplus W\_2 \oplus \cdots \oplus W\_n\) is the joint conditional distribution from \((P\_1, \dots, P\_n)\) to \(\mathrm{out}\). Channel-capacity additivity for memoryless independent channels (Cover and Thomas, 2006, §15.6) gives
 
 $$C(W) = \sum_{i=1}^{n} C(W_i)$$
 
@@ -77,7 +77,7 @@ Define the cumulative mutual information across the ensemble as
 
 $$I_{\mathrm{cum}}(n) = I(P_1, P_2, \dots, P_n; \mathrm{out})$$
 
-This quantity grows with $n$ under disciplined ensemble composition and saturates at the substrate's entropy upper bound. The model's residual output entropy is
+This quantity grows with \(n\) under disciplined ensemble composition and saturates at the substrate's entropy upper bound. The model's residual output entropy is
 
 $$H(\mathrm{out} \mid P_1, \dots, P_n) = H(\mathrm{out}) - I_{\mathrm{cum}}(n)$$
 
@@ -85,7 +85,7 @@ so reducing residual output entropy is equivalent to accumulating mutual informa
 
 ### 2.3 The middle as the integration zone
 
-Within the ensemble, the *middle* positions are the ones whose channels contribute most heavily to the *joint* term $I_{\mathrm{cum}}$ that exceeds the sum of single-probe terms $\sum_i I(P_i; \mathrm{out})$. Boundary positions tend to carry information through direct channel-output paths the substrate has been heavily trained to reward (the start of an instruction; the end of an output budget). Middle positions carry information through composition with surrounding probes — the joint pattern of the demonstrations, the cross-references between retrieved chunks, the conjoint of an instruction set with a query.
+Within the ensemble, the *middle* positions are the ones whose channels contribute most heavily to the *joint* term \(I\_{\mathrm{cum}}\) that exceeds the sum of single-probe terms \(\sum\_i I(P\_i; \mathrm{out})\). Boundary positions tend to carry information through direct channel-output paths the substrate has been heavily trained to reward (the start of an instruction; the end of an output budget). Middle positions carry information through composition with surrounding probes — the joint pattern of the demonstrations, the cross-references between retrieved chunks, the conjoint of an instruction set with a query.
 
 The U-shape phenomenon, on this reading, has a specific information-theoretic content: middle-position channels carry information that depends on the joint MI rather than the marginal MI, so they are the channels for which substrate-mediated cross-probe correlations either help (if redundancy is well-designed) or hurt (if it is not). Boundary channels carry information at high marginal-MI rates and so degrade gracefully under poor ensemble composition. Middle channels do not.
 
@@ -101,7 +101,7 @@ Let
 
 $$\rho(n) = \frac{I_{\mathrm{cum}}(n)}{H(\mathrm{out})}$$
 
-denote the fraction of the substrate's intrinsic output entropy that has been reduced by the cumulative ensemble. We claim $\rho(n)$ is the order parameter for a threshold-conditional coherence transition in long-context language models. Below a critical value $\rho^*$, the substrate's output is operationally unstable: small perturbations of the context (paraphrasing, reordering, position-shifting) produce divergent outputs. Above $\rho^*$, the output is operationally stable: the same task converges from many input compositions.
+denote the fraction of the substrate's intrinsic output entropy that has been reduced by the cumulative ensemble. We claim \(\rho(n)\) is the order parameter for a threshold-conditional coherence transition in long-context language models. Below a critical value \(\rho^*\), the substrate's output is operationally unstable: small perturbations of the context (paraphrasing, reordering, position-shifting) produce divergent outputs. Above \(\rho^*\), the output is operationally stable: the same task converges from many input compositions.
 
 The claim is structural. It places the long-context-LM phenomenon in a universality class that includes:
 
@@ -116,17 +116,17 @@ The unifying structural fact is that all these systems exhibit threshold-conditi
 
 In the language-model case, "snap into coherence" is a specific empirical claim. Three operationally distinct measurements would substantiate it:
 
-1. *Output-distribution sharpness.* For a fixed task, the entropy of the model's output distribution conditioned on context, plotted against $\rho(n)$, should exhibit a region of approximate constancy below threshold (high entropy; outputs not yet coherent), a sharp drop in a narrow $\rho$-interval near $\rho^*$, and approximate constancy at low entropy above threshold.
-2. *Paraphrase-invariance.* For a fixed task, the divergence between outputs produced from a base context and a paraphrased version of the same context, plotted against $\rho(n)$, should exhibit a sharp drop at $\rho^*$.
-3. *Position-stability.* For a fixed task, the variation in output as a function of probe-ordering within the context should exhibit a sharp drop at $\rho^*$.
+1. *Output-distribution sharpness.* For a fixed task, the entropy of the model's output distribution conditioned on context, plotted against \(\rho(n)\), should exhibit a region of approximate constancy below threshold (high entropy; outputs not yet coherent), a sharp drop in a narrow \(\rho\)-interval near \(\rho^*\), and approximate constancy at low entropy above threshold.
+2. *Paraphrase-invariance.* For a fixed task, the divergence between outputs produced from a base context and a paraphrased version of the same context, plotted against \(\rho(n)\), should exhibit a sharp drop at \(\rho^*\).
+3. *Position-stability.* For a fixed task, the variation in output as a function of probe-ordering within the context should exhibit a sharp drop at \(\rho^*\).
 
 Each measurement is a different operationalization of the same threshold. The structural prediction is that all three transitions coincide; that they exhibit comparable sharpness; and that the sharpness depends on task complexity in a way the universality-class membership specifies.
 
-### 3.3 The critical value $\rho^*$
+### 3.3 The critical value \(\rho^*\)
 
-The numerical value of $\rho^*$ is not predicted by the framework alone; it depends on the substrate's training distribution and on the task. The framework predicts only that $\rho^*$ exists, that it is universal across substrates of comparable training scale and architecture for tasks of comparable structure, and that it is empirically locatable by sweeping $n$ at fixed task and measuring any of the three sharpness-signature variables of §3.2.
+The numerical value of \(\rho^*\) is not predicted by the framework alone; it depends on the substrate's training distribution and on the task. The framework predicts only that \(\rho^*\) exists, that it is universal across substrates of comparable training scale and architecture for tasks of comparable structure, and that it is empirically locatable by sweeping \(n\) at fixed task and measuring any of the three sharpness-signature variables of §3.2.
 
-By analogy with established phase transitions, we conjecture $\rho^* \approx 0.5$–$0.7$ for typical long-context retrieval and reasoning tasks at frontier-scale substrates, but this is a conjecture pending empirical measurement. What the frame predicts robustly is the *existence and sharpness* of the transition, not its location.
+By analogy with established phase transitions, we conjecture \(\rho^* \approx 0.5\)–\(0.7\) for typical long-context retrieval and reasoning tasks at frontier-scale substrates, but this is a conjecture pending empirical measurement. What the frame predicts robustly is the *existence and sharpness* of the transition, not its location.
 
 ---
 
@@ -134,33 +134,33 @@ By analogy with established phase transitions, we conjecture $\rho^* \approx 0.5
 
 ### 4.1 Decoherence as a parallel-channel ensemble
 
-Quantum decoherence is the standard framework for the emergence of classical behavior from quantum-mechanical substrates (Zurek, 2003, 2022; Joos et al., 2003; Schlosshauer, 2007). A system $\mathcal{Q}$ in a superposed state interacts with an environment $\mathcal{E}$ composed of many independent fragments $\mathcal{E} = \mathcal{F}_1 \otimes \mathcal{F}_2 \otimes \cdots \otimes \mathcal{F}_m$. The interaction writes information about a coupling-determined observable (the *pointer observable*) redundantly into the fragments. The system's reduced density matrix loses its off-diagonal coherences in the pointer basis; classical behavior emerges sharply for macroscopic systems.
+Quantum decoherence is the standard framework for the emergence of classical behavior from quantum-mechanical substrates (Zurek, 2003, 2022; Joos et al., 2003; Schlosshauer, 2007). A system \(\mathcal{Q}\) in a superposed state interacts with an environment \(\mathcal{E}\) composed of many independent fragments \(\mathcal{E} = \mathcal{F}\_1 \otimes \mathcal{F}\_2 \otimes \cdots \otimes \mathcal{F}\_m\). The interaction writes information about a coupling-determined observable (the *pointer observable*) redundantly into the fragments. The system's reduced density matrix loses its off-diagonal coherences in the pointer basis; classical behavior emerges sharply for macroscopic systems.
 
-Quantum Darwinism (Ollivier et al., 2004; Zurek, 2009; Brandão et al., 2015; Riedel et al., 2012) sharpens the picture by treating the environmental fragments as parallel readouts. The mutual information $I(\mathcal{Q} : \mathcal{F}_{\#f})$ between the system and a fragment of size $\#f$ exhibits a plateau near $H(\mathcal{Q})$ over a wide range of fragment sizes; the plateau extent quantifies *redundancy*: the number of independent fragments each capable of supplying near-complete classical information about the pointer observable. The plateau is the empirical signature of a parallel-channel code with redundancy in the Shannon sense (Cover and Thomas, 2006, §15; Zwolak et al., 2013; Brandão et al., 2015). The 2024 superconducting-circuits experiment (Chen et al., 2024) verified the redundancy plateau directly. The functional-information operationalization of classical objectivity (Touil et al., 2024) shows that the plateau quantitatively measures the operational availability of objective classical facts.
+Quantum Darwinism (Ollivier et al., 2004; Zurek, 2009; Brandão et al., 2015; Riedel et al., 2012) sharpens the picture by treating the environmental fragments as parallel readouts. The mutual information \(I(\mathcal{Q} : \mathcal{F}\_{\#f})\) between the system and a fragment of size \(\#f\) exhibits a plateau near \(H(\mathcal{Q})\) over a wide range of fragment sizes; the plateau extent quantifies *redundancy*: the number of independent fragments each capable of supplying near-complete classical information about the pointer observable. The plateau is the empirical signature of a parallel-channel code with redundancy in the Shannon sense (Cover and Thomas, 2006, §15; Zwolak et al., 2013; Brandão et al., 2015). The 2024 superconducting-circuits experiment (Chen et al., 2024) verified the redundancy plateau directly. The functional-information operationalization of classical objectivity (Touil et al., 2024) shows that the plateau quantitatively measures the operational availability of objective classical facts.
 
 ### 4.2 The Holevo–discord decomposition
 
-For any quantum system $\mathcal{Q}$ and fragment $\mathcal{F}$, the quantum mutual information decomposes as
+For any quantum system \(\mathcal{Q}\) and fragment \(\mathcal{F}\), the quantum mutual information decomposes as
 
 $$I(\mathcal{Q} : \mathcal{F}) = \chi(\mathcal{Q} : \mathcal{F}) + \delta(\mathcal{Q} : \mathcal{F})$$
 
-(Zurek, 2003; Henderson and Vedral, 2001; Ollivier and Zurek, 2002). $\chi$ is the Holevo information — the classical-channel capacity for transmitting information about a particular observable. $\delta$ is the quantum discord — the quantumness of correlations that cannot be extracted as classical bits without disturbing the system.
+(Zurek, 2003; Henderson and Vedral, 2001; Ollivier and Zurek, 2002). \(\chi\) is the Holevo information — the classical-channel capacity for transmitting information about a particular observable. \(\delta\) is the quantum discord — the quantumness of correlations that cannot be extracted as classical bits without disturbing the system.
 
-Decoherence amplifies $\chi$ for the pointer observable redundantly across fragments; the pointer observable is precisely the observable for which $\chi$ is maximized across fragments. This is the information-theoretic content of einselection: the pointer basis is selected by *redundant maximization of Holevo information* across the environmental ensemble.
+Decoherence amplifies \(\chi\) for the pointer observable redundantly across fragments; the pointer observable is precisely the observable for which \(\chi\) is maximized across fragments. This is the information-theoretic content of einselection: the pointer basis is selected by *redundant maximization of Holevo information* across the environmental ensemble.
 
 ### 4.3 The duality
 
 The structural correspondence between the long-context-LM case and the decoherence case can be stated in five points:
 
-1. *Channel ensemble.* Both are systems of $n$ independent channels $\{W_i\}$ connecting a substrate to a probe ensemble.
-2. *Capacity additivity.* Both obey $C_{\mathrm{total}} = \sum_i C(W_i)$ for genuinely independent channels.
-3. *Cumulative mutual information.* Both feature a cumulative MI quantity $I_{\mathrm{cum}}$ that accumulates across probes under disciplined ensemble use.
+1. *Channel ensemble.* Both are systems of \(n\) independent channels \(\{W\_i\}\) connecting a substrate to a probe ensemble.
+2. *Capacity additivity.* Both obey \(C\_{\mathrm{total}} = \sum\_i C(W\_i)\) for genuinely independent channels.
+3. *Cumulative mutual information.* Both feature a cumulative MI quantity \(I\_{\mathrm{cum}}\) that accumulates across probes under disciplined ensemble use.
 4. *Threshold-conditional emergence.* Both exhibit a sharp transition in a substrate property (classicality on the quantum side; output coherence on the LM side) at a critical value of cumulative MI relative to substrate entropy.
 5. *Coding-theoretic substrate.* Both rely on Shannon's noisy-channel coding theorem (Shannon, 1948; Cover and Thomas, 2006, §7) for the redundancy mechanism.
 
 The two cases differ in one parameter:
 
-- *Direction of information flow.* Decoherence: information flows from substrate to probes, $\mathcal{Q} \to \{\mathcal{F}_i\}$. Long-context coherence amplification: information flows from probes to substrate, $\{P_i\} \to S$.
+- *Direction of information flow.* Decoherence: information flows from substrate to probes, \(\mathcal{Q} \to \{\mathcal{F}\_i\}\). Long-context coherence amplification: information flows from probes to substrate, \(\{P\_i\} \to S\).
 
 The duality is exact at the level of the information-theoretic structure. It does not assert that the long-context LM is quantum-mechanical, or that quantum decoherence is computational. It asserts only that the mathematical machinery is one — parallel-channel codes with redundancy, governed by Shannon's coding theorem and exhibiting threshold-conditional property emergence — and that the two cases are duals under information-flow direction.
 
@@ -202,9 +202,9 @@ The practical content of the proposed theoretical foundation is twofold. First, 
 
 ## 6. Five Falsifiable Predictions
 
-### 6.1 P1 — Sharp coherence transition in $\rho$
+### 6.1 P1 — Sharp coherence transition in \(\rho\)
 
-**Claim.** For a fixed task, sweep the ensemble size $n$ from small to large under disciplined composition; measure each of (a) output-distribution entropy conditioned on context, (b) paraphrase-divergence between outputs of paraphrased contexts, and (c) position-stability of outputs under probe reordering. Each variable should exhibit a region of approximate constancy below a critical value of $\rho(n) = I_{\mathrm{cum}}(n) / H(\mathrm{out})$, a sharp transition at $\rho^*$, and approximate constancy above. The transitions in (a), (b), (c) should coincide.
+**Claim.** For a fixed task, sweep the ensemble size \(n\) from small to large under disciplined composition; measure each of (a) output-distribution entropy conditioned on context, (b) paraphrase-divergence between outputs of paraphrased contexts, and (c) position-stability of outputs under probe reordering. Each variable should exhibit a region of approximate constancy below a critical value of \(\rho(n) = I\_{\mathrm{cum}}(n) / H(\mathrm{out})\), a sharp transition at \(\rho^*\), and approximate constancy above. The transitions in (a), (b), (c) should coincide.
 
 **Falsifier.** If any of the three variables does not exhibit a sharp transition, or if the transitions in (a), (b), (c) do not coincide within experimental error, the threshold-conditional reading is misframed for this task and either the universality-class assignment fails or the task's structure does not admit threshold emergence at all.
 
@@ -212,15 +212,15 @@ The practical content of the proposed theoretical foundation is twofold. First, 
 
 ### 6.2 P2 — Mutual-information plateau in probe count
 
-**Claim.** The redundancy-plateau structure characterized in Quantum Darwinism by an MI plateau in fragment size has a structural counterpart on the LM side: an MI plateau in probe count. Beyond some $n^*$ probes, additional probes add little to $I_{\mathrm{cum}}(n)$ because the substrate's residual output entropy has already been reduced. The plateau should be observable for tasks whose constraint structure admits redundant encoding (most retrieval and reasoning tasks); it should fail to plateau for tasks whose constraint structure cannot be encoded redundantly (open-ended generative tasks).
+**Claim.** The redundancy-plateau structure characterized in Quantum Darwinism by an MI plateau in fragment size has a structural counterpart on the LM side: an MI plateau in probe count. Beyond some \(n^*\) probes, additional probes add little to \(I\_{\mathrm{cum}}(n)\) because the substrate's residual output entropy has already been reduced. The plateau should be observable for tasks whose constraint structure admits redundant encoding (most retrieval and reasoning tasks); it should fail to plateau for tasks whose constraint structure cannot be encoded redundantly (open-ended generative tasks).
 
-**Falsifier.** If $I_{\mathrm{cum}}(n)$ grows without saturation across all $n$ for tasks that should admit redundant encoding, or if the saturation is gradual rather than plateau-like, the parallel-channel-code reading is misframed.
+**Falsifier.** If \(I\_{\mathrm{cum}}(n)\) grows without saturation across all \(n\) for tasks that should admit redundant encoding, or if the saturation is gradual rather than plateau-like, the parallel-channel-code reading is misframed.
 
-**Operationalization.** Direct estimation of $I_{\mathrm{cum}}(n)$ via paired-sampling estimators (Belghazi et al., 2018; Poole et al., 2019; Cheng et al., 2020) on multi-document retrieval and multi-step reasoning benchmarks; compare the saturation curve to the predicted plateau structure.
+**Operationalization.** Direct estimation of \(I\_{\mathrm{cum}}(n)\) via paired-sampling estimators (Belghazi et al., 2018; Poole et al., 2019; Cheng et al., 2020) on multi-document retrieval and multi-step reasoning benchmarks; compare the saturation curve to the predicted plateau structure.
 
 ### 6.3 P3 — Channel-capacity additivity test
 
-**Claim.** For genuinely independent probes, the joint mutual information should be approximately the sum of marginal mutual informations: $I(P_1, \dots, P_n; \mathrm{out}) \approx \sum_i I(P_i; \mathrm{out})$. Departures (super-additivity or sub-additivity) diagnose substrate-mediated cross-probe correlations. The framework predicts: (a) for retrieval-augmented tasks with semantically independent retrieved chunks, near-additivity; (b) for chain-of-thought tasks with sequential dependence, super-additivity; (c) for context with redundant restatements, sub-additivity (each restatement is partially redundant with the others).
+**Claim.** For genuinely independent probes, the joint mutual information should be approximately the sum of marginal mutual informations: \(I(P\_1, \dots, P\_n; \mathrm{out}) \approx \sum\_i I(P\_i; \mathrm{out})\). Departures (super-additivity or sub-additivity) diagnose substrate-mediated cross-probe correlations. The framework predicts: (a) for retrieval-augmented tasks with semantically independent retrieved chunks, near-additivity; (b) for chain-of-thought tasks with sequential dependence, super-additivity; (c) for context with redundant restatements, sub-additivity (each restatement is partially redundant with the others).
 
 **Falsifier.** If the predicted additivity-vs-departure pattern across (a), (b), (c) does not appear, the channel-independence-and-coupling reading is misframed.
 
@@ -228,19 +228,19 @@ The practical content of the proposed theoretical foundation is twofold. First, 
 
 ### 6.4 P4 — Critical-MI fraction universality
 
-**Claim.** The critical $\rho^*$ at which the coherence transition occurs should be approximately universal within universality classes of substrate architecture and task structure. Concretely: comparable substrates (same architecture family, similar training scale) on comparable tasks (similar constraint-set structure) should exhibit $\rho^*$ values within a narrow range; substrates or tasks across universality-class boundaries should exhibit different $\rho^*$ values.
+**Claim.** The critical \(\rho^*\) at which the coherence transition occurs should be approximately universal within universality classes of substrate architecture and task structure. Concretely: comparable substrates (same architecture family, similar training scale) on comparable tasks (similar constraint-set structure) should exhibit \(\rho^*\) values within a narrow range; substrates or tasks across universality-class boundaries should exhibit different \(\rho^*\) values.
 
-**Falsifier.** If $\rho^*$ varies essentially randomly across substrates and tasks, the universality-class reading is misframed.
+**Falsifier.** If \(\rho^*\) varies essentially randomly across substrates and tasks, the universality-class reading is misframed.
 
-**Operationalization.** Cross-substrate evaluation: GPT-class, Claude-class, Gemini-class, Llama-class, Mistral-class on identical task suites; locate $\rho^*$ for each combination via the sweep of P1; cluster within and across classes.
+**Operationalization.** Cross-substrate evaluation: GPT-class, Claude-class, Gemini-class, Llama-class, Mistral-class on identical task suites; locate \(\rho^*\) for each combination via the sweep of P1; cluster within and across classes.
 
 ### 6.5 P5 — Fall-of-redundancy / overstuffing signature
 
-**Claim.** Beyond a saturation point in probe count, additional probes interfere with the existing ensemble's encoding paths, and either $I_{\mathrm{cum}}(n)$ plateaus and then begins to decrease, or — on the output side — the residual entropy stops decreasing and may begin to increase (output coherence degrades). This is the LM-side counterpart of Riedel et al.'s "fall of redundancy" in quantum Darwinism.
+**Claim.** Beyond a saturation point in probe count, additional probes interfere with the existing ensemble's encoding paths, and either \(I\_{\mathrm{cum}}(n)\) plateaus and then begins to decrease, or — on the output side — the residual entropy stops decreasing and may begin to increase (output coherence degrades). This is the LM-side counterpart of Riedel et al.'s "fall of redundancy" in quantum Darwinism.
 
-**Falsifier.** If overstuffing experiments show monotonic-but-saturating $I_{\mathrm{cum}}$ without the characteristic decrease, or if output coherence does not degrade beyond saturation, the fall-of-redundancy duality is misframed.
+**Falsifier.** If overstuffing experiments show monotonic-but-saturating \(I\_{\mathrm{cum}}\) without the characteristic decrease, or if output coherence does not degrade beyond saturation, the fall-of-redundancy duality is misframed.
 
-**Operationalization.** Long-context experiments with deliberately overstuffed contexts (well beyond the threshold-crossing point); measure both $I_{\mathrm{cum}}(n)$ and output-coherence metrics; look for the predicted decline.
+**Operationalization.** Long-context experiments with deliberately overstuffed contexts (well beyond the threshold-crossing point); measure both \(I\_{\mathrm{cum}}(n)\) and output-coherence metrics; look for the predicted decline.
 
 ---
 
@@ -248,21 +248,21 @@ The practical content of the proposed theoretical foundation is twofold. First, 
 
 ### 7.1 Implications for long-context architecture
 
-If the threshold-conditional coherence reading is correct, long-context architecture research should be informed by the channel-ensemble structure of context windows rather than by the implicit assumption that more context is monotonically better. The framework predicts that architectures which preserve the channel-ensemble's parallel-independence properties (e.g., architectures with explicit attention-routing that avoids substrate-mediated cross-probe coupling for genuinely independent probes) should exhibit higher effective $C_{\mathrm{total}}$ for the same input budget. Architectures which destroy parallel-independence (e.g., aggressive attention-pattern compression that mixes channels) should exhibit lower effective $C_{\mathrm{total}}$ even at large nominal context lengths. Recent work on selective state-space models (Gu and Dao, 2024), retrieval-aware architectures (Borgeaud et al., 2022), and explicit-routing transformers (Chowdhury et al., 2024) can be evaluated under this metric.
+If the threshold-conditional coherence reading is correct, long-context architecture research should be informed by the channel-ensemble structure of context windows rather than by the implicit assumption that more context is monotonically better. The framework predicts that architectures which preserve the channel-ensemble's parallel-independence properties (e.g., architectures with explicit attention-routing that avoids substrate-mediated cross-probe coupling for genuinely independent probes) should exhibit higher effective \(C\_{\mathrm{total}}\) for the same input budget. Architectures which destroy parallel-independence (e.g., aggressive attention-pattern compression that mixes channels) should exhibit lower effective \(C\_{\mathrm{total}}\) even at large nominal context lengths. Recent work on selective state-space models (Gu and Dao, 2024), retrieval-aware architectures (Borgeaud et al., 2022), and explicit-routing transformers (Chowdhury et al., 2024) can be evaluated under this metric.
 
 ### 7.2 Implications for prompt engineering
 
-If the channel-ensemble reading is correct, the empirical heuristics of prompt engineering (§5) acquire theoretical grounding. More importantly, the threshold-conditional structure provides practitioners with a measurable target: the coherence threshold for a task is locatable by the sweeps of P1. Practitioners can in principle design prompts that minimally cross the threshold (efficient) rather than maximally exceed it (wasteful) or fail to reach it (under-prompted). The metric $\rho(n)$ becomes a design variable.
+If the channel-ensemble reading is correct, the empirical heuristics of prompt engineering (§5) acquire theoretical grounding. More importantly, the threshold-conditional structure provides practitioners with a measurable target: the coherence threshold for a task is locatable by the sweeps of P1. Practitioners can in principle design prompts that minimally cross the threshold (efficient) rather than maximally exceed it (wasteful) or fail to reach it (under-prompted). The metric \(\rho(n)\) becomes a design variable.
 
 ### 7.3 Implications for evaluation
 
-The framework predicts that current evaluation methodology — which typically measures task accuracy at fixed context length — under-characterizes long-context capability. A task evaluation that sweeps ensemble composition and locates $\rho^*$ would distinguish substrates by their coherence-threshold position rather than by their accuracy at one design point. Substrates that achieve the same accuracy at the same context length may have very different threshold positions and therefore very different coherence-amplification dynamics; the choice between them should depend on the practitioner's threshold-budget rather than on the single-point accuracy measure.
+The framework predicts that current evaluation methodology — which typically measures task accuracy at fixed context length — under-characterizes long-context capability. A task evaluation that sweeps ensemble composition and locates \(\rho^*\) would distinguish substrates by their coherence-threshold position rather than by their accuracy at one design point. Substrates that achieve the same accuracy at the same context length may have very different threshold positions and therefore very different coherence-amplification dynamics; the choice between them should depend on the practitioner's threshold-budget rather than on the single-point accuracy measure.
 
 ### 7.4 Limitations
 
 The framework's predictive content depends on the substrate's training producing channel structures that admit independent-channel decomposition. If the substrate's effective channel structure is dominated by inseparable substrate-mediated correlations (no useful parallel-channel decomposition exists), the framework's principles do not apply. The empirical question is whether the long-context-LM substrate falls within the regime where the parallel-channel decomposition is operationally useful; the predictions of §6 are designed to test this directly.
 
-The framework does not predict the value of $\rho^*$ from first principles. Locating $\rho^*$ requires the sweeps of P1; the framework predicts only that $\rho^*$ exists and is universal within classes. A complete theoretical account would compute $\rho^*$ from substrate parameters; this is left for future work.
+The framework does not predict the value of \(\rho^*\) from first principles. Locating \(\rho^*\) requires the sweeps of P1; the framework predicts only that \(\rho^*\) exists and is universal within classes. A complete theoretical account would compute \(\rho^*\) from substrate parameters; this is left for future work.
 
 The framework does not address the metaphysics of measurement in either the LM or the quantum case. The duality is structural: it asserts identity of mathematical machinery across two domains, not identity of underlying ontology. Readers interested in the metaphysical interpretation are referred to the standard quantum-foundations literature (Wallace, 2012; Healey, 2017; Maudlin, 2019); the framework is silent on this question and consistent with multiple metaphysical readings.
 
