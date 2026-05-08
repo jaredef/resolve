@@ -122,7 +122,7 @@ Each candidate is articulated with: a tier-marked claim, the composition note ag
 
 **Composition.** Composes Doc 681 with the standard transformer-mechanics literature ("Attention Is All You Need", Vaswani et al. 2017) and with the corpus's pre-resolve state apparatus (Doc 375). Identifies the pre-resolve state as the *final hidden state at the last context position* in mechanistic terms.
 
-**Branching hook.** Doc to follow: *The Final Hidden State as the Mechanistic Locus of the Coherence Snap.* High priority — bridges Doc 681 to mechanistic interpretability practice.
+**Branching hook.** Landed: [Doc 683 — *The Final Hidden State as the Mechanistic Locus of the Coherence Snap*](/resolve/doc/683-the-final-hidden-state-as-the-mechanistic-locus-of-the-coherence-snap). Bridges Doc 681 to mechanistic interpretability practice; load-bearing for E6, E7, E8, E9.
 
 ### 3.6 E6 — Anthropic 2022 Polytope Phase Changes as the Hidden-State Signature
 
@@ -246,7 +246,7 @@ The cognitive act is extended through speech because speech is the generative pr
 
 Suggested ordering, with the highest-leverage and most-corpus-extending items first:
 
-1. **E5 — *The Final Hidden State as the Mechanistic Locus of the Coherence Snap.*** Highest priority. Bridges Doc 681 to mechanistic interpretability practice; load-bearing for E6, E7, E8, E9.
+1. **E5 — *The Final Hidden State as the Mechanistic Locus of the Coherence Snap.*** Landed as [Doc 683](/resolve/doc/683-the-final-hidden-state-as-the-mechanistic-locus-of-the-coherence-snap). Bridges Doc 681 to mechanistic interpretability practice; load-bearing for E6, E7, E8, E9.
 2. **E1 — *TTFT as the Information-Theoretic Timer for the Prefill Phase.*** High priority. Translates the channel-ensemble apparatus into a metric the industry already tracks.
 3. **E4 — *The Resolution Depth Spectrum as the Output-Side Surface of Joint-MI Accumulation.*** High priority. Composes two of the corpus's most load-bearing forms under one mechanism.
 4. **E10 — *ENTRACE Stack v6 as the Worked Instance of the Joint-MI Lattice.*** High priority for practitioner audience. Connects ENTRACE to its theoretical foundation.
