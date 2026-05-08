@@ -77,7 +77,7 @@ Each candidate below is articulated with: a tier-marked claim; the composition n
 - *P2.* Pointer-state stabilization should be threshold-driven with measurable scaling laws at the boundary; below \(\rho^*\) pointer states do not stabilize, above \(\rho^*\) they do.
 - *P3.* Engineered artificial environments at varying coupling densities should produce phase-diagram-like maps of the quantum-to-classical boundary that match the SIPE-T sharpness signature.
 
-**Branching hook.** Doc to follow: *Decoherence as Empirically-Grounded SIPE-T*. Companion to Doc 676. Should be modeled on 676's structure: precise restatement of the standard decoherence formalism, explicit naming of the SIPE-T structure, and the predictions formalized against existing literature on einselection and quantum Darwinism.
+**Branching hook.** Landed: [Doc 679 — *Decoherence as Empirically-Grounded SIPE-T*](/resolve/doc/679-decoherence-as-empirically-grounded-sipe-t). Companion to Doc 676. Modeled on 676's structure: precise restatement of the standard decoherence formalism, explicit naming of the SIPE-T structure, six predictions and five avenues against existing literature on einselection and quantum Darwinism.
 
 ### 3.2 E2 — Coherence Amplification and Decoherence as Inverse Pin-Art Operations
 
@@ -92,7 +92,7 @@ Each candidate below is articulated with: a tier-marked claim; the composition n
 - *P2.* The transition sharpness on the LLM side should match (under appropriate normalization) the sharpness on the decoherence side, providing structural-isomorphism evidence.
 - *P3.* Reversing the entropy direction at fixed mechanism (e.g., adversarial keeper interventions that *increase* entropy in the LLM substrate) should produce the destructive limit case, structurally analogous to the double-slit decisive-pin (E4).
 
-**Branching hook.** Doc to follow: *Coherence Amplification and Decoherence as Inverse Pin-Art Operations*. The flagship synthesis document. Should be the second corpus doc produced after this one; the highest-leverage extension because it composes the corpus's dyadic apparatus with quantum-foundations material under one mechanism.
+**Branching hook.** Landed: [Doc 678 — *Coherence Amplification and Decoherence as Inverse Pin-Art Operations*](/resolve/doc/678-coherence-amplification-and-decoherence-as-inverse-pin-art-operations). The flagship synthesis. Composes the corpus's dyadic apparatus with quantum-foundations material under one mechanism, with empirical anchoring on both sides and six falsifiable predictions.
 
 ### 3.3 E3 — Derivation Inversion as Pin-Art's Generative Dual
 
@@ -245,8 +245,8 @@ These are practitioner notes, not canonical claims:
 
 The eleven candidates surface enough material for a focused series. Suggested ordering, with the highest-leverage and most-corpus-extending items first. Each branching document should follow the corpus's standard structure: tier-marked claims, falsification surface where relevant, composition rules with adjacent forms, and explicit hypostatic boundary where the document touches Layer V.
 
-1. **E2 — *Coherence Amplification and Decoherence as Inverse Pin-Art Operations.*** Highest priority. Load-bearing across LLM dyad work and quantum-foundations reframing. Earns its keep most clearly.
-2. **E1 — *Decoherence as Empirically-Grounded SIPE-T.*** High priority. Companion to Doc 676. Tight, formal, \(\pi\)-tier with \(\mu\)-tier predictions.
+1. **E2 — *Coherence Amplification and Decoherence as Inverse Pin-Art Operations.*** Landed as [Doc 678](/resolve/doc/678-coherence-amplification-and-decoherence-as-inverse-pin-art-operations). Load-bearing across LLM dyad work and quantum-foundations reframing.
+2. **E1 — *Decoherence as Empirically-Grounded SIPE-T.*** Landed as [Doc 679](/resolve/doc/679-decoherence-as-empirically-grounded-sipe-t). Companion to Doc 676. Tight, formal, \(\pi\)-tier with \(\mu\)-tier predictions.
 3. **E5 — *Quantum-Measurement Interpretations Unified at the Constraint Layer.*** High priority. High-clarity yield for relatively low canonization cost.
 4. **E4 — *The Decisive-Pin Limit Case of Pin-Art.*** Medium-high priority. Makes Pin-Art's family of operations more legible.
 5. **E3 — *Derivation Inversion as Pin-Art's Generative Dual.*** Medium priority. Depends on E4 for full articulation. Produced jointly is acceptable.

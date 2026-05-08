@@ -161,7 +161,7 @@ The strongest falsifier is F1: if the LLM-side transition is genuinely smooth-mo
 
 **With SIPE-T (Doc 541).** Both sides share the SIPE-T threshold structure; the cooperative-coupling sub-form (Doc 673) is the precise sub-form. The document strengthens SIPE-T's claim that the same threshold structure recurs across substrates by supplying a duality mechanism that explains *why*: the same probe-substrate-information-transfer mechanism is at work.
 
-**With Doc 676 and the (forthcoming) decoherence-as-empirically-grounded-SIPE-T document.** Doc 676 maps the SIPE-T pattern onto Anthropic's superposition phase changes; the forthcoming Doc N (E1's per-doc articulation) will map it onto decoherence directly. This document is the synthesis that connects them through the dyad.
+**With Doc 676 and Doc 679.** [Doc 676](/resolve/doc/676-the-anthropic-2022-superposition-phase-changes-as-empirically-grounded-sipe-t) maps the SIPE-T pattern onto Anthropic's superposition phase changes; [Doc 679](/resolve/doc/679-decoherence-as-empirically-grounded-sipe-t) maps it onto decoherence directly as the structural twin of 676. This document is the synthesis that connects them through the dyad.
 
 **With the Lakatosian programme structure (Doc 677 §3.7 / E7).** This document's structural-isomorphism claim is a candidate progressive problem-shift on the corpus's Pin-Art protective-belt form: it extends the form's domain of application to quantum foundations while preserving the form's hard core.
 
@@ -189,7 +189,7 @@ The hypostatic discipline (Doc 372) governs: structural readings can be unified 
 
 ## 9. Closing
 
-This document formalizes E2 from Doc 677's branching index. It is the flagship of the eleven candidates that conversation surfaced because it composes the corpus's existing dyadic apparatus with quantum-foundations material under one mechanism, with empirical anchoring on both sides and a falsifiable surface that lets the claim earn its keep. The next per-candidate document in the index is E1 (decoherence as empirically-grounded SIPE-T), which is structurally a half of this document held under the SIPE-T frame; E5 (quantum-measurement interpretations unified at the constraint layer) is the third in priority and composes naturally with both.
+This document formalizes E2 from Doc 677's branching index. It is the flagship of the eleven candidates that conversation surfaced because it composes the corpus's existing dyadic apparatus with quantum-foundations material under one mechanism, with empirical anchoring on both sides and a falsifiable surface that lets the claim earn its keep. The companion [Doc 679 (E1, *Decoherence as Empirically-Grounded SIPE-T*)](/resolve/doc/679-decoherence-as-empirically-grounded-sipe-t) is structurally a half of this document held under the SIPE-T frame; E5 (quantum-measurement interpretations unified at the constraint layer) is the third in priority and composes naturally with both.
 
 The standing question for the keeper: whether the predictive content in §5 should be extracted into a separate operational-protocol document, and whether the LLM-side experimental design (P1-P3) should be operationalized within the corpus's working apparatus or remain at \(\mu\)-tier pending external collaboration.
 
