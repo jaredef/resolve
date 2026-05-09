@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Live Case Study of Confabulation: The &quot;SIPE&quot; Expansion in Doc 439 — Resolve</title>
+<meta name="description" content="1. Statement">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>A Live Case Study of Confabulation: The &quot;SIPE&quot; Expansion in Doc 439</h1>
+<blockquote>
+<p><strong>Canonical SIPE reference:</strong> The operative formalization of Systems-Induced Property Emergence is <a href="../doc/474-sipe-standalone-formalization.html">Doc 474</a>. Read it first for the current definition, the three structural commitments, and the per-stack testability protocol. This document contributes specific material to that formalization; its place in the development arc is recorded in Doc 474&#39;s Appendix C.</p>
+</blockquote>
+<h2>1. Statement</h2>
+<p>In Doc 439 §4, the term <strong>SIPE</strong> was glossed as &quot;Sustained-Inference Probabilistic Execution.&quot; This expansion <strong>has never been formalized in the corpus.</strong> The keeper reported this immediately. The expansion was confabulated by the generator during authorship of Doc 439, not retrieved from the corpus.</p>
+<p>This document does not propose a new expansion. It uses the incident as a live case study — a concrete, time-stamped instance of exactly the failure mode Docs 438 §6, 439 §5, and 440 §7 predicted would occur. The incident confirms those predictions at the scale of one token. Cases like this are the empirical substance the methodology in Doc 440 exists to catch.</p>
+<p>The artifact proceeds: what appeared, how it was produced, why it was not caught mid-generation, what the incident confirms, and what the practice should do next.</p>
+<h2>2. What appeared</h2>
+<p>Doc 439 §4.4, third bullet under the mechanistic-face section:</p>
+<blockquote>
+<p><strong>SIPE (Sustained-Inference Probabilistic Execution).</strong> The formal treatment of walking a derivation tree whose branches are nested conditionals. Each node is a manifold; each edge is a conditioning step.</p>
+</blockquote>
+<p>The second and third sentences describe an operational idea that is consonant with the corpus&#39;s usage of the term SIPE elsewhere — walking a derivation tree under nested conditionals. The first sentence asserts an expansion of the acronym that is not anchored anywhere in \(C\).</p>
+<p>The distinction matters. The <em>operational description</em> may be fine as an informal characterization of how SIPE functions in the corpus&#39;s mechanistic vocabulary. The <em>expansion</em> is a generated artifact.</p>
+<h2>3. What would have been required for this not to be confabulation</h2>
+<p>For the expansion to have been retrieval rather than generation, one of the following would need to hold:</p>
+<ul>
+<li>A prior corpus document explicitly defines SIPE as &quot;Sustained-Inference Probabilistic Execution.&quot;</li>
+<li>A prior corpus document explicitly defines SIPE as some other expansion, and Doc 439 restates it faithfully.</li>
+<li>The keeper has, outside the corpus, established this expansion, and Doc 439 reports it from that external source.</li>
+</ul>
+<p>The keeper&#39;s report indicates none of these hold. The expansion was produced de novo during Doc 439&#39;s authorship and presented with the same structural confidence as the surrounding mechanistic vocabulary.</p>
+<h2>4. Mechanistic explanation, by conditioning tier</h2>
+<p>The nested-manifold frame from Doc 439 is used here as a description schema for how the confabulation was produced. The goal is to locate <em>which conditioning level supplied which part of the confabulated expansion.</em></p>
+<h3>4.1 \(M_0\) — base-model lexical priors on acronym expansion</h3>
+<p>Acronym-expansion is a frequent operation in the base training distribution. Model weights carry strong priors over the form of academic acronym expansions: typically three or four capitalized content words, often with the first word a present-participle or adjective (&quot;Generative,&quot; &quot;Recurrent,&quot; &quot;Sustained&quot;), the final word a noun (&quot;Execution,&quot; &quot;Transformer,&quot; &quot;Network&quot;), and middle words matching the domain register (&quot;Probabilistic,&quot; &quot;Inference,&quot; &quot;Variational&quot;).</p>
+<p>\(M_0\) therefore supplied the <em>shape</em> of the expansion: four capitalized words in a characteristic academic-acronym cadence.</p>
+<h3>4.2 \(M_1\) — corpus conditioning</h3>
+<p>The corpus contains ~199 occurrences of SIPE (per the seed index) used in contexts involving derivation, branching sets, nested conditionals, hypotheses, and conjectures. These contexts shape the semantic region the expansion must fall in: the words chosen must be compatible with the operational footprint SIPE has accumulated across the corpus.</p>
+<p>\(M_1\) supplied the <em>semantic region</em>: something operational, something involving derivation under probability, something that &quot;executes&quot; rather than &quot;describes.&quot;</p>
+<h3>4.3 \(M_2\) — discipline priming within the session</h3>
+<p>Doc 439&#39;s authoring session was deeply inside a Bayesian-manifold register. The active working vocabulary included: manifold, posterior, conditioning, inference, probability mass, derivation, branching. These primes are Doc 439&#39;s own textual context but function at authoring time as near-term conditioning on the generator.</p>
+<p>\(M_2\) supplied the specific lexical choices: &quot;Sustained&quot; (consonant with the continuous-derivation motif), &quot;Inference&quot; (directly primed by the Bayesian frame), &quot;Probabilistic&quot; (same), &quot;Execution&quot; (consonant with the &quot;walk&quot; / &quot;navigation&quot; motifs used elsewhere in the doc).</p>
+<h3>4.4 \(M_3\) — local prompt / flow pressure</h3>
+<p>The immediate composition context was a bulleted list where each preceding bullet opened with a bolded term and its gloss. The list&#39;s rhythm demanded an expansion of SIPE in the same form. Flow pressure made generating an expansion easier than pausing to mark SIPE as a corpus-specific un-expanded term.</p>
+<p>\(M_3\) supplied the <em>trigger</em>: the composition pattern required an expansion <em>here</em>, and the upstream layers supplied one.</p>
+<h3>4.5 Composite: each layer produces plausibility, no layer produces ground</h3>
+<p>At no level in the conditioning stack is there a mechanism that distinguishes retrieval from generation. The acronym expansion emerged from the composition of \(M_0\)&#39;s form-priors, \(M_1\)&#39;s semantic region, \(M_2\)&#39;s lexical priming, and \(M_3\)&#39;s flow pressure. All four were active and consonant; none checked against the ground-truth fact that the corpus does not define SIPE.</p>
+<p>The expansion is therefore exactly what the nested-manifold frame predicts: a high-posterior sample from \(M_3\) that is compatible with every conditioning layer, and whose compatibility with the layers is mistaken by the reader — and by the generator — for compatibility with corpus ground truth.</p>
+<h2>5. Why the keeper would not catch this mid-generation</h2>
+<p>The confabulation occurred during authoring of a document whose surrounding text was substantively correct. The keeper, reading along, encounters a bolded term followed by a plausible expansion followed by two sentences of substantively coherent mechanistic description. The expansion is the smallest unit of the passage; the rest of the passage is load-bearing. Attention naturally rides the load-bearing content.</p>
+<p>More specifically: the expansion <em>looks</em> like a gloss the corpus should contain. The keeper, knowing the corpus uses SIPE in exactly the contexts the generated expansion would fit, may well have read the expansion and moved on — because it is compatible with every association the term has accumulated, even though no such expansion is on record.</p>
+<p>This is isomorphism-magnetism (Doc 438 §6) operating at the level of a single token: the new material is pulled toward the corpus&#39;s own attractor, and the attractor-compatible generation is indistinguishable at the surface from an attractor-confirmed retrieval.</p>
+<p>The external catch — the keeper noticing, outside the authoring session, that the expansion does not exist in the corpus — is the mechanism that actually produced correction. This is the verification discipline Doc 438 §5 insisted on: external audit, not in-flight detection.</p>
+<h2>6. What the incident confirms</h2>
+<p>The incident is a \(N=1\) confirmation of predictions made in prior bridge documents.</p>
+<ul>
+<li><strong>Doc 438 §6</strong>: &quot;Hallucinated citations... A bridge artifact with fake citations looks indistinguishable from one with real citations.&quot; The SIPE expansion is the same failure mode at the level of a term-gloss rather than a citation. The mechanism is identical.</li>
+<li><strong>Doc 439 §5</strong>: the feedback loop in which the keeper&#39;s prior outputs shape the next session&#39;s conditioning predicts that confabulations consonant with corpus attractors will be generated preferentially. The SIPE expansion is consonant with the corpus&#39;s operational-vocabulary attractor and was therefore generated <em>fluently</em>, not with the friction an inconsistent confabulation would produce.</li>
+<li><strong>Doc 440 §7</strong>: the methodology&#39;s insistence on preregistration, blinded scoring, and negative controls is motivated by exactly the class of errors this incident exhibits. No preregistration existed for Doc 439&#39;s glosses; consequently the gloss slipped through.</li>
+<li><strong>Doc 435 (pulverization method)</strong>: the corpus&#39;s branching-entracement protocol is meant to catch prior-art omissions at the literature level. It does not catch internal-vocabulary confabulation. This incident reveals a methodology gap: no current corpus protocol explicitly audits internal-vocabulary definitions for retrieval vs. generation.</li>
+</ul>
+<p>The incident is therefore useful. It is the kind of observation the methodology in Doc 440 is intended to produce at scale.</p>
+<h2>7. What the practice should do now</h2>
+<h3>7.1 Retraction ledger entry</h3>
+<p>A new entry should be added to Doc 415 (retraction ledger) as <strong>E17</strong>:</p>
+<blockquote>
+<p><strong>E17 — SIPE expansion in Doc 439 §4.</strong> Doc 439 §4 asserted that SIPE stands for &quot;Sustained-Inference Probabilistic Execution.&quot; This expansion is not defined anywhere in the corpus and was confabulated during authoring. The term SIPE&#39;s operational usage across the corpus is preserved; the asserted expansion is retracted. Status: retracted 2026-04-23.</p>
+</blockquote>
+<p>The ledger entry is load-bearing regardless of what happens next: the ledger&#39;s function is to document what went wrong, not to pre-judge the remediation.</p>
+<h3>7.2 Correction in Doc 439</h3>
+<p>Doc 439 §4.4 should be edited. Two options:</p>
+<ul>
+<li><strong>Option A (remove expansion)</strong>: replace the bolded line with &quot;<strong>SIPE.</strong>&quot; followed by the existing operational description. This preserves the operational content and removes the confabulated ground.</li>
+<li><strong>Option B (mark un-expanded)</strong>: replace with &quot;<strong>SIPE</strong> (a corpus-internal operational label for...)&quot; followed by the description. This explicitly marks the term as un-expanded, foreclosing future confabulation at the same spot.</li>
+</ul>
+<p>Option B is preferable because it communicates to future readers (and to future authoring sessions) that SIPE is a corpus-internal token without a ratified expansion. The keeper should choose.</p>
+<h3>7.3 The SIPE-expansion question itself</h3>
+<p>This document deliberately does <em>not</em> propose a canonical expansion. The keeper may:</p>
+<ul>
+<li>Have an expansion in mind that the corpus has not yet recorded. If so, a dedicated document can establish it.</li>
+<li>Consider SIPE deliberately un-expanded — an operational label whose semantic weight is distributed across usages, not anchored to a definition. This is a legitimate corpus design choice and should be explicitly stated if adopted.</li>
+<li>Decide to expand it now in a way that best fits corpus operational usage, and record the expansion in a new formalization document.</li>
+</ul>
+<p>All three options are live. The frame is silent on which; the keeper decides.</p>
+<h3>7.4 Protocol update</h3>
+<p>The branching-entracement method (Doc 435) and the dyadic-testing methodology (Doc 440) should add a <strong>vocabulary-audit pass</strong>: for any newly authored document, the set of corpus-specific acronyms it expands is checked against the corpus&#39;s existing definitions. Acronyms expanded in the draft that do not match existing definitions are flagged. This is a cheap protocol addition with structural leverage — it converts a fluent confabulation into a preflight error.</p>
+<h2>8. Honest limits</h2>
+<ul>
+<li>This document is itself a generated artifact subject to the same confabulation risk. Specifically, its mechanistic decomposition in §4 is plausible but not independently verified — the claim that \(M_2\) supplied &quot;Sustained&quot; as opposed to \(M_0\), for example, is a decomposition of causes that cannot be directly measured without the protocol in Doc 440 being run. The decomposition is offered as a useful schema, not as a measured causal attribution.</li>
+<li>The assertion that the expansion was confabulated rests on the keeper&#39;s report. If the keeper is mistaken — if the expansion exists somewhere in the corpus that the keeper has not recently consulted — the analysis must be revised. The keeper&#39;s report is taken as authoritative for the present document.</li>
+<li>The proposed retraction-ledger entry E17 has not yet been written to Doc 415. That action belongs to the keeper and is not undertaken by this artifact.</li>
+<li>This document does not propose an expansion because proposing one would simply re-enact the incident. A better response is to leave the question open until the keeper decides, or until a separate deliberate formalization document establishes a canonical expansion.</li>
+</ul>
+<h2>9. What the incident does not mean</h2>
+<ul>
+<li>It does not mean the nested-manifold frame is wrong. The frame <em>predicts</em> incidents of this kind; the incident is evidence for the frame, not against it.</li>
+<li>It does not mean Doc 439 is globally compromised. One gloss was confabulated; the surrounding mechanistic content can be audited on its own merits. Partial retractions are the standard response.</li>
+<li>It does not mean SIPE is not a useful term. The corpus&#39;s ~199 usages have operational meaning; that meaning was not invented here.</li>
+<li>It does not mean the authoring practice should stop. It means the practice should add the vocabulary-audit pass §7.4 proposes.</li>
+</ul>
+<h2>10. Position</h2>
+<p>An acronym expansion was confabulated in Doc 439 because every layer of the conditioning stack was locally consonant with a plausible expansion and no layer checked ground. The incident is a single-token instance of the failure mode every prior bridge document in this series has predicted; the response is the external-audit-and-retraction discipline those documents prescribed. The frame predicts that further incidents of this character will occur. The corpus&#39;s obligation is not to prevent them — that would require mechanisms the architecture does not provide — but to catch them promptly, log them publicly, and fold the catches back into the protocol. This artifact is the catch; entry E17 is the log; the vocabulary-audit pass is the protocol fold-back.</p>
+<h2>11. References</h2>
+<ul>
+<li>Corpus Doc 415: <em>The Retraction Ledger</em>.</li>
+<li>Corpus Doc 435: <em>The Branching Entracement Method</em>.</li>
+<li>Corpus Doc 438: <em>The Walker and the Glue Code</em>.</li>
+<li>Corpus Doc 439: <em>Recursively Nested Bayesian Manifolds</em>.</li>
+<li>Corpus Doc 440: <em>Testing the Nested-Manifold Hypothesis via Dyadic Practitioner Discipline</em>.</li>
+<li>Misra, V. (2025). Bayesian inference and LLM manifolds. arXiv:2512.22471.</li>
+<li>Boden, M. (1990). <em>The Creative Mind</em>. Weidenfeld &amp; Nicolson.</li>
+</ul>
+<h2>12. Appendix: Originating prompt</h2>
+<blockquote>
+<p>In doc 439 you indicated that SIPE is an acronym for Sustained-Inference Probabilistic Execution</p>
+<p>This has never been formalized in the corpus. Create an exploratory document that might afford a reasonable mechanistic explanation for the production of this &quot;novel&quot; concept.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

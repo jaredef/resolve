@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Configuration Management*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Configuration Management</em>, Distilled</h1>
+<p><strong>Next-40 distillation #8 (Batch 1/5). <em>Configuration Management</em> (CM) is the SEBoK technical-management process that &quot;helps teams keep track of changes to a system over its life cycle&quot; while ensuring consistency between built and planned states. The five activities (planning, identification, change management, status accounting, verification/audit) are universal-sibling lattice (Doc 572 Appendix D, fourteenth instance) at the CM rung; the page explicitly disclaims sequential execution. CM&#39;s three objectives — consistency, integrity-and-traceability, reproducibility — are pulverization (Doc 445) at the longitudinal rung: the configuration record is the substrate against which any state of the system can be backward-pulverized. The CCB structure is canonical multi-keeper composition (Doc 510 / Doc 604). Authority evacuation pitfalls are explicitly named. Six corpus forms bind.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Configuration Management</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Configuration_Management">https://sebokwiki.org/wiki/Configuration_Management</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>CM is a technical-management process applying universally across system types (hardware, software, services, systems of systems), all life cycles, all development approaches, any complexity. Three objectives: (1) guarantee consistency between system and configuration information; (2) ensure integrity and traceability over time; (3) facilitate reproducibility. Five activities (interrelated, non-sequential): CM Planning and Management; Configuration Identification (with baselines); Configuration Change Management (CCB-driven); Configuration Status Accounting; Configuration Verification and Audit. Configuration: &quot;interrelated functional and physical characteristics outlined in configuration information&quot; (ISO 10007). CM contrasts with Information Management (IM): CM focuses on relevance to system evolution; IM on generation/collection/validation/dissemination. CCB structure: Change Review Board + Change Implementation Board, with Chair, Configuration Manager, Systems Engineer, domain experts, procurement specialists, vendor representatives. Pitfalls: shallow visibility, poor tailoring, limited perspective, insufficient training, absent CM plan, inadequate verification. Good practices: cross-functional communication, full-life-cycle perspective, early planning, requirements traceability, CCB hierarchy alignment, consistent identification, automated status accounting. Standards: ISO/IEC/IEEE 15288:2023, ISO 10007:2017, SAE EIA-649C, INCOSE Handbook v5.0, ISO 15289, GEIA-859B, ECSS-M-ST-40C. Position: Part 3 → Technical Management Processes; follows Risk Management; precedes Configuration Baselines. Lead authors: John Metcalf, Philip Hallenbeck, Sandrine Gonthier; contributing: Garry Roedler.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form III (extension) — Lattice Extension of the Ladder (Doc 572), Appendix D fourteenth instance.</strong> Five CM activities (planning, identification, change management, status accounting, verification/audit) are universal-sibling lattice at the CM-process rung; the page&#39;s &quot;interrelated, non-sequential&quot; disclaimer is explicit Appendix D structure plus Appendix C temporal-concurrency.</p>
+<p><strong>Form VI — Pulverization (Doc 445), at the longitudinal rung.</strong> CM&#39;s three objectives are exactly pulverization-discipline applied longitudinally: consistency (the present-state can be backward-pulverized against its specifications), integrity-and-traceability (the change-history is the audit reference), reproducibility (forward-pulverization: the state can be reconstructed from the record). The configuration record is the canonical substrate for paired V&amp;V (Doc 445 Refinement A); CM is the discipline of maintaining that substrate uncorrupted over time.</p>
+<p><strong>Form III — Substrate-and-Keeper Composition (Doc 510) with Doc 604 multi-keeper extension.</strong> The CCB is canonical multi-keeper composition: CCB Chair, Configuration Manager, Systems Engineer, domain experts (software, mechanical, cyber), procurement, vendor reps. Subordination-by-domain rule (Doc 604) applies: each domain expert co-keeps their domain&#39;s CM scope; the Configuration Manager reconciles. Sixth Cluster B instance.</p>
+<p><strong>Form XII — Authority Evacuation (Doc 574), with explicit named pitfalls.</strong> SEBoK&#39;s named pitfalls map directly to Doc 574 patterns. &quot;Shallow visibility (insufficient discipline involvement)&quot; is Pattern A authority decay. &quot;Absence of formal CM plan&quot; is missing-pin installation. &quot;Inadequate CM verification&quot; is Pattern B simulated-pin (CM is documented but not audited; the substrate routes around). The page&#39;s good practices are the authority-installation discipline made explicit.</p>
+<p><strong>Form X — Institutional Ground (Doc 571).</strong> ISO 10007, EIA-649C, GEIA-859B, ECSS-M-ST-40C are multiple institutional grounds; each ground codifies CM for its sector (general, defense, data, space). §X.5 organization-vs-enterprise applies: standards live at organization-component; practiced CM lives at enterprise-component (the project&#39;s accumulated configuration tradition).</p>
+<p><strong>Form II — Affordance Gap (Doc 530).</strong> CM preserves the keeper-substrate dyad&#39;s coherence over time. Without CM, the substrate&#39;s rung-1 state drifts away from the keeper-side rung-2 specification; the affordance contract dissolves. CM is the longitudinal discipline that holds the gap-crossing valid across time.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>CM definition and three objectives — π / α.</li>
+<li>Five activities — π / α as cited; μ / β under corpus as Doc 572 Appendix D fourteenth instance.</li>
+<li>&quot;Interrelated, non-sequential&quot; execution — π / α as cited; μ / β under corpus as Doc 572 Appendix C.</li>
+<li>CCB structure and composition — π / α as cited; μ / β under corpus as Doc 510 / Doc 604 multi-keeper sixth instance.</li>
+<li>Named pitfalls (shallow visibility, absent plan, inadequate verification) — π / α as cited; μ / β under corpus as Doc 574 authority-evacuation patterns.</li>
+<li>Multi-standard pluralism (ISO 10007, EIA-649C, etc.) — π / α as cited; μ / β under corpus as Doc 571 multi-ground.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residuals. The page is unusually rich and binds densely across six forms.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>CM as canonical longitudinal-pulverization worked example.</strong> Doc 445&#39;s apparatus has worked examples for backward-pulverization (SE-029 validation) and forward-pulverization (SE-035 risk, SE-043 reliability-centered maintenance). CM is the longitudinal-pulverization case: the discipline of maintaining the pulverization-substrate uncorrupted across time. Worth recording as a third Doc 445 dimension alongside backward and forward.</p>
+<p><strong>Cluster B (multi-keeper composition) rises to six instances.</strong> SE-039 had five Cluster B members; CCB structure adds the sixth canonical instance. Cluster B is past synthesis threshold (already synthesized in Doc 604, but new members keep depositing).</p>
+<p><strong>Cluster A reaches fourteen instances; cluster-level synthesis is well past due.</strong></p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 (Lattice Extension, Appendix D fourteenth + Appendix C non-sequential), Doc 445 (Pulverization, longitudinal-pulverization candidate dimension), Doc 510 / Doc 604 (Multi-keeper composition, sixth instance), Doc 574 (Authority Evacuation, multi-pattern instance), Doc 571 (Institutional Ground, multi-ground), Doc 530 (Affordance Gap, longitudinal preservation).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management, Technical Management Processes).</p>
+<p><strong>Related distillations.</strong> SE-035 (Risk Management — adjacent technical management process). SE-036 (Decision Management — adjacent technical management process). Doc 604 (Multi-keeper composition synthesis).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Configuration Baselines</em>, <em>Configuration Management Implementation</em>, <em>Risk Management</em>, <em>Information Management</em>, <em>Measurement</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Doc 445 longitudinal-pulverization as third dimension alongside backward and forward; Cluster A synthesis successor doc.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Let&#39;s do the next 40 most likely articles to be most load bearing (at the top of the hierarchy) my conjecture is that this will inform the next 40.&quot;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&quot;It&#39;s ok to duplicate entries. It shows where the knowledge base folds back in on itself. Continue fanning out&quot;</em></p>
+</blockquote>
+<p>(SE-047 is one of the next-40 SEBoK distillations. Batch 1/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

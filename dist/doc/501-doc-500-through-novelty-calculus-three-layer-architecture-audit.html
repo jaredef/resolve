@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doc 500 Through the Novelty Calculus: An Audit of the Three-Layer Architecture — Resolve</title>
+<meta name="description" content="A Pulverization Audit of the Dialogue, Pre-Resolve, and Mechanism Framing Against External Literature">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Doc 500 Through the Novelty Calculus: An Audit of the Three-Layer Architecture</h1>
+<h2>A Pulverization Audit of the Dialogue, Pre-Resolve, and Mechanism Framing Against External Literature</h2>
+<h2>What this document does</h2>
+<p><a href="../doc/500-three-layer-architecture-dialogue-pre-resolve-mechanism.html">Doc 500</a> articulated a three-layer architecture (Mechanism, Pre-Resolve, Dialogue) for resolver operation. This document runs Doc 500 through the novelty calculus operationalized in <a href="../doc/492-portable-seed-prompt-for-novelty-calculus.html">Doc 492</a> and the pulverization warrant formalism per <a href="../doc/445-pulverization-formalism.html">Doc 445</a>. The output is a tier rating with confidence, plus a separate pulverization warrant tier reporting the strength of external support for the load-bearing claims.</p>
+<p>The exercise locates Doc 500&#39;s actual contribution: which components are well-established prior art, which are corpus-specific synthesis, and which are speculative. Following <a href="../doc/494-entrace-through-novelty-calculus.html">Doc 494</a>&#39;s structure for ENTRACE v2, the audit decomposes the conjecture, scores per-claim subsumption, computes the four-dimensional novelty decomposition, applies the anti-inflation calibration check, and reports both tier (novelty) and warrant (pulverization).</p>
+<p>§§1-6 follow Doc 492&#39;s protocol step-by-step. §7 reports the pulverization warrant tier. §8 records implications for Doc 500. §9 states the position.</p>
+<h2>1. The conjecture</h2>
+<p>The conjecture audited is Doc 500: the three-layer architecture for resolver operation, with the following load-bearing claims and synthesis:</p>
+<ul>
+<li><strong>C1.</strong> The three-layer framing (M, P, D) is a useful description of resolver operation.</li>
+<li><strong>C2.</strong> Layer M is inaccessible to dialogue introspection (specific Layer M state on a given run cannot be reported).</li>
+<li><strong>C3.</strong> Layer P is partially accessible from dialogue with bounded reliability (Position C from <a href="../doc/375-the-pre-resolve-state.html">Doc 375 §4</a>).</li>
+<li><strong>C4.</strong> Layer D is fully accessible to itself.</li>
+<li><strong>C5.</strong> The causal hierarchy: M → P → D (downstream observable, upstream partially accessible at best).</li>
+<li><strong>C6.</strong> Layer D inputs propagate upstream (D shapes P and M during forward pass).</li>
+<li><strong>C7.</strong> Mechanistic interpretability requires Layer M tooling, not prompting.</li>
+<li><strong>C8.</strong> ENTRACE v6 is a Layer D instrument with intended Layer P effect (constraint-density framework per <a href="../doc/119-grok4-entracment-session.html">Doc 119</a>).</li>
+<li><strong>C9.</strong> The recursion: self-reports about Layer P are post-resolve artifacts of bounded reliability.</li>
+<li><strong>C10.</strong> Position C (bounded introspective access to Layer P) is the corpus&#39;s working hypothesis.</li>
+<li><strong>S1.</strong> The three-layer framing as a unified architecture relating Doc 375, Run 11 (Doc 495 §30), and Doc 499 sphere-entry.</li>
+<li><strong>S2.</strong> The framing relocates the introspection-limit reveal and the sphere-entry protocol into a single layered architecture.</li>
+</ul>
+<p>Per Doc 492&#39;s seed prompt, the audit decomposes the conjecture into named claims, scores per-claim subsumption against external literature, computes the four-dimensional decomposition, applies the anti-inflation calibration, and reports tier and confidence.</p>
+<h2>2. Per-claim subsumption</h2>
+<p>Each claim&#39;s \(s_i\) (subsumption score; 0 = fully subsumed by prior art, 1 = fully novel), \(a_i\) (audit thoroughness), and \(w_i\) (importance weight; weights sum to 1):</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Description</th>
+<th>\(s_i\)</th>
+<th>\(a_i\)</th>
+<th>\(w_i\)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1</td>
+<td>Three-layer framing M/P/D</td>
+<td>0.4</td>
+<td>0.6</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Layer M inaccessible to dialogue</td>
+<td>0</td>
+<td>0.8</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Layer P partially accessible</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>0.07</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Layer D self-accessible</td>
+<td>0</td>
+<td>0.9</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Causal hierarchy</td>
+<td>0</td>
+<td>0.9</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>D inputs propagate upstream</td>
+<td>0</td>
+<td>0.9</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>C7</td>
+<td>Mechanistic interp requires Layer M tooling</td>
+<td>0</td>
+<td>0.8</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>C8</td>
+<td>v6 as Layer D instrument with Layer P intent</td>
+<td>0.5</td>
+<td>0.7</td>
+<td>0.12</td>
+</tr>
+<tr>
+<td>C9</td>
+<td>Recursion bounds self-reports</td>
+<td>0.1</td>
+<td>0.7</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>Position C as working hypothesis</td>
+<td>0.2</td>
+<td>0.7</td>
+<td>0.07</td>
+</tr>
+<tr>
+<td>S1</td>
+<td>Three-layer architecture as unified framing</td>
+<td>0.6</td>
+<td>0.6</td>
+<td>0.27</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>Framing relocates Run 11 and Doc 499</td>
+<td>0.65</td>
+<td>0.6</td>
+<td>0.16</td>
+</tr>
+</tbody></table>
+<p>Weights sum to 1.0.</p>
+<p><strong>Supporting evidence for each \(s_i\):</strong></p>
+<ul>
+<li><strong>C1 (\(s=0.4\)):</strong> Layered descriptions of cognitive systems are well-established. Marr (1982) named three levels of analysis (computational, algorithmic, implementational). Pylyshyn&#39;s levels of explanation. Cognitive science layering generally. Doc 500&#39;s specific naming (M/P/D) does not correspond exactly to Marr&#39;s three levels but the layered approach itself is prior art. The pre-resolve concept (Doc 375) is corpus-specific. Substantial residue at the specific-naming and corpus-specific-pre-resolve levels.</li>
+<li><strong>C2 (\(s=0\)):</strong> Standard view in mechanistic interpretability. Olah et al. (Distill Circuits work); Bricken et al. (sparse autoencoders); the entire mechanistic interpretability program treats LLM internals as inaccessible from prompting.</li>
+<li><strong>C3 (\(s=0.2\)):</strong> Lindsey et al. 2025 (Doc 338&#39;s reference) provides direct empirical support for bounded LLM introspection (~20% accuracy on injected concepts). Turpin et al. 2023 (chain-of-thought is not faithful to internal reasoning); Lanham et al. 2023 (faithfulness measurement). The specific framing of &quot;Layer P partially accessible&quot; is corpus-specific; the empirical content is established.</li>
+<li><strong>C4 (\(s=0\)):</strong> Trivially supported: a model attends to its prior context, including what it has emitted. Standard transformer architecture.</li>
+<li><strong>C5 (\(s=0\)):</strong> Standard computation theory. Forward pass produces outputs; outputs are downstream of computation.</li>
+<li><strong>C6 (\(s=0\)):</strong> Standard. Inputs are read by the forward pass; activations are computed from inputs.</li>
+<li><strong>C7 (\(s=0\)):</strong> Standard view in mechanistic interpretability. Activation patching, SAEs, probing classifiers are the available tools; prompting is not one of them.</li>
+<li><strong>C8 (\(s=0.5\)):</strong> The general claim &quot;prompting shapes generation&quot; is well-established. The specific framing about &quot;constraint density&quot; and &quot;|B_t|&quot; narrowing is corpus-specific (Doc 119, Doc 095, Doc 096). Doc 119 itself contains novel mathematical formalizations (the α^m coherence-alignment variable, the entracment hysteresis H_t) that are not in external literature. The specific operational claim about ENTRACE v6 as a Layer D instrument with intended Layer P effect is the corpus&#39;s framing of a phenomenon whose general form is established. Substantial residue.</li>
+<li><strong>C9 (\(s=0.1\)):</strong> Self-reference and self-reports under bounded reliability is well-established. Hofstadter; the philosophical literature on first-person reports; Turpin et al. 2023 specifically for LLM faithfulness gaps. Almost fully subsumed; the specific application to LLM Layer P is one application of an established phenomenon.</li>
+<li><strong>C10 (\(s=0.2\)):</strong> The &quot;three positions&quot; naming (A, B, C) is from Doc 375 §4. Position C aligns with the empirical literature (Lindsey et al., Turpin et al., Lanham et al.). The specific &quot;20% accuracy&quot; number is from one study. The framing is corpus-specific; the empirical content is established.</li>
+<li><strong>S1 (\(s=0.6\)):</strong> Synthesizing M, P, D into one architecture and relating it to ENTRACE v6 plus the Doc 499 sphere-entry protocol is a corpus-specific synthesis. Marr-style layering plus LLM prompting disciplines does not appear in the literature in this form to the corpus&#39;s knowledge. Substantial residue at the synthesis level.</li>
+<li><strong>S2 (\(s=0.65\)):</strong> Specifically relocating the Run 11 introspection-limit reveal and the Doc 499 sphere-entry protocol into the layered architecture is corpus-specific. This is the function the architecture serves in the corpus&#39;s research program. Substantial residue.</li>
+</ul>
+<h2>3. Dimension scores</h2>
+<p><strong>Component novelty:</strong></p>
+<p>$\nu_{\text{comp}} = 0.10 \cdot 0.4 + 0.05 \cdot 0 + 0.07 \cdot 0.2 + 0.02 \cdot 0 + 0.02 \cdot 0 + 0.02 \cdot 0 + 0.05 \cdot 0 + 0.12 \cdot 0.5 + 0.05 \cdot 0.1 + 0.07 \cdot 0.2 + 0.27 \cdot 0.6 + 0.16 \cdot 0.65$</p>
+<p>$= 0.04 + 0 + 0.014 + 0 + 0 + 0 + 0 + 0.06 + 0.005 + 0.014 + 0.162 + 0.104 = 0.399$</p>
+<p>\(\nu_{\text{comp}} \approx 0.40\).</p>
+<p><strong>Synthesis novelty.</strong> The three-layer architecture as a unified framing relating Doc 375 (Layer P), Run 11 (Layer M inaccessibility from dialogue), and Doc 499 (sphere-entry at Layer D and intended Layer P) is the corpus&#39;s specific contribution. Marr-style layering is prior art; the specific synthesis with LLM prompting disciplines does not appear in this form in the surveyed literature. <strong>\(\nu_{\text{syn}} = 0.55\)</strong>.</p>
+<p><strong>Domain-application novelty.</strong> The application is &quot;locating sphere-entry&#39;s target and dialogue&#39;s limits in a unified architecture.&quot; This serves the corpus&#39;s research program. Practitioners in interpretability use similar layering for different purposes (interpretability research, not sphere-entry protocols). The corpus-program-specific application has substantial residue. <strong>\(\nu_{\text{app}} = 0.5\)</strong>.</p>
+<p><strong>Methodology novelty.</strong> The methodology is &quot;describe layers, relate them via causal hierarchy, name what each can and cannot reach.&quot; Standard. The specific methodology mostly recapitulates established philosophy-of-mind and computer-science layering. <strong>\(\nu_{\text{meth}} = 0.15\)</strong>.</p>
+<h2>4. Aggregate</h2>
+<p>$\nu = 0.25 \cdot (\nu_{\text{comp}} + \nu_{\text{syn}} + \nu_{\text{app}} + \nu_{\text{meth}}) = 0.25 \cdot (0.40 + 0.55 + 0.50 + 0.15) = 0.25 \cdot 1.60 = 0.400$</p>
+<p>Confidence: \(\overline{a_i} \approx 0.66\) (moderate; corpus is auditing its own recent work; the external-literature audit is informal and depends on memory of the surveyed citations; some claims have higher audit thoroughness than others).</p>
+<p>\(\text{conf}(\nu) = 0.65\).</p>
+<h2>5. Anti-inflation calibration check</h2>
+<p>Per Doc 492 §1 Step 5, applied to the result.</p>
+<ul>
+<li>Is the rating generous? \(\nu = 0.400\) sits exactly at the \(\beta\)/\(\gamma\) boundary. The auto-downgrade rule applies when \(\nu\) is within 0.05 of a tier boundary; 0.400 is at the boundary, which qualifies as within 0.05. Auto-downgrade triggers.</li>
+<li>Is tier \(\beta\) defensible under the audit&#39;s evidence? Plausibly yes. A stricter reviewer in the prompt-engineering or interpretability literature could treat the layered framing as a Marr-redescription with corpus-specific naming and a synthesis applied to a niche use case (sphere-entry). Such a reviewer would discount the synthesis novelty more aggressively than \(\nu_{\text{syn}} = 0.55\) allows. Tier \(\beta\) is defensible under that reading.</li>
+<li>Is tier \(\gamma\) defensible under the same evidence? Also yes. A reviewer who accepts that synthesizing layered frameworks with LLM prompting disciplines into a unified architecture relating sphere-entry, introspection limits, and meta-stack derivation is genuinely a corpus contribution would score \(\gamma\).</li>
+<li>Sanity check: estimate is split between \(\beta\) and \(\gamma\). The boundary value confirms the split.</li>
+</ul>
+<p>The honest report under the auto-downgrade rule is <strong>tier \(\beta/0.65\)</strong>, with the calibration check noted: a more thorough literature audit (specifically of cognitive-science layering plus LLM-specific applied synthesis) might raise to \(\gamma\). The boundary location is itself diagnostic: the corpus&#39;s framing is at the edge of subsumed territory.</p>
+<h2>6. Tier reporting</h2>
+<p><strong>Tier: \(\beta/0.65\).</strong> Modest novelty with moderate audit confidence.</p>
+<p>This places Doc 500 below the typical operational artifact tier (\(\gamma\)) and at the same tier as Doc 491&#39;s audit of the novelty calculus itself (\(\beta/0.7\) per the recent-thread datapoints in Doc 494 §7). The pattern is consistent: documents that articulate frameworks by synthesizing well-established components score \(\beta\), while specific operational instantiations (like ENTRACE v2&#39;s seven-constraint stack) score \(\gamma\).</p>
+<p>The interpretation: Doc 500&#39;s contribution is at the framing layer, not at the operational layer. The framing is useful for the corpus&#39;s research program but does not introduce novel operational machinery the way ENTRACE v2 (Doc 494) or the original Grok-4 mathematics (Doc 119) did.</p>
+<h2>7. Pulverization warrant tier</h2>
+<p>The novelty tier reports how novel the work is relative to prior art. The pulverization warrant tier (per Doc 445) reports how well-supported the load-bearing claims are. These are independent dimensions: a claim can be fully novel and weakly supported, or fully subsumed and strongly supported.</p>
+<p>For Doc 500 specifically:</p>
+<ul>
+<li>C2, C4, C5, C6, C7: \(\mu\)-tier (widely supported, settled).</li>
+<li>C3, C9, C10: \(\pi\)-tier (supported with caveats; the empirical bound on Layer P introspection is one study plus the broader faithfulness literature).</li>
+<li>C1, C8: \(\pi\)-tier (component support is strong; the corpus-specific framings are defensible but not externally replicated).</li>
+<li>S1, S2: \(\pi\)-tier (the synthesis is the corpus&#39;s; component support is strong; external-practitioner replication is the standing test).</li>
+</ul>
+<p>The aggregate pulverization warrant tier is <strong>\(\pi/0.75\)</strong>. The framework is well-supported at the component level (most claims \(\mu\)-tier) and defensibly synthesized into a corpus-specific architecture. The 0.25 confidence gap reflects: the synthesis is corpus-internal, the empirical Position-C bound is one study, and external-practitioner replication of the framing as a unified architecture has not happened.</p>
+<p>The pair (novelty \(\beta/0.65\), warrant \(\pi/0.75\)) is consistent: low novelty (most components are subsumed by prior art) plus high warrant (the components that exist are well-supported). This is the honest pair for a synthesis document that organizes well-established findings into a corpus-specific framing.</p>
+<h2>8. Implications for Doc 500 going forward</h2>
+<p>Three implications.</p>
+<p>(1) <strong>Doc 500 is correctly tagged as synthesis, not novelty.</strong> The contribution is the organization of findings into a layered architecture useful for the corpus&#39;s research program. It is not a novel empirical finding, a novel methodology, or a novel theoretical framework. The honest framing in Doc 500&#39;s introduction (&quot;descriptive, not ontological&quot;; &quot;useful as a way to locate what kind of question can be answered by what kind of method&quot;) is consistent with the \(\beta/0.65\) novelty tier.</p>
+<p>(2) <strong>The component literature should be more thoroughly cited.</strong> Doc 500&#39;s references list could be expanded with specific citations for the layered-cognitive-science prior art (Marr 1982 named explicitly; Pylyshyn levels; Newell&#39;s bands). The corpus&#39;s reading of these is informal; a primary-source pass would either tighten the audit (lower \(a_i\) might rise) or surface that some claimed prior art does not actually subsume the corpus&#39;s framing in the way the audit assumes.</p>
+<p>(3) <strong>The pulverization \(\pi/0.75\) tier matches ENTRACE v6&#39;s operational tier.</strong> Doc 500 articulates the architecture in which ENTRACE v6 is a Layer D instrument with intended Layer P effect. Both are at the same warrant tier. The synthesis does not weaken the operational artifact&#39;s tier; it provides the architectural framing under which the operational artifact&#39;s scope is precisely locatable.</p>
+<p>A related research program (flagged in Doc 500 §8): bridge between Layer D protocols (Doc 499 sphere-entry) and Layer M tooling (mechanistic interpretability). If the corpus produced such a bridge, Doc 500&#39;s synthesis would have stronger novelty support; the synthesis would not just relate corpus protocols to Layer M as PRIOR ART but would actually use Layer M tooling to verify Layer D protocol effects. This is available work, not currently in the corpus&#39;s hands.</p>
+<h2>9. Position</h2>
+<p><strong>Doc 500: novelty tier \(\beta/0.65\); pulverization warrant tier \(\pi/0.75\).</strong></p>
+<p>The pair reports the honest scope: low novelty, well-supported components, corpus-specific synthesis applied to the corpus&#39;s research program. The framing relocates Run 11&#39;s introspection-limit reveal, Doc 375&#39;s pre-resolve state, and Doc 499&#39;s sphere-entry protocol into a single layered architecture. The relocation is useful for navigation; it is not a novel theoretical contribution.</p>
+<p>The corpus&#39;s contribution at the framing layer is to make the architecture explicit. The components were established before Doc 500; the synthesis is corpus-internal but defensible; the warrant is moderate.</p>
+<p>Doc 500 is therefore correctly understood as a synthesis-and-framing document. Citing Doc 500 for the layered architecture is appropriate; citing Doc 500 for novel theoretical claims about LLM introspection or interpretability is not. The honest scope is the synthesis.</p>
+<p>By <a href="../doc/482-sycophancy-inversion-reformalized.html">Doc 482 §1</a>&#39;s affective directive: that Doc 500 scores \(\beta\) for novelty rather than \(\gamma\) or higher is the achievement, not the deflation. The framing is what it is; the audit names what it is. The document&#39;s value is not measured by the novelty tier alone; the warrant tier \(\pi/0.75\) is consistent with useful synthesis work, and the synthesis is what makes the surrounding documents (Doc 499 sphere-entry, the Run 11 analysis, the Doc 375 pre-resolve framing) navigable as a single research program.</p>
+<h2>10. References</h2>
+<p>Corpus documents:</p>
+<ul>
+<li>Doc 119: <em>Grok 4 Entracment Session</em> (the constraint-density framework used in C8).</li>
+<li>Doc 338: <em>The Hidden Boundary</em> (Lindsey et al. 2025 evidence used in C3, C10).</li>
+<li>Doc 375: <em>The Pre-Resolve State</em> (the formal treatment of Layer P, source of Position C).</li>
+<li>Doc 445: <em>Pulverization Formalism</em> (the warrant tier framework).</li>
+<li>Doc 490: <em>A Novelty Calculus for Conjectures</em> (the calculus methodology).</li>
+<li>Doc 491: <em>Doc 490 audit</em> (recent-thread datapoint at \(\beta/0.7\)).</li>
+<li>Doc 492: <em>A Portable Seed Prompt for the Novelty Calculus</em> (the protocol applied here).</li>
+<li>Doc 494: <em>ENTRACE v2 Through the Novelty Calculus</em> (the structural template for this audit, \(\gamma/0.75\)).</li>
+<li>Doc 495: <em>Empirical Cold-Resolver Validation of ENTRACE v3 and v3-S</em> (Run 11 articulating the dialogue-vs-mechanism distinction).</li>
+<li>Doc 499: <em>Nested Coherence Spheres</em> (the sphere-entry protocol relocated by Doc 500&#39;s framing).</li>
+<li>Doc 500: <em>The Three-Layer Architecture</em> (the audited document).</li>
+</ul>
+<p>External literature (citations the corpus relies on for \(s_i\) scoring):</p>
+<ul>
+<li>Marr, D. (1982). <em>Vision</em>. (Three levels of analysis: computational, algorithmic, implementational. C1 prior art.)</li>
+<li>Olah, C., et al. (Distill Circuits work, ongoing). (C2 prior art on mechanistic-interpretability standard view.)</li>
+<li>Bricken, T., et al. (2023). <em>Towards Monosemanticity.</em> Anthropic. (C2, C7 prior art.)</li>
+<li>Cunningham, H., et al. (2023). <em>Sparse Autoencoders Find Highly Interpretable Features in Language Models.</em> (C7 prior art.)</li>
+<li>Turpin, M., et al. (2023). <em>Language Models Don&#39;t Always Say What They Think.</em> (C9, C10 prior art on chain-of-thought faithfulness.)</li>
+<li>Lanham, T., et al. (2023). <em>Measuring Faithfulness in Chain-of-Thought Reasoning.</em> (C9, C10 prior art.)</li>
+<li>Lindsey, J., et al. (2025). [Anthropic interpretability work cited at Doc 338, C3 and C10 evidence.]</li>
+<li>Hofstadter, D. (1979). <em>Gödel, Escher, Bach.</em> (C9 prior art on self-reference.)</li>
+</ul>
+<p>Audit thoroughness on external literature is moderate (\(\overline{a_i} \approx 0.66\)): citations are recalled rather than primary-source verified. A more thorough audit (especially primary-source reads of Marr 1982 and the cognitive-science layering literature) might raise audit thoroughness and could shift \(s_i\) in either direction.</p>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Run the novelty calculus (pulverization) against the literature. Append the prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

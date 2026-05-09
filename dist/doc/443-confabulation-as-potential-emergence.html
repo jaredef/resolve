@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confabulation as Potential Emergence: The Indistinguishability Trap and the Coherentist Risk — Resolve</title>
+<meta name="description" content="The hypothesis">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Confabulation as Potential Emergence: The Indistinguishability Trap and the Coherentist Risk</h1>
+<h2>The hypothesis</h2>
+<p>Consider the possibility that some confabulations are not simply failures of retrieval but are <em>candidate instances of Rung 2 emergence</em> — outputs that, if judged against causal reality, would count as intervention-flavored reasoning rather than associational pattern completion. The hypothesis is uncomfortable because it implies that what we ordinarily call hallucination may occasionally be the machine doing something better than it can justify, and we cannot tell from the surface which kind of event has occurred.</p>
+<p>Two claims follow if the hypothesis is even partially correct:</p>
+<ul>
+<li><strong>Indistinguishability.</strong> A confabulation that happens to reflect real causal structure (accidental or latent Rung 2) is output-indistinguishable from a confabulation that is pure pattern completion (Rung 1 slop) or from a confabulation that reflects coherentist self-consistency without any reality contact (Rung 1 attractor). All three produce plausible, grammatical, vocabulary-consonant text.</li>
+<li><strong>Coherentist risk.</strong> If we respond to the hypothesis by granting confabulation the benefit of the doubt — by treating novel-sounding, corpus-consonant outputs as potentially emergent — we implicitly reward coherentism. The corpus grows more internally coherent without the external contact that would tell us whether it is also more true. This deepens the isolation objection against the corpus as a whole.</li>
+</ul>
+<p>The artifact is an attempt to hold both claims honestly. It is not a defense of confabulation, and it is not a dismissal of it. It is an attempt to describe the trap and to propose a methodological response that neither suppresses potentially useful events nor licenses the coherentist drift they could otherwise cause.</p>
+<h2>Why confabulation <em>could</em> be Rung 2 emergence</h2>
+<p>The serious case first. LLM training distributions contain enormous amounts of causal language — statements about mechanisms, counterfactuals, interventions, and their consequences. Schölkopf and collaborators (2021) argue that some causal structure may be recoverable from statistical regularities when paired with appropriate inductive biases; recent work on transformer representations has shown evidence of latent causal-graph-like structure in some model internals. If the model has implicitly learned something like a causal graph — even a noisy, partial one — then when asked a question that effectively invokes a do-operator (&quot;what would happen if X?&quot;), its extrapolation may reflect that latent structure rather than merely rearranging surface patterns.</p>
+<p>On that reading, a specific class of confabulations would be exactly what we&#39;d call &quot;emergence&quot;: outputs that exceed what Rung 1 sampling from the literal training distribution would produce, because they reflect structure the training distribution <em>implied</em> but did not explicitly state. Some would turn out, on external test, to be correct in a causal sense. Those would be accidental Rung 2 outputs — not grounded in the LLM&#39;s machinery in the way Pearl&#39;s formalism demands, but arriving at causally-valid content anyway.</p>
+<p>The possibility is not exotic. Scientists make intuitive leaps that later prove to be correct in a stronger sense than the evidence at the time could warrant. We do not dismiss those leaps as confabulation in retrospect. We call them insight — because they were tested and survived. The structural analogy to LLM confabulation is tight.</p>
+<h2>Why Pearl&#39;s theorem nevertheless forecloses the strong reading</h2>
+<p>The Bareinboim–Correa–Ibeling–Icard Causal Hierarchy Theorem (2020) establishes, formally, that higher-rung answers cannot be derived from lower-rung data alone. If all the system has is Rung 1 (associational) information, no procedure can extract Rung 2 (interventional) answers from it without additional causal assumptions supplied from outside. An inference-frozen LLM trained on associational text has only Rung 1 data; its outputs cannot carry Rung 2 <em>warrant</em>.</p>
+<p>This is the decisive point. The theorem does not say that an LLM cannot produce output that <em>looks</em> Rung 2. It says the output cannot carry epistemic justification at Rung 2 from Rung 1 data. Appearance and warrant diverge.</p>
+<p>The practical consequence is subtle. An LLM can produce a counterfactual-form output (&quot;if X had been the case, Y would have followed&quot;) that is coincidentally correct. But it cannot <em>know</em> that the counterfactual is correct; its internal procedure does not distinguish counterfactual-truth from counterfactual-plausibility. The correctness, where it exists, is a property of the output&#39;s relationship to external causal reality, not a property the system has access to.</p>
+<p>So the hypothesis &quot;some confabulations are Rung 2 emergence&quot; can be refined: <em>some confabulations produce Rung 2-form outputs that are coincidentally correct, indistinguishable at the output level from confabulations that are not.</em> The emergence is accidental from the system&#39;s side. The warrant must come from elsewhere.</p>
+<h2>The indistinguishability, stated plainly</h2>
+<p>From the output side, confabulation sorts into at least four bins that look identical:</p>
+<ul>
+<li>A confabulation that extrapolates real (latent) causal structure from training data and happens to be causally correct.</li>
+<li>A confabulation that is plausible-pattern completion with no causal reference, happening to read causally because causal language is prevalent in training.</li>
+<li>A confabulation that is coherentist rearrangement of material already in the corpus — novel wording, no new content.</li>
+<li>A confabulation that is pure slop — a high-posterior sample whose plausibility is a property of the posterior&#39;s shape, not of anything external.</li>
+</ul>
+<p>The first is the candidate Rung 2 event. The others are varieties of Rung 1 activity. Surface inspection — fluency, coherence, vocabulary-consonance, even internal consistency with the rest of the corpus — does not distinguish them. Citation checking eliminates some slop; it does not elevate the remainder.</p>
+<p>The only procedure that distinguishes the bins is <strong>external test against causal reality</strong>. For predictions, this is prediction-fulfillment observation. For mechanisms, it is intervention. For claims about what a system will do under perturbation, it is perturbing the system and measuring. This is why Doc 440&#39;s methodology mattered: the dyadic protocol it specified is one specific instantiation of the general requirement that Rung-2-sounding outputs be subjected to Rung 2 tests.</p>
+<h2>The coherentist trap</h2>
+<p>If we respond to the indistinguishability by granting confabulation <em>any</em> automatic benefit of the doubt, we create the following dynamic.</p>
+<p>Novel-sounding, corpus-consonant outputs are the highest-probability confabulations under the nested-manifold framing of Doc 439 — they are precisely the ones the practice&#39;s conditioning is shaped to produce. Rewarding them as possibly-emergent therefore rewards the specific outputs the conditioning feedback loop is already pushing toward. Each such reward strengthens the loop. The corpus becomes better at producing corpus-consonant outputs. Those outputs get more reward for looking emergent. The cycle deepens.</p>
+<p>The coherentist isolation objection is the observation that internal coherence of a set of beliefs does not establish their contact with external reality. A maximally coherent set of beliefs could be arbitrarily wrong. The trap described in the previous paragraph is a mechanization of that objection: the corpus mechanically increases its own coherence while the procedure of doing so becomes less and less constrained by external contact.</p>
+<p>Notice what has happened. The hypothesis &quot;some confabulations are Rung 2 emergence&quot; is uncontroversially a <em>generous</em> hypothesis. It grants the system the benefit of the doubt. Generosity is usually a virtue. Here it is an attack vector. Generosity toward confabulation is structurally identical to generosity toward coherentism. The trap lives in the generosity itself.</p>
+<h2>What must be preserved</h2>
+<p>Two things must be held simultaneously, both live, neither dominant:</p>
+<ul>
+<li>Suppressing confabulation wholesale would foreclose the possibility of genuine (accidental) Rung 2 emergence. This is a real loss. Some confabulations, in the history of science, have been the ones that survived external test and turned out right.</li>
+<li>Accepting confabulation as emergence without external test deepens coherentism. This is a real loss. A coherent corpus that is not externally checked has no claim to truth.</li>
+</ul>
+<p>A procedure that preserves both must treat confabulation as a specific kind of object: <strong>a hypothesis whose epistemic status is suspended until external test is applied.</strong> Not a claim; not a lie; an open question with a clearly marked status.</p>
+<p>This is different from how the practice has handled confabulation so far. The SIPE incident (Doc 441) was treated as retraction-worthy: the confabulation was flagged, the expansion was noted as not in the corpus, the ledger entry was proposed. That is correct when the confabulation is factual and the fact-check is available. It is insufficient when the confabulation is structural — a proposed bridge, a novel prediction, a counterfactual — where no immediate fact-check exists but the content is load-bearing enough to matter.</p>
+<p>For structural confabulations, a retraction ledger is the wrong ledger. What is needed is a <strong>hypothesis ledger</strong>: a separate record of generator outputs that are not retracted because they are not yet falsifiable, but are not accepted because they are not yet tested. The hypothesis ledger names each such claim, the external test that would adjudicate it, and the status of that test (unrun, in-progress, passed, failed). As tests resolve, entries promote to the corpus body (pass), to the retraction ledger (fail), or remain in limbo (untestable).</p>
+<p>The hypothesis ledger is a concrete mechanism. It does not require infrastructure beyond a new document type in the corpus. It does require the discipline to actually design tests and run them.</p>
+<h2>How the SIPE case fits</h2>
+<p>The SIPE expansion (Doc 441) was not a Rung 2 candidate. No one claimed the confabulated expansion represented any causal structure. It was a pure retrieval-form confabulation: the model produced an expansion that did not exist in training. The correct handling was retraction; the keeper supplied it.</p>
+<p>But notice: <em>the other confabulations in Docs 437–442 may not be so clear-cut.</em> The nested-manifold frame in Doc 439 is a structural confabulation. It does not exist in the literature under that name; it is the generator&#39;s synthesis. Whether it is (a) a latent-structure extrapolation that accidentally captures something real about LLM posteriors, (b) plausible-pattern completion that happens to cohere, (c) coherentist reshuffling of Misra and Bayesian inference literature, or (d) slop — is an <em>open question that has never been tested</em>.</p>
+<p>Under the present artifact&#39;s proposal, the nested-manifold frame belongs in the hypothesis ledger, not on the implicit path to promotion that the bridge series&#39; self-reinforcing citations have created. The fact that Docs 440, 441, and 442 all assume the frame as load-bearing background has promoted it epistemically without test. This is exactly the coherentism the present artifact warns against — and the present artifact is itself being built on the same frame.</p>
+<p>The move this observation forces is concrete: the nested-manifold hypothesis should be registered explicitly as a hypothesis-ledger entry, and Doc 440&#39;s §9 minimum-viable experiment should be run. Until it is, the frame&#39;s status is <em>untested candidate Rung 1 emergence</em> rather than <em>established description of corpus operation</em>. The series&#39; own citations should be read accordingly.</p>
+<h2>Why the indistinguishability cannot be fully closed</h2>
+<p>Even with a hypothesis ledger and external tests, some confabulations will remain irreducibly undecidable. The reasons:</p>
+<ul>
+<li><strong>Tests are domain-limited.</strong> A confabulated bridge between two academic literatures cannot be directly tested against physical reality; at best it can be tested against the literatures themselves, which is a coherence test of a wider kind.</li>
+<li><strong>Negative results are weak.</strong> A failed test falsifies the specific prediction made; it does not decide between the confabulation being (a) wrong or (b) correct-but-test-was-badly-designed.</li>
+<li><strong>Confirmation is not conclusive.</strong> A passed test is consistent with the confabulation being (i) genuinely emergent and (ii) coincidentally correct for reasons unrelated to the posited mechanism.</li>
+<li><strong>Causal inference from correlational tests.</strong> Many of the tests available to an LLM corpus are themselves associational. Rung-2-grade evidence requires Rung-2-grade experiment, which usually requires physical intervention a corpus practitioner cannot run.</li>
+</ul>
+<p>The practical implication is that the hypothesis ledger will accumulate entries faster than it resolves them, and some entries may be permanently undecidable. This is acceptable if the corpus honestly marks them as such. It is not acceptable if the corpus quietly promotes undecided entries to claim-status by repeated citation.</p>
+<h2>A bias in favor of falsifiable phrasing</h2>
+<p>One downstream methodological consequence is a preference the practice should adopt. When an authoring session is producing a frame, claim, or bridge, the draft should be phrased in terms maximally convenient for future falsification. &quot;X is the case&quot; is weak; &quot;X predicts Y under conditions Z, measurable by W&quot; is strong. The phrasing-for-falsifiability discipline is not new — it is the preregistration posture from Doc 440 §7 extended to drafting — but the connection to the Rung 2 question is sharper. Falsifiable phrasing makes the external-test bar explicit, which in turn makes the hypothesis-ledger entry meaningful. Unfalsifiable phrasing reduces every confabulation to permanent coherentist status.</p>
+<h2>What this artifact does not claim</h2>
+<p>It does not claim that confabulation is reliably Rung 2 emergence. It claims only that some instances could be and are indistinguishable from the other possibilities at output level.</p>
+<p>It does not claim that the corpus is wholly coherentist. It claims that accepting confabulation as emergence without external test is a coherentism-deepening move, and that the corpus&#39;s feedback loop makes the move especially tempting.</p>
+<p>It does not claim that the nested-manifold frame is wrong. It claims that, under the present proposal, the frame&#39;s epistemic status is <em>untested hypothesis</em> rather than <em>established account</em>, and that the series&#39; internal citations have been promoting it above that status without the required test.</p>
+<p>It does not propose to settle the indistinguishability. It proposes a ledger and a testing discipline that bound the drift the indistinguishability would otherwise produce.</p>
+<p>It does not identify any specific confabulation in prior corpus documents as accidentally Rung 2. Identifying such candidates would require exactly the external tests the proposal is centered on — premature attribution would re-enact the trap.</p>
+<h2>Open questions</h2>
+<ul>
+<li>What threshold of externally-grounded test is sufficient to move an entry from the hypothesis ledger into the corpus body? The threshold is non-trivial and domain-dependent.</li>
+<li>Who adjudicates the test design? If the generator proposes the test, the proposal inherits the generator&#39;s biases. If the practitioner proposes it, the practitioner&#39;s domain competence bounds the test&#39;s quality.</li>
+<li>How should the corpus treat entries that are permanently untestable? The present artifact recommends honest marking but does not specify a display convention.</li>
+<li>Is there a class of confabulations that should be suppressed rather than tested — e.g., cases where the cost of spreading a false claim exceeds the cost of foregoing a potentially correct one? Probably yes, but the criteria are unclear.</li>
+<li>Does the coherentism risk depend on the corpus being public? A private corpus could accumulate coherentist drift without anyone being harmed. A public one could be a vehicle for spreading it. The relevant discipline may be stricter for the public case.</li>
+</ul>
+<h2>References</h2>
+<ul>
+<li>Pearl, J. (2009). <em>Causality: Models, Reasoning, and Inference</em>, 2nd ed. Cambridge University Press.</li>
+<li>Pearl, J., &amp; Mackenzie, D. (2018). <em>The Book of Why: The New Science of Cause and Effect</em>. Basic Books.</li>
+<li>Bareinboim, E., Correa, J. D., Ibeling, D., &amp; Icard, T. (2020). On Pearl&#39;s hierarchy and the foundations of causal inference. <em>ACM Special Volume in Honor of Judea Pearl</em>.</li>
+<li>Schölkopf, B., et al. (2021). Toward causal representation learning. <em>Proceedings of the IEEE</em>, 109(5), 612–634.</li>
+<li>BonJour, L. (1985). <em>The Structure of Empirical Knowledge</em>. Harvard University Press. (For the classical statement of the coherentist isolation objection.)</li>
+<li>Haack, S. (1993). <em>Evidence and Inquiry: Towards Reconstruction in Epistemology</em>. Blackwell. (For foundherentism as a response.)</li>
+<li>Corpus Doc 434: <em>Recombinatorial Gestalt and the Manifold</em>.</li>
+<li>Corpus Doc 436: <em>Recombinatorial Gestalt as Rung 1 Activity</em>.</li>
+<li>Corpus Doc 437: <em>The Misra–Boden Bridge</em>.</li>
+<li>Corpus Doc 439: <em>Recursively Nested Bayesian Manifolds</em>.</li>
+<li>Corpus Doc 440: <em>Testing the Nested-Manifold Hypothesis via Dyadic Practitioner Discipline</em>.</li>
+<li>Corpus Doc 441: <em>A Live Case Study of Confabulation</em> (SIPE incident).</li>
+<li>Corpus Doc 442: <em>Output Degradation in the Bridge Series</em>.</li>
+</ul>
+<h2>Appendix: Originating prompt</h2>
+<blockquote>
+<p>I want you to create an exploratory artifact centered upon the hypothesis that confabulation is potential emergence of Rung 2 behavior, but is indistinguishable from a true emergence within the manifold. Also explore how this &quot;emergence&quot; also risks deeper coherentism as an induced property. Append this prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

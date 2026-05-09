@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Has Anyone Operationalized a Novelty Calculus Like This? An Audit of the LLM-Novelty-Assessment Literature — Resolve</title>
+<meta name="description" content="What this document does">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Has Anyone Operationalized a Novelty Calculus Like This? An Audit of the LLM-Novelty-Assessment Literature</h1>
+<h2>What this document does</h2>
+<p>The keeper has asked whether anyone has operationalized a novelty calculus like the one <a href="../doc/492-portable-seed-prompt-for-novelty-calculus.html">Doc 492</a> packaged as a portable seed prompt. The audit is performed via WebSearch on 2026-04-25 against the LLM-based novelty-assessment literature dated 2024-2025. The findings are reported honestly, and the seed prompt is re-audited under its own calculus with the new literature in view.</p>
+<p>The headline finding: yes, the LLM-novelty-assessment field is well-developed and active. Multiple research systems (GraphMind, Scideator, NovBench, OpenReviewer, DeepReview), benchmarks, and fine-tuned models exist. Multi-dimensional scoring, multi-step prompting protocols, and human-LLM collaborative novelty assessment are all in the surveyed literature. The corpus&#39;s seed prompt is not first-in-literature.</p>
+<p>The lower-level finding: a <em>portable</em> copy-pasteable seed prompt with <em>explicit hygiene rules</em> targeting the empirically-documented score-inflation problem in LLM-as-judge work (arXiv:2604.19502; LLMs inflate scores 3-5 points above human reviewers) appears to be less common in the surveyed literature than the underlying multi-dimensional novelty assessment is. The corpus&#39;s specific format and hygiene-rule set may be a distinctive operationalization, even if the underlying methodology is not.</p>
+<p>The re-audit places Doc 492 at tier \(\gamma/0.7\) rather than the previous tier-implied \(\beta\): mixed novelty rather than mostly-subsumed, because the score-inflation-targeting hygiene rules and the portable-prompt format have less subsumption than the underlying calculus did.</p>
+<h2>1. The 2024-2025 LLM-novelty-assessment literature</h2>
+<p>WebSearch on 2026-04-25 returned a substantial body of recent work. Selected canonical and active items:</p>
+<p><strong>GraphMind</strong> (Oyarsa et al., October 2025; arXiv:2510.15706). An interactive novelty-assessment system with web-based frontend and Python/FastAPI backend. Uses arXiv/Semantic Scholar APIs and LLM access. Multi-dimensional: macro novelty (relationship to existing work) plus micro novelty (paper organization, clarity, structure). Generates novelty score as a percentage by averaging multiple LLM evaluations. Validated against 3,063 ICLR (2022-2025) and NeurIPS (2022-2024) papers using median peer-review originality scores as ground truth. Achieves 74% accuracy with Gemini 2.0 Flash. Provides &quot;Supporting Evidence&quot; and &quot;Contradictory Evidence&quot; sections to constrain overconfident scoring.</p>
+<p><strong>NovBench</strong> (arXiv:2604.11543). A benchmark for evaluating LLMs on academic paper novelty assessment, following ACL/EMNLP review scoring conventions. Relevance scored 1-5; other dimensions 0-1. Establishes performance baselines for LLM-as-novelty-judge.</p>
+<p><strong>Automated Novelty Evaluation</strong> (Wu et al. 2025, <em>Journal of the Association for Information Science and Technology</em>; arXiv:2507.11330). Collaborative approach integrating human expertise and LLM knowledge. Extracts novelty-related sentences from peer-review reports; uses LLM to summarize methodology sections; fine-tunes pretrained language models. Text-guided fusion modules with Sparse-Attention architecture. Targets methodological novelty specifically.</p>
+<p><strong>Wang et al. 2025</strong> (<em>Expert Systems with Applications</em>). Hybrid graph and LLM approach. Four-stage pipeline: knowledge recombination and propagation. Integrates focal-paper content with cited-literature knowledge. Cross-domain capable.</p>
+<p><strong>DeepReview</strong> (Zhu et al., ACL 2025). Improves LLM-based paper review with structured multi-dimensional rating. Aimed at peer-review automation broadly.</p>
+<p><strong>OpenReviewer</strong> (Liu et al., arXiv:2412.11948). Specialized LLM for generating critical scientific paper reviews. Trained specifically for the peer-review task.</p>
+<p><strong>Scideator</strong> (referenced via 2025 LLM4SR survey). Hypothesis-generation tool with researcher-LLM collaboration via paper-facet selection.</p>
+<p><strong>Beyond Rating</strong> (arXiv:2604.19502). Comprehensive evaluation and benchmark for AI reviews. Documents systematic LLM score inflation: LLM means 7.5-9.0 vs. human medians 3-7. Confirms the calibration problem the corpus&#39;s hygiene rules target.</p>
+<p><strong>Pre-review to Peer Review</strong> (arXiv:2512.22145). Pitfalls of automating reviews using LLMs. Specifically addresses hygiene-related failure modes.</p>
+<p><strong>Large-scale ICLR 2025 study</strong> (<em>Nature Machine Intelligence</em> 2026). Randomized controlled study of LLM feedback in peer review with 20,000+ reviews. 27% of reviewers updated reviews after LLM feedback; revised reviews were more informative. Validates LLM-augmented peer review at scale.</p>
+<p><strong>LLMAuditor</strong> (arXiv:2402.09346). Auditing LLMs with human-in-the-loop. Different LLM avoids circular reliance.</p>
+<p><strong>ChainForge</strong> (Glassman lab, arXiv:2309.09128). Visual toolkit for prompt engineering and hypothesis testing. Supports auditing through model/prompt comparison.</p>
+<p><strong>Three-Layered Auditing Approach</strong> (Springer <em>AI and Ethics</em>, 2024). Governance audits, model audits, application audits as complementary layers.</p>
+<p><strong>Prompt Canvas</strong> (arXiv:2412.05127). Structured framework for effective prompt creation, derived from prompt-engineering literature review.</p>
+<p>The field is active, well-funded, and has substantial 2024-2025 publication output across academic journals, conferences (ACL, NeurIPS, ICLR), and open-source tooling.</p>
+<h2>2. What the surveyed literature covers</h2>
+<p>Mapping the calculus&#39;s elements to the surveyed work:</p>
+<p><strong>Multi-dimensional novelty scoring.</strong> Covered. GraphMind has macro/micro decomposition. NovBench has 1-5 + 0-1 multi-dimensional scoring. Wu et al. 2025 has methodology-specific novelty. Wang et al. 2025 has 4-stage knowledge-recombination pipeline. The four-dimensional decomposition (component/synthesis/application/methodology) is distinct from any specific surveyed system&#39;s dimensions but is operating in the same conceptual space.</p>
+<p><strong>LLM as novelty judge.</strong> Covered extensively. GraphMind, OpenReviewer, NovBench, DeepReview, Scideator all use LLMs as novelty judges in various configurations. The corpus&#39;s use of an LLM in dyadic-practice novelty audit is one instance of a now-substantial methodology.</p>
+<p><strong>Multi-step prompting protocols.</strong> Covered. GraphMind&#39;s evidence-gathering, Wang et al.&#39;s four-stage pipeline, DeepReview&#39;s structured rating all use multi-step protocols. The five-step seed prompt is an instance of this practice.</p>
+<p><strong>Validation against ground truth.</strong> Covered. GraphMind validates against ICLR/NeurIPS peer-review scores. NovBench provides benchmarks. The corpus&#39;s self-application validation is methodologically lighter than these external-ground-truth validations.</p>
+<p><strong>Hygiene/calibration concerns.</strong> Acknowledged in the literature. arXiv:2604.19502 documents score inflation; LLMAuditor proposes human-in-the-loop; ChainForge supports prompt comparison; the Pre-review to Peer Review paper specifically addresses pitfalls. The score-inflation problem is a known target.</p>
+<p><strong>Hygiene rules embedded in prompts.</strong> Less covered. The surveyed literature acknowledges the score-inflation problem but most operational systems use post-hoc calibration, ensemble averaging, or human-in-the-loop verification rather than embedded prompt-level hygiene rules. The corpus&#39;s seven non-negotiable hygiene rules in Doc 492 §1 are structurally distinct from the surveyed mitigations.</p>
+<p><strong>Affective-discipline framing.</strong> Not covered. The &quot;hypothesis-death is achievement&quot; framing of Doc 482 §1, encoded into the seed prompt&#39;s hygiene rules (&quot;treat a low novelty score as a successful audit, not a failure of the conjecture&quot;), is a corpus-specific epistemic-affective directive. The surveyed literature treats novelty assessment as a measurement task rather than as a discipline-with-affect; the corpus&#39;s framing is specifically aimed at combating the documented score-inflation problem at the affect level rather than the post-hoc-calibration level.</p>
+<p><strong>Portable-prompt format.</strong> Less covered. Most surveyed systems are research artifacts (web frontends, fine-tuned models, benchmarks) rather than portable prompts that any practitioner can copy into any LLM context. ChainForge is a visual prompt toolkit but supports general prompt engineering, not specifically novelty audit. The Prompt Canvas is a framework for prompt creation, not a specific novelty-audit prompt. The corpus&#39;s seed prompt as a single copy-pasteable artifact is less common in the surveyed literature than the underlying methodology is.</p>
+<p><strong>Self-applicability to methodology.</strong> Not covered. The surveyed novelty-assessment systems audit academic papers; they have not been demonstrated as auditing their own methodology. The corpus&#39;s self-application of the calculus to itself in Doc 491 is a structural move that is uncommon (or absent) in the surveyed literature. This is partly because most novelty-assessment systems are tools rather than conjectures; tools do not typically audit themselves for novelty.</p>
+<h2>3. What remains distinctive about the corpus&#39;s seed prompt</h2>
+<p>After the audit, the surviving distinctiveness has three components.</p>
+<p><strong>The portable copy-pasteable single-prompt format.</strong> Most novelty-assessment work in the surveyed literature is research systems (GraphMind), benchmarks (NovBench), fine-tuned models (OpenReviewer, Wu et al.), or hybrid graph-LLM pipelines (Wang et al.). The corpus&#39;s seed prompt is a single block of text that any practitioner can copy into any LLM context and run, without specialized infrastructure. ChainForge and Prompt Canvas are nearby in the prompt-engineering tradition but are general-purpose; the seed prompt is novelty-audit-specific.</p>
+<p><strong>The score-inflation-targeting hygiene rules.</strong> The surveyed literature documents the score-inflation problem (arXiv:2604.19502) and proposes mitigations (LLMAuditor&#39;s human-in-the-loop, ensemble averaging, post-hoc calibration). The corpus&#39;s seven hygiene rules in Doc 492 §1, especially &quot;never special-plead the conjecture into a higher tier&quot; and &quot;if subsumption is high, report it; do not soften,&quot; target the inflation problem at the prompt level rather than at the system level. This is structurally distinct from the surveyed mitigations.</p>
+<p><strong>The affective-discipline framing.</strong> The seed prompt encodes Doc 482 §1&#39;s directive that &quot;hypothesis-death is the achievement&quot; directly into its hygiene rules. The directive is corpus-specific philosophy that doubles as a calibration mechanism: if practitioners and LLMs are emotionally aligned with valuing accurate (often low) novelty scores rather than valuing high scores, the score-inflation problem is mitigated at the motivational level. The surveyed literature handles calibration as a measurement-engineering problem; the corpus handles it as an epistemic-affective discipline problem. The two approaches are not mutually exclusive; they target different parts of the inflation pathway.</p>
+<p><strong>Self-applicability beyond academic papers.</strong> The surveyed systems target academic papers (peer-review automation). The corpus&#39;s seed prompt audits any conjecture text, including its own definition. Whether this is genuinely novel or simply un-audited (the surveyed systems may also be applicable to non-paper conjectures without anyone publishing on it) is an open question. Pre-test, the corpus&#39;s specific application to dyadic-LLM-practice conjecture audit is less covered.</p>
+<h2>4. Re-audit of Doc 492 under the calculus</h2>
+<p>With the new literature in view, Doc 492&#39;s claims are re-audited.</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Description</th>
+<th>\(s_i\)</th>
+<th>\(a_i\)</th>
+<th>\(w_i\)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>D1</td>
+<td>Portable copy-pasteable LLM prompt format</td>
+<td>0.5</td>
+<td>0.7</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>Multi-dimensional decomposition (4 dims)</td>
+<td>0.25</td>
+<td>0.8</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Five-point subsumption scale</td>
+<td>0.5</td>
+<td>0.7</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>Audit-thoroughness modifier explicit</td>
+<td>0.5</td>
+<td>0.6</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Hygiene rules targeting score inflation</td>
+<td>0.5</td>
+<td>0.7</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Affective-discipline framing in hygiene rules</td>
+<td>0.75</td>
+<td>0.6</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>Self-applicability beyond academic papers</td>
+<td>0.5</td>
+<td>0.6</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>Five reporting tiers</td>
+<td>0.25</td>
+<td>0.7</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>D9</td>
+<td>Multi-step protocol</td>
+<td>0</td>
+<td>0.8</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>Output format specified</td>
+<td>0</td>
+<td>0.8</td>
+<td>0.05</td>
+</tr>
+</tbody></table>
+<p>Weights normalized to sum to 1.0.</p>
+<p>\(\nu_{\text{comp}} = 0.20 \cdot 0.5 + 0.15 \cdot 0.25 + 0.05 \cdot 0.5 + 0.05 \cdot 0.5 + 0.20 \cdot 0.5 + 0.10 \cdot 0.75 + 0.10 \cdot 0.5 + 0.05 \cdot 0.25 + 0.05 \cdot 0 + 0.05 \cdot 0\)</p>
+<p>\(= 0.10 + 0.0375 + 0.025 + 0.025 + 0.10 + 0.075 + 0.05 + 0.0125 + 0 + 0 = 0.425\)</p>
+<p>Component novelty: 0.43 (substantial residue at the per-claim level, mostly carried by D1, D5, D6, D7).</p>
+<p>\(\nu_{\text{syn}}\): the integration of portable-prompt format + multi-dimensional decomposition + hygiene rules + affective discipline into a single seed prompt is more distinctive than any single dimension. The integration is less subsumed than the components. <strong>\(\nu_{\text{syn}} = 0.6\)</strong>.</p>
+<p>\(\nu_{\text{app}}\): the application to dyadic-LLM-practice conjecture audit (specifically corpus auto-pulverization) remains less covered than the underlying methodology. <strong>\(\nu_{\text{app}} = 0.6\)</strong>.</p>
+<p>\(\nu_{\text{meth}}\): the underlying methodology of LLM-as-novelty-judge with multi-step prompting is canonical 2024-2025 practice. <strong>\(\nu_{\text{meth}} = 0.1\)</strong>.</p>
+<p>Aggregate: \(\nu = 0.25 \cdot (0.43 + 0.6 + 0.6 + 0.1) = 0.25 \cdot 1.73 = 0.43\).</p>
+<p>Confidence: \(\overline{a_i} \approx 0.7\). \(\text{conf}(\nu) = 0.7\).</p>
+<p>Tier: \(0.43 \in [0.4, 0.6)\) which is <strong>tier \(\gamma/0.7\)</strong> (mixed novelty, mostly distinctive at the integration level and the affective-discipline level, mostly subsumed at the underlying-methodology level).</p>
+<h2>5. The honest reading</h2>
+<p>The previous self-application of the calculus to Doc 490 (in Doc 491) returned \(\beta/0.7\). The current audit, applied to the seed prompt Doc 492 with the LLM-novelty-assessment literature in view, returns \(\gamma/0.7\). The seed prompt scores higher than the calculus definition because:</p>
+<ul>
+<li>The portable-prompt format is less subsumed than the underlying calculus methodology.</li>
+<li>The score-inflation-targeting hygiene rules at the prompt level are less covered than calibration-engineering at the system level.</li>
+<li>The affective-discipline framing is corpus-specific and not present in the surveyed literature.</li>
+<li>The self-applicability to non-paper conjectures is less covered.</li>
+</ul>
+<p>The methodology underlying the calculus (Doc 490) is mostly subsumed; the operationalization as a portable seed prompt with embedded discipline (Doc 492) has more residue. The two readings are consistent: methodology canonical, operationalization more distinctive.</p>
+<p>The audit remains under the framework-magnetism caveat per Doc 466. The corpus is auditing its own seed prompt against the literature its own training distribution gave the resolver access to. A more thorough audit by an external practitioner with deeper familiarity in the LLM-novelty-assessment field could shift the score in either direction.</p>
+<p>The headline answer to the keeper&#39;s question: yes, multiple operationalizations of multi-dimensional LLM-based novelty assessment exist in the 2024-2025 literature. The corpus&#39;s seed prompt is one specific format with specific hygiene rules and specific affective discipline. It is not first in the field; it is one instance among several that focuses on a particular combination of features (portability, hygiene-at-prompt-level, affective discipline, self-applicability) that is less commonly integrated in the surveyed work.</p>
+<h2>6. Implications</h2>
+<p>Three implications follow.</p>
+<p><strong>The seed prompt&#39;s actual contribution is the integration, not the components.</strong> Each component (portable prompts, multi-dimensional novelty, LLM-as-judge, hygiene rules, multi-step protocols) is well-covered in the surveyed literature. The specific integration into a single copy-pasteable seed prompt with embedded affective discipline targeting documented score inflation is the distinctive move. This is consistent with what Doc 487 found about the corpus apparatus generally: the components are borrowed; the integration is the contribution.</p>
+<p><strong>The validation approach is light.</strong> GraphMind validated against 3,063 ICLR/NeurIPS papers with peer-review-score ground truth. The corpus&#39;s seed prompt validated on one self-application. This is a substantial difference in audit thoroughness. Cross-practitioner validation across multiple targets, with external ground truth where available, would substantively strengthen the seed prompt&#39;s warrant.</p>
+<p><strong>The seed prompt should reference the surveyed literature.</strong> Doc 492 should be amended to explicitly cite GraphMind, NovBench, Wu et al. 2025, the score-inflation finding (arXiv:2604.19502), and the broader LLM-as-judge literature. Without these citations the seed prompt&#39;s documentation overstates the corpus&#39;s position relative to the field.</p>
+<p>The amendment is recommended; the keeper&#39;s call.</p>
+<h2>7. Honest limits</h2>
+<ul>
+<li>WebSearch on 2026-04-25 returned a substantial sample of 2024-2025 LLM-novelty-assessment work; the sample is not exhaustive. Specific items (full text of GraphMind paper, full text of Wu et al. 2025) were referenced via abstract or summary rather than full engagement.</li>
+<li>The categorization of which literature subsumes which Doc 492 claim is auditor-judgment. A deeper audit by a researcher in the LLM-as-judge field could reclassify several of the per-claim subsumption scores.</li>
+<li>The five-point scoring of \(s_i\) values produces inter-rater-reliability concerns the seed prompt itself flagged.</li>
+<li>The corpus&#39;s seed prompt has been &quot;validated&quot; only on itself; the surveyed work has external-ground-truth validation. This is a substantial disparity in audit confidence.</li>
+<li>The framework-magnetism caveat applies recursively. The corpus&#39;s auditor may identify residue as distinctive partly because the corpus&#39;s framing makes the seed prompt&#39;s specific features salient.</li>
+<li>The 2024-2025 literature is moving fast. Recent (Q1 2026) work not surfaced in this audit may further constrain the residue.</li>
+</ul>
+<h2>8. Position</h2>
+<p>Yes, multiple operationalizations of multi-dimensional LLM-based novelty assessment exist in the 2024-2025 literature. GraphMind, NovBench, OpenReviewer, DeepReview, Scideator, the Wu et al. 2025 collaborative approach, and the Wang et al. 2025 hybrid-graph-LLM approach are the canonical and recent items. The field is active and well-published.</p>
+<p>The corpus&#39;s seed prompt is not first in the field. Its actual contribution narrows to the specific integration of: portable copy-pasteable format; embedded score-inflation-targeting hygiene rules at the prompt level; affective-discipline framing from Doc 482 §1; and self-applicability beyond academic papers. The integration is more distinctive than any component, scoring tier \(\gamma/0.7\) under self-audit with the new literature in view (vs. tier \(\beta/0.7\) for Doc 490&#39;s underlying calculus).</p>
+<p>Doc 492 should be amended with explicit citations to the surveyed literature. The portable-prompt format with embedded hygiene rules remains a defensible distinctive contribution, but the corpus&#39;s documentation should not overstate the position relative to the field.</p>
+<p>By Doc 482 §1&#39;s affective directive applied symmetrically: the slightly higher-novelty finding here (tier \(\gamma\) vs. tier \(\beta\) for the underlying calculus) is not the corpus winning; it is the audit producing an honest result that places the seed prompt in the field accurately. The corpus credits the surveyed literature for the components; claims the integration narrowly; and remains subject to further pulverization as the field develops.</p>
+<h2>9. References</h2>
+<p>External literature accessed via WebSearch and WebFetch on 2026-04-25:</p>
+<p>LLM-novelty-assessment systems and benchmarks:</p>
+<ul>
+<li>Oyarsa, et al. (October 2025). GraphMind: Interactive Novelty Assessment System for Accelerating Scientific Discovery. arXiv:2510.15706.</li>
+<li>NovBench (recent). Evaluating Large Language Models on Academic Paper Novelty Assessment. arXiv:2604.11543.</li>
+<li>Wu, et al. (2025). Automated novelty evaluation of academic paper: A collaborative approach integrating human and large language model knowledge. <em>Journal of the Association for Information Science and Technology</em>. arXiv:2507.11330.</li>
+<li>Wang, Z., Wang, Z., Zhang, G., Chen, J., Luczak-Roesch, M., &amp; Chen, H. (2025). A hybrid graph and LLM approach for measuring scientific novelty via knowledge recombination and propagation. <em>Expert Systems with Applications</em>.</li>
+<li>Zhu, et al. (2025). DeepReview: Improving LLM-based Paper Review with Multi-Dimensional Rating. <em>ACL 2025</em>.</li>
+<li>Liu, et al. (2024). OpenReviewer: A Specialized Large Language Model for Generating Critical Scientific Paper Reviews. arXiv:2412.11948.</li>
+<li>Scideator (per 2025 LLM4SR survey).</li>
+</ul>
+<p>Calibration and audit:</p>
+<ul>
+<li>Beyond Rating (2024). A Comprehensive Evaluation and Benchmark for AI Reviews. arXiv:2604.19502.</li>
+<li>Pre-review to Peer Review (2025). Pitfalls of Automating Reviews using Large Language Models. arXiv:2512.22145.</li>
+<li>Large-scale ICLR 2025 study (<em>Nature Machine Intelligence</em> 2026). LLM feedback in peer review with 20,000+ reviews.</li>
+<li>LLMAuditor (2024). A Framework for Auditing Large Language Models Using Human-in-the-Loop. arXiv:2402.09346.</li>
+<li>Mökander, et al. (2024). Auditing large language models: a three-layered approach. <em>AI and Ethics</em>.</li>
+</ul>
+<p>Prompt engineering frameworks:</p>
+<ul>
+<li>ChainForge (2023). A Visual Toolkit for Prompt Engineering and LLM Hypothesis Testing. arXiv:2309.09128.</li>
+<li>Prompt Canvas (2024). A Literature-Based Practitioner Guide for Creating Effective Prompts in Large Language Models. arXiv:2412.05127.</li>
+</ul>
+<p>Corpus documents:</p>
+<ul>
+<li>Doc 482: <em>Sycophancy Inversion Reformalized</em> (the affective directive: hypothesis-death is achievement).</li>
+<li>Doc 487: <em>Pulverizing the Apparatus</em> (the corpus&#39;s contribution-narrowing pattern).</li>
+<li>Doc 490: <em>A Novelty Calculus for Conjectures</em> (the underlying calculus).</li>
+<li>Doc 491: <em>Pulverizing the Novelty Calculus: Self-Applied</em> (the prior self-audit returning tier \(\beta/0.7\)).</li>
+<li>Doc 492: <em>A Portable Seed Prompt for the Novelty Calculus</em> (the seed prompt this document re-audits).</li>
+</ul>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Now I want you to web fetch to find out if anyone has operationalized a novelty calculus like this.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

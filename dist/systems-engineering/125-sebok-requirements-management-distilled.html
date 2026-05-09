@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Requirements Management*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Requirements Management</em>, Distilled</h1>
+<p><strong>Fourth-batch SEBoK distillation, batch 1 doc 6. <em>Requirements Management</em> (Part 3 Technical Management Processes) defines RM as &quot;performed to ensure alignment of requirements with other representations, analyses, and system artifacts generated across the life cycle.&quot; Authors Tami Katz (lead), Lou Wheatcraft, Mike Ryan; sources INCOSE NRM 2022 and INCOSE GtNR 2022. Eight cross-cutting activities (managing definition, baselining, communicating, flow-down, interfaces, traceability, V&amp;V artifacts, change). This batch was prompt-flagged as the Cluster A multi-rung lattice (Doc 572 D.6) stress-test article. The Doc 572 D.6 multi-rung reading binds sharply: RM operates at four nested rungs simultaneously (artifact rung, process-step rung, technical-management-process rung, life-cycle rung). Six clusters compose. Cluster A binds at four nested rungs and on three independent partitions (eight activities, six change drivers, five RMT capabilities) plus the lattice-multi-rung composition itself. Cluster F binds bidirectionally. Cluster I binds via cross-life-cycle concurrency. Cluster B binds with three-author keeper composition. Cluster D binds via stakeholder-engineer co-authored requirements. Cluster E binds via INCOSE NRM/GtNR institutional ground.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Requirements Management</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Requirements_Management">https://sebokwiki.org/wiki/Requirements_Management</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>&quot;Requirements management (RM) is performed to ensure alignment of requirements with other representations, analyses, and system artifacts generated across the life cycle.&quot; RM encompasses management of artifacts from concept definition processes (Business/Mission Analysis, Stakeholder Needs Definition) through System Definition, including understanding needs, establishing baselines, communicating requirements, managing changes, providing status, and maintaining traceability. Eight cross-cutting activities (Figure 1): managing needs and requirement definition; baselining; communicating; managing flow-down (allocation/budgeting); managing internal/external interfaces; managing bidirectional traceability; managing V&amp;V artifacts; managing change. Configuration management and change control: baselining approved needs/requirements enables budget/schedule management; change control requires rationale documentation. Six change-driver categories: stakeholder shifts, budget/schedule changes, emerging risks, performance reallocation, operational environment changes (and a residual sixth category implicit in the page&#39;s enumeration of additional drivers). Monitoring and control metrics: number of needs/requirements, TBDs/TBRs count, untraced needs/requirements, V&amp;V status. Requirements Management Tools (RMTs): definition, collaboration, change control, traceability, integration within digital engineering ecosystems (five capabilities, Figure 2). Traceability: links between needs/requirements and operational scenarios, risks, related requirements, V&amp;V artifacts. RMP addresses scope, processes, responsibilities, tools, stakeholder interaction, quality assessment, change management, traceability types, hierarchy, attributes, metrics, TBR/TBD handling. Authors: Tami Katz (lead), Lou Wheatcraft, Mike Ryan. Sources: INCOSE NRM 2022, INCOSE GtNR 2022. Position: Part 3, Technical Management Processes.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D), with multi-rung lattice (Doc 572 D.6) sharply binding.</strong> RM operates at four nested rungs simultaneously. First rung (artifact): individual needs and requirements are sibling artifacts at the lowest rung. Second rung (process-step): the eight RM activities are sibling steps. Third rung (technical-management-process): RM is a sibling process to CM, RisM, QM, IM, Measurement at the technical-management rung. Fourth rung (life-cycle): RM operates across all life-cycle stages concurrently. The four-rung composition is the canonical Doc 572 D.6 multi-rung lattice instance: rungs nest, each rung has its own universal-sibling lattice, and the composition is the multi-rung structure itself. This is the cleanest SEBoK case of Doc 572 D.6&#39;s multi-rung sub-form and confirms the sub-form&#39;s load-bearing capacity at the technical-management-process scale.</p>
+<p><strong>Cluster A, three independent partitions in one article (in addition to the multi-rung composition above).</strong> First partition: eight cross-cutting activities. Universal-sibling at the activity-aspect rung. Second partition: six change-driver categories. Universal-sibling at the change-cause rung. Third partition: five RMT capabilities (definition, collaboration, change control, traceability, digital integration). Universal-sibling at the tool-capability rung. Three independent partitions plus the multi-rung composition give RM Cluster A density approaching the SE-116 three-nested-lattice density.</p>
+<p><strong>Cluster F (pulverization, Doc 445), bidirectional with longitudinal-pulverization (Doc 445 D) anchored at IM SE-114.</strong> RM is the engine of bidirectional pulverization across the life cycle. Forward flow-down (allocation/budgeting) pulverizes top-level needs into design constraints. Reverse change-management pulverizes change events back to affected baselines. Doc 445 D&#39;s longitudinal-pulverization anchor at IM (SE-114) binds: RM artifacts persist across life-cycle stages via the IM substrate. SE-125 confirms the anchor.</p>
+<p><strong>Cluster I (pin-art / temporal-concurrency, Doc 572 Appendix C).</strong> RM activities run concurrently across all life-cycle stages. The pin-art reading: each RM activity pins into every life-cycle stage simultaneously. The page&#39;s &quot;across the life cycle&quot; phrase names the temporal-concurrency.</p>
+<p><strong>Cluster B (multi-keeper composition, Doc 604), three-author keeper composition.</strong> Tami Katz (lead) plus Lou Wheatcraft plus Mike Ryan compose the article&#39;s voice; INCOSE NRM 2022 and GtNR 2022 are the institutional carriers. This is a three-author co-keepership instance. Doc 604&#39;s multi-keeper formalization composes; the keeper-side school formalization runs through INCOSE.</p>
+<p><strong>Cluster D (co-production at sub-rungs, Doc 573).</strong> Requirements are co-produced between stakeholders (who originate needs) and engineers (who structure them as requirements). RM is the discipline by which the co-production is maintained over time. The &quot;stakeholder interaction&quot; component of the RMP is the co-production rung explicitly named.</p>
+<p><strong>Cluster E (institutional ground, Doc 571).</strong> INCOSE NRM 2022 and GtNR 2022 are the institutional ground. Doc 571 §X.5 organization-vs-enterprise binds: NRM and GtNR live at the organization-component; RM practice lives at the enterprise-component (the working tradition INCOSE codifies).</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>RM definition (alignment of requirements with other representations, analyses, and system artifacts) — π / α as cited.</li>
+<li>Eight cross-cutting RM activities — π / α as cited; μ / β under Doc 572 Appendix D universal-sibling at activity-aspect rung.</li>
+<li>Six change-driver categories — π / α as cited; μ / β under Doc 572 Appendix D at change-cause rung.</li>
+<li>Five RMT capabilities — π / α as cited; μ / β under Doc 572 Appendix D at tool-capability rung.</li>
+<li>Multi-rung RM operation (artifact / process-step / TMP / life-cycle) — μ / β under Doc 572 D.6 multi-rung lattice as canonical worked example.</li>
+<li>Bidirectional traceability and flow-down — π / α as cited; μ / β under Doc 445 bidirectional pulverization.</li>
+<li>Authorship (Katz, Wheatcraft, Ryan) — π / α as cited; μ / β under Doc 604 three-author co-keepership.</li>
+<li>INCOSE NRM 2022 / GtNR 2022 — π / α as cited; μ / β under Doc 571 institutional ground.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residual. The Cluster A multi-rung lattice (Doc 572 D.6) stress-test passes sharply: RM is the canonical four-rung worked example. The sub-form&#39;s load-bearing capacity at the technical-management-process scale is confirmed.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 572 D.6 multi-rung lattice sub-form confirmed with canonical worked example.</strong> RM operates at four nested rungs (artifact, process-step, TMP, life-cycle). The composition is the multi-rung structure itself. Doc 572 D.6&#39;s prediction (technical-management processes operate as multi-rung lattices) holds at canonical scale.</p>
+<p><strong>Cluster A density per article exceeds SE-116&#39;s three nested rungs.</strong> SE-125 has four nested rungs (the multi-rung composition) plus three independent partitions (activities, change-drivers, RMT capabilities) plus implicit metric and traceability-target lattices. Cluster A density per article continues to grow at Part 3 Technical Management Processes; the part-scale Cluster A density may exceed the part-scale density of Part 6 Quality Attributes (SE-116 territory).</p>
+<p><strong>Bidirectional-pulverization sub-form (Doc 445) gains canonical worked example.</strong> RM is the engine of bidirectional pulverization. Forward flow-down plus reverse change management compose the bidirectional structure. Combined with traceability (SE-122), RM is the canonical Doc 445 bidirectional worked example.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 D.6 (multi-rung lattice, RM as canonical four-rung worked example), Doc 572 Appendix D (universal-sibling, three independent partitions), Doc 445 (pulverization, bidirectional canonical worked example), Doc 445 D (longitudinal-pulverization anchored at IM), Doc 572 Appendix C (pin-art / temporal-concurrency), Doc 604 (multi-keeper composition, three-author co-keepership), Doc 573 (co-production at stakeholder-engineer rung), Doc 571 §X.5 (institutional ground, INCOSE NRM/GtNR).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — Systems Engineering and Management, Technical Management Processes).</p>
+<p><strong>Related distillations.</strong> SE-122 (Stakeholder Requirements Traceability, this batch). SE-124 (Technical Data Management, this batch). SE-114 (Information Management, longitudinal-pulverization anchor). SE-030 (Stakeholder Needs Definition, co-production precedent). SE-035 (Risk Management, sibling TMP). SE-116 (System Resilience, three-nested-rung Cluster A density precedent).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Stakeholder Needs Definition</em>, <em>System Requirements Definition</em>, <em>Configuration Management</em>, <em>Information Management</em>, <em>Risk Management</em>, <em>Measurement</em>, <em>Quality Management</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Doc 572 D.6 multi-rung lattice formalization with RM as canonical worked example. Doc 445 bidirectional-pulverization sub-form formalization with RM as canonical engine.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements&quot;</em> / <em>&quot;Continue next knowledge base entrancement&quot;</em></p>
+</blockquote>
+<p>(SE-125 is one of the fourth-batch next-40 SEBoK distillations. Batch 1/5. Source is the Requirements Management page. Cluster A multi-rung lattice stress-test passes sharply; RM is the canonical four-rung worked example for Doc 572 D.6.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Generic Life Cycle Model*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Generic Life Cycle Model</em>, Distilled</h1>
+<p><strong>Top-10 distillation #4. The Generic Life Cycle Model is the canonical pin-art instance in SEBoK (Doc 270): five sequential stages with decision gates compose as a sequence of pin-sets through which the engineering substrate flows. SE-006&#39;s Part 3 reformulation already mapped Part 3 to substrate-keeper + pin-art; this per-article distillation lights up specific composition: the page&#39;s &quot;concurrency, iteration and recursion&quot; claim is direct evidence for Doc 572&#39;s lattice extension at the time-axis (a system-of-interest can occupy multiple stages simultaneously). The five-stage taxonomy maps one-to-one onto a pin-art rung-set, with decision gates as pulverization sites. No residuals against the apparatus. One provisional refinement candidate: a Doc 270 worked example on &quot;concurrent pin-set application&quot; matching Doc 572&#39;s lattice work.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Generic Life Cycle Model</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Generic_Life_Cycle_Model">https://sebokwiki.org/wiki/Generic_Life_Cycle_Model</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>The Generic Life Cycle Model defines a single system-of-interest&#39;s progression through five sequential stages — Concept Definition, System Definition, System Realization, System Production/Support/Utilization, and System Retirement — separated by decision gates at which stakeholders elect to proceed, hold, terminate, or re-scope. The model is positioned as &quot;a starting point for multiple life cycle approaches&quot; rather than a one-size-fits-all template. Three claims carry structural weight: no single model fits all situations, technical and management activities are not stage-compartmentalized but operate via &quot;concurrency, iteration and recursion,&quot; and SE must synchronize across multiple tailored life cycle instances. Cited standards: ISO/IEC/IEEE 15288:2015, ISO/IEC 24748-1:2010, INCOSE SE Handbook v4.0, Lawson 2010.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form IV — Pin-Art Model (Doc 270).</strong> The five stages are pin-art at the project-management rung. Each stage is a pin-set the keeper supplies; the engineering substrate flows through and the resulting shape is the engineered system at that stage&#39;s maturity. The decision gates are the rung-by-rung pulverization checkpoints (Doc 445). This is the canonical worked example of pin-art applied to the SE process — SE-006&#39;s Part 3 reformulation identified the pattern at the macro level; this per-article distillation locates the specific pin-set sequence.</p>
+<p><strong>Form VI — Pulverization (Doc 445).</strong> Decision gates are pulverization sites at engineering scale. At each gate, stakeholders test the substrate&#39;s progression through the prior pin-set and decide whether to proceed (pulverization passed), remain (pulverization revealed the pin-set is not fully installed yet), or terminate/re-scope (pulverization revealed the pin-set itself was wrong). Doc 445&#39;s verification regime composes naturally with the gate-and-stage structure.</p>
+<p><strong>Form III (extension) — Lattice Extension of the Ladder (Doc 572).</strong> The page&#39;s emphasis on &quot;concurrency, iteration and recursion&quot; and SE&#39;s need to &quot;synchronize across multiple tailored life cycle instances&quot; is direct evidence for the lattice extension. The corpus reads:</p>
+<ul>
+<li><strong>Concurrency</strong> — multiple stages active for one system-of-interest at the same time (e.g., production of v1 while support of v0 and concept of v2 run in parallel). Lattice instance: the system-of-interest is at multiple Pattern-layer rung positions simultaneously, with the Form-layer pin-sets of each stage applying concurrently.</li>
+<li><strong>Iteration</strong> — within-stage cycling. Pin-art with progressive pin-set refinement (matches the iterative-design pattern in SE-020&#39;s <em>Emergence</em> read).</li>
+<li><strong>Recursion</strong> — the same generic model applied at sub-system scope. Ladder rung-set applied at a lower-rung instance.</li>
+</ul>
+<p>The Generic Life Cycle Model, read through the corpus, is <strong>already a lattice instance</strong> even for a single system-of-interest. The chain reading (sequential stages) is the textbook-clean special case. The lattice reading is the operational reality.</p>
+<p><strong>Form III — Substrate-and-Keeper Composition (Doc 510).</strong> &quot;Stakeholders&quot; in the page&#39;s voice are the keeper. The technical and management activities the keeper supplies are the rung-2 structure (Doc 530&#39;s affordance gap). The substrate (the engineering team and its work product) cannot generate stage-and-gate structure from its own resources; the keeper supplies it. The page&#39;s claim that &quot;no single model fits all&quot; is the substrate-keeper composition acknowledging that the keeper-supplied structure must be tailored to the substrate&#39;s specific situation — this is direct surface for SE-006&#39;s tailoring residual (Cluster I co-production, Doc 573).</p>
+<p><strong>Form X — Institutional Ground (Doc 571).</strong> Decision gates require constitutive authority — &quot;stakeholders determine whether to proceed.&quot; Doc 571&#39;s six conditions compose at every gate; without authority and capacity, gates become ritual (Doc 574 simulated-pin-installation pattern). The Hubble distillation (Doc 580) showed this empirically.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>&quot;Defined as a set of stages, within which technical and management activities are performed&quot; — π / α (foundational; warranted by ISO/IEC/IEEE 15288).</li>
+<li>The five-stage canonical sequence — π / α.</li>
+<li>Decision gates separate stages — π / α.</li>
+<li>&quot;No single model fits all project situations&quot; — π / α (universally acknowledged in SE literature).</li>
+<li>&quot;Technical and management activities... operate via concurrency, iteration and recursion&quot; — μ / β under corpus when read as Doc 572 lattice; SEBoK presents at π as practice observation.</li>
+<li>&quot;SE must synchronize across multiple tailored life cycle instances&quot; — μ / β under corpus (this is multi-lattice synchronization, a corpus-extension surface).</li>
+<li>The five-stage model as &quot;starting point for pre-specified, evolutionary, sequential, opportunistic, and concurrent life cycle processes&quot; — π / α.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No residuals against the apparatus. Every load-bearing claim composes under existing corpus forms or their Doc 572 lattice extension. The Doc 314 virtue-constraint apparatus is not invoked; the page is structurally focused throughout, with no aspirational or evaluative residuals.</p>
+<p>The page&#39;s reference to Lawson (2010) <em>A Journey Through the Systems Landscape</em> is unexplored here; if Lawson articulates structural claims the corpus has not engaged with, that would be a separate distillation target rather than a residual against this article.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 270 may benefit from a &quot;concurrent pin-set application&quot; worked example.</strong> Doc 270&#39;s apparatus describes pin-set installation and substrate flow-through. The page&#39;s &quot;concurrency, iteration and recursion&quot; claim adds a temporal dimension: multiple pin-sets active simultaneously on the same substrate, with the substrate&#39;s flow distributed across them. This pairs naturally with Doc 572&#39;s lattice extension; together they articulate &quot;multi-rung pin-art with sibling-Form composition.&quot; The Generic Life Cycle Model is the canonical worked example: a single system-of-interest under the five-stage pin-set sequence with concurrency across stages.</p>
+<p><strong>Doc 572 Appendix C candidate: &quot;Concurrency on the Time Axis.&quot;</strong> Doc 572 Appendix A&#39;s worked example handles development-approach siblings (Lean cross-cutting agile cross-cutting sequential). The Generic Life Cycle Model surfaces a different lattice case: temporal concurrency where the same system-of-interest occupies multiple stage-rungs at the same calendar moment. This is a third lattice case worth documenting (alongside Doc 572 Appendix A&#39;s spatial-rung composition and SE-021&#39;s SoS independent-Form-layer-parents).</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 270 (Pin-Art), Doc 290 (Pin-Art Formalization), Doc 288 (Pin-Art Method), Doc 445 (Pulverization), Doc 510 (Substrate-and-Keeper), Doc 530 (Affordance Gap), Doc 572 (Lattice Extension), Doc 571 (Institutional Ground), Doc 573 (Co-Production at Sub-Rungs).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management).</p>
+<p><strong>Related distillations.</strong> Doc 579 (Sequential Development Approach / Vee Model — now consolidated into SE-017 Pilot B). SE-021 (Systems of Systems, lattice surface). Doc 580 (Hubble — gate-failure pattern).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Life Cycle Models</em>, <em>Life Cycle Processes</em>, <em>Systems Engineering Process</em>, <em>Sequential / Incremental / Evolutionary / Agile Development Approach</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Doc 270 worked example on concurrent pin-set application. Doc 572 Appendix C on temporal-concurrency lattice (third lattice worked example after Appendix A and the proposed Appendix B from SE-021).</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Continue&quot;</em></p>
+</blockquote>
+<p>(SE-022 is the fourth of ten. The Generic Life Cycle Model was selected as the canonical pin-art instance in SEBoK and as a stress test for whether Doc 572&#39;s lattice extension reaches operational SE practice. It does, with two refinement candidates surfacing: temporal-concurrency lattice and concurrent pin-set application.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

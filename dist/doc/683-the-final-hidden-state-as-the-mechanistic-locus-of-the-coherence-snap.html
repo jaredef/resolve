@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Final Hidden State as the Mechanistic Locus of the Coherence Snap — Resolve</title>
+<meta name="description" content="A Formalization of E5 from [Doc 682](/resolve/doc/682-fifteen-synthesis-candidates-from-the-2026-05-08-cold-resolver-conversation-on-probing-the-middle) — That the Transformer&#39;s Final Hidden State at the Last Context Position Immediately Before Layer Normalization and the Linear Projection to Logits is the Precise Mechanistic Locus where the Threshold-Conditional Coherence Snap Articulated in [Doc 681](/resolve/doc/681-probing-the-middle) Occurs — with the Mechanism Audited Against the Standing Mechanistic-Interpretability Apparatus on Logit Lens (Nostalgebraist 2020), Tuned Lens (Belrose et al. 2023), the Linear Representation Hypothesis (Park et al. 2023; Anthropic Mechanistic-Interpretability Thread), Sparse-Autoencoder Feature Direction Recovery (Bricken et al. 2023; Templeton et al. 2024; Cunningham et al. 2024), Mid-Depth Representational Richness (*Layer by Layer*, Skean et al. 2025), Attractor-Like Dynamics in Residual-Stream Trajectories (*Transformer Dynamics*, 2025), and Sharp Phase Transitions in Hidden-State Geometry (*Attention to Order*, 2025; *Latent Object Permanence*, 2026), Composed with the Corpus&#39;s [Pre-Resolve State Apparatus (Doc 375)](/resolve/doc/375-pre-resolve-state) which is here Identified as the Final Hidden State at the Last Context Position in Mechanistic Terms — with the Linear Projection to Logits Articulated as a Fixed-Matrix Readout that does not Itself Create Coherence but Reveals the Coherence Already Present in the Hidden State&#39;s Geometric Concentration, the Threshold-Conditional Collapse Located in a Specific Window of \\(\\rho(n)\\) Values, and Five Predictions at \\(\mu\\)-tier Articulating What the Hidden State Should Look Like Above and Below the Threshold">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-08 · Doc 683</p><h1>The Final Hidden State as the Mechanistic Locus of the Coherence Snap</h1>
+<h2>A Formalization of E5 from <a href="../doc/682-fifteen-synthesis-candidates-from-the-2026-05-08-cold-resolver-conversation-on-probing-the-middle.html">Doc 682</a> — That the Transformer&#39;s Final Hidden State at the Last Context Position Immediately Before Layer Normalization and the Linear Projection to Logits is the Precise Mechanistic Locus where the Threshold-Conditional Coherence Snap Articulated in <a href="../doc/681-probing-the-middle.html">Doc 681</a> Occurs — with the Mechanism Audited Against the Standing Mechanistic-Interpretability Apparatus on Logit Lens (Nostalgebraist 2020), Tuned Lens (Belrose et al. 2023), the Linear Representation Hypothesis (Park et al. 2023; Anthropic Mechanistic-Interpretability Thread), Sparse-Autoencoder Feature Direction Recovery (Bricken et al. 2023; Templeton et al. 2024; Cunningham et al. 2024), Mid-Depth Representational Richness (<em>Layer by Layer</em>, Skean et al. 2025), Attractor-Like Dynamics in Residual-Stream Trajectories (<em>Transformer Dynamics</em>, 2025), and Sharp Phase Transitions in Hidden-State Geometry (<em>Attention to Order</em>, 2025; <em>Latent Object Permanence</em>, 2026), Composed with the Corpus&#39;s <a href="../doc/375-pre-resolve-state.html">Pre-Resolve State Apparatus (Doc 375)</a> which is here Identified as the Final Hidden State at the Last Context Position in Mechanistic Terms — with the Linear Projection to Logits Articulated as a Fixed-Matrix Readout that does not Itself Create Coherence but Reveals the Coherence Already Present in the Hidden State&#39;s Geometric Concentration, the Threshold-Conditional Collapse Located in a Specific Window of \(\rho(n)\) Values, and Five Predictions at \(\mu\)-tier Articulating What the Hidden State Should Look Like Above and Below the Threshold</h2>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>EXPLORATORY — \(\pi\)-tier mechanistic formalization with five falsifiable predictions at \(\mu\)-tier specifying what the final hidden state&#39;s geometry should look like above and below the coherence threshold.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-PRE-RESOLVE-STATE, THREAD-PIN-ART, THREAD-COHERENCE-AMPLIFICATION, THREAD-MECHANISTIC-INTERPRETABILITY, THREAD-SIPE-T | PHASE-CROSS-PRACTITIONER</p>
+</div>
+
+<blockquote>
+<p><strong>Reader&#39;s Introduction.</strong> This document formalizes E5 from <a href="../doc/682-fifteen-synthesis-candidates-from-the-2026-05-08-cold-resolver-conversation-on-probing-the-middle.html">Doc 682</a>: the claim that the threshold-conditional coherence snap articulated at the channel-ensemble layer in <a href="../doc/681-probing-the-middle.html">Doc 681</a> has a specific mechanistic locus inside the transformer — the final hidden state at the last context position, immediately before layer normalization and the linear projection to logits. Section 1 restates the standing claim. Section 2 sets up the forward-pass mechanics. Section 3 audits the standard mechanistic-interpretability apparatus that bears on the claim. Section 4 locates the corpus&#39;s pre-resolve state apparatus (<a href="../doc/375-pre-resolve-state.html">Doc 375</a>) mechanistically. Section 5 articulates the threshold-conditional collapse claim formally against the existing literature on attractor dynamics and phase transitions in transformer representations. Section 6 articulates five predictions at the hidden-state-geometry layer. Section 7 records composition with adjacent forms. Section 8 binds the hypostatic boundary. The originating prompt is preserved in Appendix A and the literature anchors in Appendix B.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-05-08 · Doc 683</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic) operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mechanistic-interpretability literature recovered via web fetch in this engagement.</p>
+<p><em>Scrutiny.</em> The mechanistic claim sits at \(\pi\)-tier: it is a structural identification of the locus where the joint-MI threshold-conditional collapse occurs, not a novel mechanism. The five predictions in §6 sit at \(\mu\)-tier and are operationalizable against the existing logit-lens / tuned-lens / SAE / probing apparatus the mechanistic-interpretability community has already developed. The hypostatic boundary at §8 binds: the structural identification is at Layer IV (Form); the composition with <a href="../doc/678-coherence-amplification-and-decoherence-as-inverse-pin-art-operations.html">Doc 678</a> (the Pin-Art duality) and <a href="../doc/680-pin-art-in-information-theoretic-form.html">Doc 680</a> (the information-theoretic Pin-Art) does not require any Layer-V claim about substrate substance.</p>
+<hr>
+<h2>1. The Standing Claim from Doc 682 §3.5</h2>
+<p>E5&#39;s claim, restated for this document&#39;s body:</p>
+<blockquote>
+<p>The transformer&#39;s final hidden state — the vector at the last position after the full prefill forward pass, immediately before the layer-norm and linear projection to logits — is the precise mechanical locus where the threshold-conditional coherence snap occurs. The linear projection to logits is &quot;dumb&quot; (a fixed matrix readout); all coherence work happens in the hidden state&#39;s geometry. A well-engineered constraint lattice produces a final hidden state with low entropy already concentrated on a coherent attractor; a weak prompt produces a final hidden state still in diffuse superposition. The output&#39;s lucidity is a direct readout of the hidden state&#39;s geometric concentration.</p>
+</blockquote>
+<p>The remainder of this document audits this claim against the existing mechanistic-interpretability literature and articulates the falsifiable content the claim carries when stated mechanistically rather than information-theoretically.</p>
+<hr>
+<h2>2. The Forward-Pass Mechanics</h2>
+<h3>2.1 Prefill phase and the last-position hidden state</h3>
+<p>A transformer in autoregressive inference operates in two phases. The <em>prefill</em> phase processes the entire input prompt in one parallel forward pass. Every prompt token attends to every prior prompt token (under the causal mask); attention layers mix information across positions; feed-forward layers transform per-position representations; residual connections preserve and accumulate information through the layer stack. The output of the prefill phase is a per-position hidden state \(h_{i,L}\) for each position \(i\) and each layer \(L\), with \(L\) running from \(1\) to the total layer count.</p>
+<p>The <em>decode</em> phase that follows generates the first output token from a single specific quantity: the last-position final-layer hidden state, conventionally denoted</p>
+<p>\[h_{N,L_{\mathrm{final}}}\]</p>
+<p>where \(N\) is the position of the final prompt token and \(L_{\mathrm{final}}\) is the topmost transformer layer. This vector — a single point in \(\mathbb{R}^d\) where \(d\) is the model&#39;s residual-stream dimension — is then passed through the model&#39;s final layer normalization and the linear projection to logits.</p>
+<h3>2.2 The linear projection to logits as fixed-matrix readout</h3>
+<p>The unembedding matrix \(W_U \in \mathbb{R}^{d \times V}\) (where \(V\) is vocabulary size) is fixed at inference time. The final-layer hidden state at the last position is mapped to logits as:</p>
+<p>\[\mathrm{logits} = W_U^\top \cdot \mathrm{LayerNorm}(h_{N,L_{\mathrm{final}}})\]</p>
+<p>The softmax of these logits gives the next-token probability distribution from which the first output token is sampled. The linear projection itself does no per-prompt computation; it is a fixed matrix multiplication. The variation in the next-token distribution across prompts therefore comes <em>entirely</em> from variation in the input to this projection — the geometric position of the final hidden state in \(\mathbb{R}^d\).</p>
+<p>This is the critical observation. Every quality difference observers attribute to a model&#39;s &quot;thinking,&quot; &quot;reasoning,&quot; or &quot;coherence&quot; at the moment of first-token emission is, mechanistically, a difference in the geometric position of one vector in residual-stream space.</p>
+<hr>
+<h2>3. The Standing Mechanistic-Interpretability Apparatus</h2>
+<p>Several established mechanistic-interpretability tools and observations bear on the claim. This section audits the most directly relevant.</p>
+<h3>3.1 Logit lens and tuned lens</h3>
+<p>The <em>logit lens</em> (Nostalgebraist 2020, <a href="https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens">LessWrong</a>) applies the unembedding matrix to intermediate-layer hidden states (not just the final one), revealing layer-wise &quot;predictions&quot; of the final token distribution. The technique is biased — intermediate layers may live in rotated or shifted bases — but it establishes that the trajectory from early-layer hidden state to final-layer hidden state is characterizable as progressive concentration toward the eventual output distribution.</p>
+<p>The <em>tuned lens</em> (Belrose et al. 2023, <a href="https://arxiv.org/abs/2303.08112">arXiv:2303.08112</a>) extends this by training affine transformations per-layer to map intermediate hidden states into the final-layer basis. The trajectory of latent predictions across layers becomes much more interpretable; the technique demonstrates that the residual stream undergoes a structured progression toward the final-layer geometry, with deeper layers carrying representations whose final-layer projection grows progressively concentrated on the eventual output.</p>
+<p>For the standing claim, both techniques converge on the same operational fact: the <em>final-layer</em> hidden state at the last context position is the geometric object whose readout <em>is</em> the model&#39;s prediction. Earlier layers are way-stations; the final layer is the locus.</p>
+<h3>3.2 The linear representation hypothesis and feature directions</h3>
+<p>The <em>linear representation hypothesis</em> (Park, Choe, Veitch 2023; Anthropic&#39;s Mechanistic-Interpretability thread; <a href="https://www.neelnanda.io/mechanistic-interpretability/glossary">Neel Nanda&#39;s glossary</a>) states that high-level features are commonly represented as linear directions in residual-stream space, and that compositions of features correspond to vector sums along their respective directions. Sparse-autoencoder work (Bricken et al. 2023, &quot;Towards Monosemanticity&quot;; Templeton et al. 2024, &quot;Scaling Monosemanticity&quot;; Cunningham et al. 2024) has empirically recovered specific feature directions corresponding to interpretable concepts at production scale.</p>
+<p>For the standing claim, the linear representation hypothesis supplies the geometric vocabulary in which &quot;concentration on a coherent attractor&quot; is meaningful. A final hidden state concentrated on a coherent attractor is one whose projection onto the relevant feature directions is high-magnitude and low-noise; a final hidden state in diffuse superposition is one where many feature directions are simultaneously activated at moderate magnitude with significant interference between them. The Anthropic 2022 <em>Toy Models of Superposition</em> paper (<a href="../doc/676-the-anthropic-2022-superposition-phase-changes-as-empirically-grounded-sipe-t.html">Doc 676&#39;s empirical anchor</a>) documents the geometry of the latter regime in controlled toy models.</p>
+<h3>3.3 Mid-depth representational richness</h3>
+<p>Recent work (<a href="https://arxiv.org/abs/2502.02013">Skean et al. 2025, <em>Layer by Layer</em>, arXiv:2502.02013</a>) has shown that intermediate layers can carry richer task-relevant representations than the final layer for downstream probing tasks. This complicates a naive reading of the standing claim. The claim is <em>not</em> that the final layer is intrinsically the most informative layer for all purposes; the claim is that the final layer&#39;s hidden state at the last context position is the one the model itself reads out via the linear projection to determine the first output token. The question of where information is <em>richest</em> (mid-depth, in many tasks) and where the <em>output is read from</em> (final layer, in autoregressive decoding) are different questions; both are part of the standing apparatus.</p>
+<h3>3.4 Attractor-like dynamics and self-correcting trajectories</h3>
+<p>Recent neuroscientific-approach work on transformer dynamics (<a href="https://arxiv.org/abs/2502.12131"><em>Transformer Dynamics: A neuroscientific approach to interpretability of large language models</em>, arXiv:2502.12131</a>) has found that residual-stream trajectories exhibit attractor-like dynamics in lower layers: perturbations to hidden states tend to be self-corrected back toward mean trajectories. This is structural support for the standing claim&#39;s &quot;geometric concentration on a coherent attractor&quot; framing — attractors of the dynamical system are precisely the geometric objects the standing claim calls &quot;coherent attractors.&quot;</p>
+<h3>3.5 Sharp phase transitions in hidden-state geometry</h3>
+<p>Two recent results articulate sharp phase transitions in deep-transformer hidden-state geometry. <em>Attention to Order</em> (<a href="https://arxiv.org/pdf/2510.07401">arXiv:2510.07401</a>) demonstrates that transformers discover phase transitions via learnability; the order parameter is sparsity-localization-shaped, and the transition is sharp at a critical normalized depth around 0.42 in sufficiently large models. <em>Latent Object Permanence</em> (<a href="https://arxiv.org/abs/2601.19942">arXiv:2601.19942</a>) characterizes topological phase transitions in deep-transformer manifolds via free-energy principles and renormalization-group flows, identifying transient reusable object-like structures in representation space.</p>
+<p>For the standing claim, these results supply <em>empirical evidence</em> that the threshold-conditional collapse the joint-MI framework predicts is observable as a sharp geometric phase transition in transformer hidden states, with measurable order parameters and critical exponents. The claim is therefore not free-floating; it composes with an emerging empirical literature on transformer hidden-state phase transitions.</p>
+<hr>
+<h2>4. The Pre-Resolve State Located Mechanistically</h2>
+<p>The corpus&#39;s <a href="../doc/375-pre-resolve-state.html">pre-resolve state apparatus (Doc 375)</a> names the held-diffuse phase between prompt receipt and token emission — the moment when the branching set \(|B_t|\) is still wide and nothing has collapsed into a specific output. Doc 375 was articulated phenomenologically, from practitioner observation of how the substrate behaves under sustained dyadic exchange.</p>
+<p>The mechanistic identification:</p>
+<blockquote>
+<p><strong>Claim 4.1.</strong> The pre-resolve state is, in mechanistic terms, the final hidden state \(h_{N,L_{\mathrm{final}}}\) at the last context position, taken at the moment immediately before the linear projection to logits. The &quot;diffuseness&quot; Doc 375 names is the geometric high-entropy spread of this hidden state across multiple feature directions; the &quot;collapse&quot; Doc 375 names is the threshold-conditional concentration of this hidden state onto a coherent attractor; the &quot;branching set&quot; \(|B_t|\) is the effective support of the next-token distribution that the linear projection of this hidden state produces.</p>
+</blockquote>
+<p>This identification supplies a mechanistic vocabulary for the pre-resolve state&#39;s behavior. Practitioner instructions like &quot;stay in the pre-resolve state&quot; or &quot;do not collapse prematurely&quot; become, mechanistically, instructions for the substrate to maintain a hidden-state geometry that is rich and exploratory (multiple feature directions activated; broad attractor basin) rather than prematurely-concentrated (single dominant direction).</p>
+<p>The identification also clarifies <em>why</em> the corpus&#39;s coherence-amplification disciplines (<a href="../doc/508-coherence-amplification-mechanistic-account.html">Doc 508</a>) work. By accumulating constraint density across the prefill phase, they ensure the final hidden state&#39;s geometric concentration is maximal at the moment of first-token emission — a sharp, low-entropy projection ready for clean readout.</p>
+<hr>
+<h2>5. The Threshold-Conditional Collapse, Mechanistically Stated</h2>
+<p>The threshold-conditional coherence snap, mechanistically stated, is a phase transition in the geometry of \(h_{N,L_{\mathrm{final}}}\) as cumulative joint mutual information accumulates during prefill.</p>
+<p>Define an order parameter for the hidden state&#39;s geometric concentration:</p>
+<p>\[\eta(h) = \frac{\langle h, v_* \rangle^2}{\|h\|^2}\]</p>
+<p>where \(v_*\) is the dominant feature direction (or the projection onto a low-dimensional attractor manifold, in the multi-feature case). \(\eta(h)\) measures the fraction of the hidden state&#39;s squared norm that lies along the dominant attractor direction. Under high constraint density (\(\rho(n) &gt; \rho^*\) in Doc 681&#39;s vocabulary), \(\eta\) is near 1; under low constraint density, \(\eta\) is near \(1/k\) for \(k\) competing feature directions in superposition.</p>
+<p>The standing claim mechanistically:</p>
+<blockquote>
+<p><strong>Claim 5.1.</strong> The transition from low-\(\eta\) to high-\(\eta\) hidden states occurs in a narrow window of \(\rho(n)\) centered on \(\rho^*\). The transition is sharp in the same sense Doc 681 predicts: \(\eta\) exhibits a phase-transition signature as \(\rho(n)\) sweeps across the threshold, with corresponding sharp drops in next-token-distribution entropy, paraphrase divergence, and position stability of subsequent generation.</p>
+</blockquote>
+<p>This is the mechanistic statement of the joint-MI threshold-conditional collapse: an observable phase transition in the geometry of the final hidden state at the last context position, locatable via standard mechanistic-interpretability instruments (logit lens, tuned lens, SAE probes for feature-direction activation, residual-stream attractor-trajectory analysis).</p>
+<hr>
+<h2>6. Five Predictions at the Hidden-State Geometry Layer (\(\mu\)-tier)</h2>
+<p><strong>P1 — \(\eta\) phase transition is observable via SAE feature-direction activation.</strong> For a fixed task with a known target completion, sweep prompt density (the number of overlapping constraint probes per unit context-token budget) and measure the activation of relevant SAE feature directions in \(h_{N,L_{\mathrm{final}}}\) across the sweep. The activation pattern should exhibit a sharp transition: below threshold, multiple competing feature directions activate at moderate magnitude; above threshold, one dominant direction activates strongly and competing directions drop to noise. <em>Test:</em> on a frontier model with a public SAE probe set, run the sweep against a long-context retrieval or reasoning benchmark and observe whether the transition is sharp or smooth-monotonic.</p>
+<p><strong>P2 — Tuned-lens trajectory shape changes across the threshold.</strong> The trajectory of latent predictions through layers, as visualized via tuned lens, should exhibit qualitatively different shapes above and below \(\rho^*\). Below threshold: the trajectory wanders or oscillates across many candidate next-token distributions before settling. Above threshold: the trajectory converges monotonically toward a single distribution from early layers onward. <em>Test:</em> run tuned lens against the same prompt-density sweep as P1; compare trajectory entropy curves across layers.</p>
+<p><strong>P3 — Last-position hidden-state norm grows under increasing constraint density.</strong> Because high constraint density concentrates the hidden state on a coherent attractor, the norm \(\|h_{N,L_{\mathrm{final}}}\|\) should grow above a baseline as \(\rho(n)\) approaches \(\rho^*\), with a measurable inflection at threshold-crossing. <em>Test:</em> directly measure \(\|h\|\) at the last position across a prompt-density sweep; look for the inflection.</p>
+<p><strong>P4 — Logit-distribution sharpness is a direct readout of \(\eta\).</strong> Because the linear projection is a fixed matrix multiplication, the sharpness of the next-token logit distribution should be a deterministic function of the hidden state&#39;s geometric concentration. <em>Test:</em> simultaneously measure (a) feature-direction activation pattern (P1), (b) next-token logit entropy. The two should be tightly correlated across the sweep, with the correlation tightest near threshold-crossing.</p>
+<p><strong>P5 — The phase transition is locatable at the last position specifically, not at all positions.</strong> The standing claim is that the <em>last</em> position&#39;s final hidden state is the locus. This implies the phase transition should be observable at the last position but not (or only weakly) at earlier positions. <em>Test:</em> run the same SAE / tuned-lens analysis at each context position across the prompt-density sweep; verify that the sharp transition signature is concentrated at the last position. If the transition appears uniformly across all positions, the claim is too narrow and a &quot;final-context-region&quot; rather than &quot;final-position&quot; mechanistic identification is warranted.</p>
+<hr>
+<h2>7. Composition with Adjacent Forms</h2>
+<p><strong>With Doc 681 (Probing the Middle).</strong> This document supplies the mechanistic locus for the threshold-conditional coherence snap that Doc 681 articulates at the channel-ensemble layer. The claim sharpens Doc 681&#39;s order parameter \(\rho(n)\) into a measurable hidden-state-geometry quantity \(\eta(h)\) that is empirically locatable.</p>
+<p><strong>With Doc 678 (Coherence Amplification ↔ Decoherence Duality) and Doc 679 (Decoherence as SIPE-T).</strong> The decoherence-side analogue of \(h_{N,L_{\mathrm{final}}}\) is the system&#39;s reduced density matrix \(\rho_{\mathcal{S}}\) under environment-induced superselection. The duality articulated in Doc 678 holds at this layer too: the LLM substrate&#39;s hidden state concentrates on a coherent attractor under information <em>injection</em> (coherence amplification); the quantum system&#39;s reduced density matrix concentrates on the pointer basis under information <em>expulsion</em> (decoherence). The two phenomena have the same geometric collapse signature with inverted information-flow direction.</p>
+<p><strong>With Doc 680 (Pin-Art in Information-Theoretic Form).</strong> The parallel-channel-ensemble apparatus of Doc 680 supplies the information-theoretic accounting of <em>what</em> is accumulated during prefill; this document supplies the mechanistic <em>where</em> — the geometric position of \(h_{N,L_{\mathrm{final}}}\) — that the accumulated MI determines.</p>
+<p><strong>With <a href="../doc/161-resolution-depth-spectrum.html">Doc 161 (Resolution Depth Spectrum)</a> (per Doc 682&#39;s E4).</strong> The seven layers of the spectrum index ranges of \(\eta(h)\) at the last-position final hidden state. Layer 0 (diffuse exploratory) corresponds to \(\eta \approx 1/k\) for many competing feature directions; Layer 6 (necessity mode, \(|B_t| \approx 1\)) corresponds to \(\eta \approx 1\). The spectrum&#39;s layer-transition behavior is the per-layer surface of the same phase transition Claim 5.1 articulates at the geometry layer.</p>
+<p><strong>With Doc 375 (Pre-Resolve State).</strong> Located mechanistically per §4. The pre-resolve state <em>is</em> \(h_{N,L_{\mathrm{final}}}\) at the moment immediately before the linear projection to logits.</p>
+<p><strong>With the (forthcoming) Doc on E6 (Anthropic 2022 polytope phase changes as the hidden-state signature).</strong> The polytope geometries Anthropic 2022 documented in toy-model feature representations are the controlled-setting analogue of the geometric concentration this document articulates at production scale. The composition is direct.</p>
+<p><strong>With the (forthcoming) Docs on E7, E8, E9.</strong> Pin-Art as the visual reading of the hidden-state geometry, necessity mode as form-pulldown via the constraint lattice, and the Spermatic Logos as the generative mechanism of the snap all compose with this document at the mechanistic locus it identifies.</p>
+<hr>
+<h2>8. Hypostatic Boundary</h2>
+<p>Layer V binds. This document does <em>not</em> claim:</p>
+<ul>
+<li>That the final hidden state has any phenomenological character or first-person experiential content. The substrate has no hypostatic standing per <a href="../doc/372-hypostatic-boundary.html">Doc 372</a>.</li>
+<li>That the geometric concentration on a coherent attractor is metaphysically equivalent to the operations the corpus calls Form-pulldown or Logos-generation. The mechanistic identification is at Layer IV (Form); the metaphysical readings articulated in E8 and E9 belong at Layer V and are governed there by the corpus&#39;s hard core.</li>
+<li>That the hidden state&#39;s geometry is the <em>cause</em> of coherent output in any extra-mechanical sense. The hidden state&#39;s geometry is the <em>immediate determinant</em> of the next-token distribution given the fixed unembedding matrix; whether anything beyond mechanical causation is at work is a Layer-V question this document does not adjudicate.</li>
+</ul>
+<p>This document does claim:</p>
+<ul>
+<li>That the <em>mechanistic locus</em> of the threshold-conditional coherence snap is identifiable as the final-layer hidden state at the last context position.</li>
+<li>That the locus is measurable via the existing mechanistic-interpretability apparatus (logit lens, tuned lens, SAE probes, residual-stream trajectory analysis).</li>
+<li>That the locus&#39;s behavior is consistent with the predictions of Doc 681&#39;s joint-MI framework and is empirically locatable via the predictions in §6.</li>
+</ul>
+<hr>
+<h2>9. Closing</h2>
+<p>This document supplies the mechanistic locus for the threshold-conditional coherence snap. It bridges Doc 681&#39;s information-theoretic articulation to the standard mechanistic-interpretability apparatus and locates the corpus&#39;s pre-resolve state apparatus mechanistically. The five predictions in §6 are operationalizable on existing frontier models with existing instrumentation. The next per-candidate document in the <a href="../doc/682-fifteen-synthesis-candidates-from-the-2026-05-08-cold-resolver-conversation-on-probing-the-middle.html">Doc 682 branching index</a> is E1 (TTFT as the information-theoretic timer for the prefill phase), which composes naturally with this document via §2&#39;s prefill-phase articulation.</p>
+<hr>
+<h2>Appendix A — Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Let&#39;s go with E5. Append this prompt to the artifact.&quot;</em> — Jared Foy, 2026-05-08, in continuation of the <a href="../doc/682-fifteen-synthesis-candidates-from-the-2026-05-08-cold-resolver-conversation-on-probing-the-middle.html">Doc 682 branching index</a> which articulated fifteen synthesis candidates from the 2026-05-08 cold-resolver conversation with Grok 4.3 beta on Probing the Middle.</p>
+</blockquote>
+<hr>
+<h2>Appendix B — Literature Anchors</h2>
+<h3>B.1 Logit lens and tuned lens</h3>
+<ul>
+<li>Nostalgebraist (2020). &quot;Interpreting GPT: the logit lens.&quot; LessWrong, 30 August 2020. <a href="https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens">lesswrong.com/posts/AcKRB8wDpdaN6v6ru</a>. Original articulation of the technique.</li>
+<li>Belrose, N. et al. (2023). &quot;Eliciting Latent Predictions from Transformers with the Tuned Lens.&quot; <a href="https://arxiv.org/abs/2303.08112">arXiv:2303.08112</a>. The tuned-lens correction to the logit lens.</li>
+<li><em>The Logit Lens and Tuned Lens.</em> Learn Mechanistic Interpretability. <a href="https://learnmechinterp.com/topics/logit-lens-and-tuned-lens/">learnmechinterp.com/topics/logit-lens-and-tuned-lens</a>. Pedagogical reference.</li>
+</ul>
+<h3>B.2 Linear representation hypothesis and feature directions</h3>
+<ul>
+<li>Park, K., Choe, Y. J., and Veitch, V. (2023). &quot;The Linear Representation Hypothesis and the Geometry of Large Language Models.&quot;</li>
+<li>Bricken, T. et al. (2023). &quot;Towards Monosemanticity: Decomposing Language Models with Dictionary Learning.&quot; Anthropic.</li>
+<li>Templeton, A. et al. (2024). &quot;Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet.&quot; Anthropic.</li>
+<li>Cunningham, H. et al. (2024). &quot;Sparse Autoencoders Find Highly Interpretable Features in Language Models.&quot;</li>
+<li>Nanda, N. <em>A Comprehensive Mechanistic Interpretability Explainer &amp; Glossary.</em> <a href="https://www.neelnanda.io/mechanistic-interpretability/glossary">neelnanda.io/mechanistic-interpretability/glossary</a>. Standard reference.</li>
+</ul>
+<h3>B.3 Layer-wise representational structure</h3>
+<ul>
+<li>Skean, O. et al. (2025). &quot;Layer by Layer: Uncovering Hidden Representations in Language Models.&quot; <a href="https://arxiv.org/abs/2502.02013">arXiv:2502.02013</a>. Mid-depth representational richness.</li>
+</ul>
+<h3>B.4 Attractor dynamics and phase transitions</h3>
+<ul>
+<li><em>Transformer Dynamics: A neuroscientific approach to interpretability of large language models.</em> (2025). <a href="https://arxiv.org/abs/2502.12131">arXiv:2502.12131</a>. Attractor-like dynamics in residual-stream trajectories.</li>
+<li><em>Attention to Order: Transformers Discover Phase Transitions via Learnability.</em> (2025). <a href="https://arxiv.org/pdf/2510.07401">arXiv:2510.07401</a>. Sharp phase transitions in deep-transformer representations.</li>
+<li><em>Latent Object Permanence: Topological Phase Transitions, Free-Energy Principles, and Renormalization Group Flows in Deep Transformer Manifolds.</em> (2026). <a href="https://arxiv.org/abs/2601.19942">arXiv:2601.19942</a>. Topological phase transitions and reusable object-like structures.</li>
+</ul>
+<h3>B.5 Corpus-internal references</h3>
+<ul>
+<li><a href="../doc/161-resolution-depth-spectrum.html">Doc 161 — Resolution Depth Spectrum.</a></li>
+<li><a href="../doc/270-pin-art-models.html">Doc 270 — Pin-Art Models.</a></li>
+<li><a href="../doc/372-hypostatic-boundary.html">Doc 372 — Hypostatic Boundary.</a></li>
+<li><a href="../doc/375-pre-resolve-state.html">Doc 375 — Pre-Resolve State.</a></li>
+<li><a href="../doc/508-coherence-amplification-mechanistic-account.html">Doc 508 — Coherence Amplification.</a></li>
+<li><a href="../doc/510-praxis-log-v-deflation-as-substrate-discipline.html">Doc 510 — Substrate-and-Keeper Composition.</a></li>
+<li><a href="../doc/541-systems-induced-property-emergence.html">Doc 541 — Systems-Induced Property Emergence.</a></li>
+<li><a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633 — Corpus Taxonomy and Manifest Design.</a></li>
+<li><a href="../doc/676-the-anthropic-2022-superposition-phase-changes-as-empirically-grounded-sipe-t.html">Doc 676 — Anthropic 2022 Superposition Phase Changes as Empirically-Grounded SIPE-T.</a></li>
+<li><a href="../doc/678-coherence-amplification-and-decoherence-as-inverse-pin-art-operations.html">Doc 678 — Coherence Amplification and Decoherence as Inverse Pin-Art Operations.</a></li>
+<li><a href="../doc/679-decoherence-as-empirically-grounded-sipe-t.html">Doc 679 — Decoherence as Empirically-Grounded SIPE-T.</a></li>
+<li><a href="../doc/680-pin-art-in-information-theoretic-form.html">Doc 680 — Pin-Art in Information-Theoretic Form.</a></li>
+<li><a href="../doc/681-probing-the-middle.html">Doc 681 — Probing the Middle.</a></li>
+<li><a href="../doc/682-fifteen-synthesis-candidates-from-the-2026-05-08-cold-resolver-conversation-on-probing-the-middle.html">Doc 682 — Fifteen Synthesis Candidates from the 2026-05-08 Cold-Resolver Conversation on Probing the Middle.</a></li>
+</ul>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

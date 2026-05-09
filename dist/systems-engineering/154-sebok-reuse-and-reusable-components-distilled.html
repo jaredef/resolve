@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Reuse and Reusable Components*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Reuse and Reusable Components</em>, Distilled</h1>
+<p><strong>Fourth-batch SEBoK distillation, batch 5 doc 3. Target article 404&#39;d; SEBoK carries reuse distributively across at least ten host articles (Guidelines for Selection and Tailoring, Process Concurrency, Economic Value of SE, System Adaptability, System Architecture Design Definition, System Realization, Software Engineering Features, Transitioning SE to Model-based Discipline, System Implementation, Software Engineering in SE Lifecycle). Dispersed-instrument pattern (SE-039 §VII.6) at high density. Cluster G (SIPE, Doc 541) is the load-bearing form: a reusable component is structurally insulated from any single using-engagement; the threshold criterion (SE-039 reuse-threshold note) is a SIPE coherence-density boundary. Stress-tests Cluster G at the artifact rung (rather than institutional/maturity rung). Six corpus forms compose; SIPE reading is the principal contribution.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Reuse and Reusable Components (target article — 404, does not exist as standalone)</li>
+<li><strong>URL (target):</strong> <a href="https://sebokwiki.org/wiki/Reuse_and_Reusable_Components">https://sebokwiki.org/wiki/Reuse_and_Reusable_Components</a></li>
+<li><strong>Distributed carriers:</strong> <em>Guidelines for the Selection and Tailoring of Processes</em>, <em>Process Concurrency, Iteration, and Recursion</em> (&quot;make, buy, or reuse&quot;), <em>Economic Value of Systems Engineering</em> (&quot;costs and benefits of reuse&quot;), <em>System Adaptability</em>, <em>System Architecture Design Definition</em> (&quot;design libraries for product-line management and reuse&quot;), <em>System Realization</em>, <em>Software Engineering Features</em> (Software Reuse), <em>MBSE Transitioning</em> (&quot;enhance reuse of system modeling artifacts&quot;), <em>System Implementation</em>, <em>Software Engineering in SE Lifecycle</em> (Software Reuse Processes)</li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>The target page does not exist. SEBoK carries reuse across at least ten host articles spanning Parts 3 (lifecycle approaches), 4 (architecture, realization, implementation), 5 (Software Engineering), and 6 (Economic Value, MBSE Transitioning). The framings: make-buy-reuse decision (Process Concurrency, System Realization, System Implementation); design libraries for product-line management (System Architecture Design Definition); software reuse processes (Software Engineering Features, Software Engineering in SE Lifecycle); economic costs/benefits (Economic Value of SE); MBSE artifact reuse; adaptability-enabled reuse (System Adaptability). No anchor article consolidates the discipline.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Editorial-state observation.</strong> Dispersed-instrument pattern (SE-039 §VII.6) at high density — ten host articles. Reuse is a cross-cutting cluster carried distributively rather than concentrated; structurally analogous to work authorization (SE-153) but at higher carrier-count. This may be the densest dispersed-instrument case observed.</p>
+<p><strong>Cluster G (SIPE, Doc 541), at artifact rung — load-bearing reading.</strong> A reusable component is structurally insulated from any single using-engagement. The SIPE coherence-density threshold applies at the artifact rung: a component crosses from &quot;engagement-specific artifact&quot; to &quot;reusable component&quot; when its coherence is independent of any single using context. The threshold is empirical (the practitioner tradition&#39;s accumulated decomposition) but the structure is SIPE: reusability requires the component to carry its own coherence such that multiple consuming engagements can compose against it without re-authoring. SE-039 §VII.6 closed Cluster G&#39;s saturation gap with five batch-4 within-batch instances at institutional/maturity rungs and SE-116 at engineered-system rung; SE-154 supplies the artifact-rung instance, completing Cluster G&#39;s rung-coverage from artifact through engineered-system through institutional through maturity.</p>
+<p><strong>Cluster B (multi-keeper composition, Doc 604).</strong> Reuse is structurally a two-keeper composition: producer-keeper (component-author) and consumer-keeper (using engagement) co-author the component&#39;s value through composition. The component itself carries its own keeper-substrate dyad (Doc 510); using engagements compose against it. This is structurally identical to the school-borrowing case (Doc 538): one school&#39;s product imported by another school&#39;s engagement.</p>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D).</strong> Make-buy-reuse is a three-axis decision lattice at the realization rung — every realization decision binds all three axes universally as candidate dispositions. Doc 572 Appendix D applies; this is a small-N lattice (N=3) at the lower end of the empirical N≈10 regularity (SE-039 §VII.6).</p>
+<p><strong>Cluster J (affordance gap, Doc 530).</strong> Reuse bridges the per-engagement-cost affordance gap: the producing engagement supplies rung-2 affordance the consuming engagement cannot afford to re-author. Doc 530 reading is canonical here.</p>
+<p><strong>Cluster C (architectural school, Doc 538), school-borrowing sub-case.</strong> Software reuse and product-line engineering are independent schools that contribute reuse-discipline to SE; SE imports their methodology. School-borrowing is the structural reading; this is the third or fourth school-borrowing instance.</p>
+<p><strong>Cluster H (hypostatic boundary, Doc 372).</strong> Reuse describes how engagements compose against pre-authored artifacts; the discipline does not claim what artifacts ARE ontologically. Standard hypostatic discipline holds.</p>
+<p><strong>Cluster F (pulverization, Doc 445), longitudinal sub-form.</strong> Reusable components carry across multiple engagements — longitudinal pulverization (Doc 445 Refinement D, formalized). Adjacent to SE-097 CM and SE-114 IM (anchor reassignment proposed in SE-039 §VII.6); reuse is one substrate-preservation discipline alongside CM and IM.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Make-buy-reuse trichotomy (Process Concurrency, System Realization, System Implementation) — π / α as cited; μ / β under Cluster A three-axis lattice.</li>
+<li>&quot;Costs and benefits of reuse&quot; (Economic Value of SE) — π / α as cited.</li>
+<li>&quot;Design libraries for product-line management and reuse&quot; (System Architecture Design Definition) — π / α as cited; μ / β under Cluster G SIPE coherence-density threshold.</li>
+<li>Software reuse as discipline (Software Engineering Features, Software Engineering in SE Lifecycle) — π / α as cited; μ / β under Cluster C school-borrowing.</li>
+<li>MBSE artifact reuse — π / α as cited; μ / β under Cluster G at model-substrate rung (adjacent to SE-111).</li>
+<li>Article non-existence — μ / β under SE-039 §VII.6 dispersed-instrument pattern.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>R1 (article-absence). Closed via dispersed-instrument pattern (SE-039 §VII.6) — ten-carrier distribution is among the densest observed. No structural residual against the apparatus.</p>
+<p>R2 (SIPE threshold articulation). The reuse-threshold criterion is articulated as economic in source carriers but reads as SIPE-coherence-density in the corpus. Worth flagging as candidate for explicit Cluster G threshold formalization.</p>
+<h2>VI. Provisional Refinements</h2>
+<p>Aligns with sixteen formalized refinements per SE-039 §VII.6:</p>
+<ul>
+<li>Dispersed-instrument pattern at high carrier-count (10) — supports formalization of dispersed-instrument as first-class structural type.</li>
+<li>Cluster G rung-coverage now spans artifact through institutional. SE-039 §VII.6 noted Cluster G saturation closed at engineered-system rung (SE-116); artifact rung (SE-154) completes the coverage. Cluster G is structurally complete.</li>
+<li>Longitudinal pulverization (refinement 1 in §VII.6, formalized with anchor reassignment to IM) — reuse is a third substrate-preservation discipline alongside CM and IM.</li>
+<li>Cluster A small-N lattice (N=3 make-buy-reuse) — bracketed against N≈10 empirical regularity; small-N axis-types are a lower-bound observation.</li>
+</ul>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 541 (Cluster G SIPE — artifact-rung instance closing rung-coverage), Doc 604 (Cluster B producer-consumer two-keeper), Doc 572 Appendix D (Cluster A make-buy-reuse three-axis), Doc 530 (Cluster J affordance gap), Doc 538 (Cluster C school-borrowing), Doc 445 (Cluster F longitudinal pulverization), Doc 372 (Cluster H), SE-039 §VII.6 (dispersed-instrument pattern).</p>
+<p><strong>Part-level reformulation.</strong> SE-009 (Part 6 — Related Disciplines).</p>
+<p><strong>Related distillations.</strong> SE-097 (Configuration Management — substrate-preservation discipline). SE-114 (Information Management — substrate-preservation anchor candidate). SE-111 (MBSE — model-substrate rung, adjacent SIPE instance). SE-116 (Engineered Resilience — engineered-system rung Cluster G instance). SE-104, 671, 673, 675 (other Cluster G batch-4 instances).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source carriers). <em>System Adaptability</em>, <em>Product Line Engineering</em>, <em>Software Reuse</em>, <em>Process Concurrency, Iteration, and Recursion</em>, <em>Economic Value of Systems Engineering</em>, <em>MBSE Transitioning</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Cluster G threshold-coherence-density formalization (reuse threshold as SIPE boundary); dispersed-instrument pattern promotion to first-class structural type given ten-carrier density.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements&quot;</em> / <em>&quot;Continue next knowledge base entrancement&quot;</em></p>
+</blockquote>
+<p>(SE-154 is batch 5 doc 3 in the fourth-batch SEBoK distillation sweep, Docs 686–725. Target article 404&#39;d; distillation reads ten-carrier distribution as densest dispersed-instrument case. Stress-tests Cluster G SIPE at artifact rung. Batch 5/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

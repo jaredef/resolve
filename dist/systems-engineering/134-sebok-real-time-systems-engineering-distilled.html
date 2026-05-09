@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Real-Time Systems Engineering*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Real-Time Systems Engineering</em>, Distilled</h1>
+<p><strong>Fourth-batch SEBoK distillation, batch 2 doc 7. SEBoK has no dedicated <em>Real-Time Systems Engineering</em> page; the topic does not appear as a knowledge area at all. Real-time systems surface only as Part 7 case-study application contexts (London Taxi Service real-time complex adaptive scheduler, real-time image processing forensic verification) and through implicit treatment under embedded-systems and software-systems pages. This is the cleanest SEBoK editorial gap observed in the fourth batch — real-time systems engineering is one of the most mature sub-disciplines of computing-systems engineering, with substantial bodies of doctrine (hard / soft / firm real-time taxonomy, scheduling theory, worst-case execution time analysis, rate-monotonic and earliest-deadline-first algorithms), and SEBoK&#39;s silence is structurally significant. The absence is itself the load-bearing finding. Cluster I (pin-art / temporal-concurrency, Doc 572 Appendix C) is where real-time engineering would compose were it formalized: real-time systems are the canonical pin-art-with-deadline case, where every operational moment is pinned to a deadline-bounded computation. The cluster&#39;s natural worked example is missing from SEBoK. Hypostatic boundary (Cluster H) suggests the absence is not a corpus residual but a SEBoK editorial scope choice — real-time computing is treated as belonging to the software/embedded-systems body of knowledge rather than the SE body. Two clusters compose; the absence supplies a residual against SEBoK rather than against the corpus.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> SEBoK has no dedicated <em>Real-Time Systems Engineering</em> page or knowledge area. Closest reference: Part 7 case studies (London Taxi Service real-time complex adaptive scheduler) and <em>Systems Engineering Fundamentals</em> implicit coverage.</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Systems_Engineering_Fundamentals">https://sebokwiki.org/wiki/Systems_Engineering_Fundamentals</a> (closest substantive page — confirmed not to address real-time engineering)</li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>SEBoK&#39;s <em>Systems Engineering Fundamentals</em> page does not address real-time systems engineering, real-time constraints, hard/soft real-time distinction, or scheduling. Real-time systems appear in SEBoK only as case-study application contexts: &quot;The Development of the First Real-Time Complex Adaptive Scheduler for a London Taxi Service&quot; and &quot;real-time image processing and forensic verification of documents&quot; examples. No knowledge area treats real-time engineering as a discipline. The standard real-time engineering doctrine — hard real-time (deadline miss = failure), soft real-time (deadline miss = degradation), firm real-time (deadline miss = result becomes useless), rate-monotonic scheduling, earliest-deadline-first scheduling, worst-case execution time (WCET) analysis, deadline-monotonic priority assignment — is absent from SEBoK&#39;s coverage. Real-time engineering is treated as belonging to adjacent bodies (SWEBOK software engineering, embedded systems literature) rather than to the SE body of knowledge.</p>
+<h2>III. Structural Read</h2>
+<p><strong>The absence is the structural finding.</strong> SEBoK does not formalize real-time systems engineering as a knowledge area, despite its centrality to many engineered systems (avionics, automotive control, industrial control, robotics, telecommunications). This is the cleanest editorial gap observed in the fourth-batch sweep. Doc 372 hypostatic boundary suggests the gap is not a corpus residual: SEBoK&#39;s editorial scope draws a line between SE and software/embedded-systems bodies, and real-time falls on the software/embedded side of that line. The corpus accepts the editorial choice while flagging the gap.</p>
+<p><strong>Cluster I (pin-art / temporal-concurrency, Doc 572 Appendix C), natural worked example missing.</strong> Real-time systems are the canonical pin-art-with-deadline case: every operational moment is pinned to a deadline-bounded computation; the system is concurrent on a temporal axis with hard ordering constraints. Cluster I&#39;s worked-example population (operational scenarios, lifecycle stages, baseline cadences) lacks the most temporally-dense case — sub-millisecond computational deadlines. The worked example is absent from SEBoK; the corpus notes the absence and could supply the worked example from outside SEBoK if needed for Cluster I synthesis.</p>
+<p><strong>Cluster H (hypostatic boundary, Doc 372), editorial-scope reading.</strong> SEBoK&#39;s silence on real-time engineering is itself a Cluster H discipline: SEBoK does not claim what does not belong to SE. The editorial restraint is structurally a hypostatic-boundary enforcement. Doc 372 binds at the meta-discipline level.</p>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D), absent.</strong> Were real-time treated as a SEBoK knowledge area, the canonical hard / soft / firm real-time taxonomy would supply a three-sibling Cluster A lattice at the deadline-strictness rung. SEBoK does not supply it.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>&quot;SEBoK does not address real-time systems engineering as a knowledge area&quot; — π / α as observed.</li>
+<li>Real-time case studies as application contexts only — π / α as cited.</li>
+<li>Editorial-scope-line between SE and software/embedded bodies — μ / β under Doc 372 hypostatic boundary at meta-discipline level (corpus reading).</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>SEBoK editorial gap (residual against SEBoK, not against corpus).</strong> Real-time systems engineering is one of the most mature computing-systems sub-disciplines and is materially absent from SEBoK. The gap is structural — SEBoK draws its editorial scope line short of real-time computing — and is documented here as a SEBoK residual. The corpus has no formalization to apply or refine; the absence does not stress-test any cluster.</p>
+<p><strong>Cluster I worked-example absence.</strong> The natural pin-art-with-deadline worked example for Cluster I is missing from SEBoK&#39;s coverage. Cluster I synthesis (when undertaken) may need to supply the worked example from outside SEBoK (real-time scheduling literature, e.g., Liu and Layland 1973 rate-monotonic foundational paper).</p>
+<p><strong>No structural surprises against the apparatus.</strong> All five other clusters silently abstain from binding because there is no SEBoK content to bind to. The silence is consistent.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>No refinements applicable.</strong> With no SEBoK content to read, no refinements emerge from this article. The fourth-batch sweep records the editorial gap and proceeds. Aligns with SE-039 §VII.6 sixteen formalized refinements at the level of meta-discipline coverage (refinement candidate: SEBoK-coverage-gap inventory).</p>
+<p><strong>Meta-refinement candidate: SEBoK-coverage-gap inventory.</strong> The fourth batch has now identified four gaps in two batches (C4ISR SE-128, Cybersecurity Engineering as separate from System Security SE-129, Ontology Development SE-130, Autonomous Systems Engineering SE-132 partial, Supply Chain Engineering SE-133, Real-Time Systems Engineering SE-134). Six gap observations across seven articles. The pattern suggests a corpus-side refinement: track SEBoK editorial gaps as their own residual class, distinct from corpus residuals. Candidate for SE-039 §VII.6 extension when batch totals warrant.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 372 (hypostatic boundary, editorial-scope reading), Doc 572 Appendix C (temporal concurrency, pin-art-with-deadline absent worked example).</p>
+<p><strong>Part-level reformulation.</strong> SE-009 (Part 7 case studies are the only locus of real-time material).</p>
+<p><strong>Related distillations.</strong> SE-128 (C4ISR, prior coverage-gap observation). SE-130 (Ontology Development, prior coverage-gap observation). SE-133 (Supply Chain Engineering, prior coverage-gap observation).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). Part 7 case studies (London Taxi Service real-time scheduler), <em>Systems Engineering Fundamentals</em>, <em>Software Engineering in the Systems Engineering Life Cycle</em>, SWEBOK (cross-reference for real-time computing).</p>
+<p><strong>External references</strong> (corpus-side, for Cluster I worked example if needed). Liu and Layland 1973 rate-monotonic scheduling; Burns and Wellings real-time systems and programming languages; Stankovic real-time computing taxonomy.</p>
+<p><strong>Methodology refinement candidates.</strong> SEBoK-coverage-gap inventory as new residual class. Cluster I synthesis with externally-supplied real-time worked example.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements&quot;</em> / <em>&quot;Continue next knowledge base entrancement&quot;</em></p>
+</blockquote>
+<p>(SE-134 is the seventh of the fourth-batch SEBoK distillation sweep, Batch 2/5. SEBoK has no real-time systems engineering coverage; absence is the structural finding. Sixth coverage-gap observation in two batches; meta-refinement candidate opened.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

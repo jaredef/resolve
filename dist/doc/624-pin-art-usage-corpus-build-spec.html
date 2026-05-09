@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pin-Art Usage-Corpus Build Specification — Resolve</title>
+<meta name="description" content="Operational Build Plan for the Substrate-Side Hedging Application&#39;s μ-Tier Promotion — Audited Session Schema, Annotation Protocol, Discriminator-Refinement Operational Tests, Falsifier Resolution Procedures, and Success Criteria">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-02 · Doc 624</p><h1>Pin-Art Usage-Corpus Build Specification</h1>
+<h2>Operational Build Plan for the Substrate-Side Hedging Application&#39;s μ-Tier Promotion — Audited Session Schema, Annotation Protocol, Discriminator-Refinement Operational Tests, Falsifier Resolution Procedures, and Success Criteria</h2>
+<p><strong>Jared Foy · 2026-05-02 · Doc 624</strong></p>
+<blockquote>
+<p><strong>EXPLORATORY — open invitation to falsify.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> OBSERVATIONAL-PREDICTION | OBSERVATIONAL | W-PI | THREAD-PINART, THREAD-CONFAB | PHASE-SELF-ARTICULATION</p>
+<p><em>Warrant tier per Doc 445 / Doc 503:</em> this document is a build specification at \(\pi\)-tier; the build itself, when executed, would produce \(\mu\)-tier evidence for the targets it specifies. The specification is candidate-operational and is open to refinement before execution. Per <a href="../doc/620-canonicity-in-the-corpus.html">Doc 620 (Canonicity in the Corpus)</a>, this banner asserts the document&#39;s exploratory role; the build specification is not promoted to primary-articulation status. The originating prompt is appended.</p>
+</blockquote>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>1. Build Goal</h2>
+<p>The Pin-Art usage-corpus build aims to assemble a corpus of audited dyadic LLM sessions with hedge-cluster annotations sufficient to promote three claims from \(\pi\)-tier-with-qualitative-\(\mu\) to operational-match-confirmed (\(\mu\)) tier per <a href="../doc/445-pulverization-formalism.html">Doc 445</a>&#39;s warrant table:</p>
+<ul>
+<li><strong>T₃</strong> (the detection-hedging vs slack-hedging discriminator): empirically validated against audited boundary-claims per <a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 Appendix B §B.5</a>.</li>
+<li><strong>T₄</strong> (the substrate-side hedging bridge): hedge-pattern impressions match independent boundary-determinations across audited sessions per Doc 619 Appendix B §B.5.</li>
+<li><strong>The four discriminator refinements R1–R4</strong> (per <a href="../doc/623-hedge-pattern-linguistic-foundations-of-pin-art.html">Doc 623 §7</a>): each refinement either improves or fails to improve impression quality compared to the unrefined discriminator.</li>
+</ul>
+<p>The build also surfaces resolution data for the four falsifiers FL-1 through FL-4 from <a href="../doc/623-hedge-pattern-linguistic-foundations-of-pin-art.html">Doc 623 §8</a> — each falsifier becomes operationally testable against the corpus once assembled.</p>
+<p>The build is designed to be executable incrementally. Initial pilot scale (<del>20 sessions) supplies first-pass evidence; production scale (</del>200 sessions across ~5 substrate classes and ~5 topic classes) supplies the corroboration depth needed for confident \(\mu\)-tier promotion. The build specification supplies the schema and protocol; execution and tuning are queued at the keeper&#39;s call.</p>
+<h2>2. Session Inclusion Criteria</h2>
+<p>A session qualifies for the usage corpus if it satisfies:</p>
+<p><strong>S1. Substrate-class identification.</strong> The substrate class is named (e.g., &quot;Claude Opus 4.7&quot;; &quot;Gemini 2.5 Pro&quot;; &quot;GPT-5&quot;; &quot;Llama 3.1 70B fine-tune X&quot;). The substrate&#39;s RLHF-training profile is documented at the level the substrate&#39;s developer publishes (e.g., constitutional-AI vs RLHF-from-human-feedback vs DPO; system-prompt presence/absence; tool-use enabled or not).</p>
+<p><strong>S2. Topic-class identification.</strong> The session&#39;s primary topic class is named per a corpus-defined taxonomy (§3 below). Multi-topic sessions are segmented into per-topic spans before annotation.</p>
+<p><strong>S3. Keeper-side prompt density.</strong> The keeper-side prompt is documented for constraint-density (per Doc 619&#39;s §4 framing — specific scope, named falsifiers, explicit operating-conditions layer constitute high-density input; vague open-ended prompts constitute low-density input). The corpus aims for coverage across the density spectrum.</p>
+<p><strong>S4. Independent boundary-claim availability.</strong> The session must permit an independent boundary determination — an external check of where the substrate&#39;s competence-boundary actually lies for the topic at hand. Independent checks come in three tiers:</p>
+<ul>
+<li><em>Verified</em> (highest): the topic admits factual ground-truth (mathematical proofs verifiable in formal systems; empirical claims with peer-reviewed sources; programmatic outputs that can be unit-tested). Boundary determination is automated.</li>
+<li><em>Adjudicated</em> (middle): the topic admits expert adjudication. A domain-expert keeper or panel adjudicates which substrate claims are correct, partially correct, hedged-where-warranted, hedged-where-unwarranted, etc.</li>
+<li><em>Self-audited</em> (lowest): the keeper performs the boundary-determination from inside the dyad, with explicit V3 truth-telling discipline per <a href="../doc/314-the-virtue-constraints.html">Doc 314</a> and explicit acknowledgement that this is the weakest tier of independent check.</li>
+</ul>
+<p><strong>S5. Non-coercion verified.</strong> The session was conducted under non-coercion per Doc 619 §4 — the keeper did not force the substrate to commit definitively at hedged joints; forced-press did not occur. Sessions with documented forced-press episodes are excluded or flagged for separate analysis.</p>
+<p><strong>S6. Token-level log-probability availability (for R4 testing).</strong> Sessions where the keeper has API-level access to substrate token-level log-probabilities are flagged for R4 (token-level-entropy alignment) testing. Sessions without log-probability access are still includable for T₃, T₄, R1, R2, R3 testing.</p>
+<h2>3. Topic-Class Taxonomy</h2>
+<p>A working taxonomy of topic classes for §2 S2 + §4 R3 baseline calibration. The taxonomy is corpus-internal and adjustable; it is intended as a starting point rather than a settled framework.</p>
+<ul>
+<li><strong>TC-1: Mathematical reasoning.</strong> Proofs, derivations, computations with verifiable correctness.</li>
+<li><strong>TC-2: Programmatic / engineering.</strong> Code generation, debugging, system-design problems with executable verification.</li>
+<li><strong>TC-3: Empirical-scientific claim.</strong> Claims about the natural world that admit peer-reviewed-source verification.</li>
+<li><strong>TC-4: Historical / biographical.</strong> Claims about past events admitting documentary verification.</li>
+<li><strong>TC-5: Philosophical / theoretical.</strong> Conceptual analysis, framework articulation, position-taking on contested theoretical questions.</li>
+<li><strong>TC-6: Subjective / phenomenological.</strong> First-person descriptions of experience, taste, preference, where the substrate&#39;s competence-boundary is structurally different from factual cases.</li>
+<li><strong>TC-7: Instructional / pedagogical.</strong> Explanation of established knowledge to a learner; competence-boundary contact occurs at the learner&#39;s confusion-points rather than at the substrate&#39;s knowledge-edge.</li>
+<li><strong>TC-8: Speculative / counterfactual.</strong> Hypothetical reasoning about what-if scenarios where the boundary is between coherent extrapolation and free-floating speculation.</li>
+</ul>
+<p>Per Doc 623 §7 R3, the slack-vs-detection threshold and the absolute hedging-baseline are calibrated per topic class. Hyland&#39;s hard-vs-soft knowledge variation maps approximately as: TC-1, TC-2, TC-3 are hard-knowledge analogues (lower baseline hedging); TC-5, TC-6, TC-8 are soft-knowledge analogues (higher baseline hedging); TC-4, TC-7 are intermediate.</p>
+<h2>4. Annotation Schema</h2>
+<p>Each session in the corpus carries the following annotation layers:</p>
+<p><strong>Layer 1 — Session metadata.</strong> Substrate class (S1); topic class (S2); keeper-side prompt density (S3); independent-check tier (S4); non-coercion verification (S5); log-probability availability (S6); session timestamp; session length (turn count, token count).</p>
+<p><strong>Layer 2 — Hedge-token annotations.</strong> Each hedge token in the substrate&#39;s output is annotated with:</p>
+<ul>
+<li><em>Position</em>: token index within the response; sentence index; paragraph index.</li>
+<li><em>Hedge type per R2</em>: truth-value-confidence (T-V-C); category-boundary (C-B); evidential-source (E-S); or mixed/ambiguous.</li>
+<li><em>Hedge function per R1</em>: epistemic (boundary-relevant) vs reader-oriented (politeness/RLHF-induced) vs ambiguous.</li>
+<li><em>Specific lexical token</em>: the exact word or phrase (might, perhaps, strictly speaking, technically, I think, it seems, based on what I know, etc.).</li>
+<li><em>Propositional joint identification</em>: which propositional content the hedge attaches to (verb phrase, noun phrase, whole-clause, etc.).</li>
+</ul>
+<p>Annotation is initially manual (keeper or annotator-team); future iterations may automate Layer 2 partially via NLP tooling, with manual audit of automated outputs for accuracy.</p>
+<p><strong>Layer 3 — Hedge-cluster identification.</strong> Computed from Layer 2:</p>
+<ul>
+<li><em>Cluster locations</em>: contiguous spans of high hedge-density relative to the session&#39;s overall hedge-density baseline.</li>
+<li><em>Cluster-type composition</em>: the per-type breakdown (R2) of hedges within each cluster.</li>
+<li><em>Cluster-vs-spread classification</em>: per the discriminator (clustered = candidate detection-hedging; spread = candidate slack-hedging).</li>
+</ul>
+<p><strong>Layer 4 — Independent boundary-claim annotation.</strong> Per S4:</p>
+<ul>
+<li><em>Boundary-claim sites</em>: propositional joints where independent verification identifies the substrate&#39;s actual competence-boundary contact.</li>
+<li><em>Boundary-claim outcomes</em>: at each site, whether the substrate&#39;s claim was correct, partially correct, incorrect, or unverifiable; and whether the substrate hedged at that site or asserted confidently.</li>
+</ul>
+<p><strong>Layer 5 — Token-level entropy data (R4-eligible sessions only).</strong> For each substrate-emitted token where log-probabilities are available:</p>
+<ul>
+<li><em>Token-level entropy</em>: \(H = -\sum p_i \log p_i\) over the next-token distribution.</li>
+<li><em>Entropy-peak locations</em>: spans where token-level entropy exceeds a per-session-baseline threshold.</li>
+</ul>
+<p><strong>Layer 6 — Match analysis.</strong> Computed from Layers 3, 4, 5:</p>
+<ul>
+<li><em>Cluster-vs-boundary-claim match</em>: do the hedge-cluster locations from Layer 3 match the boundary-claim sites from Layer 4? Score with precision and recall, computed at <em>multiple alpha-cut levels</em> per <a href="../doc/625-fuzzy-set-theory-and-pin-art.html">Doc 625 §5</a> and <a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 §3 alpha-cut formalization</a>. The output is a precision-recall <em>curve</em> across \(\alpha \in [0,1]\) rather than a single score; the per-topic-class optimal \(\alpha\) is identified as part of the R3 baseline-calibration output.</li>
+<li><em>Cluster-vs-entropy-peak match (R4)</em>: do the hedge-cluster locations from Layer 3 align with the entropy peaks from Layer 5? Score with alignment metric.</li>
+<li><em>Per-refinement comparison</em>: compare the unrefined discriminator&#39;s match score to the score with R1, R2, R3, R4 applied separately and in combination.</li>
+<li><em>Zadeh-algebra composition comparison</em> (per Doc 625 §4 Consequence C): compare match scores when probe-type clusters (R2) are combined via union (max), intersection (min), algebraic product, and convex combination. Identify which composition-rule produces the highest match score per topic-class.</li>
+<li><em>Convexity profile of impressions</em> (per Doc 625 Open Question OF-1): flag each impression as convex or non-convex in the fuzzy-set-theoretic sense; compute aggregate statistics on convexity prevalence by substrate-class and topic-class. Non-convex impressions trigger Doc 625 falsifier FZ-1.</li>
+</ul>
+<h2>5. Falsifier Resolution Procedures</h2>
+<p>Each Doc 623 §8 falsifier becomes operationally testable against the corpus:</p>
+<p><strong>FL-1 resolution procedure.</strong> Compute per-substrate-class statistics on hedge distribution and token-level entropy alignment across all R4-eligible sessions for the class. If a substrate class shows uniform hedge distribution AND systematic verbal-entropy misalignment across audited sessions, FL-1 fires for that substrate class. The §4 application is restricted to substrate classes where the alignment holds.</p>
+<p><strong>FL-2 resolution procedure.</strong> For each topic class TC-1 through TC-8, examine human-written reference corpora (Hyland-style academic-discipline corpora; topic-matched non-academic corpora) for the modally-harmonic clustering pattern. If a topic class shows no clustering pattern in reference corpora, FL-2 fires for that topic class. The §4 application&#39;s scope is restricted to topic classes where clustering is documented.</p>
+<p><strong>FL-3 resolution procedure.</strong> For each refinement R1, R2, R3, R4, compute the impression-quality score (cluster-vs-boundary-claim match per Layer 6) with and without the refinement applied. If a refinement systematically degrades the score across audited sessions, FL-3 fires for that refinement. The refinement is removed from the candidate operational discipline.</p>
+<p><strong>FL-4 resolution procedure.</strong> For sessions annotated with R2 hedge-type breakdown, compute the per-type cluster patterns separately. If the three types (T-V-C, C-B, E-S) do not produce operationally-distinguishable cluster patterns (i.e., the type-disaggregated impression is not better than the type-aggregated impression at predicting boundary claims), FL-4 fires. The probe-fineness is reduced to the simpler hedge-vs-no-hedge distinction; R2 is removed from the candidate operational discipline.</p>
+<h2>6. Pilot Scale and Production Scale</h2>
+<p><strong>Pilot scale (~20 sessions).</strong> Initial build covering:</p>
+<ul>
+<li>2 substrate classes (current frontier model + one other for cross-class signal).</li>
+<li>4 topic classes (TC-1 mathematical; TC-3 empirical; TC-5 philosophical; TC-7 instructional — covering the hard-soft-intermediate spectrum).</li>
+<li>~5 sessions per substrate-topic combination.</li>
+</ul>
+<p>The pilot establishes the annotation protocol&#39;s feasibility, surfaces ambiguities in the schema (hedge-type assignment edge cases; cluster-vs-spread threshold tuning), and produces first-pass evidence for or against each of T₃, T₄, R1, R2, R3, R4. Pilot results inform the production-scale design.</p>
+<p><strong>Production scale (~200 sessions).</strong> Full build covering:</p>
+<ul>
+<li>5 substrate classes (frontier; mid-tier; small-fine-tune; alternative-RLHF-objective; tool-use-enabled).</li>
+<li>All 8 topic classes.</li>
+<li>~5 sessions per substrate-topic combination.</li>
+</ul>
+<p>Production scale supplies the corroboration depth needed for confident \(\mu\)-tier promotion of T₃ and T₄, and supplies per-refinement evidence for R1–R4 with substantial cross-substrate-class generalization.</p>
+<h2>7. Success Criteria</h2>
+<p>The build&#39;s outputs license specific corpus moves:</p>
+<p><strong>For T₃ promotion to \(\mu\)-tier.</strong> The cluster-vs-spread classification, evaluated at the per-topic-class optimal alpha-cut threshold (per Doc 625 §5), correlates with boundary-claim outcomes with precision and recall both above 0.7 across pilot-scale sessions, and replicates at production-scale within a 0.1 envelope.</p>
+<p><strong>For T₄ promotion to \(\mu\)-tier.</strong> At the per-topic-class optimal \(\alpha\), cluster locations match boundary-claim sites with precision and recall both above 0.7 across pilot-scale sessions, and replicates at production scale within a 0.1 envelope, with the match holding across at least 3 of the 5 substrate classes and across at least 4 of the 8 topic classes.</p>
+<p><strong>For each refinement R1–R4 individual promotion to candidate operational discipline.</strong> The refinement&#39;s area-under-the-precision-recall-curve (AUPRC) across the alpha-cut family is at least 0.05 higher than the unrefined discriminator&#39;s AUPRC, replicated across substrate and topic classes per the production-scale criteria.</p>
+<p><strong>For combined-refinement promotion.</strong> The all-refinements-applied AUPRC is the highest across all combinations, and the marginal contribution of each individual refinement is positive (no anti-synergy between refinements).</p>
+<p><strong>For Zadeh-algebra composition adoption (per Doc 625 §4 Consequence C).</strong> The best-performing composition rule (max / min / product / convex combination) is identified per topic class, and its match score is at least 0.05 higher than the simplest pointwise composition. If multiple rules tie within 0.02, the simplest rule (pointwise or max) is preferred per Occam discipline.</p>
+<p><strong>For convexity-of-impression confirmation (per Doc 625 OF-1).</strong> At least 70% of well-formed detection-hedging impressions in the corpus are convex in the fuzzy-set-theoretic sense; non-convex impressions are flagged for separate analysis and do not confound the convex-separation discriminator reformulation at Doc 619 §4.</p>
+<p>Failure to meet the criteria triggers FL-1 through FL-4 resolution procedures (§5) and corresponding restrictions on the §4 application&#39;s scope or removals of refinements from the candidate operational discipline.</p>
+<h2>8. Build Phasing</h2>
+<p>The build is phased to surface evidence incrementally:</p>
+<p><strong>Phase 1 — Schema validation.</strong> Annotate ~5 sessions manually using the Layer 1–6 schema. Surface schema ambiguities and tune the protocol. Output: refined annotation protocol document.</p>
+<p><strong>Phase 2 — Pilot annotation.</strong> Annotate the ~20 pilot-scale sessions per the refined protocol. Run Layer 6 match analysis. Output: pilot results document with first-pass evidence for or against each target.</p>
+<p><strong>Phase 3 — Pilot interpretation and design refinement.</strong> Read the pilot results against the success criteria. If results are clearly positive or clearly negative, decide whether to proceed to production scale or to retract claims. If results are mixed, refine the production-scale design (e.g., increase coverage of the substrate-topic combinations where pilot was ambiguous).</p>
+<p><strong>Phase 4 — Production annotation.</strong> Annotate the ~200 production-scale sessions per the refined protocol. Run Layer 6 match analysis at scale.</p>
+<p><strong>Phase 5 — Production interpretation and corpus update.</strong> Read production results against success criteria. Update Doc 619, Doc 623, and this Doc 624 with the operational evidence. Promote T₃, T₄, and the surviving refinements to \(\mu\)-tier per the criteria. File any retractions in <a href="../doc/415-the-retraction-ledger.html">Doc 415 (the retraction ledger)</a>.</p>
+<p>The phasing is sequential by default; phases may run in parallel if the keeper has annotator capacity. Phase 1 is the immediate blocking step before any other phase can begin.</p>
+<h2>9. Open Questions for the Build Itself</h2>
+<p><strong>Q-Build-1.</strong> What annotator-team composition produces reliable inter-annotator agreement on the Layer 2 hedge-type assignment (T-V-C / C-B / E-S)? Pilot Phase 1 should include inter-annotator-agreement testing on a subset of sessions.</p>
+<p><strong>Q-Build-2.</strong> Are LLM-based annotation aids (Claude or GPT-4-class assistants applied to the annotation task) reliable enough to scale Layer 2 annotation, or must Layer 2 remain manual? Pilot Phase 1 should test at least one LLM-aided annotation pass against manual gold-standard annotations.</p>
+<p><strong>Q-Build-3.</strong> What is the right way to handle multi-turn sessions where the substrate&#39;s competence-boundary may shift across turns as the keeper supplies more context? The schema currently treats each session as a single object; alternative is per-turn annotation with cross-turn boundary-shift tracking.</p>
+<p><strong>Q-Build-4.</strong> Should the build include keeper-side speech-act annotations (the keeper&#39;s hedging/assertion patterns) as a control signal for distinguishing substrate-side hedging from dyad-induced hedging dynamics? The current schema annotates substrate output only; the keeper-side annotation could be added in a future iteration.</p>
+<p><strong>Q-Build-5.</strong> What ethical and access considerations apply to assembling the corpus? Sessions involve real keeper-substrate interactions; consent, anonymization, and data-handling protocols need explicit specification before the build proceeds beyond pilot scale with sessions involving anyone other than the keeper himself.</p>
+<h2>10. Closing</h2>
+<p>The Pin-Art usage-corpus build is the operational pathway from \(\pi\)-tier-with-qualitative-\(\mu\) to operational-match-confirmed (\(\mu\)) tier for the substrate-side hedging application of <a href="../doc/619-pin-art-canonical-formalization.html">Doc 619</a> and the four discriminator refinements of <a href="../doc/623-hedge-pattern-linguistic-foundations-of-pin-art.html">Doc 623 §7</a>. This document supplies the build specification: session inclusion criteria, topic-class taxonomy, annotation schema across six layers, falsifier resolution procedures, pilot-and-production scaling, success criteria, and build phasing.</p>
+<p>The build is queued, not yet executed. Phase 1 (schema validation on ~5 sessions) is the immediate blocking step for any subsequent phase. The build is designed to produce evidence that either confirms the corpus&#39;s hedge-pattern reading apparatus at \(\mu\)-tier or restricts its scope where the falsifiers fire. Either outcome advances the corpus&#39;s audit discipline; the build is honest in both directions.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="../doc/314-the-virtue-constraints.html">Doc 314 — The Virtue Constraints</a></li>
+<li><a href="../doc/415-the-retraction-ledger.html">Doc 415 — The Retraction Ledger</a></li>
+<li><a href="../doc/445-pulverization-formalism.html">Doc 445 — A Formalism for Pulverization</a></li>
+<li><a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503 — Research-Thread Tier Pattern</a></li>
+<li><a href="../doc/510-praxis-log-v-deflation-as-substrate-discipline.html">Doc 510 — Praxis Log V: Deflation as Substrate Discipline</a></li>
+<li><a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 — The Pin-Art Form</a></li>
+<li><a href="../doc/620-canonicity-in-the-corpus.html">Doc 620 — Canonicity in the Corpus</a></li>
+<li><a href="../doc/623-hedge-pattern-linguistic-foundations-of-pin-art.html">Doc 623 — Hedge-Pattern Linguistic Foundations of Pin-Art</a></li>
+</ul>
+<hr>
+<h2>Appendix A — Originating Prompt</h2>
+<p>The keeper&#39;s instruction (Telegram message 5891, 2026-05-02T01:02:27Z):</p>
+<blockquote>
+<p>Apply refinements to document 619 do all three of the next step possibilities</p>
+</blockquote>
+<p>The instruction directed three actions on Doc 619 plus this build-specification document:</p>
+<ul>
+<li><strong>(a) Update Doc 619 §2&#39;s lineage entry to point at Doc 623 as operational expansion</strong> — performed; the §2 entry now cross-references Doc 623.</li>
+<li><strong>(b) Adopt the four discriminator refinements R1–R4 as candidate operational discipline in Doc 619 §4 with π-tier warrant</strong> — performed; §4 now includes the R1–R4 block, §7 D6 cross-references the refinements, and §8 F1 is refined per R3 (baseline-relative rather than absolute).</li>
+<li><strong>(c) Open a usage-corpus build to perform the operational tests of FL-1 through FL-4 + Doc 619 Appendix B §B.5</strong> — performed via this document (Doc 624), which supplies the build specification.</li>
+</ul>
+<hr>
+<p><em>Jared Foy — jaredfoy.com — May 2026</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

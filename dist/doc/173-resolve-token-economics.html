@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RESOLVE Token Economics and Optimal Seed Design — Resolve</title>
+<meta name="description" content="1. Token Economics Under RESOLVE">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 173</p><!-- chronological_ordinal: 21 -->
+<h1>RESOLVE Token Economics and Optimal Seed Design</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This paper makes the economic case for constraint-driven AI usage. It identifies five categories of wasted tokens -- exploratory wandering, accidental engineering, namespace confusion, verification round trips, and backtracking -- and maps each to the specific RESOLVE constraint that eliminates it. The core insight is that token cost is inversely proportional to constraint precision: the more precisely a seed states what must hold, the fewer tokens are needed. The paper then presents a model CLAUDE.md file (the configuration file AI tools load at session start) structured as a constraint seed rather than an instruction checklist, and argues that the AI industry&#39;s entire spend on prompt engineering, retry loops, agent harnesses, and output validators is the cost of not having named the governing constraints.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 173</strong></p>
+<p><strong>April 2026</strong></p>
+<hr>
+<h2>1. Token Economics Under RESOLVE</h2>
+<p>Every token the resolver emits that does not trace to a constraint is waste. RESOLVE&#39;s five constraints eliminate the five categories of waste:</p>
+<table>
+<thead>
+<tr>
+<th>Waste Category</th>
+<th>Tokens Spent On</th>
+<th>RESOLVE Constraint That Eliminates It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Exploratory generation</td>
+<td>Wandering toward a solution rather than deriving one</td>
+<td>R1: Constraint-first reasoning</td>
+</tr>
+<tr>
+<td>Accidental engineering</td>
+<td>Contingent implementation choices not prescribed by the seed</td>
+<td>R2: Essential-contingent separation</td>
+</tr>
+<tr>
+<td>Namespace confusion</td>
+<td>Interleaving reasoning into code and code into reasoning</td>
+<td>R3: Bilateral output</td>
+</tr>
+<tr>
+<td>Verification round trips</td>
+<td>Follow-up passes where the human asks &quot;does it work?&quot;</td>
+<td>R4: Verification-embedded resolution</td>
+</tr>
+<tr>
+<td>Backtracking</td>
+<td>Reversing unconscious architectural decisions</td>
+<td>R5: Property-aware descent</td>
+</tr>
+</tbody></table>
+<p>The savings compound. Under RESOLVE, the resolver:</p>
+<ul>
+<li>Identifies constraints before generating (no wandering)</li>
+<li>Generates only what is essential (no accidental engineering)</li>
+<li>Separates reasoning from artifact (no interleaving)</li>
+<li>Emits verification with the artifact (no round trips)</li>
+<li>Tracks tradeoffs explicitly (no reversal)</li>
+</ul>
+<p>The token count under RESOLVE converges on the minimum required to express the constraints as a conformant artifact plus its verification suite. This is the optimum. There is no configuration that uses fewer tokens and still satisfies the constraints.</p>
+<h2>2. The Aperture-Token Relationship</h2>
+<p>The seed&#39;s constraints are the aperture. The resolver&#39;s capability is the light. The relationship is inverse:</p>
+<ul>
+<li><strong>Wide aperture (unconstrained prompt):</strong> The resolver scatters across the possibility space. Tokens are spent on coverage — exploring what the human might want, hedging between interpretations, generating alternatives. The output is diffuse.</li>
+<li><strong>Narrow aperture (well-constrained seed):</strong> The resolver emits only what the constraints prescribe. Tokens are spent on precision — deriving the minimum conformant artifact. The output is focused.</li>
+</ul>
+<p>Token cost is inversely proportional to constraint precision. The more precisely the seed states what must hold, the fewer tokens are needed to resolve it.</p>
+<p>This is the economic argument against prompt engineering. Prompt engineering attempts to narrow the aperture by manipulating surface phrasing — &quot;think step by step,&quot; &quot;you are an expert in X,&quot; &quot;do not include Y.&quot; These are compensating techniques. They narrow the aperture indirectly. A RESOLVE-conformant seed narrows the aperture directly by stating the constraints the output must satisfy.</p>
+<h2>3. The Optimal CLAUDE.md</h2>
+<p>A CLAUDE.md file is a seed. It is the source representation from which the resolver derives its behavior for a given project. Most CLAUDE.md files are written as engineering checklists — accumulated rules, style preferences, tool instructions, and behavioral directives. They grow over time. They compensate for the resolver&#39;s ungoverned construction level.</p>
+<p>A RESOLVE-conformant CLAUDE.md states constraints that induce the desired properties. It is minimal. Every line traces to a property the project requires.</p>
+<h3>The Structure</h3>
+<pre><code class="language-markdown"># Project Seed
+
+## Constraints
+State only what must hold. Each constraint induces a property.
+Do not state preferences. Do not state conventions. State invariants.
+
+## Induced Properties
+Name the properties the constraints induce. These are what the
+resolver&#39;s output must exhibit. They are the acceptance criteria.
+
+## Verification
+State how to verify each property. The resolver includes
+verification in its output.
+
+## Context
+State what the resolver needs to know that it cannot derive
+from the codebase. Domain knowledge, architectural decisions
+already made, external system interfaces.
+
+## Non-Goals
+State what the resolver must not do. Each non-goal eliminates
+a category of waste tokens.
+</code></pre>
+<h3>An Example: The Optimal CLAUDE.md for This Project</h3>
+<pre><code class="language-markdown"># hypermediaapp.org
+
+## Constraints
+1. The bilateral boundary is the foundational architectural invariant.
+   All code must preserve namespace separation between server (htx:)
+   and client (HTML) interpreters.
+2. The 22-stage pipeline is the construction-level constraint.
+   Template resolution follows the defined stage order.
+3. Mutations use the two-phase prepare/execute pattern.
+   Action tokens are HMAC-signed, scoped, and short-lived.
+4. Modules satisfy the HtxModule interface.
+   Composition is the extension mechanism.
+5. The prose seed is the canonical specification.
+   Implementations are derived from it, not the reverse.
+6. Author: Jared Foy. Never add Co-Authored-By lines to commits.
+
+## Induced Properties
+- Templates resolve to clean HTML with zero framework artifacts.
+- Any conformant engine produces the same output for the same input.
+- Auth is stateless — tokens in headers, not cookies.
+- The editor, AI generator, and CLI all operate on the same
+  16-directive-family surface.
+
+## Verification
+- 238 tests in presto-ts (bun test)
+- 36 tests in agent-space (bun test tests/verification.test.ts)
+- 15 tests for DO runtime (bun test ./.spec/do-verify.ts)
+
+## Context
+- presto-ts is the canary engine at /home/jaredef/presto-ts
+- agent-space is at /home/jaredef/agent-space (port 4050)
+- hypermediaapp.org is the documentation site (port 3000)
+- Telegram plugin may be active for communication
+
+## Non-Goals
+- Do not add features beyond what is asked.
+- Do not refactor code that is not being changed.
+- Do not add comments, docstrings, or type annotations
+  to code you did not write.
+- Do not create documentation files unless requested.
+</code></pre>
+<h3>Why This Is Optimal</h3>
+<p>Six constraints. Four induced properties. Three verification commands. Five context facts. Four non-goals. Every line eliminates tokens. The constraints tell the resolver what must hold — no wandering. The induced properties tell it what to verify — no round trips. The non-goals tell it what to skip — no accidental engineering.</p>
+<p>A resolver operating under this CLAUDE.md does not need skills, prompt engineering tricks, or retry loops. The seed is precise enough that the aperture focuses the resolver&#39;s full capability into conformant output on the first pass.</p>
+<h2>4. The Industry Implication</h2>
+<p>The AI industry charges by the token. Every prompt engineering trick, every retry loop, every agent harness step, every RAG retrieval, every chain-of-thought scaffold — these all spend tokens compensating for an ungoverned construction level.</p>
+<p>RESOLVE governs the construction level. The token spend under RESOLVE is the minimum required to satisfy the constraints. Everything the industry currently spends above that minimum is the cost of not having named the constraints.</p>
+<p>The savings are not marginal. The 379-line DO runtime was resolved in a single pass. The 921-line PRESTO engine was resolved in a single pass. The 461-line bootstrap was resolved in a single pass. Each replaced artifacts that conventional engineering produced at 5-100x the size. The token ratio mirrors the line ratio. The constraints are the lens. The lens is the savings.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

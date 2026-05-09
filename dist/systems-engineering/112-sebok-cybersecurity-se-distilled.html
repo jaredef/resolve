@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Cybersecurity Systems Engineering*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Cybersecurity Systems Engineering</em>, Distilled</h1>
+<p><strong>Third-batch SEBoK distillation, batch 5 doc 1. SEBoK has no standalone &quot;Cybersecurity Systems Engineering&quot; page; the formalization lives inside <em>System Security</em> (Part 6, Related Disciplines, newest article SEBoK 2.9), where cybersecurity is one of five named specialty domains (supply chain assurance, hardware assurance, software assurance, cybersecurity, physical security). The five-domain partition is universal-sibling lattice (Cluster A) at the security-aspect rung; the six asset classes (Material Resources / System Capability / Human Resources / Intellectual Property / Data and Information / Derivative Non-Tangible) are a second Cluster A at the protected-asset rung. The &quot;veneer security&quot; critique and the &quot;engineered from inception&quot; mandate are forward-pulverization (Cluster F Refinement C) against the late-binding failure mode. The legacy-systems and SoS pain points compose with SE-071 (SoS) at the constituent-systems-with-untrusted-components affordance gap. Cluster E robust: NIST SP 800-160v1r1 supplies the canonical institutional ground. Six clusters compose; cybersecurity reads structurally as a sibling-axis inside System Security, not an independent rung.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> System Security (the page that hosts cybersecurity SE; no standalone page exists)</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Security">https://sebokwiki.org/wiki/System_Security</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>System Security defines security as &quot;freedom from those conditions that may lead to loss of assets (anything of value) with undesired consequences&quot; (Ross, Winstead, McEvilley 2022). Five specialty engineering domains: supply chain assurance, hardware assurance, software assurance, cybersecurity, physical security. Six broad asset classes requiring protection: Material Resources and Infrastructure, System Capability, Human Resources, Intellectual Property, Data and Information, Derivative Non-Tangible (image, reputation, trust). Pain points named: legacy cyber-physical systems not designed for software updates or interconnectivity; SoS complexity with unknown or untrusted constituent systems; early life-cycle neglect (security retrofitted late); AI complexity raising unpredictability; &quot;veneer security&quot; (functionality without substantive trustworthiness assurance). Anderson 1972 supplies the engineered-from-inception mandate. NIST SP 800-160 Volume 1 Revision 1 (Engineering Trustworthy Secure Systems) is the canonical institutional carrier. Cybersecurity is named as historically tactics-focused (threat defense, incident response) rather than systems-oriented. Position: Part 6 Related Disciplines, SE and Quality Attributes (newest article in SEBoK 2.9).</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D), at the security-aspect rung.</strong> The five domains (supply chain assurance, hardware assurance, software assurance, cybersecurity, physical security) bind every system requiring protection universally; the discriminator is aspect (where the threat surface lives), not rung-of-application. This sits cleanly inside the post-sweep Cluster A density (~19 instances). Cybersecurity is one sibling among five at this rung, not a privileged or independent discipline.</p>
+<p><strong>Cluster A (second instance), at the protected-asset rung.</strong> The six asset classes (material, capability, human, intellectual, data, derivative-non-tangible) are a second universal-sibling lattice at a different rung. Every security engagement binds all six aspect-wise; the discriminator is what is being protected. Two Cluster A lattices co-existing in one SEBoK page is structurally noteworthy and supports the post-sweep observation that universal-sibling-lattice is the densest cluster.</p>
+<p><strong>Cluster F (pulverization, Doc 445 Refinement C, forward).</strong> The five named pain points are systematic forward-pulverization of the security engagement: legacy-systems gap (premortem against retrofit failure), SoS-complexity gap (premortem against unknown-component compromise), early-life-cycle-neglect gap (premortem against late-binding failure), AI-complexity gap (premortem against emergent attack surface), veneer-security gap (premortem against functionality-without-assurance). The Anderson 1972 &quot;engineered from inception&quot; mandate is the canonical Cluster F prescription against late-binding. Cluster F gains another forward-pulverization instance.</p>
+<p><strong>Cluster E (institutional ground, Doc 571).</strong> NIST SP 800-160 Volume 1 Revision 1 is the canonical institutional carrier; ISO/IEC/IEEE 15288 supplies the life-cycle frame; Anderson 1972 supplies the historical anchor. Three-carrier robustness (SE-039 §VII.5 sub-observation from SE-063) holds: NIST + ISO + foundational-paper as three independent carriers of the same discipline.</p>
+<p><strong>Cluster B (multi-keeper composition, Doc 604), at the security-discipline-composition rung.</strong> Each of the five specialty domains is a full keeper-substrate dyad (supply chain has its own institutional carriers, hardware assurance has its own labs and standards, etc.). The system security engineer is the reconciliation rung; composition rule is subordination-by-domain when one domain takes precedence (e.g., hardware-first for cyber-physical) and coordination-by-rung otherwise. Compose with SE-038 (HSI eight-keeper) and SE-065 (Specialty Engineering twelve-keeper): security supplies a five-keeper instance at the same fractal scale.</p>
+<p><strong>Cluster J (affordance gap, Doc 530), at the legacy-systems and SoS-complexity boundary.</strong> Legacy cyber-physical systems were rung-1 productions whose rung-2 needs (security as keeper-side affordance) were absent at production time; the modern SoS engagement supplies rung-2 retroactively across constituent systems whose own keepers no longer exist or are not coordinated with the security engineer. This is the canonical inverse affordance gap: the SE supplies rung-2 affordance to substrates whose original keeper supply has evacuated.</p>
+<p><strong>Cluster H (hypostatic boundary, Doc 372).</strong> &quot;Trustworthiness&quot; and &quot;trust&quot; appear in the Derivative Non-Tangible asset class. SEBoK&#39;s voice keeps the framing functional (trust as the system&#39;s ability to behave predictably under adversity), not anthropological. The corpus accepts the functional framing.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Security definition (Ross, Winstead, McEvilley 2022) — π / α as cited.</li>
+<li>Five specialty security domains — π / α as cited; μ / β under Doc 572 Appendix D at the security-aspect rung.</li>
+<li>Six asset classes — π / α as cited; μ / β under Doc 572 Appendix D at the protected-asset rung.</li>
+<li>Five pain points — π / α as cited; μ / β under Doc 445 Refinement C forward-pulverization.</li>
+<li>&quot;Engineered from inception&quot; (Anderson 1972) — π / α as cited; μ / β as canonical Refinement C prescription.</li>
+<li>NIST SP 800-160v1r1 — π / α as cited; institutional ground under Doc 571.</li>
+<li>&quot;Veneer security&quot; — π / α as cited; corpus reads as Doc 445 forward-pulverization residual.</li>
+<li>Cybersecurity-as-tactics-focused critique — π / α as cited; corpus reads as school-immaturity signal under Doc 538.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>Editorial-absence residual.</strong> No standalone <em>Cybersecurity Systems Engineering</em> page exists; the formalization lives distributed inside System Security and adjacent pages (Information Management, System Hardware Assurance). Per SE-039 §VII.5, the non-existence reads as Cluster E signal: the formalization rung has not consolidated into a dedicated institutional carrier. SEBoK 2.9&#39;s introduction of System Security as &quot;newest article&quot; suggests the consolidation is in progress; cybersecurity-specific consolidation is the next stage.</p>
+<p><strong>Cybersecurity-as-school-immaturity residual.</strong> SEBoK names cybersecurity as historically tactics-focused, structurally suggestive of Doc 538 school-immaturity (the discipline has not yet crossed the SIPE-T transmissibility threshold to be a coherent transmissible practice). The system-security page is the keeper-side school-formalization attempt. Hold as cluster-G/cluster-C joint observation.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Two co-located Cluster A lattices in one SEBoK page.</strong> System Security exhibits two universal-sibling lattices simultaneously (five domains at one rung, six asset classes at another). The post-sweep Cluster A synthesis (SE-039 §VII.5 candidate <em>Universal-Sibling Lattice Composition</em>) should account for the multi-rung-lattice case explicitly: a single engagement can carry multiple Appendix D lattices at distinct rungs.</p>
+<p><strong>Cluster J inverse affordance gap candidate.</strong> Legacy-systems security retrofit reverses the standard affordance-gap direction: the SE supplies rung-2 to substrates whose original keepers are absent. Doc 530 may need an explicit acknowledgment of the inverse direction.</p>
+<p><strong>Three-carrier robustness confirmed.</strong> NIST SP 800-160 + ISO/IEC/IEEE 15288 + Anderson 1972 satisfies the three-carrier pattern from SE-039 §VII.5 (SE-063 Measurement). Cluster E sub-observation gains a second instance.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 Appendix D (universal-sibling, two co-located lattices), Doc 445 Refinement C (forward-pulverization, five pain points), Doc 571 (institutional ground, three-carrier robustness), Doc 604 (multi-keeper composition, five-keeper instance), Doc 530 (affordance gap, inverse direction), Doc 372 (hypostatic boundary, trust-as-functional).</p>
+<p><strong>Part-level reformulation.</strong> SE-009 (Part 6 Related Disciplines).</p>
+<p><strong>Related distillations.</strong> SE-038 (HSI, eight-keeper), SE-065 (Specialty Engineering, twelve-keeper), SE-071 (SoS, constituent-systems compose with SoS-complexity pain point), SE-063 (Measurement, three-carrier robustness precedent).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>System Hardware Assurance</em>, <em>Information Management</em> (SE-114), <em>System Resilience</em> (SE-116), <em>Specialty Engineering</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Multi-rung-lattice acknowledgment in Cluster A synthesis. Inverse affordance-gap in Doc 530.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements; report back for next 40&quot;</em> / <em>&quot;Continue&quot;</em></p>
+</blockquote>
+<p>(SE-112 is one of the third-batch SEBoK distillations. Batch 5/5. Source page is System Security; no standalone Cybersecurity Systems Engineering article exists.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

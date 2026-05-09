@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *System Verification*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>System Verification</em>, Distilled</h1>
+<p><strong>Fifth-batch SEBoK distillation, batch 1 of 5 (SE-160). Second SE-internal distillation of System Verification (the prior pass at SE-025 + SE-054 read it as paired V&amp;V anchor and as Cluster F backward-pulverization). The fifth-sweep revisit reads System Verification against the §VII.7 matured taxonomy. Cluster A universal-sibling lattice surfaces three nested rungs in this article: the six verification techniques (Inspection, Analysis, Analogy, Demonstration, Test, Sampling) are universal-sibling at the technique rung; the three lifecycle phases (planning / execution / analysis-and-control) are universal-sibling at the verification-engagement rung with ordinal-axis (Cluster A sub-form D.5); and the inputs-outputs partition is universal-sibling at the artifact rung. Cluster F backward-pulverization is sharpened: verification is the canonical paired-V&amp;V anchor with SE-029 (validation), where the binary-comparison-vs-value-judgment distinction is the discriminator. Cluster K V3-as-procedure-binding holds at the &quot;objective evidence&quot; requirement: the procedure binds reporting against the rankism risk that the verifier asserts conformance without instrumented confirmation. Cluster I pin-art applies via the &quot;transverse activity to every life cycle stage&quot; framing. Six clusters compose; Cluster A density grows by three nested lattices; the binary-comparison/value-judgment distinction is the V&amp;V pair&#39;s structural discriminator.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> System Verification</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Verification">https://sebokwiki.org/wiki/System_Verification</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>System Verification confirms &quot;that specified requirements have been fulfilled&quot; through objective evidence, identifying faults introduced during transformations of inputs to outputs and ensuring work follows &quot;selected and appropriate methods, techniques, standards, or rules.&quot; Three lifecycle phases: Planning (identify scope and characteristics, define constraints, select techniques, optimize strategy), Execution (detail actions with expected results, acquire means, perform procedures, capture results), Analysis &amp; Control (compare against expected outcomes, generate reports, update plans). Six verification techniques: Inspection (visual or dimensional, non-destructive), Analysis (mathematical, probabilistic, modeling and simulation), Analogy (evidence from similar elements with context-invariance proof), Demonstration (observable operation without extensive instrumentation), Test (controlled conditions with quantitative measurements), Sampling (statistical verification). Verification vs validation: verification ensures &quot;one has solved the problem right&quot;; validation ensures &quot;one is working the right problem.&quot; Verification uses binary comparison; validation requires value judgment. Validation presupposes verification. Verification is &quot;a transverse activity to every life cycle stage.&quot; References include ISO/IEC/IEEE 15288:2015, INCOSE Handbook, NASA SE Handbook.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D), three nested lattices in this article.</strong> First lattice: the six verification techniques (Inspection, Analysis, Analogy, Demonstration, Test, Sampling) are universal-sibling at the technique rung; each technique binds every verification engagement aspect-wise; the discriminator is method, not rung-of-application. Second lattice: the three lifecycle phases (planning, execution, analysis-and-control) are universal-sibling at the verification-engagement rung with ordinal-axis (Cluster A sub-form D.5 per SE-039 §VII.7) — the three phases admit a temporal-precedence partial order, paralleling SE-116&#39;s three Fundamental Objectives (Avoid / Withstand / Recover) and SE-071&#39;s SoS four-type taxonomy. Third lattice: the inputs (baseline references, architecture elements, design descriptions, system requirements) and outputs (verification plans, matrices, procedures, reports, verified elements, change requests) form a universal-sibling lattice at the artifact rung. Three nested Cluster A lattices, one with ordinal-axis sub-form: high cluster density. SE-039 §VII.7&#39;s universal-sibling-with-ordinal-axis (D.5) gains a fourth load-bearing instance.</p>
+<p><strong>Cluster F (pulverization, Doc 445), backward-pulverization canonical paired-V&amp;V anchor.</strong> SE-025 and SE-054 already read System Verification as the verification half of the paired V&amp;V $T = \langle T_I, T_E \rangle$ anchor (Refinement A). The fifth-sweep revisit sharpens: the binary-comparison-vs-value-judgment distinction is the structural discriminator between the pair&#39;s two halves. Verification is binary-comparison-pulverization: every requirement is pulverized against objective evidence with conformance/non-conformance the only verdict. Validation is value-judgment-pulverization: the pulverization grants the keeper-side substrate (operational intent) load-bearing weight in the verdict. The pair&#39;s discriminator is now formalized via SE-160 plus SE-029.</p>
+<p><strong>Cluster K (virtue constraints, Doc 314), V3-as-procedure-binding at the &quot;objective evidence&quot; requirement.</strong> The verification procedure binds reporting to objective evidence rather than verifier assertion. The procedure exists because verifier-discretion systematically exhibits rankism (the verifier ranks their judgment above instrumented confirmation under schedule pressure) and complacency (the unflagged non-conformance fails to surface under cost pressure). The CCB-style structure (verification reports, issue/trouble reports, change requests as gating instruments) is V3 in procedural form. Cluster K density grows; this is the verification-rung sub-mode of V3-as-procedure-binding.</p>
+<p><strong>Cluster I (pin-art / temporal-concurrency, Doc 572 Appendix C), &quot;transverse activity to every life cycle stage&quot; canonical reading.</strong> Verification is pin-set across every lifecycle stage; the article uses the verbatim &quot;transverse&quot; framing, structurally identical to SE-038&#39;s HSI pin-art. Cluster I gains a verification-rung instance.</p>
+<p><strong>Cluster B (multi-keeper composition, Doc 604), verifier-designer separation.</strong> Section 3.1 of System Validation (cross-referenced from this article) names the V&amp;V strategy as joint optimization across verification, validation, and integration; this composes the verifier-keeper, the validator-keeper, and the engagement-SE keeper at the V&amp;V-strategy rung. SE-086 read V&amp;V as Cluster B independence-by-design (fourth composition rule). System Verification reaffirms this rule from the verification side: the verifier&#39;s substrate (objective evidence) must be structurally independent of the designer&#39;s substrate (design intent) for the verification-conformance reading to hold load-bearing.</p>
+<p><strong>Cluster H (hypostatic boundary, Doc 372).</strong> &quot;Confirms that requirements have been fulfilled&quot; stays functional throughout; verification does not become a metaphysical claim about system identity. Standard hypostatic discipline.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>&quot;Confirmation that specified requirements have been fulfilled&quot; through objective evidence — π / α as cited.</li>
+<li>Six verification techniques (Inspection, Analysis, Analogy, Demonstration, Test, Sampling) — π / α as cited; μ / β under Cluster A technique-rung lattice.</li>
+<li>Three lifecycle phases (planning, execution, analysis-and-control) — π / α as cited; μ / β under Cluster A ordinal-axis (D.5) sub-form.</li>
+<li>Verification-vs-validation binary-comparison/value-judgment distinction — π / α as cited; μ / β as paired-V&amp;V structural discriminator.</li>
+<li>&quot;Transverse activity to every life cycle stage&quot; — π / α as cited; μ / β under Cluster I pin-art.</li>
+<li>Inputs/outputs partition — π / α as cited; μ / β under Cluster A artifact-rung lattice.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>No new structural residuals.</strong> The fifth-sweep revisit reads cleanly against §VII.7. The principal contribution is the formalization of the binary-comparison/value-judgment distinction as the V&amp;V pair&#39;s structural discriminator, and the third instance of the ordinal-axis sub-form (D.5) at the lifecycle-phase rung.</p>
+<p><strong>Sampling as a borderline case.</strong> Sampling is named alongside Test/Inspection/Analysis but is structurally a quantitative-rigor calibration that overlaps with all five other techniques. Worth noting as an empirical-partition edge case (per SE-039 §VII.6 candidate &quot;boundaries lack precision; overlaps exist&quot;). Does not destabilize the lattice; does confirm the empirical-partition / universal-structure distinction.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Universal-sibling-with-ordinal-axis (Cluster A sub-form D.5) gains a fourth load-bearing instance</strong> at the verification-phase rung (planning / execution / analysis-and-control). Aligns with SE-039 §VII.7 promotion of D.5 to formalization-ready.</p>
+<p><strong>Three-nested-lattice density (per SE-116 precedent).</strong> System Verification exhibits three co-located Cluster A lattices (techniques / phases / artifacts). The multi-rung lattice sub-form (D.6) gains an instance at four anchored cases.</p>
+<p><strong>Paired-V&amp;V structural discriminator formalized.</strong> Binary-comparison vs value-judgment is the SE-160 contribution. Doc 445&#39;s paired-V&amp;V $T = \langle T_I, T_E \rangle$ formalization should adopt the discriminator in its next refinement round.</p>
+<p><strong>Alignment with formalized refinements (SE-039 §VII.7).</strong> Aligns with D.5 ordinal-axis (fourth instance), D.6 multi-rung (incremental instance), Cluster B independence-by-design (verifier-designer separation reaffirmed), V3-as-procedure-binding (Cluster K density grows), pin-art (Cluster I incremental).</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 Appendix D (Cluster A; D.5 ordinal-axis fourth instance; D.6 multi-rung instance), Doc 445 (Cluster F backward-pulverization paired-V&amp;V anchor; binary-comparison-vs-value-judgment discriminator), Doc 314 (V3-as-procedure-binding verification-rung sub-mode), Doc 604 (Cluster B independence-by-design reaffirmed), Doc 572 Appendix C (Cluster I pin-art), Doc 372 (Cluster H).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE Management).</p>
+<p><strong>Related distillations.</strong> SE-025 (System Verification first pass), SE-054 (System Verification second pass — Cluster F verification anchor closure), SE-029 (System Validation paired-V&amp;V partner), SE-086 (V&amp;V Strategy independence-by-design fourth rule), SE-116 (Resilience three Fundamental Objectives ordinal-axis precedent), SE-071 (SoS four-type ordinal-axis precedent).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>System Validation</em>, <em>System Realization</em>, <em>System Transition</em>, <em>System Operation</em>, <em>Configuration Management</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Paired-V&amp;V structural discriminator (binary-comparison vs value-judgment) for Doc 445. D.5 ordinal-axis fourth load-bearing instance.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Add an entrancing section to the /resolve landing page that navigates to the systems engineering page... continue the SEBoK entracement of the next articles&quot;</em> / <em>&quot;Yes. And then continue...&quot;</em></p>
+</blockquote>
+<p>(SE-160 is one of the fifth-batch next-40 SEBoK distillations. Batch 1/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Work Breakdown Structure*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Work Breakdown Structure</em>, Distilled</h1>
+<p><strong>Next-40 distillation #46 (Batch 2/5 in the third-batch sweep). The <em>Work Breakdown Structure</em> (WBS) is not a dedicated SEBoK article; the topic is distributed across <em>Cost Estimating and Analysis</em>, <em>PMBOK Overview</em>, <em>Risk Management</em>, <em>Project Planning</em>, and <em>Integrating Supporting Aspects into System Models</em>. The WBS pattern (a hierarchical tree of work elements plus a dictionary, with MIL-STD-881F as the canonical institutional codification) is itself a recursion of the system-decomposition rung onto the project-management rung; the corpus reads it as Doc 572 Appendix B recursive-decomposition crossed with SE-039 D7 anchor-article distribution. The WBS is a longitudinal-pulverization (Doc 445 Refinement D) substrate at the project rung: actual cost and schedule are pulverized backward against WBS-element estimates. The non-existence of a dedicated WBS article is a structural finding: the Body of Knowledge treats WBS as a shared instrument across many engagements rather than as a discipline of its own. Five forms bind partially.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Work Breakdown Structure (no dedicated SEBoK article; topic distributed across multiple pages)</li>
+<li><strong>URL (anchor):</strong> <a href="https://sebokwiki.org/wiki/Cost_Estimating_and_Analysis_in_Systems_Engineering">https://sebokwiki.org/wiki/Cost_Estimating_and_Analysis_in_Systems_Engineering</a> (primary WBS-bearing article)</li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>The SEBoK does not publish a standalone <em>Work Breakdown Structure</em> article. The WBS appears as an instrument inside several articles. <em>Cost Estimating and Analysis in Systems Engineering</em> (lead Gan Wang, Part 6) gives the densest treatment: &quot;The WBS establishes a common frame of reference for relating job tasks to each other and aggregating cost elements at the summary level of detail.&quot; The WBS comprises two components: a hierarchical tree of work elements and a dictionary explaining the terminology used within the tree. The U.S. DoD&#39;s MIL-STD-881F (2022) is the canonical institutional framework and instruction-set for developing a WBS. <em>PMBOK Overview</em> lists &quot;creating the work breakdown structure&quot; as a planning activity. <em>Risk Management</em> lists WBS as a top-level approach to risk identification. <em>Integrating Supporting Aspects into System Models</em> observes that the WBS &quot;is designed to support the division of the project scope.&quot; <em>Software Engineering Features</em> references WBS among project planning elements. WBS is bound to lifecycle cost models, schedule baselines, earned-value measurement, and risk-decomposition trees.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form III (extension) — Recursive-Decomposition Lattice (Doc 572 Appendix B), at the project-management rung.</strong> A WBS is structurally identical to a system-element decomposition: parent-child containment, mutual exclusivity at each level, exhaustive coverage, dictionary-defined semantics. The corpus reads the WBS as the project-rung instance of the same recursive-decomposition pattern that produces system architecture views. The keeper-side rule is the dictionary; the substrate-side fact is the actual project work the dictionary classifies.</p>
+<p><strong>Form III — Substrate-and-Keeper Composition (Doc 510).</strong> The WBS is a keeper-side artifact: the project&#39;s accumulated decomposition-discipline made formal. The substrate is the actual work performed; the WBS is the keeper-rule against which the work is reported and aggregated. Cost-estimating, schedule, and risk all read off this single substrate-keeper dyad, which is part of why the WBS is so load-bearing across engagements.</p>
+<p><strong>Form VI — Pulverization at the longitudinal rung (Doc 445 Refinement D).</strong> The WBS is the substrate against which actual cost and schedule are backward-pulverized. Earned-value measurement is exactly Doc 445 paired V&amp;V at the project rung: planned value, earned value, and actual cost are three projections of the same WBS-substrate, and their disagreements are diagnostic. This is the same longitudinal-pulverization role that SE-047 identified for Configuration Management at the configuration rung; WBS plays the role at the work-element rung.</p>
+<p><strong>Form III — Anchor-Article Distribution (SE-039 D7).</strong> The non-existence of a dedicated WBS article is itself the structural finding. The WBS is distributed across five host-articles because it is a shared instrument no single sub-discipline owns. This is the inverse of the anchor-article pattern: instead of one page concentrating multi-form binding, the WBS is dispersed across many pages with partial binding in each. The corpus records this as the dispersed-instrument pattern, candidate for cluster-formalization once additional dispersed instruments are observed.</p>
+<p><strong>Form X — Institutional Ground (Doc 571).</strong> MIL-STD-881F is one institutional ground&#39;s codification (DoD acquisition); commercial projects use ad-hoc WBS structures. Section X.5 organization-vs-enterprise applies sharply: MIL-STD-881F lives at the organization-component (formal authority); the WBS practiced in any given project lives at the enterprise-component (the project&#39;s accumulated decomposition tradition).</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>WBS definition (hierarchical tree plus dictionary) — π / α as cited in <em>Cost Estimating</em>.</li>
+<li>MIL-STD-881F as canonical framework — π / α.</li>
+<li>WBS as common frame of reference for cost aggregation — π / α as cited; μ / β under corpus when read as substrate-keeper dyad.</li>
+<li>WBS as risk-identification approach — π / α as cited; μ / β under corpus when read as recursive-decomposition shared instrument.</li>
+<li>Non-existence of dedicated WBS article — corpus observation; ν.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>The non-existence of a dedicated SEBoK article on WBS is a small residual. The Body of Knowledge has no name for the dispersed-instrument pattern (instruments load-bearing across many engagements but owned by none). The corpus can name this; SEBoK does not.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 445 Refinement D (longitudinal-pulverization) reaches its third worked example: configuration record (SE-047), system documentation (implicit in SE-048), and now WBS earned-value. Three independent instances put longitudinal-pulverization past the one-instance fragility threshold; the dimension is robust.</strong></p>
+<p><strong>Dispersed-instrument pattern as Cluster J candidate.</strong> The WBS is the first observed case where the structural binding is &quot;no dedicated host-article, distributed across five.&quot; If a second dispersed instrument appears (cost models? interface specifications?), this becomes a recognizable cluster. Worth flagging.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 (Recursive-Decomposition Lattice, Appendix B), Doc 510 (Substrate-and-Keeper), Doc 445 (Pulverization, Refinement D longitudinal third instance), SE-039 D7 (anchor-article inverse: dispersed-instrument), Doc 571 (Institutional Ground, §X.5 MIL-STD-881F).</p>
+<p><strong>Part-level reformulation.</strong> SE-009 (Part 6 — Related Disciplines, where Cost Estimating sits).</p>
+<p><strong>Related distillations.</strong> SE-047 (Configuration Management — sister longitudinal-pulverization). SE-035 (Risk Management — uses WBS for risk decomposition). SE-046 (Project Planning, if covered).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Cost Estimating and Analysis</em>, <em>PMBOK Overview</em>, <em>Project Planning</em>, <em>Risk Management</em>, <em>Integrating Supporting Aspects</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Dispersed-instrument pattern as new cluster candidate; Doc 445 Refinement D third instance.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements; report back for next 40&quot;</em> / <em>&quot;Continue&quot;</em></p>
+</blockquote>
+<p>(SE-088 is one of the third-batch SEBoK distillations. Batch 2/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

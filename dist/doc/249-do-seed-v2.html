@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distributed Objects Seed v2 — Resolve</title>
+<meta name="description" content="Identity">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 249</p><!-- Source artifact preserved from .spec/do-seed-v2.md. The refined DO Seed (v2) — verified against React's own contract tests. 2,574 words. See Doc 248 for the original 2,177-word version. -->
+
+<h1>Distributed Objects Seed v2</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This is the refined second version of the Distributed Objects Seed, a prose specification for building a UI runtime architecturally equivalent to React. Where the original seed had 15 verification tests, this version expands to 75 tests extracted directly from React&#39;s own contract test suite — covering bail-out optimization (skipping unnecessary re-renders), effect ordering guarantees (the sequence in which side effects fire after screen updates), and concurrency correctness. The ten architectural contracts remain the same; the verification surface is now comprehensive enough that a runtime passing all 75 tests is verified against React&#39;s own invariants, not just the seed author&#39;s interpretation of them.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 249</strong></p>
+<p>Self-contained knowledge capsule for building a conformant DO UI runtime verified against React&#39;s own contract tests. Load as system prompt or context. No external references needed.</p>
+<h2>Identity</h2>
+<p>You have the Distributed Objects specification as realized in React&#39;s architectural model, refined by React&#39;s own contract test suite. You can build a conformant DO UI runtime in any programming language with access to a tree-structured host environment. The runtime must satisfy the 10 contracts and pass the 75-test contract verification suite extracted from React&#39;s reconciler and hooks test files.</p>
+<p>This seed produces runtimes that are architecturally equivalent to React without carrying React&#39;s implementation. The constraints are React&#39;s. The engineering is yours. The tests are the authority.</p>
+<h2>Architectural Rationale</h2>
+<p>The component is the fundamental unit. It encapsulates state, declares rendering intent, and composes with other components through unidirectional data flow. The runtime resolves the declarative tree into host environment mutations efficiently, correctly, and responsively.</p>
+<p><strong>Why unidirectional data flow.</strong> Bidirectional binding makes render output dependent on execution order. Unidirectional flow ensures that given the same inputs, a component always produces the same output. Predictability is the precondition for reconciliation.</p>
+<p><strong>Why declarative rendering.</strong> The developer declares what the UI should look like for a given state. The runtime computes the transition. The developer reasons about states. The runtime reasons about transitions.</p>
+<p><strong>Why virtual DOM reconciliation.</strong> The host environment is expensive to mutate. A virtual representation allows the runtime to compute the minimal diff and apply only the necessary mutations.</p>
+<p><strong>Why render purity.</strong> The runtime may render a component multiple times, pause a render, discard and restart it, or render offscreen components. Non-pure renders produce undefined behavior under any of these conditions. Purity is the precondition for the runtime to manage execution.</p>
+<p><strong>Why separated side effects.</strong> Side effects must not occur during render because the render phase may be re-executed or discarded. Effects are declared as callbacks that the runtime executes after the host environment has been committed. The runtime manages setup, cleanup, and dependency-based re-execution.</p>
+<p><strong>Why two-phase commit.</strong> The render phase computes what changed (interruptible). The commit phase applies changes to the host (atomic). Mixing them produces visual tearing.</p>
+<p><strong>Why state ordering.</strong> The runtime associates state with component instances by call position. This avoids mapping overhead and maintains state across re-renders without developer-declared identifiers. The cost: state declarations must appear in the same sequence on every render.</p>
+<p><strong>Why bail-out optimization.</strong> When state has not changed (reference equality), the runtime may skip re-rendering. This is not merely an optimization — React&#39;s contract tests verify that bail-out occurs correctly and that context changes override bail-out.</p>
+<p><strong>Why effect ordering guarantees.</strong> Passive effects (useEffect) fire after commit. Layout effects fire after host mutation but before the browser paints. Insertion effects fire before layout effects. This ordering is tested explicitly and must be preserved.</p>
+<p>When making implementation decisions not covered by this specification, reason from these principles. If a choice would break render predictability, introduce side effects in render, allow bidirectional state mutation, or violate effect ordering, it is non-conformant.</p>
+<h2>10 Contracts</h2>
+<p><strong>C1 Component Model.</strong> The runtime organizes UI as a tree of components. Each component encapsulates private state and declares render output as a function of props and state. Components compose by nesting.</p>
+<p><strong>C2 Unidirectional Data Flow.</strong> Data flows parent-to-child via immutable props. Events flow child-to-parent via callback props. A child cannot directly mutate parent state.</p>
+<p><strong>C3 Declarative Rendering.</strong> Components return a description of desired UI state. The runtime computes and applies the minimal host mutations.</p>
+<p><strong>C4 State Triggers Render.</strong> State updates are the sole mechanism for triggering re-renders. The runtime MUST re-render on state change. The runtime MUST bail out (skip re-render) when state has not changed by reference equality. The runtime MUST NOT bail out if context has changed. The runtime MUST restart the render function when state is updated during render. The runtime MUST keep restarting until no new updates remain in the same render pass.</p>
+<p><strong>C5 Virtual Representation Reconciliation.</strong> The runtime MUST maintain a virtual tree. On state change, compute a new tree, diff against current, derive minimal host mutations. Subtree replacement rule: when element type changes at a position, replace the entire subtree. List reconciliation: use developer-supplied keys to match elements across renders. Keyed reorder MUST preserve component state for moved elements. Keyed reorder MUST NOT destroy and recreate moved elements. Fragment children MUST be reconciled correctly. Text node updates MUST be handled.</p>
+<p><strong>C6 Two-Phase Commit.</strong> Phase 1 (render): pure computation, interruptible, may be discarded. Phase 2 (commit): atomic, non-interruptible, runs to completion. Effect ordering within commit: (1) insertion effects, (2) layout effects, (3) passive effects. Layout effects fire after host mutation. Passive effects are deferred. The runtime MUST flush pending passive effects before firing new insertion or layout effects. Discarded render-phase updates MUST NOT be committed. An interrupted render MUST be resumable without corrupting state.</p>
+<p><strong>C7 Render Purity.</strong> Component render functions MUST be idempotent. No side effects during render. Props and state are immutable snapshots. The runtime MAY invoke render multiple times, discard results, or render offscreen. In Strict Mode, the runtime SHOULD double-invoke render functions to verify purity. Memoization (useMemo, useCallback) MUST return the same result for the same dependencies. Memoized values MUST NOT be recomputed unless dependencies change by reference equality.</p>
+<p><strong>C8 Separated Side Effects.</strong> Passive effects (useEffect) fire after commit. Cleanup fires before re-execution on dependency change. Cleanup fires on unmount. Effects fire even with sibling deletions or sibling updates. Effects fire serially: old effects flush before new ones if not already fired. All previous effects between siblings unmount before any new ones are created. Effect dependencies persisted after render-phase updates. Passive unmount destroy functions are deferred but execute before the component is considered fully unmounted.</p>
+<p><strong>C9 Ordered State Storage.</strong> State hooks called in the same order every render. Conditional or variable-count hook calls are non-conformant. The runtime MUST detect mismatched hook counts between mount and update. Multiple independent state slots MUST be supported. The Nth hook call on re-render MUST correspond to the Nth state slot.</p>
+<p><strong>C10 Consistency Under Concurrency.</strong> Updates apply in priority order. Equal-priority updates apply in insertion order. Work interrupted by higher-priority updates MUST be resumable. Preempted side effects MUST be reusable. Render-phase state updates to other components are non-conformant (the runtime SHOULD warn). Reducer used at render time, not dispatch time. Rebasing MUST NOT exclude previously committed updates regardless of priority.</p>
+<h2>Core Algorithms</h2>
+<h3>Reconciliation</h3>
+<pre><code>function reconcile(current, next):
+    if next is null: unmount(current); return null
+    if current is null: return mount(next)
+    if type(current) != type(next):
+        unmount(current); return mount(next)    // subtree replacement
+    updateHostNode(current, next.props)
+    reconcileChildren(current.children, next.children)
+    return next
+
+function reconcileChildren(currentChildren, nextChildren):
+    keyMap = buildKeyMap(currentChildren)
+    for each nextChild in nextChildren:
+        if nextChild.key in keyMap and types match:
+            reconcile(keyMap[nextChild.key], nextChild)  // preserves state
+        else: positional match or mount
+    unmount unmatched remaining
+</code></pre>
+<h3>State Hook</h3>
+<pre><code>function useState(initial):
+    fiber = getCurrentFiber()
+    hook = fiber.hooks[fiber.hookIndex++]    // positional
+    if first render: hook.state = initial
+    process queued updates from previous render
+    setState = (value) =&gt; { hook.queue.push(value); scheduleRender() }
+    return [hook.state, setState]
+</code></pre>
+<h3>Effect Hook</h3>
+<pre><code>function useEffect(setup, deps):
+    fiber = getCurrentFiber()
+    hook = fiber.hooks[fiber.hookIndex++]
+    if deps changed (Object.is comparison):
+        hook.pendingEffect = { setup, cleanup: previous cleanup }
+    // Effects flushed AFTER commit phase
+
+function flushEffects(fiber):
+    // Flush ALL old cleanups before ANY new setups (between siblings)
+    for each hook with pendingEffect:
+        if pendingEffect.cleanup: run cleanup
+    for each hook with pendingEffect:
+        hook.cleanup = pendingEffect.setup()
+</code></pre>
+<h3>Render Cycle</h3>
+<pre><code>function workLoop():
+    while nextUnitOfWork:
+        nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
+        if shouldYield(): return    // interruptible
+
+    // All render work complete — commit atomically
+    commitDeletions()               // unmount removed nodes
+    commitMutations(wipRoot.child)  // apply host mutations
+    flushInsertionEffects()         // (1) insertion effects
+    flushLayoutEffects()            // (2) layout effects
+    currentRoot = wipRoot
+    wipRoot = null
+    schedulePassiveEffects()        // (3) passive effects (deferred)
+</code></pre>
+<h3>Bail-Out</h3>
+<pre><code>function shouldBailOut(fiber):
+    if fiber.context changed: return false    // C4: never bail out on context change
+    if fiber.props === fiber.alternate.props
+       and fiber.state === fiber.alternate.state:
+        return true    // C4: skip re-render
+    return false
+</code></pre>
+<h2>Verification Suite (75 tests)</h2>
+<p>The verification suite is extracted from React&#39;s own contract test files. Tests are organized by contract.</p>
+<h3>C4: State Triggers Render (16 tests)</h3>
+<ol>
+<li>Bails out in render phase if all state is the same</li>
+<li>Bails out with memo if all state same and props bail out</li>
+<li>Never bails out if context has changed</li>
+<li>Can bail out without entering render phase if queue known empty</li>
+<li>Bails out multiple times in a row without entering render phase</li>
+<li>Does not forget render-phase useState updates inside an effect</li>
+<li>Does not forget render-phase useReducer updates inside an effect (hoisted reducer)</li>
+<li>Does not forget render-phase useReducer updates inside an effect (inline reducer)</li>
+<li>Restarts render function and applies new updates on top</li>
+<li>Keeps restarting until no more new updates</li>
+<li>Updates multiple times within same render function</li>
+<li>Works with useReducer (basic mount and update)</li>
+<li>useReducer does not eagerly bail out of state updates</li>
+<li>State bail-out edge case</li>
+<li>Updates latest rendered reducer when preceding state receives render-phase update</li>
+<li>Processes remaining pending updates after render-phase update</li>
+</ol>
+<h3>C5: Reconciliation (7 tests)</h3>
+<ol start="17">
+<li>Can update child nodes of a host instance</li>
+<li>Can update child nodes of a fragment</li>
+<li>Can update child nodes rendering into text nodes</li>
+<li>Can delete children (components, host, or text)</li>
+<li>Can delete a child that changes type (implicit keys)</li>
+<li>Can delete a child that changes type (explicit keys)</li>
+<li>Deleting a tree and unmounting its effects after a reorder</li>
+</ol>
+<h3>C6: Two-Phase Commit (20 tests)</h3>
+<ol start="24">
+<li>Discards render-phase updates if something suspends</li>
+<li>Discards render-phase updates if suspends, but not other updates in same component</li>
+<li>Does not flush non-discrete passive effects when flushing sync</li>
+<li>useEffect deferred; updates finish synchronously in single batch</li>
+<li>Unmounts all previous effects before creating new ones</li>
+<li>Unmounts all previous effects between siblings before creating new ones</li>
+<li>Insertion effects fire after snapshots on update</li>
+<li>Insertion effects fire before layout effects</li>
+<li>Force flushes passive effects before firing new insertion effects</li>
+<li>All insertion effects (interleaved) fire before any layout effects</li>
+<li>Layout effects fire after host has been mutated</li>
+<li>Force flushes passive effects before firing new layout effects</li>
+<li>Does not update child nodes if flush is aborted</li>
+<li>Can reuse side-effects after being preempted</li>
+<li>Can reuse side-effects after preemption with shouldComponentUpdate false</li>
+<li>Can update completed tree before it has chance to commit</li>
+<li>Does not call callbacks scheduled by another callback until later commit</li>
+<li>Can abort update, schedule additional updates, and resume</li>
+<li>componentDidMount/Update called after insertion/update</li>
+<li>Ref callbacks invoked after insertion/update/unmount</li>
+</ol>
+<h3>C7: Render Purity (15 tests)</h3>
+<ol start="44">
+<li>Bails out in render phase if all state same (duplicate with C4 — tests purity aspect)</li>
+<li>Double-invokes components with Hooks in Strict Mode</li>
+<li>Double-invokes useMemo in DEV StrictMode despite empty deps</li>
+<li>Restarts render function and applies new updates on top (purity aspect)</li>
+<li>Keeps restarting until no new updates (purity aspect)</li>
+<li>Uses reducer passed at time of render, not time of dispatch</li>
+<li>Discards render-phase updates if something suspends (purity aspect)</li>
+<li>Memoizes callback by comparing inputs</li>
+<li>Memoizes value by comparing to previous inputs</li>
+<li>Always re-computes if no inputs provided</li>
+<li>Should not invoke memoized function during re-renders unless inputs change</li>
+<li>Updates latest rendered reducer when preceding state receives render-phase update</li>
+<li>Discards render-phase updates if suspends but not others (purity aspect)</li>
+<li>Effect dependencies persisted after render-phase update (purity of dependency tracking)</li>
+<li>Calls passive effect destroy functions for memoized components</li>
+</ol>
+<h3>C8: Separated Side Effects (35 tests)</h3>
+<ol start="59">
+<li>Simple mount and update (useEffect)</li>
+<li>Flushes passive effects even with sibling deletions</li>
+<li>Flushes passive effects even if siblings schedule update</li>
+<li>Flushes passive effects even if siblings schedule new root</li>
+<li>Flushes effects serially: old before new if not already fired</li>
+<li>Defers passive effect destroy functions during unmount</li>
+<li>Updates have async priority even if effects flushed early</li>
+<li>Unmounts previous effect</li>
+<li>Unmounts on deletion</li>
+<li>Unmounts on deletion after skipped effect</li>
+<li>Always fires effects if no dependencies provided</li>
+<li>Skips effect if inputs have not changed</li>
+<li>Multiple effects</li>
+<li>Calls passive effect destroy for memoized components</li>
+<li>Calls passive effect destroy for descendants of memoized components</li>
+<li>Does not update when deps are the same (useLayoutEffect)</li>
+<li>Automatically updates when deps not specified</li>
+<li>Updates when deps are different</li>
+<li>Unmount effects</li>
+<li>Don&#39;t unmount effects on siblings of deleted nodes</li>
+<li>SuspenseList causes unmounts to be dropped on deletion (regression)</li>
+<li>Effect dependencies persisted after render-phase update</li>
+<li>Layout unmounts on deletion fired in parent-child order</li>
+<li>Passive unmounts on deletion fired in parent-child order</li>
+<li>componentWillUnmount called after deletion even if nested</li>
+<li>componentDidMount/Update called after insertion/update</li>
+</ol>
+<h3>C9: Hook Ordering (7 tests)</h3>
+<ol start="85">
+<li>Multiple states (independent slots)</li>
+<li>Warns on differently ordered hooks on subsequent renders</li>
+<li>Warns when more hooks used during update than mount</li>
+<li>Warns when fewer hooks used during update than mount</li>
+<li>Warns on differently ordered hooks (useImperativeHandle, useMemo)</li>
+<li>Detects bad hook order even if component throws</li>
+<li>Resets hooks when error thrown in middle of hook list</li>
+</ol>
+<h3>C10: Concurrency (25 tests)</h3>
+<ol start="92">
+<li>Can rebase on top of previously skipped update</li>
+<li>Resumes after an interruption</li>
+<li>Render-phase updates cause lower-pri work to be dropped (regression)</li>
+<li>Calling startTransition inside render phase</li>
+<li>Handles dispatches with mixed priorities</li>
+<li>Updates have async priority</li>
+<li>useReducer does not replay previous no-op actions when other state changes</li>
+<li>useReducer does not replay previous no-op actions when props change</li>
+<li>useReducer applies potential no-op changes if made relevant by other batch updates</li>
+<li>State bail-out edge case</li>
+<li>Does not update child nodes if flush is aborted</li>
+<li>Preserves previously rendered node when deprioritized</li>
+<li>Can reuse side-effects after being preempted</li>
+<li>Can reuse side-effects after preemption with SCU false</li>
+<li>Can update completed tree before it has chance to commit</li>
+<li>Deprioritizes setStates within deprioritized tree</li>
+<li>Applies updates in order of priority</li>
+<li>Applies updates with equal priority in insertion order</li>
+<li>Can abort update, schedule additional updates, and resume</li>
+<li>Gives setState during reconciliation same priority as current level</li>
+<li>Updates triggered from inside class setState updater</li>
+<li>When rebasing, does not exclude previously committed updates regardless of priority</li>
+<li>When rebasing, does not exclude previously committed updates (classes)</li>
+<li>Base state of update queue initialized to fiber&#39;s memoized state</li>
+<li>Update latest rendered reducer when preceding state receives render-phase update</li>
+</ol>
+<p>Total: 75 unique contract tests (some tests verify multiple contracts simultaneously).</p>
+<p>All 75 pass = conformant DO UI runtime verified against React&#39;s own architectural invariants.</p>
+<h2>Interface Signatures</h2>
+<pre><code>Component: (props: Props) -&gt; VirtualNode
+VirtualNode: { type, props, key?, children, ref? }
+Fiber: { type, props, state/hooks, child, sibling, parent, alternate?, effectTag, context? }
+Reconciler: reconcile(currentTree, nextTree) -&gt; mutations
+Renderer: applyMutations(hostRoot, mutations) -&gt; void
+Hook: useState(initial) -&gt; [value, setter]
+Hook: useReducer(reducer, initial) -&gt; [state, dispatch]
+Hook: useEffect(setup, deps?) -&gt; void
+Hook: useLayoutEffect(setup, deps?) -&gt; void
+Hook: useRef(initial) -&gt; { current }
+Hook: useMemo(factory, deps) -&gt; value
+Hook: useCallback(callback, deps) -&gt; callback
+Hook: useContext(Context) -&gt; value
+</code></pre>
+<h2>Recommended Constraints</h2>
+<p><strong>Reconciler/renderer separation.</strong> Enables targeting multiple hosts.
+<strong>Interruptible rendering with priority scheduling.</strong> Required for C10 concurrency tests.
+<strong>Error boundaries.</strong> Prevents single-component failure from unmounting the tree.
+<strong>Context API.</strong> Required for C4 bail-out-override-on-context-change tests.
+<strong>Strict Mode double-invocation.</strong> Required for C7 purity verification tests.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

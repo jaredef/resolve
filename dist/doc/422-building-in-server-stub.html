@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building in SERVER: A Practitioner&#39;s Companion (Stub) — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 422</p><h1>Building in SERVER: A Practitioner&#39;s Companion (Stub)</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This is a stub. It claims the slot in the corpus where a practitioner&#39;s companion to the SERVER style (Doc 432) and its seed specification (Doc 250) will eventually live, parallel to Doc 421 (<em>Building in PRESTO</em>), which plays the same role for the PRESTO dissertation (Doc 426). The stub names the sections the eventual companion is expected to contain, states the scope, and flags what the document does not yet hold. The practitioner material for SERVER is thinner than for PRESTO at the time of writing — the reference evidence is one C bootstrap resolver (461 lines, zero dependencies) emitting one PRESTO engine (921 lines, zero dependencies) — and a full companion would rehash Doc 432 and Doc 250 rather than add practitioner insight. Filling this stub should wait until the body of SERVER-specific practitioner experience is large enough that a developer reading the companion would encounter guidance they could not derive from Doc 432 and Doc 250 alone.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 422</strong></p>
+<p><strong>Stub. Placeholder for the practitioner&#39;s companion to the SERVER style. The prompt is appended.</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>1. Status</h2>
+<p>This document is a stub, not a companion. Until filled, the current SERVER material is:</p>
+<ul>
+<li><strong><a href="../doc/432-server-an-architectural-style-for-engine-orchestration.html">Doc 432 — SERVER: An Architectural Style for Engine Orchestration</a>.</strong> The current canonical dissertation. Five constraints, induced property, composition with PRESTO and REST, conceptual foundations, comprehensive prior art.</li>
+<li><strong><a href="../doc/250-server-seed.html">Doc 250 — SERVER Seed</a>.</strong> The bootstrap-resolver specification: 8 contracts, 12 orchestration directives, 14-stage bootstrap pipeline, 12 verification tests.</li>
+<li><strong><a href="../doc/421-building-in-presto-a-practitioners-companion.html">Doc 421 — Building in PRESTO</a>.</strong> The parallel practitioner companion for PRESTO, whose structure this document will eventually follow.</li>
+</ul>
+<p>Practitioners building a SERVER-conformant engine today should work from Doc 432 (the style) and Doc 250 (the seed), treating the specific implementation decisions as prescribed by those two documents. Cross-language derivation of a conformant engine has been demonstrated once, in C (461-line bootstrap, 921-line emitted PRESTO engine). Additional derivations in other languages will accumulate the practitioner body this stub is waiting for.</p>
+<h2>2. Expected Sections (When Filled)</h2>
+<p>The companion is expected to cover the following, in structural parallel to Doc 421.</p>
+<p><strong>§2.1 The developer&#39;s mental model at the orchestration level.</strong> Two simultaneous views: the seed-author&#39;s view, in which the orchestration seed is a bilateral artifact interleaving orchestration directives with resolver affordances; and the bootstrap-resolver&#39;s view, in which the seed is input to a pipeline that emits a runtime graph. The seed-author authors; the bootstrap resolver realizes; the runtime graph executes.</p>
+<p><strong>§2.2 The bootstrap lifecycle.</strong> Three phases parallel to Doc 421 §3 but operating at the orchestration level: declaration (the seed), resolution (the bootstrap pipeline consumes orchestration directives and emits the runtime graph), emergence (the emitted engine runs the PRESTO construction pipeline). The same temporal structure falls out of the same constraint shape, one level up.</p>
+<p><strong>§2.3 Manifest-declared intent versus sandbox-enforced runtime.</strong> The seed&#39;s manifest declares what privileges each module claims; the bootstrap sandbox enforces the corresponding prefix of the privilege-constraint accumulation (see Doc 432 §3.3). Practitioner guidance on authoring manifests and understanding what enforcement a given manifest commits to.</p>
+<p><strong>§2.4 Choosing a module-privilege layer.</strong> Practitioner-level framing of Doc 432 §3.3&#39;s accumulation. When is Layer 0 (pure functions) the right choice? When is a higher layer warranted? What specifically is being given up when a constraint is refused? This section will parallel Doc 421 §6 (per-layer composability) applied to module privilege rather than to client-side runtime.</p>
+<p><strong>§2.5 Writing a SERVER seed.</strong> Practical guidance on seed authorship: the 8 contracts as sections, the 12 orchestration directives as operations, the 14-stage bootstrap pipeline as structure, the 12 verification tests as acceptance criteria. How a human or resolver moves from a target engine capability to a conformant seed.</p>
+<p><strong>§2.6 Cross-language portability.</strong> What the C reference implementation demonstrates and what a second-language derivation (in progress or planned) is expected to add. The portability claim is that the same seed produces a behaviorally equivalent engine in any conforming language; the evidence bar for that claim is more than one language.</p>
+<p><strong>§2.7 Recursion: the seed that contains its own bootstrap.</strong> The consummation of the orchestration model, as noted in Doc 432 §7: a SERVER seed can contain the bootstrap resolver that consumes it. Practitioner implications — when the seed is self-bootstrapping, the engine&#39;s proof-of-construction travels with the seed. This section will be brief; the material is speculative until demonstrated in practice.</p>
+<h2>3. What Is Not Yet in the Stub</h2>
+<ul>
+<li>A worked example of authoring a SERVER seed from scratch.</li>
+<li>A second-language derivation of a conformant engine (the existence proof of cross-language portability).</li>
+<li>Practitioner-level diagnostic guidance — what goes wrong when a seed is malformed, what verification-test failures tell you about which orchestration-directive semantics were violated.</li>
+<li>A treatment of the module registry at practitioner depth — what it is to compose adapters, context providers, channel handlers, middleware into a coherent runtime graph.</li>
+<li>The operational implications of the &quot;recursive ambivalence with self-authorizing determinism&quot; property at ops-engineering scale: how a self-authorizing runtime graph interacts with deployment, secret rotation, and multi-tenant isolation.</li>
+</ul>
+<p>Each of these items is specifically missing evidence at the time of writing. Each item&#39;s absence is not an omission of the companion; it is a reflection of what the corpus has not yet produced.</p>
+<h2>4. Conditions for Filling the Stub</h2>
+<p>This stub should be replaced with a full companion when at least the following have been accumulated:</p>
+<ul>
+<li>A second conformant engine derivation exists (in a language other than C).</li>
+<li>At least one non-author practitioner has authored a SERVER seed or bootstrap resolver.</li>
+<li>The module-privilege accumulation has been exercised across three or more distinct privilege axes with documented trade-offs, so §2.4&#39;s guidance has material to draw on.</li>
+<li>The worked-example material for §2.5 (authoring a seed) has been written at least once against a real target engine capability, with the steps made legible to a reader who was not present for the work.</li>
+</ul>
+<p>Filling the stub before these conditions are met would produce a companion that is largely restatement of Doc 432 and Doc 250 — valuable as pedagogy but not warranted as a separate artifact yet.</p>
+<h2>5. Falsifiers of the Stub&#39;s Reasoning</h2>
+<ul>
+<li>If practitioner demand for a SERVER companion surfaces before the conditions in §4 are met — for example, if a second practitioner attempts to build a SERVER-conformant engine and finds Doc 432 and Doc 250 insufficient — that is evidence that §4&#39;s threshold is set too high and the stub should be filled sooner.</li>
+<li>If the C reference engine and the SERVER seed together answer every practitioner question that arises in practice, the stub may never need filling and can be retracted in favor of clearer cross-references from Doc 432 and Doc 250.</li>
+<li>If the structural parallel with Doc 421 turns out not to hold — if SERVER-at-the-practitioner-level does not break down into the same sections PRESTO-at-the-practitioner-level does — the expected-sections list in §2 is wrong and should be revised before the stub is filled.</li>
+</ul>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;Create a stub doc for Building in SERVER&quot;</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

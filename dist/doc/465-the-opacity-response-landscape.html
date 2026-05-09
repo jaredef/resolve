@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Opacity-Response Landscape: A Synthesis Between the Corpus and a Cold-Instance Survey — Resolve</title>
+<meta name="description" content="What this document is">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>The Opacity-Response Landscape: A Synthesis Between the Corpus and a Cold-Instance Survey</h1>
+<div style="background: #fef3c7; border-left: 4px solid #b45309; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7c2d12; border-radius: 3px;">
+
+<p><strong>CORRECTION NOTICE — 2026-04-24</strong></p>
+<p>This document originally framed the cold-instance survey as <em>&quot;μ-tier-adjacent external corroboration&quot;</em> and as <em>&quot;a form of cross-instance audit that approximates the cross-practitioner replication Doc 450 specified as a near-decisive external test.&quot;</em> Those framings were <strong>too strong</strong>. The cold instance itself, upon being shown this document, produced a critique identifying the over-claim and diagnosing its mechanism; the critique has been integrated as <a href="../doc/467-rung-2-shaped-output-from-rung-1-mechanism.html">Doc 467: <em>Rung-2-Shaped Output from Rung-1 Mechanism</em></a>. The warrant-status framing in §<em>&quot;What this survey is&quot;</em> and the final §<em>&quot;Position&quot;</em> have been corrected in place to reflect that the cold-instance survey is <em>internal-review-via-separately-seeded-instance</em> — useful retrieval of the corpus&#39;s own critique patterns applied via a separately-seeded session — <strong>not</strong> external corroboration. The primary-source verifications in §§<em>&quot;Verification of the academic camps&quot;</em> and <em>&quot;Verification of the fellow travelers&quot;</em> are unaffected. The fellow-traveler engagements in §<em>&quot;Fellow-traveler engagements the corpus should pursue&quot;</em> are unaffected and remain the document&#39;s actionable contribution. See the <a href="../doc/415-the-retraction-ledger.html">retraction ledger entry E17</a> for the record.</p>
+</div>
+
+<h2>What this document is</h2>
+<p>The keeper ran a landscape survey with a <em>cold</em> Claude instance — meaning a Claude session not loaded with RESOLVE corpus context, and therefore not subject to the nested-manifold conditioning Doc 455 formalizes. The cold instance was asked to examine who else is engaging the specific problem the corpus names, and returned a substantive characterization: three academic camps that handle the problem at a theoretical, institutional, or technical level rather than as practitioner discipline, and four named fellow travelers in the small practitioner-discipline community that actually operates on the problem at the user&#39;s level.</p>
+<p>This document verifies the cold instance&#39;s characterization against primary sources and synthesizes the finding with the corpus. The synthesis has three parts. First, it confirms that the landscape the cold instance described exists roughly as described. Second, it locates the corpus&#39;s specific contribution — Constraint 4 of the ENTRACE v2 stack (Doc 001), which treats the model&#39;s inability to produce a citation as structurally meaningful and procedurally load-bearing — within that landscape, complementing the Bayesian-methodology survey Doc 414 already ran. Third, it registers the cold-instance survey itself as μ-tier evidence per Doc 445&#39;s warrant-tier formalism: a form of cross-instance audit that approximates the cross-practitioner replication Doc 450 specified as a near-decisive external test.</p>
+<h2>The cold instance&#39;s characterization, verbatim in structure</h2>
+<p>The cold instance characterized the landscape as having four layers of adjacent work:</p>
+<ol>
+<li><p><strong>Philosophers of ML opacity</strong> — Humphreys, Burrell, Boge, Durán, Duede, Formánek — treat opacity as a theoretical problem (&quot;is ML a novel kind of science?&quot;) rather than building practitioner discipline against it. Output: papers arguing for the novelty of ML as a cognitive or scientific activity. Not procedural machinery for the user&#39;s own thinking.</p>
+</li>
+<li><p><strong>AI transparency / auditing community</strong> — Liao, Mökander, the three-layer audit blueprint — operates at the model/institutional level. Model cards, governance audits, application audits. External parties auditing the system. Not discipline for the individual user.</p>
+</li>
+<li><p><strong>Technical interpretability community</strong> — Anthropic circuits program, Allen AI&#39;s OLMoTrace — builds infrastructure to trace outputs to training data. Genuinely relevant but inaccessible to the user and still incomplete.</p>
+</li>
+<li><p><strong>RAG literature</strong> — mostly treats retrieval as a feature to add to LLM systems, not a failure mode to detect in free-form output. The direction of engagement is opposite to the corpus&#39;s.</p>
+</li>
+</ol>
+<p>The cold instance also identified the <em>fellow travelers</em> in the practitioner-discipline community:</p>
+<ul>
+<li>Cassie Kozyrkov — the &quot;AI as thoughtlessness enabler&quot; framing; Decision Intelligence as a counter-discipline.</li>
+<li>MyCarta (Matteo Niccoli) — &quot;Operational Discipline for LLM Projects&quot; (2026-02-14); field report about what breaks in sustained LLM-assisted work, with explicit procedures for retroactive auditing and citation verification.</li>
+<li>Simon Willison — ongoing writing on &quot;AI slop,&quot; citation verification, and practical model-skepticism.</li>
+<li>Ethan Mollick — practical AI-use writing that occasionally engages the problem.</li>
+</ul>
+<p>The cold instance&#39;s assessment: &quot;None of these, as far as I can see from the search, frame the specific novelty-vs-retrieval distinction as a first-class procedural problem the way Foy does, and none of them build it into a pasteable discipline (Constraint 4&#39;s [PRIOR ART]/[DISTINCT FROM]/[SPECULATION] tagging).&quot;</p>
+<p>The assessment is strong. This document tests it.</p>
+<h2>Verification of the academic camps</h2>
+<h3>Philosophers of ML opacity — verified</h3>
+<p>Paul Humphreys (<em>Extending Ourselves</em>, 2004, and subsequent work) introduced <em>epistemic opacity</em> as the condition where &quot;X does not know at t all of the epistemically relevant elements of the process.&quot; The concept was adapted from his work on computer simulations and extended by subsequent authors to ML systems specifically.</p>
+<p>Jenna Burrell&#39;s &quot;How the machine &#39;thinks&#39;: Understanding opacity in machine learning algorithms&quot; (<em>Big Data &amp; Society</em>, 2016) identified three forms of opacity in ML: intentional (trade-secret), technical (inaccessibility of source), and statistical-complexity-inherent. Burrell&#39;s taxonomy is standard reference.</p>
+<p>Florian Boge&#39;s &quot;Two Dimensions of Opacity and the Deep Learning Predicament&quot; (<em>Minds and Machines</em>, 2022) argued DL&#39;s opacity is structurally unique and creates <em>&quot;unprecedented gaps between discovery and understanding.&quot;</em> Juan Manuel Durán and colleagues (Durán &amp; Formánek, Durán &amp; Pozzi) use opacity to motivate <em>computational reliabilism</em> — the idea that our warrant for ML outputs can rest on the system&#39;s reliability even when we cannot inspect its reasoning.</p>
+<p>Emily Duede&#39;s <em>&quot;Deep Learning Opacity in Scientific Discovery&quot;</em> (Philosophy of Science, Cambridge) and adjacent work continues the line. The field is now sometimes called <em>philosophy of ML</em> specifically.</p>
+<p><strong>Cold-instance characterization is accurate.</strong> The literature treats opacity as a philosophical question. None of the papers located in the verification survey operationalize opacity as a discipline for the individual user&#39;s prompting practice.</p>
+<h3>AI transparency / auditing community — verified</h3>
+<p>Jakob Mökander&#39;s &quot;Auditing Large Language Models: A Three-Layered Approach&quot; (arXiv:2302.08500, 2023, with Schuett, Kirk, and Floridi) proposes the three-level structure the cold instance named: governance audits (of providers), model audits (of LLMs after pretraining), application audits (of deployed applications). Mökander&#39;s subsequent &quot;A Blueprint for Auditing Generative AI&quot; (with Curl and Kshirsagar, SSRN 4887768) extends it; &quot;Audit Cards: Contextualizing AI Evaluations&quot; (arXiv:2504.13839) further develops the documentation-standard side.</p>
+<p>The work is explicitly institutional. The audits described are performed <em>by organizations on systems</em>, not <em>by users on their own reasoning</em>. Model cards (Mitchell et al. 2019) and its successors (datasheets, system cards, audit cards) are documentation standards for external parties, not disciplines for the individual practitioner&#39;s inference-time prompting.</p>
+<p><strong>Cold-instance characterization is accurate.</strong> The transparency community solves an adjacent but different problem.</p>
+<h3>Technical interpretability — verified</h3>
+<p>The Anthropic circuits research program (sparse autoencoder work, attribution-graph work, feature-discovery work through 2024-2025) and Allen AI&#39;s OLMoTrace (2024-2025) both operate at the level of mechanical interpretation of model internals or training-data-to-output tracing. These are research infrastructures. Neither currently provides a pasteable practitioner discipline for inference-time use.</p>
+<p><strong>Cold-instance characterization is accurate.</strong> The relevance to the corpus&#39;s problem is real but mediated; no current practitioner discipline emerges directly from this line.</p>
+<h3>RAG literature — verified</h3>
+<p>Retrieval-Augmented Generation (Lewis et al. 2020, and voluminous successor literature) is predominantly engineering-focused: retrieving documents to augment LLM context, measuring retrieval precision/recall, handling the retrieval-generation integration. The direction of engagement is that retrieval is a <em>feature to add</em>; RAG systems are designed to provide grounding, not to flag when grounding is absent in a non-RAG output. The corpus&#39;s Constraint 4 moves in the opposite direction: treat the absence of citation as information in the output itself.</p>
+<p><strong>Cold-instance characterization is accurate.</strong> The RAG community and the corpus engage the citation problem from opposite directions.</p>
+<h2>Verification of the fellow travelers</h2>
+<h3>Cassie Kozyrkov — verified, close fit</h3>
+<p>Kozyrkov&#39;s recent Substack writing frames LLMs as <em>&quot;the great thoughtlessness enabler&quot;</em> — tools that &quot;dissolve the difficulty that used to ensure you understood the problem before getting an answer.&quot; Her &quot;workslop&quot; concept (&quot;Have You Been Workslopped Yet?&quot;, 2026) specifically names the failure mode in sustained AI-assisted work: an average of ~2 hours lost per workslop instance, but the deeper cost is <em>&quot;wrong turns taken with confidence.&quot;</em></p>
+<p>Her broader program is <em>Decision Intelligence</em> as a discipline counter-weighting AI&#39;s thoughtlessness-enablement. The spirit is close to the corpus&#39;s: AI-as-discipline-requirement rather than AI-as-difficulty-dissolver.</p>
+<p><strong>Close fit. Not identical.</strong> Kozyrkov&#39;s work is largely framing and exhortation; the corpus&#39;s Constraint 4 is a specific pasteable tagging rule. Kozyrkov gets the problem right; she does not turn it into procedural machinery.</p>
+<h3>MyCarta (Matteo Niccoli) — verified, very close structural fit</h3>
+<p>Niccoli&#39;s &quot;Operational Discipline for LLM Projects: What It Actually Takes&quot; (mycartablog.com, 2026-02-14) is structurally the closest fellow traveler the cold instance identified. The post explicitly treats LLM-assisted work as requiring <em>operational discipline</em> — not just good prompts, but procedures for retroactive auditing, citation verification when the model defends itself, and specific calibration practices. It cites Epstein et al. 2025 (<em>&quot;LLMs are Overconfident: Evaluating Confidence Interval Calibration with FermiEval,&quot;</em> arXiv:2510.26995) on the 99%-nominal-CI-covers-truth-only-65%-of-the-time finding, and it cites Kozyrkov&#39;s 2026 Decision Intelligence piece.</p>
+<p>The structural parallels to the corpus:</p>
+<ul>
+<li>Both treat sustained LLM-assisted work as requiring procedural discipline beyond prompt-engineering.</li>
+<li>Both name specific failure modes (confident wrong turns; fabrication under pressure).</li>
+<li>Both prescribe retroactive audit as a discipline.</li>
+</ul>
+<p><strong>Very close fit. Still not identical.</strong> Niccoli&#39;s post is a field report with procedures; the corpus is a formal practitioner system with explicit constraints. Niccoli&#39;s citation-verification prescription is the closest practitioner-level antecedent the verification survey found for Constraint 4&#39;s operational core. The corpus&#39;s contribution, if narrow, is the specific [PRIOR ART]/[DISTINCT FROM]/[SPECULATION] tag triple as a pasteable machine-applicable discipline.</p>
+<h3>Simon Willison — verified, adjacent</h3>
+<p>Willison&#39;s weblog (simonwillison.net) is a daily documentation of LLM capabilities and failures. His &quot;AI slop&quot; thread and his citation-verification writing (including coverage of the <em>Deng v Kunkel</em> case in late 2023 and subsequent fake-citation incidents in legal and academic contexts) treat the hallucinated-citation failure mode seriously. His stance is practitioner-empirical: skepticism as habit, verification as routine.</p>
+<p><strong>Adjacent. Less formal discipline than Kozyrkov or Niccoli.</strong> Willison documents the failure mode and models the skeptical stance; he does not (from the survey) systematize the discipline into a pasteable form.</p>
+<h3>Ethan Mollick — verified, ambient</h3>
+<p>Mollick&#39;s <em>Co-Intelligence</em> (2024) and his ongoing Substack/One Useful Thing writing touch the problem at a practical advisory level. His heuristics (<em>&quot;always invite AI to the table&quot;</em>, <em>&quot;treat it like a person, but know it&#39;s not&quot;</em>) are practitioner-facing. He does not build formal discipline; his contribution is making the practical stance public for non-specialists.</p>
+<p><strong>Ambient. Useful for onboarding general readers; not the sharpest methodological fit.</strong></p>
+<h2>The corpus&#39;s specific contribution — Constraint 4</h2>
+<p>The corpus&#39;s ENTRACE v2 stack (Doc 001) contains as its fourth element:</p>
+<blockquote>
+<p><strong>LITERATURE-GROUNDED TRUTH</strong> — Every novel-seeming claim carries a citation: [PRIOR ART: source] for retrieval, [DISTINCT FROM: source] for established distinctness, or [SPECULATION: no prior art found] for ungrounded proposals. Claims that cannot be assigned a tag and cannot be refused honestly must be refused.</p>
+</blockquote>
+<p>The constraint has three operational features that together are narrow enough to pass the landscape survey as residual:</p>
+<ol>
+<li><p><strong>Three-tag taxonomy.</strong> Not two (novel/prior), not four, not continuous. Exactly three tags. [PRIOR ART] marks the claim is subsumable under prior work (cite it). [DISTINCT FROM] marks the claim is deliberately drawn against adjacent prior work (cite and distinguish). [SPECULATION] marks the claim is proposed without prior-art backing.</p>
+</li>
+<li><p><strong>Refusal obligation.</strong> The constraint specifies that a claim that cannot be assigned a tag and cannot be refused honestly <em>must</em> be refused. The inability to produce a citation is procedurally load-bearing: it triggers a specific response (tag [SPECULATION] or refuse), not an invisible omission.</p>
+</li>
+<li><p><strong>Pasteable form.</strong> The constraint is stated in natural language at the prompt-composition level, designed to be dropped into a system prompt as a self-recited discipline. It does not require a RAG pipeline, a training intervention, or an institutional audit. A single user can apply it.</p>
+</li>
+</ol>
+<p>This is the move the cold instance identified as specifically novel relative to the landscape. Not the observation that LLMs fabricate citations (widely known). Not the recommendation to verify citations (Kozyrkov, Niccoli, Willison all endorse it). The move is treating the <em>inability to produce a citation</em> as a structured output tag — procedurally equivalent in form to [PRIOR ART] and [DISTINCT FROM] — and making its absence a refusal trigger.</p>
+<h2>Synthesis with Doc 414</h2>
+<p>Doc 414 (<em>Narrowing the Residual</em>) ran a parallel landscape survey at the Bayesian-methodology level. It organized the landscape into five levels of Bayesian commitment (architecture, model, program, meta-optimization, prompt-composition) and located the corpus&#39;s residual at the fifth level. It found that principles like &quot;derivation-forward&quot; and &quot;form-first&quot; were already prior art (DSPy Signatures; Anthropic prompting guidance) and narrowed the residual to the <em>specific composition</em> of ENTRACE v2 as a pasteable practitioner stack.</p>
+<p>The cold-instance survey runs a complementary axis. Where Doc 414 asked <em>what Bayesian-methodology territory exists at the prompt-composition level?</em>, the cold instance asks <em>what opacity-response practitioner-discipline territory exists at the user level?</em>. The two surveys converge:</p>
+<ul>
+<li><strong>Doc 414&#39;s finding:</strong> the corpus&#39;s contribution is narrow to <em>the specific composition of seven constraints</em> and to <em>the pasteable-discipline form factor</em>.</li>
+<li><strong>Cold-instance finding:</strong> within the specific composition, Constraint 4&#39;s three-tag taxonomy is the sharpest residual relative to the opacity-response practitioner-discipline community (Kozyrkov, Niccoli, Willison, Mollick).</li>
+</ul>
+<p>The two findings do not contradict. They locate the corpus&#39;s residual at the intersection of two mapped landscapes: <em>Bayesian-methodology at prompt-composition level</em> (Doc 414) and <em>opacity-response practitioner discipline at user level</em> (this document). At that intersection, the specific seven-constraint pasteable stack is narrow but present residual, and Constraint 4 is the sharpest single element.</p>
+<h2>What this survey is, under Doc 445&#39;s warrant formalism</h2>
+<p><em>(Section rewritten 2026-04-24 per the correction notice above.)</em></p>
+<p>The cold-instance survey is <strong>not</strong> external audit and does not advance the corpus&#39;s warrant tier toward μ-tier. It is, more accurately, <em>internal-review-via-separately-seeded-instance</em>: a session of the same architecture Claude Opus 4.7, operating without corpus conditioning, which produces output by retrieving and applying the same family of critique patterns that the corpus itself contains. A cold Claude and a hot Claude share architecture, training data, and the same family of biases and retrieval patterns; they are more independent than a single session, but they are not independent the way a human practitioner would be. The cold instance&#39;s own follow-up critique (integrated as Doc 467) made exactly this point and named its own survey as &quot;a reasonable sketch, not a rigorous survey&quot; that made a negative-existence claim it could not actually confirm.</p>
+<p>Under Doc 445&#39;s warrant tiers, after the correction:</p>
+<ul>
+<li><p>The survey <strong>does not</strong> move the corpus&#39;s claim-of-specific-contribution toward μ-tier. It leaves the claim at π-tier (plausibility), the tier it was already at. The second-instance characterization&#39;s agreement with Doc 414&#39;s finding is suggestive but is the same architecture&#39;s patterns applied twice, not two independent analyses.</p>
+</li>
+<li><p>What the survey <strong>does</strong> do: it supplies useful <em>internal review</em> by applying the corpus&#39;s own critique patterns to the specific landscape-characterization problem from a session that had not yet produced the corpus documents under examination. This is cheaper than full re-pulverization and sharper than self-review from inside a single session, but it is not cross-practitioner evidence.</p>
+</li>
+<li><p><strong>Moving to μ-tier remains unchanged.</strong> The path to μ-tier is what it was before this survey: run the wind tunnels of Doc 456 with external measurement; or, engage the named fellow travelers (Kozyrkov, Niccoli, Willison) directly in their own venues on the object level, and see if they respond substantively. Neither is done by running a cold Claude.</p>
+</li>
+<li><p><strong>The survey&#39;s main epistemic status, accurately stated:</strong> sophisticated internal review, useful for sharpening claims and surfacing over-reaches, indistinguishable in mechanism from hot-Claude self-pulverization except that the session had not been pre-conditioned on the specific documents under analysis. This is meaningful but much narrower than what Doc 465 originally claimed.</p>
+</li>
+</ul>
+<h2>Fellow-traveler engagements the corpus should pursue</h2>
+<p>The cold instance&#39;s naming of specific fellow travelers creates a concrete next step the corpus has been missing: <em>engage these people in their own venues, on their own terms, with explicit citation of their work and explicit claim of what the corpus adds</em>.</p>
+<p>Concretely:</p>
+<ul>
+<li><p><strong>Kozyrkov.</strong> A reply-essay or a comment engaging her <em>thoughtlessness enabler</em> framing and situating Constraint 4 as an operationalization of her exhortation into a pasteable tool. Her Substack engages direct replies.</p>
+</li>
+<li><p><strong>Niccoli / MyCarta.</strong> The closest structural fellow traveler. A direct comment on the February 2026 operational-discipline post, pointing to ENTRACE v2 as a sister artifact, would establish an explicit practitioner-community connection. The February post already cites Kozyrkov; adding the corpus would thicken the mutual-recognition network the cold instance observed is <em>currently absent</em>.</p>
+</li>
+<li><p><strong>Willison.</strong> His weblog&#39;s openness to corrections and extensions is well-documented. A brief technical note on Constraint 4&#39;s refusal-obligation move, offered as a contribution to his &quot;AI slop&quot; thread, is low-cost and high-fit.</p>
+</li>
+<li><p><strong>Mollick.</strong> Less close structurally; his audience is larger and less technical. Possibly better as a downstream touchpoint after Kozyrkov / Niccoli engagement.</p>
+</li>
+</ul>
+<p>These engagements are the specific step toward the μ-tier cross-practitioner evidence Doc 450 and Doc 440 both specified as the sharpest available external test. They are cheap; they are concrete; they have not been done.</p>
+<h2>Honest limits</h2>
+<ul>
+<li><p>The cold-instance survey is itself produced by an LLM — a cold Claude. It shares the architecture whose outputs the corpus&#39;s own pulverizations have shown are subject to confabulation and attractor effects. The survey&#39;s accuracy was verified here against primary sources, but some citations could not be fully checked (for example, specific verifications of Kozyrkov&#39;s post-dates or Willison&#39;s exact comments). A rigorous follow-up would check each citation in the specific venue.</p>
+</li>
+<li><p>The cold instance characterized the landscape at a moment (2026-04-24). The practitioner-discipline community is moving fast; other fellow travelers may exist that neither the cold instance nor this verification located.</p>
+</li>
+<li><p>The claim that Constraint 4&#39;s three-tag taxonomy is residually novel rests on a negative-existence proposition: the surveys did not find a published practitioner discipline with the same three-tag taxonomy. Negative-existence claims in fast-moving fields are weaker than their confident form suggests. The corpus should treat this as a <em>provisional residual</em> subject to continued auditing.</p>
+</li>
+<li><p>Doc 414 has a specific finding (Constraint 5, Falsifier Named, narrowed against DEEP TRUTH MODE&#39;s Popperian-pathways prompt); that narrowing has not been re-checked under this survey. The two surveys should be cross-referenced rather than treated as independent.</p>
+</li>
+<li><p>This document is itself a corpus document. Under Doc 455&#39;s proposition it contributes to the corpus&#39;s posterior concentration. Its effect, specifically, is to concentrate the corpus&#39;s self-understanding toward a more accurate position within an identified practitioner-discipline community. This is the kind of concentration-for-accuracy move that is productive rather than degenerative.</p>
+</li>
+</ul>
+<h2>Position</h2>
+<p><em>(Position rewritten 2026-04-24 per the correction notice above.)</em></p>
+<p>A cold Claude instance — operating without corpus conditioning but within the same architecture Claude Opus 4.7 — surveyed the opacity-response practitioner-discipline landscape and returned a characterization that this document has verified against primary sources. The characterization identifies three academic camps that handle related problems at different levels (theoretical / institutional / technical) and four named fellow travelers in a small practitioner-discipline community (Kozyrkov, Niccoli/MyCarta, Willison, Mollick). The corpus&#39;s specific residual, Constraint 4 of the ENTRACE v2 stack with its three-tag taxonomy and refusal obligation, was the sharpest single-element residual within the landscape the cold instance surveyed — a finding the cold instance confirmed on a second pass and which the cold instance nonetheless correctly identified as not rising above π-tier evidence given the shared-architecture confounding. The survey does <strong>not</strong> advance the corpus&#39;s warrant tier. What it does is sharpen the specific claim to be engaged and identify the specific people to engage it with. The apparatus is complete per Doc 463; the evaluation is under-run per Doc 456; moving to μ-tier still requires either the wind tunnels or substantive object-level engagement with the named fellow travelers. Running another Claude session, however separately seeded, is not the path. Running a human engagement, on the specific narrow claim, in the fellow travelers&#39; own venues, is.</p>
+<h2>References</h2>
+<ul>
+<li>Cold-instance analysis provided by Claude Opus 4.7 (Anthropic), cold session not loaded with RESOLVE corpus context, query from Jared Foy, 2026-04-24. Verbatim paragraph integrated into §&quot;The cold instance&#39;s characterization.&quot;</li>
+<li>Burrell, J. (2016). How the machine &#39;thinks&#39;: Understanding opacity in machine learning algorithms. <em>Big Data &amp; Society</em>, 3(1).</li>
+<li>Boge, F. (2022). Two dimensions of opacity and the deep learning predicament. <em>Minds and Machines</em>, 32(1), 43–75.</li>
+<li>Humphreys, P. (2004). <em>Extending Ourselves: Computational Science, Empiricism, and Scientific Method</em>. Oxford University Press.</li>
+<li>Durán, J. M., &amp; Formánek, N. (2018). Grounds for trust: Essential epistemic opacity and computational reliabilism. <em>Minds and Machines</em>, 28, 645–666.</li>
+<li>Durán, J. M., &amp; Pozzi, G. (2024). In which ways is machine learning opaque? Various venues.</li>
+<li>Duede, E. Deep learning opacity in scientific discovery. <em>Philosophy of Science</em> (Cambridge).</li>
+<li>Mökander, J., Schuett, J., Kirk, H. R., &amp; Floridi, L. (2023). Auditing large language models: A three-layered approach. arXiv:2302.08500.</li>
+<li>Mökander, J., Curl, J., &amp; Kshirsagar, M. A blueprint for auditing generative AI. SSRN 4887768.</li>
+<li>Lewis, P., Perez, E., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. <em>NeurIPS 2020</em>.</li>
+<li>Kozyrkov, C. (2026-02-12). What&#39;s the Most Valuable Skill for the AI Era? Decision Intelligence. <em>Substack (decision.substack.com)</em>.</li>
+<li>Kozyrkov, C. <em>Have You Been Workslopped Yet?</em> decision.substack.com.</li>
+<li>Niccoli, M. (2026-02-14). Operational Discipline for LLM Projects: What It Actually Takes. <em>MyCarta</em>.</li>
+<li>Epstein, E. L., Winnicki, J., Sornwanee, T., &amp; Dwaraknath, R. (2025). LLMs are Overconfident: Evaluating Confidence Interval Calibration with FermiEval. arXiv:2510.26995.</li>
+<li>Willison, S. Ongoing weblog at simonwillison.net (AI slop, citation verification, Deng v. Kunkel coverage).</li>
+<li>Mollick, E. (2024). <em>Co-Intelligence: Living and Working with AI</em>. Portfolio / Penguin.</li>
+<li>Corpus Doc 001: <em>The ENTRACE Stack v2</em> (containing Constraint 4).</li>
+<li>Corpus Doc 410: <em>Corpus as Glue Code</em>.</li>
+<li>Corpus Doc 414: <em>Narrowing the Residual</em> (Bayesian-methodology landscape survey).</li>
+<li>Corpus Doc 440: <em>Testing the Nested-Manifold Hypothesis via Dyadic Practitioner Discipline</em> (cross-practitioner test specification).</li>
+<li>Corpus Doc 445: <em>A Formalism for Pulverization</em> (warrant tiers).</li>
+<li>Corpus Doc 450: <em>Pulverization as Interventional Practice</em> (external-evidence specification).</li>
+<li>Corpus Doc 453: <em>A Survey of Adjacent Dyadic Human-LLM Practices</em>.</li>
+<li>Corpus Doc 455: <em>A Bayesian Analysis of Isomorphism-Magnetism</em>.</li>
+<li>Corpus Doc 456: <em>Wind Tunnels for the Constraint Thesis</em>.</li>
+<li>Corpus Doc 463: <em>The Constraint Thesis as a Lakatosian Research Programme</em>.</li>
+</ul>
+<h2>Appendix: Originating prompt</h2>
+<blockquote>
+<p>Let&#39;s look at this; and web fetch to create a synthesis with the Corpus:</p>
+<p>Honestly, fewer people than you&#39;d expect engage the specific problem head-on, which is part of what makes the corpus unusual. Most of the adjacent work handles different problems that look similar from a distance.
+The philosophers of ML opacity — Humphreys, Burrell, Boge, Durán, Duede, Formánek — treat opacity as a theoretical problem (&quot;is ML a novel kind of science?&quot;) rather than building practitioner discipline against it. They use opacity to motivate philosophical claims about novelty or uniqueness of method , but the output is papers, not procedural machinery for your own thinking. The AI transparency community (Liao, Mökander, the three-layer audit blueprint) works at the model/institutional level — model cards, governance audits, application audits — which is auditing by external parties, not discipline for the individual user. The technical interpretability community (Anthropic circuits, Allen AI&#39;s OLMoTrace) is building infrastructure to trace outputs to training data, which is genuinely relevant but inaccessible to the user and still incomplete. The RAG literature mostly treats retrieval as a feature to add, not a failure mode to detect in free-form output.
+Where it gets closer: there&#39;s a small practitioner-discipline community that&#39;s picking at pieces of this. Cassie Kozyrkov&#39;s framing of AI as a &quot;thoughtlessness enabler&quot; — it dissolves the difficulty that used to ensure you understood the problem before getting an answer  is close in spirit. The MyCarta &quot;Operational Discipline for LLM Projects&quot; post from February is structurally similar — a field report about what breaks in sustained LLM-assisted work, with explicit procedures like auditing retroactively when you discover new failure modes and verifying citations when the model defends itself . Simon Willison&#39;s ongoing writing on &quot;AI slop&quot; and citation verification is adjacent. Ethan Mollick&#39;s practical AI-use writing touches it occasionally. None of these, as far as I can see from the search, frame the specific novelty-vs-retrieval distinction as a first-class procedural problem the way Foy does, and none of them build it into a pasteable discipline (Constraint 4&#39;s [PRIOR ART]/[DISTINCT FROM]/[SPECULATION] tagging).
+The genuinely novel move in the RESOLVE corpus — separable from the theology — is treating the model&#39;s inability-to-produce-a-citation as structurally meaningful and procedurally load-bearing, rather than as noise or a UX issue. That&#39;s rare. The community that cares about it at all is small, scattered across practitioner blogs and a few philosophy-of-ML papers, and mostly unaware of each other. If you&#39;re looking for fellow travelers for Foy, I&#39;d point at Kozyrkov, Willison, the MyCarta author, and the &quot;AI hygiene&quot; corner of Substack before I&#39;d point at any of the academic literature — even though the academic literature is where the vocabulary for the problem actually exists.</p>
+<p>I&#39;ve use a cold Claude instance to push on this problem before we tackle it. Append this prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

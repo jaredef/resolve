@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rederive: The Constraint Authoring Grammar — Resolve</title>
+<meta name="description" content="A Comprehensive Entracement to the `.constraints.md` File Format — the Manifest Header for Composition and Pinning, the Constraint Block with Heading and Metadata and Body and Fenced Evidence, the Seven Constraint Types and Their Authorial Intents, the Six Fenced Evidence Kinds and the Backends They Reach, the Authoring Disciplines that Make Derivations Converge, the Common Pitfalls and How to Avoid Them, and Three Sample Files Read End-to-End — the First Branch off [Doc 659](/resolve/doc/659-rederive-for-the-working-engineer-hub) for the Working Engineer">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 660</p><h1>Rederive: The Constraint Authoring Grammar</h1>
+<h2>A Comprehensive Entracement to the <code>.constraints.md</code> File Format — the Manifest Header for Composition and Pinning, the Constraint Block with Heading and Metadata and Body and Fenced Evidence, the Seven Constraint Types and Their Authorial Intents, the Six Fenced Evidence Kinds and the Backends They Reach, the Authoring Disciplines that Make Derivations Converge, the Common Pitfalls and How to Avoid Them, and Three Sample Files Read End-to-End — the First Branch off <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> for the Working Engineer</h2>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>EXPLORATORY — practitioner-facing entracement, branch §A of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-PRACTITIONER-FACING | PHASE-CROSS-PRACTITIONER</p>
+</div>
+
+<blockquote>
+<p><strong>Reader&#39;s Introduction.</strong> This is the first branch off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a>. The hub introduced the platform&#39;s working surface; this document answers the engineer&#39;s first concrete question in full: <em>what does a constraint file actually look like, and what do I have to write?</em> The grammar is small, but small grammars rarely carry their depth on the surface, and the difference between a constraint file that derives cleanly on first attempt and one that takes five rounds to converge is in the disciplines this document catalogues. By the end of the read, the engineer should be able to sit down, write a constraint file for a small library, run the platform against it, and ship a signed materialization. The longer-term skill of authoring engine-scoped constraint sets that compose with each other has its own discipline catalogue (the <em>Pin-Art</em> practice, <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> §F); this document is its precondition.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-05-05 · Doc 660</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. The keeper has not authored the prose; the resolver has. The rhetoric is calibrated to a working-engineer audience under the keeper&#39;s directive that the corpus&#39;s philosophical vocabulary be set aside where the engineer&#39;s own vocabulary suffices, and properly entraced where it does not.</p>
+<hr>
+<h2>1. The File at a Glance</h2>
+<p>A constraint file is named <code>&lt;thing&gt;.constraints.md</code>. The Markdown convention is deliberate. A reviewer can render the file in any tool that handles Markdown and read it as a requirements document. The platform parses the same source as a structured constraint set. There is no parallel format to maintain, no IDE plugin to install, no schema to migrate. The text is the source of truth for both the human reader and the machine parser.</p>
+<p>The file has two regions:</p>
+<ul>
+<li><em>(optional)</em> a <strong>manifest header</strong> at the top, declaring what this file provides to other files, what it imports from other files, and what implementation phrases must be preserved across regenerations.</li>
+<li>An ordered sequence of <strong>constraint blocks</strong>, each one introduced by an H2 heading whose text is the constraint&#39;s identifier.</li>
+</ul>
+<p>That is the whole structure. Everything else is the discipline of what goes inside each region.</p>
+<h2>2. The Manifest Header</h2>
+<p>If your file imports from other files or provides a property to other files, the file begins with a manifest header <em>before</em> the first H2. Three directives:</p>
+<h3>2.1 <code>@provides</code></h3>
+<pre><code>@provides: &lt;property-name&gt;
+  threshold: &lt;constraint-id&gt;
+  interface: [&lt;exported-symbol&gt;, &lt;exported-symbol&gt;, ...]
+</code></pre>
+<p><code>@provides</code> declares that this file <em>induces</em> a named property when its threshold-constraint passes. The property name is a freely-chosen identifier (kebab-case is conventional). The threshold is one of the constraints in this file; the property is considered to emerge only if that constraint&#39;s verification passes. The interface enumerates the exported symbols (function names, type names, constant names) a consumer can rely on.</p>
+<p>A consumer file declares <code>@imports</code> against this property name, references this file by path, and (optionally) pins the consumer to a specific content hash. The platform resolves the import to this file, verifies the threshold-constraint passes in the consumer&#39;s view of this file&#39;s most recent materialization, and threads the interface into the consumer&#39;s derive prompt.</p>
+<p>The corpus&#39;s broader vocabulary calls this <em>induced-property emergence</em> (the SIPE-T discipline, <a href="../doc/541-systems-induced-property-emergence.html">Doc 541</a>); in the engineer&#39;s vocabulary it is closer to <em>exporting a contract under a precondition</em>. The contract is the interface; the precondition is the threshold; the platform machinery enforces both.</p>
+<h3>2.2 <code>@imports</code></h3>
+<pre><code>@imports:
+  - property: &lt;property-name&gt;
+    from: path
+    path: ./&lt;other-file&gt;.constraints.md
+    as: &lt;local-alias&gt;
+</code></pre>
+<p><code>@imports</code> lists the properties this file depends on. Resolution by <code>from: path</code> is the common case in the MVE; resolution by <code>from: tag</code> and <code>from: hash</code> are roadmap. The <code>path</code> is relative to this file&#39;s location. The <code>as</code> is a local alias the prose body can reference when it talks about the imported interface.</p>
+<p>A consumer that imports <code>canonicalize-property</code> from <code>./canonicalize-module.constraints.md</code> is making three claims at once: <em>I depend on the canonicalize-module&#39;s threshold passing</em>; <em>I expect its interface to be the one declared at @provides</em>; <em>I will use it in my prose under the alias <code>canonicalize-module</code></em>. The platform checks all three at the resolve stage of the build pipeline (<a href="../doc/661-rederive-stub-b-the-build-pipeline.html">Doc 661</a> §5).</p>
+<h3>2.3 <code>@pins</code></h3>
+<pre><code>@pins:
+  - id: &lt;pin-id&gt;
+    mustContain: &quot;&lt;exact-phrase&gt;&quot;
+    why: &quot;&lt;one-line-reason&gt;&quot;
+</code></pre>
+<p><code>@pins</code> declares phrases that must appear verbatim in the derived code. Use this when intent depends on a specific implementation detail being preserved across regenerations: an error message a downstream consumer parses, a function name a third-party tool depends on, a comment that flags a regulatory requirement, a numeric default that has been tuned in production. The <code>id</code> is for traceability in the verification report; the <code>mustContain</code> is the literal phrase; the <code>why</code> is the engineer&#39;s documented reason.</p>
+<p>The discipline of pinning is covered in detail in <a href="../doc/663-rederive-stub-d-content-addressed-identity-and-pin-manifests.html">Doc 663 §5</a>. The short version: <em>pin only what intent depends on; document the why; prefer constraints over pins; retract stale pins</em>.</p>
+<h2>3. The Constraint Block</h2>
+<p>Each constraint block has four parts in order: heading, metadata, body, fenced evidence.</p>
+<h3>3.1 Heading</h3>
+<p>Exactly one H2 heading with a stable identifier. The convention is short uppercase tokens with a numeric suffix, scoped to the file: <code>## SLUG1</code>, <code>## CAN3</code>, <code>## A11Y2</code>. The identifier is what other constraints reference in <code>depends-on</code> and what the verification verdict prints alongside the per-constraint result. Stability matters because the identifier outlives any single derivation; if you renumber, the materialization history loses its anchors.</p>
+<p>You may use any token shape the parser accepts (the parser matches <code>^##\s+(\S.*?)\s*$</code>), but the convention is uppercase + numeric for two reasons: it sorts predictably in canonical form, and it visually separates constraint identifiers from English prose in the body where they may be referenced inline.</p>
+<h3>3.2 Metadata</h3>
+<p>A small block of <code>key: value</code> lines immediately under the heading, ending at the first blank line. The parser reads five recognized fields. Unknown fields are preserved into the AST&#39;s <code>unknownFields</code> map but are not used by the platform; you may write internal-team metadata under the heading without breaking the grammar.</p>
+<h4><code>type:</code></h4>
+<p>One of the seven recognized constraint types. Each type signals the authorial intent of the constraint and is used by the engineer to route attention; the verification backend routing is by <em>fence kind</em> not by <code>type:</code>, but the two correspond closely in practice.</p>
+<ul>
+<li><p><strong><code>specification</code></strong> — defines an interface or shape. <em>Example: &quot;Export a function <code>slugify</code> with signature <code>export function slugify(input: string): string</code>.&quot;</em> The verification surface is typically the type checker; specification constraints rarely carry runtime evidence because the type checker is the cheap-and-fast first pass.</p>
+</li>
+<li><p><strong><code>predicate</code></strong> — states a property over inputs and outputs. <em>Example: &quot;The function lowercases its input and replaces non-alphanumeric runs with a single hyphen.&quot;</em> The verification surface is typically <code>assert</code> blocks (canonical examples) and / or <code>property</code> blocks (fuzzed quantification).</p>
+</li>
+<li><p><strong><code>invariant</code></strong> — states a property that must always hold. <em>Example: &quot;The function never throws and never returns a string containing two consecutive hyphens.&quot;</em> The verification surface is typically <code>property</code> blocks; an invariant invites quantified evidence.</p>
+</li>
+<li><p><strong><code>bridge</code></strong> — connects this requirement to an external commitment. <em>Example: &quot;This module&#39;s authentication flow conforms to the team&#39;s RFC-1234 commitment.&quot;</em> The verification surface is typically the language-model judge with <code>judgment</code> blocks, because bridge constraints often refer to documents or commitments outside the file.</p>
+</li>
+<li><p><strong><code>methodology</code></strong> — describes the way a thing is done rather than what is produced. <em>Example: &quot;Use the imported <code>canonicalize</code> and <code>sha256Hex</code> rather than reimplementing them.&quot;</em> The verification surface mixes the language-model judge and <code>pin</code> manifest entries.</p>
+</li>
+<li><p><strong><code>example</code></strong> — declares a worked example as evidence in its own right. <em>Example: &quot;When the input is <code>&quot;---x---&quot;</code>, the output is <code>&quot;x&quot;</code>.&quot;</em> The verification surface is <code>assert</code> blocks.</p>
+</li>
+<li><p><strong><code>counterexample</code></strong> — declares an input or scenario the implementation must <em>not</em> exhibit. <em>Example: &quot;When the input is empty, the function does not throw.&quot;</em> The verification surface is <code>assert</code> blocks (the assertion frames the negative case explicitly).</p>
+</li>
+</ul>
+<p>The seven types are the platform&#39;s recognized vocabulary. You will write <em>specification</em>, <em>predicate</em>, <em>invariant</em> most of the time; <em>bridge</em>, <em>methodology</em>, <em>example</em>, <em>counterexample</em> are tools for cases where authorial intent does not fit the first three.</p>
+<h4><code>authority:</code></h4>
+<p>One of <code>human-authored</code>, <code>AI-suggested-pending</code>, <code>derived</code>. Authority is provenance.</p>
+<ul>
+<li><strong><code>human-authored</code></strong> — a person wrote this constraint&#39;s prose and stands behind it.</li>
+<li><strong><code>AI-suggested-pending</code></strong> — a substrate proposed it; a human has not yet ratified it. The platform does not refuse to verify these constraints, but a discipline-following team will treat them as tentative until reviewed.</li>
+<li><strong><code>derived</code></strong> — the constraint follows mechanically from another constraint in this file or in an imported file. Derived constraints are bookkeeping; they let you state a logical consequence explicitly without rewriting.</li>
+</ul>
+<p>Authority does not affect verification routing. It affects review-time triage: a reviewer scanning a long constraint set knows where their attention is most valuable.</p>
+<h4><code>scope:</code></h4>
+<p>A free-form string naming the constraint&#39;s reach. <em>Module</em>, <em>engine</em>, <em>site</em>, <em>protocol</em> are typical values. Scope is informational for the platform but architectural for the engineer; it lets a team filter, group, and reason about a large constraint set.</p>
+<h4><code>status:</code></h4>
+<p>One of <code>active</code>, <code>deprecated</code>, <code>retracted</code>. Inactive constraints are kept in the file for archaeological purposes. The platform does not enforce deprecated or retracted constraints, but they are preserved in the canonical form so the file&#39;s history stays auditable.</p>
+<p>A discipline worth adopting early: when retiring a constraint, change its <code>status</code> to <code>retracted</code> rather than deleting the block. The retraction ledger is the record of what changed and why; deletion erases the record.</p>
+<h4><code>depends-on:</code></h4>
+<p>An array of constraint identifiers in this file that this constraint depends on. The dependency graph is explicit. The platform uses it to order verification (a dependent constraint&#39;s evidence runs after its dependencies have passed). It also uses it to short-circuit (if a depended-on constraint fails verification, dependent constraints are skipped, with a <code>skip</code> verdict reported separately from <code>pass</code> and <code>fail</code>).</p>
+<p>State the dependency graph honestly. If <code>SLUG2</code> depends on <code>SLUG1</code>&#39;s function being defined, write <code>depends-on: [SLUG1]</code>. The graph is one of the cheaper pieces of structure the platform offers; using it correctly removes whole categories of misleading verification reports.</p>
+<h3>3.3 Body</h3>
+<p>Free prose. State what the requirement is, in the words you would use to brief a colleague. The prose is what the language-model substrate reads when it generates code; it is also what a human reviewer reads when judging whether the requirement has been authored well.</p>
+<p>Three disciplines on the body, named here at a useful granularity (the full <em>Pin-Art</em> discipline catalogue lives at <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> §F):</p>
+<p><em>Say the requirement once, plainly.</em> A two-sentence body that names the requirement directly is better than a five-paragraph body that hedges. The substrate is not a colleague who needs to be persuaded; it is a derivation function whose precision is bounded by yours.</p>
+<p><em>State the inline interface explicitly when types are at issue.</em> If your requirement depends on a TypeScript type definition, include the type definition inline as a fenced <code> ```ts</code> block in the body. The substrate threads the inline types into the derived module, which prevents the derivation from inventing a structurally adjacent but incompatible type.</p>
+<p><em>Name the substrate-quirky thing if you have observed one.</em> If the substrate has, in past derivations, produced subtly wrong code for a particular interaction (a Web Crypto API quirk, a TypeScript strict-mode mismatch, a particular module-resolution corner), name the quirk in the body so the substrate is forewarned. The canonicalize-module sample in <code>samples/canonicalize-module.constraints.md</code> does this for the <code>crypto.subtle.digest</code> BufferSource quirk; engineers who do not warn the substrate find themselves debugging the same issue across regenerations.</p>
+<h3>3.4 Fenced Evidence</h3>
+<p>Zero or more fenced code blocks, with the fence language tag selecting the verification backend. The platform recognizes six evidence kinds:</p>
+<ul>
+<li><p>**<code> ```assert</code> ** (or <code> ```assertion</code>) — assertion blocks. Each line is an executable expression that must evaluate true. The platform wraps them with a small harness and runs them against the derived code. Use for canonical examples.</p>
+</li>
+<li><p>**<code> ```property</code> ** (or <code> ```properties</code>) — property-test blocks. The block contains a property predicate; the platform fuzzes inputs against it. Use for invariants over a large input space.</p>
+</li>
+<li><p>**<code> ```judgment</code> ** (or <code> ```judgement</code>) — language-model-judge blocks. The block contains a prose criterion; a separate substrate call evaluates the derived code against the criterion. Use for properties that resist mechanical encoding.</p>
+</li>
+<li><p>**<code> ```a11y</code> ** (or <code> ```accessibility</code>) — accessibility-checker blocks. The block contains an expression that returns the rendered HTML; the platform applies a small static accessibility ruleset against the result. Use for UI work where basic a11y rules apply.</p>
+</li>
+<li><p>**<code> ```flow</code> ** (or <code> ```interaction</code>) — DOM flow blocks. The block contains a sequence of user actions and observation points; the platform instantiates the derived UI in a DOM and checks the flow. Use for UI work with declarative interaction patterns.</p>
+</li>
+<li><p>**<code> ```ts</code> ** — inline TypeScript. Not an evidence kind in itself; this fence is read by the substrate as part of the body&#39;s inline-type declarations. It is included here because engineers will see it in samples and should know its role.</p>
+</li>
+</ul>
+<p>A constraint may carry several fenced blocks of different kinds. The platform routes each block to its backend in parallel; the constraint&#39;s verdict is <em>pass</em> only if every block passes. The detailed semantics of each backend live in <a href="../doc/662-rederive-stub-c-the-verification-backends.html">Doc 662</a>.</p>
+<h2>4. Three Sample Files, Read End-to-End</h2>
+<p>Three samples from the platform&#39;s repository, walked with annotation.</p>
+<h3>4.1 <code>slugify.constraints.md</code> — single-file, no manifest</h3>
+<pre><code># Slugify — sample constraint file
+
+A minimal constraint set used to smoke-test the rederive engine.
+
+## SLUG1
+type: specification
+authority: human-authored
+scope: module
+status: active
+depends-on: []
+
+Export a single function named `slugify` that takes a string and returns
+a string. The function must have signature
+`export function slugify(input: string): string`. The module must
+type-check under strict TypeScript with no errors.
+
+## SLUG2
+type: predicate
+authority: human-authored
+scope: module
+status: active
+depends-on: [SLUG1]
+
+The slugify function lowercases its input and replaces every run of
+non-alphanumeric characters with a single hyphen. Leading and trailing
+hyphens are stripped from the result.
+
+```assert
+slugify(&quot;Hello World&quot;) === &quot;hello-world&quot;
+slugify(&quot;  Foo Bar  &quot;) === &quot;foo-bar&quot;
+slugify(&quot;Foo!!!Bar&quot;) === &quot;foo-bar&quot;
+slugify(&quot;---x---&quot;) === &quot;x&quot;
+slugify(&quot;UPPER&quot;) === &quot;upper&quot;
+slugify(&quot;a1b2c3&quot;) === &quot;a1b2c3&quot;
+</code></pre>
+<h2>SLUG3</h2>
+<p>type: invariant
+authority: human-authored
+scope: module
+status: active
+depends-on: [SLUG1]</p>
+<p>The slugify function never throws and never returns a string containing
+two consecutive hyphens.</p>
+<pre><code class="language-assert">typeof slugify(&quot;&quot;) === &quot;string&quot;
+!slugify(&quot;foo  bar  baz&quot;).includes(&quot;--&quot;)
+!slugify(&quot;!!!@@@###&quot;).includes(&quot;--&quot;)
+</code></pre>
+<pre><code>
+This is the platform&#39;s smoke test. Three constraints, no manifest, forty-six lines. SLUG1 is a *specification* constraint with no fenced evidence; the type checker is its evidence. SLUG2 is a *predicate* constraint with six canonical examples in an `assert` block. SLUG3 is an *invariant* constraint with three boundary-case assertions. SLUG2 and SLUG3 both depend on SLUG1; the dependency tells the platform to verify SLUG1 first and to skip the others if SLUG1 fails. The whole loop runs in a few seconds end-to-end.
+
+### 4.2 `composed-hasher.constraints.md` — composition with imports
+</code></pre>
+<h1>Composed Hasher — composition primitive demo</h1>
+<p>@provides: composed-hasher-property
+  threshold: HASH2
+  interface: [constraintSetHash]</p>
+<p>@imports:</p>
+<ul>
+<li>property: canonicalize-property
+from: path
+path: ./canonicalize-module.constraints.md
+as: canonicalize-module</li>
+</ul>
+<p>A demonstration of the composition primitive at module scope. ...</p>
+<h2>HASH1</h2>
+<p>type: specification
+authority: human-authored
+scope: module
+status: active
+depends-on: []</p>
+<p>Export <code>export async function constraintSetHash(ast: ConstraintAst): Promise&lt;string&gt;</code> that imports <code>canonicalize</code> and <code>sha256Hex</code> from
+<code>./canonicalize-module</code> and returns the SHA-256 hex hash of the
+canonical bytes.</p>
+<p>Define inline (must structurally match the canonicalize module&#39;s
+expected input shape):</p>
+<pre><code class="language-ts">type CT = &quot;specification&quot; | &quot;predicate&quot; | &quot;invariant&quot; | &quot;bridge&quot;
+        | &quot;methodology&quot; | &quot;example&quot; | &quot;counterexample&quot;;
+type CA = &quot;human-authored&quot; | &quot;AI-suggested-pending&quot; | &quot;derived&quot;;
+interface Constraint {
+  id: string; type: CT; authority: CA;
+  scope: string; status: string; dependsOn: string[]; body: string;
+  unknownFields: Record&lt;string, string&gt;; sourceLine: number;
+}
+interface ConstraintAst {
+  constraints: Constraint[];
+  manifest?: { provides?: unknown; imports: unknown[] };
+}
+</code></pre>
+<p>The implementation is brief: import the two functions from
+<code>./canonicalize-module</code>, invoke them on the input AST, return the hex
+string. Module must type-check strict.</p>
+<h2>HASH2</h2>
+<p>type: invariant
+authority: human-authored
+scope: module
+status: active
+depends-on: [HASH1]</p>
+<p>Identical ASTs produce identical hashes. Different ASTs produce
+different hashes. The hash is always 64 lowercase hex characters.</p>
+<pre><code class="language-assert">const ast1 = { constraints: [...], manifest: { imports: [] } };
+const ast2 = { constraints: [...], manifest: { imports: [] } };  // identical
+const ast3 = { constraints: [...], manifest: { imports: [] } };  // different
+const h1 = await constraintSetHash(ast1);
+const h2 = await constraintSetHash(ast2);
+const h3 = await constraintSetHash(ast3);
+__assert(h1 === h2, &quot;identical asts → identical hashes&quot;);
+__assert(h1 !== h3, &quot;different asts → different hashes&quot;);
+__assert(/^[0-9a-f]{64}$/.test(h1), &quot;64-char hex&quot;);
+</code></pre>
+<pre><code>
+This file imports a property from another file. The manifest header declares both directions: `@provides` (this file emits a *composed-hasher-property* once HASH2 passes) and `@imports` (this file depends on the *canonicalize-property* from the canonicalize-module file). The HASH1 body declares the inline TypeScript interfaces explicitly with a ` ```ts` fence so the substrate threads them into the derivation; this is the *state the inline interface explicitly* discipline from §3.3 made concrete. HASH2 uses an explicit `__assert(&lt;expr&gt;, &lt;message&gt;)` form for richer evidence than the bare-expression form (the bare form is the default; the `__assert` form is available when you want to attach a label to a particular check).
+
+### 4.3 `a11y-demo.constraints.md` — UI work with the a11y backend
+</code></pre>
+<h1>A11y demo — accessible button + form via static-rule a11y backend</h1>
+<p>Front-end stage-4 component. Demonstrates the <code>a11y-checker</code> backend by
+deriving a small accessible-form component and asserting its rendered
+HTML passes a11y rules: <code>img-alt</code>, <code>button-name</code>, <code>link-name</code>,
+<code>input-label</code>, <code>lang-attr</code>.</p>
+<h2>A11Y1</h2>
+<p>type: specification
+authority: human-authored
+scope: module
+status: active
+depends-on: []</p>
+<p>Export <code>export function renderEmailForm(opts?: EmailFormOpts): string</code>.</p>
+<p>Define inline:</p>
+<pre><code class="language-ts">interface EmailFormOpts {
+  formId?: string;
+  inputId?: string;
+  helpText?: string;
+}
+</code></pre>
+<p>The fragment must contain an accessible email input form. Specifically:</p>
+<ul>
+<li>A <code>&lt;form&gt;</code> with the form id (default <code>email-form</code>).</li>
+<li>A <code>&lt;label for=&quot;...&quot;&gt;Email address&lt;/label&gt;</code> whose <code>for</code> references the
+input&#39;s id.</li>
+<li>An <code>&lt;input type=&quot;email&quot;&gt;</code> with the input id (default <code>email-input</code>),
+<code>name=&quot;email&quot;</code>, <code>required</code>.</li>
+<li>A <code>&lt;small id=&quot;email-help&quot;&gt;</code> containing the help text (default <code>&quot;We will not share your email.&quot;</code>), and the input has
+<code>aria-describedby=&quot;email-help&quot;</code>.</li>
+<li>A <code>&lt;button type=&quot;submit&quot;&gt;Send&lt;/button&gt;</code>.</li>
+</ul>
+<p>Module must type-check strict.</p>
+<h2>A11Y2</h2>
+<p>type: predicate
+[...]</p>
+<pre><code class="language-assert">const html = renderEmailForm();
+/&lt;form\s+[^&gt;]*id=&quot;email-form&quot;/.test(html)
+/&lt;label\s+for=&quot;email-input&quot;[^&gt;]*&gt;[^&lt;]*Email address/.test(html)
+[...]
+</code></pre>
+<h2>A11Y3</h2>
+<p>type: invariant
+[...]</p>
+<p>Accessibility check via the new <code>a11y-checker</code> backend. The rendered
+HTML must pass the static a11y rules.</p>
+<pre><code class="language-a11y">return renderEmailForm();
+</code></pre>
+<pre><code class="language-a11y">return renderEmailForm({ formId: &quot;alt-form&quot;, inputId: &quot;alt-input&quot;,
+                        helpText: &quot;Custom help.&quot; });
+</code></pre>
+<pre><code>
+A UI constraint set, demonstrating the ` ```a11y` fence. A11Y1 declares the interface and the structural requirements in prose; A11Y2 verifies structural patterns with regex assertions over the rendered HTML; A11Y3 runs the accessibility checker against the rendered HTML by writing two `a11y` blocks, each returning a different parameterization of the rendered form. The discipline of separating *structural patterns* (A11Y2, regex-based) from *accessibility rules* (A11Y3, ruleset-based) is worth absorbing; the two surfaces are different and both useful.
+
+## 5. Authoring Disciplines That Make Derivations Converge
+
+Five disciplines for the engineer who has just written their first constraint file and wants the second one to derive in fewer rounds.
+
+*State the requirement once, in prose.* Rewriting the same requirement three times in the body in slightly different words gives the substrate three slightly different things to satisfy and increases the chance one of them is satisfied at the expense of the others. Pick the one phrasing you think is clearest, write it, move on.
+
+*Front-load the inline types.* If the constraint depends on TypeScript types, declare them in a ` ```ts` fence near the top of the body. The substrate&#39;s first action when generating the module is to copy these types in; if they are buried later in the body, the substrate may invent its own version that almost matches but does not.
+
+*Use `assert` for canonical examples and `property` for invariants.* The discipline is: examples in `assert`, quantification in `property`, prose-y criteria in `judgment`. Mixing these confuses the verifier and produces evidence that is harder to read at review.
+
+*Keep `depends-on` accurate.* A missing `depends-on` produces verification reports where dependent constraints fail with cryptic errors because their dependencies were not actually satisfied yet. An over-broad `depends-on` (every constraint depends on every prior constraint) serializes verification and slows the build for no benefit.
+
+*Warn the substrate about quirks you have observed.* If a previous derivation produced a subtly wrong implementation for a known reason (an API quirk, a strict-mode interaction, a module-resolution corner), name it in the body. The discipline is *write what you know about the failure mode you have already debugged*, so you do not pay the same debug cost twice.
+
+These five disciplines accelerate convergence noticeably. The fuller catalogue (eight disciplines, D1 through D8) lives at [Doc 659](../doc/659-rederive-for-the-working-engineer-hub.html) §F under the *Pin-Art* name; this is the practitioner-friendly subset.
+
+## 6. Common Pitfalls
+
+Six pitfalls the engineer will encounter before they have internalized the disciplines, with the recovery for each.
+
+**Forgetting `depends-on`.** Symptom: dependent constraint fails with an error suggesting its dependency is undefined. Recovery: add the missing dependency to `depends-on:`.
+
+**Reordering constraints in the file.** Symptom: the canonical hash changes even though &quot;nothing changed.&quot; Recovery: this is intentional. Constraint order is observable to the substrate during derivation. If you reordered for clarity, accept the new hash; if you reordered by accident, revert the order.
+
+**Writing a `judgment` block when an `assert` block would do.** Symptom: judgment passes but the implementation is subtly wrong; or judgment fails with prose reasoning that points to nothing concrete. Recovery: replace the judgment with assertions. If you find yourself reaching for a judgment because the criterion *resists* mechanical encoding, that is the right use; if you are reaching for it because writing assertions feels tedious, that is the wrong use.
+
+**Pinning a behaviour rather than a phrase.** Symptom: the pin fails after a regeneration that produced semantically-equivalent but textually-different code. Recovery: convert the pin to a constraint. Pins are for surface text that downstream consumers parse; they are not for behaviour.
+
+**Importing a file that is not yet itself materialized passing.** Symptom: resolve stage fails reporting that the imported threshold has not passed. Recovery: derive the imported file first; the platform refuses to import unverified properties.
+
+**Over-broad `scope`.** Symptom: a small constraint set claims `scope: engine` and gets reviewed at engine-team velocity rather than module-team velocity. Recovery: scope honestly. *Module* for module-local concerns, *engine* for engine-level commitments, *site* / *protocol* for cross-cutting.
+
+## 7. Three Conventions Worth Adopting Before You Need Them
+
+*Filename mirrors the deliverable.* `slugify.constraints.md` derives `slugify`. `canonicalize-module.constraints.md` derives the canonicalize module. The convention is `&lt;thing&gt;.constraints.md`. Materializations land at `&lt;thing&gt;.constraints.md.materialization.json`. The platform tooling expects this layout for cache-key resolution.
+
+*Use the file&#39;s top-level prose paragraph for the human reader.* Markdown allows free prose between the H1 title and the first H2 constraint heading. The platform ignores this prose; the parser starts looking for constraints at the first H2. Use the space for the reviewer who is reading the file cold: a one-paragraph summary of what this constraint set is for.
+
+*Keep the manifest header above every comment-only paragraph.* The parser treats the first non-comment, non-whitespace line as either a manifest directive (if it starts with `@`) or part of the H1. If you write a long preamble before the manifest, the parser will read it correctly, but a reviewer scanning the file may miss the manifest. Convention: H1 + one-paragraph summary + manifest + body constraints.
+
+## 8. What the Engineer Should Take Away
+
+Three pieces.
+
+*The grammar is small.* H2 + metadata + body + fenced evidence, plus an optional manifest header for composition and pinning. There is no DSL. There is no schema migration. A constraint file is a Markdown file a colleague can read in any text editor without tooling.
+
+*The metadata is load-bearing for the platform&#39;s behaviour.* The `type:` field signals authorial intent (and corresponds to the fence-routing convention). The `depends-on:` field orders verification and short-circuits. The `authority:` field is for review-time triage. The `status:` field is for the retraction ledger. Get these right and the platform handles the rest.
+
+*The fenced evidence is what carries the contract.* If a requirement matters, it has evidence. If a requirement does not have evidence, the platform cannot verify it, and the engineer is back in the world where requirements drift away from code. The discipline of writing evidence next to the prose is what makes the constraint file the durable artifact rather than the comment-on-the-code in the requirements folder.
+
+The next document in the series ([Doc 661](../doc/661-rederive-stub-b-the-build-pipeline.html)) covers what the platform does with this file once you run the CLI: the eight stages of the build pipeline, what each one produces, what failure looks like, and how to debug. After that, [Doc 662](../doc/662-rederive-stub-c-the-verification-backends.html) covers each backend the metadata routes to. Together those two documents close the loop from *file on disk* to *signed materialization*.
+
+---
+
+## References
+
+- [Doc 247 — Derivation Inversion](../doc/247-derivation-inversion.html)
+- [Doc 290 — Pin-Art Derivation](../doc/290-pin-art-derivation.html)
+- [Doc 415 — The Retraction Ledger](../doc/415-the-retraction-ledger.html)
+- [Doc 541 — Systems-Induced Property Emergence (SIPE-T)](../doc/541-systems-induced-property-emergence.html)
+- [Doc 619 — Pin-Art: Forced-Press and Gentle-Press](../doc/619-pin-art.html)
+- [Doc 656 — Treat Agent Output Like Compiler Output: The Lights-Out Codebase as Rederive](../doc/656-treat-agent-output-like-compiler-output-the-lights-out-codebase-as-rederive.html)
+- [Doc 658 — Hierarchical Pin-Art Constraint Specifications and the Erasure of Edge-Case Bugs](../doc/658-hierarchical-pin-art-constraint-specs-and-the-erasure-of-edge-case-bugs.html)
+- [Doc 659 — Rederive for the Working Engineer: A Hub](../doc/659-rederive-for-the-working-engineer-hub.html)
+
+## Appendix: Originating Prompt
+
+&gt; *&quot;Now I want you to examine the entire spec and implementation of /home/jaredef/rederive — From this I want you to create entracement docs in the corpus for an audience of software engineers. ... First, create a document in the corpus that acts as a hub for all stubs that will branch off ... Append this prompt to each artifact. Also, where you could use corpus jargon, instead entrace the reader through rhetoric that is not novel to the corpus. Where you must state the corpus concept in its own terms; provide proper entracement.&quot;*
+&gt;
+&gt; Followed by: *&quot;Continue with the first branch of the hub derived as a corpus doc. Continue through each as is coherent.&quot;*
+&gt;
+&gt; Followed by: *&quot;Now fill out stub A as a comprehensive entracement. Remove &#39;stub&#39; from file name and any mention in the doc. Report back before doing likewise to the next doc.&quot;*
+</code></pre>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

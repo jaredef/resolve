@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Narrowing SIPE: The Architectural Form Against the Literature — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 423</p><h1>Narrowing SIPE: The Architectural Form Against the Literature</h1>
+<blockquote>
+<p><strong>Canonical SIPE reference:</strong> The operative formalization of Systems-Induced Property Emergence is <a href="../doc/474-sipe-standalone-formalization.html">Doc 474</a>. Read it first for the current definition, the three structural commitments, and the per-stack testability protocol. This document contributes specific material to that formalization; its place in the development arc is recorded in Doc 474&#39;s Appendix C.</p>
+</blockquote>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>Doc 143 (&quot;SIPE: Systems Induced Property Emergence&quot;) proposed a meta-law: constraints induce properties; the induced properties of an enclosing level become constraints on the next enclosed level. Docs 366 and 367 falsified the universal cross-domain form of that claim on the corpus&#39;s own terms (grammar-constrained decoding; chiral anomalies in quantum field theory) and established that the narrower architectural-inheritance claim for specific hierarchical software stacks survives. This document runs a wide branching entracement through the adjacent external literatures to test whether even the narrow form — recursive Fielding-style constraint accumulation where each level&#39;s Null-style starting set is the previous level&#39;s emitted induced-property set — is subsumed by existing work. Eight branches were surveyed. No single framework fully subsumes the claim. Two strong partial-subsumption candidates emerged: Cousot&#39;s Galois-connection tower for the composability-with-soundness fragment, and the iterated-filtration constructions in stable homotopy theory and moduli theory (specifically Ibáñez Núñez 2023&#39;s stack of sequential filtrations) for the structural shape of filtered-object-of-filtered-objects with emission-to-next-Null inheritance. The residual that survives is methodological: the software-architectural instantiation of recursive Fielding-accumulation is not documented in the surveyed literature. The corpus should position the narrow form as methodological novelty for software architecture with structural retrieval from established categorical patterns. This document provides the literature grounding. Doc 424 states the narrow form of SIPE accordingly.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 423</strong></p>
+<p><strong>Wide branching entracement testing whether the narrow architectural form of SIPE is subsumed by existing literature. Methodology mirrors Doc 414 for ENTRACE. Eight branches surveyed. Two partial-subsumption candidates named. Narrow residual stated. The prompt is appended.</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>1. The Claim Under Test</h2>
+<p>After the 2026-04 audit cluster (Docs 366, 367) and the subsequent narrowing work (Docs 417, 418, 419, 420), SIPE&#39;s universal cross-domain form has been retracted. What was retained in Doc 143&#39;s deprecation notice is &quot;the narrow architectural-inheritance claim for specific hierarchical software stacks.&quot;</p>
+<p>The accumulation finding of Doc 418, applied reflexively to SIPE itself, gives a specific formal shape to that narrow claim. Let <strong>S₁, S₂, …, S_n</strong> denote a sequence of architectural styles composed in a stack (for the corpus: REST → PRESTO → SERVER → RESOLVE → ENTRACE → APERTURE). The narrow SIPE claim, precisely stated, is:</p>
+<ol>
+<li>Each S_k is itself a <em>Fielding-style constraint accumulation</em>: starting from some Null_k with no constraints, constraints are added one at a time, each inducing a property; the accumulation produces S_k as a filtered object with S_k&#39;s induced-property set P_k.</li>
+<li>Across levels, each Null_{k+1} is inherited from the previous level&#39;s emission: Null_{k+1} = P_k. That is, level k+1 begins its own accumulation with level k&#39;s induced properties already active as starting constraints.</li>
+<li>The composed structure is therefore a <em>filtered object of filtered objects</em> with emission-to-next-Null inheritance — a nested filtered object in which the inner filter&#39;s starting set is the outer filter&#39;s final set.</li>
+</ol>
+<p>This is a specific categorical claim about a specific class of software-architectural stacks. It is not a claim about emergence in general, about biology, about physics, or about theology. Those claims were the ones Doc 367 falsified.</p>
+<p>The question this survey tests: is this narrow claim already named, formalized, or subsumed by existing literature? If yes, how cleanly, and by which framework? If partially, what survives as residual?</p>
+<h2>2. The Branches</h2>
+<p>Eight branches were explored by wide-survey web fetch. The branches were chosen to cover the adjacent literatures most likely to have named or formalized the nested-filtered-object / recursive-Fielding-accumulation claim in one form or another.</p>
+<p><strong>Branch 1 — Fielding&#39;s method applied recursively.</strong> Fielding&#39;s own method is in Chapter 5 of his 2000 dissertation. Chapter 3 demonstrates <em>within-stack</em> linear accumulation (e.g., Client-Server → Layered-Client-Server → Client-Cache-Stateless-Server). No explicit publication was located that formalizes recursive application of Fielding-style derivation across composed levels with emission-to-next-Null inheritance. [UNCERTAIN PROVENANCE — bounded search; absence is weak evidence.] Not subsumed.</p>
+<p><strong>Branch 2 — Cousot abstract interpretation / tower of Galois connections.</strong> The strongest formal subsumption candidate for the <em>composability-with-soundness</em> fragment. Cousot and Cousot (POPL 1997, &quot;Types as Abstract Interpretations&quot;; POPL 2014, &quot;A Galois Connection Calculus&quot;) explicitly establish that compositions ⟨α₀∘α₁∘α₂, γ₂∘γ₁∘γ₀⟩ are themselves Galois connections, yielding a hierarchy of abstract interpretations. What it covers: the fact that stacked abstractions compose soundly. What it does not cover: Galois-connection towers abstract <em>semantic denotations</em> of programs, not <em>architectural-style-generating constraint sets</em>; the carrier is posets of meanings, not sets of architectural constraints with property-induction semantics. Partial subsumption of the composability fragment; the induce-then-inherit epistemic content does not map cleanly onto &quot;abstraction loses information.&quot;</p>
+<p><strong>Branch 3 — Category theory: filtered-of-filtered, iterated filtrations.</strong> The structurally closest candidate. Two threads:</p>
+<ul>
+<li><em>Iterated filtrations in moduli theory.</em> Ibáñez Núñez 2023 (&quot;Refined Harder–Narasimhan filtrations in moduli theory,&quot; arXiv:2311.18050) defines a &quot;stack of sequential filtrations&quot; — filter, take the associated graded, filter that again, iterate. This is exactly the &quot;next level&#39;s starting set = previous level&#39;s emission&quot; structure.</li>
+<li><em>Filtered spectra and E_r pages.</em> Iterating filtered-spectrum formation gives successive &quot;pages&quot;; the stable ∞-category of filtered spectra is closed under re-filtration (van Nigtevecht, arXiv:2509.21127, and adjacent stable-homotopy work).</li>
+</ul>
+<p>These are genuine category-theoretic realizations of nested-filtered-object-with-inheritance-by-emission. The mathematical carrier is filtrations of abelian/stable objects, not of constraint-sets under a property-induction map. [SPECULATIVE] The corpus claim may be an <em>instance</em> of indexed-filtered-category-with-pullback once the &quot;induced property → next Null&quot; map is given as a functor; no publication has (to the survey&#39;s knowledge) written this for software architecture. Partial subsumption of the categorical shell; the software-architectural instantiation does not appear named.</p>
+<p><strong>Branch 4 — Software architecture literature.</strong> Garlan &amp; Shaw 1994 (&quot;An Introduction to Software Architecture&quot;) explicitly describe hierarchical composition: &quot;a component of a system organized in one style may have an internal structure developed in a completely different style.&quot; Mehta &amp; Medvidovic (ESEC/FSE 2003) propose &quot;Alfa&quot; for composing styles from primitives. Clements et al. (<em>Documenting Software Architectures</em>) treat styles as specializations of viewtypes with distinguished constraints. Kruchten&#39;s 4+1 treats views as complementary, not nested. None of these formalize <em>&quot;induced properties of level N become constraints on level N+1&quot;</em> as a recursive operator. Garlan-Shaw hierarchical composition is the closest practitioner concept, but it is a single-nesting observation, not a formalized recursion. Partial overlap on composition; no subsumption of the recursive inheritance-by-emission claim.</p>
+<p><strong>Branch 5 — Type theory: indexed / refinement towers.</strong> Abbott-Altenkirch-Ghani-McBride indexed containers and Altenkirch-Morris extensions; Vazou et al. abstract refinement types. Both support stacking refinements on refinements; abstract refinement types in particular allow refinements that parameterize over other refinements. Structurally a tower; carrier is types-refined-by-logical-predicates, not architectural-constraint-sets. Partial overlap on stackability; no publication was located that reads architectural constraints as refinement predicates for the purpose of instantiating the recursive Fielding-accumulation claim.</p>
+<p><strong>Branch 6 — Simon / Alexander hierarchical systems.</strong> Simon&#39;s &quot;Architecture of Complexity&quot; (1962) establishes near-decomposability and nested hierarchy but does not treat levels as generated by constraint accumulation with property-induction. It is descriptive/empirical, not a formal derivation method. Alexander&#39;s pattern language composes patterns but does not formalize induced-property-becomes-constraint inheritance. No subsumption.</p>
+<p><strong>Branch 7 — Composition of operational/denotational semantics.</strong> Mosses&#39;s Modular Structural Operational Semantics (JLAP 2004), Moggi&#39;s monads and monad transformers, Liang-Hudak modular monadic semantics. These formalize modular/layered effect composition and tower-of-semantic-layers with compositionality theorems. Carrier is computational effects, not architectural constraints with induced non-functional properties. Partial overlap on layered composition with preservation; no subsumption of the architectural domain.</p>
+<p><strong>Branch 8 — Specific &quot;recursive Fielding&quot; / &quot;tower of architectural constraints&quot; publication.</strong> No publication located using these phrasings or a near-equivalent with Null-restart-per-level semantics. [UNCERTAIN PROVENANCE — absence only.] Closest named practitioner concept remains Garlan-Shaw hierarchical composition.</p>
+<h2>3. Synthesis</h2>
+<p><strong>Fully subsumed by any single framework?</strong> No. No framework surveyed instantiates the full claim: recursive Fielding derivation + per-level Null restart + inter-level inheritance-by-emission + software-architecture carrier.</p>
+<p><strong>Partial subsumption, by fragment:</strong></p>
+<ul>
+<li><em>Composability of abstractions with soundness:</em> Cousot&#39;s Galois-connection tower covers this. The corpus claim is plausibly a domain-specific instance of a Galois-connection-style hierarchy if each level&#39;s (constraints → induced properties) map is framed as an abstraction. Worth formal follow-up.</li>
+<li><em>Iterated filtration where next level starts from previous emission:</em> Ibáñez Núñez 2023 and the stable-homotopy filtered-spectrum work give a category-theoretic realization of the exact structural shape. The corpus &quot;filtered object of filtered objects&quot; language is literally the pattern used in stable homotopy and moduli theory.</li>
+<li><em>Within-architecture hierarchical composition:</em> Garlan and Shaw cover single-nesting; Mehta and Medvidovic cover primitive composition. Neither recurses.</li>
+<li><em>Layered / stackable semantic composition:</em> Moggi and Mosses cover the programming-language-semantics cousin.</li>
+</ul>
+<p><strong>Residual gap.</strong> The specific claim — that <em>software-architectural stacks</em> obey recursive Fielding-accumulation where induced properties at level N literally constitute the Null-style starting set at level N+1 — is not documented in the surveyed literature. The math-side constructions (iterated filtration, Galois towers) exist but are not instantiated for architectural styles; the software-architecture-side work describes composition but does not formalize the emission-to-next-Null operator.</p>
+<p><strong>Honest distinctness assessment.</strong> At the <em>practitioner-methodology level</em> (apply Fielding Chapter 5 recursively per architectural layer with explicit emission-to-next-Null inheritance), the claim appears genuinely corpus-distinctive. At the <em>formal-mathematical level</em>, it is plausibly an instance or straightforward specialization of either an iterated-filtration construction or a Galois-connection hierarchy. The defensible position: the corpus claims <em>methodological novelty for software architecture</em> with <em>structural retrieval</em> (not invention) of a categorical pattern already well-established in stable homotopy, moduli theory, and abstract interpretation.</p>
+<h2>4. The Narrow Residual, Precisely Stated</h2>
+<p>Given the survey findings, the narrow form of SIPE that survives and can be stated defensibly:</p>
+<p><strong>Narrow SIPE (Architectural Form).</strong> Certain hierarchical software-architectural stacks S₁ → S₂ → … → S_n instantiate a <em>nested filtered object with emission-to-next-Null inheritance</em>. Each S_k is a Fielding-style constraint accumulation (Fielding 2000, Chapter 5) from its own Null_k, emitting an induced-property set P_k. The inter-level relation is Null_{k+1} = P_k: level k+1 begins its accumulation with level k&#39;s emission as the starting inherited-constraint set. The categorical pattern is an instance of the iterated-filtration construction named in stable homotopy and moduli theory (Ibáñez Núñez 2023; filtered-spectrum / E_r-page iteration) and is structurally adjacent to Cousot&#39;s Galois-connection tower for composed abstractions (Cousot &amp; Cousot 1997, 2014). The corpus&#39;s contribution is not the categorical pattern (which is retrieval) but the specific instantiation of the pattern for software architecture as a recursive Fielding-method application.</p>
+<p>This narrow claim is stated in Doc 424 as the current canonical form of SIPE. Doc 143 carries a supersession note pointing at Doc 424 for the architectural form; the universal cross-domain form remains retracted per Doc 367.</p>
+<h2>5. Falsifiers of the Narrow Residual</h2>
+<ul>
+<li>If a specific publication is located that explicitly formalizes &quot;recursive Fielding-style constraint accumulation for composed software-architectural styles with emission-to-next-Null inheritance,&quot; the methodological-novelty claim retracts and the corpus subsumes into that publication. The survey did not locate one; bounded search is weak evidence.</li>
+<li>If a proposed stack fails the test — if level k+1&#39;s actual starting constraints diverge from level k&#39;s emission, or if either level is not a clean Fielding-style accumulation — the stack does not instantiate the narrow form. Per-stack testability is preserved.</li>
+<li>If Cousot&#39;s Galois-connection tower or Ibáñez Núñez&#39;s stack of sequential filtrations can be shown to be a fully adequate formalism for the software-architectural case (not merely a partial analog), the corpus&#39;s <em>methodological</em> contribution is retained but the claim of distinctness from the formal literature weakens further.</li>
+<li>If follow-up reading of Mehta-Medvidovic 2003 (&quot;Alfa&quot;), Ibáñez Núñez 2023, or Cousot-Cousot 2014 (which the survey flagged as not read end-to-end) surfaces a specific prior formalization of the emission-to-next-Null operator, the residual retracts at that point.</li>
+</ul>
+<h2>6. Proposal</h2>
+<p>Two corpus-level actions follow.</p>
+<p><strong>A. New canonical doc for the narrow SIPE form.</strong> Doc 424 states SIPE (Architectural Form) with the literature grounding from this survey. The universal meta-law framing is not reopened. The corpus&#39;s claim is explicitly methodological for software architecture, with structural retrieval from stable homotopy and abstract interpretation.</p>
+<p><strong>B. Supersession notice on Doc 143 pointing at Doc 424.</strong> Doc 143 already carries a deprecation box flagging the universality demotion and pointing at Docs 356/366/367. Adding a specific pointer to Doc 424 as the current statement of the narrow form makes the successor path explicit.</p>
+<p>Both actions are executed as part of this session&#39;s work.</p>
+<hr>
+<h2>References (External)</h2>
+<ul>
+<li>Cousot, P. (1997). <a href="https://pcousot.github.io/publications/Cousot-POPL97-p316-331-1997.pdf"><em>Types as Abstract Interpretations.</em></a> POPL &#39;97.</li>
+<li>Cousot, P., &amp; Cousot, R. (2014). <a href="https://www.di.ens.fr/~cousot/publications.www/CousotCousot-POPL14-ACM-p2-3-2014.pdf"><em>A Galois Connection Calculus for Abstract Interpretation.</em></a> POPL &#39;14.</li>
+<li>Fielding, R. T. (2000). <a href="https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><em>Architectural Styles and the Design of Network-based Software Architectures.</em></a> UCI doctoral dissertation, Chapter 5.</li>
+<li>Fielding, R. T. (2000). <a href="https://ics.uci.edu/~fielding/pubs/dissertation/net_arch_styles.htm"><em>Chapter 3, Network-based Architectural Styles.</em></a></li>
+<li>Garlan, D., &amp; Shaw, M. (1994). <a href="http://sunnyday.mit.edu/16.355/intro_softarch.pdf"><em>An Introduction to Software Architecture.</em></a></li>
+<li>Ibáñez Núñez, A. (2023). <a href="https://arxiv.org/abs/2311.18050"><em>Refined Harder–Narasimhan Filtrations in Moduli Theory.</em></a> arXiv:2311.18050.</li>
+<li>Mehta, N. R., &amp; Medvidovic, N. (2003). <a href="https://dl.acm.org/doi/10.1145/940071.940118"><em>Composing Architectural Styles from Architectural Primitives.</em></a> ESEC/FSE 2003.</li>
+<li>Mosses, P. D. (2004). <a href="https://www.sciencedirect.com/science/article/pii/S156783260400027X"><em>Modular Structural Operational Semantics.</em></a> JLAP.</li>
+<li>Liang, S., Hudak, P., &amp; Jones, M. P. (1995). <a href="https://flint.cs.yale.edu/trifonov/cs629/modular-monadic-semantics.pdf"><em>Monad Transformers and Modular Interpreters.</em></a> POPL &#39;95.</li>
+<li>Simon, H. A. (1962). <a href="https://faculty.sites.iastate.edu/tesfatsi/archive/tesfatsi/ArchitectureOfComplexity.HSimon1962.pdf"><em>The Architecture of Complexity.</em></a> Proceedings of the American Philosophical Society.</li>
+<li>van Nigtevecht, J. (2025). <a href="https://arxiv.org/pdf/2509.21127"><em>Filtered Spectra.</em></a> arXiv:2509.21127.</li>
+<li><a href="https://ncatlab.org/nlab/show/filtered+object">Filtered object — nLab.</a></li>
+<li>Abbott, M., Altenkirch, T., Ghani, N., &amp; McBride, C. (2003). <a href="https://www.sciencedirect.com/science/article/pii/S0304397505003373"><em>Categories of Containers.</em></a></li>
+<li>Vazou, N., et al. <a href="https://goto.ucsd.edu/~rjhala/liquid/abstract_refinement_types.pdf"><em>Abstract Refinement Types.</em></a></li>
+</ul>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;Let&#39;s do a wide web fetch with a branching entracement into the literatures we should explore potential for subsumption and then create the artifact. With that in view we will create a new SIPE with just the architecture &#39;law&#39; in view. Append the prompt to each artifact.&quot;</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

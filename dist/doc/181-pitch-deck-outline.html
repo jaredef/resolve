@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRESTO: Co-Founder Pitch Outline — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 181</p><!-- chronological_ordinal: 13 -->
+<h1>PRESTO: Co-Founder Pitch Outline</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document is a slide-by-slide outline for a co-founder pitch deck targeting a Webflow developer. It presents PRESTO as a web architecture that treats code-on-demand as a seven-layer spectrum rather than a binary choice (all JavaScript or none), enabling a visual page builder with no ceiling -- where the output is not a static site requiring a backend bolted on, but a complete server-rendered application with authentication, real-time data, and personalized content. The pitch covers the bilateral model (two interpreters sharing one document without mutual awareness), the 22-stage resolution pipeline, the working editor with AI integration, and the economic argument that AI generates more reliable output when targeting a constrained format like .htx templates than when targeting complex framework code.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 181</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><em>Prepared for slide deck creation. Target audience: Webflow developer considering co-founding.</em></p>
+<hr>
+<h2>Slide 1: The Question Nobody Asked</h2>
+<p>In 2000, Roy Fielding described the architecture of the web. He identified six constraints. Five were mandatory. One — code-on-demand — was optional.</p>
+<p>Twenty-six years later, the industry explored that option exactly once: ship the entire application to the browser. React, Vue, Angular. The &quot;Single Page Application.&quot;</p>
+<p><strong>Nobody asked: what if code-on-demand were a spectrum?</strong></p>
+<hr>
+<h2>Slide 2: The Problem Everyone Feels</h2>
+<p>Every Webflow developer knows this moment: the client needs authentication, real-time data, personalized content, or a dashboard. Webflow can&#39;t do it. So you bolt on:</p>
+<ul>
+<li>A backend API</li>
+<li>A JavaScript framework</li>
+<li>A state management layer</li>
+<li>A build pipeline</li>
+<li>Authentication middleware</li>
+<li>A hosting platform that understands all of it</li>
+</ul>
+<p><strong>The visual builder gets you 60% there. The last 40% costs 400% of the effort.</strong></p>
+<p>React developers know the inverse: they can build anything, but the complexity tax is relentless. SSR, hydration, code splitting, tree shaking, server components, streaming suspense — each solving a problem created by the previous solution.</p>
+<hr>
+<h2>Slide 3: The Observation</h2>
+<p>A PHP function concatenates an HTML string. Inside that string is an <code>hx-get</code> attribute — an instruction for the browser. The PHP function doesn&#39;t know what <code>hx-get</code> means. It doesn&#39;t need to. It just writes the string.</p>
+<p>The server is <em>indifferent</em> to the client&#39;s instructions. The browser is <em>indifferent</em> to the server&#39;s directives (they&#39;ve already been consumed). Two interpreters. One document. Mutual indifference.</p>
+<p><strong>This property has existed in every HTTP response since 1993. It was never named.</strong></p>
+<p>We named it: <strong>Ambivalent Execution with Agnostic Determinism.</strong></p>
+<hr>
+<h2>Slide 4: The Insight</h2>
+<p>If the server can embed client instructions it doesn&#39;t understand, we can go further. Much further.</p>
+<p>A single <code>.htx</code> template file addresses two interpreters simultaneously:</p>
+<pre><code>&lt;main&gt;
+  &lt;htx:data query=&quot;SELECT * FROM posts ORDER BY created_at DESC&quot; as=&quot;posts&quot; /&gt;
+  &lt;htx:each items=&quot;posts&quot; as=&quot;post&quot;&gt;
+    &lt;article&gt;
+      &lt;h2&gt;{htx:post.title}&lt;/h2&gt;
+      &lt;p&gt;{htx:post.body}&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/htx:each&gt;
+&lt;/main&gt;
+</code></pre>
+<p>The server resolves <code>htx:data</code>, <code>htx:each</code>, and <code>{htx:...}</code> expressions. What reaches the browser is pure, clean HTML. No framework. No hydration. No JavaScript. The server&#39;s instructions are consumed and erased before the browser ever sees the document.</p>
+<p><strong>The template IS the application. One file. Two interpreters. Zero framework artifacts in the output.</strong></p>
+<hr>
+<h2>Slide 5: The Layer Model</h2>
+<p>Code-on-demand isn&#39;t binary. It&#39;s a depth gauge.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What&#39;s Delivered</th>
+<th>What&#39;s Added</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>0</strong></td>
+<td>Pure server-rendered HTML</td>
+<td>Nothing. Full REST properties.</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td>+ htmx attributes</td>
+<td>Partial page updates without JS</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>+ scoped script blocks</td>
+<td>Client behavior (dropdowns, modals)</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>+ server-pushed code</td>
+<td>Real-time updates via WebSocket</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>+ authenticated islands</td>
+<td>Scoped data channels per component</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>+ client routing</td>
+<td>SPA navigation within bounded regions</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>+ WebAssembly</td>
+<td>Native-speed compute in the browser</td>
+</tr>
+</tbody></table>
+<p><strong>The discipline: stay at the surface by default. Dive only when necessary. Every layer below 0 trades properties for capabilities.</strong></p>
+<p>A blog post is Layer 0. A dashboard is Layer 2. A collaborative editor is Layer 4. A video processor is Layer 6. They all live in the same application, on the same page, each at exactly the depth it needs.</p>
+<hr>
+<h2>Slide 6: Why React&#39;s Complexity Is Structural</h2>
+<p>This is not an opinion. It&#39;s an architectural analysis.</p>
+<p>React operates as a Distributed Object system — every component manages its own state, communicates through props and context, and couples to its runtime. When you put a DO system as the <em>outer</em> architecture of a web application, you lose REST&#39;s properties: cacheability, server authority, statelessness, complete representations.</p>
+<p>Then you spend years building compensating technologies to get them back:</p>
+<table>
+<thead>
+<tr>
+<th>Compensating Technology</th>
+<th>What It Recovers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SSR</td>
+<td>Complete representations</td>
+</tr>
+<tr>
+<td>SSG</td>
+<td>Performance lost to SSR</td>
+</tr>
+<tr>
+<td>ISR</td>
+<td>Freshness lost to SSG</td>
+</tr>
+<tr>
+<td>Hydration</td>
+<td>Client interactivity after SSR</td>
+</tr>
+<tr>
+<td>React Server Components</td>
+<td>Server-authoritative data</td>
+</tr>
+<tr>
+<td>Redux/Zustand</td>
+<td>Shared state across components</td>
+</tr>
+<tr>
+<td>React Query/SWR</td>
+<td>Server data synchronization</td>
+</tr>
+<tr>
+<td>Code Splitting</td>
+<td>Payload reduction</td>
+</tr>
+<tr>
+<td>Tree Shaking</td>
+<td>Payload reduction</td>
+</tr>
+<tr>
+<td>Route Guards</td>
+<td>Server-side access control</td>
+</tr>
+</tbody></table>
+<p><strong>Every one of these recovers a property that Layer 0 provides for free.</strong></p>
+<p>PRESTO doesn&#39;t compete with these technologies. It dissolves the conditions that require them.</p>
+<hr>
+<h2>Slide 7: What We Built</h2>
+<h3>The Engine</h3>
+<p>A 22-stage resolution pipeline that transforms <code>.htx</code> templates into pure HTML. Implemented in TypeScript (production), Go, Elixir, Python, Rust, and C — all from a single 2,020-word specification seed. The C implementation runs in 11.2 MB of memory.</p>
+<h3>The Module System</h3>
+<p>14 production-ready modules: authentication, sessions, rate limiting, CORS, security headers, caching, health checks, static assets, error handling, and more. Plug in what you need. Each module can provide middleware, data context, API channels, and template processing hooks.</p>
+<h3>The Component Library</h3>
+<p>34 <code>.htx</code> UI components organized by layer depth. Buttons, cards, forms, tables, dialogs, tabs, accordions, data tables, live feeds, presence indicators — all installable via CLI (<code>presto add button card dialog</code>).</p>
+<h3>The Visual Editor</h3>
+<p>A browser-based page builder with:</p>
+<ul>
+<li><strong>Drag-and-drop palette</strong> organized by document grammar (landmarks, regions, content blocks)</li>
+<li><strong>Live preview</strong> — every edit runs through the full 22-stage pipeline in real-time</li>
+<li><strong>Component tree</strong> — bidirectional navigation between source, tree, and canvas</li>
+<li><strong>AI assistant</strong> — describe what you want, get architecturally correct <code>.htx</code> output</li>
+<li><strong>Save-as-component</strong> — extract any selection into a reusable component file</li>
+<li><strong>Undo/redo</strong> with tagged history (visual edits vs. AI edits)</li>
+</ul>
+<hr>
+<h2>Slide 8: The Editor Is the Proof</h2>
+<p>Here&#39;s what&#39;s remarkable about the editor: it required almost no architecture of its own.</p>
+<ul>
+<li>The <strong>canvas</strong> is an iframe that receives clean HTML. No framework bridge needed — the engine already produces pure HTML.</li>
+<li><strong>Builder IDs</strong> use byte offsets into the source string. The source IS the model. No synthetic node graph.</li>
+<li>The <strong>AI integration</strong> sends the current source + component registry to Claude, gets back an <code>.htx</code> block, and sets it as the new source. The 22-stage pipeline handles the rest. No AST transforms. No reconciliation.</li>
+<li>The <strong>signal system</strong> (signal, effect, bind) replaces an entire state management layer in ~150 lines — because the server already resolved the data. Client state is genuinely minimal.</li>
+<li><strong>Save-as-component</strong> works because <code>htx:component</code> is already a first-class pipeline stage. Extracting a selection into a file is just using the system as designed.</li>
+</ul>
+<p><strong>The editor didn&#39;t need to be architected. The constraints prescribed it.</strong> Every feature is a natural consequence of properties that were already present.</p>
+<hr>
+<h2>Slide 9: Why This Is a Webflow-Shaped Opportunity</h2>
+<p>Webflow proved the market: visual builders that output real code. $4B valuation. Millions of users. But Webflow hits a ceiling:</p>
+<table>
+<thead>
+<tr>
+<th>Webflow</th>
+<th>PRESTO Editor</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Static HTML/CSS output</td>
+<td>Full server-rendered applications</td>
+</tr>
+<tr>
+<td>Needs external CMS for dynamic content</td>
+<td><code>htx:data</code> queries built into templates</td>
+</tr>
+<tr>
+<td>No authentication</td>
+<td><code>htx:auth</code> / <code>htx:unauth</code> conditional rendering</td>
+</tr>
+<tr>
+<td>No real-time features</td>
+<td>WebSocket channels with signed tokens</td>
+</tr>
+<tr>
+<td>No backend logic</td>
+<td>Server-side data resolution, mutations, middleware</td>
+</tr>
+<tr>
+<td>Export locks you into Webflow hosting</td>
+<td><code>.htx</code> files are portable text files</td>
+</tr>
+<tr>
+<td>JavaScript required for interactivity</td>
+<td>Layer 0 delivers complete HTML with zero JS</td>
+</tr>
+</tbody></table>
+<p><strong>PRESTO&#39;s editor is Webflow without the ceiling.</strong> The visual builder generates the same kind of output a Webflow developer already understands — clean, semantic HTML — but the output is a complete server-rendered application. Authentication, real-time data, personalized content, dashboards — all from the same visual tool.</p>
+<hr>
+<h2>Slide 10: The AI Advantage</h2>
+<p>Current AI code generation is limited by the frameworks it targets. Generate a React component and you get: imports, hooks, state management, effect cleanup, error boundaries, suspense boundaries, client/server delineation. The AI has to understand and reproduce the entire compensating technology stack.</p>
+<p>Generate <code>.htx</code> and you get: HTML with directives. The AI doesn&#39;t need to understand state management because there isn&#39;t any. It doesn&#39;t need to manage hydration because there&#39;s nothing to hydrate. It doesn&#39;t need to split code because there&#39;s no bundle.</p>
+<p><strong>The simpler the generation target, the more reliable the AI output.</strong></p>
+<p>The editor already demonstrates this. Claude generates architecturally correct <code>.htx</code> output consistently because the format is constrained enough to be reliable but expressive enough to build real applications. The 22-stage pipeline guarantees that any valid <code>.htx</code> input produces correct output.</p>
+<hr>
+<h2>Slide 11: What Exists Today</h2>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PRESTO architectural style (white papers)</td>
+<td>Complete — 8 documents, ~328KB of original theory</td>
+</tr>
+<tr>
+<td>htxlang specification</td>
+<td>Complete — 8 contracts, 16 directives, 22-stage pipeline</td>
+</tr>
+<tr>
+<td>TypeScript engine (presto-ts)</td>
+<td>Working — full pipeline, module system, demo app</td>
+</tr>
+<tr>
+<td>Visual editor</td>
+<td>Working — drag-drop, live preview, AI chat, component tree</td>
+</tr>
+<tr>
+<td>Component library</td>
+<td>34 components across all 7 layers</td>
+</tr>
+<tr>
+<td>CLI installer</td>
+<td>Working — shadcn-style <code>presto add</code></td>
+</tr>
+<tr>
+<td>Cross-language verification</td>
+<td>6 implementations (TS, Go, Elixir, Python, Rust, C) passing 22 tests</td>
+</tr>
+<tr>
+<td>Go implementation</td>
+<td>Working — independent from spec</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>55 technical docs, 22 learnings docs, 15 spec docs</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Slide 12: The Ask</h2>
+<p><strong>Co-founder role.</strong> You bring:</p>
+<ul>
+<li>Deep understanding of the visual builder market (Webflow, Framer, Squarespace)</li>
+<li>Design sensibility for the editor UX</li>
+<li>Knowledge of what designers and non-technical builders actually need</li>
+<li>Business development in the no-code/low-code space</li>
+</ul>
+<p>I bring:</p>
+<ul>
+<li>The architectural style and its intellectual property</li>
+<li>The working engine, editor, and component library</li>
+<li>The specification that enables multi-language implementation</li>
+<li>The AI integration pipeline</li>
+<li>Two years of research and six cross-language implementations</li>
+</ul>
+<p><strong>Together:</strong> We build the visual builder that has no ceiling — where the output isn&#39;t a static site that needs a backend bolted on, but a complete, server-rendered, real-time-capable web application. Where AI doesn&#39;t fight the framework — it writes directly to a format so constrained that correctness is structural.</p>
+<hr>
+<h2>Slide 13: The Vision</h2>
+<p>The web was designed as a hypermedia system. For 15 years, the industry has been building against that grain — shipping entire applications to the browser and then spending enormous effort recovering the properties that were free all along.</p>
+<p>PRESTO doesn&#39;t fight the web. It <em>is</em> the web — with the one optional constraint Fielding identified in 2000 finally explored as the spectrum it always was.</p>
+<p><strong>The question isn&#39;t whether this works. It&#39;s already working. The question is who builds the company around it.</strong></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

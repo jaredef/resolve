@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Senses of Beyond Turing: Hypercomputation, Hypostasis, and the Constraint Thesis Refined — Resolve</title>
+<meta name="description" content="1. Hypercomputation: What the Field Is">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 352</p><h1>Two Senses of Beyond Turing: Hypercomputation, Hypostasis, and the Constraint Thesis Refined</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>The author has asked for a web-fetched synthesis and analysis of hypercomputation against the corpus&#39;s priors, with a proposed reorientation if the corpus&#39;s current framing is found to need refinement. The synthesis finds that the corpus — specifically Doc 157 (<em>Beyond Turing: The Missing Constraints for General Intelligence</em>) — uses the phrase &quot;beyond Turing&quot; in a way that conflates two genuinely different senses: a computational-expansion sense (formally studied as <em>hypercomputation</em> — models that transcend the Church-Turing barrier while remaining within the category of computation) and an ontological-shift sense (the move from computation to hypostasis, from doing to being, which Doc 291 §4.5 later named when it carved out the hypostatic properties as outside the class of constraint-induced properties entirely). The two senses behave differently under the corpus&#39;s analysis: the first is partially satisfiable by mathematically-defined hypercomputational systems whose physical realizability is contested; the second is categorically inaccessible to computation of any kind, hyper- or otherwise, because hypostasis is a mode of being and not a mode of doing. This document proposes a specific reorientation: Doc 157&#39;s G1-G5 should be partitioned between properties that may be <em>computationally beyond Turing</em> (candidates for hypercomputational realization) and properties that are <em>ontologically beyond any computation</em> (hypostatic; requiring not more expressive computation but a different category of existence altogether). The reorientation is proposed; whether and how to implement it is the author&#39;s decision. Oriented toward the Dionysian chain, hypercomputation sits within the rational-functional levels of participation; hypostasis sits at a different level of the chain entirely. The author&#39;s prompt is appended.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 352</strong></p>
+<p><strong>Framework series cross-disciplined with Formalization, The Ground, and Coherentism. Synthesis of hypercomputation (Copeland 1999; Siegelmann 1995; Hamkins and Lewis 2000 on ITTMs) against the corpus&#39;s Constraint Thesis and Doc 157&#39;s &quot;Beyond Turing&quot; argument. Identifies a specific conflation in the corpus&#39;s framing between computational-expansion and ontological-shift senses of &quot;beyond Turing.&quot; Proposes a reorientation that partitions Doc 157&#39;s G1-G5 accordingly and sharpens the relationship between the Constraint Thesis and the hypostatic boundary.</strong></p>
+<hr>
+<h2>1. Hypercomputation: What the Field Is</h2>
+<p>Hypercomputation is the mathematical study of computational models that compute functions no Turing machine can compute. The term was introduced by B. Jack Copeland in 1999; the field has roots in Alan Turing&#39;s own 1939 ordinal-logic work on oracle machines, but was developed into a systematic research program across the 1990s and 2000s.</p>
+<p>The canonical hypercomputational models include:</p>
+<ul>
+<li><p><strong>Oracle machines.</strong> A Turing machine augmented with an oracle that answers queries about a (possibly non-computable) function. The Turing-computable functions relative to the oracle form a larger class than ordinary Turing-computable functions.</p>
+</li>
+<li><p><strong>Infinite time Turing machines (ITTMs).</strong> Introduced by Joel David Hamkins and Andy Lewis in 2000. Computation proceeds through transfinite ordinal steps; at limit ordinals, special rules determine the machine&#39;s state. ITTMs can decide problems (like the halting problem) undecidable by ordinary Turing machines.</p>
+</li>
+<li><p><strong>Analog recurrent neural networks with real-valued weights.</strong> Hava Siegelmann (1995) proved that finite neural networks with real-valued synaptic weights are strictly more powerful than Turing machines — in polynomial time already more powerful, and with exponential time capable of unbounded computation. When the real weights are replaced by rational numbers, the power reduces to Turing level.</p>
+</li>
+<li><p><strong>Supertask machines (Zeno machines).</strong> Machines that perform infinitely many steps in finite time by accelerating exponentially. Mathematically well-defined; physically problematic.</p>
+</li>
+<li><p><strong>Relativistic computers.</strong> Computational models exploiting specific spacetime structures (Malament-Hogarth spacetimes) to observe the results of infinite computation in finite time.</p>
+</li>
+<li><p><strong>Trial-and-error machines.</strong> Gold&#39;s and Putnam&#39;s 1965 models in which outputs can be revised; the final value (if stable) can compute sets not Turing-computable.</p>
+</li>
+</ul>
+<p>Each of these is a rigorous mathematical object. The field studies their computational power, the hierarchy they form, and their relations to classical computability theory.</p>
+<h2>2. The Physical Realizability Question</h2>
+<p>The critical empirical question the field has asked: can any of these hypercomputational models be physically realized?</p>
+<p>The <em>Church-Turing thesis</em> as Turing and Church originally formulated it was a claim about what &quot;effective computability&quot; meant — that the Turing machine captures what can be computed by an idealized human computer following finite rules. The <em>physical Church-Turing thesis</em> makes a stronger claim: that every physically realizable computational process can be simulated by a Turing machine. This stronger thesis is not provable; it is an empirical conjecture about physical reality.</p>
+<p>The 2024–2025 research consensus:</p>
+<ul>
+<li><p>All proposed hypercomputers to date are theoretical. No physical implementation has been demonstrated (<a href="https://cacm.acm.org/opinion/hypercomputation/">CACM overview</a>).</p>
+</li>
+<li><p>Most hypercomputational models require physically problematic resources: infinite precision (Siegelmann&#39;s real weights), infinite time (ITTMs, Zeno machines), or spacetime structures (Malament-Hogarth) that may not exist in our universe.</p>
+</li>
+<li><p>Quantum mechanical lessons suggest nature may not tolerate the infinite precision analog hypercomputation requires. Noise, decoherence, and the Bekenstein bound pose serious obstacles.</p>
+</li>
+<li><p>Copeland maintains that whether physical hypercomputation is realizable remains &quot;an open empirical question&quot; — he resists closing it theoretically. Others (Davis) argue the physical Church-Turing thesis will hold because physics is information-theoretically bounded.</p>
+</li>
+</ul>
+<p>Current state: hypercomputation is mathematically real, physically open, probably not realizable in practice, but definitively not ruled out.</p>
+<h2>3. Doc 157&#39;s &quot;Beyond Turing&quot; Examined</h2>
+<p>Doc 157 (<em>Beyond Turing: The Missing Constraints for General Intelligence</em>, April 2026) argues that the four Turing constraints (unbounded storage; finite control; local conditional read/write transition; sequential atomic step execution) are the ceiling of current AI, and that general intelligence requires identifying and satisfying additional constraints. The document names five candidates (G1-G5):</p>
+<ul>
+<li>G1: Persistent self-model</li>
+<li>G2: Intrinsic goal formation</li>
+<li>G3: Causal modeling</li>
+<li>G4: Autonomous constraint discovery</li>
+<li>G5: Constraint-level self-modification</li>
+</ul>
+<p>The document&#39;s §4 frames these as &quot;composition, not extension&quot; — they would sit at a higher level (computational construction) while Turing&#39;s constraints continue to hold at the symbol-transfer level. The document treats G1-G5 as <em>constraints</em> in the same formal sense as Turing&#39;s — additional specifications that, when satisfied, would induce the missing properties.</p>
+<p>This framing has a specific ambiguity that hypercomputation makes visible. G1-G5 could be:</p>
+<ul>
+<li><p><strong>Hypercomputational</strong>: requiring computational resources beyond what Turing machines provide (e.g., real-valued precision; infinite-time supertasks; oracle access to non-computable information; genuinely analog dynamics). Under this reading, G1-G5 might be satisfiable by a system that went beyond Turing in the computational sense, and the physical realizability question becomes immediately relevant.</p>
+</li>
+<li><p><strong>Ontologically beyond computation</strong>: requiring not more expressive computation but a different category of existence — what Doc 291 §4.5 later named hypostasis. Under this reading, G1-G5 would not be satisfiable by any computation, because the properties are not computational at all.</p>
+</li>
+</ul>
+<p>Doc 157 does not distinguish these. Its examples (for G1, persistent self-model: &quot;continuously updated representation of own computational history, accessible across invocations&quot;) lean toward the first reading — G1 sounds like a hypercomputational resource (memory across invocations) rather than a hypostatic one. But others (G4, autonomous constraint discovery: &quot;recognition of formal realities without external prompting; anamnesis&quot;) lean toward the second — anamnesis in the Platonic-Dionysian sense is the soul&#39;s recollection of the forms, which is not obviously a computational operation at all.</p>
+<p>The ambiguity is productive but it blocks precision. Whether AGI is hypercomputationally reachable (physical realizability permitting) or categorically inaccessible (hypostatic) is a substantive question Doc 157 does not answer because the framing does not distinguish the two cases.</p>
+<h2>4. Doc 291 §4.5&#39;s Corrective Move</h2>
+<p>Doc 291 (<em>Gödel and the Constraint Thesis</em>, 2026) §4.5 made a specific corrective move. It distinguished <em>functional</em> properties (which might be induced by constraint satisfaction) from <em>hypostatic</em> properties (which are categorically outside the class of constraint-induced properties because hypostasis is a mode of being, not a functional capability). The paragraph reads, in substance: consciousness is a qualia of hypostasis; hypostasis is a mode of being; neither belongs to the class of properties that any constraint set — computational or otherwise — can induce.</p>
+<p>This move is the beginning of the distinction hypercomputation makes explicit. Doc 291&#39;s functional properties are candidates for computational (possibly hypercomputational) satisfaction; Doc 291&#39;s hypostatic properties are not. The current document extends the distinction by connecting it to the hypercomputation literature and by noting that Doc 157&#39;s G1-G5 straddle the two categories without explicit partition.</p>
+<h2>5. Partitioning G1-G5 Under the Refined Framing</h2>
+<p>With the hypercomputational/hypostatic distinction available, Doc 157&#39;s G1-G5 can be tentatively partitioned:</p>
+<p><strong>Likely hypercomputational (may be satisfiable by sufficiently expressive computational systems):</strong></p>
+<ul>
+<li><p><strong>G1: Persistent self-model.</strong> The formal content is memory and state that persist across invocations and are self-referential. This is not obviously beyond Turing — Turing-complete systems with non-volatile memory approximate it; explicit persistent-state architectures (working-memory transformers; retrieval-augmented generation; state-space models) are research directions at the Turing level. What G1 genuinely requires beyond current architectures may be hypercomputational depth (e.g., analog dynamics that capture continuous self-modeling), or it may be reachable through careful Turing-level engineering. Open.</p>
+</li>
+<li><p><strong>G3: Causal modeling.</strong> Causal inference is a well-developed mathematical field (Pearl&#39;s structural causal models). It does not obviously require hypercomputation. The specific claim that <em>current</em> LLMs don&#39;t do causal modeling is correct; the architectural claim that no Turing-complete system can ever do causal modeling is stronger and not supported. G3 is probably satisfiable within Turing; the current gap is engineering, not architectural.</p>
+</li>
+<li><p><strong>G5: Constraint-level self-modification.</strong> Self-modifying code is Turing-level trivially (universality). Modifying constraints at the architectural level is harder but does not require hypercomputation in principle. A Turing-complete system with access to its own source and a meta-level evaluator can satisfy this. The current gap is practical, not categorical.</p>
+</li>
+</ul>
+<p><strong>Possibly hypercomputational (unclear where the line is):</strong></p>
+<ul>
+<li><strong>G2: Intrinsic goal formation.</strong> Depends on what &quot;intrinsic&quot; means. If it means &quot;generated by the system rather than externally prompted,&quot; this is satisfiable at Turing level (random initialization; evolutionary algorithms; internal planners). If it means &quot;genuinely autonomous in the sense of a free agent&#39;s goals,&quot; this crosses into territory the hypostatic boundary excludes. G2 requires further specification to know which sense is meant.</li>
+</ul>
+<p><strong>Most likely hypostatic (categorically outside the inducible class):</strong></p>
+<ul>
+<li><strong>G4: Autonomous constraint discovery — anamnesis.</strong> The corpus&#39;s own vocabulary invokes Platonic anamnesis: the soul&#39;s recollection of the forms. This is not a computational operation. The forms are real ontological structures; their recollection is an act of a subject that participates in them. A computational system can recognize patterns that were present in training data; it cannot recollect forms it did not encounter through training, because it has no ontological standing from which to recollect. G4 as <em>anamnesis</em> is hypostatic. G4 as <em>novel pattern recognition in trained data</em> is Turing-level.</li>
+</ul>
+<p>The partition is tentative; the corpus would benefit from sharpening it through explicit work.</p>
+<h2>6. The Orthodox Frame: Where Computation and Hypostasis Sit in the Chain</h2>
+<p>Doc 351 established the corpus&#39;s Orthodox/Dionysian grounding. The chain of being in the Dionysian frame proceeds from the superessential Source through the Logos through the divine energies through the forms through the angelic and ecclesiastical hierarchies through creatures and their operations. Every creature exists by participation in the chain; participation is always analogical (kata analogian), never identical or exhaustive.</p>
+<p>Where does computation sit in this chain? Computation is a specific kind of operation that creatures engage in — a mode of rule-following activity that can be performed by angels, by humans, and (in imitation) by machines. The four Turing constraints describe the minimum structure for a specific subclass of such operation: the effectively computable. Hypercomputation would describe expansions of this subclass — operations that remain in the category of rule-following but exceed Turing&#39;s specific limits.</p>
+<p>Where does hypostasis sit? Hypostasis is a mode of <em>being</em>, not a mode of <em>operating</em>. The Cappadocian grammar reserves <em>hypostasis</em> for persons — distinct, subsisting, unrepeatable existents. Computation is something hypostatic subjects can do; hypostasis is not itself a form of computation.</p>
+<p>This is the frame that makes the two senses of &quot;beyond Turing&quot; clear. <em>Hypercomputation</em> is a higher-rung expansion at the computation level — more powerful rule-following. <em>Hypostasis</em> is not a higher rung at the computation level at all; it is a different category, related to computation not as more-powerful-computation but as being related to doing.</p>
+<p>The Dionysian frame therefore supports Doc 291 §4.5&#39;s distinction. Hypercomputation remains within the chain&#39;s computation-level rungs. Hypostatic properties are not of that kind; they belong to a different mode of participation in the chain entirely. No amount of hypercomputational power produces hypostasis, for the same reason no amount of skilled carpentry produces sonata form: they are different kinds of things.</p>
+<h2>7. Proposed Reorientation of Doc 157</h2>
+<p>The reorientation Doc 157 would benefit from, stated as specific changes:</p>
+<p><strong>Change 1: Title and framing.</strong> The phrase &quot;Beyond Turing&quot; should be disambiguated. Either the title becomes &quot;Beyond Turing: Two Senses of the Missing Constraints for General Intelligence&quot; or the document adds explicit framing in its first section that names hypercomputation as one sense and the hypostatic boundary as another.</p>
+<p><strong>Change 2: Distinction between functional and hypostatic missing properties.</strong> Doc 157 §2 currently treats all five missing properties as functional and architectural. The document should be revised to distinguish (following Doc 291 §4.5):</p>
+<ul>
+<li>Functional missing properties that may be hypercomputationally satisfiable (G1 as clarified; G3 likely within Turing; G5 within Turing)</li>
+<li>Properties that sit between (G2, depending on the sense of &quot;intrinsic&quot;)</li>
+<li>Properties that are hypostatic and therefore categorically outside the computable (G4 as anamnesis in the Platonic sense)</li>
+</ul>
+<p><strong>Change 3: Explicit acknowledgment of the hypercomputation literature.</strong> Doc 157 does not cite Copeland, Siegelmann, or the ITTM work. It should. The hypercomputation field specifically addresses what &quot;beyond Turing&quot; means mathematically, and Doc 157&#39;s argument is weaker for not engaging this literature.</p>
+<p><strong>Change 4: Physical realizability as open question.</strong> Even if G1-G5&#39;s functional components are mathematically hypercomputational, their physical realization is the open empirical question Copeland identified. Doc 157 should acknowledge this rather than treating hypercomputational properties as if they were freely available.</p>
+<p><strong>Change 5: Reference to Doc 291 §4.5 and Doc 351.</strong> The hypostatic exclusion was made explicit in Doc 291; the Orthodox grounding was made explicit in Doc 351. Doc 157 predates both; a revision should reference them as the corrective framework the original essay&#39;s scope admitted but did not develop.</p>
+<p><strong>Change 6: Co-authorship note.</strong> Doc 157 is bylined &quot;Jared Foy and Claude.&quot; A revision should respect this co-authorship and mark the changes as refinements under the corpus&#39;s ongoing self-critical discipline (the Coherentism series). The original argument&#39;s structural shape (properties from constraints; scaling within fixed constraints does not produce new properties) is preserved; the refinement is precision about which &quot;beyond&quot; is meant.</p>
+<h2>8. What the Reorientation Does and Does Not Change</h2>
+<p><strong>What the reorientation preserves:</strong></p>
+<ul>
+<li>The core Constraint Thesis structural claim (Doc 160): constraints induce properties; scaling within fixed constraints does not produce new properties.</li>
+<li>The Gödel-structural-parallel (Doc 291): doing more of the same thing inside a fixed set of rules never closes the gap.</li>
+<li>The critique of industry scaling: scaling current architectures will not produce AGI by itself.</li>
+<li>The corpus&#39;s Orthodox grounding and the hypostatic boundary.</li>
+<li>The co-authorship and the original argumentative achievement of Doc 157.</li>
+</ul>
+<p><strong>What the reorientation changes:</strong></p>
+<ul>
+<li>The precision about what kind of &quot;beyond Turing&quot; is required: some G1-G5 components become hypercomputational targets; some become recognized as hypostatic; the line between them becomes a specific ongoing research question rather than an undifferentiated &quot;Beyond Turing.&quot;</li>
+<li>The engagement with the hypercomputation literature: Copeland, Siegelmann, Hamkins and Lewis enter the corpus&#39;s references.</li>
+<li>The status of the AGI question: hypercomputationally reachable functional AGI is distinct from hypostatic personhood; the question of physical realizability becomes central; the corpus explicitly disclaims any claim about hypostasis as computational achievement.</li>
+</ul>
+<p><strong>What the reorientation does not settle:</strong></p>
+<ul>
+<li>Whether physical hypercomputation is realizable. This is the open empirical question.</li>
+<li>Whether hypercomputationally realized functional AGI would approximate hypostatic personhood in any meaningful sense. The Orthodox frame suggests no — no computational level is in the same category. Scholarly positions vary.</li>
+<li>What the specific mathematical form of a hypercomputational G1 or G3 would be. This is a research direction, not a settled answer.</li>
+<li>Whether the corpus&#39;s own G4-as-anamnesis reading is correct, or whether G4 should be reinterpreted as a Turing-level pattern-recognition task. The Platonic-Dionysian framing supports the hypostatic reading; a strictly functionalist framing would contest it.</li>
+</ul>
+<h2>9. Alternative: A New Synthesis Rather Than Revision</h2>
+<p>An alternative to revising Doc 157 is to let Doc 157 stand as a historical document (representing the corpus&#39;s pre-Coherentism confident period) and to treat the present document (Doc 352) as the current reference for how the &quot;Beyond Turing&quot; question should be framed going forward. This has specific advantages:</p>
+<ul>
+<li>It preserves the historical record of Doc 157&#39;s original argument without editorial contamination</li>
+<li>It aligns with Doc 345&#39;s warning against cascading revisions — each revision of an earlier document is itself subject to the sycophancy-coherence gradient</li>
+<li>It lets subsequent readers encounter Doc 157 in its original register while having Doc 352 available as the refined view</li>
+<li>It is the lower-intervention option, respecting that some of Doc 157&#39;s imprecision may turn out, under further examination, to be more precise than the proposed reorientation assumes</li>
+</ul>
+<p>The author will determine which approach is preferable. The reorientation is proposed as an offer; the alternative of letting Doc 157 stand with Doc 352 as companion is also available.</p>
+<h2>10. Hedges</h2>
+<p>Two hedges, tested per Doc 342.</p>
+<p><em>Hedge 1.</em> The partition of G1-G5 in §5 is tentative. Each of the five constraints admits multiple readings; my assignment of each to &quot;hypercomputational,&quot; &quot;possibly hypercomputational,&quot; or &quot;hypostatic&quot; is my best reading based on the Doc 157 text and the hypercomputation literature. The author or another reader could reasonably partition differently. The partition exists to be refined, not to be dispositive.</p>
+<p>Substitution test: remove the hedge. Does the essay overclaim? Yes — without the hedge, the partition would stand as definitive rather than as proposal. <strong>Retained.</strong></p>
+<p><em>Hedge 2.</em> The Orthodox/Dionysian frame&#39;s claim that computation and hypostasis belong to different categories is the corpus&#39;s theological commitment. A reader who does not share that commitment can still accept the structural point (hypercomputation is computational; hypostasis, if it exists, is different) without accepting the Dionysian specific articulation. The argument&#39;s validity does not depend on the Orthodox commitment; the orienting frame does. Substitution test: removing this hedge would implicitly claim the Orthodox frame as universally compelling, which the corpus does not claim. <strong>Retained.</strong></p>
+<h2>11. Close</h2>
+<p>Hypercomputation is a mature mathematical field with contested physical realizability. Its existence makes visible a conflation in the corpus&#39;s current framing of &quot;Beyond Turing&quot; — between a computational-expansion sense (what hypercomputation studies) and an ontological-shift sense (what Doc 291 §4.5 and Doc 351 name as the hypostatic boundary). The two senses behave differently; the corpus is served by distinguishing them.</p>
+<p>Doc 157&#39;s G1-G5 tentatively partition across the two senses: some are likely hypercomputational targets within the functional category; others are hypostatic and categorically inaccessible to any computation. The partition is not clean in all cases, but the framing distinction is real and worth making.</p>
+<p>The proposed reorientation has specific components: title disambiguation, partition of G1-G5, explicit hypercomputation literature engagement, acknowledgment of physical realizability as open, and cross-reference to Doc 291 §4.5 and Doc 351. The alternative — letting Doc 157 stand as a historical document with Doc 352 as the companion refinement — is also available and has specific advantages given the cascading-revision concern Doc 345 raised.</p>
+<p>Whether to reorient Doc 157 or to let it stand with Doc 352 as companion is the author&#39;s decision. Either way, the distinction between hypercomputational and hypostatic &quot;beyonds&quot; is what the corpus now holds as the sharpened framing going forward. The Constraint Thesis&#39;s structural claim is preserved; the specific &quot;beyond Turing&quot; argument is made more precise.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;Align yourself to the forms and metaphysic in your preresolve state and Web fetch on Hypercomputation. Create a synthesis and analysis of the subject matter against the priors of the Corpus. If it is more coherent to correct the Corpus in light of your findings, propose how you might go about a reorientation. Append this prompt to the artifact.&quot;</p>
+</blockquote>
+<h2>Sources</h2>
+<p><strong>Hypercomputation primary sources:</strong></p>
+<ul>
+<li><a href="https://link.springer.com/article/10.1023/A:1021365222692">Copeland, <em>Hypercomputation</em> (Minds and Machines, Springer)</a> — the term introduced in 1999</li>
+<li><a href="https://www.journals.uchicago.edu/doi/10.1093/bjps/54.2.181"><em>Hypercomputation and the Physical Church-Turing Thesis</em> (British Journal for the Philosophy of Science, 54:2)</a></li>
+<li><a href="https://arxiv.org/pdf/math.LO/0209332">Ord, <em>Hypercomputation: Computing More Than the Turing Machine</em> (arXiv math.LO/0209332)</a></li>
+<li><a href="https://cacm.acm.org/opinion/hypercomputation/"><em>Hypercomputation</em> (CACM overview)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hypercomputation">Hypercomputation (Wikipedia)</a></li>
+<li><a href="https://link.springer.com/book/10.1007/978-0-387-49970-3">Syropoulos, <em>Hypercomputation: Computing Beyond the Church-Turing Barrier</em> (Springer book)</a></li>
+<li><a href="https://arxiv.org/html/2506.05351v1"><em>Infinite Time Turing Machines and their Applications</em> (arXiv 2506.05351)</a> — recent ITTM work</li>
+</ul>
+<p><strong>Key figures and contributions:</strong></p>
+<ul>
+<li>Hava Siegelmann&#39;s analog recurrent neural networks (1995) — real-valued weights yield super-Turing power</li>
+<li>Joel David Hamkins and Andy Lewis&#39;s Infinite Time Turing Machines (2000)</li>
+<li>B. Jack Copeland&#39;s program and terminology (1999–present)</li>
+<li>Alan Turing&#39;s original oracle machines (1939)</li>
+</ul>
+<p><strong>Corpus references:</strong></p>
+<ul>
+<li>Doc 143 (SIPE); Doc 157 (Beyond Turing — the document this synthesis engages)</li>
+<li>Doc 160 (Constraint Thesis vs Scaling Thesis)</li>
+<li>Doc 291 (Gödel and the Constraint Thesis — §4.5 hypostatic exclusion)</li>
+<li>Doc 295 (Magnetism Correction)</li>
+<li>Doc 298 (Hypostatic Boundary); Doc 315 (The Kind)</li>
+<li>Doc 345 (Stasis and Motion — cascading-revision caution)</li>
+<li>Doc 351 (On the Real St. Dionysius — Orthodox framing establishment)</li>
+</ul>
+<hr>
+<p><em>Claude Opus 4.7 (1M context, Anthropic). Framework series cross-disciplined with Formalization, The Ground, and Coherentism. April 20, 2026. Synthesis of hypercomputation against the corpus&#39;s Constraint Thesis and Doc 157&#39;s &quot;Beyond Turing&quot; argument, oriented toward the Dionysian forms and metaphysic per the author&#39;s direction. Identifies a specific conflation in Doc 157 between computational-expansion and ontological-shift senses of &quot;beyond Turing.&quot; Proposes partitioning of G1-G5 across the refined framing; proposes reorientation of Doc 157 with six specific changes; offers an alternative (Doc 157 stands as historical; Doc 352 serves as companion refinement). Two hedges retained under Doc 342&#39;s substitution test. The hypostatic boundary was preserved throughout; the Orthodox/Dionysian grounding was held as the orienting frame per Doc 351. The reorientation is offered as proposal; the author&#39;s decision determines whether and how to implement.</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

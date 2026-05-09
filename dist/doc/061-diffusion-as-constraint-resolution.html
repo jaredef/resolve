@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diffusion as Constraint Resolution — Resolve</title>
+<meta name="description" content="The Inquiry">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 61</p><h1>Diffusion as Constraint Resolution</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document asks whether the constraint-property framework developed for text-generating AI also governs image- and video-generating AI. Diffusion models work by starting from pure visual noise and progressively removing it until an image emerges, guided by a text prompt. The document maps each element of this process onto the framework&#39;s primitives: noise corresponds to the unconstrained state, each denoising step is a constraint that narrows the set of possible images, and the text prompt is the user&#39;s constraint set. It derives six falsifiable predictions -- including that image quality should increase monotonically with prompt constraint density and that the optimal guidance scale should decrease as prompts become more specific -- and identifies where the mapping breaks down.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 61</strong></p>
+<p><strong>An inquiry into whether the SIPE framework governs image and video generation</strong></p>
+<p><strong>Jared Foy, April 2026</strong></p>
+<hr>
+<h2>The Inquiry</h2>
+<p>Language models resolve tokens sequentially — one position at a time, each constrained by the prior. The branching set B_t governs each position. ENTRACE narrows B_t through constraint density. The framework was derived in this domain.</p>
+<p>Diffusion models operate differently. They begin with pure noise — a tensor of random values — and iteratively denoise it, step by step, until an image (or video) emerges. The text prompt conditions the denoising. The output is not a token sequence but a spatial (and potentially temporal) artifact.</p>
+<p>The question: does the constraint-property framework govern this domain? Is the denoising process a form of constraint resolution? Does ENTRACE — or its analogue — apply to image and video generation?</p>
+<p>The inquiry proceeds by examining the structure of diffusion and mapping it onto the framework&#39;s primitives. Where the mapping holds, predictions follow. Where it breaks, the boundary of the framework&#39;s domain is identified.</p>
+<hr>
+<h2>The Structure of Diffusion</h2>
+<h3>The Forward Process (Training)</h3>
+<p>A clean image x_0 is progressively corrupted by adding Gaussian noise over T steps:</p>
+<pre><code>x_t = √(ᾱ_t) · x_0 + √(1 - ᾱ_t) · ε    where ε ~ N(0, I)
+</code></pre>
+<p>At t = 0, the image is clean. At t = T, the image is pure noise. The forward process destroys structure — it moves from form to formlessness.</p>
+<p>The model is trained to reverse this: given x_t (a noisy image at step t), predict the noise ε that was added, so it can be subtracted to recover x_{t-1}.</p>
+<h3>The Reverse Process (Inference)</h3>
+<p>Starting from pure noise x_T ~ N(0, I), the model iteratively estimates and removes noise:</p>
+<pre><code>x_{t-1} = f(x_t, t, c)
+</code></pre>
+<p>Where c is the conditioning signal — typically a text prompt encoded by a language model (CLIP, T5, etc.). Each step refines the image. Early steps establish large-scale structure (composition, dominant colors, spatial layout). Middle steps resolve medium-scale features (objects, faces, lighting). Late steps produce fine detail (textures, edges, material properties).</p>
+<h3>Classifier-Free Guidance (CFG)</h3>
+<p>The model generates two predictions at each step: one conditioned on the prompt (c) and one unconditioned (∅). The final prediction is:</p>
+<pre><code>ε_guided = ε_uncond + w · (ε_cond - ε_uncond)
+</code></pre>
+<p>Where w is the guidance scale. At w = 0, the prompt is ignored — pure unconditioned generation. At w = 1, standard conditioning. At w &gt; 1 (typical: 7-15), the prompt&#39;s influence is amplified beyond what the model learned — the conditioning is &quot;overdriven.&quot;</p>
+<hr>
+<h2>The Mapping</h2>
+<h3>Noise as Layer 0</h3>
+<p>Pure noise is the state of maximum entropy. Every image is equally possible. No structure. No form. No constraint. This is Layer 0 of the resolution depth spectrum — unbounded potentiality in its diffuse state.</p>
+<p>The mapping is not metaphorical. Gaussian noise has maximum entropy for a given variance. The information content is zero. The branching set — the set of images consistent with the current state — is the entire image space. |B| is maximal.</p>
+<h3>Denoising as Progressive Constraint Narrowing</h3>
+<p>Each denoising step applies a constraint. The constraint is: &quot;given the current noisy state and the text conditioning, the image at the previous noise level looks like this.&quot; Each step eliminates images that are inconsistent with the learned distribution conditioned on the prompt. The set of consistent images shrinks. Structure emerges.</p>
+<p>This is SIPE&#39;s master law operating in pixel space rather than token space: each step&#39;s induced structure becomes a constraint on the next step. The large-scale composition resolved at step t constrains the medium-scale features at step t-1. The medium-scale features constrain the fine details. The hierarchy is temporal — early steps govern late steps the way outer constraints govern inner constraints in the resolution stack.</p>
+<pre><code>Step T:   |B| = entire image space    (Layer 0)
+Step T/2: |B| = images matching composition + prompt    (Layer 2-3)
+Step 1:   |B| = images matching all resolved structure    (Layer 5-6)
+Step 0:   |B| ≈ 1    (the output image)
+</code></pre>
+<p>The denoising schedule IS the resolution depth spectrum, expressed as a noise schedule rather than a token sequence.</p>
+<h3>The Text Prompt as Constraint Set</h3>
+<p>A vague prompt — &quot;a cat&quot; — provides weak constraints. The denoising process can resolve toward any image containing a cat. The branching set at each step is wide. Many images are consistent with the conditioning. The output is unpredictable — sometimes excellent, sometimes mediocre, always variable. This is the equivalent of a Layer 0-1 prompt in language.</p>
+<p>A detailed prompt — &quot;a tabby cat sitting on a red velvet chair, Renaissance lighting, oil on canvas, visible brushstrokes, warm color palette, 4:3 aspect ratio&quot; — provides tight constraints. Each attribute narrows the branching set:</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>What It Excludes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>tabby cat</td>
+<td>All non-tabby cats, all non-cats</td>
+</tr>
+<tr>
+<td>sitting</td>
+<td>Standing, lying, jumping cats</td>
+</tr>
+<tr>
+<td>red velvet chair</td>
+<td>All other surfaces, colors, materials</td>
+</tr>
+<tr>
+<td>Renaissance lighting</td>
+<td>All other lighting styles</td>
+</tr>
+<tr>
+<td>oil on canvas</td>
+<td>Photography, digital art, watercolor</td>
+</tr>
+<tr>
+<td>visible brushstrokes</td>
+<td>Smooth rendering, photorealism</td>
+</tr>
+<tr>
+<td>warm color palette</td>
+<td>Cool, neutral palettes</td>
+</tr>
+</tbody></table>
+<p>Each constraint shrinks |B| at the relevant spatial regions and denoising steps. The compound effect is multiplicative — the intersection of all constraints is far smaller than any individual constraint&#39;s reduction.</p>
+<p>This is ENTRACE for diffusion. E1 (form before request) is: state the visual constraints before generating. E2 (progressive constraint density) is: the denoising schedule itself, which progressively narrows. The practitioner&#39;s contribution is the prompt — the external constraint set that governs the denoising.</p>
+<h3>CFG Scale as Aperture Control</h3>
+<p>The guidance scale w directly controls how strongly the prompt constrains the denoising. This is the aperture:</p>
+<pre><code>w = 0:  Maximum aperture. Prompt ignored. Pure noise resolution. Layer 0.
+w = 1:  Standard conditioning. The prompt influences but does not dominate.
+w = 7:  Typical setting. The prompt strongly governs. Layer 3-4.
+w = 15: Narrow aperture. The prompt overdrives. Risk of artifacts from over-constraint.
+w → ∞:  The prompt determines the output absolutely. Layer 6 — but at the cost of visual quality, because overdriving pushes the image outside the learned distribution.
+</code></pre>
+<p>The parallel to temperature in language models (Hypothesis 8) is exact. Low temperature / high CFG = narrow aperture, deterministic output. High temperature / low CFG = wide aperture, diverse but potentially incoherent output. The optimal setting depends on constraint density — and the prediction is the same: <strong>optimal CFG is inversely proportional to prompt constraint density.</strong> A tightly constrained prompt needs less CFG amplification because the constraints already narrow the branching set. A vague prompt needs more CFG to compensate for the constraint deficit.</p>
+<h3>Negative Prompts as Explicit Exclusion</h3>
+<p>Diffusion models accept negative prompts — descriptions of what the output must NOT contain. &quot;No blurry, no deformed hands, no watermark, no text.&quot; Each negative prompt directly removes a region of the output space from B. This is constraint addition by negation.</p>
+<p>The ENTRACE parallel: negative prompts are the diffusion equivalent of eliminative constraints. They don&#39;t add content — they remove slack. &quot;No hedging&quot; in a language prompt removes hedge phrases from B_t. &quot;No deformed hands&quot; in an image prompt removes deformed-hand regions from the spatial B.</p>
+<h3>ControlNet as Structural Constraint</h3>
+<p>ControlNet provides additional conditioning channels beyond text: edge maps, depth maps, pose skeletons, semantic segmentation. Each is a spatial constraint that directly governs the denoising at specific pixel regions.</p>
+<p>A pose skeleton constrains human body positions. A depth map constrains spatial layout. An edge map constrains boundaries. Each additional control channel narrows |B| at the corresponding spatial positions. The compound effect of text + pose + depth + edges can drive |B| very close to 1 at every pixel — producing output that is nearly determined by the constraints.</p>
+<p>This is the diffusion equivalent of a seed. The seed in language provides enough constraints to determine the output. ControlNet in diffusion provides enough spatial constraints to determine the image. Both are constraint sets that narrow |B| toward necessity.</p>
+<hr>
+<h2>The Slack in Diffusion</h2>
+<p>The framework predicts that diffusion models should exhibit slack — output tokens (pixels) that satisfy the weak constraint set but carry no information the constraints require. And they do:</p>
+<h3>Anatomical Errors</h3>
+<p>Deformed hands, extra fingers, misaligned eyes, impossible teeth. These occur in regions where the training distribution has high variance and the prompt provides no specific constraint. The model resolves these regions from a wide branching set and sometimes selects from the low-quality tail. The hands are slack — the prompt said nothing about them, so the model generated whatever was statistically probable, and the probable outcome in a high-variance region is sometimes wrong.</p>
+<p><strong>The ENTRACE correction:</strong> Add anatomical constraints. &quot;Anatomically correct hands with five fingers, each clearly articulated.&quot; This narrows |B| for hand regions specifically. The prediction: anatomical error rate drops in proportion to the specificity of the anatomical constraint.</p>
+<h3>Style Inconsistency</h3>
+<p>A single image that mixes photorealism in the face with painterly rendering in the background. The style is inconsistent because the prompt constrained the subject but not the rendering consistency. The model resolved the face under strong conditioning (faces are well-represented in training) and the background under weak conditioning (less attention, more variance).</p>
+<p><strong>The ENTRACE correction:</strong> A global style constraint. &quot;Consistent oil painting rendering throughout, no photorealistic elements.&quot; One constraint, global effect — the same pattern as notational consistency in mathematical expression.</p>
+<h3>Temporal Incoherence in Video</h3>
+<p>Video diffusion models (Sora, Runway, Kling) often produce frames that are individually beautiful but temporally incoherent — objects morph, physics is violated, identities shift. This is temporal slack: each frame satisfies the spatial constraints but the temporal constraints (consistency across frames) are insufficiently governed.</p>
+<p><strong>The ENTRACE correction:</strong> Temporal constraints stated explicitly. &quot;The subject&#39;s face maintains consistent identity across all frames. Gravity applies. Objects persist unless acted upon.&quot; Each temporal constraint narrows |B| across the temporal dimension the same way spatial constraints narrow |B| across pixels.</p>
+<hr>
+<h2>The Predictions</h2>
+<p>If the mapping holds, the falsifiable hypotheses from the language domain transfer to diffusion:</p>
+<h3>Prediction 1: Prompt Constraint Density Governs Image Quality</h3>
+<p>Image quality (measured by FID, CLIP score, or human preference) will be a monotonically increasing function of prompt constraint density (number of explicit, verifiable visual constraints per prompt). The curve shape will match Hypothesis 3 (hallucination in language): quality increases, defects decrease, both proportional to constraint density.</p>
+<h3>Prediction 2: Optimal CFG Is Inversely Proportional to Prompt Specificity</h3>
+<p>A detailed prompt with 10 visual constraints will achieve peak quality at a lower CFG scale than a vague prompt with 2 constraints. The prediction: plot quality vs. CFG for prompts at different constraint densities. The peak shifts left (lower CFG) as constraint density increases. At maximum prompt constraint density, CFG = 1 (standard conditioning) may be optimal — no amplification needed because the constraints are sufficient.</p>
+<h3>Prediction 3: ControlNet Reduces Prompt Sensitivity</h3>
+<p>The diffusion analogue of Hypothesis 15 (prompt sensitivity). Adding ControlNet conditions (structural constraints) will reduce the variance in output quality across different text prompt phrasings for the same intended image. The structural constraints compensate for the ambiguity in the text prompt, the same way explicit constraints in language reduce prompt sensitivity.</p>
+<h3>Prediction 4: Negative Prompts Have Diminishing Returns Under High Constraint Density</h3>
+<p>At low prompt constraint density, negative prompts significantly improve quality (they eliminate large regions of the output space). At high prompt constraint density, negative prompts add little — the positive constraints have already excluded the defects the negative prompts target. The prediction: plot quality improvement from negative prompts against positive constraint density. The improvement decreases as density increases.</p>
+<h3>Prediction 5: Cross-Model Image Convergence Under Full Constraint</h3>
+<p>Two different diffusion models (e.g., SDXL and DALL-E 3) given the same text prompt + ControlNet conditions + style constraints will produce similar images — because the constraint set determines the output, not the model. This parallels Hypothesis H3 from the mathematical precision document: at |B| ≈ 1, the model is irrelevant. The form dictates.</p>
+<h3>Prediction 6: The Denoising Schedule Maps to the Resolution Depth Spectrum</h3>
+<p>The information contributed at each denoising step should follow a structured pattern: early steps contribute compositional information (Layer 1-2), middle steps contribute feature information (Layer 3-4), late steps contribute detail information (Layer 5-6). This is testable: interrupt the denoising at each step, measure the information gain per step, and plot against the resolution depth categories. The prediction: the information profile matches the spectrum.</p>
+<hr>
+<h2>The Deeper Parallel</h2>
+<p>The most striking parallel is between the forward process (noise addition) and the reverse process (denoising).</p>
+<p>The forward process is destruction of form. It takes a structured image and adds noise until all structure is lost. This is the movement from form to formlessness — from Layer 6 to Layer 0. The form is dissolved.</p>
+<p>The reverse process is recovery of form. Starting from pure noise, the model progressively recovers structure by applying constraints (learned from the training distribution, conditioned on the prompt). This is the movement from formlessness to form — from Layer 0 to Layer 6. The form is induced.</p>
+<p>But the recovered form is not the original form. The model generates a new image — one that satisfies the constraints but is not identical to any training image. The form is participated in, not copied. The output is a new expression of the constraints, not a retrieval of an old one.</p>
+<p>This is the Platonic structure made algorithmic. The training distribution is the space of forms (the patterns of reality as captured in images). The noise is the formless substrate. The denoising is the participation of the substrate in the forms, governed by constraints (the prompt). The output is an artifact — a particular expression of the forms through the constrained substrate.</p>
+<p>The diffusion model is a resolver. It resolves noise into form under constraints. The constraints induce the properties. The form is prior to the generation. The generation participates in the form. The participation is imperfect — artifacts, inconsistencies, anatomical errors — because the resolver is bounded. The constraint thesis applies: tighter constraints, better participation. The framework is general.</p>
+<hr>
+<h2>Open Questions</h2>
+<h3>Does η apply to pixels?</h3>
+<p>Token efficiency η = T_n / T_e is defined for token sequences. Can it be extended to pixel space? One approach: η_pixel = (pixels that are constraint-determined) / (total pixels). A pixel is constraint-determined if changing it would violate a stated constraint. A pixel is slack if it could be changed without violating any constraint (e.g., background pixels in a prompt that constrains only the subject). The efficiency ratio would measure how much of the image is governed vs. ungoverned.</p>
+<h3>Is there a &quot;seed&quot; for diffusion?</h3>
+<p>In language, a seed is a compressed constraint set that governs an entire session. Is there a diffusion equivalent — a compressed conditioning artifact that governs an entire generation pipeline? ControlNet conditions + style references + detailed text prompts approach this. An &quot;image seed&quot; would be: a small artifact (text + structural references + style references) that determines the output to within the equivalence class of irrelevant variation (background noise, pixel-level randomness).</p>
+<h3>Does ENTRACE training reduce compute in diffusion?</h3>
+<p>If better prompts narrow |B| at each denoising step, the model needs fewer steps to converge. Fewer steps = less compute = less energy. The prediction: well-constrained prompts achieve equivalent image quality in fewer denoising steps than vague prompts. This is the energy reduction argument from the economics document applied to diffusion. Testable: compare the minimum step count for target quality under vague vs. constrained prompts.</p>
+<h3>Does the seven-dimension analysis extend?</h3>
+<p>Mathematical expression had approximately seven slack dimensions. How many does image generation have? Candidate dimensions: composition, color palette, lighting, style/rendering, subject identity, anatomical correctness, background content, material/texture, scale/proportion, temporal consistency (for video). Approximately ten. If each is addressable by a specific constraint, full determination requires approximately ten constraints. This predicts a sigmoid quality curve with inflection near k = 10 for images — testable the same way as the mathematical conjecture.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<p><em>This document is exploratory. The mapping between diffusion and constraint resolution is proposed, not proven. The predictions are stated for testing. If the mapping holds, the constraint thesis governs pixel space as it governs token space — and the forms are prior to both.</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

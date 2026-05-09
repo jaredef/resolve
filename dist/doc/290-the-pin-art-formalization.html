@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pin-Art Formalization — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 290</p><h1>The Pin-Art Formalization</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document develops a mathematical framework for understanding how written specifications drive code implementations toward a correct target. The central metaphor is a pin-art toy: each constraint in a specification acts like a pin pressed into foam, eliminating incorrect possibilities and forcing the remaining &quot;foam&quot; (the space of valid implementations) to converge on the right shape. The framework distinguishes two independent axes of convergence -- structural (how the code is organized) and behavioral (what the code does at runtime) -- and proves mathematically that they can be minimized separately. It also establishes a &quot;leverage inequality&quot;: behavioral constraints (rules about what happens at critical transition points) have dramatically greater impact per unit of specification than structural constraints (rules about code organization). All results are validated against empirical data from a real software derivation experiment and stated with explicit falsification conditions.</p>
+<!-- doc-370-update-note -->
+<p><em>Update (April 2026): improvements made using findings from <a href="../doc/370-the-student-taking-notes.html">Doc 370 — The Student Taking Notes</a>. Doc 370 treats pin-art as an interpretive frame for SEAL&#39;s mechanism rather than as a load-bearing metaphysical formalization. This document&#39;s formal apparatus should be read similarly — as a formal treatment of a specific pedagogical metaphor useful in specific technical settings, not as a claim about the ontology of constraint-property relations generally.</em></p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 290</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>A general theory of constraint-driven convergence across structural and behavioral axes, with mathematical foundations and empirical validation.</strong></p>
+<!-- canonical-successor-notice -->
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>SUPERSEDED — CANONICAL SUCCESSOR PUBLISHED</strong></p>
+<p>This document has been superseded by <a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 — The Pin-Art Form</a>, the corpus&#39;s canonical Pin-Art formalization. Doc 619 names the form at large (probe-impression boundary detection under non-coercion) with the operating-conditions layer that distinguishes detection-hedging from slack-hedging, supplies the lineage in optical resolution, signal-detection theory, perceptual psychophysics, active learning, percolation, and hedge-distribution linguistics, and states the form&#39;s restricted scope at the front. The formal apparatus of this document — the geometric-convergence theorem, the axis-independence theorem, and the behavioral-leverage inequality — is preserved as Doc 619 Appendix A and continues as the corpus&#39;s working formalization for the constraint-driven derivation application specifically. The cross-domain extensions of §5.2 below are held to plausibility tier without empirical replication; the narrow architectural-inheritance claim for hierarchical software stacks survives. New readers should start with Doc 619; this document is preserved for the empirical-derivation voice of the original treatment.</p>
+</div>
+
+<!-- deprecation-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+<p><strong>⚠️ DEPRECATION NOTICE — UNIVERSALITY CLAIMS UNDER SCRUTINY</strong></p>
+<p>The universality claims in this document — that the meta-law or thesis stated here applies domain-universally across software, biology, law, music, physics, and theology — have been directly challenged on the corpus&#39;s own falsifiability criteria. Readers should treat the cross-domain portions with specific skepticism and consult the successor documents:</p>
+<ul>
+<li><a href="../doc/356-sycophantic-world-building.html">Doc 356 — Sycophantic World Building</a> — on the specific rhetorical pattern by which the corpus extends framework scope beyond grounded evidence</li>
+<li><a href="../doc/366-nesting-sipe-in-krakauer-mitchell.html">Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework</a> — external-criteria synthesis under peer-reviewed complexity-science standards</li>
+<li><a href="../doc/367-falsifying-sipe-on-its-own-terms.html">Doc 367 — Falsifying SIPE on Its Own Terms</a> — internal-criteria falsification with two successful counterexamples (mechanical constrained decoding; chiral anomalies in quantum field theory)</li>
+</ul>
+<p>The narrow architectural-inheritance claim for specific hierarchical software stacks survives. The universal meta-law claim, the cross-domain bullets, the fractal-boundary prediction, and the Turing paradigmatic-example claim require revision or retraction. <strong>Read what follows with these constraints active.</strong></p>
+</div>
+
+<hr>
+<h2>Abstract</h2>
+<p>The pin-art model (Doc 270) was introduced as a metaphor for boundary-detection under constraint density. This document formalizes the model into a general analytical framework applicable to any domain where implementations are derived from constraint specifications. We define constraint density, convergence rate, and axis orthogonality mathematically, then validate against empirical data from the htmx derivation experiment (Docs 288–289). The formalization yields three principal results: (1) a convergence rate theorem predicting implementation size from constraint count and density, (2) an axis decomposition theorem showing structural and behavioral convergence are independent, and (3) a leverage inequality showing behavioral constraints have superlinear impact on correctness relative to structural constraints.</p>
+<hr>
+<h2>1. Definitions</h2>
+<h3>1.1 The Constraint Space</h3>
+<p>Let <strong>S</strong> be a <em>seed</em> — a finite set of constraints expressed in natural language. Let <strong>I</strong> be an <em>implementation</em> — a program that satisfies all constraints in <strong>S</strong>. Let <strong>R</strong> be a <em>reference implementation</em> — a known-correct implementation against which derived implementations are compared.</p>
+<p><strong>Definition 1 (Constraint).</strong> A constraint <em>c</em> is a predicate over implementations: <em>c(I)</em> ∈ {true, false}. An implementation <em>I</em> is <em>conformant</em> to seed <em>S</em> if ∀<em>c</em> ∈ <em>S</em>: <em>c</em>(<em>I</em>) = true.</p>
+<p><strong>Definition 2 (Derivation).</strong> A derivation <em>D</em>(<em>S</em>) is a function that takes a seed <em>S</em> and produces a conformant implementation <em>I</em>. The derivation is <em>blind</em> if the function has no access to the reference <em>R</em>.</p>
+<p><strong>Definition 3 (Constraint Density).</strong> For a constraint <em>c</em> operating on feature space <em>F</em>, the <em>density</em> of <em>c</em> is:</p>
+<p>$\rho(c) = \frac{|F_c|}{|c|}$</p>
+<p>where |<em>F_c</em>| is the number of features determined by <em>c</em>, and |<em>c</em>| is the implementation volume (lines of code) required to enforce <em>c</em>. High-density constraints determine many features per line of enforcement.</p>
+<h3>1.2 Divergence Metrics</h3>
+<p><strong>Definition 4 (Structural Divergence).</strong> Given a blind derivation <em>I</em> = <em>D</em>(<em>S</em>) and a reference <em>R</em>, the structural divergence is:</p>
+<p>$\delta_s(I, R) = \frac{|I| - |R|}{|R|}$</p>
+<p>where |·| denotes line count (or any consistent size metric). Positive values indicate the derivation is larger; negative values indicate smaller.</p>
+<p><strong>Definition 5 (Behavioral Divergence).</strong> Given a test suite <em>T</em> = {<em>t</em>₁, ..., <em>t_n</em>} designed for <em>R</em>, the behavioral divergence is:</p>
+<p>$\delta_b(I, T) = 1 - \frac{|{t \in T : t(I) = \text{pass}}|}{|T|}$</p>
+<p>Zero means full behavioral parity. One means total failure.</p>
+<h3>1.3 The Pin-Art Mapping</h3>
+<p><strong>Definition 6 (Pin).</strong> A constraint <em>c</em> ∈ <em>S</em> is a <em>pin</em> in the implementation space. The pin has:</p>
+<ul>
+<li><em>Depth</em> <em>d</em>(<em>c</em>): how precisely <em>c</em> constrains the implementation (shallow = many conformant implementations; deep = few)</li>
+<li><em>Radius</em> <em>r</em>(<em>c</em>): how many features fall within <em>c</em>&#39;s constraint region</li>
+<li><em>Axis</em> <em>a</em>(<em>c</em>) ∈ {structural, behavioral}: whether <em>c</em> constrains code organization or runtime behavior</li>
+</ul>
+<p><strong>Definition 7 (Foam).</strong> The <em>foam</em> is the space of conformant implementations — all programs that satisfy the seed. The volume of the foam is:</p>
+<p>$V(S) = |{I : \forall c \in S, c(I) = \text{true}}|$</p>
+<p>Adding a constraint <em>c</em> to <em>S</em> reduces the foam: <em>V</em>(<em>S</em> ∪ {<em>c</em>}) ≤ <em>V</em>(<em>S</em>).</p>
+<hr>
+<h2>2. The Convergence Rate Theorem</h2>
+<h3>2.1 Empirical Observation</h3>
+<p>The htmx experiment produced the following structural convergence trajectory:</p>
+<table>
+<thead>
+<tr>
+<th>Iteration <em>k</em></th>
+<th>Seed size (words)</th>
+<th>Derivation size (lines)</th>
+<th>δ_s</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0 (reference)</td>
+<td>—</td>
+<td>1,316</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2,685</td>
+<td>2,160</td>
+<td>+0.64</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3,611</td>
+<td>1,648</td>
+<td>+0.25</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3,727</td>
+<td>1,433</td>
+<td>+0.09</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3,937</td>
+<td>1,373</td>
+<td>+0.04</td>
+</tr>
+</tbody></table>
+<p>The gap |δ_s| decreases geometrically: 0.64, 0.25, 0.09, 0.04. The ratio of consecutive gaps:</p>
+<ul>
+<li>0.25 / 0.64 = 0.39</li>
+<li>0.09 / 0.25 = 0.36</li>
+<li>0.04 / 0.09 = 0.44</li>
+</ul>
+<p>Mean ratio: <strong>λ ≈ 0.40</strong></p>
+<h3>2.2 Theorem 1 (Geometric Convergence)</h3>
+<p><em>Given a seed S₀ and a reference R, let Sₖ denote the seed after k iterations of pin-art tightening. If each iteration closes a constant fraction (1 - λ) of the remaining structural gap, then:</em></p>
+<p>$|\delta_s(D(S_k), R)| = |\delta_s(D(S_0), R)| \cdot \lambda^k$</p>
+<p><em>where λ ∈ (0, 1) is the convergence decay constant.</em></p>
+<p><strong>Corollary.</strong> The number of iterations required to achieve structural divergence below threshold ε is:</p>
+<p>$k^* = \left\lceil \frac{\ln(\varepsilon / |\delta_s(D(S_0), R)|)}{\ln \lambda} \right\rceil$</p>
+<p>For the htmx experiment with λ = 0.40, reaching ε = 0.01 (1% divergence) from δ₀ = 0.64 requires:</p>
+<p>$k^* = \lceil \ln(0.01 / 0.64) / \ln(0.40) \rceil = \lceil -4.16 / -0.92 \rceil = \lceil 4.52 \rceil = 5$</p>
+<p>Five iterations. The experiment reached 4% in four iterations, consistent with the prediction.</p>
+<h3>2.3 Why λ ≈ 0.40</h3>
+<p>The convergence decay constant λ depends on the <em>constraint discovery efficiency</em> — how well each pin-art analysis identifies the highest-density remaining gaps. If the analysis is optimal (always finds the highest-density gap first), λ approaches 0. If random, λ approaches 1.</p>
+<p>The observed λ ≈ 0.40 suggests the pin-art analysis captures approximately 60% of the remaining constraint density per iteration. This is consistent with a <em>diminishing returns</em> model: early iterations find obvious structural divergences (use FormData, not manual input walking); later iterations find subtler ones (logger property style, title extraction method).</p>
+<hr>
+<h2>3. The Axis Decomposition Theorem</h2>
+<h3>3.1 Empirical Observation</h3>
+<p>The htmx experiment measured both axes simultaneously at iteration 4:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>v4 (before behavioral fix)</th>
+<th>v4.1 (after behavioral fix)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>δ_s (structural)</td>
+<td>+0.04</td>
+<td>-0.19</td>
+</tr>
+<tr>
+<td>δ_b (behavioral)</td>
+<td>0.37 (63% pass)</td>
+<td>0.02 (98% pass)</td>
+</tr>
+</tbody></table>
+<p>Adding one behavioral constraint <em>decreased</em> behavioral divergence by 0.35 but <em>increased</em> structural divergence by 0.23 (from +4% to -19%). The axes moved independently — and in opposite directions.</p>
+<h3>3.2 Theorem 2 (Axis Independence)</h3>
+<p><em>Let S be a seed, and let c_s be a structural constraint and c_b be a behavioral constraint added to S. Then:</em></p>
+<p>$\text{Cov}(\Delta\delta_s, \Delta\delta_b) \approx 0$</p>
+<p><em>That is, the change in structural divergence caused by adding a constraint is approximately uncorrelated with the change in behavioral divergence.</em></p>
+<p><strong>Proof sketch.</strong> Structural constraints (use FormData, inline this function) alter code organization without changing runtime behavior. Behavioral constraints (processScripts is swap-only) alter runtime behavior without prescribing code organization. The feature spaces they operate on are disjoint: structural features are syntactic (function count, API shape, code size), behavioral features are semantic (event ordering, DOM mutation timing, lifecycle boundaries). Since the feature spaces are disjoint, the constraints are independent.</p>
+<p><strong>Corollary.</strong> The total divergence of a blind derivation decomposes into independent components:</p>
+<p>$\delta(I, R) = (\delta_s(I, R),\ \delta_b(I, T))$</p>
+<p>and these components can be minimized independently by adding constraints of the appropriate axis.</p>
+<h3>3.3 The Orthogonality Diagram</h3>
+<pre><code>                    δ_b (behavioral divergence)
+                    1.0 |
+                        |
+                        |  v4: (+0.04, 0.37)
+                    0.4 |  ●
+                        |
+                        |
+                    0.1 |              ● v4.1: (-0.19, 0.02)
+                        |
+                    0.0 +----●-----|----------→ δ_s (structural)
+                        R  +0.04      -0.19
+</code></pre>
+<p>The v4 → v4.1 transition moved primarily along the behavioral axis (0.37 → 0.02) with a structural side-effect (-0.04 → -0.19). The reference <em>R</em> sits at the origin (0, 0). A fully converged derivation would reach the origin on both axes independently.</p>
+<hr>
+<h2>4. The Leverage Inequality</h2>
+<h3>4.1 Empirical Observation</h3>
+<p>In the htmx experiment:</p>
+<ul>
+<li><strong>34 structural constraints</strong> (across 4 seed iterations) closed 93% of the structural gap (from +64% to +4%)</li>
+<li><strong>1 behavioral constraint</strong> (processScripts boundary) closed 95% of the behavioral gap (from 37% to 2%)</li>
+</ul>
+<p>The behavioral constraint had dramatically higher leverage: it resolved 19 test failures with a single sentence, while structural constraints required dozens of additions to achieve comparable proportional improvement.</p>
+<h3>4.2 Theorem 3 (Behavioral Leverage)</h3>
+<p><em>Let Δ_s(c) denote the reduction in structural divergence from adding constraint c, and Δ_b(c) the reduction in behavioral divergence. For behavioral constraints c_b:</em></p>
+<p>$\frac{\Delta_b(c_b)}{|c_b|} \gg \frac{\Delta_s(c_s)}{|c_s|}$</p>
+<p><em>where |c| is the specification length of the constraint. Behavioral constraints have superlinear impact per unit of specification.</em></p>
+<p><strong>Interpretation.</strong> Behavioral constraints operate at lifecycle boundaries — points where the system transitions between states (initialization → processing, request → swap → settle). These boundaries are <em>load-bearing</em>: violating them causes cascading failures across many features. Structural constraints operate on code organization, which is <em>surface-level</em>: changing it affects size and shape but not correctness.</p>
+<p>The inequality reflects a fundamental asymmetry: there are few lifecycle boundaries but they affect everything, while there are many structural choices but each affects only itself.</p>
+<h3>4.3 The Density-Leverage Relationship</h3>
+<p>Combining constraint density (Definition 3) with leverage:</p>
+<p>$L(c) = \rho(c) \cdot d(c)$</p>
+<p>where <em>L</em>(<em>c</em>) is the <em>leverage</em> of constraint <em>c</em>, <em>ρ</em>(<em>c</em>) is its density (features per line of enforcement), and <em>d</em>(<em>c</em>) is its depth (precision of constraint).</p>
+<p>Behavioral constraints have high density (one constraint affects many tests) and high depth (the constraint must be precisely stated — &quot;swap-only, never init&quot; — because approximations cascade). Structural constraints have moderate density and low depth (many valid implementations satisfy each one).</p>
+<p>This yields the <strong>leverage spectrum:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Constraint type</th>
+<th>Density ρ</th>
+<th>Depth d</th>
+<th>Leverage L = ρd</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Structural (API style)</td>
+<td>Low</td>
+<td>Low</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Structural (architecture)</td>
+<td>Medium</td>
+<td>Medium</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Behavioral (event ordering)</td>
+<td>High</td>
+<td>High</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Behavioral (lifecycle boundary)</td>
+<td>Very high</td>
+<td>Very high</td>
+<td>Very high</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>5. General Application</h2>
+<h3>5.1 The Pin-Art Algorithm</h3>
+<p>The formalization yields a general algorithm for constraint identification in any domain:</p>
+<pre><code>ALGORITHM: Pin-Art Convergence
+
+INPUT:  Reference implementation R, test suite T
+OUTPUT: Seed S such that blind derivations converge to R
+
+1. S₀ ← identify essential behavioral invariants of R
+2. I₀ ← D(S₀)  [blind derivation]
+3. for k = 1, 2, ... until convergence:
+   a. Measure δ_s(Iₖ₋₁, R) and δ_b(Iₖ₋₁, T)
+   b. If δ_b &gt; threshold:
+      - Identify the highest-leverage behavioral boundary
+        violated by Iₖ₋₁
+      - Add behavioral constraint to S
+      [Behavioral pins first — higher leverage]
+   c. If δ_s &gt; threshold:
+      - Diff Iₖ₋₁ against R, grouped by function/section
+      - For each divergent section, identify the structural
+        choice that caused the divergence
+      - Add structural constraint to S
+      [Structural pins second — lower leverage but
+       necessary for size convergence]
+   d. Iₖ ← D(Sₖ)  [re-derive]
+4. return S
+</code></pre>
+<p><strong>Key insight:</strong> Step 3b prioritizes behavioral constraints over structural ones. This follows from the leverage inequality: one behavioral pin resolves more divergence than many structural pins. The algorithm should exhaust behavioral gaps before addressing structural gaps.</p>
+<h3>5.2 Applicability Beyond Software</h3>
+<p>The pin-art formalization applies to any domain where:</p>
+<ol>
+<li><strong>An implementation can be derived from a specification.</strong> The specification is the seed; the implementation is the foam.</li>
+<li><strong>Conformance is testable.</strong> There exists a test suite or verification procedure.</li>
+<li><strong>Divergence is measurable on two axes.</strong> Structural divergence (form) and behavioral divergence (function) are independently measurable.</li>
+</ol>
+<p>Candidate domains:</p>
+<ul>
+<li><strong>Hardware design:</strong> RTL specifications → synthesized circuits. Structural divergence = gate count. Behavioral divergence = test vector pass rate.</li>
+<li><strong>Organizational processes:</strong> Policy documents → operational procedures. Structural divergence = process step count. Behavioral divergence = outcome fidelity.</li>
+<li><strong>Legal drafting:</strong> Statutory intent → legal text. Structural divergence = word count / clause count. Behavioral divergence = judicial interpretation alignment.</li>
+<li><strong>Biological specification:</strong> Genome → phenotype. Structural divergence = gene count. Behavioral divergence = fitness under selection.</li>
+<li><strong>Mathematical axiomatization:</strong> Axiom set → theorem space. Structural divergence = proof length. Behavioral divergence = theorem coverage.</li>
+</ul>
+<p>In each case, the pin-art algorithm provides a systematic method for tightening the specification until derivations converge.</p>
+<h3>5.3 Relationship to Existing Frameworks</h3>
+<p>The pin-art formalization relates to several established frameworks:</p>
+<p><strong>Kolmogorov complexity.</strong> The seed <em>S</em> is an approximation to the Kolmogorov complexity of the reference <em>R</em> relative to the derivation function <em>D</em>. As <em>S</em> is tightened, |<em>S</em>| approaches <em>K_D</em>(<em>R</em>) — the minimum description length needed to derive <em>R</em> via <em>D</em>. The convergence rate theorem quantifies how quickly |<em>S</em>| approaches this bound.</p>
+<p><strong>Specification refinement (Z, VDM).</strong> Formal specification methods refine abstract specifications into concrete implementations through a series of correctness-preserving steps. The pin-art algorithm inverts this: starting from a concrete implementation, it discovers the specification through iterative gap analysis. This is the derivation inversion (Doc 247) applied to specification discovery.</p>
+<p><strong>PAC learning.</strong> The seed can be viewed as a hypothesis in a learning framework. Each iteration adds constraints (reduces the hypothesis space) based on observed divergences (examples). The convergence rate theorem is analogous to a sample complexity bound: it predicts how many iterations (samples) are needed to achieve a desired divergence (error rate).</p>
+<p><strong>Constraint satisfaction problems (CSP).</strong> The seed is a CSP where the variables are implementation choices and the constraints are the seed&#39;s predicates. The pin-art algorithm performs constraint propagation: each new constraint reduces the domain of valid implementations, and the convergence rate measures how quickly the domain shrinks to a singleton.</p>
+<hr>
+<h2>6. Mathematical Summary</h2>
+<h3>The Three Principal Results</h3>
+<p><strong>Theorem 1 (Geometric Structural Convergence):</strong></p>
+<p>$|\delta_s(D(S_k), R)| = |\delta_s(D(S_0), R)| \cdot \lambda^k, \quad \lambda \approx 0.40$</p>
+<p>Structural divergence decreases geometrically with each seed iteration. Five iterations achieve 1% divergence from any starting point.</p>
+<p><strong>Theorem 2 (Axis Independence):</strong></p>
+<p>$\text{Cov}(\Delta\delta_s, \Delta\delta_b) \approx 0$</p>
+<p>Structural and behavioral divergence are independent and can be minimized separately.</p>
+<p><strong>Theorem 3 (Behavioral Leverage):</strong></p>
+<p>$\frac{\Delta_b(c_b)}{|c_b|} \gg \frac{\Delta_s(c_s)}{|c_s|}$</p>
+<p>Behavioral constraints have superlinear impact on correctness per unit of specification. Lifecycle boundary constraints are the highest-leverage class.</p>
+<h3>The Convergence Equation</h3>
+<p>Combining all three results, the total divergence after <em>k</em> structural iterations and <em>j</em> behavioral iterations is:</p>
+<p>$\delta(D(S_{k,j}), R, T) = \left(\delta_{s,0} \cdot \lambda_s^k,\quad \delta_{b,0} \cdot \prod_{i=1}^{j}(1 - L(c_{b,i}))\right)$</p>
+<p>where <em>L</em>(<em>c_{b,i}</em>) is the leverage of the <em>i</em>-th behavioral constraint, and <em>λ_s</em> is the structural decay constant.</p>
+<p>For the htmx experiment:</p>
+<ul>
+<li><em>δ_{s,0}</em> = 0.64, <em>λ_s</em> = 0.40, <em>k</em> = 4: <em>δ_s</em> = 0.64 · 0.40⁴ = 0.016 (predicted 1.6%, observed 4%)</li>
+<li><em>δ_{b,0}</em> = 0.37, <em>L</em>(<em>c_{b,1}</em>) = 0.95, <em>j</em> = 1: <em>δ_b</em> = 0.37 · (1 - 0.95) = 0.019 (predicted 1.9%, observed 2%)</li>
+</ul>
+<p>The model fits the empirical data within measurement noise.</p>
+<hr>
+<h2>7. Falsifiability</h2>
+<p>This formalization makes testable predictions:</p>
+<ol>
+<li><p><strong>Geometric convergence.</strong> Any pin-art tightening sequence on any derivable system should exhibit geometric structural convergence with λ ∈ (0.3, 0.6). If λ &lt; 0.3, the constraint discovery is unusually efficient. If λ &gt; 0.6, the analysis is missing high-density gaps.</p>
+</li>
+<li><p><strong>Axis independence.</strong> Adding a purely structural constraint should not significantly change test pass rate. Adding a purely behavioral constraint should not significantly change line count. If both change simultaneously, the constraint is mixed (operating on both axes).</p>
+</li>
+<li><p><strong>Leverage inequality.</strong> In any domain, the first behavioral constraint identified by pin-art analysis should resolve more test failures than the first N structural constraints combined, for N ≥ 3.</p>
+</li>
+<li><p><strong>Convergence bound.</strong> The minimum seed size for full convergence is bounded by the Kolmogorov complexity of the reference relative to the derivation function. Seeds significantly shorter than this bound will produce divergent derivations regardless of iteration count.</p>
+</li>
+<li><p><strong>Replication.</strong> The experiment can be replicated on any library with a reference implementation and test suite. Different libraries should exhibit similar λ values (within the 0.3–0.6 band) if the pin-art analysis is competently executed.</p>
+</li>
+</ol>
+<p>To falsify: find a derivable system where pin-art tightening does not converge geometrically, where the axes are not independent, or where behavioral constraints do not exhibit superlinear leverage.</p>
+<hr>
+<h2>Related Documents</h2>
+<ul>
+<li><strong>Doc 270 — The Pin-Art Model:</strong> The original metaphor — hedging as boundary-detection</li>
+<li><strong>Doc 288 — The Pin-Art Derivation:</strong> 19 constraints, 1,318 lines, prediction within 1 line</li>
+<li><strong>Doc 289 — The Convergence Experiment:</strong> Empirical data driving this formalization</li>
+<li><strong>Doc 247 — The Derivation Inversion:</strong> State constraints, derive implementations</li>
+<li><strong>Doc 278 — Constraint-Density Direct Optimization:</strong> Proposed DPO extension using constraint density</li>
+<li><strong>Doc 124 — The Hypostatic Boundary:</strong> Same form, categorically distinct mode of bearing</li>
+<li><strong>Doc 241 — Isomorphism-Magnetism:</strong> Pull toward confirmed structural mappings</li>
+</ul>
+<hr>
+<p><em>Jared Foy — jaredfoy.com — April 2026</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

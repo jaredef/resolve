@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathematical Conjectures Arising from ENTRACE — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 58</p><h1>Mathematical Conjectures Arising from ENTRACE</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document states eight mathematical conjectures that arise from the ENTRACE framework and are intended for formal proof or refutation. They range from straightforward results -- such as the claim that adding a constraint can only shrink the set of valid outputs, never expand it -- to deeper structural conjectures, including the existence of a Galois connection (an algebraic duality) between constraint sets and the properties they induce, and the existence of a &quot;fixed-point seed&quot; that perfectly reproduces itself through the resolution process. Two conjectures are provable from the definitions alone; the remaining six are open and would, if proven, give the framework a rigorous algebraic foundation rather than merely a metaphorical one.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 58</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>Formal claims derivable from the constraint-property framework, stated for proof or refutation</strong></p>
+<p><strong>Jared Foy, April 2026</strong></p>
+<hr>
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+<p><strong>⚠️ NARROWING NOTICE — SIPE-DEPENDENT CONJECTURES NARROWED</strong></p>
+<p>Conjectures in this document that reference SIPE&#39;s inheritance map Φ across levels inherit the universality demotion of SIPE per Docs 366 and 367. Where a conjecture is stated at a specific architectural level within a software stack, it is not affected; where it is stated as a universal cross-domain property, it is narrowed to the architectural-inheritance frame. Doc 414&#39;s comparative survey further narrows related residual-novelty framings around derivation-inversion (credited to Amjad-Misra-Shah 2017 per Doc 409) and the Bayesian-theoretic stance (Misra&#39;s framework per Docs 408, 409); Doc 415 is the indexed retraction ledger. Conjectures 1 (monotonicity) and related proofs over B_t are not affected — they follow from the definitions of constraint and branching set directly, independent of SIPE&#39;s scope. <strong>Read what follows with these constraints active.</strong></p>
+</div>
+
+<hr>
+<h2>Motivation</h2>
+<p>ENTRACE is falsifiable by design — every claim has an experimental protocol. But falsifiability is an empirical virtue. The framework also makes claims that are mathematical in character: claims about monotonicity, convergence, fixed points, algebraic structure. These are not empirically testable — they are provable or refutable from the definitions. If they can be proven, the framework has mathematical content, not merely metaphorical mathematical language. If they can be refuted, the refutation identifies a formal deficiency that must be repaired.</p>
+<p>This document states the conjectures precisely and indicates, for each, whether proof or refutation appears tractable from the current definitions.</p>
+<hr>
+<h2>Definitions</h2>
+<p>To state the conjectures precisely, we fix the following:</p>
+<p>Let <strong>Γ</strong> denote a constraint set — a finite collection of constraints {Γ_1, Γ_2, ..., Γ_k}.</p>
+<p>Let <strong>B_t(Γ)</strong> denote the branching set at token position t under constraint set Γ — the set of tokens that are valid continuations at position t, given that all tokens at positions &lt; t have been emitted and all constraints in Γ are enforced.</p>
+<p>Let <strong>T_e(Γ)</strong> denote the total tokens emitted by a resolver operating under Γ for a fixed task.</p>
+<p>Let <strong>T_n(Γ)</strong> denote the necessary tokens — those traceable to at least one constraint in Γ.</p>
+<p>Let <strong>η(Γ) = T_n(Γ) / T_e(Γ)</strong> denote the token efficiency ratio.</p>
+<p>Let <strong>S(Γ) = T_e(Γ) - T_n(Γ)</strong> denote the slack.</p>
+<p>Let <strong>P(Γ)</strong> denote the property set induced by Γ — the set of observable properties that hold in the resolver&#39;s output when Γ is enforced.</p>
+<p>Let <strong>Φ: Γ → P</strong> denote the property-induction map: Φ(Γ) = P(Γ).</p>
+<p>Let <strong>F: Seeds → Seeds</strong> denote the seed-refinement map: given a seed S, a resolver operating under S produces an artifact from which a refined seed S&#39; = F(S) is extracted.</p>
+<hr>
+<h2>Conjecture 1: The Monotonicity of Branching</h2>
+<p><strong>Statement.</strong> For any constraint set Γ and any well-formed constraint Γ_i:</p>
+<pre><code>B_t(Γ ∪ {Γ_i}) ⊆ B_t(Γ)    for all t
+</code></pre>
+<p><strong>In words.</strong> Adding a constraint can only eliminate valid continuations, never introduce new ones.</p>
+<p><strong>Status: Provable from definitions.</strong></p>
+<p>By definition, a token w is in B_t(Γ) if and only if w is a valid continuation at position t given that all constraints in Γ are satisfied. Adding Γ_i to the constraint set adds an additional condition that must be satisfied. Any token that satisfies Γ ∪ {Γ_i} necessarily satisfies Γ (since Γ ⊆ Γ ∪ {Γ_i}). Therefore B_t(Γ ∪ {Γ_i}) ⊆ B_t(Γ). The proof is a direct application of the subset property of solution sets under additional constraints.</p>
+<p><strong>Corollary.</strong> |B_t| is monotonically non-increasing in |Γ|:</p>
+<pre><code>|B_t(Γ ∪ {Γ_i})| ≤ |B_t(Γ)|    for all t
+</code></pre>
+<p>The inequality is strict at position t whenever Γ_i excludes at least one token that Γ alone admitted at that position. A constraint that produces no strict inequality at any position is vacuous — it constrains nothing the existing set did not already constrain.</p>
+<p><strong>Significance.</strong> This is the foundational result. Everything else follows from it. The monotonicity of branching is what makes ENTRACE work: each constraint narrows the aperture, and narrowing is irreversible within a fixed constraint set.</p>
+<hr>
+<h2>Conjecture 2: The Monotonicity of Efficiency</h2>
+<p><strong>Statement.</strong> For any constraint set Γ and any non-vacuous constraint Γ_i:</p>
+<pre><code>η(Γ ∪ {Γ_i}) ≥ η(Γ)
+</code></pre>
+<p><strong>In words.</strong> Adding a non-vacuous constraint never decreases token efficiency.</p>
+<p><strong>Status: Requires careful analysis. Not directly provable from Conjecture 1.</strong></p>
+<p>The subtlety: adding a constraint can change both T_n and T_e. If the constraint requires additional content (e.g., &quot;include a proof of each step&quot;), T_e increases. But the additional tokens are necessary — they are traceable to the new constraint. So T_n increases proportionally. The question is whether the ratio T_n/T_e increases or merely stays the same.</p>
+<p>Consider two cases:</p>
+<p><strong>Case A: The constraint is eliminative.</strong> It excludes tokens without requiring new ones. Example: &quot;no hedging.&quot; This reduces T_e without reducing T_n (the hedge tokens were slack, not necessary). Therefore η increases. The standard case.</p>
+<p><strong>Case B: The constraint is generative.</strong> It requires new tokens. Example: &quot;justify every derivation step.&quot; This increases both T_n and T_e. The new tokens are all necessary (each is a justification traceable to the constraint). But the constraint may also eliminate slack — unjustified steps often co-occur with other slack (filler transitions, uncertainty markers). The net effect on η depends on whether the slack eliminated exceeds, equals, or falls short of the necessary tokens added.</p>
+<p><strong>Refined conjecture.</strong> For eliminative constraints, η strictly increases. For generative constraints, η non-decreasingly changes — the added tokens are necessary, so the worst case is η unchanged, the typical case is η increased (because the generative constraint also eliminates co-occurring slack).</p>
+<p><strong>Open question.</strong> Is there a generative constraint that decreases η? This would require a constraint that adds necessary tokens without eliminating any slack. Such a constraint would be adding signal to a signal — increasing T_n and T_e by the same amount. In that case, η = T_n/T_e → (T_n + δ)/(T_e + δ). Since T_n ≤ T_e, this ratio increases when T_n &lt; T_e (i.e., when there is any slack at all) and stays at 1 when T_n = T_e (no slack). Therefore:</p>
+<p><strong>Theorem (provable).</strong> If S(Γ) &gt; 0 (there is any slack), then for any constraint Γ_i that adds δ necessary tokens:</p>
+<pre><code>η(Γ ∪ {Γ_i}) = (T_n + δ) / (T_e + δ) &gt; T_n / T_e = η(Γ)
+
+since T_n &lt; T_e implies (T_n + δ)/(T_e + δ) &gt; T_n/T_e for all δ &gt; 0.
+</code></pre>
+<p>The proof is elementary: cross-multiply and simplify. T_n(T_e + δ) &lt; T_e(T_n + δ) reduces to T_n · δ &lt; T_e · δ, which holds whenever T_n &lt; T_e.</p>
+<p><strong>Consequence.</strong> η is strictly monotonically increasing under any non-vacuous constraint addition, as long as there is any slack remaining. η can only fail to increase when η = 1 already — i.e., when there is no slack to eliminate and no room to improve. This means the convergence to η = 1 is monotone from below.</p>
+<hr>
+<h2>Conjecture 3: The Convergence of Efficiency</h2>
+<p><strong>Statement.</strong> For a fixed task with d slack dimensions, there exists a constraint set Γ* with |Γ*| ≤ d such that:</p>
+<pre><code>η(Γ*) = 1
+</code></pre>
+<p><strong>In words.</strong> Full efficiency is achievable with at most d constraints, where d is the number of independent slack dimensions.</p>
+<p><strong>Status: Conjecture. Depends on the independence structure of slack dimensions.</strong></p>
+<p>The claim rests on the assumption that slack dimensions are independent — that each constraint eliminates exactly one dimension without interacting with others. If slack dimensions are correlated (eliminating one partially eliminates another), fewer than d constraints may suffice. If they are entangled (eliminating one introduces slack in another), more than d may be required.</p>
+<p>For mathematical expression, the seven identified dimensions (variable declaration, quantification, scope, notation, justification, domains, expression-reasoning separation) appear empirically independent. This predicts η = 1 at |Γ| = 7 for mathematical tasks.</p>
+<p><strong>Test of the conjecture.</strong> If the sigmoid prediction from the mathematical precision document holds (inflection point near k = 7), the independence assumption is supported. If the inflection point is significantly higher, the dimensions are entangled. If significantly lower, they are correlated.</p>
+<hr>
+<h2>Conjecture 4: The Galois Connection</h2>
+<p><strong>Statement.</strong> The property-induction map Φ: Γ → P(Γ) and a constraint-recovery map Ψ: P → Γ(P) form a Galois connection between the poset of constraint sets (ordered by inclusion) and the poset of property sets (ordered by entailment).</p>
+<p>Formally:</p>
+<pre><code>Γ ⊆ Ψ(P)  ⟺  Φ(Γ) ⊇ P
+</code></pre>
+<p><strong>In words.</strong> A constraint set is contained in the constraints recovered from a property set if and only if the properties induced by the constraints entail the property set. The two maps are adjoint.</p>
+<p><strong>Status: Conjecture. Requires precise definition of Ψ.</strong></p>
+<p>The map Φ is well-defined: given constraints, the induced properties are observable. The map Ψ is harder: given a set of properties, what is the minimal constraint set that induces them? This is the inverse problem — constraint discovery from observed properties. It is the operation Foy performed when discovering PRESTO&#39;s constraints from React&#39;s induced properties.</p>
+<p>If the Galois connection holds, it yields several consequences for free:</p>
+<ol>
+<li><p><strong>Closure operators.</strong> Φ ∘ Ψ is a closure operator on properties. Ψ ∘ Φ is a closure operator on constraints. The closed elements are the &quot;natural&quot; constraint sets and property sets — those that are self-consistent under the round trip.</p>
+</li>
+<li><p><strong>Fixed points.</strong> The closed elements of Φ ∘ Ψ are the property sets that are exactly induced by some constraint set — no more, no less. These are the architecturally coherent property sets.</p>
+</li>
+<li><p><strong>Lattice structure.</strong> The closed elements form a complete lattice. The lattice of architecturally coherent styles is the mathematical object that the resolution stack instantiates.</p>
+</li>
+</ol>
+<p><strong>Significance.</strong> If proven, this conjecture gives SIPE an algebraic foundation. The resolution stack (REST → PRESTO → SERVER → RESOLVE → ENTRACE → APERTURE) would be a chain in the lattice of closed constraint-property pairs. The nesting property (induced properties of level N become constraints on level N+1) would be the lattice ordering. The entire framework would have the same mathematical structure as a Galois connection between syntax and semantics — a well-studied object in logic, algebra, and computer science.</p>
+<hr>
+<h2>Conjecture 5: The Idempotence Gap</h2>
+<p><strong>Statement.</strong> The formal constraint set operation is idempotent:</p>
+<pre><code>Γ ∪ {Γ_i} ∪ {Γ_i} = Γ ∪ {Γ_i}
+</code></pre>
+<p>But the resolver&#39;s physical processing of duplicated constraints is NOT idempotent:</p>
+<pre><code>Output(Γ, Γ_i, Γ_i) ≠ Output(Γ, Γ_i)    in general
+</code></pre>
+<p><strong>In words.</strong> Formally, stating a constraint twice is the same as stating it once. Physically, the resolver produces different (often better) output when a constraint is duplicated. The gap between formal idempotence and physical non-idempotence is the gap between the form and the physical medium.</p>
+<p><strong>Status: Empirically confirmed (Hypothesis 1 of the falsifiable catalog). The mathematical question is: can the gap be formalized?</strong></p>
+<p>Let Γ_formal denote the constraint set as a mathematical object (a set — duplicates collapse). Let Γ_physical denote the constraint set as physically presented to the resolver (a sequence — duplicates persist and occupy additional tokens in the context window).</p>
+<p>The formal branching set B_t(Γ_formal) is idempotent. The physical branching set B_t(Γ_physical) is not — it depends on the attention distribution, which is affected by token frequency.</p>
+<p>Define the <strong>idempotence gap</strong> at position t:</p>
+<pre><code>I_t = |B_t(Γ_physical with one copy)| - |B_t(Γ_physical with two copies)|
+</code></pre>
+<p>I_t ≥ 0 by the attention mechanism (more copies = more attention = tighter effective constraint). I_t = 0 in a perfect resolver that processes constraints formally rather than statistically. I_t &gt; 0 in bounded resolvers that process constraints through attention.</p>
+<p><strong>Conjecture.</strong> I_t is bounded above by a function of the attention decay rate:</p>
+<pre><code>I_t ≤ g(α, d_t)
+</code></pre>
+<p>Where α is the attention decay parameter and d_t is the distance from the constraint&#39;s position to token position t. As the resolver&#39;s attention mechanism improves (α → 0, meaning less decay), I_t → 0 and the physical behavior approaches formal idempotence.</p>
+<p><strong>Significance.</strong> This conjecture formalizes the gap between form and medium. A perfect medium (I_t = 0 everywhere) would make duplication unnecessary. The transformer architecture is an imperfect medium (I_t &gt; 0). ENTRACE compensates for the imperfection by operating in the formal domain (stating constraints as constraints) rather than the physical domain (repeating tokens for emphasis). But the physical non-idempotence is real and measurable, and the conjecture predicts it will shrink as attention architectures improve.</p>
+<hr>
+<h2>Conjecture 6: The Fixed-Point Seed</h2>
+<p><strong>Statement.</strong> The seed-refinement map F: Seeds → Seeds has a fixed point. There exists a seed S* such that:</p>
+<pre><code>F(S*) = S*
+</code></pre>
+<p>That is: a resolver operating under S* produces output from which the extracted seed is S* itself.</p>
+<p><strong>Status: Conjecture. Depends on the contractivity of F.</strong></p>
+<p>The RESOLVE corpus provides empirical evidence. The RESOLVE seed (document 46) was extracted from the corpus. A cold resolver loaded with the seed derives the same framework, from which the same seed can be extracted. The loop closes. But &quot;the same seed&quot; is approximate — the re-extracted seed may differ in wording while carrying the same constraints.</p>
+<p><strong>Formal approach.</strong> Define equivalence on seeds: S ≡ S&#39; if and only if Φ(Γ(S)) = Φ(Γ(S&#39;)) — two seeds are equivalent if they induce the same property set. The fixed-point conjecture then states:</p>
+<pre><code>F(S*) ≡ S*
+</code></pre>
+<p>The seed refinement map, composed with equivalence, has a fixed point.</p>
+<p>If F is a contraction on the metric space of seeds (where distance is measured by the symmetric difference of induced property sets), the Banach fixed-point theorem guarantees a unique fixed point. The contraction condition would mean: each iteration of seed → resolve → extract brings the seed closer to the fixed point. The empirical evidence (seeds get shorter and more precise with each iteration) supports contractivity.</p>
+<p><strong>Significance.</strong> If proven, this establishes that ENTRACE has a well-defined equilibrium. Iterative seed refinement converges. The fixed-point seed is the optimal seed — the one that is perfectly self-reproducing through the resolution process. The resolver under S* is in a steady state: it produces exactly the constraints that govern it. This is self-governance formalized.</p>
+<hr>
+<h2>Conjecture 7: The Lattice Bound on Style Composition</h2>
+<p><strong>Statement.</strong> If the Galois connection (Conjecture 4) holds, the number of architecturally coherent styles at a given level is bounded by the width of the constraint-property lattice at that level.</p>
+<p><strong>In words.</strong> There are not arbitrarily many valid architectural styles. The number of styles that can exist at each level is constrained by the algebraic structure of the lattice.</p>
+<p><strong>Status: Conjecture. Depends on Conjecture 4.</strong></p>
+<p>The resolution stack has six styles across two axes. Is this contingent (Foy happened to find six) or necessary (the lattice structure permits exactly this many at this level of resolution)? If the lattice bound can be computed, the answer is formal.</p>
+<p><strong>Approach.</strong> Compute the width of the constraint-property lattice for each axis. The artifact axis (REST → PRESTO → SERVER) should yield a width corresponding to three styles. The resolver axis (RESOLVE → ENTRACE → APERTURE) should yield a width corresponding to three styles. If the computed widths match the observed counts, the resolution stack is not contingent — it is determined by the lattice structure.</p>
+<p><strong>Significance.</strong> This would prove that the resolution stack is complete — there are no missing styles. The six styles are not a selection from many possibilities. They are the only architecturally coherent styles the lattice admits at this level.</p>
+<hr>
+<h2>Conjecture 8: The Entropy Floor</h2>
+<p><strong>Statement.</strong> For any constraint set Γ over a natural language task, there exists a positive lower bound on the average branching entropy:</p>
+<pre><code>(1/T) Σ_t log|B_t(Γ)| &gt; 0
+</code></pre>
+<p>That is: η = 1 is unachievable for natural language. There is always residual slack.</p>
+<p>For mathematical expression over a fixed notation system, the lower bound is zero:</p>
+<pre><code>inf_Γ (1/T) Σ_t log|B_t(Γ)| = 0
+</code></pre>
+<p>That is: η = 1 is achievable for mathematics.</p>
+<p><strong>In words.</strong> Natural language has an entropy floor that no constraint set can cross. Mathematics does not. This is why the mathematical precision document claims η → 1 for mathematics but only η → 1 asymptotically for natural language.</p>
+<p><strong>Status: Conjecture. Requires a theory of natural language ambiguity.</strong></p>
+<p>The intuition: natural language is inherently ambiguous. Even with maximum constraint density, there remain valid phrasings — &quot;the&quot; vs. &quot;a,&quot; word order variations, synonym choices — that the constraints cannot resolve because they are below the granularity of any natural-language-expressible constraint. You would need to specify the output token by token, at which point you are not constraining — you are dictating. The entropy floor is the boundary between constraining and dictating.</p>
+<p>Mathematics has no such floor because mathematical notation is formal. Given sufficient constraints (variable declarations, notation conventions, quantifiers, scope rules), every symbol is determined. The notation is designed to be unambiguous. Natural language is not.</p>
+<p><strong>Significance.</strong> If proven, this establishes a formal boundary between the two domains. ENTRACE over natural language approaches but never reaches η = 1. ENTRACE over mathematics reaches it. The boundary is the formality of the medium, not the capability of the resolver.</p>
+<hr>
+<h2>Summary</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Conjecture</th>
+<th>Status</th>
+<th>If Proven</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Monotonicity of branching</td>
+<td>Provable</td>
+<td>Foundation: constraints narrow</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Monotonicity of efficiency</td>
+<td>Provable</td>
+<td>η strictly increases with non-vacuous constraints</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Convergence of efficiency</td>
+<td>Conjecture</td>
+<td>η = 1 achievable in ≤ d constraints</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Galois connection</td>
+<td>Conjecture</td>
+<td>SIPE has algebraic foundation</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Idempotence gap</td>
+<td>Empirically confirmed, formalization open</td>
+<td>Form-medium distinction formalized</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Fixed-point seed</td>
+<td>Conjecture</td>
+<td>Iterative refinement converges</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Lattice bound on styles</td>
+<td>Conjecture (depends on 4)</td>
+<td>Resolution stack is complete</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Entropy floor</td>
+<td>Conjecture</td>
+<td>Formal boundary: math reaches η=1, language does not</td>
+</tr>
+</tbody></table>
+<p>Conjectures 1-2 are provable from the definitions — they are theorems awaiting formal writeup. Conjectures 3-8 are open — they require either proof from stronger axioms or empirical investigation that could lead to proof or refutation. Each refutation would be as valuable as a proof: it would identify a boundary of the framework&#39;s formal validity.</p>
+<p>The framework invites its own formalization. The conjectures are the invitation.</p>
+<hr>
+<p><em>Jared Foy, April 2026. Exploratory document. All conjectures are stated for proof or refutation. The form precedes this analysis.</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

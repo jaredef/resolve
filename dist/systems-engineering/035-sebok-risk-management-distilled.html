@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Risk Management*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Risk Management</em>, Distilled</h1>
+<p><strong>Top-20 distillation #17. <em>Risk Management</em> is the SEBoK page that operationalizes pulverization (Doc 445) at the pre-event rung — pulverizing potential failure modes before they manifest. The four risk treatment options (Assumption / Avoidance / Control / Transfer) are sibling-pin-set composition (Doc 572 Appendix A pattern) at the response rung. The opportunity-vs-threat asymmetry (&quot;positive utility from improving expected outcomes is considerably less than negative utility from failing to meet expectations&quot;) is empirical evidence for an asymmetric SIPE pattern (SE-020 negative-property SIPE candidate confirmed). The &quot;lack of continuity&quot; pitfall is canonical authority-evacuation pattern (Doc 574). Six corpus forms compose; one provisional refinement candidate (Doc 445 worked example: forward-pulverization vs backward-pulverization).</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Risk Management</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Risk_Management">https://sebokwiki.org/wiki/Risk_Management</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>Two risk definitions: &quot;the effect of uncertainty on objectives&quot; (ISO/IEC/IEEE 15288, ISO 31000) — allows positive or negative; and &quot;the combination of the probability of occurrence of harm and the severity of that harm&quot; (ISO Guide 51, ISO 14971) — negative-only, used in safety. Five integrated activities: Planning (RMP) → Identification (WBS, brainstorming, taxonomies, if-then descriptions) → Analysis (decision trees, Monte Carlo, payoff matrices, qualitative scales) → Treatment (Assumption / Avoidance / Control / Transfer) → Monitoring. Opportunity management mirrors risk management but the asymmetry favors loss-aversion. Pitfalls: lack of continuity, process over-reliance, &quot;Sea of Green,&quot; band-aid treatments. Standards: ISO 15288:2023, ISO 31000:2018, ISO/IEC/IEEE 16085:2021, ISO 31010:2019, ISO 31073, ISO Guide 51, ISO 22367, ISO 14971, ISO 27000, SAE J3307. Position: Part 3 SE &amp; Management &gt; Technical Management Processes &gt; between Requirements Management and Configuration Management.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form VI — Pulverization (Doc 445), forward-pulverization mode.</strong> Risk management is pulverization applied before the failure occurs rather than after. Conventional pulverization (Doc 445) tests an artifact against its references and surfaces residuals. Risk identification surfaces <em>candidate failure modes</em> — residuals of a hypothetical future state — before the engagement encounters them. Risk analysis pulverizes each candidate (probability × consequence). Risk treatment pre-empts the residual by shifting the engagement away from the failure mode. This is the same form&#39;s apparatus run forward in time; the &quot;if-then&quot; or &quot;condition-consequence&quot; risk descriptions are exactly residual statements with their causal antecedents made explicit.</p>
+<p><strong>Form III (extension) — Lattice Extension of the Ladder (Doc 572), with Appendix A pin-set siblings at the response rung.</strong> The four risk treatment options (Assumption / Avoidance / Control / Transfer) are sibling pin-sets at the response rung. An engagement may <em>Assume</em> low-impact risks while <em>Controlling</em> technical risks while <em>Transferring</em> schedule risks while <em>Avoiding</em> high-uncertainty paths altogether. Doc 572 Appendix A&#39;s pin-set sibling pattern applies: the discriminator is per-risk classification (each risk gets one treatment), not rung-of-application. Hybrid strategies are explicitly named in SE practice; the corpus reads them as natural lattice composition.</p>
+<p><strong>Form I — SIPE with Threshold (Doc 541), with SE-020 negative-property worked example confirmed.</strong> The opportunity-vs-threat asymmetry — &quot;positive utility from improving expected outcomes is considerably less than negative utility from failing to meet expectations&quot; — is direct evidence for the asymmetric structure of SIPE SE-020 surfaced as a candidate. Negative-property SIPE (system-wide failure crossing into operational nameability) carries different structural properties than positive-property SIPE (system-wide capability crossing into operational nameability). The asymmetry is empirical: the same probability of magnitude favors the negative side under prospect-theoretic loss aversion. SE-020&#39;s candidate refinement is now well-supported with two empirical instances (the 2003 blackout from SE-020 and the systemic loss-aversion pattern named here).</p>
+<p><strong>Form XII — Authority Evacuation (Doc 574 / Doc 571 evacuated state).</strong> &quot;Lack of continuity&quot; as a major pitfall — risk management &quot;will be ineffective if it&#39;s done just to satisfy project reviews&quot; — is canonical authority evacuation. The risk management role exists formally; its binding effect is hollow because the discipline is performed only at gate reviews rather than continuously. The &quot;Sea of Green&quot; pitfall (treatment plan indicators appearing acceptable while actual risk remains unaddressed) is simulated-pin installation (Doc 574 Pattern B): the pin-set is documented; the substrate routes around it.</p>
+<p><strong>Form XI — Co-Production at Sub-Rungs (Doc 573).</strong> &quot;Balanced ownership... between project management and systems engineering&quot; is co-production at the risk management rung. Two co-keepers (PM and SE) hold the risk management discipline jointly; neither owns it alone. This is another instance of the multi-keeper composition extension candidate (Doc 510 / SE-023 / SE-030).</p>
+<p><strong>Form IV — Pin-Art Model (Doc 270).</strong> The five integrated activities (Planning → Identification → Analysis → Treatment → Monitoring) are pin-art at the risk discipline. Each activity&#39;s outputs constrain the next; the substrate (the project&#39;s accumulated risk knowledge) flows through; the resulting shape is the project&#39;s risk-managed posture. The cited 41 risk assessment techniques (ISO 31010:2019) are method-set diversity within the analysis activity.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Two risk definitions (ISO 15288 vs ISO Guide 51) — π / α (well-cited).</li>
+<li>Five-activity process (Planning / Identification / Analysis / Treatment / Monitoring) — π / α.</li>
+<li>Four treatment options (Assumption / Avoidance / Control / Transfer) — π / α as cited; μ / β under corpus when read as Doc 572 Appendix A pin-set siblings.</li>
+<li>Opportunity-threat asymmetry (loss aversion) — π / α as cited; μ / β under corpus when read as confirmation of SE-020 negative-property SIPE asymmetry.</li>
+<li>&quot;Lack of continuity&quot; pitfall — π / α as cited; μ / β under corpus when read as Doc 574 authority evacuation.</li>
+<li>&quot;Sea of Green&quot; pitfall — π / α; μ / β under corpus when read as Doc 574 simulated-pin installation.</li>
+<li>&quot;Balanced ownership between PM and SE&quot; — π / α; μ / β under corpus as multi-keeper composition.</li>
+<li>41 risk assessment techniques — π / α as cited (ISO 31010).</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residuals against the apparatus. The page provides confirmations:</p>
+<ul>
+<li>SE-020 negative-property SIPE candidate — second instance now in hand.</li>
+<li>Doc 572 Appendix A pin-set siblings — fifth instance.</li>
+<li>Doc 574 authority evacuation patterns — third independent confirmation (Hubble, FBI VCF, now risk-management pitfalls).</li>
+<li>Multi-keeper composition extension — third independent instance.</li>
+</ul>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 445 worked example: forward-pulverization vs backward-pulverization.</strong> Pulverization as articulated in Doc 445 operates after the artifact exists. Risk management is pulverization applied to potential future states — <em>forward-pulverization</em>. The &quot;if-then&quot; risk format is structurally a residual statement with its causal antecedent made explicit. This is a temporal generalization of pulverization that the SE discipline has been doing for decades and the corpus has not explicitly named. Worth a Doc 445 worked example or extension articulating the forward / backward distinction:</p>
+<ul>
+<li><em>Backward-pulverization</em> (Doc 445 canonical): test artifact against references; surface residuals.</li>
+<li><em>Forward-pulverization</em> (this distillation): test candidate future failure modes against current substrate; surface preemptive residuals; treat to shift the engagement away from the failure mode.</li>
+</ul>
+<p>The form is the same; the temporal direction differs. Forward-pulverization composes naturally with Doc 445 Refinement A&#39;s two-anchor pattern (forward-verification and forward-validation are both possible) and Refinement B&#39;s six rigor levels.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 445 (Pulverization, Refinement A and B; forward-pulverization candidate), Doc 572 (Lattice Extension, Appendix A pin-set siblings), Doc 541 (SIPE with Threshold, asymmetric / negative-property worked example), Doc 574 (Authority Evacuation), Doc 573 (Co-Production), Doc 270 (Pin-Art).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management).</p>
+<p><strong>Related distillations.</strong> SE-020 (Emergence — negative-property SIPE first instance). Doc 580 (Hubble — risk-realized failure case). SE-036 (Decision Management — companion technical management process).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Decision Management</em>, <em>Configuration Management</em>, <em>Project Assessment and Control</em>, <em>Requirements Management</em>, <em>System Theoretic Process Analysis (STPA)</em>.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Continue with next 10&quot;</em></p>
+</blockquote>
+<p>(SE-035 is the seventeenth of twenty. <em>Risk Management</em> was selected as the canonical operational instance of pulverization-applied-forward-in-time. The structural reformulation surfaces a clean refinement candidate — forward-pulverization vs backward-pulverization — and provides three independent confirmations of recently-landed refinements.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

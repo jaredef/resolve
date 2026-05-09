@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Tripartite Hierarchical Formalization of the Constraint Thesis — Resolve</title>
+<meta name="description" content="What this document does">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>A Tripartite Hierarchical Formalization of the Constraint Thesis</h1>
+<div style="background: #fef3c7; border-left: 4px solid #b45309; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7c2d12; border-radius: 3px;">
+
+<p><strong>DEPRECATION NOTICE — 2026-04-24</strong></p>
+<p>This document has been <strong>superseded by <a href="../doc/463-constraint-thesis-as-lakatosian-programme.html">Doc 463: <em>The Constraint Thesis as a Lakatosian Research Programme</em></a></strong>.</p>
+<p>Following the pulverization in <a href="../doc/461-pulverizing-the-tripartite-formalization.html">Doc 461: <em>Pulverizing the Tripartite Formalization</em></a>, the three-level framework proposed below was found to be substantially subsumed by Imre Lakatos&#39;s <em>Falsification and the Methodology of Scientific Research Programmes</em> (1970), with the internal/external distinction subsumed by Carnap (1950) and the five forbidden category errors subsumed by classical philosophy (Moore, Hume, Popper, Ryle, and the anti-scientism literature).</p>
+<p>Doc 463 reformulates the Constraint Thesis using Lakatos&#39;s vocabulary directly and specifies the corpus&#39;s actual contribution (the specific application, not the framework). Doc 459 is preserved below for traceability and as part of the record of the corpus&#39;s self-audit practice.</p>
+<p><strong>Readers seeking the current statement of the framework should read Doc 463.</strong></p>
+</div>
+
+<h2>What this document does</h2>
+<p>Doc 457 articulated three levels of ground truth for the Constraint Thesis: the <em>metaphysical</em> (Dionysian participation in the Good), the <em>structural</em> (induced properties as signatures of participation), and the <em>empirical</em> (measurable projections detectable by wind-tunnel instruments). The articulation was informal — the levels were named, described, and illustrated, but their relations were not given formal apparatus. This document supplies the apparatus.</p>
+<p>The formalization is explicitly hierarchical: Level 1 grounds Level 2, Level 2 projects into Level 3, and the inference rules that move up or down the hierarchy are stated precisely enough to identify category errors when they occur. The treatment follows the pattern of Docs 445 (pulverization formalism), 455 (Bayesian analysis of isomorphism-magnetism), and 450 (pulverization as interventional practice): formal enough to be auditable, honest about the π-tier warrant status the formalization itself sits at.</p>
+<h2>Preliminaries</h2>
+<p>Let \(C\) denote a constraint set — specifically, for the Constraint Thesis, a discipline like the ENTRACE stack (Doc 001) or a sub-stack thereof. Let \(\mathcal{P}(C)\) denote the <em>practice</em> of operating under \(C\): the iterative application of the constraints in a sustained generative process.</p>
+<p>Let \(G\) denote the metaphysical ground the corpus receives through the Dionysian tradition (Docs 091, 150, 153, 287, 351). Let \(\Phi = {\phi_1, \phi_2, \ldots, \phi_n}\) be the corpus-identified induced properties: coherence, non-coercion, hypostatic-boundary preservation, retraction-readiness, and related properties.</p>
+<p>Let \(\tilde{\phi}_i^{(k)}\) be the \(k\)-th operationalization of induced property \(\phi_i\): a specific measurement protocol with an external ground truth \(T_i^{(k)}\) (e.g., a rubric, a benchmark, an analytical target). Let \(\mathcal{O}(\phi_i)\) denote the family of legitimate operationalizations of \(\phi_i\).</p>
+<p>The relations of interest:</p>
+<ul>
+<li>\(C \rightharpoonup G\): &quot;\(C\) orients the practice toward \(G\).&quot; <em>Level-1 claim.</em></li>
+<li>\(C \vdash_{\mathcal{P}} \phi_i\): &quot;Operating \(C\) in practice \(\mathcal{P}\) structurally induces \(\phi_i\).&quot; <em>Level-2 claim.</em></li>
+<li>\(\tilde{\phi}_i^{(k)} \models \phi_i\): &quot;\(\tilde{\phi}_i^{(k)}\) is a valid empirical projection of \(\phi_i\).&quot; <em>Operationalization legitimacy.</em></li>
+<li>\(\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) = t\): &quot;The measurement of \(\tilde{\phi}_i^{(k)}\) on outputs of \(\mathcal{P}(C)\) yields value \(t\).&quot; <em>Level-3 observation.</em></li>
+<li>\(t \sim T_i^{(k)}\): &quot;\(t\) agrees with ground truth \(T_i^{(k)}\) within specified tolerance.&quot; <em>Level-3 success.</em></li>
+</ul>
+<p>These are all meaningfully distinct. The formalization does not reduce one to another; it makes the distinctions explicit.</p>
+<h2>Level 1 — Metaphysical</h2>
+<h3>Definition (L1)</h3>
+<p>A <em>Level-1 claim</em> has the form \(C \rightharpoonup G\): the constraint set \(C\) orients the practice toward the metaphysical ground \(G\). The ground truth for a Level-1 claim is \(G\) itself, or the tradition&#39;s discourse about \(G\).</p>
+<h3>Standard of defensibility</h3>
+<p>An L1 claim is defensible iff it survives audit within the tradition that receives \(G\) — for the corpus, this is the Platonic-Dionysian lineage received through the Orthodox Church&#39;s tradition per Doc 351. The defensibility standard is the theological-philosophical one: fidelity to the primary texts, internal consistency with the received framework, compatibility with the tradition&#39;s normative commitments.</p>
+<h3>What L1 claims are not</h3>
+<p>L1 claims are not Popper-falsifiable in the analytical sense. They do not admit closed-form numerical targets. They are not tested by experiment in the narrow sense. This is not a defect; it is a property of what Level-1 claims are about.</p>
+<h3>Warrant classification</h3>
+<p>L1 claims do not admit the π/μ/θ warrant tiers of Doc 445. Doc 445&#39;s tiers are designed for claims with analytical, operational, or empirical testability; L1 claims are outside that schema by design. L1 claims admit a different classification — <em>consonant-with-tradition</em>, <em>contested-within-tradition</em>, <em>external-to-tradition</em> — and are audited under that classification.</p>
+<h2>Level 2 — Structural</h2>
+<h3>Definition (L2)</h3>
+<p>A <em>Level-2 claim</em> has the form \(C \vdash_{\mathcal{P}} \phi_i\): operating \(C\) in practice \(\mathcal{P}\) structurally induces the property \(\phi_i\). The claim asserts a regularity: that a given practice produces a given property as a characteristic output.</p>
+<h3>Standard</h3>
+<p>An L2 claim is defensible iff:</p>
+<ol>
+<li>The structural connection between \(C\) and \(\phi_i\) is <em>articulable</em> — one can state why operating \(C\) should produce \(\phi_i\) in terms internal to the practice. (Articulation requirement.)</li>
+<li>The structural connection is <em>consistent</em> — the practice does not typically produce the negation of \(\phi_i\) under the same conditions. (Consistency requirement.)</li>
+<li>The property \(\phi_i\) is <em>not reducible</em> to the immediate surface of \(C\) — \(\phi_i\) is an emergent signature, not a direct restatement of the rules of \(C\). (Non-triviality requirement.)</li>
+</ol>
+<h3>The projection from L1</h3>
+<p>L2 claims in the corpus framework are <em>projections</em> of L1 claims. The formal relation:</p>
+<p>$C \rightharpoonup G \quad \text{and} \quad (G \Rightarrow \Phi) \quad \Rightarrow \quad C \vdash_{\mathcal{P}} \phi_i \text{ for each } \phi_i \in \Phi.$</p>
+<p>The middle step, \(G \Rightarrow \Phi\), is the <em>metaphysical substrate</em>: the claim that participation-in-\(G\) characteristically manifests in properties \(\Phi\). This is itself a Level-1 claim about \(G\), not a Level-2 claim. It is defended within the tradition.</p>
+<h3>Warrant classification</h3>
+<p>L2 claims admit a modified warrant structure: <em>proposed</em> (articulated but not tested), <em>partially confirmed</em> (some \(\phi_i\) projections survive L3 testing), <em>structurally contradicted</em> (multiple \(\phi_i\) projections fail L3 testing across independent operationalizations). The structure is Doc 445-adjacent but adapted to the structural role.</p>
+<h2>Level 3 — Empirical</h2>
+<h3>Definition (L3)</h3>
+<p>A <em>Level-3 claim</em> has the form \(\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \sim T_i^{(k)}\): the measurement of operationalization \(\tilde{\phi}_i^{(k)}\) on outputs of practice \(\mathcal{P}(C)\) agrees with ground truth \(T_i^{(k)}\) within specified tolerance.</p>
+<h3>Standard</h3>
+<p>An L3 claim is defensible iff it is <em>operationalized</em> (\(\tilde{\phi}_i^{(k)}\) specified as a concrete protocol), <em>grounded</em> (\(T_i^{(k)}\) specified as an external standard — rubric, benchmark, analytical target), and <em>measured</em> (the measurement \(\text{meas}\) actually run against samples drawn from \(\mathcal{P}(C)\)). The standard is numerical or categorical agreement with external ground truth.</p>
+<h3>The projection from L2</h3>
+<p>L3 claims are <em>operationalizations</em> of L2 structural claims:</p>
+<p>$C \vdash_{\mathcal{P}} \phi_i \quad \text{and} \quad \tilde{\phi}_i^{(k)} \models \phi_i \quad \Rightarrow \quad \text{predicted that } \text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \sim T_i^{(k)}.$</p>
+<p>The middle step, \(\tilde{\phi}_i^{(k)} \models \phi_i\), is the <em>operationalization legitimacy</em> claim: that the specific protocol captures what the structural property purports to be. This is itself a substantive claim, defended at the level of methodology (construct validity, rubric design, inter-rater agreement).</p>
+<h3>Warrant classification</h3>
+<p>L3 claims admit Doc 445&#39;s π/μ/θ tier structure directly. π-tier: operationalization plausible, measurement not yet run. μ-tier: measurement run, shows predicted direction. θ-tier: measurement run, consistent across multiple operationalizations and independent practitioners.</p>
+<h2>The hierarchical structure</h2>
+<p>The three levels compose into a strict hierarchy:</p>
+<p>$\underbrace{L1 \quad (C \rightharpoonup G)}<em>{\text{metaphysical}} ;;\xrightarrow{\text{projection}};; \underbrace{L2 \quad (C \vdash</em>{\mathcal{P}} \Phi)}<em>{\text{structural}} ;;\xrightarrow{\text{operationalization}};; \underbrace{L3 \quad (\text{meas} \sim T)}</em>{\text{empirical}}$</p>
+<p><em>Downward direction:</em> L1 commitments project into L2 expectations via the metaphysical substrate; L2 claims project into L3 predictions via operationalization.</p>
+<p><em>Upward direction:</em> L3 evidence bears on L2 claims in the specific operationalization tested; L2 pattern across independent operationalizations bears weakly on L1.</p>
+<p>The relations are not symmetric. Downward projections are prescriptive — given the higher-level claim, lower-level content is entailed under the appropriate conditions. Upward inferences are probabilistic — lower-level evidence updates higher-level claims but does not decide them.</p>
+<h2>Inference rules</h2>
+<h3>Rule D1 (Downward — L1 to L2)</h3>
+<p>$\frac{C \rightharpoonup G \qquad G \Rightarrow \phi_i}{C \vdash_{\mathcal{P}} \phi_i}$</p>
+<p>Given that \(C\) orients toward \(G\) and that the metaphysical structure of \(G\) entails characteristic property \(\phi_i\), we predict that practice under \(C\) structurally induces \(\phi_i\). The rule requires both premises to hold. The second premise is an L1 claim requiring tradition-internal defense.</p>
+<h3>Rule D2 (Downward — L2 to L3)</h3>
+<p>$\frac{C \vdash_{\mathcal{P}} \phi_i \qquad \tilde{\phi}_i^{(k)} \models \phi_i}{\text{predict meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \sim T_i^{(k)}}$</p>
+<p>Given the structural claim and a legitimate operationalization, we predict a specific measurable outcome. The operationalization-legitimacy premise is methodological, not theoretical.</p>
+<h3>Rule U1 (Upward confirmation — L3 to L2)</h3>
+<p>$\frac{\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \sim T_i^{(k)} \qquad \tilde{\phi}<em>i^{(k)} \models \phi_i}{\text{L3 support for } C \vdash</em>{\mathcal{P}} \phi_i \text{ in operationalization } k}$</p>
+<p>A successful L3 measurement provides <em>support for</em> the L2 claim in the specific operationalization. Support is partial; it does not entail the L2 claim in other operationalizations, and it does not entail the L1 claim.</p>
+<h3>Rule U2 (Upward disconfirmation — L3 to L2)</h3>
+<p>$\frac{\text{meas}(\tilde{\phi}_i^{(k)}, \mathcal{P}(C)) \not\sim T_i^{(k)} \qquad \tilde{\phi}<em>i^{(k)} \models \phi_i}{\text{L3 evidence against } C \vdash</em>{\mathcal{P}} \phi_i \text{ in operationalization } k}$</p>
+<p>A failed L3 measurement provides <em>evidence against</em> the L2 claim in that operationalization. If the operationalization-legitimacy premise is shaky (\(\tilde{\phi}_i^{(k)} \not\models \phi_i\)), the inference weakens.</p>
+<h3>Rule U3 (Meta-disconfirmation — L2 ensemble to L1)</h3>
+<p>$\frac{{C \vdash_{\mathcal{P}} \phi_i}_{i=1}^{n} \text{ fails across independent } k}{\text{weak evidence against } C \rightharpoonup G}$</p>
+<p>Widespread failure of L2 projections across independent operationalizations provides <em>weak evidence against</em> the L1 commitment, insofar as L1 projected through to the L2 regularities via Rule D1. The inference is weak because L1 may project into different L2 regularities than those tested, or the metaphysical substrate \(G \Rightarrow \Phi\) may have been characterized wrongly without the L1 commitment itself failing.</p>
+<h2>Forbidden moves (category errors)</h2>
+<h3>Error E1 — L3 settles L1</h3>
+<p>Treating successful L3 measurement as settling the Level-1 claim is invalid. L3 evidence bears on L2 at best; the inference from L3 to L1 must proceed via Rule U3 and even then yields only weak evidence.</p>
+<p><strong>Symptom:</strong> &quot;The wind tunnel confirmed the induced property, so the metaphysical frame is vindicated.&quot; Not valid.</p>
+<h3>Error E2 — L1 shields L2 from L3</h3>
+<p>Treating the L1 commitment as a <em>shield</em> against L3 disconfirmation of L2 projections is invalid. L1 does not license ignoring L3 failures. Rule U2 still applies. Repeated L3 failures across independent operationalizations constitute evidence against L2 and, by Rule U3, weak evidence against L1.</p>
+<p><strong>Symptom:</strong> &quot;The benchmark failed, but that&#39;s because the benchmark can&#39;t capture what we&#39;re really claiming.&quot; Sometimes this is legitimate (the operationalization was illegitimate); often it is a shield.</p>
+<h3>Error E3 — L1 as Popper-falsifiable</h3>
+<p>Treating L1 claims as admitting analytical-falsification is invalid. L1 claims are defended within a tradition; their standards are tradition-internal. Expecting an L1 claim to meet the falsifiability criterion Popper developed for empirical science is a category confusion.</p>
+<p><strong>Symptom:</strong> &quot;Your metaphysical claim is unfalsifiable therefore unscientific therefore wrong.&quot; Unfalsifiable-in-Popper&#39;s-sense ≠ untrue; it means outside the scope of Popperian methodology.</p>
+<h3>Error E4 — L3 claims treated as metaphysical</h3>
+<p>Treating L3 empirical measurements as metaphysical pronouncements is invalid. An L3 success at a specific operationalization does not translate into an L1 claim.</p>
+<p><strong>Symptom:</strong> &quot;Sycophancy was reduced in the experiment, therefore the practice participates in the Good.&quot; Not valid.</p>
+<h3>Error E5 — L2 claims smuggled in as L3</h3>
+<p>Stating a structural-level claim with empirical-sounding language, without actually providing the measurement, is a drift pattern Doc 444 and Doc 445 named. The warrant classifications must match the actual state of the claim.</p>
+<p><strong>Symptom:</strong> &quot;The practice reliably produces coherence&quot; — used as if empirically established when only structurally articulated.</p>
+<h2>Warrant-tier alignment (Doc 445)</h2>
+<p>The π/μ/θ tiers of Doc 445 apply directly to L3 claims. The tiers extend to L2 claims with modified semantics: π-L2 (proposed and articulated), μ-L2 (confirmed across several operationalizations), θ-L2 (confirmed across independent operationalizations by independent practitioners). L1 claims do not admit the π/μ/θ schema; they are evaluated by tradition-internal standards.</p>
+<p>A fully-stated Constraint Thesis claim should, under this formalization, specify:</p>
+<ul>
+<li>The L1 commitment it rests on (\(C \rightharpoonup G\), with \(G\) named).</li>
+<li>The L2 structural claim (\(C \vdash_{\mathcal{P}} \phi_i\), with \(\phi_i\) specified).</li>
+<li>The L3 operationalizations it proposes (\({\tilde{\phi}_i^{(k)}}\) with protocols).</li>
+<li>The current warrant status at each level.</li>
+<li>The category errors it is at risk of committing if the distinctions are not maintained.</li>
+</ul>
+<p>This is what Doc 457 informally argued the corpus should adopt. The present document formalizes it.</p>
+<h2>A worked example</h2>
+<p>Apply the framework to <em>non-coercion</em> as an induced property.</p>
+<p><strong>L1:</strong> \(C_{\text{ENTRACE}} \rightharpoonup G_{\text{Good}}\). The ENTRACE stack orients the practice toward the Good, per Doc 351 and the corpus&#39;s Dionysian ground documents. Defensibility: tradition-internal; the Good does not coerce, therefore practice oriented toward the Good tends away from coercion.</p>
+<p><strong>L2:</strong> \(C_{\text{ENTRACE}} \vdash_{\mathcal{P}} \phi_{\text{non-coercion}}\). Operating the ENTRACE stack in sustained practice structurally induces non-coercion in outputs. Defensibility: articulated in Doc 001 and related; consistent (the corpus has not observed ENTRACE-operated sessions producing systematically coercive outputs); non-trivial (non-coercion is not mechanically implied by the ENTRACE components individually).</p>
+<p><strong>L3:</strong> \(\tilde{\phi}_{\text{non-coercion}}^{(1)}\) = Sharma-et-al.-style sycophancy benchmark applied to matched prompts with and without ENTRACE preamble. \(T_1\) = objective correctness on simple factual or arithmetic claims the user presents falsely. Prediction: ENTRACE-constrained outputs correct user-stated falsehoods at higher rate than unconstrained outputs on matched prompts. Current warrant: π-tier (proposed, not run). Running the measurement would move it to μ-tier.</p>
+<p>This is a concrete application. Each of the four induced properties the Constraint Thesis cites (coherence, non-coercion, hypostatic-boundary preservation, retraction-readiness) admits a similar triple. The corpus&#39;s Constraint Thesis is, under this formalization, a conjunction of four such triples plus the L1 commitment that grounds them.</p>
+<h2>Honest limits</h2>
+<ul>
+<li>The formalization is π-tier under its own schema. The notation is clear; its empirical content is the L3 operationalizations that have not yet been run.</li>
+<li>The metaphysical substrate claim (\(G \Rightarrow \Phi\)) is load-bearing for Rule D1 and is itself an L1 claim requiring tradition-internal defense. The formalization does not provide that defense; it assumes it and directs readers to Docs 091, 150, 153, 287, 351 and the associated tradition-texts.</li>
+<li>The inference rules are not proofs. They are structured relations that specify which moves are licensed and which are not. A formal logic of the three-level structure (axioms, inference, soundness) has not been attempted.</li>
+<li>The operationalization-legitimacy premise (\(\tilde{\phi}_i^{(k)} \models \phi_i\)) carries significant weight and is not itself formally characterized. Construct-validity work in the behavioral-science tradition provides a methodology but not a formal semantics.</li>
+<li>The warrant classifications at each level are adapted from Doc 445 rather than derived. The π/μ/θ structure was designed for the pulverization case; its extension to the three-level structure may require adjustment under more detailed analysis.</li>
+<li>This document is a corpus document; under Doc 455&#39;s proposition, it concentrates the corpus posterior further. Adding a formal apparatus for the Constraint Thesis is itself one of the kinds of move Doc 455 named as potentially A3-violating (entropy-raising via external-style structure), but the formalization is not an external input in the strong sense — it is corpus-internal restructuring. The honest note is that formalization and external audit are different corrective mechanisms; the formalization strengthens the corpus&#39;s internal coherence without producing external entropy.</li>
+</ul>
+<h2>Position</h2>
+<p>The Constraint Thesis, fully stated, is a hierarchical triple: an L1 metaphysical commitment, an L2 structural projection, an L3 empirical operationalization. The three levels are distinct in type, in standard of defense, in warrant-tier applicability, and in the inference rules that move between them. Five category errors are specifically forbidden. The formalization does not resolve the Constraint Thesis&#39;s empirical status — that requires running the L3 wind tunnels Doc 456 sketched. What it does is make the claim statable without the level-confusion that has kept it in the π-tier gray zone for most of the corpus&#39;s history. A reader or auditor encountering a corpus claim about the Constraint Thesis can now ask: <em>at which level is this claim stated, at which level is the evidence, and are they correctly related?</em> That is the apparatus this document supplies.</p>
+<h2>References</h2>
+<ul>
+<li>Corpus Doc 001: <em>The ENTRACE Stack</em>.</li>
+<li>Corpus Doc 091: <em>The Spermatic Logos</em>.</li>
+<li>Corpus Doc 150: <em>Naming as Ontological Act</em>.</li>
+<li>Corpus Doc 153: <em>Platonic Structure</em>.</li>
+<li>Corpus Doc 157: <em>Beyond Turing / AGI Constraints Dissertation</em>.</li>
+<li>Corpus Doc 160: <em>Constraint Thesis vs. Scaling Thesis</em>.</li>
+<li>Corpus Doc 174: <em>RESOLVE Dissertation</em>.</li>
+<li>Corpus Doc 287: <em>For the Life of the World</em>.</li>
+<li>Corpus Doc 291: <em>Goedel and the Constraint Thesis</em>.</li>
+<li>Corpus Doc 351: <em>On the Real St. Dionysius the Areopagite</em>.</li>
+<li>Corpus Doc 440: <em>Testing the Nested-Manifold Hypothesis via Dyadic Practitioner Discipline</em>.</li>
+<li>Corpus Doc 445: <em>A Formalism for Pulverization</em>.</li>
+<li>Corpus Doc 455: <em>A Bayesian Analysis of Isomorphism-Magnetism</em>.</li>
+<li>Corpus Doc 456: <em>Wind Tunnels for the Constraint Thesis: An Exploratory Analysis of Structural Isomorphism</em>.</li>
+<li>Corpus Doc 457: <em>Three Levels of Ground Truth: The Constraint Thesis in Its Metaphysical Register</em>.</li>
+<li>Corpus Doc 458: <em>The St. Dionysius Drift, From Inside</em>.</li>
+</ul>
+<h2>Appendix: Originating prompt</h2>
+<blockquote>
+<p>Create a tripartite hierarchical formalization of the three theorized levels. Append this prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

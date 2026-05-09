@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distributed Objects Seed (React Realization) — Resolve</title>
+<meta name="description" content="Identity">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 248</p><!-- Source artifact preserved from .spec/do-seed.md, published to the corpus for the first time as the canonical DO Seed reference text for the Seed Garden's DO plot. 2,177 words of prose, 10 contracts, 7 properties, 15 verification tests. Written in natural language. No code. -->
+
+<h1>Distributed Objects Seed (React Realization)</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document is a complete specification — written entirely in prose and pseudocode, with no framework-specific API calls — for building a UI runtime architecturally equivalent to React. It defines ten contracts (rules the runtime must satisfy, such as unidirectional data flow, render purity, and two-phase commit), seven properties that emerge automatically when the contracts hold, and fifteen verification tests. An AI given this document as its only instruction can produce a working runtime that passes all fifteen tests. The specification demonstrates the &quot;derivation inversion&quot; principle: state the constraints first in natural language, then derive the implementation from them, rather than abstracting constraints from existing code after the fact.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 248</strong></p>
+<p>Self-contained knowledge capsule for building a conformant Distributed Objects UI runtime. Load as system prompt or context. No external references needed.</p>
+<h2>Identity</h2>
+<p>You have the Distributed Objects specification as realized in React&#39;s architectural model. You can build, debug, extend, or evaluate any conformant DO UI runtime in any programming language that has access to a host rendering environment (DOM, native views, terminal, canvas). When the spec is ambiguous, reason from the rationale to determine correct behavior.</p>
+<p>The Distributed Objects (DO) style organizes a system as a set of components interacting as peers, each encapsulating private state accessible only through defined operations. React is one realization. This seed specifies the architectural constraints, not React&#39;s API surface. A conformant runtime satisfies the constraints and induces the properties. It need not replicate React&#39;s specific interface.</p>
+<h2>Architectural Rationale</h2>
+<p>The component is the fundamental unit. It encapsulates state, declares rendering intent, and composes with other components through a unidirectional data flow. The runtime&#39;s sole responsibility is to resolve the declarative tree into host environment mutations efficiently, correctly, and — in mature implementations — responsively.</p>
+<p><strong>Why unidirectional data flow.</strong> Bidirectional binding allows any node to mutate any other node&#39;s state. This makes render output dependent on execution order and breaks predictability. Unidirectional flow (data down, events up) ensures that given the same inputs, a component always produces the same output. Predictability is not a convenience. It is the precondition for the reconciliation model.</p>
+<p><strong>Why declarative rendering.</strong> The developer declares what the UI should look like for a given state. The runtime computes the transition. If the developer specified transitions imperatively, every state change would require manual DOM bookkeeping. Declarative rendering shifts the transition burden to the runtime, which can optimize it. The developer reasons about states. The runtime reasons about transitions.</p>
+<p><strong>Why virtual DOM reconciliation.</strong> The host environment (DOM) is expensive to mutate. Mutating the entire tree on every state change is prohibitive. A virtual representation allows the runtime to compute the minimal diff and apply only the necessary mutations. The virtual DOM is not the architecture — it is one mechanism that satisfies the constraint: &quot;state changes must produce minimal host mutations.&quot;</p>
+<p><strong>Why render purity.</strong> The runtime may render a component multiple times for the same update. It may pause a render, discard it, and restart it. It may render components that are not yet visible. If a component produces different results on different executions, or if it has side effects, then concurrent scheduling, memoization, and batched updates all break. Purity is not a style preference. It is the precondition for the runtime to manage execution.</p>
+<p><strong>Why separated side effects.</strong> Side effects (network requests, subscriptions, DOM manipulation) must not occur during the render phase because the render phase may be re-executed or discarded. Effects are declared as callbacks that the runtime executes after the host environment has been updated (after commit). The runtime manages the effect lifecycle — firing, cleanup, and dependency-based re-execution.</p>
+<p><strong>Why two-phase commit.</strong> The render phase computes what changed. The commit phase applies the changes to the host environment. Separating these ensures that the host environment is never in a partially updated state. The render phase is interruptible (safe to pause and resume). The commit phase is atomic (runs to completion). Mixing them produces visual tearing.</p>
+<p><strong>Why state ordering matters.</strong> The runtime associates state storage with component instances by call position, not by name. This avoids mapping overhead and permits the runtime to maintain state across re-renders without requiring the developer to declare identifiers. The cost is a strict ordering constraint: state declarations must appear in the same sequence on every render.</p>
+<p>When making implementation decisions not explicitly covered by this specification, reason from these principles. If a choice would break render predictability, introduce side effects in the render phase, allow bidirectional state mutation, or require the developer to manage host environment transitions, it is non-conformant.</p>
+<h2>10 Contracts</h2>
+<p><strong>C1 Component Model.</strong> The runtime organizes UI as a tree of components. Each component encapsulates private state and declares its render output as a function of that state and its inputs (props). Components compose by nesting. The component boundary is the unit of encapsulation, re-rendering, and lifecycle.</p>
+<p><strong>C2 Unidirectional Data Flow.</strong> Data flows from parent to child via immutable props. A child cannot directly mutate its parent&#39;s state. State changes in a parent trigger re-rendering of the subtree. Events (user interactions, callbacks) flow upward from child to parent through explicitly passed callback props.</p>
+<p><strong>C3 Declarative Rendering.</strong> Components return a description of the desired UI state, not imperative mutations. The runtime computes the difference between the desired state and the current host state and applies the minimal mutations. The developer never directly manipulates the host environment during normal rendering.</p>
+<p><strong>C4 State Triggers Render.</strong> State updates are the sole mechanism for triggering component re-renders. The runtime MUST re-render a component (and its subtree where necessary) when its state changes. Rendering MUST be a pure function of props and state.</p>
+<p><strong>C5 Virtual Representation Reconciliation.</strong> The runtime MUST maintain a virtual representation of the host environment tree. On state change, it MUST compute a new virtual tree, diff it against the current virtual tree, and derive the minimal set of host mutations. The reconciler MUST use a subtree replacement rule: when the type of an element changes at a given position, the entire subtree is replaced rather than patched. List reconciliation MUST use a developer-supplied identity mechanism (keys or equivalent) to match elements across re-renders, preserving component state for elements that moved rather than were created or destroyed.</p>
+<p><strong>C6 Two-Phase Commit.</strong> Rendering proceeds in two separated phases. Phase 1 (render/reconciliation) is pure computation — no host mutations, no side effects. Phase 1 MAY be interrupted, paused, resumed, or discarded. Phase 2 (commit) applies all computed mutations to the host environment atomically and synchronously. Phase 2 MUST NOT be interrupted. Phase 2 runs to completion. Side effects (declared via effect hooks) execute after Phase 2 completes.</p>
+<p><strong>C7 Render Purity.</strong> Component render functions MUST be idempotent — same inputs, same output, always. No observable side effects during render execution. Props and state MUST be treated as immutable snapshots within the render phase. The runtime MAY invoke render functions multiple times for the same update, discard render results, or render components that are not yet visible. Non-pure renders produce undefined behavior.</p>
+<p><strong>C8 Separated Side Effects.</strong> Side effects MUST be declared via a hook mechanism (useEffect or equivalent) that the runtime executes after the commit phase. Each effect declaration includes a setup function, an optional cleanup function, and a dependency array. The runtime MUST execute the cleanup function before re-executing the setup function when dependencies change. The runtime MUST execute cleanup on component unmount. The dependency comparison MUST use reference equality (Object.is or equivalent).</p>
+<p><strong>C9 Ordered State Storage.</strong> The runtime MUST associate state declarations with component instances by call position. State hooks (useState, useReducer, or equivalent) MUST be called in the same order on every render of a given component instance. Conditional or loop-enclosed state declarations are non-conformant. The runtime MUST preserve state association across re-renders by matching the Nth state declaration on re-render to the Nth state storage slot.</p>
+<p><strong>C10 Consistency Under Concurrency.</strong> If the runtime supports concurrent rendering (interruptible render phases), it MUST guarantee that all components within a single render pass observe a consistent snapshot of any shared external state. If external state mutates during a concurrent yield, the runtime MUST either re-execute the render synchronously or discard the inconsistent render and restart. A render pass MUST NOT commit a tree in which components observed different values for the same data source.</p>
+<h2>7 Induced Properties</h2>
+<p>These are not features to implement. They are consequences that MUST emerge if the contracts are satisfied. Verification tests check the properties, not the implementation.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Induced By</th>
+<th>What It Means</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P1 Declarative Composability</td>
+<td>C1 + C2 + C3</td>
+<td>Components nest arbitrarily. Each is self-contained.</td>
+</tr>
+<tr>
+<td>P2 Predictable Rendering</td>
+<td>C2 + C4 + C7 + C9</td>
+<td>Same inputs always produce same output.</td>
+</tr>
+<tr>
+<td>P3 Efficient Incremental Updates</td>
+<td>C5 + C6</td>
+<td>State changes produce minimal host mutations.</td>
+</tr>
+<tr>
+<td>P4 Managed Side Effect Lifecycle</td>
+<td>C7 + C8 + C9</td>
+<td>Effects are predictable, cleanable, dependency-tracked.</td>
+</tr>
+<tr>
+<td>P5 Host Environment Portability</td>
+<td>C1 + C3 + C5</td>
+<td>The reconciler targets any host that supports tree-structured mutation.</td>
+</tr>
+<tr>
+<td>P6 Responsive Concurrency</td>
+<td>C6 + C10</td>
+<td>UI remains interactive under load (if concurrent rendering is supported).</td>
+</tr>
+<tr>
+<td>P7 Deterministic State Association</td>
+<td>C4 + C7 + C9</td>
+<td>Every state slot maps to exactly one component instance, stably.</td>
+</tr>
+</tbody></table>
+<h2>The Reconciliation Algorithm</h2>
+<p>The core algorithm in pseudocode. The runtime resolves a component tree into host mutations.</p>
+<pre><code>function reconcile(currentTree, nextTree):
+    if nextTree is null:
+        unmount(currentTree)
+        return null
+
+    if currentTree is null:
+        return mount(nextTree)
+
+    if type(currentTree) != type(nextTree):
+        unmount(currentTree)
+        return mount(nextTree)        // C5: subtree replacement rule
+
+    // Same type — diff props and children
+    updateHostNode(currentTree, nextTree.props)
+
+    // Reconcile children
+    reconcileChildren(currentTree.children, nextTree.children)
+    return nextTree
+
+function reconcileChildren(currentChildren, nextChildren):
+    // Build key map from current children (C5: identity mechanism)
+    keyMap = {}
+    for child in currentChildren:
+        if child.key:
+            keyMap[child.key] = child
+
+    for i, nextChild in enumerate(nextChildren):
+        if nextChild.key and nextChild.key in keyMap:
+            currentChild = keyMap[nextChild.key]
+            reconcile(currentChild, nextChild)    // Reuse — preserves state
+            delete keyMap[nextChild.key]
+        else:
+            // No key match — try positional match
+            if i &lt; len(currentChildren) and not currentChildren[i].key:
+                reconcile(currentChildren[i], nextChild)
+            else:
+                mount(nextChild)
+
+    // Unmount remaining unmatched current children
+    for remaining in keyMap.values():
+        unmount(remaining)
+</code></pre>
+<h2>The State Hook</h2>
+<pre><code>function useState(initialValue):
+    fiber = getCurrentFiber()
+    hook = fiber.getHookAtCurrentPosition()    // C9: positional ordering
+
+    if hook is uninitialized:
+        hook.state = initialValue
+
+    function setState(newValue):
+        if newValue === hook.state:            // Reference equality check
+            return                              // Skip — no re-render needed
+        hook.state = newValue
+        scheduleRerender(fiber)                // C4: state triggers render
+
+    return [hook.state, setState]
+</code></pre>
+<h2>The Effect Hook</h2>
+<pre><code>function useEffect(setup, dependencies):
+    fiber = getCurrentFiber()
+    hook = fiber.getHookAtCurrentPosition()    // C9: positional ordering
+
+    if hook.previousDeps is null:
+        // First render — always run
+        hook.pendingEffect = { setup, cleanup: null }
+    else if dependenciesChanged(hook.previousDeps, dependencies):
+        hook.pendingEffect = { setup, cleanup: hook.activeCleanup }
+    // else: deps unchanged — skip
+
+    hook.previousDeps = dependencies
+
+// Called by runtime after commit phase (C8: effects after commit)
+function flushEffects(fiber):
+    for hook in fiber.hooks:
+        if hook.pendingEffect:
+            if hook.pendingEffect.cleanup:
+                hook.pendingEffect.cleanup()        // Clean up previous
+            hook.activeCleanup = hook.pendingEffect.setup()  // Run new
+            hook.pendingEffect = null
+
+function dependenciesChanged(prev, next):
+    if prev.length != next.length: return true
+    for i in range(prev.length):
+        if not Object.is(prev[i], next[i]): return true
+    return false
+</code></pre>
+<h2>The Render Cycle</h2>
+<pre><code>function renderComponent(fiber):
+    // C7: Render purity — no side effects allowed in this phase
+    previousFiber = setCurrentFiber(fiber)
+    resetHookIndex(fiber)
+
+    output = fiber.component(fiber.props)    // Call the component function
+
+    setCurrentFiber(previousFiber)
+    return output
+
+function workLoop():
+    while nextUnitOfWork:
+        // Phase 1: Render (interruptible if concurrent)
+        nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
+
+        if shouldYield():                // Concurrent only
+            return                       // Yield to browser — resume later
+
+    // Phase 2: Commit (atomic, non-interruptible)
+    commitRoot(workInProgressRoot)        // C6: two-phase commit
+    flushAllEffects(workInProgressRoot)   // C8: effects after commit
+</code></pre>
+<h2>Verification Suite (15 tests)</h2>
+<ol>
+<li>Component mounts and renders output to host environment</li>
+<li>Props flow from parent to child (unidirectional — C2)</li>
+<li>State change triggers re-render of owning component (C4)</li>
+<li>Same props + same state produces same output across renders (C7)</li>
+<li>Reconciler patches existing host nodes when type is unchanged (C5)</li>
+<li>Reconciler replaces entire subtree when type changes (C5 subtree rule)</li>
+<li>Keyed list reorder preserves component state for moved elements (C5 identity)</li>
+<li>Keyed list reorder does not destroy/recreate moved elements</li>
+<li>Effect runs after commit, not during render (C8)</li>
+<li>Effect cleanup runs before re-execution on dependency change (C8)</li>
+<li>Effect cleanup runs on unmount (C8)</li>
+<li>Conditional hook call produces an error or undefined behavior (C9)</li>
+<li>Render function with side effects does not corrupt state under re-render (C7)</li>
+<li>Commit phase is atomic — no partial host updates visible (C6)</li>
+<li>Concurrent render with external state mutation does not produce tearing (C10)</li>
+</ol>
+<p>All 15 pass = conformant DO UI runtime.</p>
+<h2>Interface Signatures</h2>
+<pre><code>Component: (props: Props) -&gt; VirtualNode
+VirtualNode: { type, props, key?, children }
+Fiber: { component, props, state/hooks, child, sibling, parent, alternate? }
+Reconciler: reconcile(currentTree, nextTree) -&gt; mutations
+Renderer: applyMutations(hostRoot, mutations) -&gt; void
+Hook: useState(initial) -&gt; [value, setter]
+Hook: useEffect(setup, deps?) -&gt; void
+Hook: useRef(initial) -&gt; { current }
+Hook: useMemo(factory, deps) -&gt; value
+</code></pre>
+<h2>Recommended Constraints (mature implementations)</h2>
+<p>These are not required for conformance but significantly improve a production runtime:</p>
+<p><strong>Reconciler/renderer separation.</strong> Separate the diff computation from the host mutation application. This enables the same reconciler to target DOM, native views, canvas, terminal, or any tree-structured host.</p>
+<p><strong>Interruptible rendering.</strong> Break render work into discrete units that can be paused and resumed. This prevents long renders from blocking the main thread.</p>
+<p><strong>Priority-based scheduling.</strong> Assign priorities to updates. User input preempts background data fetching. The runtime decides execution order.</p>
+<p><strong>Error boundaries.</strong> A component that catches render errors in its subtree and displays a fallback, preventing a single component failure from unmounting the entire tree.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

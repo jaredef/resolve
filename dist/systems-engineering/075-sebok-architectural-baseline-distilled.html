@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Architectural Baseline (Allocated Baseline)*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Architectural Baseline (Allocated Baseline)</em>, Distilled</h1>
+<p><strong>Next-40 distillation, batch 5/5. SEBoK has no standalone &quot;Architectural Baseline&quot; page; the architectural baseline is treated under <em>Configuration Baselines</em> as the Allocated Baseline (ABL): the allocation of requirements to major system elements at lower configuration item levels, defining expected functionality and performance for each component. The ABL is the second pin-set in the FBL/ABL/PBL progressive pin-art sequence (Doc 270 + SE-031 progressive pattern). The allocation operation is canonical co-production at sub-rungs (Doc 573): the architecture-keeper composes with each component-keeper to produce the allocated requirement set per element. The ABL exhibits multi-keeper composition (Doc 604) at the component-allocation reconciliation rung; rule is subordination-by-domain. SAE-EIA 649C continues as institutional-ground carrier.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Configuration Baselines (the SEBoK page where the architectural/allocated baseline is articulated; no standalone Architectural_Baseline or Allocated_Baseline page exists)</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Configuration_Baselines">https://sebokwiki.org/wiki/Configuration_Baselines</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>The Allocated Baseline (ABL) represents &quot;the &#39;allocation&#39; of requirements to major system elements at lower configuration item levels, defining expected functionality and performance for each component.&quot; Contents: allocation of requirements to system components, functional assignments, performance expectations, component-level specifications. Lifecycle role: reference point following functional baseline establishment; guides detailed design of individual components. Associated documentation: Allocated Configuration Documentation (ACD) details specific configurations of individual system elements derived from overall system requirements. Position: same as FBL — Configuration Baselines page within Part 3 Technical Management Processes.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster A — Universal-sibling lattice (Doc 572 Appendix D), middle position.</strong> The ABL is the second axis in the FBL/ABL/PBL triplet. Each axis binds universally; the discriminator is lifecycle-stage-of-formal-fix. The ABL&#39;s specific aspect is allocation-after-architecture-decomposition. The triplet&#39;s compactness as a teaching-example (per SE-074&#39;s refinement candidate) holds.</p>
+<p><strong>Cluster D — Co-Production at sub-rungs (Doc 573).</strong> Allocation is canonical co-production. The architecture-keeper specifies the component decomposition; each component-keeper (the SME or sub-team responsible for that element) co-produces the allocated requirement set with the architecture-keeper. Doc 573&#39;s apparatus reads the ABL as a layered co-production artifact: rung-N system requirement composes with rung-(N+1) component allocation to produce the per-element requirement set. The push/pull taxonomy (Doc 573 Appendix B) applies: allocation can be push-direction (architecture pushing requirements down) or pull-direction (component pulling requirements up via interface negotiation).</p>
+<p><strong>Cluster B — Multi-keeper composition (Doc 604).</strong> The ABL is the formal fix-point where the architecture-keeper&#39;s decomposition meets each component-keeper&#39;s component-substrate. The reconciliation rung is the ABL itself; the rule is subordination-by-domain (each component-keeper owns its element&#39;s requirement allocation, subordinated to the architecture-keeper&#39;s decomposition). Seventh multi-keeper instance.</p>
+<p><strong>Cluster I — Pin-art / temporal-concurrency (Doc 270, progressive-pin-art).</strong> The FBL → ABL → PBL sequence is the progressive-pin-art pattern named in SE-031. The FBL is the requirement pin-set; the ABL is the allocation pin-set; the PBL is the realized-product pin-set. Each successor pin-set is constrained by its predecessor and adds resolution. The architectural-baseline rung is the middle pin-set where the substrate&#39;s flow is most actively shaped.</p>
+<p><strong>Form III — Substrate-and-Keeper Composition (Doc 510), with the allocation move.</strong> Allocation itself is a keeper-side rung-2 supply: the substrate (component-design teams) cannot produce the allocated requirement set without architecture-keeper authority deciding which requirements go to which component. The ABL is the artifact in which this rung-2 supply is materialized.</p>
+<p><strong>Cluster E — Institutional ground (Doc 571).</strong> SAE-EIA 649C carries the ABL as part of the configuration baseline triplet. Same institutional layer as FBL.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>ABL definition (SAE-EIA 649C, SEBoK Configuration Baselines page) — π / α.</li>
+<li>Allocation-of-requirements-to-components — π / α as cited; μ / β under corpus when read as Doc 573 co-production at the architecture-component rung.</li>
+<li>ABL as middle baseline — π / α; progressive-pin-art reading under Doc 270 + SE-031.</li>
+<li>ACD (Allocated Configuration Documentation) — π / α; institutional artifact form.</li>
+<li>Subordination-by-domain rule — μ / β under corpus when reading the ABL multi-keeper structure (Doc 604).</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>R1 (catalog).</strong> Same catalog residual as SE-074: no standalone Architectural_Baseline page; the architectural baseline is folded into Configuration Baselines as the ABL. The &quot;architectural baseline&quot; vocabulary is practitioner-common; SEBoK&#39;s normalized vocabulary uses &quot;allocated baseline.&quot; Synonym noted.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 573 push/pull taxonomy worked example: requirements allocation.</strong> Doc 573 Appendix B distinguishes push-direction co-production (the keeper proposes, the substrate refines) from pull-direction (the substrate requests, the keeper supplies). Requirements allocation in the ABL exhibits both directions: architecture pushes requirements down to components; components pull interface specifications up to architecture. Worth documenting as a worked example showing both push and pull in a single canonical SE artifact.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 (Lattice Extension, Appendix D, A-cluster middle position), Doc 573 (Co-Production, push/pull taxonomy worked example candidate), Doc 604 (Multi-keeper composition, subordination-by-domain rule), Doc 270 / SE-031 (Progressive pin-art), Doc 510 (Substrate-and-Keeper), Doc 571 (Institutional Ground).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE and Management).</p>
+<p><strong>Related distillations.</strong> SE-074 (Requirements Baseline / FBL — predecessor in the triplet). SE-076 (Product Baseline / PBL — successor in the triplet). SE-031 (System Architecture — the substrate process producing the ABL candidate; A-cluster instance at architecture rung).</p>
+<p><strong>Adjacent SEBoK concepts.</strong> <em>Configuration Management</em>, <em>System Architecture Design Definition</em>, <em>System Requirements Definition</em>.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Let&#39;s do the next 40 most likely articles to be most load bearing... my conjecture is that this will inform the next 40.&quot;</em> / <em>&quot;It&#39;s ok to duplicate entries. It shows where the knowledge base folds back in on itself. Continue fanning out&quot;</em></p>
+</blockquote>
+<p>(SE-075 is one of the next-40 SEBoK distillations. Batch 5/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

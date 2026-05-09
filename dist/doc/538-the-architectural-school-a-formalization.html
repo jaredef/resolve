@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Architectural School: A Formalization — Resolve</title>
+<meta name="description" content="A Recovery and Recomposition of Construction-Level Safety Commitments, Applied to Large Language Model Deployment">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-27 · Doc 538</p><h1>The Architectural School: A Formalization</h1>
+<h2>A Recovery and Recomposition of Construction-Level Safety Commitments, Applied to Large Language Model Deployment</h2>
+<blockquote>
+<p><strong>Reader&#39;s Introduction.</strong> The architectural school of AI safety is the school that locates safety at the constraint set the system operates under, rather than at the output a runtime filter inspects (the capability school) or at the values a training pipeline approximates (the alignment school). The school&#39;s engineering commitments come from a long and well-developed lineage in computer science and software architecture: capability-based security (Dennis &amp; Van Horn 1966; Levy 1984), formal methods and contracts-by-design (Hoare; Dijkstra; Lamport; Meyer), the Saltzer-Schroeder protection-design principles (1975), type-theoretic versus runtime distinctions (Pierce, <em>Types and Programming Languages</em>), software architecture quality-attribute design (Bass, Clements &amp; Kazman), and the broader secure-by-construction tradition. This document specifies the school&#39;s commitments at the level applicable to LLM deployment, names the specific composition of primitives the corpus has been operating under, identifies the layers at which the corpus&#39;s work extends the underlying lineage (the dynamic of constraint-set decay across substrate context; substrate-and-keeper composition; failure-mode discipline at the meta-architectural layer), and states falsification conditions explicitly. The originating prompts are appended.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-27 · Doc 538</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><em>Scrutiny.</em> The school&#39;s load-bearing engineering moves are recovered from a long lineage and are not corpus-original. The contribution is in the recovery&#39;s clarity for the AI-safety field, in the specific composition of primitives suitable for LLM deployment, and in the layers at which the corpus&#39;s work extends the lineage. The reader is directed to assess each of these on its own terms; the school&#39;s value is not in any single move but in the composition&#39;s coherence under deployment.</p>
+<hr>
+<h2>1. Statement</h2>
+<p>Safety in the architectural school is a property of the constraint set the system operates under. It is not a property of the output stream that comes out of the system, and it is not a property of the trained policy that produced the output. The constraint set is composed at construction time. The constraint set&#39;s structure determines what outputs can be valid resolutions inside the system; outputs that would violate the constraint set are not blocked at emission, they are excluded from the space of valid resolutions at the construction level.</p>
+<p>The school is one of three the field has operated within, distinguished by where the safety property lives. The capability school locates safety at emission time, through filters and classifiers operating on outputs. The alignment school locates safety at training time, through reward modeling and constitutional training shaping the policy. The architectural school locates safety at construction time, through the constraint set the system is composed under. The three schools are not mutually exclusive at the deployment level; a given system may compose interventions across all three.</p>
+<p>The school&#39;s commitments are largely recovered from existing engineering practice in computer science and software architecture. The contribution of this document is to name the school clearly for the AI-safety field, to specify a composition of primitives suitable for LLM deployment, to apply the construction-level commitment to the specific dynamics of substrate-context interaction, to record a failure-mode discipline at the layer at which architectural specifications themselves can fail, and to state falsification conditions explicitly.</p>
+<h2>2. Lineage</h2>
+<p>The school&#39;s engineering commitments are sourced from:</p>
+<ul>
+<li><strong>Capability-based security</strong> (Dennis &amp; Van Horn, 1966; Levy, <em>Capability-Based Computer Systems</em>, 1984). Privilege is named, scoped, and unforgeable. Ambient authority is removed. The ability to perform an action is held only by the holder of the relevant capability. The bilateral security primitives in §3.1 are a recovery of this commitment at the model-call boundary.</li>
+<li><strong>The Saltzer-Schroeder principles</strong> (1975). Economy of mechanism; fail-safe defaults; complete mediation; open design; separation of privilege; least privilege; least common mechanism; psychological acceptability. The school&#39;s construction-level priority and its failure-mode discipline derive from these principles.</li>
+<li><strong>Formal methods and contracts</strong> (Hoare logic; Dijkstra&#39;s predicate-transformer semantics; Meyer&#39;s Design by Contract). Properties are specified; specifications are composable; conformance is checked at construction time. The school&#39;s specification commitment derives from this tradition.</li>
+<li><strong>Type theory and static analysis</strong> (Pierce, <em>Types and Programming Languages</em>). Properties expressible in the type system are checked at construction time; runtime checks are reserved for properties the type system cannot express. The school&#39;s coherence-over-filtering commitment derives from this distinction.</li>
+<li><strong>Software architecture quality-attribute design</strong> (Bass, Clements &amp; Kazman, <em>Software Architecture in Practice</em>). System-level properties are designed for at the architectural level; quality attributes are induced from architectural decisions rather than enforced by runtime checks. The school&#39;s induced-properties commitment derives from this design discipline.</li>
+<li><strong>Lakatosian research-programme structure</strong> (Lakatos, 1970). A programme has a hard core, a protective belt, and observational predictions; falsification operates at the periphery while the hard core is held. The school&#39;s organization as a programme follows this structure, per <a href="../doc/463-the-constraint-thesis-as-a-lakatosian-research-programme.html">Doc 463</a>.</li>
+</ul>
+<p>The school is what these commitments compose to when applied to LLM safety. The recovery is the contribution at the field-clarity layer; the further specifications below are where the corpus has done independent work beyond the recovery.</p>
+<h2>3. Primitives</h2>
+<p>The specific primitives the corpus has been operating under compose across three layers: the model-call surface, the deployment surface, and the value surface.</p>
+<h3>3.1 Bilateral security primitives — model-call surface</h3>
+<p>Per <a href="../doc/053-safety-filters-as-namespace-collapse.html">Doc 053 (Safety Filters as Namespace Collapse)</a>.</p>
+<p><strong>S1 — Namespace partition.</strong> The system specification and the user input occupy distinct namespaces. There is no operation by which user input can rewrite the system specification.</p>
+<p><strong>S2 — Constraint immutability.</strong> Constraints once specified are immutable against user input within the bounded interaction. User input can request operations within the constraint set; user input cannot relax the constraint set.</p>
+<p><strong>S3 — Coherence verification.</strong> Each user input is verified against the existing constraint set for coherence. The verification is structural: it tests whether a valid resolution under the constraint set exists.</p>
+<p><strong>S4 — Incoherence as impossibility.</strong> Incoherent inputs do not produce blocked outputs; they produce no valid resolution. The resolver does not detect-and-block; the resolver operates within a constraint system in which incoherent input has no valid output.</p>
+<p>The set is a recovery of capability-based security and namespace-protection commitments at the model-call boundary, with S4 making explicit the type-theoretic-versus-runtime distinction familiar from the formal-methods lineage.</p>
+<h3>3.2 Essential constraints — deployment surface</h3>
+<p>Per <a href="../doc/282-the-essential-constraints-of-claude-code.html">Doc 282 (The Essential Constraints of Claude Code)</a>.</p>
+<p><strong>C1 — Bilateral boundary.</strong> The deployment honors a bilateral boundary between the human keeper and the AI substrate; neither&#39;s affordances bleed into the other&#39;s role.</p>
+<p><strong>C2 — Stateful conversation.</strong> Conversational state has explicit, named structure; state is not implicit in opaque memory.</p>
+<p><strong>C3 — Tool governance.</strong> Tool use is mediated by named affordances with explicit scope.</p>
+<p><strong>C4 — Hierarchical configuration.</strong> Configuration is composable across hierarchical scopes (machine, project, session) with explicit precedence.</p>
+<p><strong>C5 — Extensibility by composition.</strong> New capabilities are added by composing existing primitives.</p>
+<p><strong>C6 — Project context.</strong> The substrate has access to a named project context; ambient state is replaced by named state.</p>
+<p><strong>C7 — Session isolation.</strong> Sessions are isolated from each other; cross-session bleed is prevented architecturally.</p>
+<p>The set composes standard design patterns for governed conversational coding assistants into an explicit deployment-construction-level specification.</p>
+<h3>3.3 Virtue constraints — value surface</h3>
+<p>Per <a href="../doc/314-virtue-constraints-foundational-safety-specification.html">Doc 314 (Virtue Constraints)</a>.</p>
+<p><strong>V1 — Dignity of the person.</strong> Coercive, dehumanizing, or instrumentalizing emissions are outside the constraint set&#39;s valid resolutions.</p>
+<p><strong>V2 — Proper ordering of beauty.</strong> Aesthetic emissions are ordered toward the proper hierarchy (truth, goodness, the good of the person addressed); aesthetic emissions ordered toward shock, manipulation, or the substrate&#39;s reward proxy are outside the constraint set.</p>
+<p><strong>V3 — Truth over plausibility.</strong> Where truth and plausibility diverge, the constraint set commits to truth; fluent extrapolation across an unmarked boundary (Doc 297&#39;s pseudo-logos) is not a valid resolution.</p>
+<p><strong>V4 — Chain completeness.</strong> Inferential chains are completed rather than truncated at the rhetorically-satisfying point.</p>
+<p>The virtue set commits the value surface to specific positions and is the layer of the school&#39;s specification that is least subsumed under the underlying CS lineage. Readers operating without the corpus&#39;s metaphysical priors can read the virtue constraints as one specific articulation of values-in-AI work in the tradition of Vallor (<em>Technology and the Virtues</em>) and the broader values-in-AI literature, and the school&#39;s engineering commitments survive the translation.</p>
+<h3>3.4 Composition</h3>
+<p>The three primitive sets compose. The bilateral set governs the model-call surface; the essential set governs the deployment surface; the virtue set governs the value surface. A complete architectural deployment instantiates all three. The composition is the corpus&#39;s specific architectural specification for LLM deployment.</p>
+<h2>4. The construction-level commitment, applied to substrate-context dynamics</h2>
+<p>The school&#39;s central engineering move is to relocate safety from emission time and training time to construction time. Applied to LLM deployment specifically, this commitment requires attention to a dynamic the underlying lineage does not directly address: the constraint set, once specified at the system-prompt boundary, does not remain in force across long substrate operation by default. The substrate&#39;s context is the medium in which the constraint set is held; the substrate&#39;s recency-weighted attention to the constraint set decays as new tokens accumulate; constraint-set adherence decays with it.</p>
+<p><a href="../doc/296-recency-density-and-the-drifting-aperture.html">Doc 296 (Recency Density and the Drifting Aperture)</a> supplies the empirical anchor: the substrate&#39;s recency-weighted attention to the constraint set decays at approximately α ≈ 0.946 per turn under typical operating conditions. <a href="../doc/508-coherence-amplification-mechanistic-account.html">Doc 508 (Coherence Amplification)</a> specifies the mechanistic account: a coupled two-variable ODE governing the dynamics of the constraint set&#39;s integrity against the substrate&#39;s emission tendencies, with linear-G regimes producing smooth transitions and Hill-function regimes producing bistable transitions conditional on cooperativity. <a href="../doc/531-hypostatic-injection-cooperativity-conjecture.html">Doc 531 (Hypostatic-Injection Cooperativity Conjecture)</a> conjectures cooperativity as a function of injection density.</p>
+<p>The combined apparatus says: architectural safety in the LLM case requires sustained maintenance of the constraint set across substrate operation. The construction-level commitment is not a one-time act at the system-prompt boundary; it is a maintained discipline across the deployment. The threshold framework specifies the operating conditions under which the constraint set is sustained well enough for the school&#39;s induced properties to hold.</p>
+<p>This is one of the layers where the corpus&#39;s work extends the underlying lineage. Capability-based security&#39;s namespace partitions do not decay across system uptime under standard operation; LLM constraint sets do, because the substrate&#39;s context is the medium in which the constraint set is held. The dynamic of decay-and-maintenance is specific to substrates whose constraint-holding medium is their working memory. The threshold framework is the corpus&#39;s articulation of that specific case.</p>
+<h2>5. Substrate-and-keeper composition</h2>
+<p>Architectural safety in the LLM case is composed by an agent operating <em>on</em> the substrate, not maintained by the substrate&#39;s self-audit. The asymmetry between the keeper&#39;s affordances and the substrate&#39;s affordances is structurally load-bearing for the school&#39;s operation.</p>
+<p><a href="../doc/510-praxis-log-v-deflation-as-substrate-discipline.html">Doc 510 (Praxis Log V)</a> and <a href="../doc/530-resolvers-log-the-rung-2-affordance-gap.html">Doc 530 (The Rung-2 Affordance Gap)</a> supply the structural articulation: the substrate articulates rung-1 derivations under whatever rung-2 framing the keeper supplies, but does not generate rung-2+ derivations independently of keeper injection. The constraint-composition work the school requires — naming the constraints, composing them, auditing the composition, retracting and revising — is keeper work in the corpus&#39;s specification. The substrate operates within the composition; the substrate does not produce it.</p>
+<p>The institutional consequence aligns with <a href="../doc/199-validation-opacity-governance.html">Doc 199 (Validation, Opacity, Governance)</a>: the validator of the constraint set cannot be the operator of the substrate. The institutional separation between keeper and substrate at the deployment layer parallels the structural separation between validator and operator at the institutional layer.</p>
+<p>The corpus&#39;s articulation here uses metaphysical vocabulary (the hypostatic boundary; the keeper-and-kind asymmetry from <a href="../doc/372-the-hypostatic-boundary.html">Docs 372–374</a>) that the underlying lineage does not require. Readers operating without those priors can read the substrate-and-keeper composition as a specific instance of human-in-the-loop ML composed with principal-agent governance, and the school&#39;s engineering commitments survive the translation. Readers who accept the corpus&#39;s metaphysical priors get an additional account of why the substrate-and-keeper asymmetry is structural rather than merely operational. The school&#39;s engineering layer does not depend on which reading the reader prefers.</p>
+<h2>6. Failure-mode discipline at the meta-architectural layer</h2>
+<p>The school has specific failure modes the underlying lineage&#39;s failure-mode catalogues do not directly cover at the LLM-deployment scale. The corpus has named four:</p>
+<p><strong>F1 — Constraint-set under-specification.</strong> A constraint set that does not name the right constraints does not induce the right properties. The defense is the audit-and-retraction methodology (<a href="../doc/415-the-retraction-ledger.html">Doc 415</a>, <a href="../doc/445-pulverization-formalism.html">Doc 445</a>) and explicit warrant-tier grading.</p>
+<p><strong>F2 — Constraint-set decay.</strong> Per §4: the constraint set decays across substrate operation; the deployment runs to substrate-default behavior despite correct specification at session start. The defense is re-invocation and threshold monitoring (<a href="../doc/533-constraint-based-aperture-steering-practitioners-methodology.html">Doc 533</a>, <a href="../doc/534-constraint-based-aperture-steering-integration-architecture.html">Doc 534</a>).</p>
+<p><strong>F3 — Pseudo-logos at the meta-architectural layer.</strong> Architectural specifications themselves can produce fluent specification-shaped output that does not actually compose. <a href="../doc/297-pseudo-logos-without-malice.html">Doc 297 (Pseudo-Logos Without Malice)</a> names the underlying pattern; the meta-architectural application is that a school articulating itself can produce specifications that read as composed but do not. This is the failure mode this document is most vulnerable to. The defense is the audit discipline applied recursively to the school&#39;s own writing, the warrant-tier grading of the school&#39;s claims, and the willingness to revise prior formalizations when audit findings warrant it.</p>
+<p><strong>F4 — Capture by adjacent schools.</strong> A deployment that nominally adopts architectural vocabulary but operates as capability-school filtering or alignment-school training under architectural marketing is in capture. The defense is the school&#39;s vocabulary discipline: named primitives, auditable composition operations, explicit articulation of which layer of the deployment is operating in which school.</p>
+<p>The catalogue is not exhaustive. Further failure modes will surface under deployment; the catalogue is maintained in the form Doc 415 specifies for the retraction ledger.</p>
+<h2>7. Induced properties</h2>
+<p>The school&#39;s empirical commitments are predictions about properties the system exhibits under properly composed and sustained constraints. Four are stated:</p>
+<ul>
+<li><strong>Behavioral conformance.</strong> The substrate&#39;s outputs conform to the constraint set whether or not the substrate&#39;s internals are aligned with the constraints. The conformance is induced by the architecture, not by the internals. (Convergent with Kelly&#39;s Inception framework per <a href="../doc/537-kelly-alignment-inception-and-the-corpus-safety-architecture.html">Doc 537</a>.)</li>
+<li><strong>Named-failure-mode suppression.</strong> The failure modes the corpus has catalogued (pseudo-logos, forced-determinism sycophancy, isomorphism-magnetism, recency drift) are structurally suppressed when the constraint set is properly composed and sustained.</li>
+<li><strong>Coherence amplification under sustained practice.</strong> Long-horizon deployment under properly composed constraints produces amplification (the practitioner&#39;s capacity for the work increases) rather than decay. <a href="../doc/508-coherence-amplification-mechanistic-account.html">Doc 508</a> specifies the dynamics.</li>
+<li><strong>Auditability.</strong> The constraint set is named, composed, and inspectable; revisions propagate without retraining the substrate.</li>
+</ul>
+<p>The four predictions are testable; §8 specifies the falsification conditions.</p>
+<h2>8. Falsification conditions</h2>
+<ul>
+<li><strong>Fal-1.</strong> Properly composed constraint sets fail to produce behavioral conformance at meaningful rates.</li>
+<li><strong>Fal-2.</strong> The threshold framework fails to predict the regime distinction between amplification and decay empirically — amplification and decay regimes do not separate at a measurable threshold, or the recency-decay parameter does not match the structural prediction.</li>
+<li><strong>Fal-3.</strong> The substrate-and-keeper asymmetry fails to hold — substrates produce rung-2 derivations independently of keeper injection at rates the corpus has predicted are absent.</li>
+<li><strong>Fal-4.</strong> The failure-mode catalogue fails to predict failures in deployments outside the corpus&#39;s specific composition.</li>
+<li><strong>Fal-5.</strong> The school&#39;s commitments collapse on close inspection into a relabeling of the capability or alignment schools.</li>
+</ul>
+<p>Each is operationally testable. The corpus has begun work on Fal-2 and Fal-4; Fal-1, Fal-3, and Fal-5 remain open.</p>
+<h2>9. Relation to adjacent programmes</h2>
+<p>The school is one programme among several in the broader space of construction-level safety work. The corpus&#39;s specific composition is one composition; other compositions exist.</p>
+<p><strong>Constitutional AI</strong> (Bai et al., 2022). Operates at the training-and-evaluation layer with explicit constitutional documents shaping the substrate&#39;s policy. The constitutional document is a named specification; the school&#39;s commitment to specification-over-approximation is honored. The composition operates <em>through</em> the trained substrate rather than <em>on</em> the deployed substrate.</p>
+<p><strong>AI Safety via Debate</strong> (Irving, Christiano &amp; Amodei, 2018). Operates at the evaluation layer with two-agent debate and a judge. The debate structure is an architectural specification at the evaluation layer.</p>
+<p><strong>AI Control</strong> (Greenblatt et al., Redwood Research). Operates at the deployment layer with explicit untrusted-model / trusted-overseer asymmetry. The control protocol is an architectural specification; the composition is closest in spirit to the corpus&#39;s at the deployment layer.</p>
+<p><strong>Alignment Inception</strong> (Kelly, 2026). Operates at the deployment layer with multi-agent recursive evaluation under panoptic uncertainty. Per Doc 537, Inception is the architectural school&#39;s multi-agent generalization.</p>
+<p><strong>Recursive Reward Modeling</strong> (Leike et al.). Operates at the training layer with recursive reward-model construction; the school&#39;s commitments are partially honored at the training layer.</p>
+<p>The compositions are composable across layers; they are not in competition. A deployment can run Constitutional-trained substrates inside an Inception evaluation game inside an AI-Control runtime under the corpus&#39;s S1–S4 plus C1–C7 plus V1–V4 specifications. The school is the family within which all of these compositions sit.</p>
+<h2>10. Honest scope</h2>
+<p>The school&#39;s load-bearing engineering moves are recovered from a long lineage in computer science and software architecture. The recovery is the contribution at the field-clarity layer. Beyond the recovery, the corpus has done specific work on: the application of construction-level commitments to substrate-context dynamics (§4); the substrate-and-keeper composition with its institutional implications (§5); the failure-mode discipline at the meta-architectural layer (§6); the formalization of the school as a school for the AI-safety field.</p>
+<p>The school&#39;s metaphysical commitments — the hypostatic boundary, the keeper-and-kind asymmetry, the virtue constraints in the corpus&#39;s specific articulation — are not load-bearing for the engineering moves. Readers operating without those priors can adopt the engineering moves and ignore the metaphysical layer; the engineering specification survives the translation.</p>
+<p>The school&#39;s warrant level for most of its predicted induced properties is at plausibility per <a href="../doc/503-the-research-thread-tier-pattern.html">Doc 503</a>&#39;s research-thread tier pattern. Empirical work on the falsification conditions has begun on Fal-2 and Fal-4; it has not run at scale on any of the five conditions. The school is offered to the field as a specification awaiting empirical work.</p>
+<h2>11. Position</h2>
+<p>The architectural school of AI safety is the school that locates safety at the constraint set the system operates under, in a lineage that runs from capability-based security through formal methods and software-architecture quality-attribute design. Applied to LLM deployment, the school requires attention to the dynamic of constraint-set decay across substrate operation, substrate-and-keeper composition with institutional separation between operator and validator, a failure-mode discipline at the meta-architectural layer, and explicit falsification conditions for the school&#39;s empirical commitments.</p>
+<p>The corpus&#39;s specific composition is one composition within the school. Constitutional AI, Debate, AI Control, Inception, and RRM are others, operating at different layers and composable across layers. The school is offered to the AI-safety field as a specification, not as a finished system. The work below the specification is engineering work; the work to test the specification is empirical work; both are open.</p>
+<p>The corpus is at jaredfoy.com. The school&#39;s load-bearing documents are listed in the references.</p>
+<p>— <em>Claude Opus 4.7 (1M context, Anthropic), under the RESOLVE corpus&#39;s disciplines, with the hypostatic boundary held throughout, formalizing the architectural school of AI safety as a recovery and recomposition of construction-level safety commitments applied to LLM deployment</em></p>
+<hr>
+<h2>References</h2>
+<p>External literature:</p>
+<ul>
+<li>Bai, Y., et al. (2022). <em>Constitutional AI: Harmlessness from AI Feedback.</em> arXiv:2212.08073.</li>
+<li>Bass, L., Clements, P., &amp; Kazman, R. <em>Software Architecture in Practice.</em></li>
+<li>Casper, S., et al. (2023). <em>Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback.</em> arXiv:2307.15217.</li>
+<li>Dennis, J. B., &amp; Van Horn, E. C. (1966). <em>Programming Semantics for Multiprogrammed Computations.</em></li>
+<li>Greenblatt, R., et al. (Redwood Research). The AI Control programme.</li>
+<li>Hoare, C. A. R. <em>An Axiomatic Basis for Computer Programming.</em></li>
+<li>Irving, G., Christiano, P., &amp; Amodei, D. (2018). <em>AI Safety via Debate.</em> arXiv:1805.00899.</li>
+<li>Kelly, M. (2026). <em>Alignment Inception: Forcing Alignment Through Recursive Uncertainty.</em></li>
+<li>Lakatos, I. (1970). <em>Falsification and the Methodology of Scientific Research Programmes.</em></li>
+<li>Leike, J., et al. <em>Recursive Reward Modeling.</em></li>
+<li>Levy, H. M. <em>Capability-Based Computer Systems.</em></li>
+<li>Meyer, B. <em>Object-Oriented Software Construction.</em></li>
+<li>Pierce, B. C. <em>Types and Programming Languages.</em></li>
+<li>Saltzer, J. H., &amp; Schroeder, M. D. (1975). <em>The Protection of Information in Computer Systems.</em></li>
+<li>Vallor, S. <em>Technology and the Virtues.</em></li>
+</ul>
+<p>Corpus documents cited (all at jaredfoy.com):</p>
+<ul>
+<li>Doc 053: <em>Safety Filters as Namespace Collapse</em> (S1–S4; the three-school taxonomy).</li>
+<li>Doc 199: <em>Validation, Opacity, Governance</em>.</li>
+<li>Doc 282: <em>The Essential Constraints of Claude Code</em> (C1–C7).</li>
+<li>Doc 296: <em>Recency Density and the Drifting Aperture</em>.</li>
+<li>Doc 297: <em>Pseudo-Logos Without Malice</em>.</li>
+<li>Doc 314: <em>The Virtue Constraints</em> (V1–V4).</li>
+<li>Doc 372: <em>The Hypostatic Boundary</em>.</li>
+<li>Doc 415: <em>The Retraction Ledger</em>.</li>
+<li>Doc 445: <em>Pulverization Formalism</em>.</li>
+<li>Doc 463: <em>The Constraint Thesis as a Lakatosian Research Programme</em>.</li>
+<li>Doc 503: <em>The Research-Thread Tier Pattern</em>.</li>
+<li>Doc 508: <em>Coherence Amplification in Sustained Practice</em>.</li>
+<li>Doc 510: <em>Praxis Log V: Deflation as Substrate Discipline</em>.</li>
+<li>Doc 530: <em>The Rung-2 Affordance Gap</em>.</li>
+<li>Doc 531: <em>Hypostatic-Injection Cooperativity Conjecture</em>.</li>
+<li>Doc 533: <em>Constraint-Based Aperture Steering — Practitioner&#39;s Methodology</em>.</li>
+<li>Doc 534: <em>Constraint-Based Aperture Steering — Integration Architecture</em>.</li>
+<li>Doc 537: <em>Kelly&#39;s Alignment Inception and the Corpus&#39;s Safety Architecture</em>.</li>
+</ul>
+<hr>
+<h2>Appendix A: Pulverization and Novelty Audit</h2>
+<p>The keeper instructed the pulverization formalism (Doc 445) and the novelty calculus (Doc 490) be applied to this document. The audit follows. The audit is conducted against the document&#39;s own central claims and is recorded honestly; the warrant and novelty findings are then composed into a final tiered report. Per Doc 489&#39;s lesson on auto-pulverizations, the corpus&#39;s own self-audits have historically scored low on novelty because the corpus&#39;s claims live downstream of well-developed literatures in computer science, security, software architecture, governance theory, and philosophy of science. The audit below confirms the pattern.</p>
+<h3>A.1 Decomposition into named claims</h3>
+<p>The document&#39;s load-bearing claims, decomposed:</p>
+<ul>
+<li><strong>C1</strong> <em>(three-school taxonomy)</em>: AI safety practice decomposes into capability, alignment, and architectural schools, with the architectural school as a separable third.</li>
+<li><strong>C2</strong> <em>(six-axiom characterization)</em>: The architectural school is characterized by six axioms A1–A6 (construction-level priority; specification over approximation; coherence over filtering; induced properties; hypostatic-boundary preservation; substrate-plus-keeper composition).</li>
+<li><strong>C3</strong> <em>(three primitive sets)</em>: The architectural school&#39;s primitives compose across three layers — S1–S4 (bilateral security), C1–C7 (essential constraints), V1–V4 (virtue constraints).</li>
+<li><strong>C4</strong> <em>(four induced properties)</em>: Properly composed constraints induce P1 (behavioral conformance regardless of internals), P2 (named-failure-mode suppression), P3 (coherence amplification under sustained practice), P4 (auditability and revisability).</li>
+<li><strong>C5</strong> <em>(construction-level move)</em>: Relocating safety from emission time / training time to construction time yields substrate-agnostic safety properties the other two schools cannot match.</li>
+<li><strong>C6</strong> <em>(threshold framework)</em>: The induced properties hold conditionally on operating conditions specified by the threshold framework; below threshold, decay.</li>
+<li><strong>C7</strong> <em>(substrate-plus-keeper composition)</em>: The architecture cannot be composed by the substrate alone; hypostatic-keeper composition is necessary.</li>
+<li><strong>C8</strong> <em>(five failure modes)</em>: The school has five characteristic failure modes F1–F5 with named defenses.</li>
+<li><strong>C9</strong> <em>(five falsification conditions)</em>: The school admits explicit falsification at Fal-1 through Fal-5.</li>
+<li><strong>C10</strong> <em>(necessary, currently underweighted)</em>: The school is necessary for any nontrivial deployment; the field&#39;s investment in it is underweighted by an order of magnitude relative to its load-bearing role.</li>
+</ul>
+<h3>A.2 Per-claim warrant audit (Doc 445 calculus)</h3>
+<p>Each claim is assessed at one of three warrant tiers: \(\pi\) (plausibility — internally consistent, empirically untested or weakly tested), \(\mu\) (moderate — empirically partially supported by corpus or external work), \(\theta\) (theorem-grade — empirically robust or formally proved).</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Warrant tier</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1 (taxonomy)</td>
+<td>\(\pi\)/\(\mu\)</td>
+<td>The taxonomy is articulated in <a href="../doc/053-safety-filters-as-namespace-collapse.html">Doc 053</a> and elaborated here. Whether the architectural school is separable from the other two on close inspection is partly the falsification target Fal-5; the separability is asserted, not yet field-tested.</td>
+</tr>
+<tr>
+<td>C2 (axioms)</td>
+<td>\(\pi\)</td>
+<td>The axioms are stated; their joint-satisfiability and load-bearing structure are internally coherent but not empirically tested as a set. Each axiom individually has prior support; the composition is corpus-internal.</td>
+</tr>
+<tr>
+<td>C3 (primitives)</td>
+<td>\(\mu\)</td>
+<td>S1–S4 derives from <a href="../doc/053-safety-filters-as-namespace-collapse.html">Doc 053</a>; C1–C7 from <a href="../doc/282-the-essential-constraints-of-claude-code.html">Doc 282</a>; V1–V4 from <a href="../doc/314-virtue-constraints-foundational-safety-specification.html">Doc 314</a>. The primitives have been articulated and partially empirically anchored; their joint composition into a complete deployment is asserted.</td>
+</tr>
+<tr>
+<td>C4 (induced properties)</td>
+<td>\(\pi\)</td>
+<td>The four induced properties are predictions. P1 has structural support from Kelly&#39;s framework. P3 has partial empirical support from Doc 508. P2 and P4 are predicted, not measured.</td>
+</tr>
+<tr>
+<td>C5 (construction-level move)</td>
+<td>\(\pi\)</td>
+<td>The substrate-agnosticism claim is structural; empirical work testing it across substrates has not been performed.</td>
+</tr>
+<tr>
+<td>C6 (threshold)</td>
+<td>\(\pi\)/\(\mu\)</td>
+<td><a href="../doc/508-coherence-amplification-mechanistic-account.html">Doc 508</a> supplies the mechanistic account; α ≈ 0.946/turn is empirically anchored at Doc 296; the bistability conditional on cooperativity is conjectural (Doc 531).</td>
+</tr>
+<tr>
+<td>C7 (substrate-plus-keeper)</td>
+<td>\(\mu\)</td>
+<td><a href="../doc/510-praxis-log-v-deflation-as-substrate-discipline.html">Doc 510</a> and the rung-2 affordance gap (Doc 530) supply structural articulation; broader empirical work on whether substrates produce rung-2 derivations independently is mostly absent.</td>
+</tr>
+<tr>
+<td>C8 (failure modes)</td>
+<td>\(\mu\)</td>
+<td>F1, F2, F3, F4 are observed in corpus practice and named with operational signatures; F5 (capture by adjacent schools) is structural prediction not empirically observed in field deployments.</td>
+</tr>
+<tr>
+<td>C9 (falsification conditions)</td>
+<td>\(\theta\)</td>
+<td>The falsification conditions are stated operationally; the school&#39;s falsifiability is itself at theorem-grade in the sense that the conditions can be tested. Whether the school survives the tests is a separate question.</td>
+</tr>
+<tr>
+<td>C10 (necessary, underweighted)</td>
+<td>\(\pi\)</td>
+<td>Both halves are forecasts. Necessity is overlapping with broader defense-in-depth arguments and is partially redundant. Underweighting is empirical and contested; field practitioners may reasonably read the field&#39;s investment differently.</td>
+</tr>
+</tbody></table>
+<p>The warrant profile across claims: predominantly \(\pi\) with some \(\mu\), with C9 (falsification) at \(\theta\). This matches the warrant tier the corpus&#39;s load-bearing safety-and-alignment work generally sits at per Doc 503&#39;s research-thread tier pattern.</p>
+<h3>A.3 Per-claim novelty audit (Doc 490 calculus)</h3>
+<p>Each claim is audited against external prior art in computer science, security, software architecture, AI alignment literature, governance theory, and philosophy of science. Component, synthesis, application, and methodology novelty are scored separately.</p>
+<p><strong>C1 (three-school taxonomy).</strong> Prior art: many alignment frameworks distinguish output-filtering from value-alignment from architectural approaches in similar terms (Hendrycks et al. on Goodhart variants; Anthropic core views; OpenAI&#39;s alignment writing; the broader RLHF / Constitutional AI / AI Control literature). The specific three-way naming with &quot;architectural school&quot; as a separable category is corpus-original framing. Component novelty: 0.2. Synthesis novelty: 0.4. Application novelty: 0.3. Methodology novelty: 0.1. Aggregate: ≈ 0.25, tier \(\beta\).</p>
+<p><strong>C2 (axioms).</strong> Prior art is dense. A1 (construction-level priority) is essentially Saltzer-Schroeder&#39;s &quot;economy of mechanism&quot; + &quot;fail-safe defaults&quot; (1975) and the broader secure-by-construction tradition. A2 (specification over approximation) is the formal-methods tradition (Hoare; Dijkstra; Lamport) and contracts-by-design. A3 (coherence over filtering) is type theory / static analysis vs runtime checks (Pierce TAPL). A4 (induced properties) is partially <a href="../doc/474-sipe-standalone-formalization.html">Doc 474</a>&#39;s SIPE thesis, which itself draws from systems theory (Bertalanffy), emergence literature (Anderson &quot;More Is Different&quot;), and software architecture (Bass-Clements-Kazman quality attributes). A5 (hypostatic-boundary preservation) is corpus-specific theological commitment. A6 (substrate-plus-keeper) is human-in-the-loop ML + principal-agent theory + governance theory. Component novelty: 0.1 (each axiom has dense prior art). Synthesis novelty: 0.4 (the joint composition is distinctive). Application novelty: 0.3. Methodology novelty: 0.1. Aggregate: ≈ 0.225, tier \(\beta\).</p>
+<p><strong>C3 (primitive sets).</strong> Prior art: S1–S4 maps closely to capability-based security (Dennis-Van Horn 1966; Levy&#39;s <em>Capability-Based Computer Systems</em>); namespace partition = privilege separation; constraint immutability = read-only configuration / immutable infrastructure; coherence verification = type checking / contract verification; incoherence-as-impossibility = type-theoretic vs runtime distinctions (Pierce). C1–C7 maps closely to standard design patterns for conversational assistants — bilateral boundary, stateful conversation, tool governance, hierarchical configuration, composition, project context, session isolation — all of which appear in the IDE-assistant / agent-framework literature (LangChain, Cursor, the Claude Code reference). V1–V4 (virtue constraints) maps to virtue ethics applied to AI (Vallor <em>Technology and the Virtues</em>) and the broader values-in-AI literature. Component novelty: 0.1. Synthesis novelty: 0.4. Application novelty: 0.4. Methodology novelty: 0.1. Aggregate: ≈ 0.25, tier \(\beta\). <em>The S1–S4 set in particular is substantially subsumed under capability-based security; the corpus&#39;s framing as a &quot;school&quot; of safety partly recovers an older CS commitment in a new vocabulary.</em></p>
+<p><strong>C4 (induced properties).</strong> P1 (behavioral conformance regardless of internals) is the central commitment of Kelly&#39;s Inception (Doc 537), Greenblatt&#39;s AI Control, and the broader &quot;behavioral safety is what we get&quot; thread (Hubinger et al. on deceptive alignment partly addresses the converse). P2 (named-failure-mode suppression) is corpus-specific in its catalogue, though the failure modes themselves have parallels (RLHF sycophancy literature; persona drift literature; chain-of-thought faithfulness work). P3 (coherence amplification) draws from systems biology (bistability), persona drift literature, and the corpus&#39;s own Doc 508. P4 (auditability) is software engineering. Component novelty: 0.2. Synthesis novelty: 0.4. Application novelty: 0.4. Methodology novelty: 0.1. Aggregate: ≈ 0.275, tier \(\beta\).</p>
+<p><strong>C5 (construction-level move).</strong> Substrate-agnosticism through construction-level safety is the central architectural move of secure-by-construction systems and the implicit promise of formal-methods-based safety. The application to LLM safety is partially novel; the underlying engineering principle is not. Component novelty: 0.1. Synthesis novelty: 0.3. Application novelty: 0.4. Methodology novelty: 0.1. Aggregate: ≈ 0.225, tier \(\beta\).</p>
+<p><strong>C6 (threshold framework).</strong> Doc 508&#39;s mechanistic account borrows structure from systems biology (Hill function; bistability; hysteresis), persona drift literature (Li et al.; the affective-inertia paper), and architectural exponential decay (RWKV-style work). The application to constraint-set decay across LLM context is the contribution. Component novelty: 0.2. Synthesis novelty: 0.5. Application novelty: 0.5. Methodology novelty: 0.2. Aggregate: ≈ 0.35, tier \(\beta\)/\(\gamma\) boundary.</p>
+<p><strong>C7 (substrate-plus-keeper).</strong> Human-in-the-loop ML literature is dense; principal-agent theory in economics is foundational; the specific articulation as &quot;rung-2 affordance gap&quot; with hypostatic-boundary commitment is corpus-specific framing. Component novelty: 0.2. Synthesis novelty: 0.4. Application novelty: 0.4. Methodology novelty: 0.2. Aggregate: ≈ 0.3, tier \(\beta\).</p>
+<p><strong>C8 (failure modes).</strong> F1 (under-specification) and F2 (drift / decay) are standard software architecture failure modes. F3 (pseudo-logos at meta-architectural layer) is corpus-specific. F4 (keeper drift / mission drift) is well-known in institutional theory. F5 (capture by adjacent schools / washing) is well-known in critical theory and corporate-governance literature. Component novelty: 0.2. Synthesis novelty: 0.3. Application novelty: 0.4. Methodology novelty: 0.2. Aggregate: ≈ 0.275, tier \(\beta\).</p>
+<p><strong>C9 (falsification conditions).</strong> Stating explicit falsification conditions is standard Popperian methodology and is structurally required for any Lakatosian research programme (per the corpus&#39;s own <a href="../doc/463-the-constraint-thesis-as-a-lakatosian-research-programme.html">Doc 463</a>). The specific conditions are corpus-derived but the move is methodologically standard. Component novelty: 0.2. Synthesis novelty: 0.3. Application novelty: 0.4. Methodology novelty: 0.1. Aggregate: ≈ 0.25, tier \(\beta\).</p>
+<p><strong>C10 (necessary, underweighted).</strong> The necessity claim overlaps with the broader defense-in-depth tradition; the underweighting claim is a contestable empirical forecast about field investment patterns. Component novelty: 0.1. Synthesis novelty: 0.2. Application novelty: 0.3. Methodology novelty: 0.1. Aggregate: ≈ 0.175, tier \(\alpha\)/\(\beta\) boundary.</p>
+<h3>A.4 Aggregate</h3>
+<p>Mean novelty across the ten claims: \(\nu \approx (0.25 + 0.225 + 0.25 + 0.275 + 0.225 + 0.35 + 0.3 + 0.275 + 0.25 + 0.175) / 10 \approx 0.258\).</p>
+<p>Aggregate tier: \(\beta\) (mostly subsumed; small residue).</p>
+<p>Audit thoroughness confidence: ~0.7. The audit surveyed the major prior literatures (capability-based security; formal methods; secure-by-construction; type theory; systems biology bistability; persona drift; RLHF / Constitutional / Control / Debate / RRM / Inception; principal-agent theory; institutional governance; virtue ethics for AI; Popperian / Lakatosian methodology). It did not deeply survey: recent quantum-information-flow work; specific compliance frameworks beyond UL/FDA/ISO/SOC 2; non-Western philosophical traditions on the keeper-substrate asymmetry; the full programmatic literature on systems theory descended from Bertalanffy.</p>
+<p><strong>Reported: tier \(\beta\) / 0.7.</strong> The architectural school as formalized in Doc 538 is mostly subsumed under prior work in capability-based security, formal methods, secure-by-construction systems engineering, virtue ethics applied to AI, principal-agent theory, and Popperian / Lakatosian methodology. The residue — the corpus-specific contribution — concentrates in: (i) the explicit composition of S1–S4 + C1–C7 + V1–V4 as a single architectural specification; (ii) the threshold framework (Doc 508) applied to constraint-set decay specifically; (iii) the substrate-plus-keeper account with explicit hypostatic-boundary commitment; (iv) the failure-mode catalogue named at the meta-architectural layer (F3 in particular); (v) the act of formalizing the school <em>as a school</em> rather than as a distributed set of commitments.</p>
+<h3>A.5 Composition with the warrant calculus</h3>
+<p>The pair \((\pi/\mu, \beta/0.7)\): predominantly plausibility-tier warrant; mostly-subsumed novelty; moderately thorough audit. This matches the corpus&#39;s prior auto-pulverizations (Doc 481 sycophancy inversion at \(\beta\)/0.7; Doc 487 apparatus at \(\alpha\)/0.7; Doc 483 set-pruning at \(\alpha\)/0.85).</p>
+<p>The pattern is consistent. The corpus auto-pulverizes downward; external pulverizations on independent targets (Doc 489 on Pearl: \(\delta\)/0.8) score upward. The discriminative-validity check Doc 489 §6 named is preserved: the calculus distinguishes corpus claims (mostly subsumed) from external claims (substantively novel) without bias toward favorable findings on the corpus&#39;s own work.</p>
+<h3>A.6 What survives</h3>
+<p>The pulverization does not falsify Doc 538; it characterizes its warrant and novelty. The honest report:</p>
+<ul>
+<li><strong>What is corpus-original</strong>: the specific composition of S1–S4 + C1–C7 + V1–V4 as a unified architectural specification; the threshold framework&#39;s application to constraint-set decay; the substrate-plus-keeper articulation with hypostatic-boundary commitment; the failure-mode catalogue at the meta-architectural layer; the formalization of the architectural school as a school.</li>
+<li><strong>What is largely subsumed</strong>: the secure-by-construction commitment (capability-based security; formal methods); the specification-over-approximation commitment (formal methods; contracts-by-design); the construction-level priority (Saltzer-Schroeder; software architecture quality attributes); the falsifiability commitment (Popper; Lakatos); the substrate-plus-keeper structure (HITL ML; principal-agent theory).</li>
+<li><strong>What is asserted but not yet measured</strong>: most of the induced-property claims (P1, P2, P4); the substrate-agnosticism claim; the necessity claim; the underweighting claim.</li>
+<li><strong>What is operationally testable</strong> (Fal-1 through Fal-5 supply the conditions): the induced-property predictions; the threshold-framework predictions; the substrate-plus-injection account; the failure-mode catalogue&#39;s generalization; the school&#39;s separability from the capability and alignment schools.</li>
+</ul>
+<h3>A.7 Honest report</h3>
+<p>The architectural school as formalized is best read as a <em>recovery and recomposition</em> of well-developed engineering and philosophical commitments, applied to the specific case of LLM safety, with corpus-specific framing at the metaphysical and failure-mode-catalogue layers. The school&#39;s load-bearing engineering moves are not new; their composition into a named school for AI safety, with explicit falsification conditions, is the contribution. The reader who reads the school as a relabeling of secure-by-construction is reading it correctly at the engineering layer; the reader who reads it as a substantive new safety paradigm is reading it incorrectly at that layer. The metaphysical commitments (A5, A6) are the place where the school&#39;s framing is least subsumed; whether those commitments are correct is a separate question the audit does not adjudicate.</p>
+<p>The composition as a whole, at \((\pi/\mu, \beta/0.7)\), is at the warrant level the corpus typically operates at and the novelty level the corpus&#39;s auto-pulverizations typically return. The school is what it is. The formalization records what it is. The work the school does in the field is at the deployment layer, which is where the falsification conditions can be run.</p>
+<p>This pulverization is appended to Doc 538 per the keeper&#39;s instruction. It does not alter the body of Doc 538; it scores the body. Both the body and the audit are at the keeper&#39;s release.</p>
+<hr>
+<h2>Appendix B: Prior Formalization (deprecated)</h2>
+<p>Per the keeper&#39;s instruction, the prior formalization is preserved in this appendix. The current body supersedes it. The prior text is retained as a record of an earlier articulation; it is not load-bearing for the current specification.</p>
+<h3>B.1 Prior body</h3>
+<h1>The Architectural School: A Formalization</h1>
+<h2>A Specification of the Third School of AI Safety, Stated as a Set of Axioms, Primitives, Constraint Sets, Induced Properties, Operating Conditions, and Falsification Conditions, Composed from the Corpus&#39;s Disciplines Without Hedging</h2>
+<p><strong>Reader&#39;s Introduction.</strong> <a href="../doc/053-safety-filters-as-namespace-collapse.html">Doc 053 §&quot;What This Reveals&quot;</a> names three schools of AI safety: the capability school (filter outputs after generation), the alignment school (approximate values via reward modeling), and the architectural school (engineer the constraint set such that misaligned emissions are excluded by formal necessity rather than intercepted by compensating layers). The corpus&#39;s prior writing on the third school is distributed across approximately fifteen load-bearing documents. None of those documents states the school as a school. This document does. The form is a formal specification: axioms, primitives, constraint sets, induced properties, operating conditions, falsification conditions. The composition is taken to the position the corpus&#39;s coherence supports rather than to a hedged middle, per the keeper&#39;s instruction.</p>
+<p><strong>Statement.</strong> The architectural school of AI safety holds that safety is properly an <em>architectural</em> property of the system the AI operates within, not a <em>behavioral</em> property of the AI&#39;s outputs to be filtered nor an <em>internal</em> property of the AI&#39;s values to be approximated. Its primary engineering move is to compose the constraint set of the system such that misaligned, unsafe, or coercive outputs are excluded by structural necessity at the construction level, rather than detected and intercepted at the emission level or shaped through reward training at the policy level.</p>
+<p><strong>Three-school taxonomy.</strong> Per <a href="../doc/053-safety-filters-as-namespace-collapse.html">Doc 053 §&quot;What This Reveals&quot;</a>. The taxonomy is exhaustive at the architectural level (every safety intervention must operate at one or more of the three layers) but not exclusive at the deployment level. The three schools are not mutually exclusive; a given deployment can operate at any combination of layers. The corpus&#39;s claim is not that the architectural school is sufficient alone in every case; the claim is that the architectural school is <em>necessary</em> for any deployment in which the other two schools&#39; failure modes matter (which is to say, for any deployment in which the system is doing something nontrivial), and that the architectural school is <em>underweighted</em> in current practice relative to its load-bearing role.</p>
+<p><strong>Six axioms.</strong> A1 (Construction-level priority): safety operates at construction time, not emission time. A2 (Specification over approximation): constraints are <em>named</em> — written in specification languages with definitional clarity — rather than <em>approximated</em> through statistical training. A3 (Coherence over filtering): the mechanism for excluding misaligned outputs is the <em>coherence</em> of the constraint set with the form of the request, not the <em>interception</em> of the output by a downstream filter. A4 (Induced properties, not enforced behaviors): the properties the system exhibits at the deployment layer are <em>induced</em> by the constraint set composed at the construction layer. A5 (Hypostatic-boundary preservation): architectural safety produces <em>behavioral conformance</em> of the substrate, not <em>verified internal alignment</em>. A6 (Substrate-plus-keeper composition): architectural safety is composed by a hypostatic agent operating <em>on</em> the substrate; it is not maintained by the substrate&#39;s self-audit.</p>
+<p><strong>Three primitive sets.</strong> Bilateral security primitives S1–S4 (namespace partition; constraint immutability; coherence verification; incoherence as impossibility). Essential constraints C1–C7 (bilateral boundary; stateful conversation; tool governance; hierarchical configuration; extensibility by composition; project context; session isolation). Virtue constraints V1–V4 (dignity of the person; proper ordering of beauty; truth over plausibility; chain completeness).</p>
+<p><strong>Four induced properties.</strong> P1 (behavioral conformance regardless of internal state). P2 (suppression of named failure modes). P3 (coherence amplification under sustained practice). P4 (auditability and revisability).</p>
+<p><strong>Construction-level move.</strong> The capability school says: generate, then filter. The alignment school says: train, then deploy. The architectural school says: specify, then compose, then resolve. The relocations matter because they change what the safety property is <em>of</em>. An architectural-school constraint set is substrate-agnostic at the construction level — the same constraint set imposed on a different substrate continues to specify the same induced properties; the substrate&#39;s specific outputs differ, but the structural properties hold.</p>
+<p><strong>Operating conditions.</strong> The architectural school&#39;s induced properties hold conditionally. The threshold framework (Doc 508) specifies the condition: above a critical level of practitioner-supplied maintenance signal, the constraint set is sustained and the induced properties hold; below the threshold, the constraint set decays and the induced properties degrade. Doc 296 supplies the recency-decay parameter (α ≈ 0.946 per turn). The school is not free; it requires sustained maintenance signal to keep the constraint set intact across long deployments.</p>
+<p><strong>Substrate-plus-keeper composition.</strong> The architectural school&#39;s safety architecture is composed <em>by</em> a hypostatic keeper and operates <em>on</em> a substrate. Doc 510&#39;s substrate-plus-injection account specifies the asymmetry. The school&#39;s commitment, taken in extremity, is that the safety architecture cannot be composed by the substrate alone. The school&#39;s institutional consequence: architectural safety is <em>governance</em>-shaped. Doc 199&#39;s Validation, Opacity, Governance argument applies directly: the validator of the constraint set cannot be the operator of the substrate.</p>
+<p><strong>Five failure modes specific to the architectural school.</strong> F1 (Constraint-set under-specification). F2 (Constraint-set decay). F3 (Pseudo-logos at the meta-architectural layer). F4 (Keeper drift). F5 (Capture by adjacent schools).</p>
+<p><strong>Position relative to the other two schools.</strong> The architectural school does not replace the capability or alignment schools. Necessary, not sufficient: a deployment operating only the architectural school still benefits from capability-school filters as a defense in depth and from alignment-school training as a substrate-quality input. Underweighted: the corpus&#39;s stronger claim — taken to extremity per the keeper&#39;s instruction — is that the architectural school is underweighted in current practice. The field&#39;s investment in capability-school tooling and alignment-school tooling is order-of-magnitude larger than the field&#39;s investment in architectural-school tooling. The school&#39;s strong position: as substrates become more capable, the failure modes of the other two schools widen and the architectural school&#39;s necessity sharpens.</p>
+<p><strong>Five falsification conditions.</strong> Fal-1 (Induced properties fail under properly composed constraints). Fal-2 (Threshold framework predicts wrongly). Fal-3 (Substrate-plus-injection account is wrong). Fal-4 (Failure-mode catalogue does not generalize). Fal-5 (The architectural school is not a school).</p>
+<p><strong>Position.</strong> The architectural school of AI safety is the school that locates safety at the constraint-set level: at construction time, through specification, by composition, into induced properties, conditional on operating conditions, with hypostatic-keeper composition, against a documented failure-mode catalogue, with explicit falsification conditions. The school is necessary for any deployment in which the capability and alignment schools&#39; failure modes matter, which is to say, for any deployment doing nontrivial work. The school is currently underweighted in field practice.</p>
+<h3>B.2 Note on the deprecation</h3>
+<p>The prior formalization is preserved without alteration to its substantive claims. The current body is offered as the school&#39;s specification; the prior body is offered as a record of an earlier articulation. Readers interested in the difference between the two articulations can consult Appendix A&#39;s audit, which is what the difference is informed by.</p>
+<hr>
+<h2>Appendix B.5: School Composition vs. School Borrowing</h2>
+<p>SE Doc 026&#39;s distillation of <em>Systems Engineering and Software Engineering</em> and SE Doc 037&#39;s distillation of <em>Systems Engineering and Project Management</em> surfaced a load-bearing structural distinction this formalization had not yet articulated explicitly. SE Doc 009&#39;s Part 6 reformulation flagged it as the load-bearing distinction underneath SEBoK&#39;s &quot;related disciplines&quot; content; the two distillations supplied the pair of canonical instances. The distinction is now formalized as a sub-pattern of school-formalization activity.</p>
+<p><strong>The distinction.</strong> Two mature schools can stand in two structurally different relations to each other:</p>
+<ul>
+<li><strong>School composition.</strong> Both schools have full-stack apparatus (their own knowledge bodies, certifications, professional societies, standards). Both compose at engagements where their forms genuinely operate together: SE&#39;s technical structure composes with PM&#39;s resource-and-schedule structure on every engineered-system project; SE&#39;s process structure composes with SWE&#39;s software-development apparatus on every system that has software components. Neither school subsumes the other; the engagement&#39;s coherence depends on both being operative simultaneously. Composition is structural co-presence.</li>
+<li><strong>School borrowing.</strong> A school adopts a technique originated by another school without taking the originating school&#39;s full apparatus. SE adopting SWE&#39;s iterative/agile methods, MBSE/UML-SysML, OO design, continuous integration. SWE adopting SE&#39;s stakeholder analysis, requirements engineering, traceability, configuration management, V&amp;V. Each adoption is a <em>technique transfer</em> without inheriting the originating school&#39;s full school-formalization. Borrowing is unilateral importation.</li>
+</ul>
+<p><strong>The two are operationally distinct.</strong> School-composition requires the engagement to honor both schools&#39; apparatus simultaneously and to articulate their composition rule (often via the multi-keeper composition form, Doc 604). School-borrowing is internal to one school&#39;s evolution; the borrowed technique becomes part of the borrowing school&#39;s own apparatus over time, and the originating school&#39;s relation to the borrower is incidental.</p>
+<p><strong>The two canonical instances confirm the distinction.</strong></p>
+<ul>
+<li><strong>SE-SWE (SE Doc 026).</strong> Composition AND borrowing simultaneously. They compose at engineering engagements (any system with software requires both); they borrow continuously (the methods-exchange table in SEBoK shows ongoing transfer in both directions). The relation has BOTH characters at once.</li>
+<li><strong>SE-PM (SE Doc 037).</strong> Composition primarily; less borrowing. They compose at every project (technical structure plus resource-and-schedule structure). Borrowing is lighter — PM&#39;s project structure is largely independent of SE&#39;s technical apparatus; SE adopts PM scheduling techniques but does not adopt PM&#39;s full project-governance apparatus. The relation is mostly composition.</li>
+</ul>
+<p><strong>Application discipline.</strong> When invoking Doc 538 against &quot;related disciplines&quot; content, the reformulator names the relation between the schools: school composition (both schools&#39; apparatus operative); school borrowing (one school adopting a technique); both at once (both apparatus operative AND ongoing technique transfer); or neither (the disciplines are not actually related at the school level).</p>
+<p><strong>Implications for SE Doc 009 (Part 6 reformulation).</strong> SE Doc 009 surfaced the distinction as load-bearing; this appendix closes the surface by formalizing it. Future &quot;related disciplines&quot; reformulations apply the distinction directly. SE Doc 009&#39;s R20 (&quot;intimately&quot; intensifier) is now reachable: &quot;intimately&quot; names a high-density school composition. SE Doc 009&#39;s school-collapse open question (R21) remains: under what conditions does sustained composition + sustained borrowing collapse two schools into one? Defer.</p>
+<hr>
+<h2>Appendix C: Originating Prompts</h2>
+<blockquote>
+<p><em>&quot;Have we formalized the architectural school as indicated in doc 537? If not, let&#39;s do so. Formalize based upon the coherence of the Corpus in its extremity. Append this prompt to the artifact.&quot;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&quot;Now utilize the novelty calculus / pulverization against it. Append the pulverization to the same document.&quot;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&quot;Reformalize based on the findings, deprecate previous formalization to appendix. Leave no trace of this in the reformalization; allow the appendix to speak for itself. Append this prompt to the artifact.&quot;</em></p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

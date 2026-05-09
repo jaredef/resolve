@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *System Architecture Design Definition*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>System Architecture Design Definition</em>, Distilled</h1>
+<p><strong>Top-20 distillation #13. <em>System Architecture Design Definition</em> is the SEBoK page where Doc 572 lattice composition meets the SE design discipline most directly. The &quot;multiple views of the system design features&quot; pattern (per ISO/IEC/IEEE 42010) is canonical lattice composition: each view is a Form-layer constraint binding the same Pattern-layer instance through a different aspect. The five sequential activities (project overview → requirements → functional → logical → physical) are pin-art at the architecture rung. The Authoritative Source of Truth (ASoT) claim is keeper-side connection structure (Doc 510). Five corpus forms compose; one residual on the digital ASoT claim that engages SE-028&#39;s Digital Engineering distillation.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> System Architecture Design Definition</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Architecture_Design_Definition">https://sebokwiki.org/wiki/System_Architecture_Design_Definition</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>System architecture design definition establishes how &quot;system behavior and structure characteristics in accordance with derived requirements&quot; are defined to ensure &quot;system elements operate together... to satisfy Stakeholder needs.&quot; Distinguished from detailed design: architecture defines logical (Platform Independent) and physical (Platform Specific) configuration items with allocated functions and interfaces; detailed design provides lower-level implementation specifics. Multiple views address stakeholder concerns per ISO/IEC/IEEE 42010. Five sequential activities: project overview → requirements definition → functional architecture → logical architecture → physical architecture. The digital system design model provides an Authoritative Source of Truth (ASoT) repository with traceability throughout hierarchical decomposition. Standards: ISO/IEC/IEEE 15288 (Architecture Definition process), ISO/IEC/IEEE 42010 (Architecture Description), OMG SysML v1.7/v2.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form III (extension) — Lattice Extension of the Ladder (Doc 572), with Appendix D universal-sibling at the architecture rung.</strong> &quot;Multiple views of the system design features&quot; per ISO/IEC/IEEE 42010 is canonical lattice composition. Each view (functional, logical, physical, behavioral, requirements-traceability, interface) is a Form-layer constraint binding the same Pattern-layer instance through a different aspect. This is structurally identical to SE-024&#39;s requirement-types case (Doc 572 Appendix D universal-sibling): all views apply universally to every architecture; the discriminator is aspect, not rung-of-application. ISO 42010 names the framework SEBoK applies; the corpus reads ISO 42010 as standardized lattice composition for architecture.</p>
+<p><strong>Form IV — Pin-Art Model (Doc 270).</strong> The five sequential activities (project overview → requirements → functional → logical → physical) are pin-art at progressive levels of specification. Each activity adds a pin-set; the substrate (the architecture in development) flows through; the result at each step is a more constrained shape. The progression from logical to physical is the canonical Platform-Independent → Platform-Specific transformation pattern.</p>
+<p><strong>Form III — Substrate-and-Keeper Composition (Doc 510).</strong> The ASoT (Authoritative Source of Truth) repository is keeper-supplied connection structure at maximum density. Doc 510&#39;s apparatus reads the ASoT as the keeper&#39;s discipline of maintaining one canonical artifact set against which the substrate&#39;s outputs are reconciled. Without an ASoT, traceability degrades and the substrate-keeper composition breaks at the artifact-coordination rung. Doc 530&#39;s affordance gap holds: the substrate (the engineering team) cannot author canonical-artifact-coordination structure from its own engineering work; the keeper (the SE process, the configuration management discipline, the model-based tooling) supplies it.</p>
+<p><strong>Form XI — Co-Production at Sub-Rungs (Doc 573).</strong> &quot;Multiple views... to address each stakeholder&#39;s viewpoint and concerns&quot; is co-production at the views rung. Each stakeholder co-produces the view appropriate to their concern with the SE keeper; the views together compose the architecture description. Doc 573&#39;s apparatus reads each view as a co-produced artifact between a specific stakeholder class and the SE keeper.</p>
+<p><strong>Form VII — Novelty Calculus (Doc 490), with strategy-import drift confirmation.</strong> The page&#39;s reference to digital ASoT echoes SE-028&#39;s Digital Engineering distillation. The &quot;Authoritative Source of Truth&quot; framing carries some of the same anticipatory-voice import from MBSE / digital-engineering sources; tier-tag discipline reads &quot;ASoT digital repository&quot; as μ for established-MBSE practice and θ for the broader digital-thread aspirational claim. The page&#39;s voice is more careful than SE-028&#39;s because the ASoT is a concrete repository rather than a strategic vision.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Architecture-vs-detailed-design distinction (logical PIM / physical PSM) — π / α (well-cited; ISO 42010, SysML).</li>
+<li>Multiple views per ISO 42010 — π / α as cited; μ / β under corpus when read as Doc 572 Appendix D universal-sibling lattice at the architecture rung.</li>
+<li>Five sequential activities (overview → requirements → functional → logical → physical) — π / α; μ / β under corpus when read as Doc 270 progressive pin-art.</li>
+<li>ASoT digital repository with traceability — μ / β under corpus (a substantial keeper-side claim with partial empirical support; SEBoK presents at π).</li>
+<li>Requirements traceable to stakeholder needs throughout hierarchical decomposition — π / α.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>The &quot;ASoT digital repository&quot; claim shares the strategy-import drift pattern SE-028 named for Digital Engineering. The corpus reads the ASoT as a structural claim about keeper-side artifact coordination (which composes under Doc 510) but with an anticipatory tier on its full operational realization (which echoes the digital-thread promise from SE-028). Logged as a tier-tag residual rather than a structural residual; Doc 490&#39;s discipline of explicit warrant tagging applies.</p>
+<p>The page&#39;s &quot;model-based approach&quot; framing is consistent with SE-028&#39;s MBSE-as-DE-subset claim; the two pages compose naturally as views of the same evolving methodology.</p>
+<h2>VI. Provisional Refinements</h2>
+<p>No new refinement candidates unique to this distillation. The page provides confirmation of:</p>
+<ul>
+<li>Doc 572 Appendix D universal-sibling lattice (architecture views as the empirical instance).</li>
+<li>Doc 510 keeper-supplied connection structure (ASoT as the densest case).</li>
+<li>Doc 270 progressive pin-art (the five sequential activities).</li>
+<li>Doc 573 stakeholder-view co-production.</li>
+</ul>
+<p>The form&#39;s apparatus is operative across the page without strain.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 (Lattice Extension, with Appendix D universal-sibling), Doc 270 (Pin-Art), Doc 510 (Substrate-and-Keeper), Doc 573 (Co-Production), Doc 490 (Novelty Calculus).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management).</p>
+<p><strong>Related distillations.</strong> SE-024 (System Requirements Definition — predecessor process; requirement types as the universal-sibling worked example). SE-028 (Digital Engineering — ASoT shares the digital-thread strategy-import). SE-032 (System Integration — successor in the realization chain).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>System Requirements Definition</em>, <em>System Detailed Design Definition</em>, <em>Functional Architecture</em>, <em>Logical Architecture</em>, <em>Physical Architecture</em>.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Continue with next 10&quot;</em></p>
+</blockquote>
+<p>(SE-031 is the thirteenth of twenty. <em>System Architecture Design Definition</em> was selected as the canonical operational instance of Doc 572 Appendix D universal-sibling lattice at the SE architecture rung. The structural reformulation finds the page composes cleanly with one tier-tag residual on the ASoT claim.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

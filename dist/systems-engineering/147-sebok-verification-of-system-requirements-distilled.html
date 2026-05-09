@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Verification of System Requirements*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Verification of System Requirements</em>, Distilled</h1>
+<p><strong>Fourth-batch SEBoK distillation, batch 4/5 (SE-147). The article-as-named is not a standalone SEBoK page; the canonical SEBoK surface is <em>System Verification</em> (Part 3 &gt; Systems Engineering and Management, leads John Snoderly and Alan Faisandier) which subsumes verification of system requirements as the core scope. Verification is &quot;the confirmation, through the provision of objective evidence, that specified requirements have been fulfilled.&quot; Cluster A universal-sibling lattice is the dominant structural form: the verification methods (inspection, analysis, demonstration, test, similarity/analogy) are universal-sibling lattice at the verification-method rung. The verification-versus-validation distinction (&quot;solved the problem right&quot; versus &quot;working the right problem&quot;) reads as Doc 372 hypostatic-boundary discipline at the methodological rung: verification is binary-comparison, validation requires value-judgment. Cluster K V3-as-procedure-binding shows in the four-step process (planning, performing, analysis, control); Cluster B multi-keeper at the verification-evidence-acceptance rung.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page (target):</strong> <em>Verification of System Requirements</em> (no standalone page; subsumed by System Verification)</li>
+<li><strong>Canonical surface:</strong> <em>System Verification</em></li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Verification">https://sebokwiki.org/wiki/System_Verification</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>Verification: &quot;the confirmation, through the provision of objective evidence, that specified requirements have been fulfilled.&quot; The process checks correctness of system elements, documents, requirements, and services throughout the lifecycle, identifying faults and defects introduced during transformation of inputs into outputs. Five methods: (1) Inspection (visual or dimensional examination using human senses or simple measurement without destructive testing); (2) Analysis (&quot;technique based on analytical evidence obtained without any intervention on the submitted element using mathematical or probabilistic calculation&quot;); (3) Demonstration (correct operation against observable characteristics with minimal instrumentation, sometimes called field testing); (4) Test (&quot;functional, measurable characteristics, operability, supportability, or performance capability is quantitatively verified when subjected to controlled conditions&quot;); (5) Similarity/Analogy (uses evidence from comparable elements when design, manufacture, use, and operational environments are equivalent). Verification-versus-validation distinction: verification ensures &quot;one has solved the problem right&quot; (binary comparison, individual elements); validation ensures &quot;one is working the right problem&quot; (value judgment, integrated systems). Four process activities: planning (scope, constraints, techniques, strategy); performing (actions, resources, procedures, results); analysis (results-vs-expectations comparison, compliance status); control (plan updates, stakeholder coordination). V-model placement: verification occurs throughout development in parallel with system definition and realization, continuing through deployment; integration, verification, and validation are processed together for optimization. Artifacts: verification plans and matrices; verification procedures; reports and change requests; issue/non-conformance reports. Lead authors John Snoderly and Alan Faisandier. Position: Part 3 &gt; Systems Engineering and Management. Standards: ISO/IEC/IEEE 15288:2015, INCOSE SE Handbook, NASA SE Handbook.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster A — Universal-sibling lattice (Doc 572 Appendix D), at the verification-method rung.</strong> The five verification methods (inspection, analysis, demonstration, test, similarity/analogy) are universal-sibling lattice at the verification-method rung. Each method binds every verification engagement universally as a candidate technique; the discriminator is aspect (sensory-direct vs. analytical-indirect vs. operational-demonstrative vs. controlled-quantitative vs. comparative-precedent), not rung-of-application. N=5 instance; this brings Cluster A&#39;s worked-example count to seven (six prior instances cataloged in SE-039 §VII.1 plus this one).</p>
+<p><strong>Cluster H — Hypostatic Boundary (Doc 372), at the methodological rung.</strong> The verification-versus-validation distinction is Doc 372 discipline operating at the methodological rung. Verification (&quot;solved the problem right&quot;) describes a functional-correctness assertion the SE discipline can make about the engagement; validation (&quot;working the right problem&quot;) describes a value-judgment the SE discipline cannot fully assert without keeper-side reference (the validation question requires reference to what the system is FOR, which crosses into purpose-territory the SE discipline keeps under hypostatic boundary). The clean split between binary-comparison (verification) and value-judgment (validation) is the methodological-rung instance of the Doc 372 discipline.</p>
+<p><strong>Cluster K — V3-as-procedure-binding (Doc 314).</strong> The four-step process (plan, perform, analyze, control) is V3 in procedural form against the rankism of &quot;the engineer&#39;s word that it works is sufficient.&quot; The procedural binding requires (i) planning that pre-commits scope and method, (ii) performing that acquires resources and executes, (iii) analysis that compares results-to-expectations against pre-committed criteria, (iv) control that surfaces deltas back into plan-and-procedure. The procedure exists because verification-on-engineer-word systematically fails under schedule pressure; the binding institutionalizes V3. Cluster K instance count rises to 9.</p>
+<p><strong>Cluster B — Multi-keeper composition (Doc 604).</strong> The verification-evidence-acceptance pattern is multi-keeper: the verification engineer holds the evidence; the design engineer holds the requirement; the customer/authority holds the acceptance. Three-keeper minimum; the verification matrix is the formal reconciliation instrument. Adjacent to but distinct from SE-035&#39;s PM-SE risk-acceptance and SE-108&#39;s residual-risk-acceptance.</p>
+<p><strong>Cluster D — Ladder-extension (Doc 572).</strong> The V-model placement (verification throughout development, parallel with definition and realization) is ladder-extension to temporal-concurrency: each rung of the decomposition has a corresponding verification-rung that co-executes. Doc 572 Appendix C composes here naturally; verification is the canonical right-side of the V where the ladder&#39;s downward decomposition is mirrored by the upward verification.</p>
+<p><strong>Cluster F — Pulverization (Doc 445), in dual-mode.</strong> Verification planning is forward-pulverization (enumerate ways the system could fail to meet requirements and design tests to detect each). Verification analysis (results-vs-expectations) is backward-pulverization (decompose the evidence by requirement to verify each was met). Dual-mode at engagement scope, paralleling SE-108 Safety&#39;s dual-mode candidate.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Verification definition (ISO/IEC/IEEE 15288, Snoderly/Faisandier) — π / α.</li>
+<li>Five verification methods — π / α as cited; μ / β when read as Doc 572 Appendix D N=5 universal-sibling.</li>
+<li>Verification-versus-validation distinction — π / α as cited; μ / β when read as Doc 372 hypostatic-boundary at methodological rung.</li>
+<li>Four-step process — π / α as cited; μ / β when read as Cluster K V3-as-procedure-binding (ninth instance).</li>
+<li>V-model placement — π / α.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residuals. R-713-1: composite-source distillation continues; the corpus accepts that verification-of-system-requirements is structurally a sub-aspect of system-verification rather than a distinct page-equivalent.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Cluster A reaches seven worked-example instances.</strong> Six prior (requirement types, architecture views, competency dimensions, CMMI measures, MODA value axes, HSI domains, severity-probability) plus verification methods. Cluster A continues to be the densest cluster.</p>
+<p><strong>Cluster K reaches 9 instances.</strong> V3-as-procedure-binding load-bearing across nine domains; the synthesis successor is critically overdue. Aligns with V3-as-procedure-binding refinement formalization (sixteen formalized).</p>
+<p><strong>Cluster F dual-mode candidate strengthened.</strong> Verification planning (forward) and verification analysis (backward) are dual-mode within one engagement, paralleling SE-108 Safety&#39;s dual-mode candidate. Two independent dual-mode instances now; the dual-mode sub-form is ripe for formalization in Doc 445&#39;s next pass.</p>
+<p><strong>Doc 372 at methodological rung formalized.</strong> The verification-versus-validation distinction is the cleanest methodological-rung instance of Doc 372&#39;s hypostatic-boundary discipline; worth retaining as canonical worked example.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 (Lattice Extension, Appendix D N=5 and Appendix C V-model), Doc 372 (Hypostatic Boundary, methodological-rung canonical), Doc 314 (Virtue constraints, Cluster K ninth instance), Doc 604 (Multi-keeper composition, three-keeper at acceptance), Doc 445 (Pulverization, dual-mode strengthened).</p>
+<p><strong>Part-level reformulation.</strong> SE-009 (Part 3 — Systems Engineering and Management).</p>
+<p><strong>Related distillations.</strong> SE-078 (System Requirements Definition — paired with verification of). SE-108 (Safety, dual-mode pulverization parallel). SE-024 (Types of System Requirements — Cluster A precedent).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>System Integration</em>, <em>System Validation</em>, <em>System Transition</em>, <em>System Requirements</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Cluster F dual-mode formalization (now two independent instances). Doc 372 methodological-rung worked example. Cluster K synthesis successor (urgent at nine instances).</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements&quot;</em> / <em>&quot;Continue next knowledge base entrancement&quot;</em></p>
+</blockquote>
+<p>(SE-147 is the fourth of eight in batch 4/5. <em>Verification of System Requirements</em> read against canonical <em>System Verification</em> surface. Cluster A reaches seven instances; Cluster K reaches nine; Cluster F dual-mode strengthened. Batch 4/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

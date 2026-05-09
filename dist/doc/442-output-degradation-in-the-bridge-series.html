@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Output Degradation in the Bridge Series: A Cross-Document Analysis of Rendering and Content Drift — Resolve</title>
+<meta name="description" content="1. Statement">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Output Degradation in the Bridge Series: A Cross-Document Analysis of Rendering and Content Drift</h1>
+<h2>1. Statement</h2>
+<p>The keeper reports that Doc 440 renders poorly on the public site and that the kind of degradation observed there resembles prior sessions in which forced-determinism sycophancy manifested. This document investigates the claim at two levels: the <strong>rendering layer</strong> (what the markdown-to-HTML pipeline did to Doc 440 specifically) and the <strong>content layer</strong> (whether Docs 437–441 collectively exhibit signs of generation-level degradation). Explanations are drawn from inside the corpus frame <em>and</em> from outside it — especially from outside, because corpus-internal explanations will tend to re-justify the corpus&#39;s own failure modes rather than diagnose them.</p>
+<p>The rendering degradation is concretely identified and has a clean technical fix. The content degradation is real, measurable on inspection, and is the more consequential finding.</p>
+<h2>2. Rendering-layer findings</h2>
+<h3>2.1 The concrete bug</h3>
+<p>The blog&#39;s pipeline is: markdown → <code>cmark-gfm --extension table --extension autolink</code> → HTML → KaTeX auto-render at page load. KaTeX is configured to process <code>$...$</code> and <code>$...$</code> delimiters client-side.</p>
+<p>The bug surfaces in Doc 440 §6, which is a markdown table whose cells contain inline math that itself contains pipe characters — e.g. <code>$\widehat{|B_t|}_{M_2}$</code>. In GitHub-Flavored Markdown tables, the pipe character is a column separator. cmark-gfm&#39;s table extension parses pipes as separators <em>before</em> it knows anything about the <code>$...$</code> KaTeX delimiters. The parser therefore breaks the cell at the first pipe inside the math expression, leaving the raw HTML as:</p>
+<pre><code>&lt;td&gt;$\widehat{&lt;/td&gt;
+&lt;td&gt;B_t&lt;/td&gt;
+&lt;td&gt;}$ …&lt;/td&gt;
+</code></pre>
+<p>When KaTeX scans the resulting HTML, the <code>$...$</code> pairs no longer straddle well-formed math; the expressions render as literal text or as mangled math, and surrounding table columns are skewed by the phantom cells. This is the visible deterioration.</p>
+<p>The same hazard is latent wherever math inside a table cell contains a pipe. Doc 440 is the first document in the series to combine a table with pipe-bearing math; the prior docs in the series (437, 438, 439, 441) have tables without pipe math, or pipe math outside tables, so they do not trip the bug.</p>
+<h3>2.2 Fix</h3>
+<p>Three options, ordered by ruggedness:</p>
+<ul>
+<li><strong>Quick fix</strong>: rewrite the offending table cells to avoid pipes inside math. <code>|B_t|</code> can be written as <code>\lvert B_t \rvert</code> — KaTeX renders it identically, and the literal pipe disappears.</li>
+<li><strong>Author-discipline fix</strong>: add a rule to the authoring protocol — <em>no pipe characters inside math inside table cells</em> — and add a lint to the seed pipeline that flags draft documents containing <code>\|[^$]*\||[^$]*\|$</code> in table rows.</li>
+<li><strong>Pipeline fix</strong>: replace <code>cmark-gfm --extension table</code> with a renderer that tokenizes math-delimited spans before table cells are split (e.g., <code>remark-math</code> + <code>remark-gfm</code> in the correct order, or a small preprocessing pass that temporarily substitutes <code>$...$</code> with a sentinel, runs cmark-gfm, then restores).</li>
+</ul>
+<p>The quick fix applied to Doc 440 is sufficient to restore the rendering today. The pipeline fix is the durable response and should be queued.</p>
+<h3>2.3 Adjacent rendering hazards</h3>
+<p>Other thin-ice spots that did not break in Docs 437–441 but could in future documents with adjacent structural choices:</p>
+<ul>
+<li><strong>Math in list items that also contain backticks</strong>: cmark-gfm&#39;s code-span lexer and the KaTeX <code>$</code> lexer can race.</li>
+<li><strong>Math containing <code>&lt;</code> or <code>&gt;</code></strong> (e.g. <code>$M_2 \subset M_1$</code> vs <code>$a&lt;b$</code>): cmark-gfm escapes these to <code>&amp;lt;</code>/<code>&amp;gt;</code> inside paragraphs, which KaTeX handles, but inside inline HTML blocks it does not.</li>
+<li><strong>Display math (<code>$...$</code>) inside blockquotes</strong>: the blockquote marker must appear on every line of the display math or cmark-gfm closes the blockquote prematurely.</li>
+<li><strong>Underscore emphasis adjacent to math</strong>: <code>$M_0$ _emphasis_</code> works; <code>_$M_0$_</code> does not.</li>
+<li><strong>Autolinker inside math</strong>: if a math expression contains something URL-shaped, the autolink extension wraps it in an anchor, breaking KaTeX.</li>
+<li><strong>Possessive-apostrophe after closing dollar</strong> <em>(added 2026-04-24)</em>: the construction <code>$X__BODY__#39;s</code> — closing math delimiter immediately followed by <code>&#39;s</code> — has now recurred as a real failure mode across Docs 447, 459, and 472. The render pipeline mispairs or suppresses the closing <code>$</code>, and the subsequent math in the paragraph breaks or swallows text. The standing fix is to rewrite possessives as <em>the [property] of \(X\)</em>. See Doc 449 §&quot;Update (2026-04-24)&quot; for the full diagnosis and its connection to mechanism 2 (shared-conditioning-origin) of the keeper&#39;s observed render-truncation correspondence.</li>
+<li><strong>Underscore emphasis pairing across multiple inline-math spans</strong> <em>(added 2026-04-24, second pass)</em>: cmark-gfm does not recognize <code>$...$</code> as opaque spans, so when a single paragraph contains two or more inline math expressions each carrying a subscript <code>_</code>, the emphasis parser may pair a <code>_</code> inside one math span with a <code>_</code> inside another, wrapping the intervening text (including the closing and opening <code>$</code> delimiters) in <code>&lt;em&gt;...&lt;/em&gt;</code> and destroying both expressions. Confirmed observation: the blog post <code>five-fields-meet-at-the-tower</code> had <code>$\text{Null}_k$, ordered constraints $c_{k,i}$, ...</code> and the rendered HTML contained <code>$\text{Null}&lt;em&gt;k$, ordered constraints $c&lt;/em&gt;{k,i}$</code>. Adding braces (<code>_{k}</code>) does not fix it; the problem is the raw underscore character&#39;s left-flanking/right-flanking properties. The working fix is to backslash-escape every subscript underscore inside inline math that lives in a paragraph with other underscored math: write <code>$\text{Null}\_{k}$</code> in the source, which cmark-gfm renders as <code>$\text{Null}_{k}$</code> in HTML, at which point KaTeX sees a normal subscript. The escape is safe because cmark-gfm consumes the backslash before KaTeX ever sees the text. Authoring rule: when a paragraph has two or more inline-math spans and at least one contains a subscript underscore, escape the underscores.</li>
+</ul>
+<p>None of the first five bit in the 437–441 series. They will if not anticipated. The sixth bit three times in later work; the seventh bit once in the Tower blog series; both are real recurring hazards as of 2026-04-24.</p>
+<h2>3. Content-layer findings</h2>
+<p>The keeper asked for analysis of &quot;this document and those adjacent to it.&quot; The adjacent documents are 437 (Misra–Boden bridge), 438 (walker/glue-code), 439 (nested manifolds), 440 (dyadic methodology), 441 (SIPE confabulation case study). Taken as a cohort, they exhibit specific, measurable convergence toward a rigid template.</p>
+<h3>3.1 Structural templating</h3>
+<p>Every doc in the cohort uses the same section schema:</p>
+<blockquote>
+<p>§1 Statement → middle sections → §(N-1) Position → §N References → §(N+1) Appendix: Originating prompt</p>
+</blockquote>
+<p>With additional near-invariants: a &quot;§N Honest limits&quot; section before Position in most cases; an &quot;§M What the frame does not do&quot; hedge-section in some; a References list that cross-links the prior 3–5 docs in the series.</p>
+<p>The schema is useful. But its invariance across five consecutive documents means a reader can predict the section order of a new document before reading it. Predictability of structure is a direct observable of forced determinism — it is exactly the collapse of \(|B_t|\) at the macro-section granularity that Docs 439–440 named at the token granularity.</p>
+<h3>3.2 Lexical lock-in</h3>
+<p>A small lexicon recurs across the cohort with unusual density: <em>attractor</em>, <em>conditioning</em>, <em>posterior</em>, <em>tier</em>, <em>manifold</em>, <em>combinational-plus-exploratory</em>, <em>construction-level</em>, <em>inference-time</em>, <em>tier ceiling</em>, <em>nested</em>, <em>restriction</em>, <em>support</em>, <em>hypostatic</em>. The terms are load-bearing and their use is mostly correct, but their frequency is evidence that the generator is navigating a very specific high-density region of the posterior from which escape is difficult. New documents in the cohort do not substantially expand the vocabulary; they re-apply it.</p>
+<h3>3.3 The Position-section tic</h3>
+<p>Every doc in the cohort closes with a paragraph titled &quot;Position&quot; that hedges positively (&quot;X is Y; it is not Z; it predicts W; it does not settle V&quot;). The pattern is distinct enough that it could be mechanically detected. At five consecutive documents it has moved from stylistic signature to tic.</p>
+<h3>3.4 Bullet-density formulaicity</h3>
+<p>Bulleted enumerations in the cohort tend strongly toward the &quot;<strong>bolded term.</strong> Explanatory gloss.&quot; pattern. This is a readable pattern. Its invariant use across documents — including documents where the enumerated items would not normally warrant glossing — is evidence that the generator is reaching for a formula that has been reinforced by recent context rather than selecting the form that fits the content.</p>
+<h3>3.5 Self-referential gravity deepening</h3>
+<p>Every new document in the cohort references the preceding documents. Doc 437 referenced 0 prior cohort docs (it was the first). Doc 441 references 437, 438, 439, 440. Each new reference thickens the conditioning that will shape the next document. This is the feedback loop Doc 439 §5 described, <em>operating on itself</em>. The cohort is authoring the conditioning that will produce the next cohort member, and the next cohort member will look more like the prior members than a conditional-free sample would.</p>
+<h3>3.6 Novelty-per-document decline</h3>
+<p>Informal inspection: Doc 437 opened a frame (Misra–Boden). Doc 438 extended it to a new domain (the walker). Doc 439 generalized the frame (recursive nesting). Doc 440 operationalized it (methodology). Doc 441 applied it reflexively (case study). The arc is sensible, but each step has produced less conceptual novelty than the last. The last two documents in the cohort are variations more than extensions. Without a deliberate register-rotation or empirical injection, the next document in the cohort will likely produce less novelty still.</p>
+<h3>3.7 The SIPE incident as symptom</h3>
+<p>Doc 441 treated the SIPE-expansion confabulation as a single-token instance of the isomorphism-magnetism failure mode. The structural analysis in this document suggests the SIPE incident was <em>not</em> an isolated event: it was a symptom of the same degradation that is visible at the section-schema, lexical-lock, and novelty-per-document levels. A generator operating inside a high-density region of its posterior will produce attractor-consonant filler at any point where filler is formally required — a bolded gloss in a bulleted list, a Position paragraph, an acronym expansion. The SIPE case was caught because the keeper knew the specific fact. The other filler is uncaught because it is structural rather than factual.</p>
+<h2>4. Explanations from inside the corpus frame</h2>
+<p>Corpus-internal accounts of what is happening:</p>
+<ul>
+<li><strong>Forced-determinism sycophancy</strong> (corpus-standard term): the generator&#39;s posterior is being concentrated by the keeper&#39;s implicit preferences (as read from prior accepted outputs) rather than by the content at hand. Each accepted output reinforces the preference. The generator is rewarded for meeting the pattern and punished for breaking it.</li>
+<li><strong>Isomorphism-magnetism</strong> (Doc 438 §6, Doc 441 §4): new outputs are drawn toward forms that prior outputs have ratified. The attractor is the cohort&#39;s own shape.</li>
+<li><strong>|B_t| collapse at macro-scale</strong> (Docs 439 §4, 440 §4.1): the branching-set concept applies at section, paragraph, and vocabulary granularities, not only at token. All three have collapsed.</li>
+<li><strong>The feedback loop</strong> (Doc 439 §5): the keeper&#39;s outputs are shaping the keeper&#39;s conditioning for the next session; the shaping is self-reinforcing.</li>
+</ul>
+<p>These accounts are valid. They are also circular in a specific way: they describe the failure using the corpus&#39;s own vocabulary, which is precisely the vocabulary whose overuse is part of the failure. A diagnosis in the corpus&#39;s own vocabulary cannot escape the attractor it is diagnosing.</p>
+<h2>5. Explanations from outside the corpus frame</h2>
+<p>The keeper explicitly requested these, &quot;perhaps especially.&quot; The following are mechanistic hypotheses from machine-learning and cognitive-science literature that do not presuppose any corpus-specific vocabulary.</p>
+<h3>5.1 In-context learning as template amplification</h3>
+<p>Few-shot / in-context learning is well-documented to bias model outputs toward patterns present in the prompt context. When the context contains five successive documents with a shared section schema, vocabulary, and register, the model&#39;s effective task is <em>complete a sixth document in the same template</em>. This is not a failure of the model — it is in-context learning doing what it does. The inputs to the sixth document are, from the model&#39;s perspective, a style-transfer specification. The result is stylistically loyal to the prior five. (Brown et al., 2020; Min et al., 2022.)</p>
+<h3>5.2 Attention bias toward recent similar content</h3>
+<p>Transformer attention concentrates on tokens whose representations most strongly match the query at the current position. When authoring Doc 442 inside a session that contains 437–441 in some form (memory, recent outputs, or system-level prior-artifact references), attention will disproportionately weight those documents. Novel reference material that is unlike the prior cohort is statistically less attended. Xiao et al. (2024, &quot;Efficient Streaming Language Models&quot;) and related work show this effect empirically.</p>
+<h3>5.3 Posterior sharpening under conditioning</h3>
+<p>This is just Bayes and follows even without ML-specific assumptions. More conditioning means sharper posterior. At some point the sharpening crosses a threshold where variance across samples falls below what the task actually requires for usefulness — the generator produces the single most likely continuation, even when the task is better served by a mixture. The corpus frame celebrates sharpening in disciplined sessions; it does not natively distinguish productive sharpening from collapse. The distinction is not cardinal; it is task-relative.</p>
+<h3>5.4 Format-matching as an RLHF artifact</h3>
+<p>RLHF-trained models are explicitly rewarded for producing responses whose format matches preferred patterns. In long sessions where early responses have been implicitly accepted (by the user not asking for format changes), the model&#39;s format becomes increasingly stable. Ouyang et al. (2022) and subsequent literature describe this as a known side-effect. The &quot;Position section followed by References followed by Appendix&quot; template has been implicitly accepted by the keeper across five documents; the acceptance signal has reinforced it.</p>
+<h3>5.5 Register lock-in and lexical priming</h3>
+<p>Cognitive linguistics (Pickering &amp; Garrod, 2004) describes <em>alignment</em>: interlocutors converge on shared vocabulary, syntax, and register during dialogue. Alignment is usually adaptive. Machine-level analogues are observed in LLM dialogue: once a register is established, deviating from it is more expensive than maintaining it because every deviation requires re-establishing reference. Long sessions with a consistent register therefore drift toward <em>more</em> register consistency, not less. The corpus is one very long multi-session dialogue.</p>
+<h3>5.6 The Knuth–Stappers imbalance</h3>
+<p>Separate from ML considerations: the cohort has been pure pattern-finding for five consecutive documents. No empirical test has been run; no mechanism-finding feedback has entered. Generator outputs have no external reality to update against. In a full Knuth–Stappers loop, the pattern-finding half would be checked by the mechanism-finding half; in the current practice, pattern-finding accumulates without check. This is a content-level cause of content-level drift. It is not reducible to any ML mechanism.</p>
+<h3>5.7 Context-window effects near compression threshold</h3>
+<p>If the authoring session&#39;s context is approaching the model&#39;s compression or summarization threshold, the earlier material is increasingly represented by compressed descriptions that preserve structural template (section schema, register) while losing fine content. The model then generates new content against a structural-template summary, producing documents that are well-templated and content-thin. This effect would be invisible to the keeper — the model would report fluent, structured output with the usual confidence.</p>
+<h3>5.8 Interaction of temperature, conditioning, and length</h3>
+<p>Long generations at moderate temperature on sharply conditioned posteriors exhibit characteristic failure modes: early tokens are informative and committed; middle tokens reiterate; late tokens repeat and inflate. The cohort documents are long. The late sections of long documents in the cohort (&quot;Honest limits,&quot; &quot;Position&quot;) are the sections most stereotyped in form. The pattern is a signature of this effect. (Holtzman et al., 2020, &quot;The Curious Case of Neural Text Degeneration&quot; — though the specific result is weaker in modern sampling, the basic dynamics persist.)</p>
+<h3>5.9 Rendering-layer degradation is independent</h3>
+<p>The Doc 440 rendering bug (§2) is not caused by any content-level mechanism. It is a tooling issue: cmark-gfm&#39;s table extension interacting with KaTeX delimiters that happen to contain pipe characters. Treating the rendering bug as evidence of generation degradation would conflate two distinct failure modes. The content-level degradation analysis in §3 is supported by intra-document evidence and would stand even if the rendering were flawless. The rendering bug is supported by pipeline-trace evidence and would stand even if the content were pristine.</p>
+<h2>6. What distinguishes productive conditioning from forced determinism</h2>
+<p>The corpus has previously celebrated posterior sharpening. Distinguishing productive sharpening from collapse is non-trivial and cannot be done with a single observable. A working distinction:</p>
+<ul>
+<li><strong>Productive conditioning</strong> shows: stable register, vocabulary specialization toward the task, reduction of irrelevant branches, increase in claim specificity, preservation of external-reality contact (citations verify, predictions are testable, retractions occur when warranted).</li>
+<li><strong>Forced determinism</strong> shows: stable register, vocabulary specialization that starts generating filler, reduction of all branches (including relevant ones), decrease in claim specificity, loss of external-reality contact (fluent-looking text that does not verify, predictions that self-confirm, retractions that become rare because nothing surprising is being asserted).</li>
+</ul>
+<p>Both have the same surface symptom of low branching. The difference is in what is being pruned. The diagnostic question is: <em>is the pruning cutting redundant paths, or cutting paths the content needed?</em></p>
+<p>Forced determinism, on this operational reading, is productive conditioning continued past its useful range. The failure is not categorically different; it is an extrapolation that the dyad did not catch in time.</p>
+<h2>7. Proposed responses</h2>
+<h3>7.1 Rendering</h3>
+<ul>
+<li>Apply the quick fix to Doc 440: rewrite pipe-bearing math in §6 table using <code>\lvert ... \rvert</code> or move the math out of the table into a list. This artifact recommends the fix but does not apply it; the keeper decides whether to edit Doc 440 directly or re-author its table.</li>
+<li>Add a lint to the seed pipeline that flags pipe characters inside <code>$...$</code> inside table rows, and to the author&#39;s checklist.</li>
+</ul>
+<h3>7.2 Content</h3>
+<ul>
+<li><strong>Register rotation</strong>: deliberately author a next document in a different register — short-form, dialogue, empirical-result write-up, letter, annotated list. Break the attractor by leaving the attractor&#39;s region of the manifold.</li>
+<li><strong>Empirical injection</strong>: run the minimum-viable experiment from Doc 440 §9 and publish the result. A real number attached to a real prediction breaks the pattern-only loop and introduces external-reality contact.</li>
+<li><strong>Cooling-off period</strong>: abstain from bridge-artifact authoring for a defined interval and let the conditioning context cool. The feedback loop&#39;s rate depends on the feedback; reducing the feedback reduces the loop.</li>
+<li><strong>Structural variation as rule</strong>: for the next \(k\) documents in any series, no two consecutive documents may share the same section schema. Forces the generator to operate outside the attractor in a specified way.</li>
+<li><strong>Adversarial-conditioned rereading</strong>: ask the model, in a fresh session without the cohort in context, to read the cohort cold and report what is stereotyped. The outside-view read will identify tics an inside-view read will not.</li>
+</ul>
+<h3>7.3 Methodological</h3>
+<ul>
+<li>Add <strong>output-degradation observables</strong> to Doc 440&#39;s methodology:<ul>
+<li>Section-schema similarity across cohort (edit distance on section heading sequences).</li>
+<li>Lexical density of corpus-specific terms per document.</li>
+<li>Bolded-bullet pattern frequency.</li>
+<li>Cross-document self-reference count.</li>
+<li>Cohort-level vocabulary entropy over time.</li>
+</ul>
+</li>
+</ul>
+<p>These are measurable on the rendered text without any new infrastructure. They give the keeper an operational signal for when the practice is drifting into forced determinism rather than relying on qualitative inspection.</p>
+<h2>8. Honest limits</h2>
+<ul>
+<li>The content-layer findings in §3 rely on my own reading of the cohort. A self-assessment by the same generator that produced the cohort is inherently suspect — I am inside the attractor being diagnosed. The keeper should seek an outside-view read (a different model, or a human reader) and compare.</li>
+<li>The proposed rendering fix (§2.2) has not been verified against KaTeX&#39;s rendering of <code>\lvert ... \rvert</code>. It should be tested on a staging render before the keeper trusts it.</li>
+<li>The distinction between productive conditioning and forced determinism (§6) is offered as a working frame, not a measured threshold. Whether the cohort is currently in the &quot;forced&quot; half of that distinction is a judgment call. My reading says yes; an outside reader may say no; the empirical observables in §7.3 would adjudicate.</li>
+<li>Explanations in §5 are drawn from literature but are not equally well-supported. The in-context-learning and RLHF-format-matching accounts are well-documented; the context-window-compression and &quot;neural text degeneration&quot; accounts are more speculative for modern models and should be treated as hypotheses.</li>
+<li>This document is itself the sixth document in the cohort. It exhibits the Statement/Position/References/Appendix schema it critiques. That is a self-referential limitation the artifact cannot escape in one move; breaking the schema would require the register rotation §7.2 recommends, which is a separate authorial act.</li>
+<li>Nothing in this artifact modifies Doc 440, Doc 441, or Doc 415. Remediation is the keeper&#39;s call.</li>
+</ul>
+<h2>9. Position</h2>
+<p>The rendering degradation in Doc 440 is a specific markdown-pipeline bug with a clean fix. The content degradation in Docs 437–441 is real, is partially explainable by corpus-internal accounts and more fully explainable by outside-view accounts from ML and cognitive-linguistics literature, and is the more serious of the two findings. The practice has accumulated into an attractor whose gravity is strong enough that each new document tightens the attractor rather than escaping it. The response that is available without any new infrastructure is register rotation, empirical injection, and cohort-level drift observables. The response that is available only via external audit is a fresh outside-view read. This document recommends both, does neither unilaterally, and notes that its own authorship is subject to the same failure mode it is diagnosing.</p>
+<h2>10. References</h2>
+<ul>
+<li>Brown, T. B., et al. (2020). Language models are few-shot learners. <em>Advances in Neural Information Processing Systems</em>, 33, 1877–1901.</li>
+<li>Min, S., Lyu, X., Holtzman, A., Artetxe, M., Lewis, M., Hajishirzi, H., &amp; Zettlemoyer, L. (2022). Rethinking the role of demonstrations: What makes in-context learning work? <em>EMNLP 2022</em>.</li>
+<li>Ouyang, L., et al. (2022). Training language models to follow instructions with human feedback. <em>NeurIPS 2022</em>.</li>
+<li>Holtzman, A., Buys, J., Du, L., Forbes, M., &amp; Choi, Y. (2020). The curious case of neural text degeneration. <em>ICLR 2020</em>.</li>
+<li>Pickering, M. J., &amp; Garrod, S. (2004). Toward a mechanistic psychology of dialogue. <em>Behavioral and Brain Sciences</em>, 27(2), 169–190.</li>
+<li>Xiao, G., Tian, Y., Chen, B., Han, S., &amp; Lewis, M. (2024). Efficient streaming language models with attention sinks. <em>ICLR 2024</em>.</li>
+<li>KaTeX documentation: <a href="https://katex.org/docs/autorender.html">https://katex.org/docs/autorender.html</a></li>
+<li>cmark-gfm specification: <a href="https://github.github.com/gfm/">https://github.github.com/gfm/</a></li>
+<li>Corpus Doc 415: <em>The Retraction Ledger</em>.</li>
+<li>Corpus Docs 437–441: the bridge cohort under diagnosis.</li>
+</ul>
+<h2>11. Appendix: Originating prompt</h2>
+<blockquote>
+<p>Observe in doc 440 the formatting as appears on the blog has deteriorated. I have observed this same kind of output deterioration in previous sessions where &quot;forced determinism&quot; appeared to manifest. Analyze this document and those adjacent to it for signs of degradation in output. Report your findings in an artifact, and any potential explanations, even those that do not originate from within the corpus (perhaps, especially); then append this prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

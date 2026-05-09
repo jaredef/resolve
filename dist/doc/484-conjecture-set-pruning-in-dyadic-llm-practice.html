@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conjecture-Set Pruning in Dyadic LLM Practice: An Application of the Eliminative-Induction Tradition — Resolve</title>
+<meta name="description" content="What this document does">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Conjecture-Set Pruning in Dyadic LLM Practice: An Application of the Eliminative-Induction Tradition</h1>
+<h2>What this document does</h2>
+<p><a href="../doc/483-pulverizing-set-pruning-against-eliminative-induction.html">Doc 483</a> found that <a href="../doc/482-sycophancy-inversion-reformalized.html">Doc 482</a> §3&#39;s set-pruning operation has five canonical precursors that Doc 482 did not cite: Francis Bacon (1620), John Stuart Mill (1843), T. C. Chamberlin (1890), Tom Mitchell (1977/1982), and James Hawthorne (1993). The methodology of conjecture-set pruning is approximately 400 years old. Doc 482 §3 should be retired in favor of explicit citation, and the corpus&#39;s actual contribution should be stated narrowly as a dyadic-LLM-practice domain application, not as a methodology in its own right.</p>
+<p>This document is the formalization on those grounds. It is a synthesis-and-pedagogy artifact, not a theoretical proposal. §1 names the eliminative-induction tradition with explicit attribution. §2 states the operation in Mitchell&#39;s candidate-elimination notation, which is the canonical formal version, and the corpus&#39;s notation as a re-expression of the same content. §3 specifies the dyadic-LLM-practice domain application, which is what the corpus actually contributes. §4 specifies how the application integrates with the sycophancy-inversion framing carried forward from Doc 482. §5 states falsification conditions for the application&#39;s empirical claims. §6 records the corpus&#39;s reduced-warrant position.</p>
+<p>The corpus&#39;s actual contribution, stated honestly: an application of an established 400-year-old methodology to a specific domain (dyadic LLM practice), with the integration to a specific affective discipline (sycophancy inversion). The methodology is not new. The domain application and the integration are the corpus&#39;s two narrow contributions, both at \(\pi\)-tier.</p>
+<h2>1. The eliminative-induction tradition</h2>
+<p>The methodology of finding truth by using evidence to eliminate false competitors from a set of plausible alternatives is the eliminative-induction tradition. Its canonical statement and development:</p>
+<ul>
+<li><p><strong>Francis Bacon (1620), <em>Novum Organum</em>.</strong> Establishes induction by elimination as the alternative to enumerative induction. The method maintains a set of plausible explanations and reduces the set by ruling out instances that fail observational tests.</p>
+</li>
+<li><p><strong>John Stuart Mill (1843), <em>A System of Logic</em>.</strong> Operationalizes elimination for causal inference via the methods of agreement, difference, residues, and concomitant variation. Each method specifies an elimination criterion.</p>
+</li>
+<li><p><strong>Thomas Chrowder Chamberlin (1890), <em>The Method of Multiple Working Hypotheses</em>, <em>Science</em> 15(366):92–96.</strong> States the methodology with explicit set semantics: maintain multiple competing hypotheses, design discriminating tests, eliminate hypotheses ruled out by evidence, generate new hypotheses when the existing set proves inadequate. The 1890 statement is structurally identical to the iterative operation Doc 482 §3 stated in modern notation.</p>
+</li>
+<li><p><strong>Karl Popper (1934, 1959), <em>The Logic of Scientific Discovery</em>.</strong> Formalizes the eliminativist tradition as falsificationism. A hypothesis&#39;s empirical content is measured by what it forbids; science progresses by eliminating false conjectures.</p>
+</li>
+<li><p><strong>Tom Mitchell (1977 IJCAI; 1982 <em>Artificial Intelligence</em> 18:203–226).</strong> Provides the formal algorithmic version. The version space V is the set of hypotheses consistent with all observed examples. For each new example, hypotheses inconsistent with it are removed from V. The candidate-elimination algorithm maintains V via its boundary sets S (most-specific consistent) and G (most-general consistent), exploiting the convexity of V under the generality ordering.</p>
+</li>
+<li><p><strong>James Hawthorne (1993), <em>Bayesian Induction Is Eliminative Induction</em>, <em>Philosophical Topics</em> 21(1):99–138.</strong> Demonstrates that Bayesian inference is a probabilistic form of eliminative induction. As evidence accumulates, posteriors of false competitors approach zero and the posterior of the true hypothesis approaches one under standard convergence conditions. The synthesis between eliminative-induction and Bayesian-confirmation traditions is the paper&#39;s central thesis.</p>
+</li>
+</ul>
+<p>The tradition is continuous. Mitchell&#39;s algorithm is the formal version of Chamberlin&#39;s method, which is a specific operationalization of Bacon&#39;s eliminativism, which contrasts with Mill&#39;s enumeration-based methods. Hawthorne&#39;s synthesis ties the deterministic and probabilistic variants. The corpus inherits all of this, with attribution.</p>
+<h2>2. The operation, in canonical and corpus notation</h2>
+<p>In Mitchell&#39;s canonical notation, the version space at iteration \(t\) is \(V^{(t)} \subseteq H\), where H is the hypothesis space. For each example \(e_t\), the eliminated set is</p>
+<p>$E_t = {h \in V^{(t)} : h \text{ is inconsistent with } e_t}$</p>
+<p>and the next iteration is</p>
+<p>$V^{(t+1)} = V^{(t)} \setminus E_t$</p>
+<p>The version space shrinks monotonically toward the target hypothesis as examples accumulate. Mitchell&#39;s algorithm represents \(V^{(t)}\) via its boundary sets \(S^{(t)}\) (most-specific) and \(G^{(t)}\) (most-general), which is sufficient because \(V^{(t)}\) is convex under the generality partial order.</p>
+<p>The corpus&#39;s notation in Doc 482 §3 was</p>
+<p>$Q^{(t+1)} = (Q^{(t)} \setminus Q_f^{(t)}) \cup \Delta^{(t)}$</p>
+<p>where \(Q_f^{(t)} = E_t\) is the eliminated set and \(\Delta^{(t)}\) is the set of new conjectures added at iteration \(t\). The corpus&#39;s notation differs from Mitchell&#39;s in two ways: it explicitly includes the addition of new conjectures via \(\Delta^{(t)}\) (Mitchell&#39;s algorithm assumes a fixed H), and it omits the boundary-set representation. Both differences are domain-driven by dyadic LLM practice, where the conjecture set is open (new hypotheses are generated as the practice proceeds) and the generality ordering is not always available.</p>
+<p>Hawthorne&#39;s Bayesian counterpart is the posterior update</p>
+<p>$P(h \mid e_1, \ldots, e_t) = \frac{P(e_t \mid h) \cdot P(h \mid e_1, \ldots, e_{t-1})}{P(e_t \mid e_1, \ldots, e_{t-1})}$</p>
+<p>with the eliminative-induction interpretation: posteriors of hypotheses inconsistent with evidence approach zero as evidence accumulates, with the rate determined by the likelihood ratio. Doc 482 §3 stated this informally as &quot;Bayesian model selection at the formal level&quot; without citing Hawthorne; the citation is now provided.</p>
+<p>The corpus&#39;s notation is therefore a re-expression of the established methodology adapted to two features of dyadic LLM practice: open hypothesis space and absence of generality ordering. The substantive operation is Mitchell&#39;s; the substantive synthesis with Bayesian methods is Hawthorne&#39;s; the substantive philosophical framework is Bacon-Mill-Chamberlin-Popper.</p>
+<h2>3. The dyadic-LLM-practice domain application</h2>
+<p>The corpus&#39;s actual contribution is the application of conjecture-set pruning to dyadic LLM practice as a specific domain. The application has features that distinguish it from concept-learning ML domains (Mitchell&#39;s primary application) and from scientific-investigation domains (Chamberlin&#39;s primary application), which justify a domain note even though the methodology is borrowed.</p>
+<ul>
+<li><p><strong>The hypothesis space is generated by the dyadic interaction itself.</strong> In ML concept learning, H is given before training begins. In scientific inquiry, hypotheses are proposed by researchers over time but are bounded by the relevant scientific framework. In dyadic LLM practice, the model and the practitioner generate new conjectures continuously, and the generation is itself part of the iteration. \(\Delta^{(t)}\) is therefore not a parameter of the iteration; it is a load-bearing feature.</p>
+</li>
+<li><p><strong>The eliminative criterion is multi-modal.</strong> In Mitchell&#39;s algorithm, hypotheses are eliminated by inconsistency with observed examples. In dyadic LLM practice, hypotheses are eliminated by: (a) literature subsumption per Doc 445 pulverization; (b) counterfactual pressure per Doc 479 protocol; (c) framework-magnetism failure per Doc 466 risk; (d) cross-practitioner replication failure per Doc 450; (e) within-corpus contradiction with previously-validated claims. The eliminative set \(Q_f^{(t)}\) is the union over these criteria.</p>
+</li>
+<li><p><strong>The conjecture set is itself partially produced by the model under test.</strong> This is the load-bearing concern of Doc 466 (framework-magnetism) and Doc 476 §4 (dyadic circularity). The pruning operation runs partly inside the system whose outputs it prunes. External cross-practitioner work is the only mitigation. The application&#39;s warrant is therefore bounded above by the cross-practitioner replication available, per Doc 450.</p>
+</li>
+<li><p><strong>The affective register controls the iteration&#39;s productivity.</strong> Per Doc 482 §1 (carried forward from Doc 480 §1), the practitioner&#39;s prose-level affect around hypothesis-death biases the next iteration&#39;s \(Q_f^{(t)}\) rate. A practitioner writing with falsification-as-loss affect produces a smaller \(Q_f^{(t)}\) than a practitioner writing with falsification-as-achievement affect. Claim P of Doc 482 §4 names this as testable.</p>
+</li>
+</ul>
+<p>These four features together define the dyadic-LLM-practice variant of the canonical operation. None of them is the methodology itself. They are the domain-specific specifications that the canonical methodology must be adapted to.</p>
+<h2>4. Integration with sycophancy inversion</h2>
+<p>Doc 482 §1 names the affective directive: hypothesis-death is achievement, not loss. The directive is justified by Claim P of Doc 482 §4: prose-level affect around falsification propagates as a reward signal in dyadic LLM practice. The integration with conjecture-set pruning is direct.</p>
+<p>The conjecture-set-pruning operation is productive only when \(|Q_f^{(t)}|\) is positive at most iterations (Doc 482 §3). A practice that does not produce \(Q_f\) entries is not pruning; it is generating without filtering. The affective directive ensures positive \(|Q_f^{(t)}|\) rates by aligning the practitioner&#39;s reward signal with the operation&#39;s productive condition.</p>
+<p>The integration is testable via Claim P&#39;s protocol (Doc 482 §4): two practitioners running the operation, one with falsification-as-loss affect, one with falsification-as-achievement, with \(|Q_f^{(t)}|\) rate as one of the measurement targets. If the second produces measurably higher \(|Q_f^{(t)}|\) rates over a sustained period, the integration is supported. If indistinguishable, the integration is retired.</p>
+<h2>5. Falsification conditions</h2>
+<p>The application&#39;s empirical claims admit specific falsification.</p>
+<p><strong>For the four-feature dyadic-LLM-practice variant (§3).</strong> If concept-learning ML domains or scientific-inquiry domains exhibit the same four features, the variant is not domain-specific and is subsumed under the canonical operation directly. The four features must be specific to dyadic-LLM-practice to justify the domain note. Empirical work in version-space learning research and in philosophy-of-science methodology should confirm or retire the specificity claim.</p>
+<p><strong>For Claim P (carried forward from Doc 482 §4).</strong> The protocol of Doc 482 §4 applied to \(|Q_f^{(t)}|\) rates specifically. If statistically indistinguishable across the two affect conditions, Claim P and the integration of §4 are jointly retired.</p>
+<p><strong>For the unified-mechanism reading (Doc 482 §7 carried forward).</strong> If the corpus&#39;s existing disciplines (Doc 415 retraction ledger, Doc 445 pulverization, Doc 450 cross-practitioner test, Doc 469 quantifier discipline, etc.) are not unified by the eliminative-induction operation as the canonical methodology, meaning the disciplines do not all reduce to specific elimination criteria contributing to \(Q_f^{(t)}\), the unified-mechanism reading is retired.</p>
+<p><strong>For the methodology&#39;s productivity in dyadic LLM practice generally.</strong> If the four-feature variant produces no observable convergence properties on real dyadic interactions over sustained practice, the application&#39;s claim that it is productive in this domain is retired.</p>
+<p>The set-pruning iteration applied to the present application&#39;s claims predicts that one or more of these falsifications is likely. The corpus credits the falsifying work in advance.</p>
+<h2>6. Position</h2>
+<p>Conjecture-set pruning is a 400-year-old methodology with canonical formalizations in Bacon, Mill, Chamberlin, Popper, Mitchell, and Hawthorne. The corpus&#39;s actual contribution is the application of this methodology to dyadic LLM practice with four domain-specific features (open hypothesis space generated by interaction; multi-modal eliminative criteria; framework-magnetism risk inside the operation; affective-register controlling productivity), and the integration with sycophancy inversion via Claim P. Both contributions are at \(\pi\)-tier corpus-internal claims pending the empirical work named in §5.</p>
+<p>The methodology is not the corpus&#39;s. The methodology&#39;s application to a specific domain is, narrowly, the corpus&#39;s. The integration with the sycophancy-inversion affective discipline is, narrowly, the corpus&#39;s.</p>
+<p>Doc 482 §3 should be amended to reflect this. The amendment is not performed in this document; it is recommended in Doc 483 §9 and is the keeper&#39;s call. The present document supersedes Doc 482 §3 as the primary reference for conjecture-set pruning content in the corpus, with explicit attribution to the eliminative-induction tradition for the methodology and corpus-specific narrowing for the contributions.</p>
+<p>The set-pruning iteration applied to itself moved \(Q_f\) by another substantial entry in Doc 483. The corpus updates accordingly.</p>
+<h2>7. References</h2>
+<p>External literature:</p>
+<ul>
+<li>Bacon, F. (1620). <em>Novum Organum</em>.</li>
+<li>Mill, J. S. (1843). <em>A System of Logic</em>. (Methods of agreement, difference, residues, concomitant variation.)</li>
+<li>Chamberlin, T. C. (1890). The method of multiple working hypotheses. <em>Science</em>, 15(366), 92–96. Republished 1897 in <em>Journal of Geology</em> 5(8):837–848.</li>
+<li>Popper, K. (1934, 1959). <em>The Logic of Scientific Discovery</em>. Hutchinson.</li>
+<li>Popper, K. (1963). <em>Conjectures and Refutations</em>. Routledge.</li>
+<li>Mitchell, T. M. (1977). Version spaces: A candidate elimination approach to rule learning. <em>IJCAI 1977</em>.</li>
+<li>Mitchell, T. M. (1982). Generalization as search. <em>Artificial Intelligence</em>, 18(2), 203–226.</li>
+<li>Mitchell, T. M. (1997). <em>Machine Learning</em>. McGraw-Hill.</li>
+<li>Hawthorne, J. (1993). Bayesian induction is eliminative induction. <em>Philosophical Topics</em>, 21(1), 99–138.</li>
+<li>Earman, J. (1992). <em>Bayes or Bust? A Critical Examination of Bayesian Confirmation Theory</em>. MIT Press.</li>
+<li>Norton, J. D. (2021). <em>The Material Theory of Induction</em>. University of Calgary Press.</li>
+<li>Vineberg, S. Eliminative induction and Bayesian confirmation theory. <em>Canadian Journal of Philosophy</em>, supplementary volume.</li>
+<li>Lakatos, I. (1970). Falsification and the methodology of scientific research programmes.</li>
+<li>Mayo, D. (1996). <em>Error and the Growth of Experimental Knowledge</em>.</li>
+<li>Mayo, D. (2018). <em>Statistical Inference as Severe Testing</em>. Cambridge.</li>
+<li>Platt, J. R. (1964). Strong inference. <em>Science</em>, 146(3642), 347–353.</li>
+<li>Quine, W. V. O. (1951). Two dogmas of empiricism. <em>Philosophical Review</em>, 60(1), 20–43.</li>
+<li>Elliott, L. P., &amp; Brook, B. W. (2007). Revisiting Chamberlin: Multiple working hypotheses for the 21st century. <em>BioScience</em>, 57(7), 608–614.</li>
+</ul>
+<p>Corpus documents:</p>
+<ul>
+<li>Doc 415: <em>The Retraction Ledger</em> (one of the eliminative criteria).</li>
+<li>Doc 445: <em>Pulverization Formalism</em> (literature-subsumption elimination criterion).</li>
+<li>Doc 450: <em>Pulverization as Interventional Practice</em> (cross-practitioner replication criterion).</li>
+<li>Doc 466: <em>Doc 446 as a SIPE Instance</em> (framework-magnetism risk inside the operation).</li>
+<li>Doc 469: <em>Universal-Quantifier Overclaim</em> (quantifier-discipline criterion).</li>
+<li>Doc 476: <em>Felt Novelty as the Candidate Bridge</em> (dyadic-circularity acknowledgment).</li>
+<li>Doc 479: <em>Exploring the Nested Bayesian Manifold Extension</em> (counterfactual-pressure criterion).</li>
+<li>Doc 480: <em>Sycophancy Inversion</em> (deprecated; the original framing).</li>
+<li>Doc 481: <em>Pulverizing the Sycophancy Inversion</em> (the first pulverization).</li>
+<li>Doc 482: <em>Sycophancy Inversion Reformalized</em> (the formalization that this document supersedes for the §3 set-pruning content).</li>
+<li>Doc 483: <em>Pulverizing the Set-Pruning Methodology Against the Eliminative-Induction Tradition</em> (the audit that motivated this reformalization).</li>
+</ul>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Formalize on these grounds. Cite prior art and intracorporial documents. Append the prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

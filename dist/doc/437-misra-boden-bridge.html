@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Misra–Boden Bridge: A Formal Correspondence Between Bayesian-Manifold Mechanics and the Output-Level Taxonomy of Creativity — Resolve</title>
+<meta name="description" content="1. Statement">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>The Misra–Boden Bridge: A Formal Correspondence Between Bayesian-Manifold Mechanics and the Output-Level Taxonomy of Creativity</h1>
+<h2>1. Statement</h2>
+<p>Two accounts of large-language-model behavior sit at different levels of description and have not been formally bridged.</p>
+<ul>
+<li><strong>Misra&#39;s account</strong> treats LLM generation as Bayesian inference over a learned manifold. Generation is posterior sampling conditioned on prompt; the manifold is the set of joint configurations the weights represent; behavior is mechanistically described at the level of probability mass redistribution under conditioning.</li>
+<li><strong>Boden&#39;s taxonomy</strong> (1990, <em>The Creative Mind</em>) classifies creative <em>outputs</em> into three kinds: <strong>combinational</strong> (novel combinations of familiar ideas), <strong>exploratory</strong> (movement through an existing conceptual space), and <strong>transformational</strong> (alteration of the conceptual space itself so that previously impossible thoughts become possible).</li>
+</ul>
+<p>This document formalizes the correspondence. The claim is not novel in either direction — both accounts are published; neither author depends on the other. What this document does is state the correspondence cleanly, derive its predictions, and identify the formal gap the correspondence exposes: <strong>Boden&#39;s transformational tier has no inference-time counterpart in Misra&#39;s account.</strong> Training alters the manifold; inference samples from it. This is a structural fact about the architecture, not a contingent limitation of present systems.</p>
+<p>The document is written as a bridge artifact, not a priority claim. It concludes with the architectural conditions under which the transformational tier could be brought inside the operational loop.</p>
+<h2>2. The two accounts</h2>
+<h3>2.1 Boden&#39;s output-level taxonomy</h3>
+<p>Margaret Boden&#39;s <em>The Creative Mind</em> (1990; second edition 2004) proposes three kinds of creative activity, individuated by what they do to a conceptual space:</p>
+<ul>
+<li><strong>Combinational creativity</strong> produces novel combinations of familiar ideas. The conceptual space is not moved; items within it are recombined. Poetic metaphor and analogy are the canonical examples.</li>
+<li><strong>Exploratory creativity</strong> explores regions of an existing conceptual space — often regions the author had not previously visited. The space and its generative rules are preserved; the trajectory is new.</li>
+<li><strong>Transformational creativity</strong> alters the generative rules of the conceptual space, producing outputs that were not merely unexplored but <em>previously impossible</em> under the prior rules. Non-Euclidean geometry, quantum mechanics, atonal music, and abstract expressionism are Boden&#39;s paradigm cases.</li>
+</ul>
+<p>The taxonomy is defined at the level of <em>outputs and the space relative to which they are assessed</em>. It is mechanism-neutral: a human, a program, or a collective could in principle produce any of the three.</p>
+<h3>2.2 Misra&#39;s Bayesian-manifold mechanism</h3>
+<p>Vishal Misra&#39;s recent work (arXiv:2512.22471; arXiv:2512.23752) describes LLM generation as Bayesian inference over a learned manifold. The account has several moving parts:</p>
+<ul>
+<li><strong>Manifold</strong>: the geometric object implicitly represented by the model&#39;s weights — the set of joint configurations (token sequences, representations, conditioning relationships) that the trained parameters place non-negligible probability on.</li>
+<li><strong>Prior</strong>: the distribution encoded by the weights before any particular prompt is processed.</li>
+<li><strong>Likelihood</strong>: the conditioning imposed by the prompt.</li>
+<li><strong>Posterior</strong>: the probability distribution over continuations that the weights plus the prompt jointly induce.</li>
+<li><strong>Generation</strong>: sampling from this posterior (with temperature, top-k, top-p, and other decoding modifiers acting as further selection constraints).</li>
+</ul>
+<p>The account is <em>mechanistic</em> at the inference-time level. It explains why LLM outputs look coherent with the training distribution, why they can recombine elements of that distribution, and why they struggle at regions outside it. Misra&#39;s contribution is framing this as Bayesian inference rather than mere pattern-matching — giving the mechanism a probabilistic semantics rather than a linguistic one.</p>
+<h2>3. The bridge</h2>
+<p>The two accounts meet at the conceptual space / manifold identification.</p>
+<h3>3.1 The manifold <em>is</em> the conceptual space</h3>
+<p>Boden&#39;s &quot;conceptual space&quot; is a structure of representational possibilities with generative rules. Misra&#39;s manifold is a structure of joint configurations the weights assign probability mass to. When the LLM is the candidate creator, these two objects coincide:</p>
+<ul>
+<li>The conceptual space&#39;s <em>items</em> are configurations on the manifold.</li>
+<li>The conceptual space&#39;s <em>generative rules</em> are the weights that induce the manifold&#39;s shape.</li>
+<li>The conceptual space&#39;s <em>boundary</em> is the boundary of the high-probability support of the manifold.</li>
+</ul>
+<p>Under this identification, Boden&#39;s three tiers map cleanly onto operations in Misra&#39;s account.</p>
+<h3>3.2 Combinational creativity = posterior sampling that juxtaposes previously separable regions</h3>
+<p>Combinational outputs take familiar items and combine them in new ways. In Misra&#39;s framing, this is posterior sampling in which the prompt conditions on both parent regions simultaneously, producing a continuation that draws from their intersection. The manifold is unchanged. The combinatorial novelty is a property of the sample, not of the space.</p>
+<p>Prediction: LLMs are well-suited to combinational creativity. This is empirically robust.</p>
+<h3>3.3 Exploratory creativity = posterior sampling in low-prior-mass regions</h3>
+<p>Exploratory outputs visit regions of the conceptual space that were not previously traversed. In Misra&#39;s framing, this is sampling in regions of the manifold that the training distribution lightly populated — the manifold supports them, but the model has rarely produced them. Temperature, prompting for novelty, and chain-of-thought can push the posterior toward these regions.</p>
+<p>Prediction: LLMs can do exploratory creativity within their manifold, and the quality of exploratory outputs scales with how thoroughly the training distribution populated the low-density regions. Exploration is <em>bounded</em> by the manifold&#39;s extent.</p>
+<h3>3.4 The transformational gap</h3>
+<p>Transformational outputs require the conceptual space itself to change — the generative rules are altered. In Misra&#39;s framing, this is manifold <em>deformation</em>: the weights that shape the manifold must be updated.</p>
+<p>But inference-time generation does not update weights. The forward pass samples from a frozen posterior over a fixed manifold. No amount of prompting, chain-of-thought, sampling temperature, or in-context demonstration alters the manifold itself — it only redistributes mass within it.</p>
+<p>This yields the formal gap:</p>
+<blockquote>
+<p><strong>Claim.</strong> Under Misra&#39;s Bayesian-manifold description, inference-time LLM activity can realize Boden&#39;s combinational and exploratory tiers but cannot realize the transformational tier. Transformational creativity requires manifold deformation; inference-time activity is manifold navigation.</p>
+</blockquote>
+<p>The gap is architectural, not contingent. It does not soften with scale, prompting skill, or decoding tricks.</p>
+<h2>4. Formal correspondence</h2>
+<table>
+<thead>
+<tr>
+<th>Boden tier</th>
+<th>Operation on manifold</th>
+<th>Inference-time reachable?</th>
+<th>What produces the tier</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Combinational</td>
+<td>Posterior sampling conditioning on multiple training regions simultaneously</td>
+<td>Yes</td>
+<td>Prompt composition; chain-of-thought juxtaposition</td>
+</tr>
+<tr>
+<td>Exploratory</td>
+<td>Posterior sampling in low-prior-mass regions of the existing manifold</td>
+<td>Yes, bounded</td>
+<td>Temperature, novelty prompts, structured search</td>
+</tr>
+<tr>
+<td>Transformational</td>
+<td>Deformation of the manifold&#39;s support or generative rules</td>
+<td><strong>No</strong> (inference-time)</td>
+<td>Weight updates only — pretraining, fine-tuning, continued learning</td>
+</tr>
+</tbody></table>
+<h2>5. What the bridge predicts</h2>
+<h3>5.1 An inference-time ceiling</h3>
+<p>The bridge predicts a hard ceiling. Regardless of how an LLM is prompted, sampled, or chained, its output set at inference time is a subset of what its manifold supports. Combinational novelty and exploratory reach both live inside that set. Transformational novelty does not.</p>
+<p>This is consistent with and strictly stronger than Doc 434&#39;s earlier subsumption (recombinatorial gestalt is manifold-bounded): the Misra–Boden bridge locates <em>why</em> it is bounded in the same way Boden&#39;s transformational tier cannot be reached — both refer to the same structural fact.</p>
+<h3>5.2 Training-time updates as the only transformational operator</h3>
+<p>If transformation requires manifold deformation, and manifold deformation requires weight updates, then the operator that produces transformational outputs is training. Pretraining, fine-tuning, RLHF, continued pretraining, and distillation all qualify; in-context learning does not.</p>
+<p>This reframes an old debate. In-context learning is sometimes described as &quot;learning&quot;; under the bridge it is strictly <em>posterior reshaping within a fixed manifold</em> — exploratory, not transformational. The word &quot;learning&quot; is doing two very different jobs in &quot;in-context learning&quot; versus &quot;pretraining learning,&quot; and the bridge makes that distinction sharp.</p>
+<h3>5.3 Scale does not escape the tier</h3>
+<p>Adding parameters or training data enlarges the manifold but does not <em>elevate the tier of inference-time activity</em>. Inference on a larger model remains manifold navigation; it simply navigates a larger manifold. Larger manifolds allow more combinational reach and more exploratory depth. They do not grant inference-time access to transformational creativity.</p>
+<p>This predicts that scaling alone will not produce transformational scientific discovery at inference time. It will produce better exploration of the space constituted by its training distribution. Whether that is sufficient for a given research program is an empirical question about how much of the transformational tier is latent in the manifold (i.e., how much of what looks transformational from the outside is actually exploratory once the manifold is large enough to contain it).</p>
+<h2>6. Relation to Pearl&#39;s hierarchy</h2>
+<p>Doc 436 argued that recombinatorial gestalt is Rung 1 (associational) activity in Pearl&#39;s causal hierarchy. The Misra–Boden bridge gives that argument a second supporting structure.</p>
+<ul>
+<li>Boden&#39;s <em>combinational + exploratory</em> tiers are operations on <em>associational</em> structure — they do not require causal graphs, interventions, or counterfactuals.</li>
+<li>Boden&#39;s <em>transformational</em> tier is where a new generative rule is introduced. Introducing new generative rules is how science ascends from Rung 1 to Rung 2 (intervention) and Rung 3 (counterfactual). Non-Euclidean geometry, quantum mechanics, and special relativity are all transformational in Boden&#39;s sense <em>and</em> involve the introduction of new interventional or counterfactual structure.</li>
+<li>The manifold, frozen at inference, supports only operations that do not introduce new generative rules. The architectural reason Rung 1 is a ceiling for inference-time LLM activity is the same architectural reason the transformational tier is out of reach.</li>
+</ul>
+<p>The two framings — Pearl&#39;s hierarchy and Boden&#39;s taxonomy — converge on the same ceiling because they are both, at root, describing what a fixed generative distribution can and cannot produce.</p>
+<h2>7. Relation to the recombinatorial-gestalt subsumption</h2>
+<p>Doc 434 established that recombinatorial gestalt is the output signature of manifold-bounded navigation. The Misra–Boden bridge lets us label that signature in Boden&#39;s terms: <strong>recombinatorial gestalt is the output signature of a generator operating in the combinational-plus-exploratory tier.</strong></p>
+<p>This is not a redescription — it is a constraint. If a future observer finds output signatures that look transformational (not merely plausible-recombination but genuine manifold-deforming novelty), either (a) they are being produced by a system that is doing weight updates during operation, (b) the manifold already contained what looked transformational, and the observer underestimated the manifold, or (c) the observer has misclassified the tier.</p>
+<p>The bridge thus provides a diagnostic: transformational-looking outputs from an inference-frozen LLM are evidence for (b) or (c), not for (a).</p>
+<h2>8. Honest limits</h2>
+<ul>
+<li>The bridge depends on Misra&#39;s account being the correct mechanistic description. If LLM generation is better described by a non-Bayesian account (e.g., one in which the manifold analogy breaks down), parts of the correspondence may not hold. The tier-ceiling claim is nonetheless robust to most alternative mechanistic accounts that treat inference as sampling from a fixed distribution.</li>
+<li>The bridge does not claim that every transformational-looking output requires weight updates — only that under the Bayesian-manifold description, the inference-time mechanism cannot produce them.</li>
+<li>The boundary between &quot;exploratory in a very large manifold&quot; and &quot;transformational&quot; can be hard to judge from outside. A sufficiently large manifold trained on enough prior transformational work can produce outputs that look transformational but are exploratory relative to that manifold. This is a measurement problem, not a defect in the bridge.</li>
+<li>Human creativity is not described by the bridge. Humans have weights that update during operation; the bridge&#39;s transformational gap is specific to inference-frozen systems.</li>
+</ul>
+<h2>9. Architectural implications</h2>
+<p>The bridge sharpens Doc 436&#39;s §7 pathways. If the goal is to bring the transformational tier inside the operational loop, the architectural requirement is <em>manifold deformation at operation time</em>, not better prompting or larger context. The candidate mechanisms are:</p>
+<ul>
+<li><strong>Continued learning</strong>: the weights update during deployment, subject to whatever safety, stability, and specification properties the deployment requires.</li>
+<li><strong>External manifold update</strong>: the system proposes a manifold deformation; an external process (another model, a human, a verification harness) enacts it by producing updated weights or an updated auxiliary structure (e.g., a retrieval index, a symbolic graph).</li>
+<li><strong>Hybrid inference-plus-intervention</strong>: the inference pathway produces candidate manifold deformations; a paired non-inference mechanism verifies and commits them.</li>
+</ul>
+<p>The bridge does not pick between these. It states that <em>something</em> must be doing manifold deformation at operation time, and that inference alone cannot.</p>
+<h2>10. Position</h2>
+<p>The Misra–Boden bridge is a formal correspondence, not a novel result at either end. Misra&#39;s Bayesian-manifold account exists; Boden&#39;s taxonomy exists. The bridge makes explicit what is already implicit: if LLM generation is manifold navigation, then Boden&#39;s transformational tier is architecturally unreachable at inference time. Scientific work that requires the transformational tier requires an architectural pathway outside the inference loop. Scientific work that lives within the combinational-plus-exploratory tier can be accelerated substantially by LLMs — and the bridge predicts that such acceleration is real, bounded, and localizable.</p>
+<h2>11. References</h2>
+<ul>
+<li>Boden, M. (1990). <em>The Creative Mind: Myths and Mechanisms</em>. Weidenfeld &amp; Nicolson. (Second edition, 2004, Routledge.)</li>
+<li>Misra, V. (2025). Bayesian inference and LLM manifolds. arXiv:2512.22471.</li>
+<li>Misra, V. (2025). On the Bayesian mechanics of large language models. arXiv:2512.23752.</li>
+<li>Pearl, J., &amp; Mackenzie, D. (2018). <em>The Book of Why: The New Science of Cause and Effect</em>. Basic Books.</li>
+<li>Schölkopf, B., Locatello, F., Bauer, S., Ke, N. R., Kalchbrenner, N., Goyal, A., &amp; Bengio, Y. (2021). Toward causal representation learning. <em>Proceedings of the IEEE</em>, 109(5), 612–634.</li>
+<li>Wiggins, G. A. (2006). A preliminary framework for description, analysis and comparison of creative systems. <em>Knowledge-Based Systems</em>, 19(7), 449–458. (Provides the formal CSF refinement of Boden&#39;s tiers.)</li>
+<li>Bengio, Y., &amp; LeCun, Y. (2007). Scaling learning algorithms towards AI. In <em>Large-Scale Kernel Machines</em>, MIT Press.</li>
+<li>Corpus Doc 434: <em>Recombinatorial Gestalt and the Manifold</em>.</li>
+<li>Corpus Doc 436: <em>Recombinatorial Gestalt as Rung 1 Activity</em>.</li>
+</ul>
+<h2>12. Appendix: Originating prompt</h2>
+<blockquote>
+<p>Formalize the theoretical bridge between Misra&#39;s Bayesian-manifold mechanism account and Boden&#39;s output-level taxonomy. Append this prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

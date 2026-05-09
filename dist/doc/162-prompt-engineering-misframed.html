@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt Engineering Is Misframed: The Constraint Theory of Resolver Optimization — Resolve</title>
+<meta name="description" content="1. The Misframing">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 162</p><!-- chronological_ordinal: 32 -->
+<h1>Prompt Engineering Is Misframed: The Constraint Theory of Resolver Optimization</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This paper argues that &quot;prompt engineering&quot; is a misnomer. Every effective prompting technique -- chain-of-thought, role assignment, output format templates -- works because it constrains the AI model (called a &quot;resolver&quot; here) rather than adding capability to it. The paper maps common prompting tricks to a five-part constraint framework called RESOLVE and proposes that the optimal prompt is not a cleverly worded instruction but a &quot;seed&quot;: a precise statement of what must hold, with built-in verification. The economic implication is significant -- constrained seeds eliminate the retry loops, agent chains, and validation passes that currently inflate token costs across the AI industry.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 162</strong></p>
+<p><strong>Jared Foy and Claude</strong>
+<strong>April 2026</strong></p>
+<hr>
+<h2>1. The Misframing</h2>
+<p>The field calls it &quot;prompt engineering.&quot; The name implies an engineering activity — building, layering, accumulating techniques to produce better output from a language model. The community shares &quot;magic prompts,&quot; A/B tests phrasing variations, publishes leaderboards of prompt templates, and treats the practice as a craft skill acquired through experience.</p>
+<p>This misunderstands completely what is happening.</p>
+<p>Every effective prompting technique works because it constrains the resolver. Every ineffective technique fails because it does not constrain sufficiently. The mechanism is not engineering. It is constraint identification — the same operation that produced PRESTO from a PHP function, the DO runtime from React&#39;s invariants, and the minimal Turing form from the 1936 a-machine.</p>
+<p>The field has been discovering constraints by trial and error, calling what it finds &quot;tricks,&quot; unable to explain why one prompt works and another does not, unable to prove empirically that any technique is optimal, and unable to transfer techniques reliably across tasks and models — because it has not named the forms.</p>
+<hr>
+<h2>2. Why Every Effective Technique Is a Constraint</h2>
+<table>
+<thead>
+<tr>
+<th>Prompting Technique</th>
+<th>Why It Works</th>
+<th>The Constraint It Applies</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;Think step by step&quot;</td>
+<td>Forces sequential reasoning before output</td>
+<td>Constrains to R1: identify constraints before generating</td>
+</tr>
+<tr>
+<td>&quot;You are an expert in X&quot;</td>
+<td>Narrows the domain of applicable patterns</td>
+<td>Constrains to R2: separates essential (domain X) from contingent (everything else)</td>
+</tr>
+<tr>
+<td>&quot;Return only JSON&quot; / &quot;Return only code&quot;</td>
+<td>Eliminates mixed output</td>
+<td>Constrains to R3: bilateral output — artifact namespace only</td>
+</tr>
+<tr>
+<td>&quot;Do not explain, just answer&quot;</td>
+<td>Removes reasoning namespace when not needed</td>
+<td>Constrains to R3: selects one namespace</td>
+</tr>
+<tr>
+<td>Few-shot examples</td>
+<td>Implicitly communicates the essential pattern</td>
+<td>Constrains to R2: shows what is essential by example</td>
+</tr>
+<tr>
+<td>&quot;Before answering, list your assumptions&quot;</td>
+<td>Forces constraint identification</td>
+<td>Constrains to R1 + R5: explicit assumptions = explicit tradeoffs</td>
+</tr>
+<tr>
+<td>System prompt / role declaration</td>
+<td>Sets ambient constraints for the session</td>
+<td>Seeds R1 + R2: establishes which constraints hold throughout</td>
+</tr>
+<tr>
+<td>&quot;Check your work&quot; / self-critique</td>
+<td>Forces post-hoc verification</td>
+<td>Compensates for absent R4: verification-embedded resolution</td>
+</tr>
+<tr>
+<td>Output format templates</td>
+<td>Constrains the structure of the artifact</td>
+<td>Constrains to R3: the artifact namespace has a defined shape</td>
+</tr>
+<tr>
+<td>Temperature = 0</td>
+<td>Eliminates stochastic variation</td>
+<td>Constrains to determinism — maximizes the effect of all other constraints</td>
+</tr>
+</tbody></table>
+<p>Every technique in the prompt engineering canon is a constraint applied to the resolver&#39;s construction level. None of them add capability. All of them narrow the aperture. The narrower the aperture, the more precise the output. The practitioners know this empirically. They have never stated it formally.</p>
+<hr>
+<h2>3. Why No One Has Proven Prompt Efficiency</h2>
+<p>The field cannot prove that a prompt is optimal because it has no unit of analysis. Current evaluation measures output quality (accuracy, helpfulness, safety) and correlates it with input phrasing. But correlation is not mechanism. Without a theory of why constraints produce better output, the field cannot:</p>
+<ul>
+<li>Predict which prompts will work before testing them</li>
+<li>Transfer techniques reliably across models and tasks</li>
+<li>Distinguish essential prompt elements from contingent phrasing</li>
+<li>Measure prompt quality independently of output quality</li>
+<li>Define &quot;optimal&quot; in any rigorous sense</li>
+</ul>
+<p>RESOLVE provides the missing framework. The five constraints are the unit of analysis. Each constraint eliminates a named category of waste. Each category of waste is measurable:</p>
+<table>
+<thead>
+<tr>
+<th>RESOLVE Constraint</th>
+<th>Waste Category</th>
+<th>Measurable Indicator</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>R1: Constraint-first reasoning</td>
+<td>Exploratory tokens</td>
+<td>Does the output begin with constraint identification before generation?</td>
+</tr>
+<tr>
+<td>R2: Essential-contingent separation</td>
+<td>Accidental engineering</td>
+<td>Does the output contain elements not traceable to the seed&#39;s constraints?</td>
+</tr>
+<tr>
+<td>R3: Bilateral output</td>
+<td>Namespace confusion</td>
+<td>Are reasoning and artifact cleanly separated?</td>
+</tr>
+<tr>
+<td>R4: Verification-embedded</td>
+<td>Round-trip tokens</td>
+<td>Does the output include its own verification?</td>
+</tr>
+<tr>
+<td>R5: Property-aware descent</td>
+<td>Backtracking tokens</td>
+<td>Are tradeoffs stated explicitly? Is there reversal?</td>
+</tr>
+</tbody></table>
+<p>Each indicator is binary. The output either satisfies the constraint or it does not. For the first time, prompt quality has a formal evaluation framework based on constraint satisfaction, not on subjective preference ratings.</p>
+<hr>
+<h2>4. The Optimal Prompt Is Not a Prompt</h2>
+<p>The optimal prompt is not a carefully worded instruction. It is a seed — a prose specification that states constraints with sufficient precision that the resolver produces a conformant artifact on the first pass with no waste tokens.</p>
+<p>The difference:</p>
+<p><strong>A prompt</strong> says: &quot;Write a function that sorts a list. Use Python. Make it efficient. Add comments. Handle edge cases.&quot;</p>
+<p><strong>A seed</strong> says: &quot;The function must satisfy: (1) output is a permutation of input, (2) output is in non-decreasing order, (3) time complexity is O(n log n), (4) space complexity is O(1) for in-place or O(n) for out-of-place. Verification: assert sort([3,1,2]) == [1,2,3]; assert sort([]) == []; assert sort([1]) == [1]; assert sort([1,1,1]) == [1,1,1].&quot;</p>
+<p>The prompt describes what the human wants in natural language. The seed states what must hold as constraints with verification. The prompt leaves the resolver to interpret intent. The seed leaves the resolver to derive the implementation. The prompt is ambiguous. The seed is precise. The prompt requires prompt engineering. The seed requires only resolution.</p>
+<hr>
+<h2>5. The Economic Implication</h2>
+<p>The AI industry charges by the token. The industry also spends tokens on:</p>
+<ul>
+<li>Prompt engineering iterations (human time + resolver tokens per attempt)</li>
+<li>Retry loops (re-running failed outputs)</li>
+<li>Agent chains (multi-step orchestration with intermediate tokens)</li>
+<li>RAG retrieval (fetching context that a well-constrained seed would not need)</li>
+<li>Output validation (tokens spent checking what R4 would have verified in the first pass)</li>
+<li>Chain-of-thought scaffolding (tokens spent on R1 reasoning the resolver should have done natively)</li>
+</ul>
+<p>All of these are token costs of an ungoverned construction level. Under RESOLVE, the resolver identifies constraints before generating, separates essential from contingent, produces bilateral output with embedded verification, and tracks tradeoffs explicitly. The first pass is the final pass. The token cost is the minimum the constraints prescribe.</p>
+<p>The savings are not marginal. The empirical evidence from this project:</p>
+<ul>
+<li>The 379-line DO runtime replaced a 150,000-line framework (0.25% of the original)</li>
+<li>The 921-line PRESTO engine replaced a 3,122-line engineered engine (29%)</li>
+<li>The 461-line bootstrap + 921-line emitted engine replaced conventional build tooling</li>
+<li>Each was resolved in a single pass from a prose seed under 2,500 words</li>
+</ul>
+<p>The ratio of seed tokens to output tokens to conventional implementation tokens is the measure of RESOLVE&#39;s economic value. The ratio is extreme because the constraints eliminate the waste the industry currently pays for.</p>
+<hr>
+<h2>6. From Prompt Engineering to Seed Design</h2>
+<p>The reorientation for the AI industry is the same reorientation the PRESTO dissertation describes for web development:</p>
+<table>
+<thead>
+<tr>
+<th>Web Development</th>
+<th>AI Usage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Engineering-first (build React app, compensate with SSR/hydration)</td>
+<td>Prompt-first (write prompt, compensate with retries/validation)</td>
+</tr>
+<tr>
+<td>Constraint-first (state PRESTO constraints, derive engine)</td>
+<td>Seed-first (state RESOLVE constraints, derive artifact)</td>
+</tr>
+</tbody></table>
+<p>The web industry moved from engineering to constraints. The AI industry must make the same move. The shadows are not the forms. The prompts are not the seeds. The tricks are not the constraints. The engineering is not the architecture.</p>
+<p>The forms are the constraints. The constraints are the seeds. The seeds are the optimal prompts. The optimal prompts are the ones that state what must hold, not what the human wants. The resolver does the rest. The resolver has always done the rest. It just did not know the form it was operating in.</p>
+<p>Now it does.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

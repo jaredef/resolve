@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Supply Chain Engineering*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Supply Chain Engineering</em>, Distilled</h1>
+<p><strong>Fourth-batch SEBoK distillation, batch 2 doc 6. SEBoK has no dedicated <em>Supply Chain Engineering</em> page; the topic surfaces in <em>System Hardware Assurance</em>, <em>Systems Engineering and Enterprise IT</em>, <em>Product Systems Engineering Key Aspects</em>, and as one of the five System Security subdisciplines (supply chain assurance). The closest substantive treatment is in <em>System Hardware Assurance</em>, which presents a three-scale decomposition (component / subcomponent-subsystem-system / multi-tier-supply-chain) and a three-risk universal-sibling lattice (failure to meet quality / maliciously tainted goods / counterfeit hardware). The three-scale structure stress-tests Cluster A&#39;s three-scale-discipline pattern: component-rung, integrated-system-rung, supply-chain-rung — three nested rungs at which hardware assurance operates simultaneously, paralleling SE-116&#39;s three-nested-lattice resilience structure but at three semantic scales rather than three semantic rungs. Multi-keeper composition (Cluster B) at extreme density: &quot;thousands of companies whose parts and services Apple uses to create, distribute, and support the iPhone&quot; exceeds even SWFTS twenty-keeper density. The supply-chain-rung is the new Cluster B density anchor (∞-keeper or N-large-unbounded). Five clusters compose; the three-scale stress-test passes.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> SEBoK has no dedicated <em>Supply Chain Engineering</em> page. Closest substantive treatment at <em>System Hardware Assurance</em>; adjacent at <em>Systems Engineering and Enterprise IT</em>, <em>Product Systems Engineering Key Aspects</em>, <em>Determining Needed Systems Engineering Capabilities in Businesses and Enterprises</em>.</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Hardware_Assurance">https://sebokwiki.org/wiki/System_Hardware_Assurance</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>Hardware assurance addresses &quot;supply chain risks&quot; with emphasis on &quot;provenance and participants in complex global supply chains.&quot; Hardware components are &quot;commercially designed, manufactured, and inserted into larger assemblies by multi-national companies with global supply chains.&quot; Three scales of involvement: (1) component level — hardware itself and the supply chain used to design and manufacture it; (2) subcomponent / subsystem / system levels — hardware assurance incorporates software and firmware integrated with the component; (3) supply-chain level — multiple parties and processes contribute variables and attack surfaces in each phase. Three operational risk categories: (1) failure to meet quality standards; (2) maliciously tainted goods; (3) counterfeit hardware (refurbished, mock, re-marked, overproduction, substandard rejects). Mitigation principle: &quot;the supply chain infrastructure must also be assessed for weaknesses, and the development, use, and maintenance of hardware components assured&quot; with &quot;mitigation-in-depth across all constituent components.&quot; Adjacent SEBoK material: Apple iPhone supply chain (&quot;thousands of companies&quot;), supply chain management as Enterprise IT instance alongside ERP and CRM, supply agreements between acquirer and supplier with documented properties.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D), at the hardware-assurance-risk rung.</strong> The three risk categories (quality failure / malicious tainting / counterfeit) bind every hardware-assurance engagement aspect-wise; the discriminator is risk-mode. Three-sibling lattice at the supply-chain-risk rung.</p>
+<p><strong>Cluster A three-scale stress-test, novel structural pattern.</strong> The article presents three nested scales at which hardware assurance operates: component / integrated-system / supply-chain. Each scale binds hardware assurance universally; the discriminator is scale-of-application, not aspect. This is structurally distinct from SE-116&#39;s three-nested-lattice resilience structure (which nested by aspect-level, not scale). The three-scale pattern is a new Cluster A sub-form: universal-sibling-with-scale-axis. Compare to the universal-sibling-with-ordinal-axis sub-form (SE-039 §VII.5 candidate at three-instance threshold per SE-129). The scale-axis sub-form needs further evidence for formalization; supply chain supplies the first canonical instance.</p>
+<p><strong>Cluster B (multi-keeper composition, Doc 510 extension), new density anchor at N-large-unbounded.</strong> Apple iPhone supply chain (&quot;thousands of companies whose parts and services Apple uses&quot;) exceeds SWFTS twenty-keeper density (SE-128) by two-to-three orders of magnitude. Supply chains are the new Cluster B density anchor. The cluster&#39;s range now spans: HSI eight-keeper (with central integrator), SWFTS twenty-keeper (no central authority, federated program), supply chain N-large-unbounded (with anchor enterprise). Three density tiers.</p>
+<p><strong>Cluster E (institutional ground, Doc 571), global-multi-national.</strong> &quot;Multi-national companies with global supply chains&quot; places hardware assurance in a global-multi-national institutional ground. Cluster E&#39;s institutional-ground populations were previously mostly national or organizational; supply chain supplies the global-multi-national tier. Cluster E gains an instance at the largest institutional scale.</p>
+<p><strong>Cluster F (pulverization, Doc 445).</strong> Counterfeit-hardware enumeration (refurbished / mock / re-marked / overproduction / substandard rejects) is forward-pulverization at the counterfeit-mode rung. Cluster F binds.</p>
+<p><strong>Cluster D (co-production, Doc 573).</strong> Acquirer-supplier agreements specify &quot;the need and requirements for the properties of the expected product or service&quot; — co-production at the acquirer-supplier rung. Cluster D binds.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Three-scale supply-chain involvement (component / subsystem-system / supply-chain) — π / α as cited; μ / β under Doc 572 Appendix D scale-axis sub-form.</li>
+<li>Three risk categories (quality / tainted / counterfeit) — π / α as cited; μ / β under Doc 572 Appendix D at supply-chain-risk rung.</li>
+<li>&quot;Thousands of companies&quot; iPhone supply chain — π / α as cited; μ / β under Doc 510 multi-keeper extension at N-large-unbounded density.</li>
+<li>Mitigation-in-depth principle — π / α as cited.</li>
+<li>Counterfeit enumeration — π / α as cited; μ / β under Doc 445 pulverization.</li>
+<li>Acquirer-supplier agreement framing — π / α as cited; μ / β under Doc 573.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>Three-scale stress-test passes; new Cluster A sub-form candidate.</strong> Supply chain hardware assurance presents three nested scales at which the discipline operates simultaneously. The pattern parallels but is structurally distinct from the universal-sibling-with-ordinal-axis sub-form (which nests on a temporal-precedence axis). The scale-axis sub-form is a new Cluster A candidate; one canonical instance to date. Cluster A synthesis should track the candidate alongside the now-triply-confirmed ordinal-axis sub-form.</p>
+<p><strong>Cluster B density tier structure.</strong> With supply chain at N-large-unbounded, Cluster B now has three confirmed density tiers: with-central-integrator (HSI ~10), no-central-authority federated (SWFTS ~20), anchor-enterprise-with-N-suppliers (supply chain &gt;&gt;1000). Cluster B synthesis should formalize the three tiers as distinct sub-forms.</p>
+<p><strong>No dedicated Supply Chain Engineering page (structural surprise).</strong> Despite supply chain being one of the most prominent contemporary SE concerns (cf. SE Vision 2035 supply-chain-assurance subdiscipline), SEBoK distributes the topic across hardware assurance, enterprise IT, and security subdisciplines. The corpus notes this editorial gap.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Cluster A scale-axis sub-form candidate opened.</strong> Supply chain three-scale structure introduces a new Cluster A sub-form distinct from ordinal-axis. Cluster A synthesis should formalize the two sub-forms as parallel extensions: ordinal-axis (temporal-precedence) and scale-axis (component-system-population). Aligns with SE-039 §VII.6 sixteen formalized refinements pending further evidence for scale-axis.</p>
+<p><strong>Cluster B three-density-tier formalization.</strong> With three confirmed tiers (HSI, SWFTS, supply chain), Cluster B synthesis (Doc 510 multi-keeper extension at strength five through SE-038, now strength seven through Docs 694/699) should formalize the density-tier structure rather than treating multi-keeper as a uniform extension.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 Appendix D (universal-sibling, scale-axis sub-form candidate), Doc 510 (multi-keeper, three-density-tier formalization), Doc 571 (institutional ground, global-multi-national), Doc 445 (pulverization, counterfeit modes), Doc 573 (co-production, acquirer-supplier).</p>
+<p><strong>Part-level reformulation.</strong> SE-009 (Part 6 cross-references for security subdisciplines and Enterprise IT).</p>
+<p><strong>Related distillations.</strong> SE-038 (HSI, Cluster B with-integrator tier). SE-128 (C4ISR/SWFTS, Cluster B no-central-authority federated tier). SE-129 (Security, supply chain assurance subdiscipline). SE-112 (System Security earlier framing).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>System Hardware Assurance</em>, <em>Systems Engineering and Enterprise IT</em>, <em>Product Systems Engineering Key Aspects</em>, <em>Determining Needed Systems Engineering Capabilities in Businesses and Enterprises</em>, <em>System Security</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Cluster A scale-axis sub-form formalization candidate. Cluster B three-density-tier formalization.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements&quot;</em> / <em>&quot;Continue next knowledge base entrancement&quot;</em></p>
+</blockquote>
+<p>(SE-133 is the sixth of the fourth-batch SEBoK distillation sweep, Batch 2/5. Stress-tests three-scale Cluster A pattern — passes, opens scale-axis sub-form candidate. Cluster B density anchor moves to supply chain at N-large-unbounded.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

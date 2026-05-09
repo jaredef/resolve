@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rederive: Content-Addressed Identity and Pin Manifests — Resolve</title>
+<meta name="description" content="A Comprehensive Entracement to How a Constraint Set Acquires Its Stable Identity — the Canonicalization Algorithm Stated Precisely with the Manifest-First Layout, the Lexicographic Constraint Sort, the Fixed Field Order, the Sorted Unknown Fields, the Body-Whitespace Normalization, the SHA-256 Hash and Where It Flows in the Platform — Together with the Pin Manifest Layer for Cross-Cutting Implementation Preservation, the Discipline of Pinning, the Substitutability Promise the Platform Makes, and a Worked Walk Through the Hash Computation from Source File to Sixty-Four Hex Characters — the Fourth Branch off [Doc 659](/resolve/doc/659-rederive-for-the-working-engineer-hub) for the Working Engineer">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 663</p><h1>Rederive: Content-Addressed Identity and Pin Manifests</h1>
+<h2>A Comprehensive Entracement to How a Constraint Set Acquires Its Stable Identity — the Canonicalization Algorithm Stated Precisely with the Manifest-First Layout, the Lexicographic Constraint Sort, the Fixed Field Order, the Sorted Unknown Fields, the Body-Whitespace Normalization, the SHA-256 Hash and Where It Flows in the Platform — Together with the Pin Manifest Layer for Cross-Cutting Implementation Preservation, the Discipline of Pinning, the Substitutability Promise the Platform Makes, and a Worked Walk Through the Hash Computation from Source File to Sixty-Four Hex Characters — the Fourth Branch off <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> for the Working Engineer</h2>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>EXPLORATORY — practitioner-facing entracement, branch §D of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-PRACTITIONER-FACING | PHASE-CROSS-PRACTITIONER</p>
+</div>
+
+<blockquote>
+<p><strong>Reader&#39;s Introduction.</strong> This is the fourth branch off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a>. The earlier documents covered authoring, execution, and acceptance. This document closes the loop on <em>identity</em>. A constraint set has a stable, content-addressed identity computed from its canonical form. That identity is what makes the platform&#39;s substitutability promise operational: <em>two materializations from the same constraint set are interchangeable under verification, even though the code may differ</em>. This document also covers the pin manifest, the cross-cutting layer that lets an engineer preserve specific implementation details across regenerations when intent depends on them. If you have used git&#39;s content-addressed object store, much of this will feel familiar; the difference is that rederive content-addresses <em>requirements</em> rather than source files, and the canonicalization is over a structured AST rather than a byte stream. By the end of the document, the engineer should be able to inspect a constraint file, predict the canonical form, and reason about whether a given edit will change the hash.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-05-05 · Doc 663</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. The keeper has not authored the prose; the resolver has. Calibrated to a working-engineer audience. This document corrects a load-bearing claim from the earlier stub form of §D: constraint blocks in the canonical form are sorted lexicographically by id, <em>not</em> preserved in source order. The canonicalization source is the authority; the corrected statement is in §3 below.</p>
+<hr>
+<h2>1. Why Identity Matters</h2>
+<p>A working engineer has two reasons to care about identity at the constraint-set layer.</p>
+<p>The first reason is <em>referential</em>. Composition (the platform&#39;s import-and-provide layer; <a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660 §2</a>) lets one constraint file import a property from another. The import names a target file and, optionally, a content hash pin. If the imported file changes (someone edits it), the pin no longer matches; the platform refuses to resolve and asks the consumer to either update the pin (you intended the change) or revert the import (you did not). Without content-addressed identity, this safety net does not exist; you would be back in the world of mutable references and silent drift.</p>
+<p>The second reason is <em>substitutability</em>. The platform&#39;s promise is that a derivation against a constraint set is exchangeable for any other passing derivation against the same constraint set. If the substrate is upgraded next quarter and the new substrate produces different code that still passes verification, the new code is, structurally, the same artifact; you regenerate, you ship. The hash of the constraint set is what mediates this exchange. The code&#39;s hash is incidental; the constraint set&#39;s hash is durable.</p>
+<p>This is what the corpus calls <em>derivation inversion</em> (<a href="../doc/247-derivation-inversion.html">Doc 247</a>). In the engineer&#39;s vocabulary it is <em>content-addressing the source language rather than the binary</em>, with all the cache-coherence properties content-addressed source brings.</p>
+<h2>2. Canonicalization: The Goal</h2>
+<p>The constraint AST that emerges from the parse and validate stages of the build pipeline is a structured object. To compute a stable hash, the platform first turns it into <em>canonical bytes</em>: a deterministic serialization that is identical for any two semantically-equivalent constraint sets regardless of incidental authoring differences (whitespace, field order in the metadata, <em>constraint order in the source file</em>, line-ending style, trailing blank lines).</p>
+<p>The goal is precise. <em>Identical canonical bytes for identical structural content.</em> Two files that differ only in incidental layout produce the same hash. Two files that differ in any structural way produce different hashes. The canonicalization rules are what make this goal operational; if the rules were arbitrary, the goal would not hold.</p>
+<p>What follows is the rule set as the platform&#39;s <code>src/canonicalize.ts</code> actually implements. Engineers who want to verify by reading the source will find it under one hundred lines and will recognize each rule from the description below.</p>
+<h2>3. The Canonicalization Rules</h2>
+<h3>3.1 Manifest emitted before constraints</h3>
+<p>The canonical form opens with the manifest section (if present), then a blank line, then the constraint blocks. The manifest is emitted in three subsections in fixed order: <code>@provides</code>, then <code>@imports</code>, then <code>@pins</code>.</p>
+<p>A file with no manifest produces canonical bytes that begin directly with the first constraint block.</p>
+<h3>3.2 <code>@provides</code> subsection</h3>
+<pre><code>@provides: &lt;property&gt;
+  threshold: &lt;constraint-id&gt;
+  interface: [&lt;exported-symbol&gt;,&lt;exported-symbol&gt;,...]
+</code></pre>
+<p>The interface symbols are sorted lexicographically before joining with comma-no-space inside square brackets. Source-order is forgotten.</p>
+<h3>3.3 <code>@imports</code> subsection</h3>
+<pre><code>@imports:
+  - property: &lt;property&gt;
+    from: &lt;from&gt;
+    pin: &lt;pin-hash&gt;          # only if the import declares a pin
+    path: &lt;relative-path&gt;    # only if from: path
+    as: &lt;local-alias&gt;        # only if declared
+</code></pre>
+<p>Imports are sorted lexicographically by <code>property</code> name. Within each import, the order of fields is fixed (property, from, pin, path, as) and optional fields are emitted only when present.</p>
+<h3>3.4 <code>@pins</code> subsection</h3>
+<pre><code>@pins:
+  - id: &lt;pin-id&gt;
+    must-contain: &lt;phrase&gt;
+    why: &lt;one-line-reason&gt;   # only if declared
+</code></pre>
+<p>Pins are sorted lexicographically by <code>id</code>. Note the canonical form&#39;s spelling: <code>must-contain</code> (kebab-case, matching the source-file convention).</p>
+<h3>3.5 Constraints sorted lexicographically by id</h3>
+<p>This is the rule that most surprises engineers familiar with file-order-preserving canonicalizers. <em>The platform does not preserve constraint order.</em> Constraint blocks in the canonical form are sorted by id with the smallest id first. A file with constraints written in the order <code>SLUG3, SLUG1, SLUG2</code> produces the same canonical bytes as a file with constraints written in the order <code>SLUG1, SLUG2, SLUG3</code>. The source&#39;s authoring order is forgotten at canonicalization.</p>
+<p>The corollary: <em>renaming or renumbering a constraint changes the canonical form.</em> <code>SLUG1</code> and <code>SLUG2</code> produce one canonical sort; <code>BEACH1</code> and <code>BEACH2</code> (the same constraints with different ids) produce a different canonical sort because lexicographic order of <code>BEACH</code> differs from lexicographic order of <code>SLUG</code>. The hash changes accordingly. This is intentional; the constraint id is a structural anchor that other constraints depend on (<code>depends-on</code>), and changing it is a structural change.</p>
+<h3>3.6 Within each constraint, fields are emitted in fixed order</h3>
+<pre><code>## &lt;id&gt;
+id: &lt;id&gt;
+type: &lt;type&gt;
+authority: &lt;authority&gt;
+scope: &lt;scope&gt;
+status: &lt;status&gt;
+depends-on: [&lt;sorted-id&gt;,&lt;sorted-id&gt;,...]
+&lt;unknown fields, sorted alphabetically by key&gt;
+
+&lt;normalized body&gt;
+</code></pre>
+<p>The known fields appear in the order <code>id, type, authority, scope, status, depends-on, body</code> with <code>body</code> separated from the metadata by a blank line. Unknown fields (any metadata keys the parser preserved into <code>unknownFields</code>) appear after the known fields, sorted alphabetically by key. Metadata field order in the <em>source file</em> does not matter; the canonical form ignores it.</p>
+<h3>3.7 <code>depends-on</code> ids sorted lexicographically</h3>
+<p>The dependency list is rendered as <code>[A,B,C]</code> with the constraint ids sorted lexicographically and joined with comma-no-space. Square brackets surround the list. An empty list is <code>[]</code>. Source-order of the dependency list is forgotten.</p>
+<h3>3.8 Body whitespace normalized</h3>
+<p>The constraint body is normalized before emission:</p>
+<ul>
+<li>Line endings are converted to <code>LF</code> (<code>\r\n</code> becomes <code>\n</code>).</li>
+<li>Trailing whitespace per line is stripped.</li>
+<li>Trailing blank lines are removed.</li>
+<li>The body ends with exactly one newline.</li>
+</ul>
+<p>Internal whitespace (leading whitespace on continuation lines, paragraph breaks within the body) is preserved. The normalization is conservative enough that semantically-equivalent prose produces identical canonical bytes; it is not aggressive enough to merge lines or alter the prose&#39;s structure.</p>
+<h3>3.9 Concatenation</h3>
+<p>The pieces are joined with newlines into a single string. The string is encoded as UTF-8 to produce the canonical bytes. There is no trailing newline beyond what the body normalization produces.</p>
+<h2>4. From Canonical Bytes to Hash</h2>
+<p>The canonical bytes are hashed with SHA-256. The output is the <em>constraint-set hash</em>: a 64-character lowercase hex string that uniquely identifies this constraint set.</p>
+<p>The platform&#39;s <code>sha256Hex</code> function uses Web Crypto&#39;s <code>crypto.subtle.digest(&quot;SHA-256&quot;, ...)</code> and renders the result as lowercase hex. Engineers integrating with rederive from any environment that supports SHA-256 (every language with a standard library) can compute the same hash from the same canonical bytes.</p>
+<p>If you are familiar with git&#39;s object hashing, the analogy is close: a constraint set is to rederive what a tree object is to git, and the constraint-set hash is to a constraint file what <code>git hash-object</code> output is to a blob. The difference is that the canonicalization here is over a <em>structured AST</em>, not a byte stream. Two source files that author the same constraints differently (different whitespace, different metadata field order, different constraint order in the file) produce identical hashes, because the canonical form is the same.</p>
+<h2>5. Where the Hash Flows</h2>
+<p>The constraint-set hash flows through the platform in five places:</p>
+<p><strong>(a) The materialization artifact.</strong> Every signed materialization records <code>(constraintSetHash, derivationFunctionHash, substrateId, modelId, codeHash, verdict, timestamp)</code>. A peer reading the artifact knows precisely what was derived from what. (<a href="../doc/661-rederive-the-build-pipeline.html">Doc 661 §9</a> on the sign stage.)</p>
+<p><strong>(b) The import pin.</strong> A consumer file&#39;s <code>@imports</code> directive may declare <code>pin: &lt;hash&gt;</code> next to the import, asserting that the import target&#39;s content matches a known good hash. If the target&#39;s hash changes, the platform refuses the import.</p>
+<p><strong>(c) The derivation cache.</strong> If you have already derived this constraint set against this substrate (and the cache is enabled), the platform may serve the materialization from cache rather than re-running the substrate. Cache lookup is hash-keyed; a constraint-set edit produces a new hash and invalidates the cache automatically.</p>
+<p><strong>(d) The wire protocol.</strong> Cloning, pushing, and pulling all transfer content-addressed objects keyed on these hashes. (<a href="../doc/664-rederive-the-wire-protocol.html">Doc 664</a>.)</p>
+<p><strong>(e) The provenance ledger.</strong> A team running rederive in production typically logs constraint-set hashes alongside CI run identifiers, so a postmortem six months later can ask &quot;what materialization was deployed at time T against constraint-set hash H?&quot; and find the artifact.</p>
+<p>The hash is never a secret. It is fine to log, fine to print in CI output, fine to embed in commit messages. Treat it the way you treat git commit hashes: a stable identifier you can reference, that uniquely names a thing whose contents you can read.</p>
+<h2>6. The Pin Manifest</h2>
+<p>Even with derivation inversion in place, there are circumstances where an engineer needs to preserve a specific implementation detail across regenerations. Examples:</p>
+<ul>
+<li>An error message that a downstream consumer parses; rewording the message would silently break that consumer.</li>
+<li>A function name a third-party tool depends on (a CI hook, a code-coverage instrumenter, a debugger plugin) that is not under the engineer&#39;s control.</li>
+<li>A comment that flags a regulatory or safety requirement; the substrate may be tempted to &quot;clean up&quot; the comment in subsequent derivations and lose the auditable trail.</li>
+<li>A specific numeric default (a timeout, a buffer size) that has been tuned in production; the substrate may produce a different default that is technically correct but performance-regressive.</li>
+<li>A specific log format string that an operations dashboard parses; reformatting would silently break the dashboard&#39;s regex.</li>
+</ul>
+<p>The platform&#39;s response to these cases is the <em>pin manifest</em>: an explicit list of phrases that must appear verbatim in the derived code, with a per-pin <code>why</code> field documenting the engineer&#39;s reason for preserving the detail. The pin manifest is parsed alongside the constraints (so it is part of the canonical hash) and verified by the pin-checker backend (<a href="../doc/662-rederive-the-verification-backends.html">Doc 662 §6</a>) during the verify stage of the pipeline.</p>
+<h3>6.1 Pin manifest syntax</h3>
+<pre><code>@pins:
+  - id: &lt;pin-id&gt;
+    must-contain: &quot;&lt;exact-phrase&gt;&quot;
+    why: &quot;&lt;one-line-reason&gt;&quot;
+</code></pre>
+<p>The <code>id</code> is for traceability in the verification report. The <code>must-contain</code> is the literal phrase the derived code must include. The <code>why</code> is a one-line documentation string the engineer writes when adding the pin, and that the next engineer (or the engineer six months from now) reads when deciding whether the pin still matters.</p>
+<h3>6.2 What pin checking actually does</h3>
+<p>For each pin, the pin-checker backend runs a hard substring check: the derived code&#39;s source text either contains <code>must-contain</code> verbatim or it does not. There is no regex, there is no semantic equivalence, there is no whitespace tolerance. If you pin <code>&#39;throw new Error(&quot;not found&quot;)&#39;</code> and the substrate produces <code>&quot;throw new Error(&#39;not found&#39;)&quot;</code>, the pin fails on the quote style.</p>
+<p>A pin failure is <em>hard</em>: the verification verdict reports fail, and the platform refuses to sign the materialization. Pins that fail block deployment. This is intentional; the engineer who added the pin meant the phrase to be present, and the platform refuses to silently produce code that violates the engineer&#39;s stated intent.</p>
+<h2>7. The Discipline of Pinning</h2>
+<p>Pins are powerful and easy to abuse. Five disciplines for the engineer authoring pins:</p>
+<p><em>Pin only what intent depends on.</em> If a derivation produces ten different equivalent implementations and you can ship any of them, do not pin. If one of those implementations carries information the other nine lose, pin the carrier.</p>
+<p><em>Document the why.</em> The <code>why</code> field is not optional in spirit, even though the parser treats it as optional. A pin with no documented reason becomes a fossil; a pin with a documented reason is reviewable. Six months from now, a reviewer reading a pin can assess whether the reason still holds.</p>
+<p><em>Prefer constraints over pins.</em> If you find yourself pinning a phrase that is really a behavioural commitment, the right move is to author a constraint with proper evidence, not to pin the phrase. Pins are for <em>the surface text</em>; constraints are for <em>the behaviour</em>. Pinning a behaviour produces brittle derivations that fail on semantically-equivalent rewrites.</p>
+<p><em>Retract pins that no longer matter.</em> The pin manifest is part of the canonical hash; retracting a pin changes the hash, which is correct, because the constraint set&#39;s identity has shifted. The pin&#39;s history is preserved in the file&#39;s git history; you do not need to keep stale pins in the active manifest.</p>
+<p><em>Keep pins small.</em> A pin&#39;s <code>must-contain</code> is typically a short, distinctive phrase. Pinning a multi-paragraph block produces brittle pins that fail on any whitespace change in the substrate&#39;s output. If you find yourself wanting to pin a long block, the right move is several small pins for the distinctive phrases within the block.</p>
+<p>These disciplines are not platform-enforced. They are the engineer&#39;s craft. The pin layer is a tool whose value depends on how it is used.</p>
+<h2>8. The Substitutability Promise, Stated Plainly</h2>
+<p>The platform&#39;s central promise:</p>
+<blockquote>
+<p><em>Two materializations of the same constraint set, signed by the platform with a <code>pass</code> verdict, are exchangeable. The code may differ. The verdict is the contract.</em></p>
+</blockquote>
+<p>This is what makes substrate upgrades safe (regenerate; if the new code passes, ship), what makes cross-team collaboration coherent (the constraint set is what is reviewed; the code is regenerated), what makes long-term maintenance ergonomic (the constraint set is small and durable; the code is large and ephemeral), and what makes content-addressing valuable (the hash names the durable thing, not the ephemeral thing).</p>
+<p>The promise has its scope. It applies to materializations that <em>pass</em>. A <em>fail</em> materialization is signed too (for record-keeping), but it is not exchangeable for anything; it is a record that this particular substrate, on this particular run, did not produce passing code from this particular constraint set. The engineer either retries (substrate non-determinism may produce a passing run on retry) or refines the constraint set (the requirements were under-specified or ambiguous).</p>
+<p>The promise also has its tolerance. Two materializations of the same constraint set with the same substrate may produce <em>byte-identical</em> code on small inputs (the slugify sample tends to produce stable output across runs), but at engine scope the substrate&#39;s non-determinism produces meaningfully-different code on each run. The platform does not guarantee byte-identity; it guarantees verification-equivalence. The engineer reasoning about substitutability must reason at the verification layer, not at the byte layer.</p>
+<h2>9. A Worked Walk: From Source to Hash</h2>
+<p>Consider the slugify sample from <a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660 §4.1</a>. The source has three constraints in the order <code>SLUG1, SLUG2, SLUG3</code> with no manifest. Walk the canonicalization:</p>
+<p><strong>Step 1.</strong> The parser produces an AST with <code>manifest: { imports: [], pins: [] }</code> (no <code>@provides</code>, no <code>@imports</code>, no <code>@pins</code>) and three constraints. The unknown-fields map is empty for each constraint.</p>
+<p><strong>Step 2.</strong> The canonicalizer sees no manifest content, so it emits no manifest section. It proceeds directly to the constraints.</p>
+<p><strong>Step 3.</strong> The canonicalizer sorts constraints by id. The natural source order (<code>SLUG1, SLUG2, SLUG3</code>) happens to coincide with the lexicographic sort, so the canonical order matches the source order. The constraint after sorting is:</p>
+<pre><code>## SLUG1
+id: SLUG1
+type: specification
+authority: human-authored
+scope: module
+status: active
+depends-on: []
+
+Export a single function named `slugify` that takes a string and returns
+a string. The function must have signature
+`export function slugify(input: string): string`. The module must
+type-check under strict TypeScript with no errors.
+</code></pre>
+<p><strong>Step 4.</strong> SLUG1 has no fenced evidence in the body (the <code>assert</code> blocks for SLUG2 and SLUG3 are part of <em>those</em> constraints&#39; bodies; the parser already separated them). The body is normalized: line endings to LF, no trailing whitespace, ends with one newline.</p>
+<p><strong>Step 5.</strong> SLUG2 and SLUG3 are emitted in the same form, in lex order, with their <code>assert</code> blocks preserved as part of their bodies.</p>
+<p><strong>Step 6.</strong> The pieces are joined with newlines into a single string and encoded as UTF-8 bytes.</p>
+<p><strong>Step 7.</strong> The bytes are SHA-256 hashed and rendered as lowercase hex. The result is the constraint-set hash for the slugify file.</p>
+<p>If the engineer reorders the source file to <code>SLUG3, SLUG1, SLUG2</code>, the canonical form is unchanged (the canonicalizer sorts by id), and the hash is unchanged. If the engineer renames <code>SLUG2</code> to <code>SLUG2-redux</code>, the canonical sort changes (the redux suffix sorts after SLUG2 but before SLUG3 in some collations and after SLUG3 in others, depending on the comparator), and the hash changes. If the engineer adds a blank line in SLUG2&#39;s body, the body normalizer absorbs it (trailing blank lines stripped); the hash is unchanged. If the engineer adds a sentence to SLUG2&#39;s body, the canonical form changes; the hash changes.</p>
+<p>The discipline takes a few cycles to internalize. Engineers who have used git extensively will find the model intuitive (content drives identity); engineers used to file-order-preserving systems may need to suppress the intuition that &quot;I changed the file order, so the hash should change.&quot;</p>
+<h2>10. What the Engineer Should Take Away</h2>
+<p>Three pieces.</p>
+<p><em>Identity is content-addressed at the constraint-set layer.</em> The hash names the requirements, not the code; not the file&#39;s incidental layout; not the source-file constraint order. Two engineers who author the same requirements differently produce the same hash. An engineer who edits the requirements produces a different hash. The hash flows through composition, caching, the wire protocol, and the materialization artifact.</p>
+<p><em>Canonicalization is small but precise.</em> The rules: manifest first (provides, imports, pins, each subsection sorted), constraints sorted lex by id, fields in fixed order with unknown fields sorted alphabetically, depends-on ids sorted, body whitespace normalized. Implemented in under a hundred lines; tested in the platform&#39;s regression suite; stable across versions in the platform&#39;s commitment.</p>
+<p><em>Pins are for preservation, not for behaviour.</em> Pin only what intent depends on. Document the why. Prefer constraints over pins. Retract stale pins. Keep pins small. Use the manifest layer for cross-cutting preservation; pins live in the manifest, not in fenced blocks within constraints.</p>
+<p>The next document in the series (<a href="../doc/664-rederive-the-wire-protocol.html">Doc 664</a>) covers how constraint repositories synchronize across machines: clone, push, pull, the content-addressed transfer, the auth-gated write endpoints, and the signers manifest as the platform&#39;s identity surface.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="../doc/247-derivation-inversion.html">Doc 247 — Derivation Inversion</a></li>
+<li><a href="../doc/290-pin-art-derivation.html">Doc 290 — Pin-Art Derivation</a></li>
+<li><a href="../doc/619-pin-art.html">Doc 619 — Pin-Art: Forced-Press and Gentle-Press</a></li>
+<li><a href="../doc/656-treat-agent-output-like-compiler-output-the-lights-out-codebase-as-rederive.html">Doc 656 — Treat Agent Output Like Compiler Output: The Lights-Out Codebase as Rederive</a></li>
+<li><a href="../doc/658-hierarchical-pin-art-constraint-specs-and-the-erasure-of-edge-case-bugs.html">Doc 658 — Hierarchical Pin-Art Constraint Specifications and the Erasure of Edge-Case Bugs</a></li>
+<li><a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659 — Rederive for the Working Engineer: A Hub</a></li>
+<li><a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660 — Rederive: The Constraint Authoring Grammar</a></li>
+<li><a href="../doc/661-rederive-the-build-pipeline.html">Doc 661 — Rederive: The Build Pipeline</a></li>
+<li><a href="../doc/662-rederive-the-verification-backends.html">Doc 662 — Rederive: The Verification Backends</a></li>
+</ul>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Now I want you to examine the entire spec and implementation of /home/jaredef/rederive — From this I want you to create entracement docs in the corpus for an audience of software engineers. ... First, create a document in the corpus that acts as a hub for all stubs that will branch off ... Append this prompt to each artifact. Also, where you could use corpus jargon, instead entrace the reader through rhetoric that is not novel to the corpus. Where you must state the corpus concept in its own terms; provide proper entracement.&quot;</em></p>
+<p>Followed by: <em>&quot;Continue with the first branch of the hub derived as a corpus doc. Continue through each as is coherent.&quot;</em></p>
+<p>Followed by: <em>&quot;Now fill out stub A as a comprehensive entracement. Remove &#39;stub&#39; from file name and any mention in the doc. Report back before doing likewise to the next doc.&quot;</em></p>
+<p>Followed by: <em>&quot;Continue.&quot;</em> (advancing through the build pipeline, verification backends, and arriving at this document on identity and pin manifests.)</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

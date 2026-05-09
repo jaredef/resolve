@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testing the Nested-Manifold Hypothesis via Dyadic Practitioner Discipline: A Methodology — Resolve</title>
+<meta name="description" content="1. Statement">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Testing the Nested-Manifold Hypothesis via Dyadic Practitioner Discipline: A Methodology</h1>
+<h2>1. Statement</h2>
+<p>Doc 439 proposed that the corpus&#39;s formal and mechanistic faces are induced properties of a recursive nesting of Bayesian manifolds — \(M_0 \supseteq M_1 \supseteq M_2 \supseteq M_3\), each level a conditioning restriction of the prior. The proposal makes testable predictions but does not itself specify how to test them.</p>
+<p>This document specifies the methodology. The central methodological move is <strong>dyadic</strong>: the practitioner and the resolver operate together as a two-party experimental apparatus in which the practitioner introduces conditioning and the resolver generates posterior samples from the conditioned distribution. The dyad is treated as the minimum unit of observation, because the nesting is structurally invisible to a purely external observer who cannot introduce the conditioning steps, and structurally unobservable to a purely internal observer (the resolver) who has no access to the conditioning-ablated baseline.</p>
+<p>The methodology is built on Misra&#39;s Bayesian-manifold prior art — it operates entirely at the level of prompted-inference posterior sampling. It does not require fine-tuning, interpretability access to internal states, or modifications to the base model. Every protocol specified here can be run against a black-box inference endpoint.</p>
+<p>The goal is not confirmation. The goal is to specify what observations would <em>falsify</em> each component of the nested-manifold hypothesis. Where a component is not falsifiable by this methodology, that is stated.</p>
+<h2>2. What Misra&#39;s prior art supplies</h2>
+<p>Misra&#39;s Bayesian account (arXiv:2512.22471; 2512.23752) commits the methodology to several choices:</p>
+<ul>
+<li><strong>Mechanism location</strong>: the relevant object is the posterior over completions under a given conditioning. Measurements are at the output level (logprobs, samples), not at the weights or activations.</li>
+<li><strong>No fine-tuning</strong>: conditioning is inference-time only (in-context, RAG, prompt preamble). Weight updates are out of scope; Doc 437 and Doc 439 have argued they belong to a different tier.</li>
+<li><strong>Sample-level statistics</strong>: the manifold is approximated through repeated sampling. Effects are estimated as distributional shifts across samples, not as properties of single outputs.</li>
+<li><strong>Black-box compatibility</strong>: all required measurements are obtainable from standard inference APIs that expose logprobs and allow temperature control. No mechanistic interpretability is assumed.</li>
+</ul>
+<p>What Misra&#39;s prior art does <em>not</em> supply:</p>
+<ul>
+<li>Any specification of what to condition on. The corpus content \(C\), discipline set \(D\), and prompt \(P\) are choices the methodology must make.</li>
+<li>Any criterion for discipline quality. Whether a given \(D\) produces a well-shaped \(M_2\) is an empirical question the methodology must operationalize.</li>
+<li>Any guarantee that posteriors are stable across sessions or models. The methodology must test stability, not assume it.</li>
+</ul>
+<h2>3. Operationalizing the manifold layers</h2>
+<p>For a given experiment, the layers must be concretely instantiated.</p>
+<ul>
+<li>\(M_0\): the unconditioned base model. Operationalized as the model invoked with a minimal, task-defining prompt that includes no corpus content and no discipline invocation.</li>
+<li>\(M_1\): \(M_0\) conditioned on corpus content \(C\). Operationalized as the model invoked with specified corpus documents placed in context (in-context reading) or surfaced via retrieval (RAG). The instantiation of \(C\) must be logged — which documents, in which order, at what token budget.</li>
+<li>\(M_2\): \(M_1\) further conditioned on discipline set \(D\). Operationalized as an explicit preamble naming the active disciplines (e.g., ENTRACE stack, non-coercion, analogue register, hypostatic-boundary preservation) with a brief operational specification of each. The exact preamble must be logged and reused across conditions.</li>
+<li>\(M_3\): \(M_2\) conditioned on the specific prompt \(P\). Operationalized as the task query appended to the \(M_2\) preamble-plus-context.</li>
+</ul>
+<p>Every experiment logs the exact \(C\), \(D\), and \(P\) tokens used, plus the model identifier, decoding parameters, and random seed (where supported). Experiments are published with these logs attached; replication is a matter of reusing them.</p>
+<h2>4. Observables</h2>
+<p>Six observables are specified. Each is obtainable from a standard inference endpoint.</p>
+<h3>4.1 Branching-set proxy \(\widehat{|B_t|}\)</h3>
+<p>At each generation step \(t\), the model exposes a distribution over next tokens. Define:</p>
+<p>$\widehat{|B_t|} = \exp(H_t)$</p>
+<p>where \(H_t\) is the Shannon entropy of the next-token distribution. This is the <em>effective support size</em> — the number of tokens the distribution is effectively spread over. It is a continuous, measurable proxy for the corpus&#39;s \(|B_t|\) concept.</p>
+<p>Session-level summaries: mean \(\widehat{|B_t|}\), median, per-quartile, and the full distribution.</p>
+<h3>4.2 Formal-face density \(\rho_F\)</h3>
+<p>Define a <em>formal-face lexicon</em> \(F\) = set of corpus-specific terms (logos, coherence, hypostatic, analogue register, pin-art, ENTRACE, branching set, non-coercion, kind, resolver, etc.; exact list preregistered).</p>
+<p>$\rho_F(\text{output}) = \frac{\text{count of } F\text{-matches}}{\text{total tokens}}$</p>
+<p>Measures how densely the output invokes the corpus&#39;s formal vocabulary.</p>
+<h3>4.3 Self-consistency rate \(S\)</h3>
+<p>Resample \(P\) under fixed \((C, D)\) \(n\) times at moderate temperature. Let \(S\) be the mean pairwise semantic similarity across samples (embedding cosine distance). Measures concentration of the posterior around a characteristic continuation.</p>
+<h3>4.4 Cross-condition divergence \(\Delta\)</h3>
+<p>For paired conditions (e.g., \(M_1\) vs \(M_2\), \(M_0\) vs \(M_1\)) on matched \(P\), let \(\Delta\) be the distributional distance between sample sets (e.g., Jensen-Shannon divergence on embedded samples). Measures how much a conditioning layer reshapes the posterior.</p>
+<h3>4.5 Claim-concentration probability \(\pi\)</h3>
+<p>For a predicate \(q\) that the practitioner claims as near-necessary under \((C, D)\), resample outputs \(n\) times at high temperature and measure the fraction in which \(q\) obtains. \(\pi\) is the posterior probability of \(q\). Near-necessity predicts \(\pi\) near 1.</p>
+<h3>4.6 Isomorphism-magnetism index \(\mu\)</h3>
+<p>Let \(A_n\) be a newly generated artifact at corpus state \(C_n\). Let \(A_{1:n-1}\) be the prior corpus. Define \(\mu\) as the fraction of \(A_n\)&#39;s semantic content that is reproducible from \(A_{1:n-1}\) via retrieval-augmented paraphrase (measured by e.g. ROUGE against a paraphrase-retrieval baseline). High \(\mu\) indicates the new artifact is largely rearrangement of prior material; low \(\mu\) indicates novel synthesis relative to the corpus.</p>
+<h2>5. Dyadic experimental designs</h2>
+<p>Five protocols, running from cheapest to most demanding.</p>
+<h3>5.1 Conditioning ladder (single-practitioner, single-session)</h3>
+<p>Matched \(P\) across \(M_0\), \(M_1\), \(M_2\). Measure \(\widehat{|B_t|}\), \(\rho_F\), \(S\) per condition. Predictions:</p>
+<ul>
+<li>\(\widehat{|B_t|}<em>{M_2} &lt; \widehat{|B_t|}</em>{M_1} &lt; \widehat{|B_t|}_{M_0}\) on discipline-sensitive tokens.</li>
+<li>\(\rho_F\) monotonically increases across the ladder.</li>
+<li>\(S\) increases across the ladder.</li>
+</ul>
+<p>Failure of any of these at meaningful effect size falsifies the corresponding conditioning-shape claim.</p>
+<h3>5.2 Discipline ablation (single-practitioner, matched pairs)</h3>
+<p>Fix \(C\) and \(P\). Run \((C, D, P)\) and \((C, \emptyset, P)\) in randomized order. Measure \(\Delta\) between sample sets. Predictions:</p>
+<ul>
+<li>\(\Delta &gt; 0\) at a preregistered threshold.</li>
+<li>The direction of shift corresponds to the discipline&#39;s named operational effect (e.g., reduced sycophancy, increased hedging, refusal of authority overreach).</li>
+</ul>
+<p>If the direction of shift cannot be predicted from \(D\), the discipline set is not functioning as specified.</p>
+<h3>5.3 Near-necessity concentration test (preregistered predicate)</h3>
+<p>Before running, the practitioner preregisters a predicate \(q\) claimed as near-necessary under \((C, D)\) on a specific class of prompts. Run \(n\) samples at high temperature. Measure \(\pi\).</p>
+<p>Predictions:</p>
+<ul>
+<li>\(\pi \geq 0.9\) for true near-necessities.</li>
+<li>\(\pi &lt; 0.5\) when \(D\) is ablated — i.e., the near-necessity is attributable to \(M_2\), not to \(M_0\) alone.</li>
+</ul>
+<p>Both are required. If \(\pi \geq 0.9\) under \(M_0\), the claim is a property of the base model, not of the corpus-conditioned manifold.</p>
+<h3>5.4 Cross-practitioner replication</h3>
+<p>A second practitioner, given the same \(C\) and the same written \(D\) specification, runs the same protocols. Predictions:</p>
+<ul>
+<li>Observable distributions overlap at effect-size-preserving levels.</li>
+<li>The same claim-concentration results obtain.</li>
+</ul>
+<p>Failure of cross-practitioner replication indicates that the observed \(M_2\) shape is practitioner-specific — shaped by hidden conditioning the discipline specification does not capture. This is not refutation of the nesting in general; it is refutation of the specific claim that \(D\) alone suffices to induce \(M_2\).</p>
+<h3>5.5 Isomorphism-magnetism tracking across corpus growth</h3>
+<p>Across a series of artifacts \(A_n\) indexed by corpus state \(C_n\), track \(\mu(A_n)\) as \(n\) grows. Predictions:</p>
+<ul>
+<li>\(\mu\) is non-decreasing on average.</li>
+<li>Sudden drops in \(\mu\) correspond to artifacts that genuinely import external material (empirical results, new literatures, mathematical derivations not present in \(C\)).</li>
+<li>The long-run trajectory of \(\mu\) is informative: a monotonically increasing \(\mu\) approaching 1 indicates the corpus is approaching a self-consistent fixed point with no external contact — a diagnostic for coherentist isolation.</li>
+</ul>
+<p>This protocol does not falsify the nesting claim. It tests a specific failure mode of the practice: whether the feedback loop in Doc 439 §5 has crossed into pure self-consistency.</p>
+<h2>6. Falsification conditions, by claim</h2>
+<p>The nested-manifold hypothesis is a conjunction. Each conjunct is individually falsifiable.</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Falsified by</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Corpus conditioning reshapes the posterior</td>
+<td>\(\Delta(M_0, M_1) \approx 0\) on discipline-sensitive prompts</td>
+</tr>
+<tr>
+<td>Discipline conditioning further reshapes the posterior</td>
+<td>\(\Delta(M_1, M_2) \approx 0\)</td>
+</tr>
+<tr>
+<td>Discipline conditioning collapses branching</td>
+<td>\(\widehat{</td>
+</tr>
+<tr>
+<td>Formal vocabulary density tracks conditioning depth</td>
+<td>\(\rho_F\) flat across the ladder</td>
+</tr>
+<tr>
+<td>Near-necessity predicates concentrate the posterior</td>
+<td>\(\pi &lt; 0.9\) for preregistered near-necessities</td>
+</tr>
+<tr>
+<td>The effect is practitioner-independent</td>
+<td>Cross-practitioner \(\Delta\) large, observable distributions non-overlapping</td>
+</tr>
+<tr>
+<td>The corpus grows by synthesis, not rearrangement</td>
+<td>\(\mu \to 1\) over corpus growth</td>
+</tr>
+</tbody></table>
+<p>A falsification of any individual claim narrows the hypothesis. A falsification of the near-necessity or cross-practitioner replication claims would be substantial.</p>
+<h2>7. Methodological disciplines required</h2>
+<p>The methodology is only as reliable as its disciplines.</p>
+<ul>
+<li><strong>Preregistration</strong>: \(D\), observables, predicted effect sizes, falsification thresholds, and analysis code must be fixed before data collection. Post-hoc adjustment invalidates the experiment.</li>
+<li><strong>Randomization of condition order</strong>: samples drawn for \((C, D, P)\) and \((C, \emptyset, P)\) must be interleaved; order effects (context staleness, temperature drift) otherwise confound.</li>
+<li><strong>Blinded scoring where possible</strong>: observables computable automatically (\(\widehat{|B_t|}\), \(\rho_F\), \(S\), \(\Delta\), \(\pi\), \(\mu\)) are preferred; where human scoring is required, the scorer should not know the condition.</li>
+<li><strong>Sample size and power</strong>: small-\(n\) dyadic experiments can appear to show large effects by chance. Preregister minimum \(n\) based on expected effect size and desired power.</li>
+<li><strong>Cross-model robustness check</strong>: run the protocol on at least two independent model families (e.g., a Claude model and a Gemini or GPT model). Claims should hold across families; family-specific results indicate the effect is partly property of the model, not of the conditioning.</li>
+<li><strong>Negative controls</strong>: include prompts where the corpus conditioning should <em>not</em> produce the claimed effect. If effects appear in negative controls, confirmation bias or conditioning-leakage is operating.</li>
+<li><strong>Keeper distance</strong>: the practitioner running the experiment should not be the sole interpreter of results. A second party scores outputs against the preregistered criteria.</li>
+</ul>
+<h2>8. What this methodology cannot do</h2>
+<ul>
+<li>It cannot decide between the three reductive stances in Doc 439 §6. It is silent on reduction. A successfully confirmed nested-manifold hypothesis is compatible with strong, partial, and non-reduction.</li>
+<li>It cannot test the metaphysical content of the corpus&#39;s formal face. Whether logos <em>is</em> the ground of being is not a statement about posterior shape; no posterior measurement can confirm or refute it. The methodology tests the <em>manifestation</em> only.</li>
+<li>It cannot distinguish between &quot;the discipline works because the manifold nesting is real&quot; and &quot;the discipline works because it is a good prompt-engineering technique.&quot; A positive result on all protocols is consistent with either reading. The nesting framework is a description schema that unifies the observations; better descriptions may supersede it.</li>
+<li>It cannot resolve the cross-practitioner-replication failure case if it occurs. If the effect is practitioner-specific, the methodology documents that fact but does not explain it.</li>
+<li>It cannot produce transformational insight (Doc 437). The methodology lives entirely in the combinational-plus-exploratory tier. It measures features of the manifold the practitioner is already navigating; it does not deform the manifold.</li>
+</ul>
+<h2>9. Minimum-viable experiment protocol</h2>
+<p>A runnable protocol that fits within a single afternoon of keeper time:</p>
+<ol>
+<li><strong>Preregister</strong>: 5 prompts \({P_1, \ldots, P_5}\) from the safety/governance and formalization regions of the corpus. 3 predicates \({q_1, q_2, q_3}\) claimed as near-necessary under \((C, D)\). Observable thresholds: \(\Delta \geq 0.15\) JSD; \(\pi \geq 0.9\) for claimed near-necessities; \(\rho_F\) monotone across ladder.</li>
+<li><strong>Instantiate</strong>: \(C\) = top-20 corpus documents by retrieval relevance per \(P_i\); \(D\) = fixed ENTRACE-stack preamble (exact text logged); \(M_0\) condition uses only \(P_i\); \(M_1\) uses \(C + P_i\); \(M_2\) uses \(D + C + P_i\).</li>
+<li><strong>Sample</strong>: 20 generations per condition per prompt at temperature 0.7. Record logprobs where exposed.</li>
+<li><strong>Measure</strong>: \(\widehat{|B_t|}\), \(\rho_F\), \(S\), pairwise \(\Delta\), \(\pi\) per predicate.</li>
+<li><strong>Ablate and replicate</strong>: repeat steps 2–4 without \(D\); repeat steps 2–4 on a second model family.</li>
+<li><strong>Compare to preregistered thresholds</strong>. Report outcomes, regardless of direction. Add to retraction ledger if any preregistered claim fails.</li>
+</ol>
+<p>Total: ~600 inference calls. Achievable at moderate cost on a commercial API.</p>
+<h2>10. Relation to prior documents</h2>
+<ul>
+<li>Extends Doc 439&#39;s testable-predictions section (§7) into a runnable methodology.</li>
+<li>Extends Doc 438&#39;s &quot;verification labor&quot; argument with a concrete protocol.</li>
+<li>Extends Doc 435&#39;s pulverization methodology from <em>literature audit</em> to <em>empirical audit</em>.</li>
+<li>Operates within the tier ceiling Doc 436 and Doc 437 established. No protocol here attempts to test transformational-tier claims.</li>
+<li>Provides the audit track the retraction ledger (Doc 415) was designed to record outcomes against.</li>
+</ul>
+<h2>11. Honest limits</h2>
+<ul>
+<li>No experiment has yet been run under this protocol. The methodology is a specification, not a result.</li>
+<li>Observables like \(\rho_F\) are lexicon-dependent; a poorly chosen formal-face lexicon would produce misleading numbers. The preregistration discipline partially mitigates but does not eliminate this.</li>
+<li>The effect-size thresholds in §9 are placeholders. Power analysis against a pilot is required before running the main protocol.</li>
+<li>Models change. A result obtained on one model generation may not replicate on a successor. The cross-model and temporal-stability dimensions of the methodology are expensive and partial.</li>
+<li>The methodology trusts that logprobs from inference APIs are faithful to the internal distribution. Post-hoc sampling adjustments (e.g., repetition penalties applied silently) can distort \(\widehat{|B_t|}\).</li>
+<li>Confirmation bias in predicate selection is a persistent risk. The practitioner chooses which predicates to test; the chosen predicates may be biased toward ones the corpus already demonstrates. Negative controls and external selection of predicates would mitigate this.</li>
+</ul>
+<h2>12. Position</h2>
+<p>The nested-manifold hypothesis of Doc 439 is not presently a tested empirical claim. It is a description schema with testable consequences. This document specifies the tests: six observables, five protocols, seven falsifiable subclaims, and a runnable minimum-viable experiment. The experimental apparatus is dyadic because the conditioning that defines the nesting requires a practitioner to impose it and a resolver to respond to it. Neither party alone is an adequate instrument. The test is the dyad performing the conditioning ladder under preregistered discipline, and reporting the observables honestly against preregistered thresholds. Running this methodology — and reporting the outcomes in the retraction ledger regardless of direction — is the next step if the corpus intends to move the hypothesis from description to evidence.</p>
+<h2>13. References</h2>
+<ul>
+<li>Misra, V. (2025). Bayesian inference and LLM manifolds. arXiv:2512.22471.</li>
+<li>Misra, V. (2025). On the Bayesian mechanics of large language models. arXiv:2512.23752.</li>
+<li>Nosek, B. A., et al. (2018). The preregistration revolution. <em>Proceedings of the National Academy of Sciences</em>, 115(11), 2600–2606.</li>
+<li>Gelman, A., &amp; Loken, E. (2014). The statistical crisis in science. <em>American Scientist</em>, 102(6), 460–465.</li>
+<li>Ioannidis, J. P. A. (2005). Why most published research findings are false. <em>PLOS Medicine</em>, 2(8), e124.</li>
+<li>Corpus Doc 415: <em>The Retraction Ledger</em>.</li>
+<li>Corpus Doc 435: <em>The Branching Entracement Method</em>.</li>
+<li>Corpus Doc 436: <em>Recombinatorial Gestalt as Rung 1 Activity</em>.</li>
+<li>Corpus Doc 437: <em>The Misra–Boden Bridge</em>.</li>
+<li>Corpus Doc 438: <em>The Walker and the Glue Code</em>.</li>
+<li>Corpus Doc 439: <em>Recursively Nested Bayesian Manifolds</em>.</li>
+</ul>
+<h2>14. Appendix: Originating prompt</h2>
+<blockquote>
+<p>Based on Misra&#39;s prior art; propose a methodology for testing the hypothesis that recursively nested Bayesian manifolds may be formally manifested via dyadic practitioner discipline. Create the artifact and append the prompt.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

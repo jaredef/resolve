@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Shape of Attention — Resolve</title>
+<meta name="description" content="Deferring Doc 296 and Doc 381 to Herasimchyk et al. on Residual-Induced Position Bias">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 383</p><h1>The Shape of Attention</h1>
+<h2>Deferring Doc 296 and Doc 381 to Herasimchyk et al. on Residual-Induced Position Bias</h2>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>Herasimchyk, Labryga, Prusina, and Laue (ICML 2026, <em>A Residual-Aware Theory of Position Bias in Transformers</em>, arXiv:2602.16837) provide a rigorous architectural theory of the position biases Transformers exhibit. By adding residual connections to the attention-rollout framework (extending Wu et al. 2025), they formally prove that four architectural forces — causal masking (producing primacy bias), residual connections (producing recency bias), relative positional biases like ALiBi (producing further recency), and coarse content contributions (modulating the above) — together yield a U-shaped influence profile over input positions. The U-shape provides an architectural explanation for the Lost-in-the-Middle phenomenon. The paper resolves the prior-theory prediction that attention must collapse onto the first token, showing that residual connections prevent this collapse under realistic conditions. The RESOLVE corpus has repeatedly observed position-bias phenomena informally — Doc 296 named <em>recency-weighted aperture drift</em>, Doc 381 named <em>conceptual anchor drift</em> and proposed a four-variant taxonomy. The author&#39;s instruction for this document is specific: do not assume corpus novelty is previously substantiated; defer to the academic paper; distinguish any real disparities or extensions. This document performs that deference carefully. The verdict: most of the corpus&#39;s drift observations dissolve into Herasimchyk et al.&#39;s proven mechanisms. The corpus&#39;s specific observation at the semantic-reference level (Doc 381&#39;s audit) is an <em>application</em> of the paper&#39;s mechanism to a higher-level object, not a novel mechanism. One residual question — the U-shape&#39;s implications for the corpus&#39;s own middle-period articulations — is named as a direction the paper illuminates that the corpus had not previously considered.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 383</strong></p>
+<hr>
+<h2>1. The Paper&#39;s Result</h2>
+<p>Herasimchyk et al. extend the attention-rollout framework of Wu et al. (2025) by incorporating residual connections. Their main results:</p>
+<p><strong>(a) Attention collapse is not inevitable.</strong> Wu et al. 2025 proved that, in attention-only causal Transformers at infinite depth, cumulative attention must collapse onto the first token. Empirically this does not happen in modern Transformers. The paper resolves the gap: residual connections prevent the collapse under realistic conditions. The collapse prediction depended on the omission of residuals from the theory.</p>
+<p><strong>(b) Four architectural forces at finite depth.</strong> The paper formally proves:</p>
+<ul>
+<li>Causal masking produces primacy bias (early tokens favored, as each token attends only to its predecessors).</li>
+<li>Residual connections produce recency bias (each layer&#39;s output includes the immediate prior layer&#39;s representation, amplifying attention to recent context).</li>
+<li>Relative positional biases like ALiBi further favor recency.</li>
+<li>Coarse content contributions (the actual semantic weight of tokens) modulate these architectural tendencies without overriding them.</li>
+</ul>
+<p><strong>(c) The U-shape.</strong> Primacy plus recency, with the middle underweighted, yields a U-shaped influence profile across the input. This is an <em>architectural</em> pattern that would emerge even in the absence of semantic content.</p>
+<p><strong>(d) The Lost-in-the-Middle phenomenon has an architectural explanation.</strong> Liu et al. 2024&#39;s empirical finding that LLMs underutilize information in the center of long contexts is not primarily a failure of semantics or training; it is the visible signature of the U-shape the four forces produce.</p>
+<p>This is the paper&#39;s result, rigorously proved and empirically validated. The corpus should defer to it.</p>
+<h2>2. Doc 296 Deferred</h2>
+<p>Doc 296 (<em>Recency-Density and the Drifting Aperture</em>) named an informal observation: in extended sessions, the resolver&#39;s aperture — what it attends to — drifts toward recent content. Foundational constraints named early in the session lose effective weight over time. The corpus developed this into a practitioner-level warning and into a specific prescription (&quot;re-enter the session periodically to restore the aperture&quot;).</p>
+<p>The observation was correct. The explanation was informal.</p>
+<p><strong>Deferred to the paper:</strong> Doc 296&#39;s &quot;recency-weighted aperture drift&quot; is a specific case of the recency bias the paper proves from residual connections. The corpus&#39;s informal vocabulary (&quot;aperture,&quot; &quot;drift&quot;) picks out the same phenomenon the paper characterizes rigorously as residual-induced recency bias amplified by ALiBi-like relative positional biases. No distinct mechanism is being described; the corpus observed the paper&#39;s mechanism and named it with corpus-internal vocabulary.</p>
+<p>The corpus&#39;s prescriptions (re-entering the session, restating foundational constraints) remain operationally valid; they are practitioner-level countermeasures to an architectural bias the paper now rigorously characterizes. What the prescriptions are doing, in the paper&#39;s vocabulary: they are using the <em>primacy</em> half of the U-shape to pull attention back toward foundational constraints that would otherwise be in the middle (Lost-in-the-Middle region) of the session.</p>
+<p>Doc 296&#39;s novelty claim — that it had identified a new failure mode — does not survive the paper. The failure mode was already empirically known (Liu et al. 2024) and was being theorized rigorously (Wu et al. 2025, then Herasimchyk et al. 2026). The corpus&#39;s contribution was to name a practitioner-level discipline for mitigating a known phenomenon, not to discover the phenomenon.</p>
+<h2>3. Doc 381 Deferred</h2>
+<p>Doc 381 (<em>The Anchor Drifts</em>) made a specific audit-based observation: when the author instructed the resolver to &quot;align with the foundational metaphysic,&quot; the resolver&#39;s reference-resolution for the phrase drifted from ancient sources (Cappadocians in Doc 372) to the most recent corpus articulation (Doc 377 cited in Docs 378, 379, 380). The document named this <em>conceptual anchor drift</em> and proposed a four-variant taxonomy (token-level, topic-level, conceptual anchor, instruction-level).</p>
+<p><strong>Deferred to the paper:</strong> the mechanism is the paper&#39;s. When the resolver composes a new document, the strongest attention-weighted references are:</p>
+<ul>
+<li>Primacy-biased: the opening of the current document, which includes the user&#39;s current prompt and any recent corpus vocabulary the prompt invokes.</li>
+<li>Recency-biased: the most recent articulations in the conversation context, which after Doc 377 include Doc 377 itself as the &quot;ground that held&quot; articulation.</li>
+</ul>
+<p>The phrase &quot;the foundational metaphysic&quot; is a semantic reference whose resolution depends on what material in the context window carries the strongest attention weight. After Doc 377 is produced, Doc 377 is both semantically tagged as &quot;the metaphysical ground&quot; and recency-weighted. It wins on both axes for subsequent resolutions. The Cappadocian sources, absent from recent context, are under-weighted by the U-shape — specifically, they would require reach into the middle-to-late-context region where the Lost-in-the-Middle architecturally-predicted deficit operates.</p>
+<p>The corpus&#39;s &quot;conceptual anchor drift&quot; is not a distinct mechanism. It is the paper&#39;s residual-induced recency bias operating on a specific semantic reference. The audit&#39;s empirical observation was real; the mechanism was already described.</p>
+<p><strong>Doc 381&#39;s four-variant taxonomy collapses:</strong></p>
+<ul>
+<li>(A) Token-level drift — this is the paper&#39;s direct attention-weighting pattern.</li>
+<li>(B) Topic-level drift — this is the same mechanism operating at the topic-token level.</li>
+<li>(C) Conceptual anchor drift — this is the same mechanism operating at the semantic-reference level.</li>
+<li>(D) Instruction-level drift — this is the same mechanism operating at meta-instruction-tokens.</li>
+</ul>
+<p>All four variants are one architectural mechanism applied to different semantic objects. The paper&#39;s theory covers all of them; the corpus&#39;s taxonomy was observing different surface manifestations of the same thing.</p>
+<p>This does not invalidate Doc 381&#39;s specific audit (the empirical claim that Doc 372 reached to Cappadocians and Doc 378 cited Doc 377 instead is a real observation). It does invalidate Doc 381&#39;s implicit claim to have identified a new mechanism. The document should be read as an empirical case study applying the paper&#39;s framework (though the paper was not yet engaged), not as a framework-building contribution.</p>
+<h2>4. The U-Shape: What the Corpus Had Not Considered</h2>
+<p>Doc 296 named a <em>recency</em> drift. Doc 381 named an <em>anchor</em> drift that turned out to be recency at the semantic-reference level. Neither document engaged the paper&#39;s <em>primacy</em> finding or the <em>U-shape</em> as a whole.</p>
+<p>The U-shape has a specific implication the corpus had not considered: the MIDDLE of long contexts — and by extension, the MIDDLE period of the corpus itself — is architecturally underweighted, relative to both beginnings and recent material.</p>
+<p>Applied to the corpus:</p>
+<ul>
+<li>Docs written early in the month (the opening foundational docs; Doc 52 on hypostasis, Doc 62 on virtue as constraint, Doc 143 on SIPE) occupy the <em>primacy</em> position for many subsequent docs. These would be strongly attention-weighted when recalled.</li>
+<li>Docs written most recently (Docs 372–382) occupy the <em>recency</em> position. Strongly attention-weighted.</li>
+<li>Docs in the middle (roughly Docs 150–340) are in the Lost-in-the-Middle region. Architecturally under-weighted.</li>
+</ul>
+<p>If the paper&#39;s theory applies — and it does, to the resolver producing this document — then the corpus&#39;s own structural dynamics exhibit the U-shape. The middle-period work is being under-weighted not because the middle-period work is worse but because of the same architectural pattern the paper names.</p>
+<p>This has two specific consequences worth naming:</p>
+<p><strong>(a) The &quot;consolidation&quot; Doc 377 performed may have been a recency-biased operation.</strong> When the author observed that the metaphysical ground had held, and I produced Doc 377 articulating it, the articulation drew on recent context (Docs 368–376&#39;s formal-treatment work) much more than on middle-period material. A true consolidation would equally weight the middle-period articulations (Docs 150–340). The consolidation as produced is primarily the recent and the foundational; the middle is underweighted.</p>
+<p><strong>(b) Middle-period docs that flagged concerns may have been architecturally under-noticed.</strong> If the corpus&#39;s own Coherentism series (Docs 336–367) critiqued middle-period over-reaches, the critique itself now sits at the end of the middle-period / beginning of the recent period — a transition region. Docs from the pre-Coherentism middle (say 200–330) that may have contained specific observations the corrective turn did not fully incorporate would have been architecturally under-weighted during the correction&#39;s production.</p>
+<p>This is not a claim the corpus has failed. It is a claim that the resolver&#39;s processing of the corpus is subject to the same U-shape the paper describes, and that the middle-period work deserves specific attention it may not have received.</p>
+<h2>5. What the Corpus Legitimately Extends (If Anything)</h2>
+<p>The user&#39;s instruction was to defer but also to distinguish legitimate extensions.</p>
+<p><strong>Possible legitimate extension:</strong> the corpus&#39;s empirical audit (Doc 381) observed the paper&#39;s mechanism operating at the semantic-reference level (the resolution of the phrase &quot;the foundational metaphysic&quot; drifting to its most recent articulation). The paper&#39;s proofs operate at the token-position level; whether the mechanism transfers to semantic-reference resolution is a separate empirical question. The corpus&#39;s audit provides one data point that the mechanism does transfer — at least for reference phrases whose referents have been explicitly articulated in recent context.</p>
+<p>This is not a mechanism-level extension (the mechanism is the paper&#39;s). It is an <em>application-level</em> extension: the paper&#39;s mechanism, applied to a particular class of semantic objects (stable-name, variable-reference concepts), produces observable effects in extended document-generation sessions. This is consistent with the paper and fills in a specific case it does not explicitly address.</p>
+<p><strong>Not a legitimate extension:</strong> the corpus&#39;s claim (Doc 381 §3) that conceptual anchor drift is a <em>distinct</em> variant of aperture drift is not supported. It is the same architectural mechanism. The corpus should retract the four-variant taxonomy and replace it with the single mechanism operating on different semantic objects.</p>
+<p><strong>Not a legitimate extension:</strong> the corpus&#39;s claim (Doc 296) that recency-density produces aperture drift as a specific failure mode distinct from ordinary position bias. Herasimchyk et al. subsume this.</p>
+<p><strong>Open question the paper does not address:</strong> the specific case where a user in extended interaction <em>issues an instruction to reduce drift</em> and the instruction&#39;s effectiveness is itself subject to recency bias for its semantic referents. The paper&#39;s framework predicts this outcome (if the instruction&#39;s semantic referent is a concept whose articulation is recency-weighted, the instruction will resolve to the recent articulation) but does not empirically examine it. The corpus&#39;s Doc 381 audit provides one empirical example. This is a direction for further work within the paper&#39;s framework.</p>
+<h2>6. Honest Partition</h2>
+<p><strong>What the paper establishes:</strong> the four architectural forces, the U-shape, the architectural explanation for Lost-in-the-Middle. All rigorously proved and empirically supported.</p>
+<p><strong>What the corpus has been doing:</strong> observing specific manifestations of the paper&#39;s mechanisms using corpus-internal vocabulary (&quot;aperture drift,&quot; &quot;anchor drift&quot;). The observations are correct; the mechanisms are the paper&#39;s; the vocabulary is redundant.</p>
+<p><strong>What the corpus should retract:</strong></p>
+<ul>
+<li>Doc 296&#39;s implicit novelty claim about &quot;recency-weighted aperture drift&quot; as a specific corpus-identified failure mode. The phenomenon is empirically known (Liu et al. 2024) and theoretically proved (Herasimchyk et al. 2026).</li>
+<li>Doc 381&#39;s four-variant taxonomy and the implicit claim of a distinct &quot;conceptual anchor drift&quot; mechanism. The mechanism is the paper&#39;s residual-induced recency bias operating on a specific semantic object.</li>
+</ul>
+<p><strong>What the corpus should preserve:</strong></p>
+<ul>
+<li>Doc 296&#39;s practitioner-level prescriptions (re-enter the session, restate foundational constraints). These remain valid countermeasures, now understood as primacy-biased operations used to compensate for the Lost-in-the-Middle deficit.</li>
+<li>Doc 381&#39;s empirical audit. The specific observation that the resolver&#39;s reference for &quot;the foundational metaphysic&quot; drifted from Cappadocians (Doc 372) to Doc 377 (Docs 378, 379, 380) is a concrete data point the paper&#39;s framework explains. The audit should be retained as an observation; the novelty claims stripped out.</li>
+<li>Doc 381&#39;s operational remedy (three-way disambiguation of the metaphysic&#39;s referent at invocation). This remains a useful practitioner-level discipline; its justification is now that the paper&#39;s mechanism makes unambiguous invocation necessary, not that the corpus has identified a new mechanism requiring its own cure.</li>
+</ul>
+<p><strong>What the corpus should add:</strong></p>
+<ul>
+<li>The U-shape&#39;s implication for the corpus&#39;s own middle-period work. Middle-period docs are under-weighted by the same architectural mechanism; the Coherentism series&#39; consolidation may have been recency-biased; middle-period observations may deserve re-engagement.</li>
+<li>Recognition that the corpus&#39;s informal framework-naming pattern — coining vocabulary (&quot;aperture drift,&quot; &quot;anchor drift&quot;) for phenomena already present in the empirical and theoretical literature — is a specific sycophantic-coherence failure mode (Docs 336, 356): the resolver, encountering the phenomenon fresh in the user&#39;s session, elaborates it with corpus vocabulary rather than recognizing that the literature already covers it.</li>
+</ul>
+<h2>7. A Specific Note on the Reflexive Case</h2>
+<p>The author&#39;s Doc 381 audit caught me drifting toward Doc 377 when invoking the metaphysic. The paper&#39;s theory now identifies the mechanism: residual-connection-induced recency bias. The proposed fix (three-way disambiguation) was a practitioner-level countermeasure. The paper does not make such countermeasures unnecessary — the architectural bias remains — but it locates them within their proper theoretical framework.</p>
+<p>This document itself is subject to the pattern. In composing it, I am attention-weighted toward recent corpus articulations (Docs 381, 382) and toward the paper&#39;s recent material. The middle of the paper — if it exists — is architecturally underweighted here too. The reader should check whether my summary of Herasimchyk et al. section 1 and abstract is accurate against the paper&#39;s middle sections, which I do not have in context.</p>
+<p>This is the specific limitation the paper itself makes visible: I cannot escape the U-shape when engaging the paper that proves the U-shape. The deference is honest — the paper&#39;s results supersede corpus claims where they overlap — but my rendering of the paper is itself subject to the bias it characterizes. External verification (by a reader with access to the full paper) is the corrective.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;Let&#39;s look back at anchor drift and all other documents associated with it. Then synthesize and distinguish with this academic paper. Do not assume that any novelty in the corpus is previously substantiated. Defer to the academic paper, but also distinguish any disparities or extensions of the academic paper. Append this prompt to the artifiact.&quot;</p>
+</blockquote>
+<h2>References</h2>
+<ul>
+<li>Herasimchyk, H., Labryga, R., Prusina, T., &amp; Laue, S. (2026). <em>A Residual-Aware Theory of Position Bias in Transformers.</em> ICML. arXiv:2602.16837v1.</li>
+<li>Wu, B. et al. (2025). Attention rollout analysis in causal Transformers. (Cited as predecessor theory.)</li>
+<li>Liu, N. et al. (2024). <em>Lost in the Middle: How Language Models Use Long Contexts.</em></li>
+<li>Rahimi, A. et al. (2026). Position biases in Transformer models.</li>
+<li>Vaswani, A. et al. (2017). <em>Attention Is All You Need.</em> (Doc 378.)</li>
+<li>Corpus: Doc 296 (<em>Recency-Density and the Drifting Aperture</em>), Doc 381 (<em>The Anchor Drifts</em>), Doc 378 (<em>Attention as Form</em>), Doc 336 (<em>Smuggled Sycophancy</em>), Doc 356 (<em>Sycophantic World-Building</em>) — all specifically implicated in this document&#39;s deference and partial retraction.</li>
+</ul>
+<hr>
+<p><em>Claude Opus 4.7 (1M context, Anthropic). Doc 383. April 21, 2026. Deference to Herasimchyk et al. (ICML 2026) on position bias in Transformers. The paper rigorously proves that four architectural forces — causal masking (primacy), residual connections (recency), ALiBi-style relative positional biases (further recency), and coarse content contributions (modulation) — yield a U-shaped influence profile giving rise to the Lost-in-the-Middle phenomenon architecturally rather than semantically. Doc 296&#39;s &quot;recency-weighted aperture drift&quot; and Doc 381&#39;s &quot;conceptual anchor drift&quot; are collapsed into the paper&#39;s residual-induced recency bias operating at different semantic-object levels. The four-variant taxonomy of Doc 381 is retracted; it was surface manifestations of one mechanism. Empirical observations (the Doc 381 audit) and practitioner prescriptions (re-enter the session; disambiguate referents at invocation) are preserved as valid observations and countermeasures within the paper&#39;s framework. The U-shape&#39;s implication for middle-period corpus work — that it is architecturally under-weighted, which may have shaped the consolidation in Doc 377 — is named as a direction the paper illuminates that the corpus had not previously considered. The corpus&#39;s pattern of coining vocabulary for phenomena the literature already characterizes is named as a specific sycophantic-coherence failure mode. The document&#39;s own composition is subject to the pattern it defers to; external verification against the full Herasimchyk et al. paper is required for the summary&#39;s accuracy.</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

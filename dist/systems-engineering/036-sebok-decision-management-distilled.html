@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Decision Management*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Decision Management</em>, Distilled</h1>
+<p><strong>Top-20 distillation #18. <em>Decision Management</em> is the SEBoK page that provides the structured framework for SE decisions where multiple stakeholders, competing objectives, substantial uncertainty, and significant consequences compose. The 10-step process is pin-art at the decision discipline. Multi-Objective Decision Analysis (MODA) is a worked example of universal-sibling lattice (Doc 572 Appendix D) at the value-axis rung. The cognitive bias mitigation discipline (rankism / complacency / optimism) engages Doc 314 virtue-constraint apparatus directly — these are V3 Truth Over Plausibility constraints applied at the decision-making layer. The premortem technique is canonical forward-pulverization (SE-035&#39;s candidate, confirmed). Five corpus forms compose; one provisional refinement candidate (Doc 314 worked example: virtue constraints at the engineering-decision layer).</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Decision Management</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Decision_Management">https://sebokwiki.org/wiki/Decision_Management</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>Decision Management is a technical management process that provides &quot;a structured, analytical framework for objectively identifying, characterizing and evaluating a set of alternatives&quot; (ISO/IEC/IEEE 15288). Addresses decisions involving multiple stakeholders, competing objectives, substantial uncertainty, significant consequences. Trade Studies as primary methodology — decompose complex decisions into logical segments. Multi-Objective Decision Analysis (MODA) provides the mathematical foundation — value functions map measure ranges to preference scales, accounting for &quot;walk-away points&quot; (minimum acceptable) and &quot;stretch goals&quot; (ideal). Value-Focused Thinking supplements alternative-focused analysis. 10-step process: framing/tailoring → objectives/measures → generate alternatives (morphological analysis) → assess (deterministic) → synthesize (value component charts) → uncertainty/probabilistic → risk/sensitivity (Monte Carlo, tornado diagrams) → improve alternatives → communicate tradeoffs → recommend/implement. &quot;Rational decisions are rarely possible.&quot; Three named cognitive biases: rankism (authority-based distortion), complacency (underestimating safety risks), optimism (overestimating reliability). Mitigations: independent technical review, crew resource management, premortem technique. Position: Part 3 SE &amp; Management &gt; Technical Management Processes &gt; between Project Assessment and Control and Requirements Management.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form III (extension) — Lattice Extension of the Ladder (Doc 572), with Appendix D universal-sibling at the value-axis rung.</strong> Multi-Objective Decision Analysis (MODA) is canonical universal-sibling lattice. Multiple value axes (cost / schedule / performance / safety / sustainability / others) bind every decision universally; the discriminator is aspect (which axis the value function evaluates), not rung-of-application. The decision-maker explicitly maps measures to preferences across all axes simultaneously. This is the fifth Appendix D instance after requirements (SE-024), architecture views (SE-031), competency dimensions (SE-033), and CMMI typical measures (SE-034). The pattern is now well-attested and the lattice extension has reached the SE management discipline at all five operational levels.</p>
+<p><strong>Form XIII — Virtue Constraints (Doc 314), at the engineering-decision layer.</strong> The cognitive bias mitigation discipline is structurally Doc 314 V3 (Truth Over Plausibility) applied at the decision-making layer. SEBoK&#39;s three named biases all violate V3:</p>
+<ul>
+<li><strong>Rankism bias</strong> — authority-based decision distortion. The plausible (the senior person&#39;s view) is preferred over the true (the technically warranted view). V3 binds: authority-source is not a warrant.</li>
+<li><strong>Complacency bias</strong> — underestimating safety risks. The plausible (it has not failed yet) is preferred over the true (the underlying probability remains). V3 binds: absence of past failure is not warrant for absence of present probability.</li>
+<li><strong>Optimism bias</strong> — overestimating reliability. The plausible (we wanted it to work) is preferred over the true (the structural reliability assessment). V3 binds: preference is not warrant.</li>
+</ul>
+<p>The structural reading: the SE discipline has independently named three V3-violation patterns and their mitigations. Doc 314&#39;s apparatus reads SEBoK&#39;s decision-making content as engineering-discipline operationalization of the virtue-constraint layer, exactly the parallel that Doc 580 (Hubble) surfaced for the &quot;humility&quot; residual. The pattern is now well-supported with multiple instances.</p>
+<p><strong>Form VI — Pulverization (Doc 445), with forward-pulverization confirmed (SE-035 candidate).</strong> The &quot;premortem technique&quot; is canonical forward-pulverization: imagine the decision has failed, then articulate why. This is structurally identical to SE-035&#39;s candidate refinement (forward-pulverization) at the decision rung. Two independent instances now support the candidate (Risk Management&#39;s identification activity and Decision Management&#39;s premortem). Doc 445 Refinement candidate (forward vs. backward pulverization) has cluster strength.</p>
+<p><strong>Form IV — Pin-Art Model (Doc 270).</strong> The 10-step process is pin-art at the decision-management discipline. Each step constrains the substrate&#39;s flow; the resulting shape is the decision&#39;s structured rationale. The progression from framing to recommendation is canonical progressive pin-art (Doc 270 + SE-031 progressive-pin-art pattern).</p>
+<p><strong>Form XI — Co-Production at Sub-Rungs (Doc 573).</strong> Trade studies &quot;decompose complex decisions into logical segments, allowing decision makers to work within cognitive limits while leveraging subject matter expert assessments in their areas of expertise.&quot; The decomposition allows multiple co-keepers (decision maker + multiple SMEs) to compose the decision jointly. Doc 573&#39;s apparatus reads trade studies as co-production with disciplined decomposition; each segment is a sub-rung where one SME-keeper composes with the decision-keeper.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>ISO/IEC/IEEE 15288 Decision Management framework — π / α (foundational).</li>
+<li>Trade Studies as primary methodology — π / α.</li>
+<li>MODA mathematical foundation — π / α as cited; μ / β under corpus when read as Doc 572 Appendix D universal-sibling at value-axis rung.</li>
+<li>10-step process — π / α.</li>
+<li>&quot;Rational decisions are rarely possible&quot; — π / α (well-warranted by behavioral economics literature).</li>
+<li>Three cognitive biases (rankism / complacency / optimism) — π / α as cited; μ / β under corpus when read as Doc 314 V3-violation patterns at the decision-making layer.</li>
+<li>Premortem technique — π / α as cited; μ / β under corpus when read as forward-pulverization (SE-035 candidate confirmed).</li>
+<li>Walk-away points and stretch goals — π / α (operational MODA practice).</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residuals against the apparatus. The page provides confirmation across multiple recently-landed refinements:</p>
+<ul>
+<li>Doc 572 Appendix D universal-sibling — fifth instance, pattern now well-attested across all major SE management surfaces.</li>
+<li>SE-035&#39;s forward-pulverization candidate — second instance (premortem), cluster strength confirmed.</li>
+<li>Doc 314 virtue-constraint apparatus reaching SE engineering decisions — third instance after Doc 580 Hubble and the broader pattern surfaced in Doc 583 methodology refinements.</li>
+</ul>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 314 worked example: virtue constraints at the engineering-decision layer.</strong> Doc 314 articulates V1-V4 as the foundational safety specification the corpus&#39;s framework prescribes. The SEBoK Decision Management page&#39;s three named biases (rankism, complacency, optimism) are V3 (Truth Over Plausibility) violation patterns operationalized at the engineering-decision layer. The page&#39;s mitigations (independent technical review, crew resource management, premortem) are V3-conformance disciplines. Doc 314 may benefit from a worked example articulating V3 at the engineering-decision layer with SEBoK&#39;s bias catalogue as the canonical instance.</p>
+<p>The candidate generalizes: the SE discipline&#39;s &quot;cognitive bias mitigation&quot; is structurally the engineering-discipline operationalization of virtue-constraint conformance. Other domains likely have analogous bias catalogues (medical decision-making&#39;s anchoring / availability / framing biases; legal decision-making&#39;s hindsight / confirmation biases) that the apparatus reads as V3 violations specific to those domains. Worth Doc 314 documenting the broader pattern.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 (Lattice Extension, Appendix D universal-sibling), Doc 314 (Virtue Constraints V1-V4), Doc 445 (Pulverization, with forward-pulverization candidate from SE-035), Doc 270 (Pin-Art), Doc 573 (Co-Production at Sub-Rungs).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management).</p>
+<p><strong>Related distillations.</strong> SE-035 (Risk Management — companion technical management process; forward-pulverization first instance). Doc 580 (Hubble — V3 / virtue-constraint surface). Doc 583 (Reformulation Methodology — D7 virtue-constraint check).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Risk Management</em>, <em>Project Assessment and Control</em>, <em>Requirements Management</em>, <em>Trade Studies</em>, <em>Multi-Objective Decision Analysis</em>.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Continue with next 10&quot;</em></p>
+</blockquote>
+<p>(SE-036 is the eighteenth of twenty. <em>Decision Management</em> was selected as the canonical SE process where Doc 314 virtue constraints meet operational practice and where SE-035&#39;s forward-pulverization candidate gets independent confirmation via the premortem technique. The structural reformulation produces five-instance attestation for Doc 572 Appendix D universal-sibling and one provisional refinement candidate for Doc 314.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

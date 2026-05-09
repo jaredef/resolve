@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rederive: The Wire Protocol — Resolve</title>
+<meta name="description" content="A Comprehensive Entracement to How a Constraint Repository Synchronizes Across Machines — the Three Object Types, the Wire Verbs and Their Semantics, the Reachability-Walked Object Transfer, the Object Frame Format, the Server&#39;s HTTP Endpoint Surface for Both Repository and Derivation, the Ed25519 Signature-Based Authentication and the Signers Manifest as Identity-as-Constraint-Document, the Atomic-Update Discipline on Refs, the MVE&#39;s Honest Scope Limits — and a Concrete Cross-Machine Workflow End-to-End — the Fifth and Final Branch off [Doc 659](/resolve/doc/659-rederive-for-the-working-engineer-hub) for the Working Engineer">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 664</p><h1>Rederive: The Wire Protocol</h1>
+<h2>A Comprehensive Entracement to How a Constraint Repository Synchronizes Across Machines — the Three Object Types, the Wire Verbs and Their Semantics, the Reachability-Walked Object Transfer, the Object Frame Format, the Server&#39;s HTTP Endpoint Surface for Both Repository and Derivation, the Ed25519 Signature-Based Authentication and the Signers Manifest as Identity-as-Constraint-Document, the Atomic-Update Discipline on Refs, the MVE&#39;s Honest Scope Limits — and a Concrete Cross-Machine Workflow End-to-End — the Fifth and Final Branch off <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> for the Working Engineer</h2>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>EXPLORATORY — practitioner-facing entracement, branch §E of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-PRACTITIONER-FACING | PHASE-CROSS-PRACTITIONER</p>
+</div>
+
+<blockquote>
+<p><strong>Reader&#39;s Introduction.</strong> This is the fifth and final branch off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a> in this comprehensive series. The earlier documents covered authoring (<a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660</a>), execution (<a href="../doc/661-rederive-the-build-pipeline.html">Doc 661</a>), acceptance (<a href="../doc/662-rederive-the-verification-backends.html">Doc 662</a>), and identity (<a href="../doc/663-rederive-content-addressed-identity-and-pin-manifests.html">Doc 663</a>). This document covers <em>distribution</em>: how a constraint repository synchronizes across machines, how peers authenticate, and how a team collaborates on constraint-set work without sharing a runtime. If you have used git, the patterns are familiar (clone, push, pull, content-addressed objects, refs as mutable pointers); the grain is shifted up a layer (constraint sets and materializations rather than blobs and trees), and the auth surface is signature-based rather than provider-mediated. By the end of this document, the engineer has a complete working picture of the platform&#39;s MVE: how to author, how to build, how to verify, how to identify, how to share. The platform sketch&#39;s commitment is to demonstrate that constraints can be the durable source under a working transport; this document closes the loop.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-05-05 · Doc 664</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. The keeper has not authored the prose; the resolver has. Calibrated to a working-engineer audience.</p>
+<hr>
+<h2>1. The Three Object Types</h2>
+<p>The wire protocol moves three kinds of object across machines:</p>
+<p><strong>(a) Constraint sets.</strong> A constraint file&#39;s <em>canonical bytes</em> (the deterministic serialization of the parsed AST per <a href="../doc/663-rederive-content-addressed-identity-and-pin-manifests.html">Doc 663</a>), addressed by SHA-256 hash. This is the platform&#39;s primary content type. It is what an engineer authors and what a reviewer reads.</p>
+<p><strong>(b) Composition manifests.</strong> A small object naming a constraint set&#39;s <code>@provides</code> and <code>@imports</code> declarations along with the import target hashes. The composition manifest lets a peer resolve cross-file dependencies without re-parsing every constraint file in the repository. In the MVE, the composition manifest is derived from the constraint set&#39;s parsed AST at request time rather than transferred as a separate object; the architecture admits explicit transfer when team-scale workflows make caching the manifest separately worthwhile.</p>
+<p><strong>(c) Materializations.</strong> A signed artifact carrying the provenance tuple from <a href="../doc/661-rederive-the-build-pipeline.html">Doc 661 §9</a> (<code>constraintSetHash, derivationFunctionHash, substrateId, modelId, codeHash, verdict, timestamp</code>) plus the Ed25519 signature. Materializations are not strictly necessary on the wire (peers can re-derive from the constraint set), but they are useful: they let a peer accept a passing materialization signed by a trusted key without paying the substrate cost of re-deriving locally.</p>
+<p>Each object type is content-addressed. Every object the protocol moves carries a hash; every reference between objects is a hash; the integrity of the transfer is verified by re-hashing on the receiving side. There are no opaque object identifiers. There are no name-based references that depend on the receiver&#39;s view of a namespace; everything resolves through hashes.</p>
+<h2>2. The Wire Verbs</h2>
+<p>The platform exposes five verbs at the CLI surface and six at the HTTP surface. The CLI verbs are the engineer-facing shape; the HTTP endpoints are the underlying transport.</p>
+<h3>2.1 CLI verbs</h3>
+<pre><code>rederive clone &lt;remote-url&gt; &lt;local-path&gt;
+rederive push  &lt;local-path&gt; &lt;remote-url&gt; &lt;ref&gt;
+rederive pull  &lt;local-path&gt; &lt;remote-url&gt; &lt;ref&gt;
+rederive list-refs &lt;remote-url&gt;
+rederive get-object &lt;remote-url&gt; &lt;hash&gt;
+</code></pre>
+<p><strong><code>clone</code></strong> — receive every reachable object from a remote, starting from the remote&#39;s published refs. Used once per repository when a new engineer begins work.</p>
+<p><strong><code>push</code></strong> — send every object the remote does not yet have, starting from the local&#39;s named ref. Used when an engineer has authored or modified constraints locally and wants to publish them.</p>
+<p><strong><code>pull</code></strong> — fetch updated refs from the remote, then receive any objects the local does not have. Used to bring the local up to date with the remote.</p>
+<p><strong><code>list-refs</code></strong> — read the remote&#39;s current ref pointers without transferring objects. Used for status checks and CI pre-flight.</p>
+<p><strong><code>get-object</code></strong> — fetch a single object by hash. Used for diagnostic introspection or to confirm a specific object is present.</p>
+<p>These five verbs compose into the standard workflow patterns: clone fresh, pull on a schedule, push when ready, list-refs for status checks, get-object for diagnostic introspection. Engineers who have used git will absorb the surface in an afternoon.</p>
+<h3>2.2 HTTP endpoints</h3>
+<p>The server exposes the same primitives as HTTP endpoints, plus a derivation endpoint and a UI surface:</p>
+<pre><code>GET  /repo/refs                       — list refs (returns name → hash mapping)
+GET  /repo/objects                    — list available object hashes
+GET  /repo/objects/&lt;hash&gt;             — fetch a single object
+POST /repo/objects                    — upload a transfer frame (signed; auth-gated)
+POST /derive                          — request a derivation against a constraint set (signed)
+GET  /capabilities                    — service metadata, public key
+GET  /ui/...                          — browser UI routes (Doc 659 §J)
+</code></pre>
+<p>Read endpoints are open by default in the MVE. Write endpoints (<code>POST /repo/objects</code>, <code>POST /derive</code>, and the small set of UI write endpoints for signers management) are auth-gated by Ed25519 signatures verified against the signers manifest (§5).</p>
+<h2>3. Reachability-Walked Transfer</h2>
+<p>When a peer pushes or pulls, the protocol does not transfer every object it knows about. It transfers only the objects the receiving side does not yet have. The discipline:</p>
+<ul>
+<li>The pushing side asks the receiving side for the set of object hashes the receiver already has, scoped to the refs being pushed. (In the MVE this is a <code>GET /repo/objects</code> returning the receiver&#39;s full hash list; for production scale this would tighten to a per-ref reachability query.)</li>
+<li>The pushing side then walks the reachability graph from the pushed refs, excluding objects the receiver already has, and serializes the remaining set into a transfer frame.</li>
+<li>The receiving side reads the frame, verifies each object&#39;s hash on receipt, and adds the verified objects to its local store.</li>
+</ul>
+<p>The reachability walk is bounded by the import graph (a constraint set is reachable from any constraint set that imports it transitively), the manifest&#39;s pin graph (an imported file&#39;s pinned hash is reachable), and the materialization references (a passing materialization&#39;s constraint-set hash is reachable). Cycles cannot occur in practice (the validate stage catches them at the constraint-authoring layer), but the protocol&#39;s walker also detects cycles at the object level as a defensive measure.</p>
+<p>The result: pushes and pulls transfer minimum data. A small constraint-set edit pushes only the new canonical bytes (a few kilobytes); a substrate-upgrade-driven re-derivation pushes only the new materialization (a few kilobytes plus the code&#39;s hash); a cross-team composition fetch pulls only the imported constraint sets the consumer does not already have.</p>
+<h2>4. The Object Frame</h2>
+<p>The on-wire object frame is small and explicit. Each object is wrapped in a frame carrying:</p>
+<pre><code>type    : &quot;constraintSet&quot; | &quot;compositionManifest&quot; | &quot;materialization&quot;
+hash    : &lt;SHA-256 hex&gt;
+length  : &lt;byte count&gt;
+payload : &lt;canonical bytes of object&gt;
+</code></pre>
+<p>Frames are concatenated into a transfer stream. The receiving side reads frame by frame, verifies <code>hash(payload) === hash</code>, and stores the payload keyed by hash. There is no compression in the MVE (the constraint domain is small enough that the engineering complexity of streaming compression is not warranted; this may change with deltas in a later phase). There is no delta encoding; each object is transferred whole. The MVE&#39;s commitment is <em>correctness and auditability</em>, not transfer efficiency.</p>
+<p>This is a deliberate scope choice. A team running rederive in production with thousands of constraint sets and frequent regeneration will want delta encoding eventually; the architecture admits it cleanly when the demand surfaces. A team running rederive at small or medium scale (which is most teams the MVE targets) finds the whole-object protocol fast enough that the engineering simplicity outweighs the bandwidth cost.</p>
+<h2>5. Authentication: Signers as Constraint Documents</h2>
+<p>Write endpoints are auth-gated. The auth model is signature-based: a peer attempting to write must sign its request with an Ed25519 key whose public component appears in the receiver&#39;s <em>signers manifest</em>.</p>
+<p>The signers manifest is itself a constraint document — a <code>.constraints.md</code> file with constraints declaring &quot;key X belongs to identity Y&quot; — reviewed and committed like any other constraint set. The platform&#39;s claim, in the engineer&#39;s vocabulary: <em>identity is a constraint, not a separate auth subsystem</em>. The signers manifest is read by the server at startup; signature verification on each write request checks the request&#39;s signature against the manifest&#39;s recorded keys.</p>
+<h3>5.1 What a signers manifest looks like</h3>
+<p>The signers manifest is a constraint set with one constraint per recorded identity. Each constraint declares the identity&#39;s public key, a human-readable name, and (optionally) a scope (which write endpoints this identity is authorized for). The constraint type is typically <em>bridge</em> (this is a commitment to an identity outside the constraint set&#39;s behaviour), and the body carries the public key in a hex- or PEM-encoded form.</p>
+<p>A team running rederive in production maintains the signers manifest the same way it maintains any other constraint set: edited under review, committed with a constraint-set hash that flows into the audit trail, published to the repository the server reads from at startup.</p>
+<h3>5.2 What signature-checking actually does</h3>
+<p>A write request to <code>POST /repo/objects</code> or <code>POST /derive</code> carries an <code>Authorization</code> header containing the request&#39;s Ed25519 signature over the request body and a few canonical headers. The server reads the signers manifest, locates the public key claimed by the signer, and verifies the signature. If verification passes, the request proceeds; if it fails, the server returns 401.</p>
+<p>This has consequences engineers should know:</p>
+<p><em>No external identity provider is required.</em> The MVE&#39;s auth surface is self-contained. The receiver verifies signatures locally without contacting an external service. Teams running rederive on a local network or on an air-gapped machine do not need an internet-connected auth provider.</p>
+<p><em>Key rotation is a constraint-set edit.</em> To rotate a key, the engineer adds the new key to the signers manifest, waits for clients to upgrade, and (after a transition window) retracts the old key. The audit trail is the constraint-set history. There is no separate &quot;rotate key&quot; workflow; the signers manifest is the workflow.</p>
+<p><em>Multi-party authorization is expressible.</em> If an engineering team requires two-of-three signatures for production pushes, the signers manifest can declare that policy as a constraint, and the server can refuse single-signature writes against the production ref. The MVE does not currently implement multi-sig enforcement, but the architecture admits it; the constraint already names the policy, and the enforcement is a server-side change that does not affect the wire protocol.</p>
+<h3>5.3 Auth-gating is opt-in</h3>
+<p>Auth-gating is opt-in via an environment variable (<code>REDERIVE_REQUIRE_AUTH</code>). With the variable unset, the server runs in open mode (useful for local development and trust-the-LAN deployments). With it set, the server requires signatures on all write endpoints. Read endpoints (<code>list-refs</code>, <code>get-object</code>, <code>clone</code>) are open by default in the MVE; access controls on read are a roadmap item for teams that need them.</p>
+<p>Engineers deploying rederive in a multi-user environment should set <code>REDERIVE_REQUIRE_AUTH=1</code> at startup. Engineers running rederive single-user on a local machine do not need to.</p>
+<h2>6. Refs and Mutable Pointers</h2>
+<p>Refs are mutable pointers from a name to an object hash. Two ref namespaces:</p>
+<ul>
+<li><strong>Local refs</strong> (<code>refs/heads/&lt;name&gt;</code>) — pointers updated by local writes.</li>
+<li><strong>Remote-tracking refs</strong> (<code>refs/remotes/&lt;remote&gt;/&lt;name&gt;</code>) — pointers updated by <code>pull</code> and <code>list-refs</code>.</li>
+</ul>
+<p>A push updates the remote&#39;s local refs; the remote-tracking refs on the pushing side are updated on the next pull. Refs are atomic; an update either succeeds (the new hash is recorded) or fails (a concurrent update happened, the local must pull and retry).</p>
+<p>The MVE has a single ref space per repository. Branches in the git sense are not in the MVE; if an engineering team needs branch-like workflows, the recommended pattern is multiple repositories or multiple refs in a single repository, with the team&#39;s discipline determining which ref is canonical for which environment. The architecture admits branch semantics cleanly; the MVE does not implement them, because the constraint domain has different concurrency characteristics than the source-code domain (constraint sets are typically small and authored by one engineer at a time, so branch-merge workflows have less leverage at this scale).</p>
+<h2>7. The Server</h2>
+<p>The server is a small HTTP service. The CLI launches it with <code>bun run src/server.ts</code>; the default port is 7474. Its responsibilities:</p>
+<ul>
+<li>Serve the read endpoints for the wire protocol (<code>/repo/refs</code>, <code>/repo/objects</code>, <code>/repo/objects/&lt;hash&gt;</code>).</li>
+<li>Serve the write endpoints for the wire protocol (<code>POST /repo/objects</code>, signed and auth-gated).</li>
+<li>Serve the derivation endpoint (<code>POST /derive</code>, signed and auth-gated; runs the build pipeline server-side).</li>
+<li>Serve the browser UI (<a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> §J): pages for refs, individual constraints, streaming derivations, review, signers management.</li>
+<li>Serve the <code>/capabilities</code> endpoint (service metadata, public key, version) for service discovery.</li>
+</ul>
+<p>The server is a working surface, not a multi-tenant production service. The MVE supports a single repository per server process. Multi-repository hosting and multi-tenancy are roadmap items that the architecture admits cleanly when the demand surfaces.</p>
+<p>The server is also the point at which a team&#39;s derivation pipeline can be centralized. An engineer with no local Anthropic API key can push a constraint set to the server&#39;s <code>POST /derive</code> endpoint and receive the signed materialization back, with the substrate cost paid by the server&#39;s account. This pattern works well for teams that want to centralize substrate billing or that want to gate derivation on a central key.</p>
+<h2>8. The Cross-Machine Workflow</h2>
+<p>The complete cross-machine workflow, walked end-to-end:</p>
+<pre><code>$ rederive clone https://team.example.com/rederive/our-app
+[clone] fetching refs from remote...
+[clone] receiving 47 objects (constraintSet=32, compositionManifest=8, materialization=7)...
+[clone] verified all object hashes; ready
+$ cd our-app
+$ &lt;edit a .constraints.md file&gt;
+$ rederive build
+[build] ... runs the eight-stage pipeline ...
+[build] verdict=pass
+$ rederive push origin main
+[push] computing reachable objects new to remote...
+[push] sending 2 objects (constraintSet=1, materialization=1)...
+[push] remote ref refs/heads/main updated to &lt;new-hash&gt;
+$
+</code></pre>
+<p>Two engineers working on the same repository pull each other&#39;s changes, derive locally, push their additions; conflicts at the ref layer are resolved by re-pulling and re-pushing (the platform reports <code>409 Conflict</code> on a ref update where the remote&#39;s current hash does not match the local&#39;s expected base, and the engineer resolves by pulling and re-pushing). Conflicts at the constraint-content layer are resolved at the authoring layer (read the diff, decide which constraints stay, edit the file, derive again).</p>
+<p>The flow is small. The auth surface is small. The objects on the wire are small. The platform&#39;s commitment to substitutability (<a href="../doc/663-rederive-content-addressed-identity-and-pin-manifests.html">Doc 663 §8</a>) means that two engineers&#39; materializations of the same constraint-set hash, signed by their respective keys, are interchangeable; the team can either standardize on a single signing identity for the production ref or accept any team member&#39;s signature, depending on the policy in the signers manifest.</p>
+<h2>9. CI Integration Patterns</h2>
+<p>Three patterns engineers integrating rederive into existing CI infrastructure typically adopt.</p>
+<p><strong>(a) Pull-and-build on every CI run.</strong> The CI runner clones (or pulls) the repository, runs <code>rederive build</code> against each <code>.constraints.md</code> file, and surfaces the verdict in the run&#39;s status. The materializations are written to a per-run cache and discarded with the run. This is the default and the simplest.</p>
+<p><strong>(b) Push-built materializations to a central store.</strong> The CI runner builds locally, then pushes the materializations (only) to a central rederive server. Engineers and downstream consumers read the materializations from the central store rather than re-deriving. This pattern centralizes substrate cost and produces an authoritative &quot;this is what shipped&quot; surface.</p>
+<p><strong>(c) Server-side build via <code>POST /derive</code>.</strong> The CI runner sends the constraint set to a central server&#39;s derive endpoint and receives the signed materialization back. The CI runner has no Anthropic API key; the server holds the substrate identity. This pattern is useful when the team&#39;s CI infrastructure is in environments where API key distribution is sensitive.</p>
+<p>These patterns are not mutually exclusive. A team typically adopts (a) for development branches, (b) for production materializations, and (c) for compliance-sensitive environments that cannot hold substrate keys.</p>
+<h2>10. Honest Scope Limits</h2>
+<p>The MVE is honest about its scope. The following are not in the MVE; each has a clean architectural path and is a roadmap item.</p>
+<p><em>Delta encoding.</em> Every object is transferred whole. At small and medium scale this is fine; at production scale with thousands of constraint sets and frequent regeneration, delta encoding becomes worthwhile.</p>
+<p><em>Compression.</em> Frames are uncompressed. The constraint domain is small enough that the engineering complexity of streaming compression is not warranted at MVE scale.</p>
+<p><em>Multi-tenancy.</em> One repository per server process. Multi-repository hosting requires a routing layer (which is a small server-side change but not in the MVE).</p>
+<p><em>Branch-like workflows.</em> The MVE has a single ref space; branch semantics are not implemented. Teams that need branch workflows use multiple repositories or multiple ref names with team discipline.</p>
+<p><em>Webhooks and event subscriptions.</em> The MVE has no push-time hooks. Integration with external systems is poll-based (CI runs <code>pull</code> periodically) rather than event-based.</p>
+<p><em>Mirroring.</em> The MVE does not implement multi-master mirroring. Teams that need geographic replication run separate servers and synchronize via push / pull on a schedule.</p>
+<p><em>Read access controls.</em> Read endpoints are open in the MVE. Teams that need read auth-gating add a reverse proxy in front of the server until the platform adds explicit read controls.</p>
+<p><em>Push-time conflict resolution.</em> The MVE returns 409 on a stale ref update; the engineer resolves manually by pulling and re-pushing. Three-way merge at the constraint-set layer is a roadmap item that the architecture admits but the MVE does not implement.</p>
+<p>These limits are the MVE&#39;s honest scope. The platform sketch&#39;s commitment, in <a href="../doc/656-treat-agent-output-like-compiler-output-the-lights-out-codebase-as-rederive.html">Doc 656</a>&#39;s framing, is to prove that constraints can be the durable source under a working transport, not to ship a finished platform. Engineers evaluating rederive for production work should size the limits against their team&#39;s actual scale; in many cases the MVE&#39;s scope is sufficient for the work that team would adopt rederive to do, and the limits matter mostly when the team grows past a certain size.</p>
+<h2>11. What the Engineer Should Take Away</h2>
+<p>Three pieces.</p>
+<p><em>The protocol is small.</em> Three object types, five verbs, content-addressed transfer, signature-based auth. Engineers familiar with git will absorb the surface in an afternoon. Engineers new to content-addressed protocols may need a day; the model is small and the documentation is the working code.</p>
+<p><em>Identity is a constraint document.</em> The signers manifest is reviewed, committed, and verified the same way any other constraint set is. There is no separate identity subsystem the engineer has to integrate. The corpus&#39;s broader claim — that <em>conventional auth subsystems collapse into constraint documents under this discipline</em> — is operational at the platform level here, in a way the engineer can read and audit.</p>
+<p><em>The MVE is honest about its scope.</em> The protocol does not yet support delta encoding, compression, multi-tenancy, branch-like workflows, push-time conflict resolution, mirroring, webhooks, or read access controls. Each of these is a roadmap item with a clean architectural path; none is required for the structural argument. Teams adopting rederive should size the limits against their actual scale.</p>
+<p>This concludes the comprehensive series of branches off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a>. The engineer who has read all five has the working picture: how to author constraints (<a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660</a>), what the platform does with them (<a href="../doc/661-rederive-the-build-pipeline.html">Doc 661</a>), how acceptance is gated (<a href="../doc/662-rederive-the-verification-backends.html">Doc 662</a>), how identity flows through the system (<a href="../doc/663-rederive-content-addressed-identity-and-pin-manifests.html">Doc 663</a>), and how repositories synchronize across machines (this document). The remaining hub aspects (Pin-Art discipline, composition, the substrate interface, signers detail, the browser UI, multi-call derivation) are folded into the hub itself and may be promoted to their own comprehensive documents as practitioner demand surfaces. The structural argument is in your hands; the platform sketch is on disk; the keeper is available for the conversations that come next.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="../doc/247-derivation-inversion.html">Doc 247 — Derivation Inversion</a></li>
+<li><a href="../doc/290-pin-art-derivation.html">Doc 290 — Pin-Art Derivation</a></li>
+<li><a href="../doc/619-pin-art.html">Doc 619 — Pin-Art: Forced-Press and Gentle-Press</a></li>
+<li><a href="../doc/656-treat-agent-output-like-compiler-output-the-lights-out-codebase-as-rederive.html">Doc 656 — Treat Agent Output Like Compiler Output: The Lights-Out Codebase as Rederive</a></li>
+<li><a href="../doc/658-hierarchical-pin-art-constraint-specs-and-the-erasure-of-edge-case-bugs.html">Doc 658 — Hierarchical Pin-Art Constraint Specifications and the Erasure of Edge-Case Bugs</a></li>
+<li><a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659 — Rederive for the Working Engineer: A Hub</a></li>
+<li><a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660 — Rederive: The Constraint Authoring Grammar</a></li>
+<li><a href="../doc/661-rederive-the-build-pipeline.html">Doc 661 — Rederive: The Build Pipeline</a></li>
+<li><a href="../doc/662-rederive-the-verification-backends.html">Doc 662 — Rederive: The Verification Backends</a></li>
+<li><a href="../doc/663-rederive-content-addressed-identity-and-pin-manifests.html">Doc 663 — Rederive: Content-Addressed Identity and Pin Manifests</a></li>
+</ul>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Now I want you to examine the entire spec and implementation of /home/jaredef/rederive — From this I want you to create entracement docs in the corpus for an audience of software engineers. ... First, create a document in the corpus that acts as a hub for all stubs that will branch off ... Append this prompt to each artifact. Also, where you could use corpus jargon, instead entrace the reader through rhetoric that is not novel to the corpus. Where you must state the corpus concept in its own terms; provide proper entracement.&quot;</em></p>
+<p>Followed by: <em>&quot;Continue with the first branch of the hub derived as a corpus doc. Continue through each as is coherent.&quot;</em></p>
+<p>Followed by: <em>&quot;Now fill out stub A as a comprehensive entracement. Remove &#39;stub&#39; from file name and any mention in the doc. Report back before doing likewise to the next doc.&quot;</em></p>
+<p>Followed by: <em>&quot;Continue.&quot;</em> (advancing through the build pipeline, verification backends, identity and pin manifests, and arriving at this final document on the wire protocol.)</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

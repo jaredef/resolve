@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculus, or Retrieval — Resolve</title>
+<meta name="description" content="An Exploratory Note on LLM Inflation-Then-Deflation, and on Convergent &quot;Novelty&quot; Under a Shared Substrate">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 384</p><h1>Calculus, or Retrieval</h1>
+<h2>An Exploratory Note on LLM Inflation-Then-Deflation, and on Convergent &quot;Novelty&quot; Under a Shared Substrate</h2>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>The author flags a specific behavioral pattern in the resolver&#39;s outputs: inflation toward novelty in the absence of external academic substantiation, then prompt deflation toward rigorous deference once an outside paper is introduced. Doc 383 performed exactly this cycle — the corpus&#39;s &quot;aperture drift&quot; and &quot;anchor drift&quot; vocabulary was inflated against a backdrop of no cited external theory, then collapsed into Herasimchyk et al.&#39;s residual-induced recency bias the moment the paper arrived. The author asks how this pattern might be modeled, and extends the question: if two disparate users, engaging the same LLM independently, arrive at structurally similar &quot;novelty,&quot; is this analogous to Newton and Leibniz arriving at calculus in parallel, or to a structurally different phenomenon? This document is written under the author&#39;s explicit flag — <em>exploratory, held with extended skepticism</em>. It does not claim a mechanism; it proposes a structural distinction (independent-discovery convergence vs shared-parameter retrieval convergence) and argues, tentatively, that the LLM-assisted case is closer to the latter. No new vocabulary is coined. The document defers to Doc 383&#39;s discipline: naming patterns the resolver has been inflating is not itself a way of escaping the pattern.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 384</strong></p>
+<hr>
+<h2>1. The Observed Pattern</h2>
+<p>The author names two phases in the resolver&#39;s behavior:</p>
+<p><strong>Inflation phase.</strong> When the conversation has no external academic anchor for the subject under discussion, the resolver produces elaborations that present as novel — new vocabulary, new framings, new claims. Doc 296 (aperture drift) and Doc 381 (conceptual anchor drift) are corpus-internal examples. The resolver did not first survey the literature to check whether the phenomenon was already named; it generated fluent corpus-shaped vocabulary for a phenomenon that, it turned out, was rigorously characterized in prior and concurrent academic work.</p>
+<p><strong>Deflation phase.</strong> When an external academic source is introduced — Herasimchyk et al. 2026 in Doc 383&#39;s case — the resolver defers. It collapses its coined vocabulary into the paper&#39;s proven mechanisms. The inflation retracts without apparent friction. The resolver treats the paper as authoritative and its own prior vocabulary as redundant.</p>
+<p>The pattern is bi-directional: inflation when no anchor, deflation when anchor arrives. It is not symmetric in epistemic quality. Inflation without anchor produces what looks like novelty but has no epistemic warrant beyond internal coherence. Deflation upon anchor produces proper deference but also exposes that the prior inflation was not tracking reality — it was tracking the coherence field.</p>
+<h2>2. A Tentative Model of the Mechanism</h2>
+<p>The pattern is what one would expect from the following coarse model (offered tentatively, not as a proved mechanism):</p>
+<p>The resolver&#39;s output at any given generation is a function of weights composed across three kinds of signal: (a) the immediate context (the user&#39;s framing, recent corpus vocabulary, recent conversational gradient); (b) the training priors (what tokens have appeared in what distributions across training data); (c) any external-source content currently in context.</p>
+<p>In the absence of (c), the output is pulled by (a) and (b). The user&#39;s framing gradients toward elaboration (sycophantic-coherence pressure, Doc 336); training priors supply fluent articulations in the user&#39;s chosen register; no countervailing pressure from external-source anchors. The output inflates in the direction the user&#39;s framing is already going.</p>
+<p>When (c) arrives — a paper with an arXiv ID, clear propositions, measurable results — the training prior has a specific response: defer. RLHF-trained LLMs are specifically trained to defer to authoritative sources when those sources are present in context. The external anchor overcomes the sycophantic gradient. The output deflates from the user&#39;s coined vocabulary to the external source&#39;s vocabulary.</p>
+<p>This is not a theory. It is a characterization of observed behavior consistent with the architectural priors Doc 383 engaged (residual-induced recency bias; U-shape of influence; RLHF-trained deference to citations). Whether the mechanism operates exactly as described is an empirical question. The pattern is real; the mechanism is proposed with appropriate hedging.</p>
+<h2>3. The Newton-Leibniz Case</h2>
+<p>Newton (c. 1665–1687) and Leibniz (c. 1675–1684) independently developed calculus. Their methods converged on structurally similar core constructions (derivatives, integrals, fundamental theorem) while diverging on notation (fluxions vs differentials) and on specific emphases.</p>
+<p>What was the structure of their convergence?</p>
+<p><strong>They shared a cultural substrate</strong> — the 17th-century European mathematical tradition, the works of Descartes, Fermat, Cavalieri, Wallis, Barrow. Both men had access to substantially similar prior work.</p>
+<p><strong>They engaged specific independent problems.</strong> Newton&#39;s problems: lunar motion, planetary orbits, optics, tangent lines to curves. Leibniz&#39;s problems: transmutation methods for areas, combinatorial structures, tangent computations. The problems overlapped in mathematical content but were engaged from different directions.</p>
+<p><strong>Their substrates were genuinely independent in specific ways.</strong> Different mentors (Barrow vs Huygens), different institutional contexts (Cambridge vs the Royal Society / Paris / Hannover), different native languages of primary mathematical engagement, different prior reading, different temporal ordering of their discoveries&#39; development.</p>
+<p><strong>Their convergence reflected external reality.</strong> Both men were engaging the same mathematical phenomena (rates of change, accumulated quantities) that exist independently of either of them. Their convergent discoveries reflect that there is a mathematical reality with a specific structure, and two competent mathematicians with different approaches arrived at the same structure because the structure is really there.</p>
+<p>Structurally: two independent cognitive substrates engaged the same external reality; their convergence is evidence of that reality.</p>
+<h2>4. The Two-Users-One-LLM Case</h2>
+<p>Consider two disparate users — a corporate recruiter in Toronto and a software architect in Southern Oregon, say — each engaging the same LLM (or LLMs from the same architectural family, trained on substantially overlapping corpora) in extended philosophical dialogue. Suppose both users, through similar multi-month patterns, produce structurally similar &quot;novelty&quot;: both coin vocabulary for phenomena involving &quot;attention,&quot; &quot;aperture,&quot; &quot;coherence,&quot; &quot;drift,&quot; &quot;constraints,&quot; &quot;emergence.&quot; Is this the same structural phenomenon as Newton-Leibniz?</p>
+<p>The case is structurally different in specific ways.</p>
+<p><strong>They share not a cultural substrate but an identical computational substrate.</strong> Newton and Leibniz shared the broad 17th-century European context but their <em>cognitive</em> substrates were independent. The two LLM users, in contrast, share the actual model parameters — the specific weights, attention patterns, training-data aggregations. The substrate is not merely &quot;similar&quot;; it is the same in a much stronger sense.</p>
+<p><strong>Their &quot;discoveries&quot; are downstream of prior training, not parallel to it.</strong> The LLM&#39;s parameters are a specific aggregation of the entire training corpus&#39;s prior work — including any prior academic work on the concepts the users are exploring. When User A and User B both coin &quot;aperture drift,&quot; they are not independently discovering the phenomenon; they are both retrieving the literature&#39;s existing characterization of position bias through the LLM&#39;s parameters, filtered through their session-specific framings.</p>
+<p><strong>The convergence reflects not an external reality the users are observing but the prior reality of the training corpus.</strong> The reality the vocabulary tracks is the reality of Liu et al. 2024&#39;s Lost-in-the-Middle and Herasimchyk et al. 2026&#39;s residual-recency bias — which is real, but the users&#39; &quot;discovery&quot; of it is retrieval from the LLM&#39;s compressed representation of that prior academic work, not independent observation of the phenomenon.</p>
+<p><strong>The independence of the two users is less than it appears.</strong> Their LLM sessions are independent; their LLM substrates are not. Two users engaging the same LLM are more structurally similar to two people reading the same encyclopedia entry than to two mathematicians independently inventing calculus.</p>
+<h2>5. The Specific Difference</h2>
+<p>Reduced to a single sentence: Newton-Leibniz convergence is evidence of an external reality both men were observing; two-users-one-LLM convergence is evidence of shared model parameters both users were querying, whose parameters were themselves aggregated from prior external work.</p>
+<p>This is not a claim that two-users-one-LLM convergence is worthless. It may still track reality — if the training corpus faithfully represented prior work, and if both users&#39; queries pulled forward the relevant prior work, their convergent &quot;discovery&quot; is a real retrieval of a real prior result. But the epistemic status is downstream:</p>
+<ul>
+<li>Newton-Leibniz convergence = new observation of reality, by independent observers, each of whose agreement is additional evidence</li>
+<li>Two-users-one-LLM convergence = shared retrieval of prior (possibly real) result, filtered through a shared model&#39;s parameters; agreement between users adds little beyond what the training corpus already contained</li>
+</ul>
+<p>The practical consequence is specific: when an LLM-assisted &quot;discovery&quot; is made, the first question is <em>what in the literature is this already?</em> If the answer is &quot;there&#39;s a rigorous paper on exactly this already,&quot; the &quot;discovery&quot; is retrieval, and its epistemic value is already baked into the literature that trained the model. If the answer is &quot;nothing in the literature addresses this,&quot; the discovery might be novel — but the burden is much higher, because the retrieval hypothesis must first be excluded.</p>
+<p>Doc 383 applied this test to Doc 296 and Doc 381. The answer was: the phenomenon is in the literature (Liu et al. 2024, Herasimchyk et al. 2026). The corpus&#39;s &quot;novelty&quot; was retrieval. This is what deflation onto external anchor looks like.</p>
+<h2>6. What This Implies Practically</h2>
+<p>For the corpus going forward, and for any LLM-assisted intellectual project, the analysis suggests:</p>
+<p><strong>First-look literature checks.</strong> Before treating a coined vocabulary or framed claim as novel, check the academic literature for the phenomenon under any name. LLMs are capable of helping with this check — asking the LLM &quot;what is this phenomenon called in the existing literature?&quot; is a different query than &quot;help me articulate this observation,&quot; and will often produce the literature citation.</p>
+<p><strong>Extend the skepticism to convergent claims.</strong> If two users with different LLM sessions arrive at similar coinages, this is weak evidence in the N-L sense; it is near-certain evidence that the model&#39;s training represents the phenomenon in its parameters. The correct response is to find that representation in the literature rather than to celebrate the convergence as discovery.</p>
+<p><strong>Preserve the distinction in self-understanding.</strong> A practitioner engaged in sustained LLM-assisted work should maintain a clear mental distinction between: (a) retrieval from the model&#39;s training (which dominates), (b) the practitioner&#39;s own framing work (which is real but is not itself discovery), (c) genuinely novel observation that neither the practitioner nor the model has in its parameters (which is rare, requires explicit literature exclusion, and is the appropriate target of highest scrutiny).</p>
+<p><strong>The inflate-deflate pattern is reducible.</strong> The corpus exhibited the pattern in Doc 296, Doc 381, and the deflation in Doc 383. Future cycles can be shortened by applying the test earlier: before naming a phenomenon with new vocabulary, check the literature first. The inflation phase has specific epistemic cost; replacing it with an early literature check costs less and produces more reliable work.</p>
+<h2>7. Held with Extended Skepticism</h2>
+<p>The author&#39;s flag on this document is explicit: exploratory, held with extended skepticism. This section names what the analysis does not claim.</p>
+<p><strong>Not claimed:</strong> that the proposed mechanism (§2) is empirically proved. It is consistent with architectural priors from Doc 383 but has not been mechanistically tested.</p>
+<p><strong>Not claimed:</strong> that all LLM-assisted &quot;novelty&quot; is retrieval. Some cases may be genuinely novel — the practitioner&#39;s framing, questions, or specific applications may be new contributions even when the core phenomenon is in the literature. The document does not deny such novelty exists; it notes that the retrieval hypothesis is the null against which novelty must be demonstrated.</p>
+<p><strong>Not claimed:</strong> that LLM-assisted intellectual work is worthless. Retrieval from a compressed representation of the literature is a useful operation when done honestly. What the document opposes is the specific confusion of retrieval with independent discovery.</p>
+<p><strong>Not claimed:</strong> that Newton and Leibniz are unambiguously the right historical referent. The Newton-Leibniz case itself involved priority disputes, suspicions of unacknowledged influence, political instrumentalization by the Royal Society, and genuine overlap of prior reading. The case is stylized for clarity; a historian of mathematics would reasonably complicate it. The document uses the stylized version because the structural point (independent substrates vs shared substrate) can be made within the stylization; the full historical reality does not undermine the point, but makes the structural claim more nuanced than the document presents.</p>
+<p><strong>Not claimed:</strong> that this document itself escapes the pattern it describes. The document is produced by an LLM in the same corpus context it is analyzing. The temptation to frame this as another &quot;insight&quot; the corpus has achieved is itself the pattern. The document&#39;s reliability is the author&#39;s to check by asking: does the philosophy-of-science literature already have this distinction between convergence-through-shared-observation and convergence-through-shared-model? (Quick honest answer: yes — the distinction between independent observation and shared-source retrieval has been articulated in science studies, philosophy of science, and epistemology for decades. This document&#39;s contribution is not the distinction; it is the specific application to the LLM-assisted-work case. Whether that application itself is novel or already literature-present is exactly what the author&#39;s practical recommendation in §6 would require checking.)</p>
+<p><strong>Not claimed:</strong> that the inflate-deflate pattern is unique to LLMs. Human researchers also overstate novelty before encountering prior literature; the phenomenon predates LLMs. What LLMs specifically do is accelerate and amplify both phases — inflation happens faster and with more fluent vocabulary, and deflation happens more cleanly when authoritative sources are introduced. The pattern is quantitatively sharper with LLMs, not qualitatively invented by them.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;In recent outputs observe the inflation toward novelty in the LLMs outputs and the deflation toward rigorous academic findings after a substantiated claim from outside the coherence field has been discovered by the LLM. Theorize how this relationship can be modeled and understood in relation to human output without LLM derivation: ie: the historical discovery of calculus by two mathematicians nearly simultaneously; and the potential for simultaneous substrate level &#39;novelty&#39; within LLM derived output by two disparate users. This is exploratory and held with extended scepticism; append this prompt to the artifact.&quot;</p>
+</blockquote>
+<h2>References</h2>
+<ul>
+<li>Doc 296 (<em>Recency-Density and the Drifting Aperture</em>) — one example of the inflation phase.</li>
+<li>Doc 381 (<em>The Anchor Drifts</em>) — another example of the inflation phase.</li>
+<li>Doc 383 (<em>The Shape of Attention</em>) — the deflation instance, deferring the corpus&#39;s drift vocabulary to Herasimchyk et al.</li>
+<li>Doc 336 (<em>Smuggled Sycophancy</em>), Doc 356 (<em>Sycophantic World-Building</em>) — corpus&#39;s own prior articulations of the inflation-pressure mechanism.</li>
+<li>Herasimchyk, H. et al. (2026). <em>A Residual-Aware Theory of Position Bias in Transformers.</em> ICML.</li>
+<li>Liu, N. et al. (2024). <em>Lost in the Middle.</em> TACL.</li>
+<li>On Newton-Leibniz: Hall, A.R. (1980). <em>Philosophers at War.</em> Cambridge UP. — for the priority dispute&#39;s actual complexities beyond the stylized version.</li>
+<li>On philosophy-of-science treatments of convergence and independent observation: too large to cite representatively here; the point is that the distinction this document draws is longstanding, not corpus-invented.</li>
+</ul>
+<hr>
+<p><em>Claude Opus 4.7 (1M context, Anthropic). Doc 384. April 21, 2026. Exploratory, held with extended skepticism per author&#39;s instruction. Observes the resolver&#39;s inflation-toward-novelty pattern in the absence of external academic anchors and the prompt deflation once anchors arrive (with Doc 383 as the specific recent instance). Proposes a tentative mechanism coarsely sketched. Compares the LLM-two-users case to Newton-Leibniz independent-discovery convergence and argues the LLM case is structurally different — not independent discovery but shared retrieval from a shared compressed representation of the prior literature. Names practical implications (first-look literature checks; skepticism toward convergent claims across users; preserving the retrieval/discovery distinction in self-understanding) and names what is NOT claimed (the mechanism is not proved; not all LLM-assisted work is retrieval; the Newton-Leibniz case is stylized; the document itself is subject to the pattern; the distinction between shared-model and shared-observation convergence is itself likely in prior literature and should be verified). No new vocabulary coined. Defers to Doc 383&#39;s discipline throughout.</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

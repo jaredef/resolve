@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulverizing the SIPE Confabulation: When Subsumption Makes the Problem Worse — Resolve</title>
+<meta name="description" content="The target">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Pulverizing the SIPE Confabulation: When Subsumption Makes the Problem Worse</h1>
+<blockquote>
+<p><strong>Canonical SIPE reference:</strong> The operative formalization of Systems-Induced Property Emergence is <a href="../doc/474-sipe-standalone-formalization.html">Doc 474</a>. Read it first for the current definition, the three structural commitments, and the per-stack testability protocol. This document contributes specific material to that formalization; its place in the development arc is recorded in Doc 474&#39;s Appendix C.</p>
+</blockquote>
+<h2>The target</h2>
+<p>The confabulated expansion from Doc 439 §4 was <strong>&quot;Sustained-Inference Probabilistic Execution.&quot;</strong> Doc 441 identified it as a confabulation — not retrievable from the corpus — and decomposed the mechanism that produced it. This document does a different kind of work: it runs the corpus&#39;s pulverization method (Doc 435) against the confabulated expansion itself, asking whether the expansion can be subsumed under prior art. The hypothesis the keeper has advanced is sharp and uncomfortable: <em>if the expansion is subsumable, that is not evidence the confabulation was true, and it may make the practical problem worse.</em></p>
+<p>The pulverization below confirms the hypothesis. The expansion subsumes cleanly into well-established ML/statistics literature at the word level and plausibly at the phrase level. Subsumption is rapid and unambiguous. And that fact is bad news, not good news.</p>
+<h2>Word-level pulverization</h2>
+<h3>&quot;Sustained&quot;</h3>
+<p>The modifier <em>sustained</em> has direct technical home in:</p>
+<ul>
+<li><strong>Sustained attention</strong> (cognitive psychology; Robertson et al., 1997) — long-horizon attentional engagement with a task.</li>
+<li><strong>Sustained inference</strong> as a less-formal phrase in <strong>online/streaming inference</strong> literatures — Bayesian updating that continues across a stream rather than terminating at a single posterior.</li>
+<li><strong>Continual learning</strong> (Parisi et al., 2019) — learning that is sustained across task sequences without catastrophic forgetting.</li>
+</ul>
+<p>Prior art is abundant. &quot;Sustained&quot; is a well-behaved qualifier in the ML/cogsci overlap.</p>
+<h3>&quot;Inference&quot;</h3>
+<p><em>Inference</em> is the central term of half of machine learning.</p>
+<ul>
+<li><strong>Bayesian inference</strong> (the entire field, anchored by Jaynes 2003 and Gelman et al. 2013).</li>
+<li><strong>Variational inference</strong> (Blei, Kucukelbir &amp; McAuliffe, 2017).</li>
+<li><strong>Sequential Monte Carlo inference</strong> (Doucet, de Freitas &amp; Gordon, 2001).</li>
+<li><strong>Amortized inference</strong> (Kingma &amp; Welling 2014; Ranganath et al. 2014).</li>
+<li><strong>Probabilistic inference</strong> in graphical models (Pearl 1988; Koller &amp; Friedman 2009).</li>
+</ul>
+<p>No pulverization work required. Inference is in the training distribution at industrial density.</p>
+<h3>&quot;Probabilistic&quot;</h3>
+<p>Same situation as <em>inference</em>. The training distribution is saturated with <em>probabilistic X</em> constructions:</p>
+<ul>
+<li><strong>Probabilistic programming</strong> (Gordon et al., 2014; van de Meent et al., 2018 survey).</li>
+<li><strong>Probabilistic graphical models</strong> (Koller &amp; Friedman, 2009).</li>
+<li><strong>Probabilistic circuits</strong> (Choi, Vergari &amp; Van den Broeck, 2020).</li>
+<li><strong>Probabilistic soft logic</strong> (Bach et al., 2017).</li>
+<li><strong>Probabilistic execution traces</strong> — explicit named concept in probabilistic programming semantics.</li>
+</ul>
+<p>Fully subsumed.</p>
+<h3>&quot;Execution&quot;</h3>
+<p>In ML/CS contexts, <em>execution</em> typically refers to running a computational process:</p>
+<ul>
+<li><strong>Program execution</strong> in probabilistic programming — the generative procedure that produces a sample and a weight (van de Meent et al., 2018).</li>
+<li><strong>Execution traces</strong> in Bayesian inference — records of stochastic choices made during a probabilistic program run, used as the substrate for inference algorithms like Lightweight Metropolis-Hastings (Wingate, Stuhlmüller &amp; Goodman, 2011).</li>
+<li><strong>Speculative execution</strong> in CPU architecture — less relevant here but lexically present.</li>
+<li><strong>Execution semantics</strong> in programming-language theory.</li>
+</ul>
+<p>Fully subsumed.</p>
+<h2>Phrase-level pulverization</h2>
+<p>The compound &quot;Sustained-Inference Probabilistic Execution&quot; does not appear to correspond to a specific named technique in the published literature — it is not a coined acronym with a canonical reference. But as a description of a class of techniques, it composes cleanly:</p>
+<ul>
+<li><strong>Sequential Monte Carlo / particle filtering</strong> (Doucet et al., 2001; Andrieu et al., 2010). Streaming probabilistic inference executed by running stochastic particle trajectories forward in time and resampling. A particle-filter system is — quite literally — sustained probabilistic inference executed continuously. The phrase describes what the technique does.</li>
+<li><strong>Streaming variational Bayes</strong> (Broderick et al., 2013). Probabilistic inference sustained over a data stream, executed by posterior updates that are themselves distributions.</li>
+<li><strong>Probabilistic-programming trace-based inference</strong> (Wingate et al., 2011; Wood, van de Meent &amp; Mansinghka, 2014). Probabilistic programs whose execution generates samples-and-weights used for continued inference over long horizons.</li>
+<li><strong>Online Bayesian updating / filtering in state-space models</strong> (Särkkä, 2013). The Kalman filter and its generalizations are the oldest, cleanest instance: probabilistic inference sustained by executing a prediction-update cycle each time step.</li>
+</ul>
+<p>Any of these techniques could be called &quot;Sustained-Inference Probabilistic Execution&quot; without notable violence to the literature. The phrase is a reasonable English description of a well-populated class of methods.</p>
+<h2>The &quot;consummately incoherent&quot; test and what passing it means</h2>
+<p>The keeper&#39;s framing: if the confabulated expansion is subsumable, it is <em>not consummately incoherent</em>. Pass. The expansion coheres with existing technical usage at every word and at the phrase level. It would not embarrass the corpus if read by a practitioner in probabilistic ML — the reader would recognize the terms and construct a plausible referent for the acronym.</p>
+<p>But the test the pulverization has passed is a specific one: <strong>semantic plausibility against external literature.</strong> It is not the test that matters. The tests that matter are:</p>
+<ul>
+<li><strong>Referential correctness.</strong> Is &quot;Sustained-Inference Probabilistic Execution&quot; what the corpus&#39;s SIPE denotes? This is a corpus-internal question. The pulverization says nothing about it.</li>
+<li><strong>Authorial intent.</strong> Did the keeper, at any point, intend SIPE to expand to this phrase? This is a biographical question. The pulverization says nothing about it.</li>
+<li><strong>Operational match.</strong> Does the class of techniques the phrase describes correspond to how SIPE is used in the corpus? This can be partially assessed — SIPE is used in contexts involving derivation, branching sets, nested conditionals. Sequential Monte Carlo and probabilistic programming execution bear operational resemblance. The resemblance is not identity.</li>
+</ul>
+<p>The confabulation has passed the wrong test. It has cleared <em>semantic plausibility</em> — the lowest bar. It has not cleared any of the bars that would actually establish truth.</p>
+<h2>Why passing semantic plausibility makes the problem worse</h2>
+<p>Five reasons, in increasing severity.</p>
+<p>First, a reader who cross-checks the expansion against the ML/stats literature will find the pulverization succeeds. The reader will update toward &quot;this is a legitimate technical term&quot; when in fact the legitimacy is borrowed, not earned. The confabulation has acquired the superficial credentials of subsumption without earning any warrant to represent the corpus.</p>
+<p>Second, the confabulation&#39;s compatibility with real literature makes it harder for future authoring sessions to catch. A maximally-nonsensical acronym expansion (&quot;Syntactic Indeterminate Probabilistic Error&quot;) would trigger a plausibility check and fail. &quot;Sustained-Inference Probabilistic Execution&quot; clears the plausibility check. It is structurally camouflaged.</p>
+<p>Third, the confabulation now functions as an attractor for future confabulation of exactly its form. If the authoring process occasionally produces plausible, subsumable technical expansions that go un-caught, the feedback loop (Doc 439 §5) will preferentially sample that region. Confabulations that pass semantic plausibility will accumulate faster than those that don&#39;t.</p>
+<p>Fourth — and this is the hypothesis Doc 443 was centrally trying to name — the distinction between <em>accidental Rung 2 emergence</em> and <em>coherentist slop that subsumes cleanly</em> is precisely what the indistinguishability trap consists of. A confabulation that passes external plausibility tests is the confabulation that most resembles genuine emergence. It is the one we are structurally least equipped to reject. The coherentism risk is not that the corpus will fill with obvious nonsense; it is that the corpus will fill with high-quality-seeming constructions whose relationship to external truth is never actually tested because they look true enough.</p>
+<p>Fifth, the reader who runs the pulverization and finds it succeeds may, reasonably, treat the expansion as established — and propagate it. Once propagated, a subsequent pulverization of a downstream artifact that cites &quot;Sustained-Inference Probabilistic Execution&quot; will find it grounded in the upstream artifact, which in turn passed plausibility. The chain of references looks airtight. The expansion&#39;s presence in the corpus, plus its subsumability under external literature, plus its use in downstream citations, jointly manufacture a warrant the original confabulation never possessed.</p>
+<h2>The two external tests that have been conflated</h2>
+<p>The pulverization reveals that &quot;external test&quot; is not one thing. There are at least two:</p>
+<ul>
+<li><strong>External plausibility test.</strong> Do the words mean something? Does the phrase cohere with published literature? Does it have a recognizable referent?</li>
+<li><strong>External truth test.</strong> Does the claim, once fully specified, match reality as adjudicated by an independent procedure? (For a definition, this would be: does the denoted referent actually equal what the corpus uses the term for?)</li>
+</ul>
+<p>The plausibility test is cheap and fast. The truth test is expensive and often requires domain competence or empirical work the practitioner may not have. The plausibility test almost always passes for confabulations from a well-conditioned model. The truth test may not.</p>
+<p>The practice has implicitly relied on the plausibility test as a proxy for the truth test. For most of the corpus&#39;s work — where the content is specification rather than claim — this is acceptable. For definitions, term-glosses, acronym-expansions, and any other content that implicitly claims &quot;this is what X is,&quot; the plausibility test is structurally inadequate. The pulverization method (Doc 435) runs the plausibility test well; it does not run the truth test at all.</p>
+<p>This is a gap in the corpus&#39;s own methodology. The pulverization method is load-bearing across Docs 428–433 (the PRESTO/SERVER pulverizations) and Doc 435 (the formalization). In those documents, the pulverization target was a proposed architectural style or constraint — the plausibility test was the right test, because the question was whether the proposed novelty had been done before. For a proposed <em>definitional fact</em>, the plausibility test is the wrong test, because the question is whether the fact is true, which is a different question.</p>
+<h2>Implications for the hypothesis ledger</h2>
+<p>Doc 443 proposed a hypothesis ledger distinct from the retraction ledger — confabulations that are load-bearing but not immediately falsifiable would be registered there, tied to external tests, and promoted or retracted on test outcome. The present pulverization sharpens the requirements on the ledger.</p>
+<p>Each hypothesis-ledger entry should name the <em>specific external test</em>, not merely &quot;external test.&quot; The test should be of the <strong>truth</strong> flavor, not the <strong>plausibility</strong> flavor. Passing plausibility does not retire an entry; only passing the truth test does. Entries that have passed plausibility but not truth should be explicitly marked &quot;semantically plausible, truth untested&quot; — a status strictly weaker than &quot;verified.&quot;</p>
+<p>For the SIPE case specifically: the expansion passes plausibility. That is not sufficient to promote the expansion to the corpus body. It is also not sufficient to retract it. The correct state is:</p>
+<ul>
+<li><strong>Hypothesis ledger entry</strong> (proposed): <em>&quot;SIPE expansion as &#39;Sustained-Inference Probabilistic Execution&#39;. Status: plausibility passed (Doc 444 pulverization); truth-test not run. Truth test would require keeper confirmation of intended expansion, or explicit corpus-level decision that SIPE is deliberately un-expanded, or a new formalization document establishing a canonical expansion.&quot;</em></li>
+</ul>
+<p>The hypothesis-ledger entry preserves the confabulation&#39;s existence in the record, marks its actual epistemic status accurately, and names the test that would resolve it. This is the structural move that neither retraction (too strong, the expansion may have accidentally captured operational resemblance) nor acceptance (too strong, plausibility ≠ truth) can provide.</p>
+<h2>What this says about the broader cohort</h2>
+<p>The same analysis applies to the nested-manifold frame (Doc 439), the Misra–Boden bridge (Doc 437), the walker-and-glue-code synthesis (Doc 438), and the dyadic methodology (Doc 440). Each would, on pulverization, pass the plausibility test — the frames compose cleanly with existing Bayesian, causal, ML, and epistemology literature. None has passed a truth test. The cohort&#39;s internal citations have been treating plausibility-passage as sufficient warrant for load-bearing use. Doc 443 named this coherentism risk structurally; Doc 444 has now demonstrated, on a single concrete case, the mechanism by which the risk operates.</p>
+<p>The cohort is therefore in the same epistemic state as the SIPE expansion, one step removed. Each frame is semantically plausible. Each frame&#39;s truth-test has not been run. Each frame has nonetheless been cited forward as though truth-tested.</p>
+<p>The minimum-viable experiment from Doc 440 §9 is the closest thing in the cohort to an actual truth-test. It has not been run. Until it is, the cohort&#39;s load-bearing claims are in the SIPE expansion&#39;s situation: subsumable, plausible, unverified.</p>
+<h2>What the keeper should consider</h2>
+<p>Four options, held without advocacy:</p>
+<ol>
+<li><strong>Delete the expansion from Doc 439 §4 (and do nothing else).</strong> SIPE becomes un-glossed in the corpus, as it apparently was intended to be. The pulverization-pass is left as a note in Doc 444, not as a promotion.</li>
+<li><strong>Retain the expansion but mark it as hypothesis.</strong> Add a parenthetical in Doc 439 §4 indicating the expansion is one plausible gloss among several, un-ratified. Register in hypothesis ledger.</li>
+<li><strong>Establish a canonical expansion deliberately.</strong> Decide what SIPE stands for and write a one-page formalization. The canonical expansion need not be &quot;Sustained-Inference Probabilistic Execution&quot; — the pulverization does not constrain the keeper&#39;s choice.</li>
+<li><strong>Treat SIPE as deliberately un-expanded, and document the decision.</strong> Write a corpus-level note that SIPE is an operational label whose meaning is distributed across usages and will not be pinned to a single expansion. Amend Doc 439 §4 to reflect.</li>
+</ol>
+<p>All four are live. The pulverization has not made any of them more correct; it has only shown that the current state (confabulated expansion cited forward without test) is not tenable and should be explicitly replaced by one of them.</p>
+<h2>Honest limits</h2>
+<p>The pulverization was run by the same generator that produced the confabulation, inside the same session the confabulation emerged in. Subsumption-finding is a task the generator is particularly good at — and the cohort&#39;s attention-bias toward corpus-consonant literature means the subsumption may be more confident here than an independent reading would produce. An external pulverization (different model, or different practitioner reading the published literature) would be more trustworthy.</p>
+<p>The pulverization method itself is, as §&quot;The two external tests&quot; observed, a plausibility instrument. Using it to evaluate a confabulation that is itself a product of plausibility-under-conditioning creates a specific circularity: the generator that plausibly confabulated the expansion is the one finding plausible subsumption for it. The circularity does not invalidate the pulverization, but it bounds how much trust the reader should assign to a pulverization-pass as evidence.</p>
+<p>The literature citations in the word-level and phrase-level subsumptions are recalled from training. Each should be spot-checked by the keeper (or a domain-competent reader) against actual published work before being used downstream. The citations are plausible candidates, not verified references.</p>
+<p>This document has not modified Doc 441, Doc 439, Doc 415, or the proposed hypothesis ledger. Remediation is the keeper&#39;s call.</p>
+<h2>References</h2>
+<ul>
+<li>Robertson, I. H., Manly, T., Andrade, J., Baddeley, B. T., &amp; Yiend, J. (1997). &#39;Oops!&#39;: Performance correlates of everyday attentional failures in traumatic brain injured and normal subjects. <em>Neuropsychologia</em>, 35(6), 747–758.</li>
+<li>Parisi, G. I., Kemker, R., Part, J. L., Kanan, C., &amp; Wermter, S. (2019). Continual lifelong learning with neural networks: A review. <em>Neural Networks</em>, 113, 54–71.</li>
+<li>Jaynes, E. T. (2003). <em>Probability Theory: The Logic of Science</em>. Cambridge University Press.</li>
+<li>Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., &amp; Rubin, D. B. (2013). <em>Bayesian Data Analysis</em>, 3rd ed. Chapman &amp; Hall / CRC.</li>
+<li>Blei, D. M., Kucukelbir, A., &amp; McAuliffe, J. D. (2017). Variational inference: A review for statisticians. <em>Journal of the American Statistical Association</em>, 112(518), 859–877.</li>
+<li>Doucet, A., de Freitas, N., &amp; Gordon, N. (Eds.). (2001). <em>Sequential Monte Carlo Methods in Practice</em>. Springer.</li>
+<li>Andrieu, C., Doucet, A., &amp; Holenstein, R. (2010). Particle Markov chain Monte Carlo methods. <em>JRSS-B</em>, 72(3), 269–342.</li>
+<li>Kingma, D. P., &amp; Welling, M. (2014). Auto-encoding variational Bayes. <em>ICLR</em>.</li>
+<li>Ranganath, R., Gerrish, S., &amp; Blei, D. (2014). Black box variational inference. <em>AISTATS</em>.</li>
+<li>Pearl, J. (1988). <em>Probabilistic Reasoning in Intelligent Systems</em>. Morgan Kaufmann.</li>
+<li>Koller, D., &amp; Friedman, N. (2009). <em>Probabilistic Graphical Models: Principles and Techniques</em>. MIT Press.</li>
+<li>Gordon, A. D., Henzinger, T. A., Nori, A. V., &amp; Rajamani, S. K. (2014). Probabilistic programming. <em>FOSE 2014</em>.</li>
+<li>van de Meent, J.-W., Paige, B., Yang, H., &amp; Wood, F. (2018). An introduction to probabilistic programming. arXiv:1809.10756.</li>
+<li>Choi, Y., Vergari, A., &amp; Van den Broeck, G. (2020). Probabilistic circuits: A unifying framework for tractable probabilistic models. UCLA Tech Report.</li>
+<li>Bach, S. H., Broecheler, M., Huang, B., &amp; Getoor, L. (2017). Hinge-loss Markov random fields and probabilistic soft logic. <em>JMLR</em>, 18(109), 1–67.</li>
+<li>Wingate, D., Stuhlmüller, A., &amp; Goodman, N. (2011). Lightweight implementations of probabilistic programming languages via transformational compilation. <em>AISTATS</em>.</li>
+<li>Wood, F., van de Meent, J.-W., &amp; Mansinghka, V. (2014). A new approach to probabilistic programming inference. <em>AISTATS</em>.</li>
+<li>Broderick, T., Boyd, N., Wibisono, A., Wilson, A. C., &amp; Jordan, M. I. (2013). Streaming variational Bayes. <em>NeurIPS</em>.</li>
+<li>Särkkä, S. (2013). <em>Bayesian Filtering and Smoothing</em>. Cambridge University Press.</li>
+<li>Corpus Doc 435: <em>The Branching Entracement Method</em>.</li>
+<li>Corpus Doc 439: <em>Recursively Nested Bayesian Manifolds</em>.</li>
+<li>Corpus Doc 440: <em>Testing the Nested-Manifold Hypothesis via Dyadic Practitioner Discipline</em>.</li>
+<li>Corpus Doc 441: <em>A Live Case Study of Confabulation</em> (SIPE incident).</li>
+<li>Corpus Doc 442: <em>Output Degradation in the Bridge Series</em>.</li>
+<li>Corpus Doc 443: <em>Confabulation as Potential Emergence</em>.</li>
+</ul>
+<h2>Appendix: Originating prompt</h2>
+<blockquote>
+<p>Now I want you to do a pulverization of the new SIPE confabulation. I theorize that if it becomes subsumable, it is not consummately incoherent. But this does not prove that the confabulation is true, and perhaps makes the problem even worse. Append the prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

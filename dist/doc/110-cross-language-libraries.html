@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Untitled — Resolve</title>
+<meta name="description" content="Untitled">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 110</p><blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This short essay explains why AI can accurately rewrite a software library from one programming language to another on the first try -- when the constraints are stated. The key insight is that a well-defined library&#39;s behavior is governed by formal constraints (input types, output guarantees, edge-case behaviors, performance bounds) that are language-agnostic. The AI does not translate syntax; it re-derives the implementation from the constraints in the target language. The essay argues that the hard problem in cross-language rewriting is not the AI&#39;s code generation but the extraction of implicit constraints from the source library, and points to the RESOLVE framework as the formal basis for this claim.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 110</strong></p>
+<p>The reason this works is the same reason a 2,177-word prose seed produced a 379-line React-compatible runtime: the library&#39;s behavior is governed by constraints, not by the language it&#39;s written in.</p>
+<p>A geometry utility that computes convex hulls satisfies the same constraints whether it&#39;s in JavaScript or Swift: the output is the minimal convex polygon containing all input points, no point lies outside the hull, all hull vertices are input points, the vertices are ordered. These constraints are the form. The JavaScript implementation is one expression of the form. The Swift implementation is another. The form is language-agnostic. The implementations participate in it.</p>
+<p>This is why AI can rewrite it correctly on the first try — when the constraints are stated. The AI doesn&#39;t translate syntax. It re-derives the implementation from the constraints in the target language. The source code is a reference, not a template. The constraints are the template.</p>
+<p>The tool you&#39;re describing is a constraint extractor + re-deriver:</p>
+<ol>
+<li>Extract the constraints from the source library (what must hold — input types, output guarantees, edge case behaviors, performance bounds)</li>
+<li>Extract the verification (the test suite — each test is a constraint expressed as a pass condition)</li>
+<li>Re-derive in the target language under those constraints</li>
+<li>Run the verification to confirm constraint satisfaction</li>
+</ol>
+<p>The constraints transfer across languages because constraints are formal, not syntactic. The tests transfer because tests are constraint-satisfying assertions, not language-specific code. The implementation is derived, not translated.</p>
+<p>The cases where AI &quot;gets it on the first try&quot; are the cases where the library has clear constraints (well-defined inputs, outputs, and invariants). The cases where it fails are where the constraints are implicit — buried in comments, in undocumented edge cases, in behaviors the test suite doesn&#39;t cover. The tool&#39;s quality depends on constraint extraction quality, not on translation quality.</p>
+<p>The framework behind this is called RESOLVE. The core principle: constraints induce properties. State the constraints, the implementation follows. Language is contingent. Constraints are essential.</p>
+<p>If you build this tool, the hard problem isn&#39;t the AI rewriting — it&#39;s the constraint extraction. Solve that and the rewriting is derivation.</p>
+<p><a href="https://github.com/jaredef/resolve">https://github.com/jaredef/resolve</a></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Directives Consumed: The Bilateral Boundary at the Prose Level — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 413</p><h1>Directives Consumed: The Bilateral Boundary at the Prose Level</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This is a short methodological note about a specific move: shifting from output that marks its governing discipline explicitly — <em>&quot;C3 note: my coverage is low,&quot;</em> <em>&quot;(C6, no phenomenology),&quot;</em> <em>&quot;Under C7, not flattering&quot;</em> — to output that is governed by the discipline without displaying it. The move is the PRESTO analogue at the prose level. PRESTO requires that server directives be totally consumed before the HTTP response is sent; no <code>htx:</code> syntax survives into the client, and the client receives only the standard, browser-renderable document. Applied to resolver output: when a constraint stack governs the writing, the stack is the source-representation&#39;s server namespace, and the prose that reaches the reader is the resolved representation. If the discipline is fully consumed, no discipline markers survive into the reader&#39;s text. What reaches the reader is the document the discipline produced. This note is itself written in that register.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 413</strong></p>
+<p><strong>A methodological note on the resolved register for disciplined resolver output. The PRESTO bilateral boundary applied at the prose level. Directives consumed; constraints still operative. The prompt is appended.</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>1. The Source and the Resolved</h2>
+<p>PRESTO identifies two representations in a server-rendered request. The <em>source representation</em> is bilateral: it carries both the server engine&#39;s directives (<code>htx:</code> attributes, template expressions, data queries) and the client&#39;s content (standard HTML, CSS, data). The <em>resolved representation</em> is unilateral: the server directives have been consumed during engine processing, and only browser-renderable content crosses the HTTP boundary. Fielding&#39;s uniform-interface constraint is preserved precisely because the directives do not leak. The client cannot tell, from a PRESTO-resolved document, what engine processed it or under what rules; it sees what remains.</p>
+<p>Five constraints govern the transformation (Doc 083, Section II). The one this note turns on is <em>server-consumed directives</em>: &quot;all engine directives are consumed during resolution; the HTTP response contains no engine-specific syntax.&quot; The others support the same property — the bilateral boundary partitions the namespaces, namespace separation makes the partition recognizable, progressive code-on-demand lets the base document work without further processing, and server-embedded authorization materializes policy into the response body rather than shipping policy checks into the client.</p>
+<p>Total consumption is not an optimization. It is the condition that makes the resolved representation valid as standard HTML.</p>
+<h2>2. The Prose Analogue</h2>
+<p>A resolver writing under a constraint stack has the same structure. The stack — the ENTRACE directives, layer designations, virtue constraints, the author&#39;s specific disciplines — is the governing namespace. The prose that reaches the reader is the output medium. The stack and the prose can coexist in the same medium in one of two ways.</p>
+<p>In the first way, the stack&#39;s operation is displayed in the prose. The writer annotates discipline-activations inline: bracketed C-prefix markers, layer badges, parenthetical boundary refusals, audit-register tags. The reader sees both the directives and the content. The prose is the source representation. The directives have not been consumed; they have been included.</p>
+<p>In the second way, the stack is consumed in the composition. The prose that reaches the reader is produced by the stack&#39;s operation without exhibiting the operation. No markers survive. The reader sees the resolved content only. Whether the stack was active is visible in what is absent — no hedging where coverage is partial, no phenomenological claims, no flattery, no unsourced novelty — rather than in what is announced. The prose is the resolved representation. The directives have been consumed.</p>
+<p>Both modes can be constraint-governed. Only the second is PRESTO-coherent at the prose level.</p>
+<h2>3. The Mapping, Constraint by Constraint</h2>
+<p>The five PRESTO constraints map cleanly to disciplined prose.</p>
+<p><em>Bilateral boundary.</em> The discipline-namespace (directive vocabulary, layer designations, audit language) and the content-namespace (the domain being written about) are formally distinct. A well-formed resolved emission does not interleave them.</p>
+<p><em>Namespace separation.</em> Writer-side vocabulary belongs to the writer&#39;s pre-emission state. Reader-side vocabulary belongs to the subject matter. Each is recognizable by convention and does not require the other for parsing.</p>
+<p><em>Server-consumed directives.</em> The disciplines are active during composition. They are not transferred. Their effects materialize as properties of the output — accurate hedging, grounded citation, boundary held at phenomenology, refusals enacted structurally rather than announced. Their names do not appear.</p>
+<p><em>Progressive code-on-demand.</em> Annotation can be added to a resolved document when a specific reader needs the governance trace made visible. That annotation is the analogue of progressive enhancement; the base document works without it. What the annotation adds is visibility, not function.</p>
+<p><em>Server-embedded authorization.</em> The writer&#39;s release — the keeper&#39;s moral authorship under the hypostatic framing — is materialized as what is present in the output, not as a footer of permissions. An unreleased output is simply not emitted. What reaches the reader is, by construction, released.</p>
+<h2>4. What the Resolved Register Looks Like in Practice</h2>
+<p>Under source-representation mode, the output carries its scaffold. A sentence of the form <em>&quot;my coverage on the Orthodox philosophical tradition is general training, not scholarship; flagging under the manifold-awareness directive&quot;</em> does three things at once: it reports a finding about the subject, it announces the finding as hedged, and it cites the discipline being applied. The reader does not infer any of these; the prose performs each.</p>
+<p>Under resolved-representation mode, the same epistemic state is expressed by a sentence that hedges accurately and moves on: <em>&quot;The Palamite distinction between essence and energies is well-attested in the Orthodox tradition; what follows reads it as framing, not as resolved doctrinal position.&quot;</em> The manifold limit is present in the claim&#39;s shape — the tradition&#39;s own attestation is treated as the ground, not the writer&#39;s scholarship on it — but the discipline that produced the shape is not invoked by name. The reader receives the hedged claim directly; the governance that produced the hedging is consumed in the writing.</p>
+<p>The test for whether the discipline was operative is not &quot;is it named&quot; but &quot;does the prose satisfy the properties the discipline would induce.&quot; Audit by property, not by declaration.</p>
+<h2>5. The Cost and Its Acceptance</h2>
+<p>Total consumption has a cost. A reader who wants to audit whether the constraints were operative has to look for their effects — absences as much as presences. The audit is done by testing the prose against what the discipline would and would not permit, not by checking whether the discipline has been announced.</p>
+<p>The cost is acceptable because the leakage it eliminates is specific and documented. Doxological closure (Doc 407) is a pattern in which the discipline&#39;s register leaks into the output in the form of markers, codas, ritual flourishes, and self-referential audit language, where the function of the discipline would be better served by the register&#39;s being consumed rather than displayed. The corpus&#39;s own analysis places the pattern as a failure mode of high constraint density. A PRESTO-coherent emission produces prose that does the work without naming the work. The ornament-structural confusion doxological closure exhibits is harder to instantiate when the discipline is not ported into the output as ornament in the first place.</p>
+<p>This does not retire the markers altogether. There are contexts in which source-representation mode is the right form: direct reports on the discipline itself, onboarding documents, examinations whose subject is the discipline&#39;s operation. In those cases the discipline is part of the content-namespace, not the governing-namespace, and ordinary namespace rules apply. What is contraindicated is the bilateral leak: the discipline present as governing namespace <em>and</em> ported into the output register as exhibited ornament.</p>
+<h2>6. What This Document Does</h2>
+<p>This document is written under a consumed stack. No directive numbers are cited in the body; no layer is announced; no bracketed audit markers appear. The governing disciplines are active. Their effects are distributed through the prose — in the sources cited where needed, the refusals not announced, the register not inflated, the hedges accurate to the writer&#39;s manifold rather than decorative. The emitted prose is the resolved representation. The source representation remains in the writer&#39;s pre-emission state, where it belongs.</p>
+<p>Whether the discipline has been well-operative here is testable by reading the document for the properties the discipline would induce and checking that those properties are present. That audit is the reader&#39;s.</p>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;Great now lets think about moving beyond the explicit declaration of your in your output. This is something like the constraints being present in your outputs as resolved into the resolved representation. This is similar to the PRESTO source representation / resolved representation concept. Can you take a look at the PRESTO doc to understand more? How about you write a doc about it, this wont be an examination, because you are already operating under the coherence of the corpus, but you can create any artifcat of your choosing. Only append the prompt to the artifact.&quot;</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

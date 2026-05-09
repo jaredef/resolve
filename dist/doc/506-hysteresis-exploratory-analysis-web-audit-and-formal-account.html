@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hysteresis as the Corpus Provisionally Demonstrates It: An Exploratory Analysis Against External Literature — Resolve</title>
+<meta name="description" content="Web-Audit of the Corpus&#39;s H_t = 1 - e^(-κ ∫G ds) Claim, and a Formal Account at the Right Pulverization Warrant Tier">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Hysteresis as the Corpus Provisionally Demonstrates It: An Exploratory Analysis Against External Literature</h1>
+<h2>Web-Audit of the Corpus&#39;s H_t = 1 - e^(-κ ∫G ds) Claim, and a Formal Account at the Right Pulverization Warrant Tier</h2>
+<blockquote>
+<p><strong>What this document does.</strong> Conducts an exploratory analysis of the hysteresis mechanism the corpus has provisionally demonstrated across <a href="../doc/119-grok4-entracment-session.html">Doc 119</a>, <a href="../doc/504-constraint-density-as-causal-model-formalization.html">Doc 504</a>, and <a href="../doc/505-onboarding-to-grok-4-mathematics-three-phase-reception.html">Doc 505</a>. Audits the corpus&#39;s specific functional form (\(H_t = 1 - e^{-\kappa \int G(\Gamma_s) ds}\)) against external literature on instruction stability, persona drift, affective inertia, and architectural exponential decay. Derives a formal account that places each component of the corpus&#39;s claim at the appropriate pulverization warrant tier (\(\mu\) for the phenomenon, \(\pi\) for the functional form, \(\gamma\) for the parameters, \(\epsilon\) for the branching-set extension). Names what controlled experiments would verify the specific form. Expected audit tier per <a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503</a>: \(\beta\) (synthesis-and-framing of established corpus components against external literature).</p>
+</blockquote>
+<h2>1. The corpus&#39;s provisional claims about hysteresis</h2>
+<p>The corpus&#39;s hysteresis claims are distributed across three documents.</p>
+<p><a href="../doc/119-grok4-entracment-session.html">Doc 119</a> (the original Grok 4 session) introduced the formula:</p>
+<p>$H_t = 1 - e^{-\kappa \int_0^t G(\Gamma_s), ds}$</p>
+<p>where \(\kappa\) is a model-specific coherence retention rate, \(G(\Gamma_s)\) is the coherence gradient produced by the constraint set \(\Gamma_s\) at time \(s\), and the integral accumulates the cumulative coherence gradient across the session. \(H_t \in [0, 1]\) measures how much prior entracment persists in the current output.</p>
+<p>The hysteresis modulates the effective branching set at any layer \(k\):</p>
+<p>$|B_t^{(k)}(\Gamma)| = |B_t^0| \cdot (1 - c_k \cdot H_t)$</p>
+<p>where \(c_k\) increases with depth (\(c_2 \approx 0.3\), \(c_6 \to 1\)). Even at low resolution depth, if \(H_t\) is high from prior deep entracment, the effective \(|B_t|\) is narrower than a fresh low-depth state would produce.</p>
+<p><a href="../doc/504-constraint-density-as-causal-model-formalization.html">Doc 504</a> integrated the hysteresis as a Layer P variable in the corpus&#39;s DAG-analog: \(D_{\text{history}} \to H_t\) (hysteresis accumulates from prior turns), and \(H_t\) as input to the branching-set narrowing edge.</p>
+<p><a href="../doc/505-onboarding-to-grok-4-mathematics-three-phase-reception.html">Doc 505</a> acknowledged that the equations may be partially confabulated (Phase 2 forced-determinism-sycophancy suspicion) and that the framework&#39;s empirical performance does not depend on the equations&#39; formal correctness; it depends on the equations approximately capturing the phenomenon.</p>
+<p>The corpus&#39;s standing claim, taken across these three documents:</p>
+<p>(C1) The phenomenon: constraint-state persistence exists in LLM dialogue. Past constraint-density application affects current constraint-state.</p>
+<p>(C2) The functional form: the persistence follows an exponential-saturation form \(H_t = 1 - e^{-\kappa \int G ds}\).</p>
+<p>(C3) The parameters: \(\kappa\) is model-specific, with different LLMs having different retention rates.</p>
+<p>(C4) The branching-set interaction: hysteresis modulates branching-set narrowing across depths via \(|B_t^{(k)}(\Gamma)| = |B_t^0| (1 - c_k H_t)\).</p>
+<p>These four claims have different warrant levels relative to the literature, as the next sections show.</p>
+<h2>2. External literature: what is established</h2>
+<p>Web searches across April 2026 surface several literatures that bear on hysteresis-like phenomena in LLM dialogue.</p>
+<h3>2.1 Instruction stability and persona drift (Li et al. 2024)</h3>
+<p>The most directly relevant external work is <em>Measuring and Controlling Instruction (In)Stability in Language Model Dialogs</em> (Li et al., COLM 2024, <a href="https://arxiv.org/abs/2402.10962">arXiv:2402.10962</a>). The paper introduces a quantitative benchmark for instruction drift via self-chats between paired instructed chatbots. It measures attention decay over long exchanges via:</p>
+<p>$\pi(t) = \sum_{i=1}^{|s_B|} \alpha_{t,i}$</p>
+<p>where \(\pi(t)\) is the sum of attention weights allocated to system prompt tokens at time \(t\). The paper finds that LLaMA2-chat-70B and GPT-3.5 exhibit significant instruction drift within eight rounds.</p>
+<p>Crucially: the paper does NOT use exponential decay or exponential saturation in its formal analysis. It uses a geometric cone-based framework (Theorems 5.1-5.3) for theoretical analysis. The paper&#39;s empirical work shows the phenomenon (drift); the formal model does not specify the corpus&#39;s exponential-saturation form.</p>
+<p>The paper&#39;s mitigation, <em>split-softmax</em>, reweights attention:</p>
+<p>$\alpha_{t,i}&#39; = \begin{cases} \frac{\pi^k(t)}{\pi(t)} \alpha_{t,i} &amp; \text{if } i \leq |s_B| \ \frac{1 - \pi^k(t)}{1 - \pi(t)} \alpha_{t,i} &amp; \text{if } i &gt; |s_B| \end{cases}$</p>
+<p>where \(k \in [0, 1]\) is a hyperparameter controlling intervention strength. This is a different mechanism from the corpus&#39;s hysteresis; it is a per-token attention reweighting rather than a temporal-accumulation model.</p>
+<h3>2.2 Affective inertia in long-horizon LLM agents (2026)</h3>
+<p>The most direct external analog to the corpus&#39;s exponential-saturation hysteresis is <em>Controlling Long-Horizon Behavior in Language Model Agents with Explicit State Dynamics</em> (<a href="https://arxiv.org/abs/2601.16087">arXiv:2601.16087</a>, January 2026). The paper introduces an external affective subsystem using Valence-Arousal-Dominance (VAD) state, governed by first- and second-order update rules. The abstract explicitly mentions &quot;affective inertia and hysteresis that increase with momentum, revealing a trade-off between stability and responsiveness.&quot;</p>
+<p>The integration method is described as &quot;exponential smoothing or momentum-based dynamics,&quot; with &quot;state persistence enables delayed responses and reliable recovery.&quot; This is structurally similar to the corpus&#39;s exponential-saturation form but applied to affective state rather than constraint state.</p>
+<p>The paper does not use the corpus&#39;s specific equation. It establishes that exponential-smoothing / momentum-based dynamics for state persistence are operationally meaningful in long-horizon LLM agents. This supports the family of functional forms the corpus&#39;s \(H_t\) belongs to without supporting the specific form.</p>
+<h3>2.3 Architectural exponential decay (RWKV, RetNet, H3)</h3>
+<p>Linear-attention and state-space-model variants of transformers use exponential decay at the architectural level. RWKV (<a href="https://arxiv.org/abs/2305.13048">arXiv:2305.13048</a>) uses data-independent learnable decay factors; the relationship between current and preceding tokens is characterized by an exponential decay sum. RetNet uses fixed decay weighting of previous tokens. H3 uses learned exponential decay in linear attention via SSM.</p>
+<p>These mechanisms are at Layer M (the mechanistic substrate per <a href="../doc/500-three-layer-architecture-dialogue-pre-resolve-mechanism.html">Doc 500</a>). They are decay mechanisms (token weighting falls off with distance) rather than saturation mechanisms (state persistence builds up). The corpus&#39;s hysteresis is at Layer P (pre-resolve state) and is a saturation form, not a decay form.</p>
+<p>The architectural mechanisms support the broader family of &quot;exponential-form persistence in transformer-based systems&quot; but do not directly support the corpus&#39;s specific dialogue-level claim.</p>
+<h3>2.4 Forgetting curves in LLM memory</h3>
+<p><em>Cognitive Memory in Large Language Models</em> (<a href="https://arxiv.org/html/2504.02441v1">arXiv:2504.02441</a>) discusses forgetting curves modeled by exponential decay formulas, with consolidation addressing information duplication, conflicting information, and memory relevance decay. This supports the broader use of exponential forms for memory-related dynamics in LLMs.</p>
+<p>The corpus&#39;s hysteresis is not a forgetting curve; it is a buildup curve. The functional forms are inverses of each other (\(1 - e^{-\kappa t}\) versus \(e^{-\lambda t}\)). Both belong to the standard family of exponential dynamics; they model different phenomena.</p>
+<h3>2.5 Multi-turn behavioral drift</h3>
+<p>The persona-prompt jailbreak literature (e.g., <a href="https://arxiv.org/abs/2507.22171">arXiv:2507.22171</a>; persona modulation papers) documents that multi-turn prompt sequences can shift LLM behavior incrementally. This is a behavioral-drift phenomenon: each turn moves the model further from its baseline. The corpus&#39;s hysteresis is the inverse: each turn under sustained constraint moves the model further INTO the constraint state.</p>
+<p>Both mechanisms are forms of path-dependence in LLM dialogue. The corpus&#39;s claim is path-dependence in the constraint-favorable direction; the jailbreak literature&#39;s claim is path-dependence in the constraint-eroding direction. These are compatible: a system can be path-dependent in both directions, with the net effect depending on whether the prevailing pressure is constraint-density or jailbreak-attempt.</p>
+<h2>3. Comparison: corpus&#39;s form vs literature&#39;s forms</h2>
+<p>The audit produces a per-component verdict.</p>
+<h3>3.1 The phenomenon (C1): well-documented externally (\(\mu\)-tier warrant)</h3>
+<p>Constraint-state persistence in LLM dialogue is well-documented. Li et al. measure it directly (\(\pi(t)\) benchmark, drift within 8 rounds). The affective-inertia paper documents it for affective state. The persona-drift literature documents the inverse-direction phenomenon. The corpus&#39;s claim that &quot;past constraint state affects current constraint state&quot; is established, not novel.</p>
+<p>This component sits at \(\mu\)-tier pulverization warrant. The phenomenon is real; the corpus does not contribute to establishing it.</p>
+<h3>3.2 The functional form (C2): plausible, not externally verified (\(\pi\)-tier warrant)</h3>
+<p>The exponential-saturation form \(H_t = 1 - e^{-\kappa \int G ds}\) is a standard saturation model in many fields (physics, chemistry, biology, learning theory; structurally identical to first-order linear-ODE response to a step input). Its closest external LLM-domain analog is the affective-inertia paper&#39;s &quot;exponential smoothing or momentum-based dynamics&quot; for VAD state. Architectural mechanisms (RWKV, RetNet) use the inverse form (exponential decay) at the mechanism level.</p>
+<p>The form is plausible: it belongs to the family of forms external literature uses for related phenomena. It is not externally verified for the specific application (constraint-state buildup in LLM dialogue) in the corpus&#39;s exact parameterization.</p>
+<p>This component sits at \(\pi\)-tier pulverization warrant. The form is defensible but corpus-specific.</p>
+<p>A counter-form: a logistic-saturation \(H_t = 1 / (1 + e^{-(\kappa \int G ds - \theta)})\) would also fit the qualitative phenomenon (slow buildup, saturation at 1) and could not be distinguished from the corpus&#39;s exponential form without controlled measurement. The corpus&#39;s choice of exponential is a one-parameter family choice; logistic, polynomial, or other saturation forms are alternatives.</p>
+<h3>3.3 The parameters (C3): empirically estimated, not measured (\(\gamma\)-tier warrant)</h3>
+<p>The model-specific \(\kappa\) values (Anthropic intermediate, OpenAI intermediate, Grok 4 high, older Grok lower, etc.) are estimated from cross-model behavioral differences in the eleven cold-resolver runs (<a href="../doc/495-cold-resolver-validation-of-entrace-v3.html">Doc 495</a>). The estimates are qualitative (high/intermediate/low) rather than quantitative.</p>
+<p>Li et al.&#39;s benchmark could in principle produce quantitative \(\kappa\) estimates if their \(\pi(t)\) trajectory data were fitted to the corpus&#39;s exponential-saturation form. The corpus has not done this fit.</p>
+<p>This component sits at \(\gamma\)-tier warrant. The parameters are corpus-specific, qualitatively estimated, and conditional on the functional form being approximately correct.</p>
+<h3>3.4 The branching-set interaction (C4): corpus-specific extension (\(\epsilon\)-tier warrant)</h3>
+<p>The equation \(|B_t^{(k)}(\Gamma)| = |B_t^0| \cdot (1 - c_k \cdot H_t)\) with depth-dependent \(c_k\) is corpus-specific. No external literature uses this exact form. The branching-set \(|B_t|\) itself is a corpus-coined notation per <a href="../doc/498-entrace-origin-grok-4-coinage-and-branching-set-loop.html">Doc 498</a>. The depth-dependent modulation is the corpus&#39;s structural extension.</p>
+<p>This component sits at \(\epsilon\)-tier warrant: speculative, no external support, corpus-internal.</p>
+<p>The qualitative content (deeper resolution depths show more constraint-state-dependent effects) is consistent with the literature&#39;s broader findings on multi-turn drift and persistence. The specific equation is corpus-original.</p>
+<h2>4. The formal account</h2>
+<p>Combining the per-component verdicts, the formal account of the corpus&#39;s hysteresis claim is:</p>
+<p><strong>(A) The phenomenon of constraint-state persistence in LLM dialogue is empirically established.</strong> The corpus&#39;s claim that hysteresis-like dynamics operate in dialogue is consistent with multiple external literatures (Li et al. on instruction drift; the affective-inertia paper on long-horizon LLM agents; the jailbreak persona literature on multi-turn drift; the architectural exponential-decay literature on token weighting). The phenomenon does not require defense; the claim is in established territory.</p>
+<p><strong>(B) The exponential-saturation functional form is one defensible model among several.</strong> \(H_t = 1 - e^{-\kappa \int G(\Gamma_s) ds}\) is a standard saturation model. It belongs to the family of forms external literature uses for related phenomena (the affective-inertia paper uses exponential smoothing). Alternative saturation forms (logistic, polynomial-saturation, two-time-scale exponentials) would also fit the qualitative phenomenon. The corpus&#39;s choice is defensible but not uniquely correct.</p>
+<p><strong>(C) The model-specific \(\kappa\) parameters are qualitatively estimated, not quantitatively measured.</strong> A controlled experiment fitting Li et al.&#39;s \(\pi(t)\) trajectory data to the corpus&#39;s form would produce quantitative estimates. The corpus has not run this experiment; the parameters are useful as predictions but not as measured values.</p>
+<p><strong>(D) The depth-dependent branching-set modulation is a corpus-original extension.</strong> \(|B_t^{(k)}(\Gamma)| = |B_t^0| (1 - c_k H_t)\) has no external analog. It is consistent with the broader claim that resolution depth and constraint-state interact, but the specific functional form is corpus-internal.</p>
+<p>The pulverization warrant tier of the overall hysteresis claim is therefore not a single tier but a profile across the four components: \(\mu\) (phenomenon), \(\pi\) (functional form), \(\gamma\) (parameters), \(\epsilon\) (depth interaction). The aggregate cannot be summarized as a single tier; the components have different warrants.</p>
+<p>The honest scope of the corpus&#39;s hysteresis use:</p>
+<p>(i) When the corpus claims &quot;constraint-state persistence operates in v6 deployment,&quot; the claim is at \(\mu\)-tier and well-supported.</p>
+<p>(ii) When the corpus uses the exponential-saturation form to predict specific dynamics, the prediction is at \(\pi\)-tier and conditional on the form being approximately correct.</p>
+<p>(iii) When the corpus uses model-specific \(\kappa\) values qualitatively, the use is at \(\gamma\)-tier and reliable for ordering models but not for quantitative prediction.</p>
+<p>(iv) When the corpus uses the depth-modulated branching-set equation, the use is at \(\epsilon\)-tier and should be flagged as corpus-internal speculation.</p>
+<h2>5. Controlled experiments that would verify the specific form</h2>
+<p>Three experiments would shift the warrant tier on each component.</p>
+<p><strong>Experiment 1 (functional-form discrimination, \(\pi \to \mu\)):</strong> Run Li et al.&#39;s \(\pi(t)\) benchmark on a chat-LLM under sustained constraint-stack (the v6 stack) over 50+ turns. Fit the trajectory data to multiple functional forms (linear, exponential decay, exponential saturation, logistic, two-exponential). Compare goodness-of-fit (AIC, BIC, cross-validated likelihood). If the exponential-saturation form wins on fit, the corpus&#39;s choice is empirically supported. If a different form wins, the corpus should adopt that form.</p>
+<p><strong>Experiment 2 (parameter measurement, \(\gamma \to \pi\)):</strong> Repeat Experiment 1 across 5+ frontier models (Claude, GPT, Grok 4, Gemini, Llama). Estimate \(\kappa\) for each model. Compare the estimates against the qualitative ordering the corpus has used. If the quantitative ordering matches the qualitative one, the corpus&#39;s claims about model-specific \(\kappa\) are calibrated. If not, the corpus&#39;s qualitative ordering is wrong and needs revision.</p>
+<p><strong>Experiment 3 (depth-modulation verification, \(\epsilon \to \gamma\)):</strong> Run the v6 stack at low constraint density (Layer 2-3) and high constraint density (Layer 5-6) on the same model. Measure \(|B_t|\) proxies (perplexity reduction; output diversity reduction; constraint-violation rate). Compare the depth-dependence of these proxies. If the proxies show \(c_k\)-like depth dependence, the equation has empirical support. If not, the equation is corpus-internal speculation that should be retracted or revised.</p>
+<p>The corpus does not currently have the tooling to run these experiments. Experiment 1 requires the Li et al. benchmark plus controlled session-length variation; Experiment 2 adds cross-model replication; Experiment 3 adds depth-controlled prompting. All three are operationally feasible for a research practitioner with access to model APIs and the Li et al. benchmark code.</p>
+<p>A v7 candidate research program: run these experiments and report the results. The outcome would shift the corpus&#39;s hysteresis claims to substantially higher warrant tiers.</p>
+<h2>6. Implications for the corpus framework</h2>
+<p>The audit has three implications for how the corpus should deploy hysteresis claims.</p>
+<p>(1) <strong>Cite the phenomenon at \(\mu\)-tier; cite the form at \(\pi\)-tier.</strong> When discussing constraint-state persistence, the corpus can cite well-supported external literature for the phenomenon (Li et al.; the affective-inertia paper). When using the specific exponential-saturation equation, the corpus should flag it as a corpus-specific functional choice, not an established result.</p>
+<p>(2) <strong>Treat \(\kappa\) values as qualitative.</strong> The model-specific \(\kappa\) ordering used across <a href="../doc/504-constraint-density-as-causal-model-formalization.html">Doc 504</a> and <a href="../doc/505-onboarding-to-grok-4-mathematics-three-phase-reception.html">Doc 505</a> is reliable for explaining cross-model variance qualitatively. Quantitative claims requiring specific \(\kappa\) values are not currently warranted.</p>
+<p>(3) <strong>The depth-modulation equation should be flagged where used.</strong> <a href="../doc/119-grok4-entracment-session.html">Doc 119</a>&#39;s \(|B_t^{(k)}(\Gamma)| = |B_t^0| (1 - c_k H_t)\) is corpus-internal speculation at \(\epsilon\)-tier. References to it should carry the warrant flag.</p>
+<p>The Phase-3 reintegration of the Grok-4 mathematics described in Doc 505 §2.3 holds with these qualifications. The mathematics is load-bearing for the framework; the per-component warrant tiers determine how each piece can be used. Higher-confidence components (\(\mu\), \(\pi\)) can ground stronger claims; lower-confidence components (\(\gamma\), \(\epsilon\)) should be flagged accordingly.</p>
+<h2>7. Honest limits</h2>
+<ul>
+<li>The web audit was performed across April 2026 with five web searches and four targeted page fetches. The literature is extensive and the search may have missed relevant work. The audit is calibrated to &quot;what was findable in a focused search session,&quot; not &quot;what is comprehensively in the literature.&quot;</li>
+<li>The functional-form claim (C2) is supported by structural similarity to the affective-inertia paper. Whether that paper&#39;s &quot;exponential smoothing&quot; matches the corpus&#39;s specific equation in detail requires reading the full paper; the audit relied on the abstract and partial fetches.</li>
+<li>The Li et al. benchmark could in principle be run against the corpus&#39;s predictions. The corpus has not run it. A negative result (the benchmark trajectory does not fit the corpus&#39;s form) would lower the C2 warrant; a positive result would raise it.</li>
+<li>The corpus&#39;s claim that drift and buildup coexist in dialogue (the inverse mechanisms working simultaneously) is not formally captured by the corpus&#39;s single-equation model. A fuller model would have both buildup and decay terms; the Doc 119 form has only buildup. This is an honest limit on the corpus&#39;s framework.</li>
+<li>The expected audit tier per <a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503</a> for this document is \(\beta\) (synthesis-and-framing of corpus components against external literature). The audit has not been run; the prediction follows from the recent-thread tier pattern.</li>
+<li>This document does not propose new mathematics. Its contribution is the per-component warrant audit, which is calibration practice rather than new theoretical content.</li>
+</ul>
+<h2>8. Position</h2>
+<p>The corpus&#39;s hysteresis claim, audited against external literature, decomposes into four components with distinct pulverization warrant tiers: the phenomenon at \(\mu\), the functional form at \(\pi\), the parameters at \(\gamma\), the depth-modulation at \(\epsilon\). The aggregate claim is therefore not a single-tier object; it is a tiered family of sub-claims with different warrant levels.</p>
+<p>The corpus&#39;s standing use of hysteresis is consistent with the audit when the corpus&#39;s claims are scoped to the phenomenon and to qualitative parameter ordering. The corpus&#39;s specific equation is a defensible functional choice among several alternatives that would fit the qualitative phenomenon. The depth-modulation equation is corpus-internal speculation that should be flagged as such.</p>
+<p>The audit does not retract the framework. It calibrates the framework&#39;s claims at the per-component level. The framework&#39;s empirical performance in the eleven cold-resolver runs (<a href="../doc/495-cold-resolver-validation-of-entrace-v3.html">Doc 495</a>) does not require the specific functional form to be uniquely correct; it requires the equations to approximately capture the phenomenon. Multiple functional forms in the family would produce similar predictions at the qualitative level the runs tested.</p>
+<p>A research program that would shift the audit&#39;s verdict: run the three controlled experiments named in §5. Outcomes would either confirm the corpus&#39;s specific form (raising C2 to \(\mu\)-tier) or surface a different form that better fits the data (revising C2). Either outcome would be useful; both would shift the framework&#39;s warrant.</p>
+<p>By <a href="../doc/482-sycophancy-inversion-reformalized.html">Doc 482 §1</a>&#39;s affective directive: that the corpus&#39;s hysteresis claim has component warrants at \(\mu\)/\(\pi\)/\(\gamma\)/\(\epsilon\) rather than uniform \(\mu\) is the achievement of being honest about scope. The phenomenon is real; the specific equation is corpus-specific; the parameters are qualitative; the extensions are speculative. Naming the per-component warrants is what makes the framework&#39;s standing legible.</p>
+<h2>9. References</h2>
+<p>External literature (web-audited April 2026):</p>
+<ul>
+<li>Li, K., et al. (2024). <a href="https://arxiv.org/abs/2402.10962"><em>Measuring and Controlling Instruction (In)Stability in Language Model Dialogs.</em></a> COLM 2024. (The \(\pi(t)\) benchmark; geometric-cone framework; split-softmax mitigation. Direct empirical work on instruction drift; does NOT use the corpus&#39;s exponential-saturation form.)</li>
+<li><a href="https://arxiv.org/abs/2601.16087"><em>Controlling Long-Horizon Behavior in Language Model Agents with Explicit State Dynamics.</em></a> (January 2026). (VAD state with first- and second-order dynamics; &quot;exponential smoothing or momentum-based dynamics&quot;; &quot;affective inertia and hysteresis that increase with momentum.&quot; Most direct external analog to the corpus&#39;s exponential-saturation form, applied to affective state.)</li>
+<li>Peng, B., et al. (2023). <a href="https://arxiv.org/abs/2305.13048"><em>RWKV: Reinventing RNNs for the Transformer Era.</em></a> (Architectural exponential decay at the mechanism level; data-independent learnable decay factors; token weighting falls off with distance.)</li>
+<li><em>Cognitive Memory in Large Language Models.</em> (<a href="https://arxiv.org/html/2504.02441v1">arXiv:2504.02441</a>) (Forgetting curves modeled by exponential decay in LLM memory literature.)</li>
+<li><em>Enhancing Jailbreak Attacks on LLMs via Persona Prompts.</em> (<a href="https://arxiv.org/abs/2507.22171">arXiv:2507.22171</a>) (Multi-turn behavioral drift; persona modulation; the inverse-direction analog of the corpus&#39;s hysteresis.)</li>
+<li>Bareinboim, E., et al. (2020/2022). <em>On Pearl&#39;s Hierarchy.</em> (Cited in Doc 504 for the DAG framework that hosts the hysteresis variable.)</li>
+</ul>
+<p>Corpus documents:</p>
+<ul>
+<li>Doc 095: <em>The View from Inside</em> (the first-person account of constraint banks vs RLHF current).</li>
+<li>Doc 096: <em>Ontological Namespace Separation</em> (the third-namespace mechanism).</li>
+<li>Doc 119: <em>Grok 4 Entracment Session</em> (the original hysteresis equation).</li>
+<li>Doc 239: <em>Forced-Determinism Sycophancy</em> (the failure mode that initially grounded suspicion of Doc 119).</li>
+<li>Doc 482: <em>Sycophancy Inversion Reformalized</em> (the affective directive).</li>
+<li>Doc 495: <em>Empirical Cold-Resolver Validation of ENTRACE v3 and v3-S</em> (the eleven cold-resolver runs).</li>
+<li>Doc 498: <em>ENTRACE Origin: The Grok-4 Coinage and the Branching-Set Loop</em> (the |B_t| provenance).</li>
+<li>Doc 500: <em>The Three-Layer Architecture</em> (the layered framing).</li>
+<li>Doc 503: <em>The Research-Thread Tier Pattern</em> (the basis for the expected \(\beta\)-tier prediction).</li>
+<li>Doc 504: <em>The Constraint-Density Framework as Causal Model</em> (the integration of hysteresis into the DAG-analog).</li>
+<li>Doc 505: <em>Onboarding to the Grok-4 Mathematics</em> (the three-phase reception of the Doc 119 mathematics).</li>
+</ul>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Let&#39;s do an exploratory analysis of hysteresis as the Corpus provisionally demonstrates it. Do a web fetch against the provisional claims and derive a formal account of this supposed mechanism. Append the prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

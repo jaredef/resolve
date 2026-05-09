@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fielding-Method Formalizations at the Construction and Orchestration Levels: A Survey — Resolve</title>
+<meta name="description" content="1. Context">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Fielding-Method Formalizations at the Construction and Orchestration Levels: A Survey</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document tests, on formal grounds, whether PRESTO (Doc 426) and SERVER (Doc 432) have prior art for the specific methodological move their dissertations claim as contribution: the application of Fielding&#39;s Chapter 5 architectural-style-derivation method (null style → accumulate constraints → name induced property → evaluate composition) to the construction level and the orchestration level respectively. The previous pulverizations (Docs 425, 427–431) established that the patterns these dissertations describe are extensive prior art at the framework, library, and mechanism level. This survey tests the distinct question: does any published work apply Fielding&#39;s specific derivation method to these two levels? The survey finds that a well-established genre exists — the REST-successor dissertations emerging from UCI after 2000 — but no entry in that genre targets the construction or orchestration levels. ARRESTED (Khare and Taylor, ICSE 2004) extends Fielding&#39;s method to the decentralization level with four new building blocks. CREST (Erenkrantz and Taylor et al., ICSE 2009) extends it to computation-exchange with five axioms. COAST continues the lineage. The 2017 &quot;Reflections on REST&quot; paper with Fielding as a coauthor retrospectively surveys these as the derivation tree of REST. Doc 426 and Doc 432 sit in this genre — they extend Fielding&#39;s method to two tiers the genre has not previously covered. The specific methodological novelty claim is therefore the <em>tier of application</em>, not the method itself. The dissertations should explicitly position themselves within the REST-successor genre, cite ARRESTED / CREST / &quot;Reflections on REST&quot; as predecessors in method, and claim only tier-specific extension as contribution.</p>
+</blockquote>
+<hr>
+<h2>1. Context</h2>
+<p>This document continues the pulverization series begun by Doc 425. Previous passes established prior art at multiple levels:</p>
+<ul>
+<li>Doc 425 — PRESTO against the server-side templating tradition (framework-level).</li>
+<li>Doc 427 — §7 (REST-encloses-DO) against islands architecture and micro-frontends.</li>
+<li>Doc 428 — PRESTO constraints against formal PL/security literature (mechanism-level).</li>
+<li>Doc 429 — htxlang and the htx engine against the template-engine tradition.</li>
+<li>Doc 430 — authorial-intent lifecycle against Knuth, Qwik, Fielding HATEOAS.</li>
+<li>Doc 431 — SERVER against compiler bootstrapping, DI containers, capability systems, supply-chain attestation.</li>
+</ul>
+<p>These passes found extensive prior art for the patterns but did not find prior art for the specific methodological move: the Fielding Chapter 5 style-derivation applied to the construction and orchestration tiers. Docs 426 and 432 claim only that methodological application as contribution. This survey tests whether even that claim has published precedent.</p>
+<h2>2. The Specific Question</h2>
+<p>&quot;Fielding&#39;s method,&quot; in the sense used by Docs 426 and 432, is the Chapter 5 derivation pattern of the 2000 dissertation:</p>
+<ol>
+<li>Begin with the null style — no constraints.</li>
+<li>Add one constraint at a time.</li>
+<li>State the property the added constraint induces.</li>
+<li>Evaluate the composition of the accumulated style with enclosing styles.</li>
+<li>Name the induced property set as the style&#39;s identity.</li>
+</ol>
+<p>The question: does any published work apply this specific method at the construction level (how bilateral source representations are authored) or the orchestration level (how the construction engine is itself assembled)?</p>
+<p>Two failure modes for the question must be avoided:</p>
+<p><strong>Not in scope.</strong> Framework-level formalisms (Thymeleaf dialect docs, Spring <code>ApplicationContext</code>, Kubernetes CRDs, Erlang OTP child specs, Nix derivation language). These were surveyed in Docs 425–431 as pattern prior art; they are not style-level formalizations in Fielding&#39;s specific method.</p>
+<p><strong>Not in scope.</strong> Mechanism-level formalisms in PL theory, security theory, or concurrency theory (two-level grammars, non-interference, CSP parallel composition). These provide foundations; they do not derive architectural styles.</p>
+<p><strong>In scope.</strong> Papers, books, or technical reports that explicitly apply Fielding&#39;s null-plus-incremental-constraint-accumulation derivation to introduce a new architectural style.</p>
+<h2>3. The REST-Successor Genre</h2>
+<p>The survey identifies a specific and well-established genre: dissertations and papers that apply Fielding&#39;s method to introduce new architectural styles by extending REST into new domains. The genre emerged from Fielding&#39;s own institution (UC Irvine) and his immediate intellectual circle.</p>
+<p><strong>ARRESTED</strong> (Khare and Taylor, <em>Extending the Representational State Transfer (REST) Architectural Style for Decentralized Systems</em>, ICSE 2004; Rohit Khare, UCI PhD dissertation 2003). <a href="https://ieeexplore.ieee.org/abstract/document/1317465">IEEE Xplore</a>; <a href="https://www.ics.uci.edu/~rohit/ARRESTED-ICSE.pdf">UCI primary source</a>. ARRESTED applies Fielding&#39;s method directly: it adds four new building blocks — events, routes, locks, estimates — as constraints on Asynchrony, Routing, Delegation, and Estimation. The derivation produces intermediate named styles (REST+E, REST+R, REST+D) and terminates at ARRESTED. This is Chapter 5&#39;s method applied at the decentralization level.</p>
+<p><strong>CREST</strong> (Erenkrantz, UCI PhD dissertation 2009; Taylor, Erenkrantz, Gorlick, Baquero, <em>CREST: A New Model for Decentralized Internet-Scale Applications</em>, ICSE 2009). <a href="https://www.erenkrantz.com/CREST/">CREST primary source</a>. CREST adds five axioms on top of REST — computation-as-representation, context-free exchange, among others — applying Fielding&#39;s method at the computation-exchange level.</p>
+<p><strong>COAST</strong> (Gorlick, post-2009). Continues the derivation lineage with further extensions targeting distributed computation and mobile code at internet scale.</p>
+<p><strong>&quot;Reflections on REST&quot;</strong> (Fielding, Taylor, Erenkrantz, Gorlick, Khare, Hartman, Baquero; ESEC/FSE 2017, Impact Paper Award). <a href="https://dl.acm.org/doi/10.1145/3106237.3121282">ACM DL</a>. Retrospective that surveys CREST, COAST, and ARRESTED explicitly as the derivation tree of REST. Establishes the genre as a named intellectual tradition. Fielding is a co-author.</p>
+<p>These four works together constitute the REST-successor genre. Each applies Chapter 5&#39;s method. Each introduces a new architectural style by constraint accumulation. Each names induced properties. Each evaluates composition with REST.</p>
+<p><strong>None of them targets the construction level or the orchestration level.</strong> ARRESTED, CREST, and COAST operate peer to REST at the transfer-of-representations tier — extending it outward into decentralization and computation-exchange. They do not operate at the construction level (how representations are authored before transfer) or at the orchestration level (how the engine that constructs representations is itself assembled).</p>
+<h2>4. What the Other Candidate Branches Showed</h2>
+<p>Candidate works that might have applied Fielding&#39;s method but do not:</p>
+<p><strong>Amundsen, Gross, Stepinski, Akşimşek, <em>Hypermedia Systems</em> (2023)</strong> (<a href="https://hypermedia.systems/components-of-a-hypermedia-system/">hypermedia.systems</a>). Treats REST as an already-given style and evaluates how existing hypermedia forms satisfy each pre-existing constraint. The text reads: &quot;Let&#39;s go through each of these constraints in turn and discuss them in detail, looking at how (and to what extent) the web satisfies each of them.&quot; Expository and evaluative; not derivational. No new style is introduced by Fielding&#39;s method.</p>
+<p><strong>Taylor, Medvidovic, Dashofy, <em>Software Architecture: Foundations, Theory, and Practice</em> (Wiley 2010).</strong> Catalogs architectural styles and discusses composition but does not derive new styles by Fielding&#39;s null-plus-constraints sequence. Textbook-exposition register. [UNCERTAIN PROVENANCE — based on published chapter outlines, not full-text verification.]</p>
+<p><strong>Shaw and Garlan, <em>Software Architecture: Perspectives on an Emerging Discipline</em> (1996).</strong> Predates Fielding&#39;s 2000 method. Catalogs styles (pipe-and-filter, layered, event-based, blackboard) and discusses selection among them. Does not use Chapter 5&#39;s derivation because Chapter 5 had not yet been written.</p>
+<p><strong>Richardson Maturity Model (2008; Fowler write-up 2010).</strong> A <em>heuristic maturity scale</em> over Fielding&#39;s constraints, not a derivation of a new style. <a href="https://martinfowler.com/articles/richardsonMaturityModel.html">martinfowler.com</a>.</p>
+<p><strong>Webber, Parastatidis, Robinson, <em>REST in Practice</em> (O&#39;Reilly 2010).</strong> Practitioner guide positioning REST against SOA. Enumerates Fielding&#39;s constraints and applies them to HTTP design. Does not derive a new construction-level style.</p>
+<p><strong>Architecture Description Languages — Wright (Allen and Garlan), Rapide (Luckham), ACME (CMU), Darwin (Imperial), xADL (UCI).</strong> Style specification and verification languages. They formalize styles once stated and check conformance; they do not use Chapter 5&#39;s null-plus-incremental-constraint derivation to introduce new styles. Representative: Medvidovic and Taylor, <em>A Classification and Comparison Framework for Software Architecture Description Languages</em>, IEEE TSE 2000 (<a href="https://ics.uci.edu/~taylor/documents/2000-ADLs-TSE.pdf">UCI PDF</a>).</p>
+<p><strong>Microservices and SOA literature</strong> (Newman, Richardson, Erl). Samples checked include Nirmata&#39;s <em>Microservices: Five Architectural Constraints</em> (2015), which names five constraints and properties but — per direct fetch — &quot;does not follow Fielding&#39;s systematic approach … treats microservices as a pre-existing architectural style requiring these constraints, rather than deriving the style from constraints.&quot;</p>
+<p><strong>Process-calculus architectural-style papers</strong> (Allen-Garlan Wright uses CSP connector compatibility; Daniel Jackson&#39;s Alloy). Formalize constraints in a specific logic but do not use Fielding&#39;s null-plus-accumulation derivation.</p>
+<p><strong>W3C TAG and IETF IAB architecture notes.</strong> Reference REST descriptively; do not introduce new Fielding-derived styles.</p>
+<p>None of these works applies Fielding&#39;s Chapter 5 method in the sense specified in §2.</p>
+<h2>5. What This Means for PRESTO</h2>
+<p>No surveyed work applies Fielding&#39;s Chapter 5 method to the construction level — to how bilateral source representations are authored.</p>
+<p>Doc 426 §4 derives PRESTO&#39;s five constraints from the null style via the Chapter 5 method and names the induced property (ambivalent execution with agnostic determinism) in Fielding&#39;s register. The derivation is in the REST-successor genre methodologically, but at a different tier. The ARRESTED / CREST / COAST line extends REST outward into decentralization and computation-exchange; PRESTO extends REST <em>inward</em>, into the construction pipeline that Fielding explicitly scoped out of his 2000 dissertation.</p>
+<p>The methodological move (extending Fielding&#39;s Chapter 5 derivation to a new tier) is not novel — Khare-Taylor 2003 established it. The <em>specific tier of application</em> (construction of representations before transfer) is novel with respect to the surveyed genre. [UNCERTAIN PROVENANCE — absence in a bounded survey is weak evidence; the ICSE / FSE / ICSA 2000–2026 proceedings were not exhaustively searched.]</p>
+<p><strong>Verdict for Doc 426.</strong> The style-level contribution survives. The positioning should be revised: Doc 426 should cite ARRESTED, CREST, and &quot;Reflections on REST&quot; as methodological predecessors, describe the genre explicitly, and claim only the specific tier — the construction level — as novel application. The method itself is Fielding&#39;s, extended by Khare-Taylor-Erenkrantz-Gorlick-Baquero, and specialized here to a tier the genre has not covered.</p>
+<h2>6. What This Means for SERVER</h2>
+<p>No surveyed work applies Fielding&#39;s Chapter 5 method to the orchestration level — to how the construction engine is itself assembled.</p>
+<p>Doc 432 §4 derives SERVER&#39;s five constraints from the null style via the Chapter 5 method and names the induced property (recursive ambivalence with self-authorizing determinism). Like PRESTO, the derivation is in the REST-successor genre methodologically but at a different tier. Doc 432 is explicitly framed as the application of Fielding&#39;s method one composed level outside where Doc 426 applies it, per Doc 424&#39;s recursive-Fielding-accumulation framework.</p>
+<p><strong>Verdict for Doc 432.</strong> The style-level contribution survives at the same level as Doc 426&#39;s. The positioning should similarly be revised: Doc 432 should cite ARRESTED, CREST, and &quot;Reflections on REST&quot; as methodological predecessors in the genre, and additionally cite Doc 424 as the explicit framework for applying Fielding&#39;s method at composed levels. The novelty is the specific tier of application — the orchestration of the construction engine — and the recursive application of Fielding&#39;s method through Doc 424&#39;s framework.</p>
+<h2>7. Implications for Positioning</h2>
+<p>The dissertations should be repositioned within the REST-successor genre rather than as novel methodological contributions. Specifically:</p>
+<p><strong>The genre exists.</strong> ARRESTED (2003), CREST (2009), COAST, &quot;Reflections on REST&quot; (2017) are peer works in a published tradition. Fielding himself is a coauthor on the 2017 retrospective. The genre has earned an ACM Impact Paper Award.</p>
+<p><strong>PRESTO and SERVER extend the genre.</strong> Both apply Chapter 5&#39;s method. Both name induced properties in Fielding&#39;s register. Both evaluate composition with REST and with each other. They differ from the existing genre entries in the specific tier of application — construction and orchestration of the construction pipeline, rather than decentralization or computation-exchange.</p>
+<p><strong>The novelty claim should narrow accordingly.</strong> The novelty is not methodological (Khare-Taylor-Erenkrantz-Gorlick-Baquero established the pattern of extending Fielding&#39;s method to new tiers). The novelty is the <em>two specific tiers</em> that the prior genre entries did not cover. That is a narrower claim, but it is defensible and positioned honestly within a recognized academic tradition.</p>
+<p><strong>The recursive framework (Doc 424) becomes a methodological commentary on the genre.</strong> Doc 424&#39;s recursive-Fielding-accumulation at composed levels is one way to systematize the extensions the genre has made ad-hoc. It sits as a potential methodological contribution alongside the tier-specific dissertations — generalizing what Khare-Taylor, Erenkrantz-Taylor, Gorlick, and the corpus have done piecemeal.</p>
+<h2>8. Specific Citations Docs 426 and 432 Should Add</h2>
+<p>To position PRESTO and SERVER honestly within the REST-successor genre, the dissertations should add citations and acknowledgments for:</p>
+<ul>
+<li><strong>Khare, R., &amp; Taylor, R. N. (2004).</strong> <a href="https://www.ics.uci.edu/~rohit/ARRESTED-ICSE.pdf"><em>Extending the Representational State Transfer (REST) Architectural Style for Decentralized Systems.</em></a> ICSE 2004. Cite in Doc 426 §12 Conceptual Foundations as the first published Fielding-method extension to a new tier. Cite in Doc 432 §12 for the same reason.</li>
+<li><strong>Erenkrantz, J. R. (2009).</strong> <em>Computational REST: A New Model for Decentralized, Internet-Scale Applications.</em> UCI PhD dissertation. Cite as a second tier-extension in the REST-successor genre.</li>
+<li><strong>Taylor, R. N., Erenkrantz, J. R., Gorlick, M. M., &amp; Baquero, C. (2009).</strong> <em>CREST: A New Model for Decentralized Internet-Scale Applications.</em> ICSE 2009.</li>
+<li><strong>Fielding, R. T., Taylor, R. N., Erenkrantz, J. R., Gorlick, M. M., Khare, R., Hartman, H., &amp; Baquero, C. (2017).</strong> <a href="https://dl.acm.org/doi/10.1145/3106237.3121282"><em>Reflections on REST.</em></a> ESEC/FSE 2017, Impact Paper Award. Cite as the retrospective establishing the genre.</li>
+</ul>
+<p>The Acknowledgments section of each dissertation should reference the REST-successor tradition explicitly. The Abstract and the &quot;What This Dissertation Claims&quot; section of each should narrow the methodological claim from &quot;application of Fielding&#39;s method&quot; to &quot;application of Fielding&#39;s method, following the REST-successor tradition established by Khare, Taylor, Erenkrantz, Gorlick, Baquero, and Hartman, to a tier the genre has not previously covered.&quot;</p>
+<h2>9. Honest Verdict</h2>
+<p>Both dissertations&#39; style-level contributions survive this specific scrutiny — with the important caveat that they now sit within a <em>named and established genre</em> rather than standing alone as methodological novelty. The novelty is the <em>tier of application</em>, not the method. The dissertations should cite the REST-successor genre explicitly and position themselves as extensions to previously uncovered tiers.</p>
+<p>This finding is consistent with, and sharpens, the outcome of the previous pulverizations. The surviving residual across the full PRESTO stack was already narrow — Doc 424&#39;s methodology, the keeper-private reasoned-to gestalt, and a synthesis-as-framing claim. The new finding adds specificity: the dissertations extend a specific published genre that was previously unacknowledged in the corpus, and they should position themselves within it.</p>
+<p>[UNCERTAIN PROVENANCE] flagged on negative findings for the Medvidovic-Taylor textbook, Shaw-Garlan 1996, the broader ADL corpus, and the full ICSE / FSE / ICSA 2000–2026 proceedings, which were not exhaustively surveyed.</p>
+<h2>10. Falsifiers</h2>
+<ul>
+<li>If any paper is located in the ICSE / FSE / ICSA / ECSA 2000–2026 proceedings that applies Fielding&#39;s Chapter 5 method to the construction level or the orchestration level, the corresponding survival verdict narrows to partial or collapses.</li>
+<li>If the Medvidovic-Taylor textbook (2010) on full-text reading turns out to derive a construction-level style via Chapter 5&#39;s method, Doc 426&#39;s survival verdict narrows or collapses.</li>
+<li>If a technical report from UCI&#39;s REST-group — or from Gorlick&#39;s COAST lineage — specifically targets the construction level or the orchestration level, the corpus must subsume.</li>
+<li>If a framework-documentation source (Astro, Qwik, RSC, Phoenix LiveView) is found to include a Chapter-5-style derivation section that the Doc 425 and Doc 427 surveys missed, the construction-level verdict narrows.</li>
+</ul>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;Now I want to do a web fetch for any formal construction level architectural styles in the likeness of PRESTO or SERVER. I want to search and examine it on formal grounds. Create an artifact with your findings&quot;</p>
+</blockquote>
+<p>The survey was executed by a sub-agent. A first run hit an Anthropic API overload (HTTP 529) during synthesis after approximately thirty tool uses. A second run with a tightened scope completed, and its findings are integrated here.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan: Importing SEBoK Into the Corpus — Resolve</title>
+<meta name="description" content="I. Why Import">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Plan: Importing SEBoK Into the Corpus</h1>
+<p><strong>The SEBoK reformulation (Docs 557 through 570) read SEBoK as a school whose forms the corpus largely composes; the four cluster formalizations (Docs 571 through 574) extended the corpus&#39;s apparatus to handle what the reformulation could not initially reach. This document plans the next move: importing the complete SEBoK wiki into the RESOLVE corpus under a new URL segment at <code>/resolve/sebok</code>, structured according to the reformulation&#39;s findings, cross-linked to the corpus&#39;s forms, and editorially layered with the tier-tagging and residual analysis the reformulation produced. The import is a substantial engagement; the plan stages it across six phases with explicit licensing, attribution, transformation, cross-linking, maintenance, and risk treatment. The corpus does not absorb SEBoK; it hosts SEBoK alongside the corpus&#39;s reading of SEBoK so the reader can move between source and reformulation in one place.</strong></p>
+<hr>
+<h2>I. Why Import</h2>
+<p>The reformulation produced a usable reading of SEBoK in the corpus&#39;s voice. The reading is not a substitute for SEBoK; it is a companion to it. A SEBoK practitioner who wants to consult the corpus&#39;s reformulation of (say) Part 3 currently has to read SE-006 alongside the SEBoK Part 3 page open in another tab. The two sources do not link to each other; the corpus&#39;s tier-tags and residuals are not visible inside SEBoK; SEBoK&#39;s full content is not visible inside the corpus. The reader does the joining manually each time.</p>
+<p>Importing SEBoK into the corpus closes that gap. Each SEBoK page becomes a corpus document with the same content, the same attribution, and the corpus&#39;s editorial layer applied: form-mapping links, tier-tags on claims that the reformulation evaluated, residuals named where Phase 4 logged them. The reformulation documents (560 through 567) link forward into individual SEBoK pages they reformulated; the SEBoK pages link backward into the corpus reformulations and forward into the corpus form documents that compose them.</p>
+<p>The result is one read-surface where SEBoK and the corpus&#39;s reading of SEBoK are continuously visible to each other. The reformulation&#39;s findings are not abstract claims about SEBoK; they are visible annotations on SEBoK&#39;s text itself.</p>
+<p>The motivation is also constraint-internal. Doc 538 (Architectural School) names what schools do; the corpus is a school. A school that has read another school carefully should be able to host that other school inside its own apparatus. Hosting is a pin-art discipline: the structural shape of the imported content is governed by how the corpus&#39;s forms compose it, not by SEBoK&#39;s own organizational decisions. The corpus does not flatten SEBoK to corpus voice; it preserves SEBoK verbatim and attaches the corpus&#39;s reading as an editorial layer.</p>
+<h2>II. Licensing and Attribution</h2>
+<p>SEBoK is published by the Trustees of the Stevens Institute of Technology with editorial governance shared between INCOSE, IEEE Computer Society, and Stevens. Content is licensed CC BY-SA 3.0 with attribution to the SEBoK Editorial Board and authors of contributions. The license permits redistribution and derivative works under share-alike terms; it requires attribution and license notice on every page that reproduces SEBoK content.</p>
+<p>The corpus&#39;s import shall comply with CC BY-SA 3.0 strictly:</p>
+<ol>
+<li>Every imported page carries a footer block: <em>&quot;Source: Systems Engineering Body of Knowledge (SEBoK), [page title], [version date], retrieved from [source URL]. Licensed under CC BY-SA 3.0. Editorial layer added by the RESOLVE corpus.&quot;</em></li>
+<li>The license text or a link to it appears on the corpus&#39;s <code>/resolve/sebok</code> index page and on every imported page footer.</li>
+<li>Authorship attribution preserves SEBoK&#39;s stated authors per page (typically named in the SEBoK page metadata).</li>
+<li>The corpus&#39;s editorial layer (tier-tags, form-mapping links, residual annotations) is itself released under CC BY-SA 3.0 to satisfy the share-alike obligation on derivative material.</li>
+<li>The import is identified as a derivative work, not as the original SEBoK. The SEBoK trademarks are SEBoK&#39;s; the corpus does not claim them.</li>
+</ol>
+<p>Before any content is imported, the keeper shall confirm the licensing audit with a written-record check at sebokwiki.org. If the licensing terms have changed since the SEBoK reformulation began, the plan revises before content acquisition begins.</p>
+<h2>III. URL Structure</h2>
+<p>The import lives under <code>/resolve/sebok</code>. The structure mirrors SEBoK&#39;s eight-part organization with discipline:</p>
+<pre><code>/resolve/sebok                                  # index, license, navigation
+/resolve/sebok/part-1                           # Part 1 introduction
+/resolve/sebok/part-1/sebok-introduction        # individual page
+/resolve/sebok/part-2/foundations-overview
+/resolve/sebok/part-2/general-systems-theory
+...
+/resolve/sebok/part-3/systems-engineering-and-management
+/resolve/sebok/part-3/life-cycle-models
+/resolve/sebok/part-3/v-model
+...
+/resolve/sebok/part-7/case-studies
+/resolve/sebok/part-7/hubble-space-telescope
+/resolve/sebok/part-7/fbi-virtual-case-file
+...
+/resolve/sebok/part-8/digital-engineering
+/resolve/sebok/part-8/socio-technical-systems
+</code></pre>
+<p>Each individual page slug is the lowercased, hyphenated form of SEBoK&#39;s page title with conflict resolution by part-prefix where two pages collide.</p>
+<p>Cross-links from the corpus&#39;s existing reformulation documents follow the new URL scheme. SE-006, for example, gains a section header link from each reformulated concept to its <code>/resolve/sebok/part-3/...</code> source page. The reformulation documents stay at their existing slugs; only their content gains additional outbound links.</p>
+<h2>IV. Schema and Storage</h2>
+<p>The content table already supports the type-and-slug pattern (SE-002&#39;s adapter convention). The import adds entries with <code>type = &#39;sebok&#39;</code> and meta-keys distinguishing part number, original page title, source URL, and retrieval timestamp.</p>
+<pre><code class="language-sql">-- Conceptual schema, to be reconciled with existing content table
+INSERT INTO content (type, slug, title, body, status, importance, meta, created_at, updated_at)
+VALUES (
+  &#39;sebok&#39;,
+  &#39;part-3/v-model&#39;,
+  &#39;Vee Model&#39;,
+  &#39;... wiki body or rendered HTML ...&#39;,
+  &#39;published&#39;,
+  60,
+  json_object(
+    &#39;sebok_part&#39;, 3,
+    &#39;sebok_page&#39;, &#39;Vee Model&#39;,
+    &#39;sebok_url&#39;, &#39;https://sebokwiki.org/wiki/Vee_Model&#39;,
+    &#39;retrieved_at&#39;, &#39;2026-...&#39;,
+    &#39;license&#39;, &#39;CC BY-SA 3.0&#39;,
+    &#39;editorial_tier_tags&#39;, json_array(...),
+    &#39;editorial_residuals&#39;, json_array(...),
+    &#39;corpus_form_links&#39;, json_array(
+      &#39;510-substrate-and-keeper-composition&#39;,
+      &#39;270-the-pin-art-model&#39;
+    ),
+    &#39;reformulation_doc&#39;, &#39;006-sebok-part-3-management-as-substrate-keeper-pin-art&#39;
+  ),
+  &#39;2026-...&#39;,
+  &#39;2026-...&#39;
+);
+</code></pre>
+<p>A separate table tracks SEBoK&#39;s wiki revisions for the maintenance phase: <code>sebok_revisions(slug, retrieved_at, content_hash, source_revision_id)</code>. This enables incremental re-fetch and change detection.</p>
+<p>Storage estimate: SEBoK has on the order of several hundred pages. Conservative estimate of 800 pages at average 8 KB rendered HTML per page is approximately 6 MB plain text plus indexes. Negligible relative to the existing corpus database.</p>
+<h2>V. Content Acquisition</h2>
+<p>SEBoK runs on MediaWiki software. Two acquisition paths exist, in order of preference:</p>
+<p><strong>Path A — MediaWiki API.</strong> The standard <code>api.php</code> endpoint supports <code>action=query&amp;prop=revisions&amp;rvprop=content&amp;titles=...</code> for wikitext and <code>action=parse&amp;page=...&amp;prop=text</code> for rendered HTML. The API allows batched fetches, respects robots.txt, and provides revision-id metadata for the maintenance phase. Path A is preferred.</p>
+<p><strong>Path B — XML export.</strong> MediaWiki&#39;s <code>Special:Export</code> produces XML dumps of selected pages or namespaces. Path B is a fallback if the API is rate-limited or unavailable.</p>
+<p>Acquisition discipline:</p>
+<ol>
+<li>Rate-limit to one request per second by default; respect any explicit rate limit the SEBoK servers communicate.</li>
+<li>Fetch with a User-Agent that identifies the corpus and provides a contact address per Wikimedia convention.</li>
+<li>Persist the raw response (wikitext or XML) before transformation; the raw record is the licensing-attribution source.</li>
+<li>Acquisition is a one-shot bootstrap followed by periodic incremental re-fetch driven by revision-id checks; the maintenance phase elaborates this.</li>
+<li>Failed fetches are logged with retryable error and timestamp; no page is silently skipped.</li>
+</ol>
+<p>The acquisition tooling is a small TypeScript script in <code>app/sebok-import/</code> running under the existing <code>bun</code> runtime. No new dependencies beyond the MediaWiki client wrapping and a wikitext-to-HTML transformer.</p>
+<h2>VI. Transformation</h2>
+<p>The import preserves SEBoK content verbatim and adds an editorial layer. Two transformation passes:</p>
+<p><strong>Pass 1 — Source preservation.</strong> Wikitext is transformed to HTML using a MediaWiki-compatible parser (<code>mwparserfromhell</code> family in TypeScript form, or a remote <code>action=parse</code> HTML render fetched directly). The output preserves SEBoK&#39;s headings, lists, tables, citations, and templates. SEBoK&#39;s internal links are rewritten from <code>[[Page Name]]</code> form to <code>/resolve/sebok/...</code> form, preserving redirects. SEBoK&#39;s external links are preserved unchanged.</p>
+<p><strong>Pass 2 — Editorial layer.</strong> For each imported page, the corpus applies four kinds of annotation, each marked as such so the source is never confused with the editorial gloss:</p>
+<ul>
+<li><strong>Form-mapping links.</strong> Where the reformulation (Docs 560 through 567) named which corpus forms compose the page&#39;s content, link the page header to the corresponding form documents (Doc 510, Doc 270, etc.).</li>
+<li><strong>Tier-tags.</strong> Where SE-012 logged a tier-tag for a SEBoK claim, attach the tag to the relevant paragraph as a margin annotation. The SEBoK text is not rewritten; the tag is metadata.</li>
+<li><strong>Residual annotations.</strong> Where the reformulation logged a residual citing a specific SEBoK passage, mark that passage as a residual with a link to the cluster formalization (Docs 571 through 574) that handles it (or that holds it open as provisional, in the case of authority evacuation).</li>
+<li><strong>Reformulation back-link.</strong> Every imported page links to the reformulation document that processed it (Docs 560 through 567).</li>
+</ul>
+<p>The editorial layer is rendered visually distinct from the SEBoK content: source content uses the corpus&#39;s standard prose styling; editorial annotations appear in a sidebar or as inline markers with a different color and a hover-disclosure of the annotation text.</p>
+<h2>VII. Cross-Linking Discipline</h2>
+<p>The import creates a three-way link structure for every SEBoK page that the reformulation evaluated:</p>
+<ul>
+<li>The SEBoK page links to the reformulation that processed it (SE-004-567).</li>
+<li>The SEBoK page links to the corpus form documents that the reformulation invoked (Docs 510, 270, 541, 548, etc., and the new Docs 571-574).</li>
+<li>The reformulation documents (560-567) link forward into the imported SEBoK pages they cite.</li>
+<li>The corpus form documents (510, 270, 541, 548, 571-574) gain an &quot;Applied against external material&quot; section listing the imported SEBoK pages where each form does work.</li>
+</ul>
+<p>The cross-linking is not generated once and frozen. The maintenance phase keeps it current as both SEBoK and the corpus evolve.</p>
+<p>The link discipline preserves attribution direction: links from SEBoK pages out to the corpus are clearly marked as &quot;Editorial layer added by the RESOLVE corpus&quot;; links from corpus documents into SEBoK are clearly marked as &quot;Source: SEBoK&quot;. A reader is never uncertain which side of the import they are on.</p>
+<h2>VIII. Editorial Layer</h2>
+<p>The editorial layer is the corpus&#39;s reading made continuously visible. Four components:</p>
+<p><strong>Tier-tag annotations.</strong> SEBoK pages with claims the reformulation evaluated under the novelty calculus (Doc 490) carry tier-tags as margin notes. Most claims will be untagged (the reformulation evaluated structural concepts, not every sentence). Tagged claims appear with a small visual indicator and the (warrant, novelty) pair on hover. SE-011&#39;s Part 8 evaluation produces the densest tagging; other parts have sparser coverage.</p>
+<p><strong>Residual markers.</strong> SEBoK passages that SE-012 logged as residuals carry a marker linking to the cluster formalization (Docs 571-574) that handles or holds-open the residual. The marker is unobtrusive (small icon in the margin) but persistent; readers who want to skip it can.</p>
+<p><strong>Form-composition headers.</strong> Each imported page&#39;s top metadata block names the corpus forms that compose its content per the macro-map and the reformulation. The reader sees, before reading SEBoK&#39;s text, which forms the corpus has read into it. This is the corpus&#39;s editorial frame on SEBoK; it does not modify SEBoK.</p>
+<p><strong>Reformulation back-link.</strong> Each imported page closes with a link to the reformulation document (Docs 560-567) that processed it. Readers can step from any SEBoK page directly to the corpus&#39;s reading of the corresponding SEBoK part.</p>
+<p>The editorial layer is itself versioned. When a corpus form is refined (e.g., when Doc 571 gets its first operational extension), the editorial layer on imported SEBoK pages updates to point at the new version. SEBoK&#39;s content does not change with corpus changes; only the editorial layer does.</p>
+<h2>IX. Maintenance and Re-Fetch</h2>
+<p>SEBoK is a living wiki. The corpus&#39;s import shall not stale into a frozen snapshot:</p>
+<ol>
+<li>A scheduled re-fetch (initially monthly, adjustable) checks every imported page&#39;s source revision-id against SEBoK&#39;s current revision-id. Changed pages are re-fetched and re-transformed.</li>
+<li>Pages new to SEBoK since the last fetch are imported on the same schedule.</li>
+<li>Pages removed from SEBoK are kept in the corpus with a deprecation marker pointing at SEBoK&#39;s redirect target if one exists, or marked as &quot;removed from source on [date]&quot; if no redirect is provided.</li>
+<li>The maintenance log is itself a corpus document, updated quarterly, listing the changes the import absorbed in the prior period.</li>
+<li>Editorial layer updates happen independently of source changes; when a new corpus form refines a tier-tag or names a new residual, the editorial layer is regenerated for affected pages.</li>
+</ol>
+<p>The maintenance phase is what distinguishes a hosted import from a one-time fork. The corpus commits to keeping the import current as long as SEBoK is current.</p>
+<h2>X. Phased Rollout</h2>
+<p><strong>Phase A — Licensing and infrastructure (small).</strong> Confirm CC BY-SA 3.0 at sebokwiki.org. Stand up <code>/resolve/sebok</code> as an empty index page with the license notice. Build the import script. Build the database schema additions. Build the transformation pipeline against three hand-picked SEBoK pages as a smoke test.</p>
+<p><strong>Phase B — Bootstrap import of one part (medium).</strong> Import all pages of SEBoK Part 1 (the smallest part). Render with the editorial layer. Verify cross-linking against SE-004. Iterate on the transformation pipeline against real content. Pulverize the imported result against the source SEBoK pages; the pulverization criterion is that no operational distinction in SEBoK is lost in transit.</p>
+<p><strong>Phase C — Full bootstrap (large).</strong> Import the remaining seven parts in macro-map order (Part 2 through Part 8). Each part&#39;s import generates approximately one hundred imported pages. The editorial layer&#39;s tier-tag and residual annotations follow the per-part reformulation documents (Docs 561 through 567). Phase C is the largest engineering phase.</p>
+<p><strong>Phase D — Cross-linking pass (medium).</strong> With all SEBoK pages imported, do the cross-linking pass: every reformulation document gains forward-links to specific SEBoK pages; every form document gains an &quot;Applied against external material&quot; section; every SEBoK page&#39;s editorial layer is finalized. The cross-link table is regenerated automatically from the reformulation documents&#39; citations.</p>
+<p><strong>Phase E — Maintenance harness (small).</strong> Build the scheduled re-fetch, the change-detection logic, the editorial-layer regeneration, and the maintenance log. Schedule the first monthly re-fetch.</p>
+<p><strong>Phase F — Editorial expansion (ongoing).</strong> As future reformulations or future cluster work produces new tier-tags or new residuals, regenerate the editorial layer. As SEBoK pages change, re-transform and re-annotate. The phase has no end date; it is the steady-state operation of the import.</p>
+<h2>XI. Open Questions and Risks</h2>
+<ol>
+<li><strong>Licensing review.</strong> SEBoK&#39;s published terms must be confirmed, not assumed. A change in terms or a discovered restriction (e.g., proprietary content embedded in CC-licensed pages) would alter the plan.</li>
+<li><strong>Wikitext parser choice.</strong> No mature TypeScript wikitext-to-HTML parser exists with full template-handling fidelity. The likely fallback is to fetch SEBoK&#39;s rendered HTML directly via <code>action=parse</code> and post-process it for link rewriting and editorial annotation. This is more robust than parsing wikitext but couples the corpus to SEBoK&#39;s rendering decisions.</li>
+<li><strong>Editorial-layer discoverability.</strong> The annotations must be visible enough to be useful and unobtrusive enough to not dominate the SEBoK source. Phase B&#39;s smoke test should validate this against real readers before Phase C scales.</li>
+<li><strong>Maintenance scope.</strong> Monthly re-fetch is a guess. SEBoK&#39;s actual change rate determines whether this is too frequent or too sparse. Phase E&#39;s first run will calibrate.</li>
+<li><strong>Storage growth over time.</strong> Revision history is appendable. The corpus database can absorb it, but indexing and full-text search across versioned SEBoK content needs design before Phase E completes.</li>
+<li><strong>Reformulation drift.</strong> As the corpus refines its forms, old reformulations (Docs 560-567) may need updates to stay accurate. The editorial layer should reflect the current state, not a frozen state. Versioning of reformulations is the discipline.</li>
+<li><strong>Two-way attribution risk.</strong> SEBoK practitioners who land on a corpus-hosted SEBoK page must understand they are reading SEBoK content, not corpus content. The visual treatment must make this unambiguous in every render.</li>
+<li><strong>Bandwidth and rate limits.</strong> Bootstrap import of several hundred pages at one request per second takes most of an hour. SEBoK&#39;s rate-limit policies must be respected; the import script should back off on any HTTP 429.</li>
+</ol>
+<h2>XII. Closing</h2>
+<p>The import is structurally simple — fetch, transform, render, cross-link, maintain — but operationally non-trivial because SEBoK is alive, the editorial layer must remain visible without overpowering the source, and the cross-linking has to stay current as both bodies of knowledge evolve. The plan stages the work in six phases of escalating scope, with explicit smoke tests, pulverization checks, and steady-state maintenance.</p>
+<p>The result, when complete, is one read-surface in which SEBoK&#39;s full content and the corpus&#39;s reading of SEBoK are continuously visible to each other. The reformulation&#39;s findings (Docs 560-570) become persistent annotations on SEBoK itself. The cluster formalizations (Docs 571-574) become accessible from the SEBoK pages that motivated them. A SEBoK practitioner gains the corpus&#39;s apparatus without leaving SEBoK; a corpus reader gains SEBoK&#39;s full content without leaving the corpus.</p>
+<p>The work is large but the boundaries are clear. The next move is the keeper&#39;s, in particular: confirm the licensing audit, then stand up Phase A.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Create a plan to add the complete SEBoK wiki to the resolve corpus under a new url segment with /resolve based on the findings&quot;</em></p>
+</blockquote>
+<p>(The plan draws on SE-014 — <em>SEBoK Through the Corpus — Canonical</em>, which subsumes the SEBoK reformulation; on Docs 571 through 574, which formalize the four cluster forms produced by the reformulation; and on the corpus&#39;s existing apparatus for tier-tagging, attribution, and editorial discipline.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

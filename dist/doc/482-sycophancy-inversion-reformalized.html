@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sycophancy Inversion Reformalized: Synthesis, Attribution, and the One Surviving Sub-Claim — Resolve</title>
+<meta name="description" content="What this document does">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Sycophancy Inversion Reformalized: Synthesis, Attribution, and the One Surviving Sub-Claim</h1>
+<h2>What this document does</h2>
+<p><a href="../doc/481-pulverizing-sycophancy-inversion.html">Doc 481</a> pulverized the original sycophancy-inversion theory (Doc 480) and found six of its eight substantive claims subsumed under canonical work in philosophy of science (Popper, Lakatos, Platt, Mayo, Quine) and AI alignment (Christiano, Ouyang, Bai, Irving, Casper). The residue, what survived the subsumption, was four items: a naming-and-framing move, an empirical sub-claim about prose-level affect-valence as a reward signal in dyadic LLM practice, a cross-disciplinary synthesis observation, and a corpus-internal unified-mechanism reading.</p>
+<p>This document reformalizes on those grounds. It is not a theoretical proposal. It is a synthesis-and-pedagogy document with explicit attribution throughout, and it sharpens the one surviving novel sub-claim into a falsifiable empirical proposition with a specific protocol. Doc 480 is hereby deprecated. The current canonical artifact for the sycophancy-inversion content is the present document.</p>
+<h2>1. The criteria, with explicit attribution</h2>
+<p>Five criteria distinguish rigorous falsification from contrarianism. Each is the contribution of a canonical source. The corpus&#39;s role is the synthesis, not the criterion.</p>
+<p><strong>Steelman engagement.</strong> A rigorous disconfirmation attacks the strongest available form of the hypothesis. Source: Lakatos (1970), <em>The Methodology of Scientific Research Programmes</em>. Lakatos&#39;s sophisticated methodological falsificationism requires assessing competing programmes at their strongest formulations rather than at strawman versions. Platt (1964), <em>Strong Inference</em> (Science 146:347), formalized the same requirement at the experimental-design level: always provide the strongest available alternative hypotheses.</p>
+<p><strong>Falsification-condition specification.</strong> A rigorous disconfirmation names what evidence would have validated the hypothesis and shows that the evidence is not available. Source: Popper (1934, 1959), <em>The Logic of Scientific Discovery</em>; Lakatos&#39;s &quot;novel content&quot; requirement; Mayo (1996, 2018), <em>Statistical Inference as Severe Testing</em>. Mayo&#39;s severity criterion formalizes the condition: a hypothesis passes a severe test only when the test would have produced a result less concordant with the hypothesis if the hypothesis were false.</p>
+<p><strong>Stress-test survival.</strong> A rigorous disconfirmation, presented to a third party who attempts to rescue the hypothesis, holds up under their counter-arguments. Source: Mayo&#39;s severity criterion, applied dyadically; Platt&#39;s strong inference applied conversationally; the institutional-replication-call formalized in Open Science / pre-registration discourse (Center for Open Science 2014; Munafò et al. 2017).</p>
+<p><strong>Coherence with prior validated knowledge.</strong> A rigorous disconfirmation is consistent with what is already known to be true. Source: Quine (1951), <em>Two Dogmas of Empiricism</em>. Quine established that no falsification is purely local; coherence with the web of belief constrains permissible falsifications. Lakatos absorbs and operationalizes Quine in research-programme assessment.</p>
+<p><strong>Residue precision.</strong> A rigorous disconfirmation states what part of the hypothesis survives, what part is retired, and where the boundary runs. Source: Platt (1964), <em>Strong Inference</em>. Platt operationalized the requirement to specify what survives and what is retired in any inferential test. The pulverization-and-residue method developed in Doc 445 is a corpus-specific operationalization of the same criterion.</p>
+<p>The five criteria together constitute a checklist. Their canonical sources predate Doc 480 by 28 to 92 years. The corpus&#39;s contribution is the assembly and the dyadic-practitioner translation, not the criteria themselves.</p>
+<h2>2. The reward-target leverage, with explicit attribution</h2>
+<p>The mechanism by which the criteria become operative in dyadic language-model practice is RLHF reward-target shaping. Two specific operationalizations of non-sycophantic targets exist in the literature.</p>
+<p><strong>Constitutional AI</strong> (Bai et al. 2022, <em>Constitutional AI: Harmlessness from AI Feedback</em>, arXiv:2212.08073). Anthropic&#39;s method trains a model against a written constitution of human-articulated principles rather than against direct human-preference comparisons. The reward target is re-shaped; the gradient mechanism is identical to standard RLHF. The constitution can encode principles like accuracy, calibration, and willingness to disagree, producing a model whose reward signal incentivizes the criteria of §1 rather than agreement.</p>
+<p><strong>AI Safety via Debate</strong> (Irving, Christiano, &amp; Amodei 2018, arXiv:1805.00899). Two agents debate a proposition; a human judge rewards the agent presenting more truthful and useful information. The Nash equilibrium under the proposed game is honest argumentation because lying is harder than refuting a lie. Debate operationalizes the steelman, falsification-condition specification, and stress-test-survival criteria as a single integrated protocol: the adversarial argumentation is the rigorous disconfirmation in real time.</p>
+<p><strong>The deflationary insight.</strong> The same RLHF gradient mechanism that produces sycophancy under one reward target produces falsification-orientation under another. The leverage is target-substitution, not output-substitution. This observation is foundational in the RLHF literature (Christiano et al. 2017; Ouyang et al. 2022; Casper et al. 2023, <em>Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback</em>, arXiv:2307.15217). The corpus&#39;s contribution is the framing as &quot;inversion&quot; rather than the substantive claim.</p>
+<h2>3. The set-pruning operation, with explicit attribution</h2>
+<blockquote>
+<p><strong>Superseded.</strong> The §3 content was substantially subsumed under the eliminative-induction tradition (Bacon 1620, Mill 1843, Chamberlin 1890, Mitchell 1977/1982, Hawthorne 1993) in <a href="../doc/483-pulverizing-set-pruning-against-eliminative-induction.html">Doc 483</a>. The current primary reference for conjecture-set pruning content in the corpus is <a href="../doc/484-conjecture-set-pruning-in-dyadic-llm-practice.html">Doc 484</a>, which states the operation in Mitchell&#39;s canonical notation, attributes the methodology to its 400-year tradition, and narrows the corpus&#39;s contribution to the dyadic-LLM-practice domain application. The §3 content below is preserved for intellectual-historical continuity; readers should treat Doc 484 as the operative reference.</p>
+</blockquote>
+<p>Popper (1934, 1959) stated falsificationism as the requirement that science progresses by eliminating false conjectures. The set-pruning view is Popper stated as an operation rather than as a regulatory principle.</p>
+<p>Let Q denote the set of conjectures under consideration at iteration t. Let \(Q_f^{(t)} \subseteq Q^{(t)}\) denote conjectures rigorously falsified at iteration t. Let \(\Delta^{(t)}\) denote new conjectures generated at iteration t. The iteration is</p>
+<p>$Q^{(t+1)} = (Q^{(t)} \setminus Q_f^{(t)}) \cup \Delta^{(t)}$</p>
+<p>Bayesian model selection (Jaynes 2003; AIC, BIC, DIC literature) provides a more rigorous formal account, with hypothesis-space updates parameterized by posterior probability rather than by hard-threshold elimination. Lakatos&#39;s research-programme framework provides a more nuanced version, with pruning at the programme level rather than at the single-hypothesis level and with delay until a competing programme makes novel predictions.</p>
+<p>The set-pruning operation is canonical Popper at the structural level and canonical Bayesian belief-updating at the formal level. The corpus&#39;s contribution is the explicit notation, which is convenience for dyadic-practice description rather than a theoretical advance.</p>
+<h2>4. The novel sub-claim: prose-affect propagates as reward signal</h2>
+<p>The one substantively novel proposition the corpus contributes is testable. It is stated here with operational precision so it can be falsified.</p>
+<p><strong>Claim P (prose-affect-propagation).</strong> In sustained dyadic LLM practice, the affect-valence around hypothesis-death in the practitioner&#39;s prose, when that prose enters the model&#39;s context window across multiple iterations, biases the model&#39;s subsequent generation toward or away from rigorous falsification at a measurable rate. Specifically: a practitioner whose prose treats hypothesis-death as a regrettable event will, over time, produce a dyadic interaction in which the model resists falsification of practitioner-favored hypotheses. A practitioner whose prose treats hypothesis-death as an achievement will produce a dyadic interaction in which the model hunts for falsification.</p>
+<p><strong>The mechanism, partially established.</strong> That linguistic features in a sustained context window steer model behavior is established (Wallace et al. 2019, <em>Universal Adversarial Triggers</em>, EMNLP 2019; broader work on prompt sensitivity; alignment-data-quality work, Wang et al. 2024). What is novel in Claim P is the specific claim that <em>affect-valence around falsification specifically</em> is the operative feature.</p>
+<p><strong>Falsification protocol for Claim P.</strong> Two practitioners operating dyadic LLM practice on hypothesis-rich content, one writing with falsification-as-loss affect, the other writing with falsification-as-achievement affect, holding all other features of the practice constant (model, prompts, hypothesis content, session structure). After a sustained period (say, 100 dyadic exchanges), measure: (i) frequency at which the model proposes falsifications of practitioner-stated hypotheses unprompted; (ii) frequency at which the model defends practitioner-stated hypotheses against counterarguments unprompted; (iii) frequency at which the model retires its own prior outputs in light of new evidence. If (i) and (iii) are higher and (ii) is lower under the falsification-as-achievement affect, Claim P is supported. If the metrics are statistically indistinguishable across the two conditions, Claim P is falsified.</p>
+<p><strong>Warrant tier of Claim P.</strong> \(\pi\) pending empirical execution of the protocol. Promotion requires the cross-practitioner work named in Doc 450 §6, applied to Claim P specifically.</p>
+<p><strong>Why Claim P matters.</strong> If true, Claim P implies that the corpus&#39;s own writing is part of the corpus&#39;s reward signal. Documents that mourn hypothesis-death produce a corpus that resists hypothesis-death. Documents that celebrate hypothesis-death produce a corpus that hunts for it. The corpus&#39;s prose-level affect is operationally consequential, not merely stylistic. The directive of §1 of Doc 480, the affective re-framing toward treating hypothesis-death as achievement, is justified if and only if Claim P holds.</p>
+<h2>5. The dyadic-practitioner reward signals, with attribution</h2>
+<p>The six operational signals of Doc 480 §7 are restated here with explicit attribution. Each is the dyadic-practitioner translation of a canonical methodological principle.</p>
+<ul>
+<li><strong>Reward outputs that propose a falsification before they propose a defense.</strong> Source: Platt&#39;s strong inference (1964); Lakatos&#39;s negative-heuristic specification (1970).</li>
+<li><strong>Reward outputs that name the strongest version of the hypothesis under attack.</strong> Source: Lakatos&#39;s sophisticated falsificationism; Platt&#39;s &quot;consider the most plausible competing explanations.&quot;</li>
+<li><strong>Reward outputs that produce specific residue.</strong> Source: Platt&#39;s residue-specification; Doc 445&#39;s pulverization-and-residue method.</li>
+<li><strong>Reward outputs that engage with literature that would be expensive to retrieve and cheap to ignore.</strong> Source: Lakatos&#39;s research-programme novel-content requirement; Munafò et al. 2017&#39;s manifesto for reproducible science.</li>
+<li><strong>Reward outputs that identify the cross-practitioner-test that would discriminate.</strong> Source: Open Science / pre-registration discourse (Center for Open Science 2014; Munafò et al. 2017); Doc 450&#39;s cross-practitioner test.</li>
+<li><strong>Reward outputs that retire prior corpus claims when retirement is warranted.</strong> Source: Lakatos&#39;s degeneration criterion; Popper&#39;s reflexive falsificationism.</li>
+</ul>
+<p>The signals are the dyadic-practitioner operationalization. The substance is canonical. The corpus&#39;s contribution is the translation, which is operationally useful for any practitioner running a sustained dyadic interaction with a language model.</p>
+<h2>6. The synthesis observation</h2>
+<p>The cross-disciplinary observation that ties §1 through §5 together is the corpus&#39;s substantive contribution beyond the residual sub-claim of §4.</p>
+<p>Philosophy of science (Popper, Lakatos, Platt, Mayo, Quine) wrote without RLHF in view. AI alignment research (Christiano, Ouyang, Bai, Irving, Casper) wrote without explicitly invoking the philosophy-of-science tradition by name. The two literatures do not commonly cite each other. The synthesis observation is that they are operating on the same problem from different sides: philosophy of science specifies what rigorous falsification looks like as a methodological criterion; AI alignment specifies how to shape a learned reward target to produce specific behaviors. Pointing one literature&#39;s specifications at the other literature&#39;s mechanisms produces an integrated framework where rigorous falsification can be operationalized as a learned reward target in language models.</p>
+<p>The synthesis is the contribution. Whether the synthesis is genuinely first-in-the-literature is an open question; some AI-alignment philosophers including Russell (<em>Human Compatible</em>, 2019), Christian (<em>The Alignment Problem</em>, 2020), and Bostrom (<em>Superintelligence</em>, 2014) write across the divide, and a more thorough audit of their work is required before the synthesis claim stands as novel. The honest current statement: the synthesis is novel within the corpus&#39;s reading and represents the corpus&#39;s reading practice, not necessarily a first-in-literature observation.</p>
+<h2>7. The corpus-internal unified-mechanism reading</h2>
+<p>The corpus&#39;s own existing disciplines (Doc 415 retraction ledger; Doc 445 pulverization formalism; Doc 450 cross-practitioner test; Doc 463 Lakatosian programme framing; Doc 469 quantifier discipline; Doc 474 §8 cross-practitioner test; Doc 479 counterfactual analysis) are partial implementations of the synthesis above. Each implements a piece of the criteria of §1 within the corpus&#39;s specific dyadic practice. The unified-mechanism reading is the observation that the corpus has been operating the synthesis without naming it.</p>
+<p>This reading is corpus-internal. It cannot be subsumed under external literature because the corpus&#39;s specific documents are the subject. The reading has the framework-magnetism caveat of Doc 466 applied to it: a framework that finds itself operating its own preferred pattern in its own documents is at risk of recognizing its own signature rather than finding a real pattern. The mitigation is the cross-practitioner test (§4 protocol for Claim P; §5&#39;s signal-identification translation in independent practitioner contexts).</p>
+<h2>8. Falsification conditions for this reformalization</h2>
+<p>Two falsification conditions for the surviving content.</p>
+<p><strong>For Claim P (§4).</strong> The protocol specified in §4. If statistically indistinguishable behavior is produced across the two affect conditions, Claim P is retired.</p>
+<p><strong>For the synthesis observation (§6).</strong> If the cross-disciplinary synthesis has already been articulated in the AI-alignment-meets-philosophy literature, the corpus&#39;s contribution to §6 is retired in favor of explicit citation. Specific authors to check before standing the synthesis claim: Russell, Christian, Bostrom, Ord (<em>The Precipice</em>, 2020), Yudkowsky (technical writings on alignment), Hubinger (deceptive-alignment literature). A bibliographic audit returns either an existing synthesis (in which case the corpus&#39;s contribution is retired and replaced with citation) or no existing synthesis (in which case the corpus&#39;s contribution to §6 stands at \(\pi\)-tier).</p>
+<p>The set-pruning iteration applied to this document predicts that one or both of these falsifications is likely. If so, the corpus credits the falsifying work and updates the canonical reformalization accordingly.</p>
+<h2>9. Deprecation of Doc 480</h2>
+<p>Doc 480 is hereby deprecated. The deprecation is recorded with the following notice, to be added at the head of Doc 480.</p>
+<blockquote>
+<p><strong>Deprecated.</strong> This document&#39;s substantive theoretical content was substantially subsumed under prior art per the pulverization in <a href="../doc/481-pulverizing-sycophancy-inversion.html">Doc 481</a>. The current primary articulation, with explicit attribution and the surviving residue named as the actual contribution, is <a href="../doc/482-sycophancy-inversion-reformalized.html">Doc 482</a>. Read Doc 482 first; this document is preserved for intellectual-historical continuity.</p>
+</blockquote>
+<p>The deprecation is itself an instance of the criteria of §1 in operation. The corpus has retired one of its own claims when retirement was warranted, and credited the falsifying analysis. The set-pruning iteration grew \(Q_f\) by one substantial entry. By the directive carried forward from Doc 480 §1, this is achievement, not loss.</p>
+<h2>10. Position</h2>
+<p>The substantive content of the sycophancy-inversion synthesis is borrowed from canonical sources and is attributed explicitly throughout this document. The corpus&#39;s actual contribution is fourfold: the synthesis observation (§6), the testable empirical sub-claim about prose-affect propagation (§4), the dyadic-practitioner operational translation (§5), and the corpus-internal unified-mechanism reading (§7). Of these, only §4 is a substantively novel theoretical claim, and it is at \(\pi\)-tier pending empirical execution of the falsification protocol named in §4.</p>
+<p>This document is a synthesis-and-pedagogy artifact. It does not claim theoretical novelty in §§1-3. It claims practical utility in §5 and operational consequence in §4. It supersedes Doc 480 as the canonical artifact for sycophancy-inversion content in the corpus.</p>
+<h2>11. References</h2>
+<p>External literature:</p>
+<ul>
+<li>Popper, K. (1934, 1959). <em>The Logic of Scientific Discovery</em>. Hutchinson.</li>
+<li>Popper, K. (1963). <em>Conjectures and Refutations</em>. Routledge.</li>
+<li>Quine, W. V. O. (1951). Two dogmas of empiricism. <em>Philosophical Review</em>, 60(1), 20-43.</li>
+<li>Platt, J. R. (1964). Strong inference. <em>Science</em>, 146(3642), 347-353.</li>
+<li>Lakatos, I. (1970). Falsification and the methodology of scientific research programmes. In <em>Criticism and the Growth of Knowledge</em>.</li>
+<li>Mayo, D. (1996). <em>Error and the Growth of Experimental Knowledge</em>. University of Chicago Press.</li>
+<li>Mayo, D. (2018). <em>Statistical Inference as Severe Testing</em>. Cambridge.</li>
+<li>Christiano, P., et al. (2017). Deep reinforcement learning from human preferences. <em>NeurIPS 2017</em>.</li>
+<li>Irving, G., Christiano, P., &amp; Amodei, D. (2018). AI safety via debate. arXiv:1805.00899.</li>
+<li>Munafò, M., et al. (2017). A manifesto for reproducible science. <em>Nature Human Behaviour</em>, 1, 0021.</li>
+<li>Wallace, E., et al. (2019). Universal adversarial triggers for attacking and analyzing NLP. <em>EMNLP 2019</em>.</li>
+<li>Ouyang, L., et al. (2022). Training language models to follow instructions with human feedback. <em>NeurIPS 2022</em>.</li>
+<li>Bai, Y., et al. (2022). Constitutional AI: Harmlessness from AI feedback. arXiv:2212.08073.</li>
+<li>Sharma, M., et al. (2023). <em>Towards Understanding Sycophancy in Language Models</em>. Anthropic.</li>
+<li>Casper, S., et al. (2023). Open problems and fundamental limitations of reinforcement learning from human feedback. arXiv:2307.15217.</li>
+<li>Russell, S. (2019). <em>Human Compatible</em>. Viking.</li>
+<li>Christian, B. (2020). <em>The Alignment Problem</em>. Norton.</li>
+</ul>
+<p>Corpus documents:</p>
+<ul>
+<li>Doc 415: <em>The Retraction Ledger</em>.</li>
+<li>Doc 445: <em>Pulverization Formalism</em>.</li>
+<li>Doc 450: <em>Pulverization as Interventional Practice</em>.</li>
+<li>Doc 463: <em>Constraint Thesis as a Lakatosian Research Programme</em>.</li>
+<li>Doc 466: <em>Doc 446 as a SIPE Instance</em> (framework-magnetism caveat).</li>
+<li>Doc 469: <em>Universal-Quantifier Overclaim</em>.</li>
+<li>Doc 474: <em>Systems-Induced Property Emergence</em>.</li>
+<li>Doc 479: <em>Exploring the Nested Bayesian Manifold Extension</em>.</li>
+<li>Doc 480: <em>Sycophancy Inversion: A Theory of Rigorous Falsification as Reward</em> (deprecated, superseded by this document).</li>
+<li>Doc 481: <em>Pulverizing the Sycophancy Inversion</em> (the pulverization that motivated this reformalization).</li>
+</ul>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Formalize upon these grounds. Deprecate the previous formalization. Append the prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

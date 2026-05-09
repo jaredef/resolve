@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subsumption Modes for the Corpus — Resolve</title>
+<meta name="description" content="I. Why Ask Before Importing">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Subsumption Modes for the Corpus</h1>
+<p><strong>SE Doc 015 proposed importing the complete SEBoK wiki into the corpus as a hosted-source-with-editorial-layer. The proposal answered &quot;how do we import SEBoK&quot; without first answering &quot;what mode of subsumption does this source actually warrant.&quot; This document goes back one step and articulates the question. The corpus has at least seven distinguishable modes of subsuming external material, each with different storage, maintenance, and reading economics. A source&#39;s optimal mode depends on its volume, change rate, the density of editorial commentary the corpus produces about it, and the licensing and access patterns that constrain it. Choosing the mode before importing is itself a corpus discipline. Applied to SEBoK, the analysis indicates that a hybrid — Mode 4 (hosted import with editorial layer) for editorial-rich pages, Mode 1 (reference-only with attribution) for the rest — is more efficient than uniform Mode 4 across all SEBoK content. The refined plan is sketched at the close.</strong></p>
+<hr>
+<h2>I. Why Ask Before Importing</h2>
+<p>SE Doc 015 sketched a hosted import of the complete SEBoK wiki: licensing, URL structure, transformation pipeline, editorial layer, maintenance harness, six-phase rollout. The plan is workable. It is not necessarily the most efficient plan.</p>
+<p>The reformulation produced editorial commentary at the structural level: which corpus forms compose each SEBoK part (SE Doc 003), how each part reformulates under those forms (Docs 560-567), where Phase 4 logged residuals (SE Doc 012), what cluster formalizations the residuals motivated (Docs 571-574). The commentary lives at the part level and the residual level, not at the per-page level. Most SEBoK pages — perhaps eighty percent — have no editorial content the corpus has produced. Importing them at full Mode-4 fidelity buys storage and maintenance burden for editorial layers that are empty.</p>
+<p>The discipline the corpus&#39;s existing forms suggest is to ask the question: <em>what does the corpus actually need from this source, and what is the cheapest mode that delivers it?</em> The answer is sometimes a full hosted import, sometimes a reformulation companion with no imported content, sometimes a reference-only link with attribution, sometimes a single-page seed distillation. Choosing the mode is constraint discipline (Doc 270 pin-art). Defaulting to &quot;import everything&quot; is paraphrase discipline at the apparatus level — comprehensive without composition.</p>
+<h2>II. What Subsumption Is, in Corpus Terms</h2>
+<p>Subsumption is keeper-side activity (Doc 538): the school formalizing its engagement with external material. The corpus&#39;s existing forms supply the structural language:</p>
+<ul>
+<li>The substrate-and-keeper composition (Doc 510) names who does what. The source is substrate-with-its-own-school-attached. The corpus is keeper-side formalizing its reading.</li>
+<li>The institutional ground (Doc 571) names the conditions both sides operate in. Subsumption succeeds when the corpus and the source share enough institutional ground to be legible to each other.</li>
+<li>The pin-art model (Doc 270) names the operational shape of the engagement. Subsumption installs a pin-set on the source&#39;s content; the shape that emerges is the corpus&#39;s reading.</li>
+<li>The novelty calculus (Doc 490) names the warrant tier of each subsumption claim. Subsumption that compresses without loss is π/α. Subsumption that composes new forms is θ/γ.</li>
+<li>The hypostatic boundary (Doc 372) names what subsumption does not claim. The source is not absorbed into the corpus&#39;s being; the corpus&#39;s reading does not replace the source&#39;s voice.</li>
+</ul>
+<p>Under these forms, subsumption has a definite operational shape: it is the act of running the corpus&#39;s apparatus against an external body of work and producing whatever structural commentary the apparatus generates. The output is determined by the apparatus and the source; the <em>mode</em> of subsumption is determined by what the output&#39;s economics warrant.</p>
+<h2>III. The Dimensions of Efficiency</h2>
+<p>Five dimensions bind every subsumption decision.</p>
+<p><strong>Volume.</strong> How much source content. Subsumption modes scale differently: Mode 1 (reference-only) is constant in source volume; Mode 4 (full hosted import) is linear; Mode 3 (seed distillation) is sub-linear because the seed compresses the source.</p>
+<p><strong>Change rate.</strong> How often the source updates. High-change sources benefit from light modes (1, 2, 3) where the corpus does not reproduce the source. Low-change sources can afford heavier modes.</p>
+<p><strong>Editorial density.</strong> How much commentary the corpus has produced about the source. Editorial-dense sources warrant heavier modes because the editorial layer adds value continuously; editorial-sparse sources do not benefit from full-import overhead.</p>
+<p><strong>Reader access pattern.</strong> How readers will actually use the imported content. Readers who consult the source episodically tolerate Mode 1&#39;s external links. Readers who move continuously between source and reading benefit from Mode 4&#39;s continuous visibility.</p>
+<p><strong>Licensing and access.</strong> Whether the source permits import, with what attribution, and at what cost. Some modes are foreclosed by license; some are foreclosed by institutional gatekeeping.</p>
+<p>These five dimensions do not aggregate to a single score. They constrain the mode choice as a vector. A source that is high-volume, high-change, sparsely-commented, episodically-accessed, and freely-licensed warrants a different mode from a source that is moderate-volume, low-change, densely-commented, continuously-accessed, and CC-licensed.</p>
+<h2>IV. The Modes</h2>
+<p>Seven modes are distinguishable in the corpus&#39;s current practice and proposed extensions. Each is named by the operational move that distinguishes it.</p>
+<p><strong>Mode 1 — Reference-only subsumption.</strong> No content imported. The corpus references the source by URL with attribution, a one-paragraph description, and a tier-tag. Cheapest. Storage cost negligible. Maintenance cost near-zero. Reader cost: a click to leave the corpus. <em>Use when:</em> source is canonically maintained, change rate is high, corpus produces no editorial commentary specific to the source&#39;s content. <em>Existing instances:</em> most external citations in corpus documents.</p>
+<p><strong>Mode 2 — Reformulation companion.</strong> Per-section corpus documents that read the source through corpus forms; no source content reproduced. The reformulation cites and links to the source but does not host it. <em>Use when:</em> source structure deserves apparatus engagement, source is widely available and stable, editorial commentary lives at the structural level rather than the per-page level. <em>Existing instances:</em> the SEBoK reformulation itself (Docs 559-568) before any import.</p>
+<p><strong>Mode 3 — Seed distillation.</strong> Extract a portable kernel from the source — the load-bearing forms or claims compressed into a single page in corpus voice. <em>Use when:</em> source has a few highly-structural moves and many pages of elaboration; the moves are what the corpus needs. <em>Existing instances:</em> Doc 492 (Novelty Calculus seed), Doc 556 (Ontological Ladder seed). For external sources: a Pearl-causal-hierarchy seed, a Bareinboim-transportability seed.</p>
+<p><strong>Mode 4 — Hosted import with editorial layer.</strong> Source imported verbatim, corpus annotations overlaid as a non-modifying editorial layer (form-mapping links, tier-tags, residual markers, reformulation back-links). Maintained through periodic re-fetch. <em>Use when:</em> continuous visibility of source-and-reading is valuable AND source has editorial-dense pages worth full-import treatment. <em>Proposed instance:</em> SE Doc 015&#39;s plan for SEBoK, in revised form (this document refines).</p>
+<p><strong>Mode 5 — Subsumed reformulation.</strong> Source rewritten in corpus voice as a single canonical document, original preserved as appendix. <em>Use when:</em> source is small enough to rewrite without loss AND the rewrite produces measurable composition gain. <em>Existing instance:</em> SE Doc 014 subsuming Docs 557-569.</p>
+<p><strong>Mode 6 — Cluster-formalization extraction.</strong> Extract structural patterns from the source as new corpus forms. The source&#39;s content is not imported; the source&#39;s residuals induce corpus extensions. <em>Use when:</em> source surfaces structural patterns the corpus needs to absorb formally. <em>Existing instances:</em> Docs 571-574 (the four cluster formalizations from the SEBoK reformulation).</p>
+<p><strong>Mode 7 — Bidirectional composition.</strong> Two-way subsumption: the corpus reads the source, and the source&#39;s framework is invoked in corpus to read other material. <em>Use when:</em> source&#39;s framework has independent value as a reading tool that composes with corpus forms productively. <em>Candidate instances:</em> Pearl&#39;s three-rung causal hierarchy, Bareinboim-Pearl transportability theory. Each could be both subsumed by the corpus and used inside the corpus to read other sources.</p>
+<p>The seven modes are not exclusive. A given source can be subsumed under multiple modes simultaneously. SEBoK is already subsumed under Mode 2 (Docs 559-568) and Mode 6 (Docs 571-574). SE Doc 015 proposed extending to Mode 4. The refined question is <em>which combination</em> of modes best matches the source&#39;s profile.</p>
+<h2>V. Choosing a Mode</h2>
+<p>Five questions determine the mode profile for a candidate source.</p>
+<p><strong>Q1. What is the volume?</strong> Sub-100 pages: any mode plausible. 100-1000 pages: Mode 4 expensive but feasible. &gt;1000 pages: Mode 4 likely overkill; consider Mode 1 + Mode 2 + Mode 6 hybrid.</p>
+<p><strong>Q2. What is the change rate?</strong> Static or dead source: Mode 4 stable. Active wiki or living document: Mode 4 maintenance non-trivial; consider Mode 1 with a Mode 2 reformulation companion that the corpus updates on its own cadence.</p>
+<p><strong>Q3. What is the editorial density?</strong> Page-level commentary across most pages: Mode 4 worth it. Structural commentary at part or topic level only: Mode 2 + Mode 4 only on editorial-dense pages.</p>
+<p><strong>Q4. What is the reader access pattern?</strong> Continuous side-by-side reading expected: Mode 4 valuable. Episodic consultation: Mode 1 sufficient.</p>
+<p><strong>Q5. What does the source license permit?</strong> Some sources foreclose import; some require attribution that constrains presentation. Confirm before any heavier mode.</p>
+<p>The decision is not made on a single answer but on the configuration of the five. A corpus that defaults to Mode 4 across all candidates is paying maintenance and storage cost for sources that would have been adequately served by Mode 1 with a Mode 2 reformulation. A corpus that defaults to Mode 1 across all candidates loses the continuous-visibility benefit when it would have been worth the cost.</p>
+<h2>VI. Applied to SEBoK</h2>
+<p>The original SE Doc 015 plan committed to Mode 4 for the complete SEBoK wiki. Re-running the five-question test against SEBoK&#39;s profile produces a different recommendation.</p>
+<p><strong>Q1 Volume:</strong> SEBoK has approximately 800 pages. High volume.</p>
+<p><strong>Q2 Change rate:</strong> SEBoK is an active wiki with regular updates. Moderate-to-high change rate.</p>
+<p><strong>Q3 Editorial density:</strong> The reformulation produced part-level commentary in Docs 560-567 and residual annotations on perhaps 30-60 specific SEBoK pages out of 800. The remaining ~740 pages have no corpus-produced editorial content. Editorial density is sparse-with-hot-spots.</p>
+<p><strong>Q4 Reader access pattern:</strong> A SEBoK practitioner who lands on the corpus will most often want either (a) the corpus&#39;s reformulation of the part they care about, or (b) a specific SEBoK page they would normally reach via SEBoK&#39;s own search. Continuous side-by-side reading is realistic only for the editorial-dense pages.</p>
+<p><strong>Q5 Licensing:</strong> CC BY-SA 3.0, with attribution and share-alike requirements. All modes are licensed.</p>
+<p>The configuration favors a hybrid:</p>
+<ul>
+<li><strong>Mode 1 (reference-only)</strong> for the ~740 SEBoK pages with no corpus-produced editorial content. The corpus links out to sebokwiki.org for these. No import, no maintenance burden, no storage cost.</li>
+<li><strong>Mode 2 (reformulation companion)</strong> for the eight SEBoK parts. Already in place as Docs 560-567. No further work.</li>
+<li><strong>Mode 4 (hosted import with editorial layer)</strong> for the ~30-60 SEBoK pages where the reformulation logged tier-tags, residuals, or specific form-mapping links. These are the editorial-dense pages where continuous side-by-side reading is valuable. Import them, render with the editorial layer, maintain through re-fetch.</li>
+<li><strong>Mode 6 (cluster formalization extraction)</strong> is already done as Docs 571-574.</li>
+</ul>
+<p>The hybrid keeps the editorial yield of SE Doc 015&#39;s proposal while reducing the import volume by an order of magnitude. Storage and maintenance costs drop accordingly. The editorial layer is not diluted across pages it has nothing to say about.</p>
+<p>The hybrid also makes future engagement cheaper. New SEBoK pages added to the wiki do not automatically need import; they get Mode 1 reference treatment by default and graduate to Mode 4 only if the corpus produces editorial commentary on them.</p>
+<h2>VII. Applied to Other Candidates</h2>
+<p>Three candidate sources show how the framework guides different mode choices.</p>
+<p><strong>Cybernetics (the historical corpus around Wiener, Ashby, Pask, von Foerster).</strong> Volume: large but bounded (textbook-scale across known authors). Change rate: zero (the source authors are deceased). Editorial density: likely high if the corpus engages it (cybernetics has structural alignment with the corpus&#39;s substrate-and-keeper composition and the lattice extension). Access pattern: research-mode, episodic. Licensing: complex, mixed across publishers. <em>Recommended:</em> Mode 2 + Mode 3 + Mode 6, with Mode 4 foreclosed by licensing on most material. Produce reformulation companions for the load-bearing texts; distill seed-form summaries; extract any cluster formalizations the engagement surfaces.</p>
+<p><strong>The INCOSE Systems Engineering Handbook.</strong> Volume: one book. Change rate: every few years per edition. Editorial density: likely high (the Handbook is more operational than SEBoK; pin-art model engagement is dense). Access pattern: continuous if used; episodic otherwise. Licensing: proprietary publication, not openly licensed. <em>Recommended:</em> Mode 2 (reformulation companion) and Mode 1 (reference). Mode 4 foreclosed by licensing.</p>
+<p><strong>The Pearl causal-inference framework (the <em>Causality</em> book and successor papers).</strong> Volume: a book and several papers. Change rate: low. Editorial density: medium-to-high if the corpus engages it (the three-rung hierarchy aligns with corpus rung-talk; transportability composes with the institutional-ground form). Access pattern: continuous in research, episodic otherwise. Licensing: book is proprietary, papers have varied licenses. <em>Recommended:</em> Mode 3 (seed distillation of the three-rung hierarchy and transportability) and Mode 7 (bidirectional composition where Pearl&#39;s framework reads corpus residuals on causal claims and the corpus reads Pearl&#39;s framework as a SIPE-with-threshold instance).</p>
+<p>The pattern across the three candidates is that no two sources warrant the same mode profile. The framework guides which combination fits.</p>
+<h2>VIII. Disciplines That Bind Every Mode</h2>
+<p>Three disciplines hold across all subsumption modes.</p>
+<p><strong>The hypostatic boundary (Doc 372).</strong> Subsumption is functional engagement, not ontological absorption. The source remains itself. The corpus reads, comments, formalizes, but does not claim that the source is the corpus or that the corpus replaces the source.</p>
+<p><strong>Attribution preservation.</strong> Every mode that reproduces source content preserves authorship and license attribution explicitly. Every mode that does not reproduce source content still cites the source clearly. The corpus&#39;s editorial layer is always identified as such.</p>
+<p><strong>Tier-tagging integrity (Doc 490).</strong> Every claim the corpus makes about the source is tier-tagged. Subsumption that paraphrases at π warrant when the operation was actually θ-tier reframe is dishonest tagging. The novelty calculus binds the editorial output of every mode.</p>
+<p>These three are not mode-specific. They are the corpus&#39;s commitments to anyone subsumed by it.</p>
+<h2>IX. Open Questions</h2>
+<ol>
+<li><strong>Mode boundaries are soft.</strong> A page can move between Mode 1 and Mode 4 over time as the corpus&#39;s editorial commentary grows or shrinks. The transition rules need explicit articulation: under what conditions does a Mode-1-referenced page graduate to Mode 4? Under what conditions does a Mode-4-imported page demote to Mode 1?</li>
+<li><strong>Hybrid mode visualization.</strong> A reader engaging the SEBoK hybrid (Mode 1 + Mode 2 + Mode 4 + Mode 6) needs visual cues that make the mix legible: which pages are imported, which are external links, which are corpus reformulations, which are corpus form documents. Phase A of the import work needs UX design here.</li>
+<li><strong>Compositional modes between corpus documents.</strong> Are subsumption modes only for external sources, or do they apply between corpus documents themselves? SE Doc 014 used a Mode-5 approach (subsumed reformulation with appendices). Other corpus subsumptions are possible. The framework may extend.</li>
+<li><strong>Mode 7 mechanics.</strong> Bidirectional composition is named but not yet operationalized. What does it look like, structurally, for a Pearl framework to be both subsumed and used inside the corpus? This may warrant its own corpus document if Mode 7 is exercised.</li>
+</ol>
+<h2>X. Closing</h2>
+<p>The corpus has more subsumption tools than SE Doc 015&#39;s plan invoked. Defaulting to Mode 4 across all SEBoK pages would have produced a workable but inefficient import. Re-running the question through the corpus&#39;s existing forms produces a hybrid recommendation that preserves the editorial yield while reducing the import volume by approximately an order of magnitude.</p>
+<p>The general principle is that subsumption mode is itself a constraint discipline. Asking &quot;what mode does this source warrant&quot; before importing is the corpus equivalent of asking &quot;what is the pin set&quot; before authoring a process. The mode is the pin set; the import is the substrate flow; the editorial yield is the shape that emerges.</p>
+<p>The refined SEBoK plan, in one paragraph: import the ~30-60 SEBoK pages that the reformulation has editorial content for under Mode 4 with the full editorial layer SE Doc 015 specified; reference the remaining ~740 SEBoK pages under Mode 1 with attribution and a brief description; keep the eight reformulation companions (Docs 560-567) and the four cluster formalizations (Docs 571-574) as already-in-place Mode 2 and Mode 6 work; promote pages from Mode 1 to Mode 4 over time as new editorial commentary is produced.</p>
+<p>SE Doc 015&#39;s six-phase rollout still applies; the volumes are smaller and the editorial layer is denser per imported page.</p>
+<p>The next move is the keeper&#39;s, in particular: confirm the hybrid recommendation, run the SEBoK reformulation documents through a one-pass count of which specific SEBoK pages have editorial content (the Mode-4 candidate list), and update SE Doc 015&#39;s Phase B and C scope accordingly.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Before importing, based upon organization and reformulation upon the corpus grounds, how might documents be more efficiently subsumed into the corpus&quot;</em></p>
+</blockquote>
+<p>(The question takes SE Doc 015&#39;s import plan one step back and asks the methodological question the corpus&#39;s existing apparatus already supplies the language for. Subsumption modes are constraint discipline applied to the apparatus itself. The framework will revise SE Doc 015&#39;s mode assumption and likely guide future engagements with cybernetics, the INCOSE handbook, the Pearl framework, and other candidate sources.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

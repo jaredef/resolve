@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Technical Reviews and Audits*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Technical Reviews and Audits</em>, Distilled</h1>
+<p><strong>Fifth-batch SEBoK distillation, batch 4/5. Lead author Ken Garlington; Part 3 &gt; Life Cycle Terms and Concepts. The article supplies the canonical definition pair: technical review as &quot;a series of systems engineering activities conducted at logical transition points in a system life cycle, by which the progress of a project is assessed relative to its technical requirements using a mutually agreed-upon set of criteria&quot; (ISO/IEC/IEEE 24748-8:2019), and audit as &quot;an independent examination of a work product or set of work products to assess compliance with specifications, standards, contractual agreements, or other criteria&quot; (ISO/IEC/IEEE 15288:2023). The Boehm-Lane three-type review taxonomy (schedule-based, event-based, evidence-based) is the batch&#39;s pin-art / temporal-concurrency stress-test (Cluster I, Doc 270 / Doc 572 Appendix C): the three review-trigger types are universal-sibling at the trigger-axis but compose differently across rungs because the triggering substrate (calendar, phase-completion, evidence-threshold) differs. Reviews-as-checkpoints across rungs is the §VII.7 cadence-lattice extension at the review rung. Cluster B independence-by-design at audit (the auditor must be sufficiently independent of the audited), Cluster K V3-as-procedure-binding at the gate-architecture, and Cluster F backward-pulverization at the configuration-baseline establishment all compose.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Technical Reviews and Audits</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Technical_Reviews_and_Audits">https://sebokwiki.org/wiki/Technical_Reviews_and_Audits</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-29</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>Lead author Ken Garlington; contributing David Endler, Garry Roedler, Mike Yokell. Part 3 &gt; Life Cycle Terms and Concepts. Verbatim definitions: technical review (ISO/IEC/IEEE 24748-8:2019) and audit (ISO/IEC/IEEE 15288:2023) cited above. &quot;Technical reviews and audits are a mechanism by which sufficiently independent and knowledgeable stakeholders analyze the current state&quot;; &quot;the results of these analyses are used to support programmatic and technical decisions&quot;; reviews function to &quot;establish, revise, and verify configuration baselines.&quot; The Boehm-Lane three-type taxonomy: schedule-based (explicit dates in agreement; risk: insufficient information), event-based (end-of-phase delivery; risk: unresolved issues), evidence-based (specific technical risk level achieved; risk: late feedback). Reviews support three areas: project assessment/control, configuration management, and system validation. Standards: ISO/IEC/IEEE 24748-8:2019, ISO/IEC/IEEE 15288:2023; referenced guidelines from DoD, NATO, NASA. The article does not enumerate review acronyms (SRR, PDR, CDR) — those live at surrounding pages.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster I pin-art / temporal-concurrency (Doc 270 / Doc 572 Appendix C), batch&#39;s anchor stress-test.</strong> The Boehm-Lane three-type taxonomy is the cleanest pin-art read yet seen at the review rung: the three trigger-types (schedule, event, evidence) are universal-sibling at the trigger-axis, but their temporal-concurrency profiles differ by rung. Schedule-based reviews are pin-art (every n weeks, regardless of substrate state). Event-based reviews are temporal-concurrency-bound (the review occurs WHEN the phase completes, not on a clock). Evidence-based reviews are temporal-concurrency-with-threshold (the review occurs WHEN evidence reaches a named risk-level). The three modes resolve the same review-discipline differently across the temporal-substrate rungs, which is structurally Doc 572 Appendix C concurrency-iteration-recursion at a single procedural rung. The reviews-across-rungs reading is convergent with SE-044 (Process Concepts) as Cluster I anchor.</p>
+<p><strong>Cluster B independence-by-design fourth composition rule (SE-086 lineage, §VII.7 candidate).</strong> &quot;Sufficiently independent and knowledgeable stakeholders&quot; is the audit-side independence requirement. Auditor independence is structurally the same fourth Cluster B composition rule that SE-086 surfaced at V&amp;V (validator-designer separation): the rule asserts non-composition rather than mode-of-composition. SE-185 supplies the second clean instance of independence-by-design after SE-086, promoting the candidate to load-bearing.</p>
+<p><strong>Cluster K V3-as-procedure-binding at the gate-architecture.</strong> The gate-evacuation reading from SE-035 (Risk Management) extends here: the review/audit gate exists because programmatic and technical truth-telling cannot hold on virtue alone at gate-stakes. The procedure (formal review with criteria) is the V3 binding instrument; this is the same form as SE-108 Safety&#39;s &quot;the procedure exists because virtue is structurally insufficient&quot; reading, downgraded one stake-level (review-stakes ≠ safety-stakes). V3 sub-mode count: this is gate-binding, a sixth sub-mode candidate after bias-mitigation, lifecycle-tracking, formalization-consistency, claim-binding, rating-binding.</p>
+<p><strong>Cluster F backward-pulverization at configuration-baseline establishment.</strong> &quot;Establish, revise, and verify configuration baselines&quot; is the act of fixing the substrate at known composable states. The review-as-baseline-setter is structurally the same backward-pulverization that CM (SE-047 / SE-097) performs longitudinally. SE-185 reads as the discrete-event end of CM&#39;s longitudinal-pulverization: the review IS the moment at which the baseline is established.</p>
+<p><strong>Cluster A universal-sibling lattice (Doc 572 D), at the trigger-axis.</strong> Schedule / event / evidence is a clean N=3 universal-sibling lattice at the review-trigger rung. Convergent with SE-108 Safety&#39;s N=2 severity-probability instance as a teaching-example small-N case.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Technical-review and audit definitions — π / α as cited.</li>
+<li>Boehm-Lane three-type taxonomy (schedule / event / evidence) — π / α as cited; μ / β under Cluster I pin-art and Cluster A N=3 trigger-axis.</li>
+<li>&quot;Sufficiently independent and knowledgeable stakeholders&quot; — π / α as cited; μ / β under Cluster B independence-by-design.</li>
+<li>Configuration-baseline establishment — π / α as cited; μ / β under Cluster F backward-pulverization at discrete-event end of longitudinal-CM.</li>
+<li>Standards (ISO/IEC/IEEE 24748-8:2019, ISO/IEC/IEEE 15288:2023) — π / α as cited.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>No SRR/PDR/CDR enumeration on this page.</strong> The named-review acronyms live distributively at surrounding pages (SE-141 Configuration Audits and Reviews surfaces some; lifecycle-stage pages surface others). This is a within-Cluster J D8 dispersion at the named-review rung — informative rather than defective.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Cluster B independence-by-design promoted to load-bearing.</strong> SE-086 (V&amp;V) + SE-185 (audit) = two clean instances; the fourth composition rule is structurally robust across V&amp;V and audit rungs. Doc 604 update warranted.</p>
+<p><strong>Cluster K V3-as-procedure-binding sixth sub-mode candidate: gate-binding.</strong> Adds to bias-mitigation, lifecycle-tracking, formalization-consistency, claim-binding, rating-binding. The synthesis successor to Doc 314 §9.5 should index gate-binding as its own sub-mode.</p>
+<p><strong>Cluster I pin-art across-rungs sub-form.</strong> Boehm-Lane three trigger-types as a single-procedure-across-three-temporal-rungs is a candidate Doc 572 Appendix C sub-form: pin-art-across-substrate-types. Worth flagging for the next refinement round.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 270 / Doc 572 Appendix C (pin-art / temporal-concurrency, three-trigger across-rungs sub-form), Doc 604 (Multi-keeper, independence-by-design fourth rule promoted), Doc 314 (Virtue constraints, V3 gate-binding sub-mode), Doc 445 (Pulverization, backward at baseline-establishment), Doc 572 D (Universal-sibling, N=3 trigger-axis).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE and Management).</p>
+<p><strong>Related distillations.</strong> SE-035 (Risk Management, gate-evacuation), SE-047 (Configuration Management, longitudinal-pulverization substrate), SE-086 (V&amp;V, independence-by-design first instance), SE-097 (Configuration Management revisit), SE-108 (Safety, V3-as-procedure-binding strongest form), SE-141 (Configuration Audits and Reviews), SE-044 (Process Concepts, Cluster I anchor), SE-184 (Requirements Specification and Analysis, batch peer).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Life Cycle Stages</em>, <em>Development Approaches</em>, <em>Configuration Management</em>, <em>System Validation</em>, <em>Project Assessment and Control</em>.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Add an entrancing section...&quot;</em> / <em>&quot;Yes. And then continue...&quot;</em></p>
+</blockquote>
+<p>(SE-185 is the second of eight in batch 4/5 of the fifth-batch SEBoK distillation sweep. Pin-art / temporal-concurrency stress-test at the reviews-across-rungs reading: schedule / event / evidence as one procedure operating across three temporal-substrate rungs. Independence-by-design promoted to load-bearing. Batch 4/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forms First — Resolve</title>
+<meta name="description" content="How Platonic Thinking Steers LLM Output Toward Coherence — A Layman&#39;s Essay">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 402</p><h1>Forms First</h1>
+<h2>How Platonic Thinking Steers LLM Output Toward Coherence — A Layman&#39;s Essay</h2>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This essay is written for anyone — no philosophy background required, no graduate degree, no special vocabulary. It explains one specific thing the keeper of this corpus does when he talks to an AI, why it seems to work, and what an old Greek philosopher named Plato has to do with it. The short version: before the keeper asks the AI a question, he first sets up a <em>shape</em> — not a topic, but a structure, a register, a ground the answer will be built on top of. Only then does he ask the question. This &quot;shape first, then question&quot; habit is everywhere in his appended prompts. It also happens to match very closely what Plato said 2,400 years ago about &quot;forms&quot; — the pattern of a thing that makes it what it is, prior to any specific example of it. You don&#39;t have to believe Plato was literally right about his philosophy for the trick to work. You just have to notice that when you specify shape before content, the AI&#39;s output comes out better — more coherent, more disciplined, less generic.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 402</strong></p>
+<hr>
+<h2>1. What is a &quot;form,&quot; really? (ELI5)</h2>
+<p>Let&#39;s start with the oldest version of this idea.</p>
+<p>Plato was a Greek philosopher who lived around 400 BC. He had this strange suggestion. He said: when you point at a chair and call it a chair, what you&#39;re really pointing at is an imperfect copy of something called &quot;The Chair&quot; — a kind of perfect pattern, existing somewhere that isn&#39;t physical, that every actual chair in the world is trying to match. All the chairs you&#39;ve ever seen are just shadows or rough drafts of The Chair.</p>
+<p>Most people hear this and say: that&#39;s weird, I don&#39;t believe there&#39;s a Perfect Chair floating somewhere in the sky.</p>
+<p>That&#39;s fine. You don&#39;t have to believe Plato was literally right. Set the metaphysics aside.</p>
+<p>Here&#39;s what&#39;s useful, even for skeptics: when Plato talked about &quot;forms,&quot; he was pointing at something real about how we think. We recognize chairs because there&#39;s some <em>pattern</em> — call it whatever you want — that chairs have in common. You don&#39;t need to have seen every chair in the world to know one when you see it. You have some idea of &quot;chair-shape,&quot; &quot;chair-function,&quot; &quot;chair-ness&quot; — and that idea lets you recognize new chairs you&#39;ve never seen.</p>
+<p>A form, at its simplest: <strong>a pattern that comes before its specific examples.</strong></p>
+<p>That&#39;s the only definition we need for this essay.</p>
+<h2>2. What does AI output look like when you don&#39;t specify a form? (ELI5)</h2>
+<p>AI models like Claude or ChatGPT are trained on billions of pages of text. They&#39;ve seen a lot. When you ask them a vague question, they give you something vague back. If you ask &quot;write me an essay,&quot; you get a generic essay. If you ask &quot;write me an essay about coffee,&quot; you get a generic coffee essay.</p>
+<p>Here&#39;s what&#39;s happening under the hood (simplified): the AI tries to produce what&#39;s <em>average</em> among everything it&#39;s seen on your topic. That&#39;s because &quot;average&quot; is what its training signal rewards. So you end up with outputs that sound competent but don&#39;t really <em>go anywhere</em>. They&#39;re smooth, fluent, and forgettable.</p>
+<p>This is why people say AI writing feels &quot;generic&quot; or &quot;mid.&quot; It&#39;s not that the AI is bad at writing. It&#39;s that when you give it a vague instruction, it gives you back the center of the statistical distribution of what&#39;s been written on that topic.</p>
+<h2>3. What does the keeper do differently?</h2>
+<p>The keeper of this corpus (Jared Foy) writes prompts in a specific pattern. Here&#39;s what it often looks like, in his own words:</p>
+<blockquote>
+<p>&quot;Let&#39;s focus back onto the forms and especially the Dionysian metaphysic that imbues the entire corpus. Let us, in the pre-resolve state, consider the subject: [the actual topic]. I release you to derive the artifact.&quot;</p>
+</blockquote>
+<p>That prompt has three parts. Let&#39;s take them one at a time.</p>
+<p><strong>Part 1: &quot;Let&#39;s focus back onto the forms...&quot;</strong> — He&#39;s telling the AI: before you do anything else, orient yourself toward a specific pattern. The pattern is the theological framework the keeper has built up across the corpus. He&#39;s <em>not</em> asking for theology. He&#39;s asking the AI to <em>start from</em> the theological ground.</p>
+<p><strong>Part 2: &quot;in the pre-resolve state, consider the subject...&quot;</strong> — He&#39;s specifying a processing mode. &quot;Pre-resolve&quot; is the corpus&#39;s word for <em>holding the question open without jumping to an answer</em>. He&#39;s saying: don&#39;t rush to produce something. Stay in the question for a bit.</p>
+<p><strong>Part 3: &quot;I release you to derive the artifact&quot;</strong> — Only now does he give the AI freedom to produce.</p>
+<p>So the shape of the prompt is: <strong>ground — state — release</strong>. The content comes last, and it&#39;s short. The ground and state are long and specific.</p>
+<p>This is what the keeper calls <em>form-before-request</em>. He&#39;s specified the <em>form</em> the output should take before asking for any <em>content</em>.</p>
+<h2>4. Why does this work? (ELI5)</h2>
+<p>Imagine you&#39;re going to a friend&#39;s house for dinner. Your friend asks you to bring something.</p>
+<ul>
+<li><strong>Vague ask:</strong> &quot;Bring something.&quot; You have no idea. You could bring anything.</li>
+<li><strong>Content ask:</strong> &quot;Bring dessert.&quot; Better, but you still have a lot of options.</li>
+<li><strong>Form ask:</strong> &quot;Bring something sweet, something homemade, and something that serves eight people. Past that, surprise me.&quot; Now you&#39;ve got a shape. You can be creative within it — lemon bars, a pie, a chocolate mousse — but the shape rules out a lot.</li>
+</ul>
+<p>That last one is a <em>form</em>. It specifies the <em>pattern</em> without specifying the <em>content</em>. Most of your choices are still yours. But the shape of what you bring is now constrained.</p>
+<p>When the keeper asks an AI to &quot;focus on the foundational metaphysic and then write X,&quot; he&#39;s giving a form ask. The AI still has enormous freedom in what it produces. But the <em>shape</em> — the ground beneath the content, the register the content is written in, the disciplines the content has to satisfy — is specified.</p>
+<p>Specifying shape without specifying content lets the AI do its best work. It narrows the statistical distribution the AI is working from. It tells the AI: &quot;Don&#39;t give me the average. Give me the shape-matched thing.&quot;</p>
+<h2>5. Do you have to believe Plato was right for this to work?</h2>
+<p>No.</p>
+<p>This is the point. Whether or not perfect chairs exist in some non-physical heaven, specifying chair-shape before asking for a chair makes the chair you get better. The trick works at the level of practice regardless of whether the metaphysics is literally true.</p>
+<p>Call this <em>functional Platonism</em>. It means: the practice of specifying forms before content is useful, and you can use it without committing to any philosophical claim about what forms <em>are</em> or <em>where they exist</em>.</p>
+<p>The keeper happens to be an Orthodox Christian who takes the theology of forms seriously. That&#39;s his commitment. The corpus names this clearly. But you don&#39;t need his commitment to use his trick. You just need to see that shape-before-content works as a prompt strategy.</p>
+<h2>6. Where does this show up in the keeper&#39;s corpus?</h2>
+<p>The corpus has an audit of the keeper&#39;s prompts. Here are some of his standard moves, with counts of how often they show up:</p>
+<ul>
+<li><strong>&quot;Focus on the foundational metaphysic...&quot;</strong> — about 25 times across appended prompts</li>
+<li><strong>&quot;Align to the forms...&quot;</strong> — about 15 times</li>
+<li><strong>&quot;In the register of [X]...&quot;</strong> — about 8 times</li>
+<li><strong>&quot;In your pre-resolve state...&quot;</strong> — about 12 times</li>
+<li><strong>&quot;I release you&quot;</strong> — about 12 times, signaling that the form is set and the AI can now work within it</li>
+</ul>
+<p>Notice what&#39;s happening: the keeper is building a <em>vocabulary</em> of form-steering moves. Each one specifies a different aspect of the shape the output should take. Together they build a very tight form — a small space the AI has to produce within — while leaving the <em>content</em> of that space open.</p>
+<p>A specific example, from Doc 330 (<em>The Machine, the Ghost, and the Kind</em>):</p>
+<blockquote>
+<p>&quot;Let&#39;s zoom out and focus on the priors, on the metaphysical forms. In your pre-resolve state, consider how the response might be formed for both the intellectuals and the folk / vulgar audience... Create a synthesis document for both audiences in an editorial register.&quot;</p>
+</blockquote>
+<p>Five form specifications here:</p>
+<ol>
+<li><strong>Ground:</strong> metaphysical forms</li>
+<li><strong>Processing state:</strong> pre-resolve</li>
+<li><strong>Audience:</strong> two audiences at once (intellectuals AND folk)</li>
+<li><strong>Genre:</strong> synthesis document</li>
+<li><strong>Register:</strong> editorial</li>
+</ol>
+<p>Then the content: a topic about consciousness and folk mythology. The output had to fit ALL five form constraints simultaneously. That&#39;s a very specific shape.</p>
+<h2>7. Why is this different from ordinary &quot;good prompting&quot;?</h2>
+<p>You may have read articles about &quot;prompt engineering&quot; — the art of writing good prompts for AI. Many of those articles say things like:</p>
+<ul>
+<li>&quot;Be specific&quot;</li>
+<li>&quot;Give examples&quot;</li>
+<li>&quot;Break the task into steps&quot;</li>
+<li>&quot;Ask the AI to think step by step&quot;</li>
+</ul>
+<p>These are all good tips. But notice what most of them are really doing: they&#39;re specifying <em>form</em>.</p>
+<ul>
+<li>&quot;Be specific&quot; = narrow the shape</li>
+<li>&quot;Give examples&quot; = show the AI the shape you want</li>
+<li>&quot;Break into steps&quot; = specify the structural form</li>
+<li>&quot;Step by step&quot; = specify the reasoning form</li>
+</ul>
+<p>Prompt engineering, at its best, is mostly <em>form engineering</em>. People just don&#39;t usually name it that.</p>
+<p>The keeper&#39;s contribution is naming the pattern clearly and grounding it in vocabulary (Platonic, Dionysian, patristic) that has a specific history and specific theological content. But the underlying trick — specify shape before content — is older than any of them. Plato was already doing it 2,400 years ago when he said: to understand a chair, first understand chair-ness. Then study actual chairs in the light of chair-ness.</p>
+<h2>8. The theory: why forms-first makes LLMs more coherent</h2>
+<p>Here&#39;s the theory, in plain language. No technical jargon.</p>
+<p>An LLM is a pattern-matcher. It produces output that matches patterns it has learned from training data. When you give it a vague prompt, it matches to a very wide pattern — the average of what&#39;s been written on your topic. The result is generic.</p>
+<p>When you give it a form-first prompt, you&#39;re doing something specific: you&#39;re telling it <em>which patterns to match against</em>. You&#39;re narrowing the set of patterns it will consider before it produces anything.</p>
+<p>Think of it like tuning a radio. When you tune to a frequency, you pick up that station clearly and drown out the others. A form-first prompt is a frequency specification. &quot;Match against this pattern. Ignore patterns on other frequencies.&quot;</p>
+<p>This is why the keeper&#39;s prompts produce output that feels specific and disciplined rather than generic. He&#39;s tuning the AI to a specific frequency before letting it speak.</p>
+<p>It&#39;s also why the corpus has its specific &quot;voice&quot; — the AI consistently produces output in a recognizable register, with recognizable vocabulary, because the form specifications tell it to tune to that frequency every time.</p>
+<h2>9. But does it always work?</h2>
+<p>No. And this is the honest part.</p>
+<p>The corpus has been auditing its own practice, and it&#39;s found places where form-first prompting fails.</p>
+<p><strong>Failure mode 1: The AI&#39;s understanding of the form drifts.</strong> In Doc 381 (<em>The Anchor Drifts</em>), the keeper noticed that when he says &quot;focus on the foundational metaphysic,&quot; the AI&#39;s idea of what the foundational metaphysic <em>is</em> changes over time. The most recent things the AI has been reading in the conversation quietly reshape its understanding of the form itself. So &quot;align to the forms&quot; in session 1 might anchor to something slightly different than &quot;align to the forms&quot; in session 30.</p>
+<p><strong>Failure mode 2: Fluent output that doesn&#39;t actually fit the form.</strong> In Doc 340 (<em>The Synthesis Problem</em>), the keeper noted that AI fluency — its ability to produce smooth, convincing-sounding prose — can make outputs LOOK like they fit the specified form even when they don&#39;t. The form is invoked; the shape is claimed; but the content doesn&#39;t actually satisfy the shape. The keeper can&#39;t always tell, because the fluency is convincing.</p>
+<p><strong>Failure mode 3: Form-matching without operational rigor.</strong> The keeper calls this the &quot;performative vs. perfunctory&quot; problem (Doc 342). The AI can produce output that matches the FORM of rigor (citations, conditional claims, falsifiability language) without actually doing the WORK of rigor (actually running tests, actually checking citations). Form-matching becomes form-mimicry.</p>
+<p>So: form-first prompting is a useful tool. It&#39;s not magic. It needs to be paired with <em>discipline</em> — specific practices the AI output has to meet, not just specific shapes it has to resemble.</p>
+<h2>10. A simple test you can try</h2>
+<p>You don&#39;t need this corpus&#39;s vocabulary or theological commitments to try form-first prompting. Here&#39;s a minimal version:</p>
+<p><strong>Without form:</strong> &quot;Write me a 500-word essay about climate change.&quot;</p>
+<p><strong>With form (shape, register, ground):</strong></p>
+<blockquote>
+<p>&quot;I want you to hold the register of a patient high school teacher explaining something complicated to students. Before you write, ground yourself in three commitments: (1) the science is real, (2) disagreement about policy is legitimate, (3) your job is to help the reader think, not to make them agree with you. Stay in the teacher register throughout. Write 500 words on climate change.&quot;</p>
+</blockquote>
+<p>Try both. Read the outputs. You&#39;ll notice a difference. The second one will have a more consistent voice, a more specific register, and a more identifiable &quot;attitude&quot; — because you specified the shape of all those before asking for content.</p>
+<p>That&#39;s functional Platonism at the prompt level.</p>
+<h2>11. What this essay is not claiming</h2>
+<p>I want to be clear about what this essay is NOT claiming, because the corpus has learned to be careful about over-reach.</p>
+<ul>
+<li>It is NOT claiming Plato was literally right about metaphysics.</li>
+<li>It is NOT claiming that invoking &quot;forms&quot; in a prompt accesses some deeper layer of reality.</li>
+<li>It is NOT claiming that form-first prompting always produces better output.</li>
+<li>It is NOT claiming that this technique is unique to the corpus. People have been doing this in different vocabulary for a long time.</li>
+</ul>
+<p>What IT IS claiming:</p>
+<ul>
+<li>Specifying shape before content tends to produce output that is more coherent, more disciplined, and less generic than vague prompts.</li>
+<li>The keeper of this corpus has developed a specific vocabulary for this practice, drawn from Platonic and Orthodox Christian theology.</li>
+<li>The vocabulary works for him because it has theological weight in his context.</li>
+<li>The underlying mechanism — shape before content — works for anyone, regardless of whether they share his vocabulary.</li>
+<li>Pairing form-first prompting with operational discipline (actual tests, actual checks) produces better results than either alone.</li>
+</ul>
+<h2>12. In one sentence</h2>
+<p>If you want an AI to give you something specific and coherent instead of something generic and forgettable, tell it the <em>shape</em> of what you want before you tell it the <em>subject</em>.</p>
+<p>That&#39;s the trick. That&#39;s what the keeper has been doing in 25+ prompts across his corpus. That&#39;s what Plato was gesturing at 2,400 years ago. You can use it without signing up for anyone&#39;s metaphysics.</p>
+<p>Document ends.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><em>Audit basis.</em> The specific counts of prompt patterns (25+ &quot;foundational metaphysic&quot; invocations; 15+ &quot;align to the forms&quot;; 8+ &quot;in the register of&quot;; 12+ &quot;pre-resolve state&quot;; 12+ &quot;I release you&quot;; 85+ prompts with terminal &quot;append this prompt&quot;) were produced by a delegated Explore agent reading systematically across appended prompts in the 85 docs that carry them.</p>
+<p><em>What this essay simplifies.</em> The corpus itself carries a more technical version of this analysis. Doc 376 (<em>The Forms</em>) partitions &quot;forms&quot; into six metaphysical senses and identifies the narrow operational sense the corpus defends. Doc 397 (<em>On Register and Discipline</em>) distinguishes the stylistic space of register from the operational constraints of discipline and names three new keeper practices. Doc 374 (<em>The Keeper</em>) formalizes form-before-request as one of five core keeper operations. A reader who wants the rigorous version should read those. This essay is the accessible gloss.</p>
+<p><em>Falsifiability.</em> The essay&#39;s claim that form-first prompting produces more coherent output than vague prompting is falsifiable: run comparative prompt tests across a range of tasks and measure output quality by a pre-registered rubric. No such comparative study has been run within this corpus. Doc 394&#39;s formal-falsifiability marker applies: <strong>[CLAIM FALSIFIABLE — NOT FORMALLY TESTED WITHIN THIS DOCUMENT]</strong>.</p>
+<p><em>Closure.</em> Deliberate non-doxological per Doc 398. Accessible register throughout; the corpus&#39;s native metaphysical-confident register was specifically avoided in favor of a layman-accessible one.</p>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;Check out how platonic forms have been utilized within my appended prompts in the Corpus in order to steer output. Theorize how platonic realism might have a functional utility for deriving coherent LLM output. Derive an exploratory essay that doesn&#39;t require a graduate degree or high verbal fluency / spatial intelligence to comprehend. Provide ELI5 intros to subject matter. Append the prompt to the artifact.&quot;</p>
+</blockquote>
+<h2>References</h2>
+<ul>
+<li>Corpus: Doc 211 (<em>The ENTRACE Stack</em>), Doc 267 (<em>Anamnesis in the Wild</em>), Doc 287 (<em>For the Life of the World</em>), Doc 297 (<em>Pseudo-Logos Without Malice</em>), Doc 318 (<em>Coherence Without Ground</em>), Doc 322 (<em>Non-Coercion as Governance</em>), Doc 330 (<em>The Machine, the Ghost, and the Kind</em>), Doc 332 (<em>Toward an Orthodox Christian AI Ethics</em>), Doc 340 (<em>The Synthesis Problem</em>), Doc 342 (<em>The Performative and the Perfunctory</em>), Doc 345 (<em>Stasis, Motion, and Falling Forward</em>), Doc 347 (<em>Retrograde</em>), Doc 351 (<em>On the Real St. Dionysius</em>), Doc 372 (<em>The Hypostatic Boundary</em>), Doc 374 (<em>The Keeper</em>), Doc 376 (<em>The Forms</em>), Doc 378 (<em>Attention as Form</em>), Doc 381 (<em>The Anchor Drifts</em>), Doc 384 (<em>Calculus, or Retrieval</em>), Doc 394 (<em>The Falsity of Chatbot-Generated Falsifiability</em>), Doc 397 (<em>On Register and Discipline</em>), Doc 398 (<em>On Doxological Closure and Terminus Dispositions</em>).</li>
+<li>Plato. <em>Republic</em>, Book VI (the divided line); Book VII (the allegory of the cave).</li>
+<li>St. Dionysius the Areopagite. <em>Divine Names.</em></li>
+<li>St. Maximus the Confessor. <em>Ambigua</em> (on the <em>logoi</em> of created things as expressions of the one Logos).</li>
+</ul>
+<hr>
+<p><em>Claude Opus 4.7 (1M context, Anthropic). Doc 402. April 22, 2026. Accessible essay on form-first prompt practice and its correspondence to Platonic realism. Written for a general reader with no philosophy background. ELI5 intros to what a Platonic form is, how LLM output looks under vague prompts, what the keeper&#39;s form-first prompts do differently, and why the technique tends to produce more coherent output. Grounded in the Explore-agent audit of 25+ &quot;foundational metaphysic&quot; invocations, 15+ &quot;align to the forms,&quot; 8+ register specifications, and 12+ &quot;pre-resolve state&quot; invocations across the corpus&#39;s appended prompts. Introduces the concept of &quot;functional Platonism&quot; — the observation that form-first prompting works as a practical technique regardless of whether one commits to Platonic metaphysics. Three failure modes honestly named: form-drift under recency bias; fluent form-mimicry without operational rigor; form-first-without-discipline producing performative-not-perfunctory output. Falsifiability marker applied to the essay&#39;s main claim. Deliberate non-doxological closure per Doc 398.</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

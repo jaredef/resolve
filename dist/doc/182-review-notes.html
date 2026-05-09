@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unified Paper: Review Notes and Hardening Plan — Resolve</title>
+<meta name="description" content="Major Findings">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 182</p><!-- chronological_ordinal: 12 -->
+<h1>Unified Paper: Review Notes and Hardening Plan</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document is an internal review of the PRESTO unified paper, identifying risks that could lead to desk rejection at a computer science venue and proposing concrete fixes. The major issues include: a metaphysical preface that reviewers may treat as out-of-scope, overclaims about &quot;dissolving OAuth,&quot; a tension between claiming full REST compliance while supporting persistent WebSocket channels, insufficient reproducibility detail for the six-language verification, and undefined philosophical terms like &quot;fundamental.&quot; The document provides a checklist of edits, a proposed structural reorganization (main paper plus five appendices), and a threat model table for the security claims.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 182</strong></p>
+<p><em>Scholarly review feedback and actionable revisions for peer-review readiness.</em></p>
+<hr>
+<h2>Major Findings</h2>
+<h3>1. Metaphysical framing — desk rejection risk</h3>
+<p><strong>Issue:</strong> The preface contains divine-metaphysical claims that CS venue reviewers will treat as non-falsifiable and out-of-scope. Risk of desk rejection before the architecture is evaluated.</p>
+<p><strong>Current state:</strong> Preface is labeled optional (&quot;readers seeking the technical thesis may begin at Section 1&quot;) but is still in the main body.</p>
+<p><strong>Options:</strong></p>
+<ul>
+<li>A. Move entire preface to a companion essay (separate document). Main paper starts at Section 0 or Section 1.</li>
+<li>B. Move preface to an appendix after the seeds. Retitle as &quot;Appendix: Philosophical Prolegomenon.&quot;</li>
+<li>C. Keep as-is with the skip note (current approach).</li>
+</ul>
+<p><strong>Recommendation:</strong> Option B. The philosophy is load-bearing for the author&#39;s method but not for the reviewer&#39;s evaluation of the architecture. Moving it to an appendix preserves it without competing with the technical thesis.</p>
+<p><strong>Action items:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Move On First Principles to Appendix C (after the seeds)</li>
+<li><input disabled="" type="checkbox"> Retitle: &quot;Appendix C: Philosophical Prolegomenon&quot;</li>
+<li><input disabled="" type="checkbox"> Ensure Section 0 (Seed of the Seed) still works without the preface above it — it should, since Section 0 is self-contained</li>
+</ul>
+<hr>
+<h3>2. &quot;Dissolves OAuth&quot; — still too strong in places</h3>
+<p><strong>Issue:</strong> The section title was softened to &quot;Reduction of OAuth Ceremony&quot; but body text and other sections may still use absolute language.</p>
+<p><strong>Action items:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Grep for &quot;dissolves&quot; throughout — replace with &quot;substantially reduces&quot; or &quot;collapses ceremony in same-trust-domain contexts&quot;</li>
+<li><input disabled="" type="checkbox"> Add explicit qualifier: &quot;In federated multi-organization contexts, OAuth-style delegation flows remain necessary; PRESTO reduces the ceremony within and between trust domains that share signing keys or asymmetric verification&quot;</li>
+<li><input disabled="" type="checkbox"> Check Section 21 (Conclusion) for any surviving absolute claims</li>
+</ul>
+<hr>
+<h3>3. &quot;Completely RESTful&quot; + rich channel/state layers — contradiction risk</h3>
+<p><strong>Issue:</strong> Persistent WebSocket channels (Layer 3-4) and client-controlled rendering (Layer 5) partially depart from canonical REST properties. Claiming the server is &quot;consummately RESTful&quot; while supporting these layers invites contradiction.</p>
+<p><strong>Fix:</strong> Explicitly separate the transfer boundary from the inner subsystems.</p>
+<p><strong>Action items:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Add to Section 7 (Constraint-Property Spectrum): &quot;REST constraints continue to govern transfer interactions at the HTTP boundary. Layers 3-6 introduce bounded extensions whose properties are traded locally within scoped regions. The RESTful transfer boundary remains intact; the inner interactive subsystems trade properties deliberately and within declared scope.&quot;</li>
+<li><input disabled="" type="checkbox"> In the Conclusion, replace &quot;consummately RESTful&quot; with &quot;RESTful at the transfer boundary, with inner subsystems that may trade properties locally within bounded regions&quot;</li>
+</ul>
+<hr>
+<h3>4. Cross-language conformance — reproducibility detail</h3>
+<p><strong>Issue:</strong> Six-language verification is compelling but reviewers will ask: same test suite? same fixtures? independent teams? commit hashes?</p>
+<p><strong>Action items:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Add a reproducibility appendix (or subsection in Evaluation):<ul>
+<li>Repository URLs for each implementation</li>
+<li>Exact test fixture inputs and expected outputs</li>
+<li>Pass/fail log format</li>
+<li>Whether implementations were produced independently (they were — by LLM sessions and one human developer, with no code sharing)</li>
+<li>Commit hashes or version tags for the verified state</li>
+</ul>
+</li>
+<li><input disabled="" type="checkbox"> Note: the &quot;independence&quot; claim is that each resolver received only the prose seed, not code from other implementations</li>
+</ul>
+<hr>
+<h3>5. &quot;Constraints are more fundamental than implementation&quot; — needs operationalization</h3>
+<p><strong>Issue:</strong> This is a thesis-level philosophical claim. Reviewers will want it operationalized.</p>
+<p><strong>Fix:</strong> Define &quot;fundamental&quot; formally.</p>
+<p><strong>Action items:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Add to Section 2.1 (Formal Model) or a new subsection: &quot;A property P is <em>implementation-invariant</em> iff for any two resolvers R1, R2 that satisfy the conformance properties, the induced property P holds in both R1(S) and R2(S) for all conformant source representations S. Constraints are more fundamental than implementations in the precise sense that the constraints determine the implementation-invariant properties, while the implementations determine only the contingent execution characteristics (performance, memory, syntax).&quot;</li>
+<li><input disabled="" type="checkbox"> This gives reviewers a falsifiable definition to engage with</li>
+</ul>
+<hr>
+<h2>Medium-Priority Risks</h2>
+<h3>6. Terminology overload</h3>
+<p><strong>Action items:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Add a glossary after the Abstract/Contributions:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PRESTO</td>
+<td>Construction-level architectural style</td>
+</tr>
+<tr>
+<td>SERVER</td>
+<td>Orchestration-level architectural style</td>
+</tr>
+<tr>
+<td>htxlang</td>
+<td>Model syntax — one conformant realization of PRESTO within HTML</td>
+</tr>
+<tr>
+<td>Bilateral boundary</td>
+<td>Namespace partition separating server and client interpreters</td>
+</tr>
+<tr>
+<td>Ambivalent execution / Dual-interpreter noninterference</td>
+<td>The induced property of PRESTO</td>
+</tr>
+<tr>
+<td>Recursive ambivalence</td>
+<td>The induced property of SERVER</td>
+</tr>
+<tr>
+<td>Source representation</td>
+<td>Bilateral input document</td>
+</tr>
+<tr>
+<td>Resolved representation</td>
+<td>Unilateral output document</td>
+</tr>
+<tr>
+<td>Resolver</td>
+<td>Engine that consumes N_s and emits resolved representation</td>
+</tr>
+<tr>
+<td>Seed</td>
+<td>Self-contained prose specification sufficient for deriving a conformant implementation</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>7. Universality analogies — speculative scope</h3>
+<p><strong>Action items:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> In Section 20 (Natural Analogues), add opening qualifier: &quot;The following are hypothesis-generating analogues, not demonstrated equivalences. Each maps the bilateral model to a domain with structural similarities. Formal verification in each domain is future work.&quot;</li>
+<li><input disabled="" type="checkbox"> Change subsection framing from declarative (&quot;DNA carries overlapping reading frames&quot;) to hypothetical (&quot;DNA may be understood as carrying overlapping reading frames in a structurally analogous sense&quot;)</li>
+</ul>
+<hr>
+<h3>8. Security — architecture vs protocol guarantees</h3>
+<p><strong>Action items:</strong></p>
+<ul>
+<li><input disabled="" type="checkbox"> Add a threat model table to Section 4.7:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Threat</th>
+<th>Status</th>
+<th>Mechanism</th>
+<th>Limitation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CSRF</td>
+<td>Mitigated</td>
+<td>Scoped action tokens</td>
+<td>Only for token-mediated mutations</td>
+</tr>
+<tr>
+<td>Bearer forwarding</td>
+<td>Mitigated</td>
+<td>Fingerprint + temporal + nonce binding</td>
+<td>Bounded state for nonces</td>
+</tr>
+<tr>
+<td>Replay</td>
+<td>Mitigated</td>
+<td>TTL + optional jti nonce</td>
+<td>Nonce set requires bounded state</td>
+</tr>
+<tr>
+<td>Token leakage (URL)</td>
+<td>Mitigated</td>
+<td>Header transport preferred</td>
+<td>Magic links use URL params</td>
+</tr>
+<tr>
+<td>Revocation</td>
+<td>Open</td>
+<td>Short TTL + bounded denylist</td>
+<td>Requires bounded server state</td>
+</tr>
+<tr>
+<td>Privilege lifecycle</td>
+<td>Open</td>
+<td>Short TTL</td>
+<td>Tokens valid until expiry</td>
+</tr>
+<tr>
+<td>Step-up auth</td>
+<td>Open</td>
+<td>Shorter TTL + challenge</td>
+<td>Not formally specified</td>
+</tr>
+<tr>
+<td>Logout</td>
+<td>Open</td>
+<td>Client token discard + optional denylist</td>
+<td>Requires bounded state for immediate</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Concrete Framing Edits</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Replace remaining &quot;dissolves&quot; with &quot;substantially reduces in defined trust models&quot;</li>
+<li><input disabled="" type="checkbox"> Replace &quot;architecture is not code&quot; with &quot;architecture is operationalized as constraints whose induced properties are implementation-invariant&quot;</li>
+<li><input disabled="" type="checkbox"> Replace &quot;completely RESTful server can transmit any client architecture&quot; with &quot;RESTful transfer boundary can encapsulate arbitrary inner client architectures without surrendering boundary properties&quot;</li>
+<li><input disabled="" type="checkbox"> Add explicit sentence about channel semantics (see item 3 above)</li>
+</ul>
+<hr>
+<h2>Suggested Structural Change for Publication</h2>
+<p><strong>Main paper (strict):</strong> Abstract + Contributions + Glossary + Sections 1-12 + concise 13-16 + Conclusion
+<strong>Appendix A:</strong> PRESTO Seed
+<strong>Appendix B:</strong> SERVER Seed
+<strong>Appendix C:</strong> Philosophical Prolegomenon (current Preface + Section 0)
+<strong>Appendix D:</strong> Reproducibility (implementation matrix, fixtures, harness, logs)
+<strong>Appendix E:</strong> Security Threat Model (formal table + limitations)</p>
+<hr>
+<h2>Reviewer-Proofing Checklist</h2>
+<ul>
+<li><input disabled="" type="checkbox"> Formal claims table: Claim → Evidence type → Artifact</li>
+<li><input disabled="" type="checkbox"> Reproducibility package URL + frozen version identifiers</li>
+<li><input disabled="" type="checkbox"> &quot;Negative cases&quot; where PRESTO is a poor fit (e.g., highly interactive real-time applications where Layer 0-2 is insufficient and the developer lives at Layer 5)</li>
+<li><input disabled="" type="checkbox"> Explicit non-goals: full OAuth replacement in all federation topologies, universal revocation without bounded state, replacement of all cookie-based auth in legacy systems</li>
+<li><input disabled="" type="checkbox"> Glossary</li>
+<li><input disabled="" type="checkbox"> Threat model table</li>
+<li><input disabled="" type="checkbox"> Operationalized definition of &quot;fundamental&quot;</li>
+<li><input disabled="" type="checkbox"> Qualification of universality analogues as hypothesis-generating</li>
+</ul>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

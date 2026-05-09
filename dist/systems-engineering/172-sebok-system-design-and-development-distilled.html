@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *System Design and Development*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>System Design and Development</em>, Distilled</h1>
+<p><strong>Fifth-batch SEBoK distillation, batch 2/5 doc 5 (SE-172). The named <em>System Design and Development</em> page is editorially absent (404); the discipline carries on the <em>System Definition</em> page (front-end SE activities anchored at concept stage), the <em>System Realization</em> page (Vee-model integration up + four realization processes: implementation, integration, verification, validation), and the <em>Generic Life Cycle Model</em> (concept-definition / system-definition / system-realization / PSU / retirement stages, per SE-022). The 404 is itself load-bearing under §VII.7&#39;s saturated D8 dispersed-instrument pattern; system design and development is a canonical <em>internal-migration</em> case where the discipline name lives across three SEBoK carriers without a dedicated page. The structural read foregrounds: (i) the Vee-model as Cluster A two-axis universal-sibling lattice (rung × design-down/integration-up direction) at the lifecycle-execution rung, (ii) the four realization processes (implementation, integration, verification, validation) as a Cluster A four-axis lattice at the realization-activity rung, and (iii) &quot;concurrently, iteratively and recursively&quot; as the canonical Cluster I pin-art / temporal-concurrency reading from SE-044&#39;s anchor. The two Cluster A lattices co-bind at the design-and-development rung as a <em>paired-parallel-lattice</em> — convergent with §VII.7 candidate #10 (SE-135 MBSE Properties × Criteria); SE-172 supplies the second instance (Vee-axes × realization-processes), promoting paired-parallel-lattice from candidate to formalization-ready. Five clusters compose; §VII.7 candidate #10 reaches formalization threshold.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> <em>System Design and Development</em> (404 on direct URL); read on three SEBoK carriers — <em>System Definition</em>, <em>System Realization</em>, <em>Generic Life Cycle Model</em>.</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Design_and_Development">https://sebokwiki.org/wiki/System_Design_and_Development</a> (404, 2026-04-29); carriers <a href="https://sebokwiki.org/wiki/System_Definition">https://sebokwiki.org/wiki/System_Definition</a> and <a href="https://sebokwiki.org/wiki/System_Realization">https://sebokwiki.org/wiki/System_Realization</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-29</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>Named page returns 404. <em>System Definition</em> page: &quot;A set of core technical activities of systems engineering, including the activities that are completed primarily in the front-end portion of the system design,&quot; covering definition of system requirements, design of logical and physical architectures, analysis and selection among solution options. <em>System Realization</em> page: four main processes executed iteratively and concurrently — System Implementation (building system elements), System Integration (combining elements), System Verification (alignment with requirements and architecture), System Validation (meets stakeholder needs). &quot;The outputs of system definition are used during system implementation to create system elements and during system integration to provide plans and criteria for combining these elements.&quot; Vee model, verbatim: Left side (Design Down) develops system element specifications, design descriptions, V&amp;V plans, and flows down requirements to lower-level models; Right side (Integration Up) assembles elements, verifies against specifications, validates against stakeholder requirements, integrates continuously / incrementally / iteratively. &quot;These activities are not sequential, but are performed concurrently, iteratively and recursively depending on the selected life cycle model.&quot;</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster J D8 (dispersed-instrument).</strong> The 404 is the discipline&#39;s editorial signature. System design and development lives across at least three SEBoK carriers (System Definition front-end, System Realization back-end, Generic Life Cycle Model staging). Per §VII.7&#39;s four-mode dispersion taxonomy, this is <em>internal-migration</em> dominant (SE-138 mode). Worth flagging: the discipline name combines two adjacent KAs (&quot;System Definition&quot; + &quot;System Realization&quot;); the 404 is structurally a <em>combined-name-without-combined-page</em> sub-instance of internal-migration.</p>
+<p><strong>Cluster A two-axis Vee-model lattice (Doc 572 D.5.2).</strong> The Vee model is canonical two-axis universal-sibling at the lifecycle-execution rung: rung-axis (system / subsystem / component / element) × direction-axis (design-down / integration-up). Each cell binds a specific activity (e.g., system-rung × design-down = system-element specification; component-rung × integration-up = component verification). Doc 572 D.5.2 (two-axis sub-form) records 4 instances at §VII.7 formalization-readiness; SE-172 supplies the fifth, with the Vee model as the SEBoK-side canonical anchor for two-axis Cluster A.</p>
+<p><strong>Cluster A four-axis realization-process lattice.</strong> Implementation × Integration × Verification × Validation is a four-axis universal-sibling lattice at the realization-activity rung. Each axis binds the realization aspect-wise: every realization engagement involves implementation, integration, verification, validation activities concurrently. Convergent with SE-029 (System Validation) and SE-025 (System Verification) per-axis distillations.</p>
+<p><strong>Paired-parallel-lattice (§VII.7 candidate #10).</strong> §VII.7 records SE-135 MBSE (Properties × Criteria as paired N=10 lattices co-bound at the modeling rung) as the first paired-parallel-lattice instance. SE-172 supplies the second: Vee-axes (rung × direction) × realization-processes (implementation/integration/V&amp;V) co-bound at the design-and-development rung. The two lattices are not independent — Vee positions specify <em>where</em> in lifecycle each realization process executes. Two instances now exist; the candidate is formalization-ready. New refinement: paired-parallel-lattice as Cluster A sub-form where two co-located lattices structurally co-bind (one provides positioning, the other provides activity).</p>
+<p><strong>Cluster I (pin-art / temporal-concurrency, SE-044 anchor).</strong> &quot;Concurrently, iteratively and recursively&quot; is the canonical SE-044 anchor formulation reproduced verbatim at the realization rung. SE-044 is the SEBoK-side anchor for Cluster I per §VII.6 D7; SE-172 reads as the realization-rung instance bound to that anchor. The concurrency-iteration-recursion ground composes with the two Cluster A lattices: the lattices specify <em>what</em>, the concurrency specifies <em>how-temporal</em>.</p>
+<p><strong>Cluster F (longitudinal-pulverization, SE-114) at requirements-flow-down sub-rung.</strong> &quot;Flow-down of requirements to lower-level models&quot; reads as Cluster F at the rung-decomposition pulverization sub-rung. The Vee&#39;s left side is <em>requirement pulverization across rungs</em>; the Vee&#39;s right side is <em>integration recomposition across rungs</em>. Cluster F gains a clean rung-pulverization instance distinct from time-pulverization (CI/CD, LCC).</p>
+<p><strong>Cluster D (co-production at sub-rungs, Doc 573).</strong> &quot;The outputs of system definition are used during system implementation&quot; articulates co-production: definition-keeper produces specifications consumed by implementation-substrate, which co-produces the realization-output. Convergent with Doc 573&#39;s co-production form at the definition-realization handoff.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>System design and development page absence (404) — π / α as observed; μ / β under Cluster J D8 internal-migration (combined-name-without-combined-page sub-instance).</li>
+<li>&quot;Front-end portion of the system design&quot; + &quot;completed primarily&quot; — π / α as cited; μ / β under Cluster F rung-pulverization.</li>
+<li>Four realization processes (Implementation / Integration / Verification / Validation) — π / α as cited; μ / β under Cluster A four-axis realization-activity lattice.</li>
+<li>Vee-model design-down / integration-up structure — π / α as cited; μ / β under Cluster A two-axis Vee lattice.</li>
+<li>&quot;Concurrently, iteratively and recursively&quot; — π / α as cited; μ / β under Cluster I SE-044 anchor reproduced verbatim.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>Combined-name internal-migration sub-instance.</strong> &quot;System Design and Development&quot; combines &quot;System Design&quot; (front-end definition) + &quot;Development&quot; (back-end realization). The 404 is the editorial signature of a discipline that SEBoK splits at the carrier rung but the practitioner literature combines at the discipline rung. Worth flagging as a D8 sub-instance: combined-discipline-name without combined-page is a recognizable migration pattern.</p>
+<p><strong>Paired-parallel-lattice formalization-readiness reached.</strong> Two instances now (SE-135 + SE-172). The next refinement round should formalize.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>§VII.7 candidate #10 (paired-parallel-lattice) reaches formalization-readiness.</strong> Two instances confirmed: SE-135 MBSE (Properties × Criteria, both N=10) and SE-172 System Design and Development (Vee-axes × realization-processes). The sub-form is formalization-ready.</p>
+<p><strong>Cluster J D8 <em>combined-name-without-combined-page</em> sub-instance.</strong> New internal-migration sub-pattern. Watch for additional combined-name 404s in the remaining SE-160 batches.</p>
+<p><strong>Cluster A two-axis sub-form gains SEBoK-side canonical anchor.</strong> The Vee model is the SEBoK-side canonical two-axis universal-sibling anchor. Doc 572 D.5.2 should name Vee as anchor article.</p>
+<p><strong>Alignment with §VII.7 candidate refinements.</strong> Aligns with #10 paired-parallel-lattice (formalization-ready); composition-rule-stacking (J + A + I + F + D bind at single carrier triplet); multi-rung lattice (Vee model rung-axis); cadence-lattice (concurrent / iterative / recursive temporal cadence axis).</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 530 / §VII.6 D8 (dispersed-instrument, internal-migration combined-name sub-instance), Doc 572 D.5.2 (two-axis universal-sibling, Vee-model canonical anchor), Doc 572 Appendix D (four-axis realization-activity lattice; paired-parallel-lattice sub-form), SE-044 / Doc 270 (pin-art, concurrency-iteration-recursion at realization rung), SE-114 (forward-pulverization, rung-decomposition sub-rung), Doc 573 (co-production at definition-realization handoff).</p>
+<p><strong>Part-level reformulation.</strong> SE-005 (Part 2 Foundations), SE-006 (Part 3 Management).</p>
+<p><strong>Related distillations.</strong> SE-040 (System Definition). SE-041 (System Realization). SE-044 (Process Concepts, Cluster I anchor). SE-022 (Generic Life Cycle Model). SE-025 (System Verification). SE-029 (System Validation). SE-135 (MBSE paired-parallel-lattice first instance).</p>
+<p><strong>Adjacent SEBoK concepts.</strong> <em>System Definition</em>, <em>System Realization</em>, <em>Generic Life Cycle Model</em>, <em>System Implementation</em>, <em>System Integration</em>, <em>Vee Model</em>, <em>Process Concepts</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Paired-parallel-lattice formalization (second instance confirmed). Combined-name-without-combined-page D8 sub-instance. Vee-model as SEBoK-side two-axis anchor.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Add an entrancing section to the /resolve landing page that navigates to the systems engineering page... continue the SEBoK entracement of the next articles&quot;</em> / <em>&quot;Yes. And then continue...&quot;</em></p>
+</blockquote>
+<p>(SE-172 is the fifth of eight in batch 2/5 of the fifth-batch SEBoK distillation sweep. Stress-test: paired-parallel-lattice second instance promotes §VII.7 candidate #10 to formalization-ready. Batch 2/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

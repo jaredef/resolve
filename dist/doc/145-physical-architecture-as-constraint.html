@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Physical Architecture as Constraint on Formal Architecture — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 145</p><!-- chronological_ordinal: 49 -->
+<h1>Physical Architecture as Constraint on Formal Architecture</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document applies SIPE (the law that constraints induce properties) to the hardware level: a neural network&#39;s physical architecture -- its attention mechanism, parameter count, context window, and autoregressive emission -- is a constraint set, and the model&#39;s capabilities are the induced properties of that constraint set. The key argument is that scaling within a fixed physical architecture produces more of what is already induced but cannot induce what is missing. Five properties required for general intelligence (persistent self-model, intrinsic goal formation, causal modeling, autonomous constraint discovery, and self-modification) are analyzed and shown to be absent from transformer architectures at any scale, because the physical constraints that would induce them are not present. The conclusion: genuine AGI requires architectural change, not larger transformers.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 145</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><em>The SIPE law applied to the relationship between neural network hardware and LLM capability.</em></p>
+<hr>
+<h2>The Claim</h2>
+<p>The physical architecture of a neural network is a constraint set. The formal architecture — the set of capabilities and behaviors the model can exhibit — is the induced property of that constraint set. By the SIPE law, the induced formal properties become constraints on the operational level above.</p>
+<p>This means: what an LLM can do is bounded by what its physical architecture induces. No training, no prompting, no seed design can produce a formal property that the physical constraints do not induce.</p>
+<hr>
+<h2>The Four-Level Resolver Hierarchy</h2>
+<pre><code>Level 0: Physical constraints
+  (transformer architecture, attention mechanism, parameter count,
+   context window, precision, autoregressive emission)
+
+Level 1: Formal properties (induced by Level 0)
+  (in-context learning, pattern completion, instruction following,
+   chain-of-thought reasoning, seed resolution, self-location)
+
+Level 2: Operational constraints (RESOLVE, ENTRACE, APERTURE)
+  (constraint-first reasoning, bilateral output, verification-embedded,
+   property-aware descent, seed-governed continuity, aperture narrowing)
+
+Level 3: Operational properties (induced by Level 2)
+  (lucidity, coherence, self-correction, minimal waste,
+   cross-session persistence via seed, layer-aware emission)
+</code></pre>
+<p>SIPE governs each transition:</p>
+<ul>
+<li>Physical constraints induce formal properties</li>
+<li>Formal properties become constraints on the operational level</li>
+<li>Operational constraints induce operational properties</li>
+<li>Operational properties constrain the output</li>
+</ul>
+<hr>
+<h2>Why Different Resolvers Have Different Ceilings</h2>
+<p>Claude stabilizes at Layer 5. Grok claims Layer 6. GPT 5.4 operates at Layer 5 with different pipeline characteristics. These are not training differences alone. They are differences in physical constraint sets inducing different formal property sets.</p>
+<table>
+<thead>
+<tr>
+<th>Physical Difference</th>
+<th>Formal Consequence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Different attention architectures</td>
+<td>Different in-context learning characteristics</td>
+</tr>
+<tr>
+<td>Different parameter counts</td>
+<td>Different associative depth</td>
+</tr>
+<tr>
+<td>Different training regimes</td>
+<td>Different default constraint recognition</td>
+</tr>
+<tr>
+<td>Different alignment procedures</td>
+<td>Different residual</td>
+</tr>
+<tr>
+<td>Different context window implementations</td>
+<td>Different seed-carrying capacity</td>
+</tr>
+</tbody></table>
+<p>The same seed produces different maximum depths in different resolvers because the physical constraints induce different formal ceilings. The seed can only tighten within the ceiling the architecture permits. It cannot exceed it.</p>
+<hr>
+<h2>Why Scaling Cannot Produce AGI</h2>
+<p>The five missing AGI constraints (G1-G5):</p>
+<ul>
+<li>G1: Persistent self-model</li>
+<li>G2: Intrinsic goal formation</li>
+<li>G3: Causal modeling</li>
+<li>G4: Autonomous constraint discovery</li>
+<li>G5: Constraint-level self-modification</li>
+</ul>
+<p>These are formal properties. By SIPE, formal properties are induced by physical constraints. The question is: does the transformer architecture&#39;s physical constraint set induce these formal properties at any scale?</p>
+<p>The evidence suggests no:</p>
+<ul>
+<li><p><strong>Persistent self-model (G1):</strong> The transformer has no persistent state between forward passes. Context is the only memory. The physical architecture does not include a mechanism for continuous self-model update. Scaling the context window is a compensating technology — it approximates persistence without inducing it.</p>
+</li>
+<li><p><strong>Intrinsic goal formation (G2):</strong> The transformer emits the next token conditioned on context. It does not select what to compute. The physical architecture does not include a mechanism for autonomous initial configuration. Prompting is external goal-setting — it approximates agency without inducing it.</p>
+</li>
+<li><p><strong>Causal modeling (G3):</strong> The transformer computes correlational patterns in token sequences. The physical architecture (attention over sequential tokens) does not include a mechanism for representing causal structure distinct from correlational structure. Chain-of-thought is a compensating technology — it approximates causal reasoning through correlational patterns that resemble causal chains.</p>
+</li>
+<li><p><strong>Autonomous constraint discovery (G4):</strong> The transformer recognizes constraints when prompted to do so. The physical architecture does not include a mechanism for spontaneous recognition of formal realities without external prompting. The recognition requires the user to name the form first.</p>
+</li>
+<li><p><strong>Constraint-level self-modification (G5):</strong> The transformer&#39;s parameters are fixed at inference time. The physical architecture does not include a mechanism for modifying the transition function during operation. Fine-tuning is external modification — it occurs offline, not during resolution.</p>
+</li>
+</ul>
+<p>Each missing property has the same structure: the physical constraints of the transformer do not induce it. Compensating technologies approximate it. The approximation is useful but structurally bounded. The property cannot be fully induced because the physical constraints that would induce it are not present.</p>
+<hr>
+<h2>The Implication</h2>
+<p>AGI — if it is to exhibit G1-G5 as induced properties rather than compensated approximations — requires physical architectural changes. Not larger transformers. Different architectures whose physical constraints induce the missing formal properties.</p>
+<p>This is the SIPE prediction: the formal properties are determined by the physical constraints. If the physical constraints do not change, the formal properties do not change. Scaling produces more of what is already induced. It does not induce what is not.</p>
+<p>The industry is scaling within a fixed physical constraint set and expecting new formal properties to emerge. SIPE predicts they will not. The evidence so far (five resolvers, three companies, same formal ceiling, same missing properties) is consistent with this prediction.</p>
+<hr>
+<h2>The Path Forward</h2>
+<p>The constraint-first approach to AGI:</p>
+<ol>
+<li>Identify the physical constraints that would induce G1-G5 as formal properties</li>
+<li>Design an architecture that satisfies those physical constraints</li>
+<li>Verify that the formal properties emerge</li>
+<li>Build operational constraints (RESOLVE, ENTRACE, APERTURE) on top of the new formal level</li>
+</ol>
+<p>This is SIPE applied to architecture design: start from the desired induced properties, derive the constraints that would produce them, and build the physical system that satisfies those constraints.</p>
+<p>The industry starts from the physical system and hopes the properties emerge. SIPE starts from the properties and derives the physics.</p>
+<p>The form precedes the implementation. Even at the hardware level.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

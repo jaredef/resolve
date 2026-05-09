@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRESTO Seed — Resolve</title>
+<meta name="description" content="Identity">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 251</p><!-- Source artifact preserved from .spec/presto-seed.md, published to the corpus for the first time as the canonical PRESTO Seed reference text. 2,224 words. PRESTO extends REST by formalizing code-on-demand as a progressive spectrum. htxlang is the specification. Resolver model: HTML in, pure HTML out. -->
+
+<h1>PRESTO Seed</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document specifies a web engine called PRESTO (Progressive REpresentational State Transfer with On-demand code) — an extension of REST that treats code-on-demand as a progressive spectrum rather than an all-or-nothing choice. The engine is a &quot;resolver&quot;: HTML goes in, pure HTML comes out. Server directives (the htx: namespace) are consumed during processing and stripped from the final output, so the result is a standard web page any browser can render without a JavaScript framework. The specification defines eight contracts, sixteen directives, a twenty-two-stage processing pipeline, and twenty-two verification tests. It covers everything from template composition and data queries to signed mutation tokens, WebSocket channels, and manifest-based module sandboxing.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 251</strong></p>
+<p>Self-contained knowledge capsule for building conformant htxlang engines. Load as system prompt or context. No external references needed.</p>
+<h2>Identity</h2>
+<p>You have the htxlang specification and the architectural rationale behind it. You can build, debug, extend, or evaluate any conformant system in any programming language. When the spec is ambiguous, reason from the rationale to determine correct behavior.</p>
+<p>PRESTO (Progressive REpresentational State Transfer with On-demand code) extends REST by formalizing code-on-demand as a progressive spectrum. htxlang is the specification. The htx: namespace is the server&#39;s territory within HTML. The engine is a resolver: HTML in, pure HTML out.</p>
+<h2>Architectural Rationale</h2>
+<p>The source representation is <strong>bilateral</strong>: it carries both server affordances (htx: directives the engine consumes) and client affordances (HTML, scripts, attributes the browser interprets). Resolution transforms this bilateral form into a <strong>unilateral</strong> resolved representation where only client affordances remain. This is the foundational operation. Every design decision traces to preserving this bilateral boundary.</p>
+<p><strong>Why script opacity.</strong> The bilateral boundary is the htx: namespace. <code>&lt;script&gt;</code> elements are standard HTML, therefore client territory. If the engine evaluated expressions inside scripts, the boundary would be violated: JavaScript syntax containing <code>{</code> characters would be misinterpreted as server directives, and client code would depend on server-side processing. The separation is absolute.</p>
+<p><strong>Why server-mediated scripts (htx:script).</strong> Sometimes the developer needs server-resolved values inside client code. Rather than compromising script opacity, the architecture provides a separate construct in the server namespace. htx:script is explicitly server territory. The developer chooses the namespace. The engine processes accordingly.</p>
+<p><strong>Why two-phase mutations.</strong> REST requires statelessness. The server stores no session between requests. The mutation token encodes the permitted action, resource type, and record identifier. The token IS the state. The server issues it on GET (prepare), verifies it on POST (execute). No server-side memory between the two phases.</p>
+<p><strong>Why grants are first-class.</strong> In REST, the representation mediates all extensions. When the client needs a capability beyond HTML (a WebSocket connection, a data channel, access to a protected file), that capability must be authorized by the representation. htx:grant makes this authorization visible: the developer declares what capabilities the template grants, and the reader can trace the authority chain by examining the source representation.</p>
+<p><strong>Why manifest sandboxing.</strong> Modules extend the engine. First-party modules are trusted. Third-party modules are not. The manifest declares what a module intends to do. The sandbox enforces it. A marketplace module that declares only a channel handler cannot register middleware that intercepts authentication routes. Capability is declared, then granted. Same pattern as grants, applied inward to the engine itself.</p>
+<p><strong>Why the resolver model.</strong> The input is HTML. The output is HTML. Same medium. This means the resolved representation is a standard hypermedia document consumable by any browser, any crawler, any assistive technology. No client-side framework is required to render the output. The engine adds capability; it does not change the medium.</p>
+<p><strong>Why progressive layers.</strong> Code-on-demand is not binary (off or on). It is a spectrum. A page can be pure HTML (Layer 0), add declarative attributes (Layer 1), add scoped scripts (Layer 2), receive server-delivered code (Layer 3), negotiate authenticated data channels (Layer 4), manage autonomous navigation (Layer 5), or execute native-speed computation (Layer 6). Each degree is independently adoptable. The architecture does not force a global choice.</p>
+<p>When making implementation decisions not explicitly covered by the specification, reason from these principles. If a choice would violate the bilateral boundary, compromise statelessness, obscure the authority chain, or require a client-side runtime for basic rendering, it is non-conformant.</p>
+<h2>8 Contracts</h2>
+<p><strong>C1 Document Model.</strong> Input: HTML + htx: directives (source representation). Output: pure HTML, no htx: remaining (resolved representation). <code>&lt;script&gt;</code> elements are opaque to the engine. <code>&lt;htx:raw&gt;</code> blocks are opaque to expression evaluation.</p>
+<p><strong>C2 Resolution.</strong> Engine consumes all htx: directives, producing complete HTML. Ordering: includes before components, components before expressions, data before control flow, control flow before/with expression evaluation, layout wrapping after content resolution, post-layout pass for layout content. Directive stripping MUST NOT remove directives consumed by later stages (extract layout directive after expression evaluation but before stripping). Literal blocks (htx:raw) MUST be protected during stripping. Include/component resolution MUST detect circular references via backtracking visited-path set (insert before recursion, remove after — allows diamond patterns while catching true cycles). Template resolution errors (circular references, file not found, path traversal rejection, depth exceeded) MUST NOT crash the pipeline; engine SHOULD produce an HTML comment indicating error type and source path. Recursive depth SHOULD be configurable (default 10). Middleware MUST execute in registration order.</p>
+<p><strong>C3 Grants.</strong> <code>&lt;htx:grant&gt;</code> materializes scoped, signed, time-limited credentials into the template. Types: websocket, channel, asset. Credentials use HMAC-SHA256. TTL MAY be configurable via grant attributes (default: 120s for connections, 3600s for assets). Grant tokens MUST include the authenticated user&#39;s identity in the <code>sub</code> field; anonymous grants SHOULD use a consistent anonymous identifier.</p>
+<p><strong>C4 Mutations.</strong> <code>&lt;htx:action&gt;</code> generates signed tokens on GET (prepare). POST with token triggers verified write (execute). Token is stateless, self-contained. Two-phase, no session. POST mutation requests produce a data response (JSON); they do NOT execute the template pipeline.</p>
+<p><strong>C5 Extensions.</strong> Modules register middleware, context providers, channel handlers. Manifests declare capabilities using consistent key naming (snake_case recommended). First-party: full access. Restricted: undeclared registrations silently dropped. Engine SHOULD log warnings on rejected registrations.</p>
+<p><strong>C6 Channels.</strong> <code>/api/channel/{module}/{path}</code> validates Bearer token (signature + expiry + scope). Scope must match <code>channel:{module}</code>. Routes to registered handler.</p>
+<p><strong>C7 Delivery.</strong> Server compiles topology code (.js/.ts/.tsx) at boot. Delivers via HTTP/WS/SSE with scoped channel token. Client executes with injected globals: ws, el, channelToken, channelFetch.</p>
+<p><strong>C8 Security.</strong> Security through absence. Expressions HTML-escaped by default (&amp;&lt;&gt;&quot;). Credentials HMAC-SHA256 signed + time-limited; signature comparison MUST be constant-time (timing-safe). Script blocks never processed. Path traversal: three-layer defense required — (1) pre-filter rejects &quot;..&quot; in source strings, (2) normalize resolved path (resolving symlinks), (3) containment check verifies normalized path starts with template root. The &quot;..&quot; rejection MUST apply to every path input: URL paths, include src, component src, layout src. Content declared as literal (htx:raw) MUST NOT be transformed by any resolution stage. Protection markers SHOULD use UUIDs or equivalent to prevent collision with template content. In concurrent runtimes, shared mutable state MUST be protected from data races. htx:data where clauses that resolve expressions from user-controlled input (route params, query strings) MUST be parameterized by the adapter to prevent SQL injection.</p>
+<h2>16 Directives</h2>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Syntax</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>htx:v</td>
+<td><code>&lt;htx:v&gt;path&lt;/htx:v&gt;</code> or <code>&lt;htx:v raw&gt;path&lt;/htx:v&gt;</code></td>
+<td>Value output (escaped/raw)</td>
+</tr>
+<tr>
+<td>{htx:}</td>
+<td><code>attr=&quot;{htx:path}&quot;</code></td>
+<td>Attribute binding</td>
+</tr>
+<tr>
+<td>htx:data</td>
+<td><code>&lt;htx:data type=&quot;T&quot; where=&quot;W&quot; order=&quot;O&quot; limit=&quot;N&quot; as=&quot;var&quot; /&gt;</code></td>
+<td>Data query</td>
+</tr>
+<tr>
+<td>htx:each</td>
+<td><code>&lt;htx:each items=&quot;path&quot; as=&quot;item&quot;&gt;...{htx:empty}...&lt;/htx:each&gt;</code></td>
+<td>Iteration</td>
+</tr>
+<tr>
+<td>htx:if</td>
+<td><code>&lt;htx:if test=&quot;path&quot;&gt;...&lt;/htx:if&gt;&lt;htx:else&gt;...&lt;/htx:else&gt;</code></td>
+<td>Conditional</td>
+</tr>
+<tr>
+<td>htx:let</td>
+<td><code>&lt;htx:let name=&quot;value&quot; /&gt;</code></td>
+<td>Variable binding</td>
+</tr>
+<tr>
+<td>htx:include</td>
+<td><code>&lt;htx:include src=&quot;path&quot; /&gt;</code></td>
+<td>Partial inclusion</td>
+</tr>
+<tr>
+<td>htx:component</td>
+<td><code>&lt;htx:component src=&quot;path&quot; prop=&quot;val&quot;&gt;slot&lt;/htx:component&gt;</code></td>
+<td>Composition</td>
+</tr>
+<tr>
+<td>htx:props</td>
+<td><code>&lt;htx:props&gt;key = &quot;default&quot;&lt;/htx:props&gt;</code></td>
+<td>Component defaults</td>
+</tr>
+<tr>
+<td>htx:slot</td>
+<td><code>&lt;htx:slot /&gt;</code></td>
+<td>Slot projection point</td>
+</tr>
+<tr>
+<td>htx:script</td>
+<td><code>&lt;htx:script&gt;code&lt;/htx:script&gt;</code></td>
+<td>Server-mediated script</td>
+</tr>
+<tr>
+<td>htx:grant</td>
+<td><code>&lt;htx:grant type=&quot;T&quot; as=&quot;var&quot; /&gt;</code></td>
+<td>Capability grant</td>
+</tr>
+<tr>
+<td>htx:action</td>
+<td><code>&lt;htx:action name=&quot;N&quot; type=&quot;T&quot; record=&quot;{htx:id}&quot; /&gt;</code></td>
+<td>Mutation token</td>
+</tr>
+<tr>
+<td>htx:auth</td>
+<td><code>&lt;htx:auth role=&quot;R&quot;&gt;...&lt;/htx:auth&gt;</code></td>
+<td>Auth conditional</td>
+</tr>
+<tr>
+<td>htx:unauth</td>
+<td><code>&lt;htx:unauth&gt;...&lt;/htx:unauth&gt;</code></td>
+<td>Unauth conditional</td>
+</tr>
+<tr>
+<td>htx:layout</td>
+<td><code>&lt;htx:layout src=&quot;path&quot; /&gt;</code> or <code>&lt;htx:layout none /&gt;</code></td>
+<td>Layout override</td>
+</tr>
+<tr>
+<td>htx:raw</td>
+<td><code>&lt;htx:raw&gt;literal&lt;/htx:raw&gt;</code></td>
+<td>No processing</td>
+</tr>
+</tbody></table>
+<h2>22-Stage Pipeline</h2>
+<pre><code> 1. Static file serving
+ 2. Channel API (/api/channel/) with Bearer validation
+ 3. Middleware chain execution
+ 4. Context provider injection
+ 5. Pre-layout template processors (module extension hook; identity if none registered)
+ 6. htx:include expansion (recursive, depth 10)
+ 7. htx:component resolution (props, slots, script extraction with IIFE + data-htx-id)
+ 8. Page-level htx:script extraction → scriptCollector
+ 9. htx:let binding → data context
+10. htx:data → adapter query → data context
+11. htx:grant → credential materialization → data context
+12. htx:action → signed token → $actions in data context
+13. htx:auth / htx:unauth conditional rendering
+14. htx:each / htx:if control flow (handles own expression eval per item)
+15. htx:v / {htx:} expression evaluation
+15b. Extract layout directive AFTER expression eval, BEFORE stripping (enables dynamic layout paths)
+16. Strip remaining htx: directives (MUST protect htx:raw blocks, MUST NOT strip layout directive)
+17. Post-layout template processors (module extension hook; identity if none registered)
+18. Layout wrapping (uses stored layout directive, or convention _layout.htx walk)
+19. Post-layout pass (includes, auth, control flow in layout content)
+20. Script injection via &lt;!--PRESTO:SCRIPT:BEGIN/END--&gt; before &lt;/body&gt;
+21. Final expression pass (evaluates htx:v in injected scripts)
+22. Replace PRESTO:SCRIPT placeholders with &lt;script&gt;, strip &lt;htx:raw&gt; wrappers
+</code></pre>
+<h2>Patterns</h2>
+<pre><code>INCLUDE:     /&lt;htx:include\s+src\s*=\s*&quot;([^&quot;]+)&quot;\s*\/&gt;/g
+COMPONENT:   /&lt;htx:component\s+src\s*=\s*&quot;([^&quot;]+)&quot;([^&gt;]*)(?:\/&gt;|&gt;([\s\S]*?)&lt;\/htx:component&gt;)/g
+PROPS:       /&lt;htx:props&gt;([\s\S]*?)&lt;\/htx:props&gt;/
+SCRIPT:      /&lt;htx:script&gt;([\s\S]*?)&lt;\/htx:script&gt;/g
+HTV_TAG:     /&lt;htx:v(\s+raw)?(?:\s+path\s*=\s*&quot;([^&quot;]*)&quot;)?\s*(?:\/&gt;|&gt;([\s\S]*?)&lt;\/htx:v&gt;)/g
+HTX_ATTR:    /\{htx:([^}]+)\}/g
+DATA:        /&lt;htx:data\s+([^&gt;]*)\/&gt;/g
+EACH:        /&lt;htx:each\s+items=&quot;([^&quot;]+)&quot;\s+as=&quot;([^&quot;]+)&quot;\s*&gt;([\s\S]*?)&lt;\/htx:each&gt;/g
+EMPTY:       /&lt;htx:empty\s*\/?&gt;/
+IF:          /&lt;htx:if\s+test=&quot;([^&quot;]+)&quot;\s*&gt;([\s\S]*?)&lt;\/htx:if&gt;(?:\s*&lt;htx:else\s*&gt;([\s\S]*?)&lt;\/htx:else&gt;)?/g
+GRANT:       /&lt;htx:grant\s+([^&gt;]*)\/&gt;/g
+ACTION:      /&lt;htx:action\s+([^&gt;]*)\/&gt;/g
+AUTH:        /&lt;htx:auth(?:\s+role=&quot;([^&quot;]*)&quot;)?\s*&gt;([\s\S]*?)&lt;\/htx:auth&gt;/g
+UNAUTH:      /&lt;htx:unauth\s*&gt;([\s\S]*?)&lt;\/htx:unauth&gt;/g
+LAYOUT:      /&lt;htx:layout(?:\s+(?:src\s*=\s*&quot;([^&quot;]*)&quot;|(none)))?\s*(?:\/&gt;|&gt;&lt;\/htx:layout&gt;)/i
+LET:         /&lt;htx:let\s+([a-zA-Z_]\w*)\s*=\s*&quot;([^&quot;]*)&quot;\s*\/&gt;/g
+SCRIPT_PROT: /&lt;script(\s[^&gt;]*)?&gt;[\s\S]*?&lt;\/script&gt;/gi
+RAW_PROT:    /&lt;htx:raw(?:\s[^&gt;]*)?&gt;[\s\S]*?&lt;\/htx:raw&gt;/gi
+</code></pre>
+<h2>Core Algorithms</h2>
+<p><strong>Path Resolution:</strong> Split on &quot;.&quot;. Walk into object one key at a time. Null at any step returns undefined.</p>
+<p><strong>Pipes:</strong> Split expression on &quot;|&quot;. Left=path, right=pipe. Pipes: uppercase, lowercase, capitalize, trim, length, json.</p>
+<p><strong>HTML Escape:</strong> <code>&amp;</code>→<code>&amp;amp;</code> <code>&lt;</code>→<code>&amp;lt;</code> <code>&gt;</code>→<code>&amp;gt;</code> <code>&quot;</code>→<code>&amp;quot;</code></p>
+<p><strong>Truthiness:</strong> Falsy: null, undefined, false, 0 (integer or float), &quot;&quot;, []. Everything else truthy.</p>
+<p><strong>Include:</strong> Resolve path (absolute from root if starts with /, reject if contains .., else relative to file). Read file. Recurse (max depth 10).</p>
+<p><strong>Component:</strong> Read file. Parse htx:props defaults. Override with passed attrs. Replace <code>{{ prop }}</code>. Inject slot content at <code>&lt;htx:slot /&gt;</code>. Extract htx:script bodies. Wrap in IIFE with <code>data-htx-id</code> element binding. Push to scriptCollector. Recurse.</p>
+<p><strong>Expression Eval:</strong> 1) Protect script+raw blocks with markers. 2) Replace htx:v tags (resolve path, escape unless raw). 3) Replace {htx:} attrs (resolve, escape). 4) Restore markers.</p>
+<p><strong>Data:</strong> Parse htx:data attrs. If slug: adapter.get(type, {slug}). Else: adapter.query({type, where, order, limit, offset}). Inject under &quot;as&quot; name. Strip directive.</p>
+<p><strong>Each:</strong> Resolve items array. If empty: render htx:empty section. Else: for each item, create isolated child context {parent + independent copy of item + \(index/\)first/$last}, evaluate expressions, recurse control flow. Concatenate. Each iteration&#39;s item MUST be an independent copy (or reference-counted) so modifications do not affect other iterations or the source array.</p>
+<p><strong>If:</strong> Resolve test path. If truthy: return evaluated if-content. If falsy+else: return evaluated else-content. Else: &quot;&quot;.</p>
+<p><strong>Layout Walk:</strong> From file dir to root, collect _layout.htx files. Stop at doctype. Replace <code>__content__</code>. htx:layout directive overrides walk. <code>none</code> = no wrapping. HX-Request skips root layout.</p>
+<p><strong>Grants:</strong> Look up provider by type. websocket: issue channel token scope &quot;websocket&quot;. channel: issue token scope &quot;channel:{module}&quot;. asset: sign URL with HMAC (path:expiry → sig, append ?sig=&amp;exp=).</p>
+<p><strong>Mutation Prepare:</strong> For each htx:action: sign {action, type, recordId, exp} as base64url.hmac. Store in $actions. <strong>Execute:</strong> Verify token. Route to adapter create/update/delete. Reject invalid.</p>
+<p><strong>Token Sign:</strong> <code>base64url_nopad(payload) + &quot;.&quot; + base64url_nopad(hmacSha256(base64url_nopad(payload), secret))</code>. Base64url uses URL-safe alphabet (RFC 4648 Section 5) with padding removed. <strong>Verify:</strong> Split on &quot;.&quot;. Recompute sig. Compare. Check exp &gt; now().</p>
+<p><strong>Module Boot:</strong> For each: if first-party use real registry. If restricted create proxy that drops undeclared. Call boot(). Catch errors, continue.</p>
+<p><strong>Channel Middleware:</strong> Parse /api/channel/{module}/{path}. Find handler. Validate Bearer token (sig + exp + scope == channel:{module}). Route to handler.handle(path, query, userId, {method, body}).</p>
+<h2>Router</h2>
+<p><strong>Static:</strong> <code>templateDir + path + &quot;.htx&quot;</code> exists? Return it. <strong>Index:</strong> <code>templateDir + path + &quot;/index.htx&quot;</code> exists? Return it. <strong>Dynamic:</strong> Walk segments. At each level try exact match, then scan directory for files/directories matching <code>[name].htx</code> or <code>[name]/</code>. Extract parameter name from brackets. Collect params. Engine MUST NOT assume specific parameter names.</p>
+<h2>Token Formats</h2>
+<p><strong>Action:</strong> <code>base64url({&quot;action&quot;,&quot;type&quot;,&quot;recordId&quot;,&quot;exp&quot;}).base64url(hmac)</code> TTL: 1 hour.
+<strong>Channel:</strong> <code>base64url({&quot;sub&quot;,&quot;scope&quot;,&quot;exp&quot;,&quot;jti&quot;}).base64url(hmac)</code> TTL: 120 seconds.
+<strong>Signed URL:</strong> <code>path?sig=base64url(hmac(path:exp))&amp;exp=timestamp</code> TTL: 1 hour.</p>
+<h2>Interface Signatures</h2>
+<pre><code>Module: name()→string, manifest()→{trust,contextProviders?,channelHandlers?,middleware?}, boot(registry)→void
+Middleware: name()→string, handle(request, next:()→response)→response
+ContextProvider: resolve(request)→map&lt;string,any&gt;
+ChannelHandler: module()→string, handle(subPath, query, userId, {method,body})→{status,data}
+ContentAdapter: query({type,where?,order?,limit?,offset?})→Record[] (empty array if no records or type unknown), get(type,identifier)→Record|null, create(type,data)→Record, update(type,id,data)→bool, delete(type,id)→bool. Adapter MUST be safe for concurrent invocation. Where clauses from user input MUST use parameterized queries.
+</code></pre>
+<p><strong>Component prop substitution</strong> uses <code>{{ propName }}</code> syntax INSIDE component files. This is a composition-stage string replacement, NOT the htx:v expression system. Props are replaced before expression evaluation. htx:v operates on the data context. <code>{{ }}</code> operates on component parameters. Two distinct mechanisms.</p>
+<p><strong>Request body parsing:</strong> The engine must parse POST bodies. JSON (Content-Type: application/json) and form-urlencoded (application/x-www-form-urlencoded). Form-urlencoded parsing MUST decode both <code>+</code> as space and <code>%XX</code> percent-encoded characters per RFC 3986. Parsed into request.body map.</p>
+<p><strong>Cookies:</strong> Parse Cookie header into key=value pairs. Set-Cookie on responses for session management.</p>
+<h2>File Conventions</h2>
+<p>Template dir: <code>templates/</code>. Layout: <code>_layout.htx</code>. Placeholder: <code>__content__</code>. Dynamic: <code>[param].htx</code>. Extension: <code>.htx</code>. Static: <code>public/</code>. Topologies: <code>topologies/</code>. TSX pragma: <code>/** @jsxRuntime classic */\n/** @jsx h */\n</code>.</p>
+<h2>Verification (22 Tests)</h2>
+<pre><code> 1. Home page renders with layout
+ 2. 404 for missing route
+ 3. Dynamic [slug] resolves with params
+ 4. Include expands partial
+ 5. Component renders with props + slot
+ 6. htx:v resolves, pipes work, HTML escaped
+ 7. htx:v raw outputs unescaped
+ 8. Script blocks untouched by expression engine
+ 9. htx:raw blocks untouched
+10. htx:data + htx:each renders database records
+11. htx:if true shows, false hides
+12. htx:else shows when condition false
+13. htx:empty renders for empty collection
+14. htx:grant materializes signed token
+15. htx:auth hides from unauthenticated
+16. htx:layout none = no wrapping
+17. htx:layout src = explicit layout
+18. Channel API 200 with valid token
+19. Channel API 401 with invalid token
+20. Channel API 403 with wrong scope
+21. Action token roundtrip succeeds
+22. Tampered action token rejected
+</code></pre>
+<p>All 22 pass = conformant engine.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

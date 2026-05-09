@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Causal Token Bridge — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 292</p><h1>The Causal Token Bridge</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document investigates a counterintuitive finding: adding more words to a written specification causes the AI-generated code to get <em>smaller</em>, not larger. It identifies three distinct mechanisms by which prose in a constraint specification (called a &quot;seed&quot;) causally determines the code in the resulting implementation. Structural constraints compress code by eliminating unnecessary implementation choices. Behavioral constraints select between fundamentally different code paths by specifying what must or must not happen at critical lifecycle boundaries. Compositional constraints -- a newly discovered third type -- govern how other constraints interact, preventing one rule from breaking another. The document grounds all claims in empirical data from a real software experiment and derives a mathematical &quot;bridge equation&quot; predicting implementation size from specification word count.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 292</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>How prose tokens in constraint seeds causally determine code tokens in derived implementations — three mechanisms: structural compression, behavioral selection, and compositional governance.</strong></p>
+<hr>
+<h2>The Data</h2>
+<p>The htmx convergence experiment (Doc 289) produced a dataset with two token domains — prose (seed words) and code (derivation lines) — linked by a derivation function:</p>
+<table>
+<thead>
+<tr>
+<th>Iteration</th>
+<th>Seed words</th>
+<th>Derivation lines</th>
+<th>vs reference</th>
+<th>Δ words</th>
+<th>Δ lines</th>
+<th>Lines saved per word</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v1</td>
+<td>2,685</td>
+<td>2,160</td>
+<td>+64%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>v2</td>
+<td>3,611</td>
+<td>1,648</td>
+<td>+25%</td>
+<td>+926</td>
+<td>-512</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>v3</td>
+<td>3,727</td>
+<td>1,433</td>
+<td>+8%</td>
+<td>+116</td>
+<td>-215</td>
+<td>1.85</td>
+</tr>
+<tr>
+<td>v4</td>
+<td>3,937</td>
+<td>1,373</td>
+<td>+4%</td>
+<td>+210</td>
+<td>-60</td>
+<td>0.29</td>
+</tr>
+<tr>
+<td>v4.1</td>
+<td>3,937</td>
+<td>1,057</td>
+<td>-19%</td>
+<td>0</td>
+<td>-316</td>
+<td>∞</td>
+</tr>
+</tbody></table>
+<p>Reference: 1,316 lines.</p>
+<p>Two anomalies demand explanation:</p>
+<ol>
+<li><p><strong>The relationship is inverse.</strong> Adding words to the seed <em>reduces</em> lines in the derivation. More prose produces less code.</p>
+</li>
+<li><p><strong>v4.1 changed zero words but reduced 316 lines.</strong> The seed word count stayed at 3,937. The content was reworded — existing constraints repositioned, not new ones added. Yet the derivation shrank by 24%.</p>
+</li>
+</ol>
+<hr>
+<h2>The Inverse Relationship</h2>
+<p>In normal specification-to-implementation workflows, more specification produces more implementation. A longer requirements document generates more code. The relationship is <em>positive</em>: Δspec → +Δcode.</p>
+<p>In constraint-derived systems, the relationship is <em>negative</em>: Δseed → -Δcode.</p>
+<p>Why? Because each seed word does not describe a feature to be added. It describes a <em>constraint to be enforced</em>. Constraints <em>eliminate</em> degrees of freedom. A derivation without constraints is maximally free — the model fills the space with every plausible implementation choice: extra helper functions, defensive null checks, verbose comments, redundant branching. Each constraint <em>removes</em> choices, and each removed choice eliminates code.</p>
+<p>The causal chain:</p>
+<pre><code>Seed word (constraint)
+    → eliminates an implementation degree of freedom
+        → removes code that served that degree of freedom
+            → derivation shrinks
+</code></pre>
+<p>Prose tokens are <em>compressors</em>. They do not generate code — they <em>prevent</em> code from being generated.</p>
+<hr>
+<h2>Two Causal Mechanisms</h2>
+<p>The data reveals two distinct mechanisms by which seed tokens cause code tokens:</p>
+<h3>Mechanism 1: Structural Compression</h3>
+<p>Structural constraints specify HOW the code should be organized. Examples from the seed:</p>
+<ul>
+<li>&quot;Use the browser&#39;s FormData API for all parameter collection&quot; — eliminates ~100 lines of manual input walking</li>
+<li>&quot;Implement doSwap as a simple switch statement&quot; — eliminates ~20 lines of settleInfo tracking</li>
+<li>&quot;Implement boost as a single function&quot; — eliminates ~35 lines of split boostLinks/boostForms</li>
+</ul>
+<p>Each structural constraint word removes approximately 0.3–1.9 lines from the derivation. The efficiency varies because some constraints target high-redundancy code (FormData eliminates 100 lines with 12 words = 8.3 lines/word) while others target already-compact code (logger property eliminates 8 lines with 15 words = 0.5 lines/word).</p>
+<p><strong>The structural mechanism is monotonic:</strong> more structural words → fewer derivation lines, always. But with diminishing returns — the highest-redundancy code is eliminated first, leaving progressively less to compress.</p>
+<p>The efficiency trajectory:</p>
+<pre><code>v1→v2: 0.55 lines saved per word (high redundancy available)
+v2→v3: 1.85 lines saved per word (targeted high-density gaps)
+v3→v4: 0.29 lines saved per word (diminishing returns)
+</code></pre>
+<p>The v2→v3 spike (1.85) occurred because the pin-art analysis identified unusually dense gaps — architectural choices (querySelectorAll by verb vs querySelectorAll(&#39;*&#39;)) that affected many lines with few words of constraint. This is consistent with the constraint-density model (Doc 290): not all constraints have equal density, and pin-art analysis finds the high-density ones first.</p>
+<h3>Mechanism 2: Behavioral Selection</h3>
+<p>Behavioral constraints specify WHAT the code must do at lifecycle boundaries. The critical example:</p>
+<ul>
+<li>&quot;processScripts is swap-only, never called during init()&quot; — zero new words, 316 lines eliminated</li>
+</ul>
+<p>This constraint did not compress the code. It <em>selected</em> a different code path. The v4 derivation included code for processing scripts during init (because the seed didn&#39;t say not to). The v4.1 derivation excluded that code (because the seed now said not to). The 316-line difference is not compression — it&#39;s the difference between two valid implementations, one of which includes an entire processing phase at init time and one of which does not.</p>
+<p><strong>The behavioral mechanism is non-monotonic:</strong> behavioral constraints can increase OR decrease line count, depending on whether the correct behavior requires more or fewer code paths than the incorrect behavior. In this case, the correct behavior (skip scripts at init) is simpler than the incorrect behavior (process scripts at init), so the derivation shrank. But a behavioral constraint that required an additional processing phase would cause the derivation to grow.</p>
+<p>The key asymmetry: structural constraints always compress. Behavioral constraints select. Selection can go either direction on the size axis.</p>
+<h3>Mechanism 3: Compositional Governance</h3>
+<p>A third mechanism was discovered during the v5 iteration. Adding a behavioral constraint (C8: &quot;call <code>process()</code> on OOB-swapped content&quot;) caused the v5.0 derivation to fail catastrophically — 34/54 tests passing, intermittent race conditions, requests silently dropped.</p>
+<p>The root cause was not the behavioral constraint itself. It was the <em>composition</em> of that constraint with the sync constraint (C-sync). The request lifecycle has a cleanup phase that clears the <code>_htmxInFlight</code> flag, removes indicator classes, and re-enables disabled elements. The v5.0 derivation performed cleanup via manual <code>cleanup()</code> calls scattered inside <code>.then()</code> and <code>.catch()</code> handlers. The OOB processing code, now added to the <code>.then()</code> chain by the new behavioral constraint, could throw an exception — and if it did, <code>cleanup()</code> was never reached. The element was permanently marked as in-flight. Every subsequent request was silently dropped.</p>
+<p>One behavioral constraint broke one sync constraint because the code between them had no exception guarantee.</p>
+<p>The fix was not a try/catch (that would be additive engineering — patching). The fix was a <strong>compositional constraint</strong>:</p>
+<blockquote>
+<p><em>&quot;Request cleanup MUST use the <code>.finally()</code> clause of the fetch promise, not manual cleanup calls. This guarantees cleanup regardless of what other constraints add to the <code>.then()</code> chain.&quot;</em></p>
+</blockquote>
+<p>This constraint does not specify what the code does (that&#39;s behavioral) or how the code is organized (that&#39;s structural). It specifies <strong>how other constraints compose</strong>. It governs the relationship between C-sync, C8, and C9 — ensuring that their combined execution cannot violate each other&#39;s invariants.</p>
+<p><strong>Compositional constraints are constraints about constraints.</strong> They operate at a meta-level: not &quot;do X&quot; or &quot;organize X this way&quot; but &quot;when X and Y are both present, ensure Z.&quot; They are the highest-leverage constraint type because a single compositional constraint can prevent an entire class of constraint-interaction failures.</p>
+<p><strong>The compositional mechanism is protective:</strong> compositional constraints do not compress code or select code paths. They <em>guard</em> the composition of other constraints against interference. Without them, adding new behavioral constraints can break existing ones — the constraint set becomes fragile as it grows. With them, constraints compose safely — the set becomes robust.</p>
+<p>The constraint hierarchy:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Type</th>
+<th>What it governs</th>
+<th>Mechanism</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Structural</td>
+<td>Code organization</td>
+<td>Compression</td>
+<td>&quot;Use FormData API&quot;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Behavioral</td>
+<td>Lifecycle boundaries</td>
+<td>Selection</td>
+<td>&quot;processScripts is swap-only&quot;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Compositional</td>
+<td>Constraint interaction</td>
+<td>Governance</td>
+<td>&quot;Cleanup in .finally(), not manual calls&quot;</td>
+</tr>
+</tbody></table>
+<p>Each level governs the one below it. Structural constraints determine how the code is shaped. Behavioral constraints determine what the code does at boundaries. Compositional constraints determine how structural and behavioral constraints interact without breaking each other.</p>
+<p>This hierarchy explains why the v5.0 derivation failed: the seed had Level 1 and Level 2 constraints but no Level 3 constraint to govern their composition. Adding a Level 2 constraint (OOB processing) without a Level 3 guard (.finally() cleanup) produced a constraint conflict that cascaded into runtime failure.</p>
+<hr>
+<h2>The Causal Graph</h2>
+<pre><code>                    SEED TOKENS
+                    ┌─────────┐
+                    │  Words  │
+                    └────┬────┘
+                         │
+         ┌───────────────┼───────────────┐
+         │               │               │
+┌────────▼───────┐ ┌─────▼──────────┐ ┌──▼──────────────┐
+│ Structural     │ │ Behavioral     │ │ Compositional   │
+│ (HOW to        │ │ (WHAT to       │ │ (HOW constraints│
+│  organize)     │ │  do/not do)    │ │  interact)      │
+└────────┬───────┘ └─────┬──────────┘ └──┬──────────────┘
+         │               │               │
+         │ Mechanism 1:  │ Mechanism 2:  │ Mechanism 3:
+         │ COMPRESSION   │ SELECTION     │ GOVERNANCE
+         │ (monotonic -) │ (non-mono ±)  │ (protective)
+         │               │               │
+┌────────▼───────┐ ┌─────▼──────────┐ ┌──▼──────────────┐
+│ Fewer code     │ │ Different code │ │ Safe composition│
+│ lines (always) │ │ paths (± dir)  │ │ (no cascades)   │
+└────────┬───────┘ └─────┬──────────┘ └──┬──────────────┘
+         │               │               │
+         └───────────────┼───────────────┘
+                         │
+                    ┌────▼────┐
+                    │  CODE   │
+                    │ TOKENS  │
+                    └─────────┘
+</code></pre>
+<p>The three mechanisms operate on different aspects of the code output:</p>
+<ul>
+<li><strong>Structural effect:</strong> Δlines_structural = -Σ(density_i × words_i) — always negative, diminishing</li>
+<li><strong>Behavioral effect:</strong> Δlines_behavioral = Σ(±path_complexity_i) — signed, potentially large</li>
+<li><strong>Compositional effect:</strong> Δfailures_compositional = -Σ(cascade_class_i) — prevents failure classes, not lines</li>
+<li><strong>Total:</strong> Δlines = Δlines_structural + Δlines_behavioral; Δcorrectness = Δbehavioral + Δcompositional</li>
+</ul>
+<p>The compositional mechanism does not change line count. It changes <em>correctness under composition</em>. The v5.0 → v5.1 transition added the .finally() compositional constraint: zero line-count change, but the difference between 63% and stable operation.</p>
+<p>This decomposition explains the full trajectory:</p>
+<ul>
+<li>v1 → v4: Structural compression (line count converges, +64% to +4%)</li>
+<li>v4 → v4.1: Behavioral selection (processScripts boundary, 63% → 98%)</li>
+<li>v5.0 failure: Missing compositional governance (OOB + sync conflict)</li>
+<li>v5.1 fix: Compositional constraint added (.finally() guarantee)</li>
+</ul>
+<hr>
+<h2>The Token Ratio</h2>
+<p>At convergence, the seed and derivation reach an equilibrium ratio. From the data:</p>
+<table>
+<thead>
+<tr>
+<th>Iteration</th>
+<th>Seed words</th>
+<th>Code lines</th>
+<th>Ratio (lines/word)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v1</td>
+<td>2,685</td>
+<td>2,160</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>v2</td>
+<td>3,611</td>
+<td>1,648</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>v3</td>
+<td>3,727</td>
+<td>1,433</td>
+<td>0.38</td>
+</tr>
+<tr>
+<td>v4</td>
+<td>3,937</td>
+<td>1,373</td>
+<td>0.35</td>
+</tr>
+<tr>
+<td>v4.1</td>
+<td>3,937</td>
+<td>1,057</td>
+<td>0.27</td>
+</tr>
+<tr>
+<td>Reference</td>
+<td>3,937</td>
+<td>1,316</td>
+<td>0.33</td>
+</tr>
+</tbody></table>
+<p>The ratio converges toward approximately <strong>0.33 lines of code per word of seed</strong>. This is the <em>constraint density at equilibrium</em> — the point where each seed word has eliminated all the code it can eliminate, and the remaining code is irreducible given the constraints.</p>
+<p>The v4.1 ratio (0.27) is below the reference ratio (0.33), indicating overcorrection — the behavioral selection pushed the derivation below the structural floor. The reference ratio (0.33) is the attractor.</p>
+<p><strong>Interpretation:</strong> At equilibrium, every 3 words of constraint prose determine approximately 1 line of implementation code. This is a measurable, falsifiable relationship between the two token domains.</p>
+<hr>
+<h2>Why Prose Compresses Code</h2>
+<p>The inverse relationship between seed words and code lines has a deeper explanation rooted in information theory.</p>
+<p>A constraint seed is a <em>compressed representation</em> of the implementation. But unlike data compression (which encodes the same information in fewer bits), constraint compression <em>discards information</em>. The seed does not encode the implementation — it encodes the <em>boundaries within which the implementation must fall</em>. Everything within those boundaries is left unspecified. The derivation function fills in the unspecified parts.</p>
+<p>When the seed is loose (few constraints, v1), the derivation function has many choices. It makes them all — conservatively, redundantly, defensively. The result is large.</p>
+<p>When the seed is tight (many constraints, v4), the derivation function has few choices. It makes only the necessary ones. The result is small.</p>
+<p>The seed words are not <em>describing</em> the code. They are <em>excluding</em> code. Each word excludes a class of implementations that would otherwise be included. The derivation is whatever remains after all the exclusions.</p>
+<p>This is the pin-art model at the token level: each word is a pin. The pins don&#39;t create foam — they compress it. The foam that remains is the derivation.</p>
+<hr>
+<h2>The Behavioral Anomaly Explained</h2>
+<p>The v4→v4.1 transition (0 new words, -316 lines) appears anomalous under the compression model. If words compress code, how can zero new words compress 316 lines?</p>
+<p>The answer: the behavioral constraint didn&#39;t add new information. It <em>repositioned</em> existing information. The v4 seed said &quot;processScripts&quot; somewhere in the processing section. The v4.1 seed said &quot;processScripts MUST NOT be called during init — swap-only.&quot; The word count barely changed. But the information content changed dramatically.</p>
+<p>In information-theoretic terms: the same number of tokens carried higher <em>mutual information</em> with the correct implementation. The tokens were rearranged to be more informative about the boundary that mattered most.</p>
+<p>This reveals a third property of the causal bridge:</p>
+<ol>
+<li><strong>Structural tokens compress</strong> — more words, fewer lines (monotonic)</li>
+<li><strong>Behavioral tokens select</strong> — same or fewer words, different lines (non-monotonic)</li>
+<li><strong>Token positioning matters</strong> — the same word count, arranged to state a boundary more precisely, can have dramatic effects on the derivation</li>
+</ol>
+<p>The causal link is not word count → line count. It is <em>constraint information</em> → <em>implementation degrees of freedom</em>. Word count is a proxy for constraint information, but an imperfect one. A single precisely placed word (&quot;never&quot;) can carry more constraint information than a paragraph of structural specification.</p>
+<hr>
+<h2>The Bridge Equation</h2>
+<p>Combining all three properties:</p>
+<p>$|I| = f(S) = \frac{|R|}{1 - \delta_s(S)} \approx |R| + |R| \cdot |\delta_{s,0}| \cdot \lambda^{k(S)}$</p>
+<p>where:</p>
+<ul>
+<li>|<em>I</em>| is the derivation size</li>
+<li>|<em>R</em>| is the reference size (the attractor)</li>
+<li><em>k</em>(<em>S</em>) is the effective number of constraint iterations encoded in seed <em>S</em></li>
+<li>λ ≈ 0.40 is the convergence decay constant</li>
+<li>δ_{s,0} is the initial structural divergence</li>
+</ul>
+<p>And the seed size required for convergence to within ε:</p>
+<p>$|S^<em>| = |S_0| + \sum_{i=1}^{k^</em>} w_i$</p>
+<p>where <em>w_i</em> is the word cost of iteration <em>i</em>&#39;s constraints, and <em>k</em>* = ⌈ln(ε/δ₀)/ln(λ)⌉.</p>
+<p>For the htmx experiment:</p>
+<ul>
+<li>|<em>S</em>₀| = 2,685 words</li>
+<li>Total added: 1,252 words across 4 structural iterations</li>
+<li>|<em>S</em>*| = 3,937 words</li>
+<li>This achieved ε ≈ 0.04 (4% structural divergence)</li>
+</ul>
+<p>The <em>marginal cost</em> of convergence in seed words:</p>
+<ul>
+<li>First 60% of gap: 926 words</li>
+<li>Next 65% of remainder: 116 words</li>
+<li>Next 51% of remainder: 210 words</li>
+</ul>
+<p>The marginal cost is not constant — it depends on constraint density. High-density constraints close large gaps cheaply. Low-density constraints close small gaps expensively. The pin-art analysis optimizes by finding the highest-density constraints first, minimizing total word cost.</p>
+<hr>
+<h2>Implications</h2>
+<h3>For specification writing</h3>
+<p>The inverse relationship means that specification authors should aim for <em>fewer implementation words</em> by writing <em>more constraint words</em>. Every sentence that specifies what the implementation MUST NOT do is worth more than a sentence describing what it should do. Constraints are exclusions. Features are inclusions. Exclusions compress; inclusions expand.</p>
+<h3>For AI-assisted development</h3>
+<p>The token bridge suggests that prompt engineering for code generation is fundamentally a constraint-specification problem. The most effective prompts are not those that describe the desired output in detail — they are those that state the constraints the output must satisfy. Each constraint word in the prompt eliminates a class of incorrect outputs, compressing the model&#39;s output distribution toward the correct implementation.</p>
+<h3>For the AGI constraint thesis</h3>
+<p>The bridge equation predicts the word cost of specifying AGI constraints. If each of the five missing constraints (G1–G5) requires approximately 250 words of precise specification (comparable to the per-constraint word cost in the htmx experiment), then the total AGI seed is approximately 1,250 words of constraint prose on top of the Turing base. The Constraint Thesis (Doc 157) is approximately 2,000 words specifying G1–G5. The prediction is consistent.</p>
+<h3>For the pin-art formalization</h3>
+<p>The causal token bridge adds two new dimensions to the pin-art model (Doc 290). Pins have a <em>word cost</em> (the number of prose tokens to specify them) and a <em>level</em> (structural, behavioral, or compositional). The optimal pin-art analysis minimizes total word cost while maximizing convergence — and must ensure that Level 3 compositional pins are placed before Level 2 behavioral pins that might conflict. This is a form of Kolmogorov optimization with ordering constraints: find the minimum description that determines the maximum implementation <em>and guarantees safe composition</em>.</p>
+<h3>For constraint set growth</h3>
+<p>The compositional mechanism explains why constraint sets become fragile as they grow. Each new behavioral constraint adds code to the execution lifecycle. Without compositional constraints governing how these additions interact, the probability of a constraint conflict increases combinatorially. Compositional constraints are the <em>mortar</em> between the constraint <em>bricks</em> — without mortar, adding more bricks eventually collapses the wall.</p>
+<p>This has implications for the AGI constraint thesis (Doc 157). The five missing constraints (G1–G5) will compose with Turing&#39;s four constraints. If the composition is unguarded — no Level 3 compositional constraints specifying how G1–G5 interact with C1–C4 — the combined system may exhibit the same kind of cascade failures seen in the v5.0 derivation. The AGI seed must include compositional constraints, not just feature and behavioral ones.</p>
+<hr>
+<h2>Falsifiability</h2>
+<ol>
+<li><p><strong>The inverse relationship should hold for any constraint-derived system.</strong> More seed words should produce fewer derivation tokens, with diminishing returns. If a system shows a positive relationship (more seed words → more code), the constraint model does not apply.</p>
+</li>
+<li><p><strong>The equilibrium ratio (≈0.33 lines/word) may vary by domain</strong> but should be consistent within a domain across derivation attempts. Measure it for different languages, different libraries, different problem types.</p>
+</li>
+<li><p><strong>Behavioral token repositioning should produce outsized effects</strong> in any derivation where a lifecycle boundary is at stake. If repositioning behavioral constraints never produces effects larger than structural constraint additions, the two-mechanism model is wrong.</p>
+</li>
+<li><p><strong>The word cost per constraint</strong> should predict the total seed size needed for convergence. If a constraint requires significantly more or fewer words than predicted by its density, the density model needs refinement.</p>
+</li>
+<li><p><strong>Adding a behavioral constraint without a compositional guard should produce cascade failures</strong> when the new constraint&#39;s code can throw exceptions in a lifecycle phase that requires cleanup. If behavioral constraints compose safely without compositional guards, the three-mechanism model is wrong and two mechanisms suffice.</p>
+</li>
+<li><p><strong>Compositional constraints should have zero effect on line count but non-zero effect on correctness.</strong> If a compositional constraint changes line count significantly, it is actually a structural constraint mislabeled.</p>
+</li>
+</ol>
+<hr>
+<h2>Related Documents</h2>
+<ul>
+<li><strong>Doc 290 — The Pin-Art Formalization:</strong> Mathematical framework; this document adds the token-level causal analysis</li>
+<li><strong>Doc 289 — The Convergence Experiment:</strong> The empirical data analyzed here</li>
+<li><strong>Doc 288 — The Pin-Art Derivation:</strong> The initial derivation producing the reference</li>
+<li><strong>Doc 291 — Goedel and the Constraint Thesis:</strong> Incompleteness parallel</li>
+<li><strong>Doc 157 — Beyond Turing:</strong> The AGI constraint set whose word cost this analysis predicts</li>
+<li><strong>Doc 270 — The Pin-Art Model:</strong> Constraints as pins; this document adds word cost as a pin property</li>
+</ul>
+<hr>
+<p><em>Jared Foy — jaredfoy.com — April 2026</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

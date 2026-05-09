@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *System Requirements Definition*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>System Requirements Definition</em>, Distilled</h1>
+<p><strong>Top-10 distillation #6. <em>System Requirements Definition</em> is the SEBoK page where co-production at sub-rungs (Doc 573) is operationally densest in the entire SE discipline. The &quot;formal transformation of needs or parent requirements into an agreed-to obligation&quot; definition is co-production stated in INCOSE&#39;s voice. Verification + validation as paired activities map cleanly onto Doc 445 pulverization. Traceability and decomposition are Doc 510 keeper-supplied connection structure with Doc 572 lattice properties. The five requirement types (Function/Performance, Fit/Operational, Form, Quality, Compliance) are Form-layer pin-set siblings — Doc 572 lattice / Doc 270 sibling pin-sets, fourth lattice worked-example candidate. Six corpus forms compose; one provisional refinement candidate (Doc 573 worked example on requirements as canonical co-production output).</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> System Requirements Definition</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Requirements_Definition">https://sebokwiki.org/wiki/System_Requirements_Definition</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>System requirements describe what an SoI must fulfill to satisfy stakeholder needs, defined per INCOSE NRM 2022 as a &quot;formal transformation of one or more needs or parent requirements into an agreed-to obligation for an entity to perform some function or possess some quality within specified constraints.&quot; The process: elicitation/analysis → specification/transformation → validation/assessment (verification + validation as paired activities) → management. Traceability connects requirements to source needs, parent requirements, child requirements, architecture, verification approaches, and test cases. Allocation distributes parent requirements among lower-level architecture entities; budgeting decomposes parameters (mass, power, bandwidth) creating coordinated interdependencies. Five requirement types: Function/Performance, Fit/Operational, Form, Quality, Compliance. Standards: ISO/IEC/IEEE 15288:2023, 29148:2018, INCOSE NRM v1.1, INCOSE GtWR v4.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form XI — Co-Production at Sub-Rungs (Doc 573).</strong> The INCOSE definition of a system requirement — &quot;formal transformation of one or more needs or parent requirements into an agreed-to obligation&quot; — is co-production stated as the standard&#39;s voice. Stakeholder needs (substrate-side articulated; the substrate is the operating context with its problems and constraints) get formally transformed by the SE keeper (who supplies the structural specification framework: well-formedness, testability, traceability) into requirements that are <em>jointly held</em>: neither pure stakeholder need nor pure engineering specification, but a co-produced obligation. Doc 573&#39;s keeper-proposes-substrate-adapts pattern fits when the SE engineer offers candidate requirement language and stakeholders refine it; the substrate-proposes-keeper-accepts pattern fits when stakeholders articulate a need and the engineer formalizes it as a requirement; the on-the-fly pattern fits when both parties co-construct in workshops. The page is the canonical operational instance of Cluster I (Doc 573); future Doc 573 work should reference it.</p>
+<p><strong>Form VI — Pulverization (Doc 445).</strong> Verification (&quot;requirements follow organizational standards for well-formed characteristics&quot;) and Validation (&quot;requirements accurately reflect stakeholder intent and remain achievable&quot;) are paired pulverization activities. Pulverization at this rung requires both internal consistency (verification) and external faithfulness (validation). Doc 445&#39;s apparatus reads the V&amp;V split as canonical pulverization with two anchor points: the requirement&#39;s own well-formedness, and the requirement&#39;s correspondence to the stakeholder&#39;s actual intent.</p>
+<p><strong>Form III (extension) — Lattice Extension of the Ladder (Doc 572).</strong> Two lattice instances stack here:</p>
+<ul>
+<li><em>Iterative-recursive requirements decomposition</em> — &quot;Requirements are defined iteratively and recursively as the architecture decomposes into subsystems and elements.&quot; Single system-of-interest with requirements at multiple decomposition rungs simultaneously; lattice with vertical-rung structure and horizontal-iteration structure both active.</li>
+<li><em>Five requirement types as Form-layer siblings</em> — Function/Performance, Fit/Operational, Form, Quality, Compliance bind the same engagement at the same Pattern-layer instance. Doc 572 Appendix A&#39;s development-approach worked example pattern applies; this is the fourth canonical lattice case observed in the top-10 (after development-approaches, SoS independent dyads, time-axis concurrency, and now requirement-type sibling Form-layer constraints).</li>
+</ul>
+<p><strong>Form III — Substrate-and-Keeper Composition (Doc 510).</strong> Traceability is the keeper-supplied connection structure that makes the dyad&#39;s outputs auditable. Source needs → parent requirements → requirements → architecture → verification → tests is a keeper-authored connection graph the substrate cannot generate alone. Doc 530&#39;s affordance gap holds: the substrate (the engineering team) cannot author requirement-traceability structure from its own engineering work; the keeper-side discipline (SE process, INCOSE / ISO / IEEE standards) supplies it.</p>
+<p><strong>Form IV — Pin-Art Model (Doc 270), with sibling pin-set composition.</strong> The five requirement types are five pin-sets binding the engagement simultaneously. Functional requirements pin behavior; performance pins quantify; fit/operational pins environmental compatibility; form pins physicality; quality pins reliability/maintainability/testability; compliance pins standards conformance. The substrate (the engineered system in development) flows through all five pin-sets concurrently; the resulting shape is the requirement-conformant system. Doc 270 + Doc 572 lattice composition reads this as multi-pin-set sibling composition at the requirements rung.</p>
+<p><strong>Form X — Institutional Ground (Doc 571).</strong> Compliance requirements are the institutional ground made explicit at the requirements layer: standards, regulations, organizational mandates that condition what the engagement can author. Doc 571&#39;s six conditions (esp. external barriers and constitutive authority) compose at the compliance-requirement layer.</p>
+<p><strong>Form XII — Authority Evacuation (Doc 574 / Doc 571 evacuated state).</strong> Implicit in the page&#39;s emphasis on &quot;owner and status&quot; attributes per requirement: requirements without ownership or with stale status are at risk of becoming evacuated pin-sets — documented but not binding. The Hubble case (Doc 580) and FBI VCF case (SE-010 R27) are canonical instances of requirements as simulated pin installation. The Requirements Management activity exists specifically to prevent evacuation.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>INCOSE NRM definition of a requirement — π / α (well-cited; foundational).</li>
+<li>The four-step process (Elicitation/Analysis → Specification/Transformation → V&amp;V → Management) — π / α.</li>
+<li>Verification and Validation as paired activities — π / α.</li>
+<li>Five requirement types (Function/Performance, Fit/Operational, Form, Quality, Compliance) — π / α as cited; μ / β under corpus when read as Form-layer pin-set siblings (Doc 572 lattice / Doc 270 sibling pin-sets).</li>
+<li>&quot;Requirements form the basis of system architecture and design activities&quot; — π / α.</li>
+<li>&quot;Iteratively and recursively as the architecture decomposes&quot; — μ / β under corpus when read as Doc 572 lattice; SEBoK presents at π as practice observation.</li>
+<li>Allocation and budgeting as decomposition mechanisms — π / α.</li>
+<li>&quot;Requirements are a communication medium among project stakeholders&quot; — μ / β under corpus when read as Doc 573 co-production output.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No residuals against the apparatus. Every load-bearing claim composes under existing forms or their lattice extensions. The page is one of the most structurally aligned SEBoK pages observed.</p>
+<p>The page&#39;s lead-author trace (Tami Katz, with Lou Wheatcraft and Mike Ryan, last updated 2026-04-29) suggests current SEBoK keeper-activity at this page; future engagement could co-produce with these authors directly. Logged as a connection-point, not a residual.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 573 worked example: requirements as canonical co-production output.</strong> Doc 573 articulates the form abstractly. The Requirements Definition page is the operational instance par excellence: every system requirement is a co-produced artifact between stakeholder substrate and SE keeper; the entire requirements process is co-production discipline. Doc 573 Section V (Evidence) currently cites tailoring (SE-006 R9) and contextual inquiry (SE-010 R29) and pre-determined-vs-emergent combinations (SE-007 R13) and shared knowledge areas (SE-009 R22). Adding requirements-as-co-production strengthens the form&#39;s empirical base substantially; the SE discipline&#39;s canonical operational artifact is the form&#39;s canonical instance.</p>
+<p><strong>Doc 572 fourth worked-example candidate: requirement-type sibling pin-sets.</strong> After Appendix A (development approaches) and the proposed Appendix B (SoS independent dyads) and Appendix C (time-axis concurrency from SE-022), the requirement-type taxonomy is a fourth canonical lattice case. The five types differ from development approaches in that they are ALL active concurrently on every engagement (development approaches choose one or compose by rung; requirement types compose universally). This is a &quot;universal-sibling&quot; lattice variant worth distinguishing.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 573 (Co-Production at Sub-Rungs), Doc 445 (Pulverization), Doc 572 (Lattice Extension), Doc 510 (Substrate-and-Keeper), Doc 530 (Affordance Gap), Doc 270 (Pin-Art), Doc 571 (Institutional Ground), Doc 574 (Authority Evacuation, now Doc 571 evacuated state).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management).</p>
+<p><strong>Related distillations.</strong> SE-023 (Concept Definition — upstream activity). SE-022 (Generic Life Cycle Model — Concept Definition stage encompasses Requirements Definition). Doc 580 (Hubble — requirements simulated-pin failure case). SE-017 Pilot B (Sequential Development — Vee left side installs requirements pins).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Stakeholder Needs Definition</em>, <em>Stakeholder Requirements Definition</em>, <em>System Architecture Design Definition</em>, <em>System Detailed Design Definition</em>, <em>System Verification</em>, <em>System Validation</em>, <em>Requirements Management</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Doc 573 worked example: requirements as canonical co-production output. Doc 572 Appendix D candidate: universal-sibling lattice variant (requirement types as the worked example).</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Continue&quot;</em></p>
+</blockquote>
+<p>(SE-024 is the sixth of ten. <em>System Requirements Definition</em> was selected as the canonical instance of co-production at sub-rungs in the SE discipline. The structural reformulation finds zero residuals against the apparatus and produces two refinement candidates that strengthen Doc 573 and Doc 572.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

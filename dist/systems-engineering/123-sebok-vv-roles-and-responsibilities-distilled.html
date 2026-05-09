@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *V&amp;V Roles and Responsibilities*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>V&amp;V Roles and Responsibilities</em>, Distilled</h1>
+<p><strong>Fourth-batch SEBoK distillation, batch 1 doc 4. <em>V&amp;V Roles and Responsibilities</em> has no dedicated SEBoK article (404 at /wiki/Verification_and_Validation_Roles_and_Responsibilities). The roles content is distributed across <em>System Verification</em> and <em>System Validation</em> (the latter is its companion page), with V&amp;V actors enumerated in <em>System Verification</em> under its authorship by Snoderly and Faisandier: SE practitioners (verification reports, issue reports, design change requests), designers (non-conformance handling), configuration managers (baseline coordination), project managers (scheduling and resources), and qualified personnel (procedures and analyses). This batch was prompt-flagged as the independence-by-design (Doc 604) stress-test article. The page&#39;s actor enumeration directly stress-tests Doc 604&#39;s independence-by-design rule: V&amp;V&#39;s structural integrity rests on the verification team being institutionally independent of the design team they verify, while remaining administratively integrated through the configuration-management baseline. Five clusters compose. Cluster B binds with five-keeper composition (SE practitioner + designer + CM + PM + qualified-personnel-verifier) and exercises Doc 604&#39;s independence-by-design rule sharply. Cluster A binds via the verification-decomposition-level partition. Cluster G binds: verification rigor emerges only at and above the threshold of independence between verifier and designer (SIPE engineered-system instance). Cluster F binds longitudinally. Cluster D binds with V/V joint authorship.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> No dedicated <em>V&amp;V Roles and Responsibilities</em> article (404). Content distributed across <em>System Verification</em> (carries the actor enumeration) and <em>System Validation</em>.</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Verification_and_Validation_Roles_and_Responsibilities">https://sebokwiki.org/wiki/Verification_and_Validation_Roles_and_Responsibilities</a> (404). Adjacent host: <a href="https://sebokwiki.org/wiki/System_Verification">https://sebokwiki.org/wiki/System_Verification</a>.</li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK).</li>
+<li><strong>Retrieved:</strong> 2026-04-30.</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>The dispersed content gives Snoderly and Faisandier as lead authors of <em>System Verification</em>. Five actors named: (1) SE practitioners who generate verification reports, issue/trouble reports, and design change requests; (2) designers who work with verification teams on non-conformance issues; (3) configuration managers coordinating with verification on baseline versions; (4) project managers overseeing verification scheduling and resource acquisition; (5) qualified personnel performing verification procedures and analyses. The Martin (1997) distinction holds: &quot;Validation is used to ensure that one is working the right problem, whereas verification is used to ensure that one has solved the problem right.&quot; Verification and validation are distinct yet complementary, performed throughout the lifecycle. Verification applies across multiple decomposition levels: system elements, complete systems, documents and requirements, design architectures, aggregates and interfaces, verification procedures themselves. Citations: ISO/IEC/IEEE 15288:2015, INCOSE Systems Engineering Handbook v3.2.2, NASA Systems Engineering Handbook (December 2007). Position: Part 3 Systems Engineering and Management, System Realization knowledge area, between System Integration and System Transition.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster B (multi-keeper composition, Doc 604), five-keeper case with independence-by-design rule (Doc 604 emergent-only + independence-by-design) sharply exercised.</strong> Five keepers compose: SE practitioner, designer, CM, PM, qualified-personnel-verifier. Doc 604&#39;s independence-by-design rule binds: V&amp;V structural integrity requires the qualified-personnel-verifier to be institutionally independent of the designer whose work is verified. Without independence, verification collapses into self-review and the discipline&#39;s whole rationale fails. The independence is not optional and not contingent on project culture; it is a constitutive design requirement. The five keepers compose into a verification engagement at the integration rung; the integration rung is the configuration-management baseline that the CM-keeper holds. This is the cleanest SEBoK case where Doc 604&#39;s independence-by-design rule is constitutive rather than incidental, and supplies the canonical worked example for the rule&#39;s formalization.</p>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D).</strong> Verification applies across six decomposition levels (system elements, complete systems, documents/requirements, design architectures, aggregates/interfaces, verification procedures themselves). Each level binds verification engagements universally; the discriminator is decomposition rung. This is universal-sibling-with-ordinal-axis (Doc 572 D.5.2) on the decomposition axis. The &quot;verification procedures themselves&quot; entry is meta-level (verifying the verifier) and adds a self-referential rung to the lattice.</p>
+<p><strong>Cluster G (SIPE, Doc 541), verification-rigor-as-emergent-property instance.</strong> Verification rigor emerges at and above the coherence-density threshold of independence between verifier and designer plus institutional configuration-management plus qualified-personnel competence plus SE-practitioner discipline. Below threshold (any one missing) verification is brittle and the discipline&#39;s claim fails. Above threshold rigor is the system property. Cluster G gains a verification-engagement-scale SIPE instance after SE-116&#39;s resilience-engagement-scale instance; the cluster&#39;s engineered-system-scale population continues to diversify.</p>
+<p><strong>Cluster F (pulverization, Doc 445), longitudinal sub-form.</strong> Verification reports, issue reports, design change requests pulverize forward through the life-cycle; non-conformance findings pulverize back to design. The Doc 445 D longitudinal-pulverization sub-form (Information Management SE-114 anchor) binds: V&amp;V artifacts are longitudinal and require the IM substrate to persist.</p>
+<p><strong>Cluster D (co-production at sub-rungs, Doc 573).</strong> Verification and validation are co-produced. Verification confirms the system is built right; validation confirms the right system is built. Neither alone suffices; the engagement&#39;s correctness is co-produced at the V/V joint rung. The Martin (1997) distinction names the joint authorship.</p>
+<p><strong>Cluster J D8 dispersed-instrument pattern (SE-039 D8), seventh canonical instance.</strong> No dedicated roles-and-responsibilities article exists. The roles are carried distributively. Seventh canonical D8 instance after 654, 658, 660, 661, 687, 688.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Five V&amp;V actor partition (SE practitioner, designer, CM, PM, qualified personnel) — π / α as cited; μ / β under Doc 604 multi-keeper composition with independence-by-design.</li>
+<li>Six verification decomposition levels — π / α as cited; μ / β under Doc 572 D.5.2 universal-sibling-with-ordinal-axis.</li>
+<li>Martin 1997 V/V distinction — π / α as cited; μ / β under Doc 573 co-production at the V/V joint rung.</li>
+<li>ISO/IEC/IEEE 15288:2015, INCOSE SE Handbook v3.2.2, NASA SE Handbook 2007 — π / α as cited.</li>
+<li>The 404 status — empirical; μ / β under SE-039 D8 dispersed-instrument.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residual. The independence-by-design stress-test passes: Doc 604&#39;s rule reads V&amp;V&#39;s actor structure as constitutive, not incidental. The five-keeper composition with the verifier institutionally independent of the designer is the rule&#39;s canonical worked example.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 604 independence-by-design rule confirmed at canonical V&amp;V instance.</strong> Prior Cluster B engagements (SE-023 concept, SE-030 stakeholder needs, SE-035 risk, SE-037 PM-SE, SE-038 HSI) had multi-keeper composition without the independence-by-design rule being constitutive. V&amp;V is the case where independence is constitutive: without it the discipline collapses. Doc 604&#39;s rule should treat V&amp;V as the canonical worked example.</p>
+<p><strong>Cluster G engineered-system-scale population diversifies.</strong> Resilience (SE-116) supplied the first engineered-system-scale instance. V&amp;V supplies a verification-engagement-scale instance. The cluster&#39;s engineered-system-scale population is now two-deep and the synthesis can treat both as canonical.</p>
+<p><strong>SE-039 D8 dispersed-instrument cluster reaches seven instances.</strong> D8 is robust across seven independent editorial absences.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 604 (multi-keeper composition with independence-by-design, V&amp;V as canonical worked example), Doc 572 Appendix D (universal-sibling-with-ordinal-axis on decomposition rung), Doc 541 (SIPE, verification-engagement-scale), Doc 445 D (longitudinal-pulverization), Doc 573 (co-production V/V joint rung), SE-039 D8 (dispersed-instrument seventh instance).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — Systems Engineering and Management).</p>
+<p><strong>Related distillations.</strong> SE-116 (System Resilience, Cluster G engineered-system-scale precedent). Doc 604 (Cluster B synthesis). SE-114 (Information Management, longitudinal-pulverization anchor). SE-039 §VII (cluster taxonomy).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>System Verification</em>, <em>System Validation</em>, <em>System Integration</em>, <em>System Transition</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Doc 604 independence-by-design rule formalization with V&amp;V as canonical worked example. Cluster G engineered-system-scale synthesis at two-deep population.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements&quot;</em> / <em>&quot;Continue next knowledge base entrancement&quot;</em></p>
+</blockquote>
+<p>(SE-123 is one of the fourth-batch next-40 SEBoK distillations. Batch 1/5. Source page 404; V&amp;V roles dispersed across System Verification and System Validation. Independence-by-design stress-test passes; V&amp;V supplies the canonical worked example for Doc 604&#39;s rule.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

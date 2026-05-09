@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>On the Arbitrariness of Nested Architectures — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><!-- chronological_ordinal: 6 -->
+<h1>On the Arbitrariness of Nested Architectures</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document asks whether PRESTO&#39;s seven progressive layers are fundamental categories of web architecture or contingent observations tied to today&#39;s technologies. It argues they are contingent: each layer is defined not by a specific technology (htmx, WebSocket, WebAssembly) but by the type of interface agreement between server and client and the degree to which REST&#39;s uniform interface is relaxed. The paper then explores the broader design space -- noting that PRESTO is one of potentially many construction-level styles that could nest within REST, that nesting can be both recursive (a WebGL context inside a React island inside a PRESTO page inside a REST transfer) and parallel (multiple independent architectures on the same page), and that the developer&#39;s real choice is not complexity level but where to place dynamism and which properties to trade.</p>
+</blockquote>
+<p><strong>Jared Foy</strong>
+<strong>April 2026</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><em>An open inquiry into the contingency of architectural constraints, the nature of layered design spaces, and the possibility of parallel and recursive nesting within RESTful systems.</em></p>
+<hr>
+<h2>1. The Question</h2>
+<p>The PRESTO style identifies seven progressive layers of code-on-demand, each representing a deeper degree of client capability. The layers were discovered empirically — observed in the wild, catalogued, and ordered by the properties they trade. But the question arises: are these layers fundamental, or are they contingent?</p>
+<p>If they are fundamental — if they represent the only possible categories of nesting within REST — then PRESTO has discovered something about the structure of web architecture itself. If they are contingent — if they reflect the current landscape of transport protocols, execution environments, and interface technologies — then they are observations, not constraints. And the design space may be larger than seven layers.</p>
+<p>This document argues that the layers are contingent, examines what that contingency implies, and opens several lines of inquiry that follow from it.</p>
+<hr>
+<h2>2. What the Layers Actually Are</h2>
+<p>Layer 0 is not &quot;HTML.&quot; Layer 0 is the condition of maximum REST properties — the state where the server has resolved everything, the client receives a complete representation, and no code-on-demand has been requested. HTML happens to be the medium. But any complete, self-describing representation format would induce the same properties at this layer.</p>
+<p>Layer 1 is not &quot;htmx.&quot; Layer 1 is declarative enhancement — the condition where the client&#39;s interaction model is extended by attributes in the representation, without imperative code. htmx is one implementation. HTML&#39;s built-in form and link mechanisms are another. A future standard could provide richer declarative enhancement without any library. The capability is &quot;extended interaction without imperative code.&quot; The technology is contingent.</p>
+<p>Layer 2 is not &quot;IIFEs.&quot; Layer 2 is scoped client behavior — the condition where the server authors imperative code that executes after the complete DOM exists. <code>htx:script</code> is one mechanism. A future <code>&lt;script type=&quot;module&quot; scoped&gt;</code> standard could be another. The capability is &quot;server-authored, document-aware client code.&quot; The mechanism is contingent.</p>
+<p>Layer 3 is not &quot;WebSocket.&quot; Layer 3 is server-initiated code delivery — the condition where the server pushes executable code to the client over a persistent connection. WebSocket is one transport. HTTP/2 server push, Server-Sent Events with script payloads, or WebTransport could serve the same function. The capability is &quot;the server sends code the client didn&#39;t ask for.&quot; The transport is contingent.</p>
+<p>Layer 4 is not &quot;authenticated islands.&quot; Layer 4 is scoped data channels — the condition where pushed code opens bidirectional communication with the server, authenticated by tokens embedded in the representation. The island metaphor, the token format, and the channel protocol are all contingent. The capability is &quot;authenticated bidirectional data flow within a bounded region of the representation.&quot;</p>
+<p>Layer 5 is not &quot;SPA.&quot; Layer 5 is client-assumed navigation authority — the condition where the client takes over routing and rendering within bounded regions. React Router, client-side hash routing, or History API manipulation are all contingent implementations. The capability is &quot;the client decides what to show without asking the server.&quot;</p>
+<p>Layer 6 is not &quot;WASM.&quot; Layer 6 is native compute — the condition where the client executes code at native speed within a sandboxed environment. WebAssembly is the current mechanism. A future standard (native modules, embedded VMs, hardware-accelerated compute APIs) could provide the same capability. The capability is &quot;near-metal execution in the client.&quot; The technology is contingent.</p>
+<p>In every case, the layer is defined by the <strong>capability</strong> it adds and the <strong>properties</strong> it trades — not by the technology that currently implements it.</p>
+<hr>
+<h2>3. The Layers as Interface Categories</h2>
+<p>If the layers are not defined by technology, what are they defined by?</p>
+<p>They appear to be defined by the <strong>type of interface</strong> between server and client at each level. Each layer represents a different kind of agreement about what the server provides and what the client does with it:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Interface Agreement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>Server provides complete representation. Client renders.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Server provides interaction hints. Client follows declaratively.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Server provides scoped code. Client executes in document context.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Server initiates delivery. Client receives and executes.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Server and client negotiate bidirectional data flow.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Client assumes rendering authority. Server becomes data source.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Client assumes compute authority. Server becomes delivery mechanism.</td>
+</tr>
+</tbody></table>
+<p>These are categories of interface agreement — each one a different answer to the question &quot;who decides what, and how do they communicate?&quot; They may be related to Fielding&#39;s uniform interface constraint — each layer represents a different degree of deviation from the uniform interface. At Layer 0, the uniform interface is fully operative. At Layer 6, the interface between server and client has been specialized to the point where REST&#39;s uniform interface properties no longer hold within the bounded region.</p>
+<p>This suggests the layers are not arbitrary — they are ordered by the degree to which the uniform interface is relaxed. But the specific mechanisms at each layer remain contingent.</p>
+<hr>
+<h2>4. PRESTO as One of Many Possible Nestings</h2>
+<p>REST defines constraints at the transfer level. PRESTO defines constraints at the construction level. The two compose. But nothing in REST requires PRESTO specifically. REST is silent on construction. Any set of construction-level constraints that does not violate REST&#39;s transfer-level constraints would compose equally well.</p>
+<p>This means PRESTO is one of potentially many construction-level architectures that could nest within REST. The constraints Jared Foy identified — bilateral boundary, namespace separation, server-consumed directives, progressive code-on-demand, server-embedded authentication and authorization — were discovered by intuition and validated by implementation. They work. They induce the properties described in the dissertation. But they are not deducible from REST. They are a creative act — a choice of constraints that happened to produce a coherent style.</p>
+<p>Someone else could identify a different set of construction-level constraints:</p>
+<ul>
+<li>A unilateral construction model (no bilateral boundary) that uses a separate configuration language for server directives</li>
+<li>A shared-namespace model where server and client directives coexist in the same namespace, disambiguated by execution context</li>
+<li>A capability-first model where the construction pipeline is organized by capability grants rather than by directive stages</li>
+</ul>
+<p>Each of these would produce a different style with different induced properties, different tradeoffs, and a different developer mental model. Each would nest within REST. None would be more or less &quot;correct&quot; than PRESTO — only more or less useful for specific purposes.</p>
+<p>The nested constraints framework predicts this: any coherent set of constraints nested within a governing style induces emergent properties. PRESTO is an instance. The framework permits infinitely many instances.</p>
+<hr>
+<h2>5. Recursive and Parallel Nesting</h2>
+<p>PRESTO has demonstrated that a Distributed Objects architecture (React) can be enclosed within a PRESTO representation. The enclosure is clean — REST at the transfer level, PRESTO at the construction level, DO within bounded regions of the resolved representation. Three levels. No violations.</p>
+<p>But this nesting need not stop at three levels. Within a DO region (a React island), further nesting is possible:</p>
+<ul>
+<li>A WebGL context running a physics simulation (native compute within a DO component within a PRESTO representation within a RESTful transfer)</li>
+<li>A collaborative editing protocol (bidirectional data flow within a DO component within a PRESTO representation)</li>
+<li>A local-first database sync (eventual consistency within a DO state model within a PRESTO layout)</li>
+</ul>
+<p>Each additional nesting adds constraints and trades properties. The question is whether there is a principled limit to the depth of nesting, or whether it is bounded only by the coherence requirement — that each nested layer must not violate the constraints of the layer that encloses it.</p>
+<p>Parallel nesting has also been demonstrated. A single PRESTO representation can contain:</p>
+<ul>
+<li>A React island and a Svelte island (two DO implementations, parallel)</li>
+<li>A WebGL canvas and a collaborative editor (native compute and bidirectional data, parallel)</li>
+<li>A static server-rendered region and an SPA region (Layer 0 and Layer 5, parallel, on the same page)</li>
+</ul>
+<p>The parallelism works because each nested region is bounded — scoped to a specific area of the DOM, with its own lifecycle, its own state, and its own degree of property trade. The enclosing PRESTO representation manages the boundaries. REST manages the transfer.</p>
+<p>This suggests that architectural nesting is both recursive (depth) and parallel (breadth), bounded only by coherence. Identifying the full space of possible nestings — which architectures can nest within which, at what depth, in what parallel combinations — is an open research question.</p>
+<hr>
+<h2>6. The Developer&#39;s Mental Model Revisited</h2>
+<p>The original layer model was presented as a spectrum from simple (Layer 0) to complex (Layer 6). This framing is misleading.</p>
+<p>Layer 0 is not simple. Layer 0 is <strong>maximally dynamic</strong>. At Layer 0, the server resolves data, evaluates conditionals, processes authentication, issues credentials, iterates collections, includes components, wraps layouts — all within a single request. The resolved representation is complete, personalized, and current. The developer has access to the full power of the server — databases, APIs, computation, business logic — all converged through the declarative directive surface.</p>
+<p>The industry&#39;s perception is inverted. Developers associate &quot;dynamic&quot; with &quot;client-side JavaScript.&quot; They see Layer 0 as static and Layer 5 as dynamic. But the dynamism at Layer 0 is server-side dynamism — resolution-time computation that produces a bespoke representation for each request. The dynamism at Layer 5 is client-side dynamism — runtime computation that produces UI updates without server consultation.</p>
+<p>These are different kinds of dynamism, not different amounts. Layer 0 is dynamic at resolution time. Layer 5 is dynamic at interaction time. Choosing Layer 5 does not add dynamism — it trades resolution-time dynamism (where the server has full context) for interaction-time dynamism (where the client has partial context and must compensate).</p>
+<p>The developer&#39;s choice is not &quot;how much complexity do I want to add?&quot; It is &quot;where do I want the dynamism to happen, and what properties am I willing to trade for that choice?&quot; This is a question about the mental model — about which interpreter should be responsible for which decisions. It deserves framing in terms of cognitive load, not technical complexity:</p>
+<ul>
+<li><strong>At Layer 0</strong>, the developer holds one mental model: the server resolves, the client renders. All state is server-authoritative. All decisions are server-side.</li>
+<li><strong>At Layer 2</strong>, the developer holds two models: the server resolves the document, and scoped scripts modify the document after rendering. State is split but bounded.</li>
+<li><strong>At Layer 5</strong>, the developer holds a complete client-side application model: routing, state management, effect lifecycle, server synchronization. The cognitive load is not proportional to the capability gained — it is proportional to the number of concerns that must be held simultaneously.</li>
+</ul>
+<p>The reason developers default to Layer 5 is not that it provides more capability. It is that the industry has not provided a construction-level architecture at Layer 0 that is comprehensive enough to make Layer 0 productive. Developers descend because they believe the surface is barren. PRESTO demonstrates that the surface is the most fertile layer — if the construction-level constraints are in place.</p>
+<hr>
+<h2>7. Open Questions</h2>
+<h3>7.1 Are the layer categories exhaustive?</h3>
+<p>The seven layers map to seven kinds of interface agreement. Could there be an eighth — a kind of server-client interface that does not reduce to any of the seven? For example: peer-to-peer data exchange between clients, mediated by the server but not initiated by it. Or: client-to-client code delivery, where one user&#39;s browser pushes a topology to another user&#39;s browser through a server relay.</p>
+<h3>7.2 Can the layers be formally derived from REST?</h3>
+<p>If the layers are ordered by the degree to which the uniform interface is relaxed, then they may be deducible from REST&#39;s constraints — each layer representing the removal or relaxation of a specific property. This would make the layers non-arbitrary. It would also predict whether there are exactly seven, or more, or fewer.</p>
+<h3>7.3 What is the space of construction-level architectures?</h3>
+<p>PRESTO is one set of construction-level constraints that nests within REST. How many such sets exist? Is the space finite or infinite? Are some constraint-sets strictly better than others (inducing more properties with fewer constraints), or is the space Pareto-optimal — every set trading different properties?</p>
+<h3>7.4 What is the maximum nesting depth?</h3>
+<p>Recursive nesting has been demonstrated to three levels (REST &gt; PRESTO &gt; DO). Is there a principled limit? Does each additional level of nesting degrade properties monotonically, or can clever constraint choices at deeper levels recover properties lost at shallower levels?</p>
+<h3>7.5 What formal framework describes architectural nesting?</h3>
+<p>Set theory, category theory, and lattice theory all offer potential frameworks for describing nested constraint systems. The nested constraints paper proposed an informal axiom. A formal treatment might reveal structural relationships — equivalences between nestings, minimal constraint sets, optimal compositions — that intuition alone cannot identify.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

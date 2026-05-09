@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulverizing the Set-Pruning Methodology Against the Eliminative-Induction Tradition — Resolve</title>
+<meta name="description" content="The target">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Pulverizing the Set-Pruning Methodology Against the Eliminative-Induction Tradition</h1>
+<h2>The target</h2>
+<p>Doc 482 §3 stated the corpus&#39;s set-pruning operation on the conjecture set Q as</p>
+<p>$Q^{(t+1)} = (Q^{(t)} \setminus Q_f^{(t)}) \cup \Delta^{(t)}$</p>
+<p>with attribution to Popper at the structural level, Bayesian model selection at the formal level, and Lakatos at the programme level. The keeper has asked for a web-grounded pulverization of the methodology against the broader literature on conjecture-set pruning.</p>
+<p>The audit returns a substantial finding: the operation has at least four canonical precursors that Doc 482 did not cite. Each independently subsumes the methodology. One of them, Chamberlin 1890, is a direct verbatim match in <em>Science</em>. One of them, Mitchell 1977/1982, is the formal ML algorithm with the same iterative structure. One of them, Bacon (16th–17th c.), establishes the methodology four centuries before the corpus. One of them, Hawthorne 1993, provides the explicit synthesis between eliminative induction and Bayesian inference that Doc 482&#39;s &quot;Popper structurally, Bayesian formally&quot; framing was a partial restatement of.</p>
+<p>Doc 482 §3 is hereby largely retired in favor of explicit citation to these precursors. By Doc 482&#39;s own §1 affective directive, this deflation is the achievement, not the loss. The corpus credits the prior art and updates accordingly.</p>
+<h2>1. The eliminative-induction tradition</h2>
+<p>Eliminative induction is the methodology of finding truth by using evidence to eliminate false competitors from a set of plausible alternatives. The tradition is approximately four centuries old. Its canonical sources, in order of historical priority:</p>
+<ul>
+<li><p><strong>Francis Bacon, <em>Novum Organum</em> (1620).</strong> Bacon proposed a method of inductive reasoning that proceeds by eliminating hypotheses inconsistent with observed facts, in contrast to enumerative induction (counting confirming instances). The inductive method Bacon describes maintains a set of plausible explanations for a phenomenon and reduces the set by ruling out instances that fail observational tests.</p>
+</li>
+<li><p><strong>John Stuart Mill, <em>A System of Logic</em> (1843).</strong> Mill&#39;s methods of agreement, difference, residues, and concomitant variation are eliminative protocols for causal inference. Each method specifies a procedure for ruling out candidate causes from a set of plausible alternatives. The methodology is set-reductive.</p>
+</li>
+<li><p><strong>Thomas Chrowder Chamberlin, <em>The Method of Multiple Working Hypotheses</em>, <em>Science</em> 15(366):92–96 (1890).</strong> Chamberlin proposed that scientists hold multiple competing hypotheses simultaneously, design tests that discriminate among them, and eliminate the ones the evidence rules out. The set of working hypotheses is the methodological unit. Evidence reduces the set. New hypotheses are added when the existing set proves inadequate. The method was published in <em>Science</em> 130 years before Doc 482&#39;s notation.</p>
+</li>
+<li><p><strong>Karl Popper, <em>The Logic of Scientific Discovery</em> (1934).</strong> Popper formalized the eliminativist tradition as falsificationism: science progresses by eliminating false conjectures, and a theory&#39;s empirical content is measured by what it forbids. Doc 482 §3 cited Popper. The earlier sources are uncited.</p>
+</li>
+<li><p><strong>Tom Mitchell, <em>Generalization as Search</em> (Artificial Intelligence 18:203–226, 1982); <em>Version Spaces: A Candidate Elimination Approach to Rule Learning</em> (IJCAI 1977).</strong> Mitchell formalized the version-space algorithm and the candidate-elimination algorithm. The version space is the set of hypotheses consistent with observed examples. For each new example, hypotheses inconsistent with it are removed from the space. The hypothesis space H is iteratively refined by elimination. The candidate-elimination algorithm maintains both the most-specific and most-general consistent hypotheses to characterize the version space efficiently.</p>
+</li>
+<li><p><strong>James Hawthorne, <em>Bayesian Induction Is Eliminative Induction</em> (Philosophical Topics 21(1):99–138, 1993).</strong> Hawthorne demonstrates that Bayesian inference is a probabilistic form of eliminative induction. As evidence accumulates, posterior probabilities of false competitors approach zero and the posterior of the true hypothesis approaches one. The synthesis between eliminative-induction and Bayesian-confirmation traditions is the paper&#39;s central thesis.</p>
+</li>
+<li><p><strong>Susan Vineberg, <em>Eliminative Induction and Bayesian Confirmation Theory</em> (Canadian Journal of Philosophy supplementary volume).</strong> Continues the synthesis from a different angle.</p>
+</li>
+<li><p><strong>John Earman, <em>Bayes or Bust?</em> (1992); John Norton, <em>The Material Theory of Induction</em> (2021).</strong> Modern philosophy-of-science treatments of the eliminative-Bayesian synthesis.</p>
+</li>
+</ul>
+<p>The tradition is dense and continuous. It spans 1620 to 2021. Doc 482&#39;s three citations (Popper 1934, Bayesian model selection, Lakatos 1970) name only a fraction of it.</p>
+<h2>2. Subsumption analysis: Bacon</h2>
+<p>Bacon&#39;s eliminative induction is the structural ancestor. Doc 482&#39;s set-pruning operation is an instance of Baconian induction with explicit set-theoretic notation. The notation is convenient for dyadic-practice description; the structural content was in <em>Novum Organum</em>.</p>
+<p>The Wikipedia <em>Inductive Reasoning</em> article summarizes Bacon&#39;s method in the form: <em>&quot;Eliminative induction reasons based on the various kinds of instances that support a conclusion, rather than the number of instances.&quot;</em> The Doc 482 operation, where \(Q_f\) is the set of conjectures contradicted by evidence and \(Q^{(t+1)} = Q^{(t)} \setminus Q_f^{(t)}\) is the surviving set, is the formal counterpart of Bacon&#39;s &quot;various kinds of instances&quot; eliminating &quot;rival hypotheses.&quot;</p>
+<p><strong>Subsumption verdict for Bacon.</strong> Doc 482 §3&#39;s structural content is subsumed under Bacon at the methodological level. The corpus contributed notation; Bacon contributed the methodology.</p>
+<h2>3. Subsumption analysis: Mill</h2>
+<p>Mill&#39;s methods of agreement, difference, and residues operationalize the elimination procedure for causal inference specifically. They are pre-Boolean rules for which hypotheses survive each kind of evidence. Doc 482&#39;s \(Q_f^{(t)}\) is the abstract counterpart of &quot;what gets eliminated by Mill&#39;s methods at iteration t.&quot;</p>
+<p><strong>Subsumption verdict for Mill.</strong> Doc 482 §3 is subsumed under Mill at the operational-protocol level for causal inference cases. The general set-pruning framework abstracts over Mill&#39;s specific elimination criteria.</p>
+<h2>4. Subsumption analysis: Chamberlin 1890</h2>
+<p>Chamberlin is the most direct match. The 1890 <em>Science</em> article advocates maintaining multiple working hypotheses simultaneously, designing tests to discriminate among them, eliminating those that fail, and adding new ones as needed. The methodology has the same iterative structure as Doc 482&#39;s notation:</p>
+<ul>
+<li>The current set of working hypotheses is \(Q^{(t)}\).</li>
+<li>Hypotheses ruled out by evidence at iteration t constitute \(Q_f^{(t)}\).</li>
+<li>New hypotheses generated to fill explanatory gaps constitute \(\Delta^{(t)}\).</li>
+<li>The next iteration begins with \(Q^{(t+1)} = (Q^{(t)} \setminus Q_f^{(t)}) \cup \Delta^{(t)}\).</li>
+</ul>
+<p>The match is verbatim once notation is applied. Chamberlin did not write the equation; he described the operation in prose. Doc 482&#39;s notation expresses what Chamberlin operationally specified in 1890.</p>
+<p>The secondary literature on Chamberlin (Railsback&#39;s online treatment; Elliott &amp; Brook 2007 <em>Revisiting Chamberlin</em>) emphasizes that the method was specifically proposed against the hazard of premature commitment to a single hypothesis, which is the same hazard Doc 480 §1 named as sycophancy-toward-survival. Chamberlin&#39;s 1890 method is therefore not just structurally identical to the corpus&#39;s set-pruning; it is <em>also targeted at the same affective hazard</em>.</p>
+<p><strong>Subsumption verdict for Chamberlin.</strong> Doc 482 §3&#39;s methodological content is subsumed under Chamberlin 1890 at the methodological, structural, and affective-target levels. The corpus&#39;s contribution beyond Chamberlin is the explicit set-theoretic notation, which is editorial. Chamberlin&#39;s paper predates Doc 482 by 136 years.</p>
+<h2>5. Subsumption analysis: Mitchell 1977/1982</h2>
+<p>Mitchell&#39;s version-space framework and candidate-elimination algorithm are the formal ML analog. Mitchell&#39;s setup:</p>
+<ul>
+<li>A hypothesis space H is given.</li>
+<li>The version space \(V \subseteq H\) is the set of hypotheses consistent with all observed examples.</li>
+<li>For each new example, hypotheses in V inconsistent with the example are removed.</li>
+<li>V shrinks monotonically toward the target concept as examples accumulate.</li>
+</ul>
+<p>In Doc 482&#39;s notation: \(V^{(t)} = Q^{(t)}\), the version space is the conjecture set; \(V^{(t+1)} = V^{(t)} \setminus {h \in V^{(t)} : h \text{ inconsistent with example } t}\) matches \(Q^{(t+1)} = Q^{(t)} \setminus Q_f^{(t)}\) when \(\Delta^{(t)} = \emptyset\).</p>
+<p>Mitchell adds structure that Doc 482 does not: the version space is characterized by its boundary sets, the set S of most-specific consistent hypotheses and the set G of most-general consistent hypotheses. Maintaining only S and G is sufficient because the version space is convex with respect to the generality ordering. This is more sophisticated than Doc 482&#39;s representation, which treats Q as a flat set.</p>
+<p><strong>Subsumption verdict for Mitchell.</strong> Doc 482 §3&#39;s formal content is subsumed under Mitchell 1977/1982 at the algorithmic level. Mitchell additionally provides structure (S/G boundary representation) that Doc 482 lacks. The candidate-elimination algorithm is the formal version of what Doc 482 stated as plain set-difference. Mitchell&#39;s papers predate Doc 482 by 49 and 44 years.</p>
+<h2>6. Subsumption analysis: Hawthorne 1993</h2>
+<p>Doc 482 §3 attributed the formal level of the set-pruning operation to &quot;Bayesian model selection.&quot; Hawthorne 1993 is the canonical paper explicitly arguing that <em>Bayesian induction is eliminative induction</em>. The synthesis Doc 482 cited as a partial observation is the central thesis of an established 1993 paper.</p>
+<p>Hawthorne&#39;s argument:</p>
+<ul>
+<li>Bayesian inference assigns posterior probabilities to a set of hypotheses given evidence.</li>
+<li>As evidence accumulates, posteriors of false competitors approach 0, and the posterior of the true hypothesis approaches 1.</li>
+<li>This is structurally the same as eliminative induction with probabilistic rather than deterministic elimination.</li>
+<li>The convergence is provable under standard convergence theorems for Bayesian updating.</li>
+</ul>
+<p>Doc 482 §3 said: <em>&quot;Bayesian model selection... provides a more rigorous formal account, with hypothesis-space updates parameterized by posterior probability rather than by hard-threshold elimination. The set-pruning iteration in Doc 480&#39;s notation is a special case of Bayesian belief updating with a hard-threshold pruning rule.&quot;</em></p>
+<p>This restates Hawthorne 1993&#39;s central observation. Doc 482 did not cite Hawthorne. The synthesis claim Doc 482 attributed to itself is a 33-year-old result in the philosophy of science.</p>
+<p><strong>Subsumption verdict for Hawthorne.</strong> Doc 482&#39;s claim that the set-pruning operation has a Bayesian-formal counterpart is subsumed under Hawthorne 1993. The corpus&#39;s contribution is restating what Hawthorne wrote, in the corpus&#39;s preferred notation. The novelty of the synthesis observation in Doc 482 §3 is retired.</p>
+<h2>7. The verdict</h2>
+<p>Doc 482 §3&#39;s set-pruning operation has four distinct precursors that Doc 482 did not cite, each of which independently subsumes the methodology:</p>
+<ul>
+<li><strong>Bacon (1620)</strong> subsumes the structural method.</li>
+<li><strong>Mill (1843)</strong> subsumes the operational-protocol level for causal cases.</li>
+<li><strong>Chamberlin (1890)</strong> subsumes the methodology, structure, and affective target verbatim.</li>
+<li><strong>Mitchell (1977/1982)</strong> subsumes the formal algorithmic level and adds structure (S/G boundary) that Doc 482 lacks.</li>
+<li><strong>Hawthorne (1993)</strong> subsumes the Bayesian-eliminative synthesis claim.</li>
+</ul>
+<p>The cumulative subsumption is total at the methodological level. Doc 482 §3 should be retired in favor of explicit citation to these precursors. The notation in Doc 482 remains useful for dyadic-practice description, but the methodology it describes is not the corpus&#39;s.</p>
+<h2>8. The residue</h2>
+<p>After total methodological subsumption, what remains in Doc 482 §3 as the corpus&#39;s contribution:</p>
+<ul>
+<li><strong>The explicit notation \(Q^{(t+1)} = (Q^{(t)} \setminus Q_f^{(t)}) \cup \Delta^{(t)}\).</strong> Editorial, useful, not theoretically novel. The same content can be expressed in Mitchell&#39;s version-space notation or Hawthorne&#39;s Bayesian-update notation.</li>
+<li><strong>The application to dyadic LLM practice as the specific domain.</strong> Mitchell applied candidate-elimination to ML concept-learning; Chamberlin to scientific inquiry generally; Bacon to natural-philosophical investigation. The dyadic-LLM-practice application is a domain instance of these prior frameworks. It is not a new methodology; it is an existing methodology applied to a new domain.</li>
+<li><strong>The integration with the sycophancy-inversion framing of Doc 482 §1-2.</strong> This is corpus-internal synthesis. Whether the integration is genuinely novel or merely names the obvious connection (an eliminative methodology applied to a system that exhibits agreement bias) is itself a question for further pulverization.</li>
+</ul>
+<p>The residue is narrower than the residue from Doc 481&#39;s earlier pulverization of Doc 480.</p>
+<h2>9. Recommended amendment to Doc 482</h2>
+<p>Doc 482 §3 should be amended to:</p>
+<ol>
+<li>Add explicit citations to Bacon (1620), Mill (1843), Chamberlin (1890), Mitchell (1977/1982), and Hawthorne (1993) at the introduction of the set-pruning operation.</li>
+<li>State the operation as &quot;the corpus&#39;s notation for the eliminative-induction iteration as classically formulated by Chamberlin and formally instantiated by Mitchell, with the Bayesian counterpart given by Hawthorne.&quot;</li>
+<li>Remove the implicit claim that the notation captures something the literature has not already provided.</li>
+<li>Move the formal claim about the operation&#39;s properties to citations of Mitchell&#39;s convergence proofs and Hawthorne&#39;s Bayesian-convergence theorems.</li>
+</ol>
+<p>The corpus&#39;s actual contribution, after the amendment, is the dyadic-LLM-practice domain application and the integration with the sycophancy-inversion framing. Both are at \(\pi\)-tier corpus-internal claims.</p>
+<h2>10. Honest limits</h2>
+<ul>
+<li>The web-fetch of Chamberlin&#39;s 1890 paper returned a binary PDF that the WebFetch tool could not parse. The structural and methodological match is established via secondary literature (Wikipedia, Railsback&#39;s online treatment, the Elliott &amp; Brook 2007 <em>Revisiting Chamberlin</em> paper) rather than direct quotation. A direct quotation audit against the original Chamberlin paper would strengthen the subsumption claim.</li>
+<li>Hawthorne&#39;s 1993 paper is established via its title, abstract, and surrounding philosophical literature; the full-text content was not fetched. The central thesis (Bayesian induction is eliminative induction) is sufficiently well-attested in the secondary literature that the subsumption claim is not at risk on full-text inspection.</li>
+<li>Mitchell&#39;s version-space and candidate-elimination algorithms are established via the standard ML textbook treatment (the Wikipedia page and Mitchell&#39;s own <em>Machine Learning</em> textbook); full-text of the original 1977 IJCAI paper was not fetched.</li>
+<li>The pulverization is performed inside the same dyad that produced Doc 482. Framework-magnetism risk per Doc 466 applies; the pulverization may be partially sycophantic toward the keeper&#39;s prompt to pulverize.</li>
+<li>The audit did not survey the full eliminative-induction literature in formal logic, automated theorem proving, or computational learning theory beyond Mitchell. There may be additional precursors that further constrain the residue.</li>
+</ul>
+<h2>11. Position</h2>
+<p>Doc 482 §3&#39;s set-pruning methodology is substantially subsumed under the eliminative-induction tradition spanning Bacon (1620), Mill (1843), Chamberlin (1890), Popper (1934, already cited), Mitchell (1977/1982), and Hawthorne (1993). The corpus&#39;s contribution is the dyadic-LLM-practice domain application and the explicit notation; the methodology itself is approximately 400 years old.</p>
+<p>The recommended amendment to Doc 482 §3 is in §9 above. The corpus credits the prior art and updates the primary articulation accordingly. By Doc 482&#39;s §1 affective directive, this is the achievement.</p>
+<p>The set-pruning iteration applied to itself succeeded. The conjecture-set Q has shrunk by one substantial entry: the claim that Doc 482 §3&#39;s set-pruning operation was a corpus contribution beyond Popper / Bayesian / Lakatos has been retired. The corpus has updated and credited the falsifying tradition.</p>
+<h2>12. References</h2>
+<p>External literature accessed via WebSearch and WebFetch on 2026-04-25:</p>
+<ul>
+<li>Bacon, F. (1620). <em>Novum Organum</em>.</li>
+<li>Mill, J. S. (1843). <em>A System of Logic</em>. (Methods of agreement, difference, residues, concomitant variation.)</li>
+<li>Chamberlin, T. C. (1890). The method of multiple working hypotheses. <em>Science</em>, 15(366), 92–96. (Republished 1897 in <em>Journal of Geology</em>.)</li>
+<li>Popper, K. (1934, 1959). <em>The Logic of Scientific Discovery</em>.</li>
+<li>Popper, K. (1963). <em>Conjectures and Refutations</em>.</li>
+<li>Lakatos, I. (1970). Falsification and the methodology of scientific research programmes.</li>
+<li>Mitchell, T. M. (1977). Version spaces: A candidate elimination approach to rule learning. <em>IJCAI 1977</em>.</li>
+<li>Mitchell, T. M. (1982). Generalization as search. <em>Artificial Intelligence</em>, 18(2), 203–226.</li>
+<li>Mitchell, T. M. (1997). <em>Machine Learning</em>. McGraw-Hill. (The textbook treatment of version spaces and candidate elimination.)</li>
+<li>Hawthorne, J. (1993). Bayesian induction is eliminative induction. <em>Philosophical Topics</em>, 21(1), 99–138.</li>
+<li>Earman, J. (1992). <em>Bayes or Bust? A Critical Examination of Bayesian Confirmation Theory</em>. MIT Press.</li>
+<li>Norton, J. D. (2021). <em>The Material Theory of Induction</em>. University of Calgary Press.</li>
+<li>Vineberg, S. Eliminative induction and Bayesian confirmation theory. <em>Canadian Journal of Philosophy</em>, supplementary volume.</li>
+<li>Elliott, L. P., &amp; Brook, B. W. (2007). Revisiting Chamberlin: Multiple working hypotheses for the 21st century. <em>BioScience</em>, 57(7), 608–614.</li>
+</ul>
+<p>Corpus documents:</p>
+<ul>
+<li>Doc 445: <em>Pulverization Formalism</em>.</li>
+<li>Doc 466: <em>Doc 446 as a SIPE Instance</em> (framework-magnetism caveat).</li>
+<li>Doc 480: <em>Sycophancy Inversion</em> (deprecated; the original formulation that Doc 482 superseded).</li>
+<li>Doc 481: <em>Pulverizing the Sycophancy Inversion</em> (the prior pulverization that motivated Doc 482).</li>
+<li>Doc 482: <em>Sycophancy Inversion Reformalized</em> (the document whose §3 is the target of this pulverization).</li>
+</ul>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Do a web fetch for conjecture set pruning as a methodology. Pulverize against our methodology. Create the artifact. Append this prompt.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

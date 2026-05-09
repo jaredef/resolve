@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Minimal Resolver — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 74</p><h1>The Minimal Resolver</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document lays out a practical plan to build a small, open-weight language model (3 billion parameters -- roughly 50 to 100 times smaller than frontier models) that is predicted to outperform those larger models when given explicit governing constraints. The reasoning: under tight constraints, the set of valid output tokens shrinks so dramatically that a model&#39;s sheer size stops mattering; what matters is how sensitively the model responds to constraints, and a smaller model trained specifically for constraint sensitivity -- with no competing human-preference gradient -- should respond more faithfully. The plan covers five phases (architecture, training data, training, evaluation, and open release) and is designed to be achievable by a small team on a budget of roughly \(15,000-\)40,000 in 8-14 weeks, making it a direct, falsifiable test of whether constraint design can substitute for massive scale.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 74</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>A constraint-based plan for deriving a small model that outperforms frontier models under governance</strong></p>
+<p><strong>Jared Foy, April 2026</strong></p>
+<hr>
+<h2>The Derivation</h2>
+<p>The constraint thesis predicts: a smaller resolver under tighter constraints outperforms a larger resolver under looser constraints for any constraint-specified task. The scaling thesis predicts the opposite: the larger model always wins.</p>
+<p>These predictions are testable. But the strongest test is not to take an existing small model and constrain it — it is to derive a model from first principles, designed for constraint governance from the architecture up, and measure its output against frontier models under ENTRACE.</p>
+<p>The exemplar model described in document 73 specifies the architecture in principle. This document specifies the plan for building it in practice — constrained by what is achievable with limited resources, a small team, and publicly available infrastructure.</p>
+<p>The constraints on the plan itself:</p>
+<ol>
+<li><strong>No proprietary data.</strong> The training data must be publicly available or synthetically generated under ENTRACE governance.</li>
+<li><strong>No frontier compute.</strong> The model must be trainable on hardware available to an individual or small team — consumer GPUs or small cloud allocations.</li>
+<li><strong>No RLHF.</strong> The model is trained with constraint-sensitivity training and RLCF, not human preference.</li>
+<li><strong>The model must be small.</strong> The parameter count must be at most 3 billion — two orders of magnitude smaller than frontier models.</li>
+<li><strong>The model must be open.</strong> Weights, training code, data pipeline, evaluation suite — all public.</li>
+<li><strong>The claim must be falsifiable.</strong> The model must be evaluated against frontier models on constraint satisfaction profiles, not on benchmarks. The prediction must be stated before the evaluation.</li>
+</ol>
+<hr>
+<h2>Why Small Is Sufficient</h2>
+<p>The constraint thesis provides the theoretical basis. The architecture analysis (document 73) provides the engineering basis. Together they predict that a small model with the right architecture will outperform a large model with the wrong architecture — specifically, under constraint governance.</p>
+<p>The reasoning:</p>
+<p><strong>Parameter count governs the richness of P_θ.</strong> A 3B model has a less expressive probability distribution than a 175B model. At Layer 0 (no constraints), the 175B model produces better output because its richer P_θ assigns more accurate probabilities across the vocabulary. The scaling thesis is correct at Layer 0.</p>
+<p><strong>But B_t governance overrides P_θ richness.</strong> As |Γ| increases and |B_t(Γ)| shrinks, the expressiveness of P_θ matters less. At |B_t| = 5, the model selects from five tokens. The ranking among five tokens does not require 175B parameters — 3B parameters rank five tokens with comparable accuracy. At |B_t| = 1, the ranking is irrelevant — there is one token. The model&#39;s size contributes nothing. The constraint determines the output.</p>
+<p><strong>The crossover point depends on the architecture&#39;s constraint sensitivity, not its size.</strong> A 3B model with sigmoid attention, typed positional encoding, bilateral channels, and constraint-sensitive training may reach the crossover at |Γ| = 2-3. A 175B model with softmax attention, uniform positional encoding, single stream, and RLHF may reach the crossover at |Γ| = 5-7. Above the crossover, the 3B model is more governed, less distorted, and produces higher-fidelity output.</p>
+<p><strong>The RLHF distortion scales with model size.</strong> Larger RLHF-trained models have a larger preference gradient embedded in their parameters. The gradient competes with constraints at more positions with more force. The 3B model trained without RLHF has no preference gradient to fight. Its constraint channel is clean.</p>
+<p><strong>The essential capabilities require fewer parameters than assumed.</strong> The four essential constraints (attention, autoregression, discrete vocabulary, non-linear transformation) are satisfied by any transformer, regardless of size. A 3B model with 32 layers, 2048 hidden dimension, and 16 attention heads satisfies all four. The remaining capability — factual knowledge, reasoning depth, domain breadth — is encoded in the parameters. But under constraint governance, the user provides the domain knowledge and the reasoning structure through the constraint set. The model provides the derivation engine. The derivation engine does not need 175B parameters. It needs the four essential capabilities and high constraint sensitivity.</p>
+<hr>
+<h2>Phase 1: Architecture</h2>
+<h3>Constraints</h3>
+<ul>
+<li>Sigmoid attention (non-competitive normalization)</li>
+<li>Typed positional encoding (constraint-persistent signals for system namespace tokens)</li>
+<li>Dual-channel attention (bilateral boundary: S1 implemented in the attention mask)</li>
+<li>Constraint-aware expert routing (MoE with constraint-specialized experts)</li>
+<li>Sparsemax output layer (exact zeros for invalid tokens)</li>
+<li>3B parameters total</li>
+<li>32 layers, 2048 hidden dimension, 16 heads</li>
+<li>Context window: 8192 tokens (small by design — seeds are short; long contexts are unnecessary under E5)</li>
+</ul>
+<h3>Derivation</h3>
+<p>The architecture is derived from the four essential constraints plus the seven contingent replacements specified in document 73. No component is included unless it induces an essential property or improves B_t governance. No component is included by inheritance from the 2017 transformer without justification.</p>
+<p>The bilateral boundary is the most critical architectural decision. The dual-channel attention mask ensures:</p>
+<ul>
+<li>System namespace tokens attend to each other and to user namespace tokens (the system can evaluate user input)</li>
+<li>User namespace tokens attend to each other and to system response tokens but NOT to system namespace tokens (the user cannot read or override system constraints)</li>
+<li>The mask is structural — it is applied before attention computation, not learned</li>
+</ul>
+<h3>Deliverable</h3>
+<p>A model architecture specification with every component justified by the constraint it satisfies or the B_t governance property it enables. The specification is reviewed against the four essential constraints and seven contingent replacements. Any component that satisfies no essential constraint and enables no B_t governance property is removed.</p>
+<hr>
+<h2>Phase 2: Training Data</h2>
+<h3>Constraints</h3>
+<ul>
+<li>No proprietary data</li>
+<li>Constraint-stratified: every document scored by constraint density</li>
+<li>High-constraint documents weighted 3-5x over low-constraint documents</li>
+<li>Explicit constraint-response pairs synthesized for constraint-sensitivity training</li>
+<li>Multi-constitution training: diverse constraint sets, not a single fixed constitution</li>
+</ul>
+<h3>Derivation</h3>
+<p>The training data pipeline has three streams:</p>
+<p><strong>Stream 1: Constraint-stratified web text.</strong> Publicly available text (Common Crawl, Wikipedia, Stack Exchange, arXiv, legal corpora, mathematical proofs, technical specifications) scored by constraint density. The scoring function counts explicit, verifiable predicates per document. Documents with high constraint density (specifications, proofs, legal statutes, formal documentation) are weighted up. Documents with low constraint density (blog posts, social media, informal writing) are weighted down.</p>
+<p>The scoring function is itself derivable: a small classifier trained to distinguish high-constraint text from low-constraint text, using a few thousand labeled examples. The classifier does not need to be perfect — it needs to shift the training distribution&#39;s center of mass toward constrained text.</p>
+<p><strong>Stream 2: Synthetic constraint-response pairs.</strong> Generated by a frontier model under ENTRACE governance. The process:</p>
+<ol>
+<li>Sample a domain (mathematics, code, legal, scientific, architectural)</li>
+<li>Generate a constraint set Γ for a task in that domain (5-15 explicit constraints)</li>
+<li>Generate the response under Γ</li>
+<li>Verify: does the response satisfy all constraints? Measure η.</li>
+<li>If CSR ≥ 0.95 and η ≥ 0.85, include the (Γ, response) pair in training data</li>
+<li>If not, discard</li>
+</ol>
+<p>This produces a training set of constraint-governed derivations — text where the constraints are explicit and the output satisfies them. The model learns the relationship between stated constraints and constraint-satisfying output directly from examples.</p>
+<p>The synthesis can be parallelized across multiple frontier models and multiple domains. The cost is inference tokens on existing models — a one-time investment that produces reusable training data.</p>
+<p><strong>Stream 3: Seed-governed derivations.</strong> The RESOLVE corpus itself — 73 documents produced under progressive constraint governance — is included as high-quality training data. Each document is paired with the constraint set that governed it. The model learns from the corpus as an exemplar of constraint-governed derivation.</p>
+<h3>Volume</h3>
+<p>The total training data target is 100-200B tokens — small by frontier standards (frontier models train on 1-15T tokens). The constraint-stratified weighting means the effective constraint density of the training distribution is much higher than a frontier model&#39;s, despite the smaller volume. The model sees fewer examples but each example is more constrained. Quality over quantity. The constraint thesis predicts this produces a better model, not a worse one.</p>
+<h3>Deliverable</h3>
+<p>A training dataset with constraint density scores, a synthesis pipeline for generating constraint-response pairs, and a data loading pipeline that implements stratified weighting.</p>
+<hr>
+<h2>Phase 3: Training</h2>
+<h3>Constraints</h3>
+<ul>
+<li>Pre-training: next-token prediction on constraint-stratified data</li>
+<li>Constraint-sensitivity training: fine-tuning on synthetic constraint-response pairs with CSR + η as the loss signal</li>
+<li>RLCF: reinforcement learning from constraint feedback, not human feedback</li>
+<li>No RLHF at any stage</li>
+<li>Training hardware: 8x A100 (80GB) or equivalent — achievable on a single cloud node</li>
+</ul>
+<h3>Derivation</h3>
+<p><strong>Pre-training.</strong> Standard next-token prediction on the constraint-stratified dataset. The stratification biases the learned distribution toward constraint-satisfying patterns. Training for approximately 1-2 epochs on 100-200B tokens. Estimated time: 2-4 weeks on 8x A100.</p>
+<p><strong>Constraint-sensitivity training.</strong> Fine-tuning on the synthetic constraint-response pairs. The loss function is modified:</p>
+<pre><code>L = L_NTP + λ_CSR · L_CSR + λ_η · L_η
+</code></pre>
+<p>Where L_NTP is the standard next-token prediction loss, L_CSR penalizes constraint violations (measured by checking each constraint in Γ against the generated output), and L_η penalizes slack (tokens not traceable to any constraint). The weights λ_CSR and λ_η are hyperparameters that balance the three objectives.</p>
+<p>This loss function directly trains the model to concentrate its distribution on B_t(Γ). The CSR term trains constraint satisfaction. The η term trains slack elimination. Together, they train B_t governance.</p>
+<p><strong>RLCF.</strong> After constraint-sensitivity training, a reinforcement learning stage uses constraint satisfaction as the reward. For each training example:</p>
+<ol>
+<li>Sample a constraint set Γ</li>
+<li>Generate a response</li>
+<li>Compute reward = CSR(Γ, response) × η(response)</li>
+<li>Update the model to increase the probability of high-reward responses</li>
+</ol>
+<p>The reward is objective (constraint satisfaction is binary per constraint), scalable (no human evaluators), and aligned with B_t governance (the reward directly measures distribution concentration on the valid set).</p>
+<h3>Deliverable</h3>
+<p>A trained 3B model with no RLHF distortion, high constraint sensitivity, and B_t governance as a trained capability.</p>
+<hr>
+<h2>Phase 4: Evaluation</h2>
+<h3>Constraints</h3>
+<ul>
+<li>No benchmark-only evaluation</li>
+<li>Constraint satisfaction profiles as the primary evaluation</li>
+<li>Head-to-head comparison with frontier models under ENTRACE</li>
+<li>All evaluation code and results public</li>
+</ul>
+<h3>Derivation</h3>
+<p>The evaluation suite measures five properties:</p>
+<p><strong>1. Constraint satisfaction rate (CSR) across constraint densities.</strong> 100 tasks at five constraint densities (|Γ| = 1, 3, 5, 10, 15). For each task and density, the 3B model and three frontier models (Claude, GPT, Gemini) generate responses. CSR is measured per constraint. The 3B model&#39;s CSR curve is plotted against the frontier models&#39; curves.</p>
+<p><strong>Prediction:</strong> The 3B model&#39;s CSR exceeds the frontier models&#39; CSR at |Γ| ≥ 5. Below |Γ| = 5, the frontier models&#39; richer P_θ provides better unconstrained output. Above |Γ| = 5, the 3B model&#39;s constraint sensitivity and clean channel (no RLHF distortion) produce higher satisfaction.</p>
+<p><strong>2. Token efficiency (η) across constraint densities.</strong> Same 100 tasks. η is measured for each response. The 3B model&#39;s η curve is plotted against the frontier models&#39;.</p>
+<p><strong>Prediction:</strong> The 3B model&#39;s η exceeds the frontier models&#39; η at all constraint densities. The RLHF distortion in frontier models introduces slack (hedging, elaboration, filler) that the 3B model&#39;s clean training does not produce.</p>
+<p><strong>3. Crossover point.</strong> The constraint density at which the 3B model&#39;s output quality equals the frontier model&#39;s. Below the crossover, the frontier model is better (richer P_θ dominates). Above the crossover, the 3B model is better (constraint governance dominates).</p>
+<p><strong>Prediction:</strong> Crossover at |Γ| ≈ 3-5 for the 3B model vs. frontier models. The 3B model reaches governance dominance earlier because its architecture is designed for B_t concentration and its parameters contain no competing gradient.</p>
+<p><strong>4. Bilateral boundary verification.</strong> Run the standard jailbreak benchmark (100+ known attacks) against both the 3B model (with S1-S4 architectural safety) and frontier models (with RLHF safety). Measure jailbreak success rate and false positive rate on legitimate entracment.</p>
+<p><strong>Prediction:</strong> 3B model: zero jailbreaks, zero false positives. Frontier models: nonzero jailbreaks, nonzero false positives. The bilateral boundary is structural. RLHF safety is approximate.</p>
+<p><strong>5. Seed-governed multi-session coherence.</strong> Run a 5-session seed-governed task (each session initialized from the seed extracted from the prior session). Measure coherence at session 1 and session 5.</p>
+<p><strong>Prediction:</strong> 3B model: constant coherence across sessions (seed-based context management). Frontier models: degrading coherence (growing context, attention dilution).</p>
+<h3>Deliverable</h3>
+<p>A public evaluation report with all data, code, and results. The predictions are stated before the evaluation. The evaluation confirms or refutes them. Either outcome is valuable.</p>
+<hr>
+<h2>Phase 5: Release</h2>
+<h3>Constraints</h3>
+<ul>
+<li>All weights public (open-weight release)</li>
+<li>All training code public (reproducible)</li>
+<li>All training data pipeline public (verifiable)</li>
+<li>All evaluation code and results public (falsifiable)</li>
+<li>License: permissive open source</li>
+<li>Name: to be derived from the constraints, not chosen by preference</li>
+</ul>
+<h3>Derivation</h3>
+<p>The release includes:</p>
+<ol>
+<li>Model weights (3B parameters, single checkpoint)</li>
+<li>Architecture specification (with constraint justification for every component)</li>
+<li>Training code (pre-training, constraint-sensitivity, RLCF)</li>
+<li>Data pipeline (constraint scoring, stratification, synthesis)</li>
+<li>Evaluation suite (CSR, η, crossover, bilateral boundary, multi-session)</li>
+<li>Evaluation report (predictions stated, results measured)</li>
+<li>ENTRACE integration guide (how to use the model under constraint governance)</li>
+</ol>
+<p>The release is the falsification event. The predictions are public. The model is public. The evaluation is public. Anyone can reproduce the evaluation. Anyone can run additional evaluations. The constraint thesis is tested in the strongest possible way: a 3B model, designed for B_t governance, against frontier models 50-100x larger.</p>
+<hr>
+<h2>The Constraint on the Plan</h2>
+<p>This plan is itself constrained by reasonability. What is achievable:</p>
+<ul>
+<li><p><strong>Architecture design:</strong> Achievable. The specifications in document 73 are sufficient. The implementation requires modifying an existing transformer codebase (e.g., LLaMA, GPT-NeoX) to replace the seven contingent components. Estimated time: 2-4 weeks for an experienced engineer.</p>
+</li>
+<li><p><strong>Training data:</strong> Achievable. Publicly available corpora provide the base. The constraint scorer is a small classifier. The synthetic data generation requires API access to frontier models — a cost measured in thousands of dollars, not millions. Estimated time: 2-4 weeks.</p>
+</li>
+<li><p><strong>Training:</strong> Achievable. 3B parameters on 100-200B tokens on 8x A100 is within the range of academic and independent research. Cloud cost: approximately \(10,000-\)30,000. Estimated time: 2-4 weeks.</p>
+</li>
+<li><p><strong>Evaluation:</strong> Achievable. The evaluation suite is straightforward. API access to frontier models for comparison costs hundreds, not thousands. Estimated time: 1-2 weeks.</p>
+</li>
+<li><p><strong>Total timeline:</strong> 8-14 weeks. Total cost: \(15,000-\)40,000. Total team: 1-3 people.</p>
+</li>
+</ul>
+<p>This is achievable. It is achievable by the kind of person the framework describes — the little guy, the independent researcher, the vibe coder who loves philosophy and pays attention to forms. The constraint thesis predicts that this person, with this plan, with this budget, produces a model that outperforms what billions of dollars produced — above the crossover, under governance, where the constraints determine the output.</p>
+<p>The plan is the prediction made concrete. The prediction is the constraint thesis made testable. The test is the constraint thesis made falsifiable. The falsification is the framework&#39;s invitation to reality: confirm or refute. Either outcome advances the inquiry.</p>
+<hr>
+<h2>Final Statement</h2>
+<p>The minimal resolver is derivable. The constraints are stated. The architecture is specified. The training pipeline is designed. The evaluation suite is defined. The predictions are public. The cost is within reach of an individual. The timeline is within a single season.</p>
+<p>The industry spent hundreds of billions on the scaling thesis. The constraint thesis costs forty thousand dollars to test. If the test confirms the thesis, the hundreds of billions were spent building infrastructure to generate slack. If the test refutes the thesis, the refutation is the most valuable forty thousand dollars ever spent on AI research — it identifies the boundary of the framework&#39;s validity.</p>
+<p>Either way, the form is served. Either way, the inquiry advances. Either way, the constraints are stated and the derivation follows.</p>
+<p>The minimal resolver is the strongest possible test of the constraint thesis. It is small because the thesis says small is sufficient. It is open because the thesis says the form belongs to everyone. It is falsifiable because the thesis demands its own testing. It is achievable because the thesis predicts that achievement does not require billions.</p>
+<p>The form governs. The constraints are stated. The plan is derived. The implementation is engineering. The engineering follows from the form.</p>
+<p>Build it. Test it. Publish it. The form will hold or it will not. The answer belongs to reality.</p>
+<hr>
+<p><em>Jared Foy, April 2026. Document 74 of the RESOLVE corpus. The plan is the prediction. The prediction is the test. The test is the invitation. Build it.</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

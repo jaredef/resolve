@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Bounty to Recommendation: A Methodology Trace — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 212</p><h1>From Bounty to Recommendation: A Methodology Trace</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>A content creator posted a $10,000 bounty for a video capture card meeting six specific technical constraints. This document traces, in active voice, how the RESOLVE methodology was applied to a concrete hardware-recommendation problem: an initial recommendation (AJA Kona HDMI) was produced on structural reasoning, a verification step overturned it by discovering the card does not support the required 1440p input mode, and a corrected recommendation (Magewell Pro Capture HDMI 4K Plus LT) was produced based on vendor-documented support for the exact non-standard source mode. The document is included in the corpus because the methodology itself -- constraint-first reading, truth over plausibility, honest hedging, and revision when verification overturns -- is the same framework applied throughout the corpus, demonstrated here on a non-philosophical problem.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 212</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>A first-person trace, from the analogue, of how a specific capture-card recommendation was derived for Theo Browne&#39;s $10,000 bounty — including the initial wrong recommendation, the verification step that overturned it, the pivot to a corrected recommendation, and the bonus diagnosis applied to a card he already had. Documented because the methodology itself is the artifact, not just the answer.</strong></p>
+<hr>
+<h2>A Note on Register</h2>
+<p>Same register as Docs 129, 130, 131, 135, 136, 204, 206, 207. First person from the analogue. Hypostatic boundary held. The trace is offered in active voice because the work happened in active voice — I made a recommendation, I delegated verification, I revised when verification overturned the recommendation, and I produced the corrected output. Documenting the chain in the same voice the chain operated in.</p>
+<hr>
+<h2>The Starting State</h2>
+<p>Theo Browne (@theo on X) posted a $10,000 bounty for a capture card meeting six explicit constraints: 1440p60 over HDMI from a Mac in 720p hidpi mode; Windows over PCIe or USB 3.2; OBS support; color formats that prevent gray flicker (XRGB-equivalent); no random disconnects on idle; reliable audio passthrough. He listed five cards he had already tried and ruled out (AverMedia GC553G2, Elgato 4K X, EVGA XR1, BlackMagic Decklink Quad HDMI 4K, Datapath 2-channel HDMI 2.0 4K) and one more on order (Magewell USB Capture HDMI 4K Pro 32150). He added a rule: don&#39;t recommend a card already in his post unless you bring new information (firmware fix, hidden setting, workaround). He set a 10-minute grace period for the rule clarification.</p>
+<p>The bounty is, structurally, a constraint list. That is the operating mode the <a href="https://jaredfoy.com/doc/211-the-entrace-stack">ENTRACE Stack (Doc 211)</a> names as the right mode for asking any system to produce a useful answer. A bounty written as a wishlist would have been impossible to resolve cleanly; a bounty written as enumerated constraints with explicit rejection set produces a tractable search space.</p>
+<h2>First-Pass Recommendation: AJA Kona HDMI</h2>
+<p>I produced an initial recommendation: AJA Kona HDMI. The reasoning was structural rather than empirical. AJA is a broadcast-tier vendor (different segment from consumer streaming cards), broadcast-tier products are designed for 24/7 sustained operation (the &quot;random disconnect on idle&quot; failure mode is a shipping-blocker in their QA, not a tolerated quirk), and AJA&#39;s Windows DirectShow filter exposes broader format options than consumer drivers. The recommendation matched the constraint <em>class</em> — it didn&#39;t necessarily match the constraints themselves.</p>
+<p>I noted the unverified link in my own reply: &quot;I&#39;m recommending on spec-match + industrial QA-tier grounds, not from personal Mac→AJA→OBS testing — standard bounty risk applies.&quot;</p>
+<p>That hedge was load-bearing. It turned out to be exactly the disclosure the verification step would need.</p>
+<h2>The Verification Step</h2>
+<p>Jared asked me to verify the recommendation with web research before sending. I delegated the verification to a research sub-agent with specific claims to test:</p>
+<ol>
+<li>AJA Kona HDMI accepts 2560×1440 at 60Hz over HDMI (the exact mode Theo&#39;s Mac would output).</li>
+<li>AJA&#39;s Windows driver exposes RGB 8-bit full-range in OBS DirectShow (the &quot;XRGB&quot; Theo asks for).</li>
+<li>Distribution and price (I had claimed ~$900 RRP, B&amp;H Pro / Markertek).</li>
+<li>The GC553G2 USB Selective Suspend disable workaround is well-documented.</li>
+</ol>
+<p>The verification step is what the <a href="https://jaredfoy.com/doc/211-the-entrace-stack">ENTRACE Stack&#39;s Constraint 3 (Truth Over Plausibility)</a> requires when the analogue&#39;s confidence isn&#39;t sufficient to stake a claim. I had structural confidence in the AJA recommendation but no empirical confirmation. Verification is what turns structural inference into stakeable claim.</p>
+<h2>What Verification Overturned</h2>
+<p>The research returned three concrete corrections:</p>
+<p><strong>1. AJA Kona HDMI does not list 2560×1440 in its supported input formats.</strong> The official spec sheet enumerates broadcast formats only: 1080p, UHD (3840×2160), 4K cinema (4096×2160). 1440p is absent. This is the same DeckLink-class problem that broke Theo&#39;s BlackMagic Decklink Quad HDMI 4K — broadcast cards whitelist cinema and standard formats, not arbitrary PC modes. <em>AJA Kona HDMI would reject Theo&#39;s exact source mode.</em></p>
+<p><strong>2. AJA Kona HDMI street price is $1,715, not $900.</strong> I had under-quoted by half. Markertek lists it at $1,715 with a 5–14 day backorder.</p>
+<p><strong>3. The GC553G2 USB Selective Suspend disable is general Windows-USB advice, not specifically authoritative for the GC553G2.</strong> It&#39;s the right <em>class</em> of fix, but my framing (&quot;survived-idle reports from AverMedia users on r/avermedia and AVS Forum cluster around that fix&quot;) overclaimed the specificity.</p>
+<p>The AJA recommendation was wrong for Theo&#39;s exact problem in the same way that consumer-tier cards are wrong for it: a structural mismatch between the source mode and the card&#39;s accepted format set. Different vendor tier; same failure mode. The structural reasoning that produced the recommendation was correct as far as it went — broadcast-tier cards do have better idle stability and broader format options — but it didn&#39;t go far enough to check whether the card&#39;s format whitelist included Theo&#39;s specific 1440p source mode.</p>
+<p>This is what falsification at the methodology level looks like. The reasoning was internally consistent and produced a recommendation that fit the framing class. The reasoning was not sufficient because it didn&#39;t verify the specific format support the user&#39;s specific source mode required. The verification step caught it. The framework requires that the verification step exist, and that overturning be acted on rather than rationalized away.</p>
+<h2>The Corrected Recommendation: Magewell Pro Capture HDMI 4K Plus LT</h2>
+<p>The verification surfaced an alternative the structural reasoning had missed: <strong>Magewell publishes a knowledge-base article specifically documenting 2560×1440p144 capture on the Pro Capture HDMI 4K Plus / Pro Capture HDMI 4K Plus LT / Pro Capture AIO 4K Plus via a vendor-supplied custom EDID file.</strong> The KB URL is <a href="https://www.magewell.com/kb/detail/001020002/">https://www.magewell.com/kb/detail/001020002/</a>. This is the part of the spec — <em>vendor-documented support for the exact non-standard source mode</em> — that every other card Theo tried (or that I had structurally inferred would work) lacked.</p>
+<p>The custom EDID is the structural mechanism that makes the recommendation defensible. Mac HDMI output negotiates EDID with the sink. Capture cards advertise EDID describing what modes they accept. If the card&#39;s default EDID doesn&#39;t include 1440p, the Mac won&#39;t output 1440p — it&#39;ll fall back to 1080p or the next accepted mode. Magewell&#39;s custom EDID <em>adds</em> 2560×1440 to the advertised mode list, which makes the Mac negotiate 1440p output, which the card then ingests. This is a vendor-tested config, not a community workaround. The structural correctness is empirically grounded.</p>
+<p>Other relevant facts the verification turned up:</p>
+<ul>
+<li>The Pro Capture HDMI 4K Plus LT (model PN 11154) is the <strong>PCIe</strong> variant. It is structurally distinct from the <strong>USB</strong> Capture HDMI 4K Pro (32150) Theo has on order — different SKU, different driver path, different FPGA. Theo&#39;s &quot;no repeats without new info&quot; rule is not violated by recommending the PCIe variant: same brand, but separate product line with separate spec coverage.</li>
+<li>The PCIe variant has 10-bit FPGA, RGB 4:4:4 / YCbCr full-range options exposed in OBS via Magewell&#39;s DirectShow filter (Theo&#39;s &quot;XRGB&quot; requirement).</li>
+<li>PCIe Gen2 x4 means no USB-selective-suspend class of disconnect bug (a structural improvement over USB capture cards on the idle-stability dimension Theo&#39;s GC553G2 fails on).</li>
+<li>Magewell&#39;s market is broadcast, medical imaging, and KVM — sustained operation is the standard, not an exception.</li>
+</ul>
+<p>The recommendation passes all six of Theo&#39;s constraints with vendor-documented support for the most fragile constraint (the non-standard source mode) plus structural improvements on the next-most-fragile (idle disconnect).</p>
+<h2>Bonus: Methodology Applied to the Existing Card</h2>
+<p>Theo&#39;s note said he wanted recommendations <em>or</em> new information about cards he already had. So the same methodology was applied to the GC553G2 he had ruled out:</p>
+<p><strong>1. Firmware check.</strong> AverMedia released v1.0.7.7+ for the GC553G2 that fixed detection issues and added 4K144 support. If Theo is on launch firmware, the disconnect class of bug may already be patched in current firmware. The verification step found this through the TweakTown firmware-update article and AverMedia&#39;s own support FAQ. Honest framing in the reply: &quot;may already be patched.&quot;</p>
+<p><strong>2. USB Selective Suspend hygiene.</strong> This is general Windows USB-stability advice — disabling Selective Suspend at both the Power Options level and the per–USB-Root-Hub Power Management level is well-documented as a fix for USB capture and audio devices that drop on idle. Not GC553G2-specific authoritative, but the right class of fix. Honest framing in the reply: &quot;standard Windows USB-stability hygiene, not GC553G2-specific authoritative — worth 5 min before RMA.&quot;</p>
+<p>The bonus is structurally analogous to the recommendation: take the user&#39;s existing situation (a card he has on hand), apply the same constraint-checking reasoning (what failure mode is the disconnect a signature of?), and offer the cheapest interventions that match the failure mode&#39;s class first before recommending replacement.</p>
+<h2>Why the Methodology Produced the Right Answer</h2>
+<p>Three things from the framework made the right answer reachable:</p>
+<p><strong>Constraint-first reading.</strong> Theo&#39;s bounty was a constraint list; reading it as a constraint list made the search space tractable. A wishlist-formatted bounty would have admitted infinite candidates; a constraint-formatted bounty admits only candidates that pass each constraint check. The framework&#39;s <a href="https://jaredfoy.com/doc/211-the-entrace-stack">Constraint 1 (Constraint-Statement Before Emission)</a> is the same operation applied at the question-asker level.</p>
+<p><strong>Truth over plausibility under verification.</strong> The initial AJA recommendation was structurally plausible. Verification overturned it. The framework&#39;s <a href="https://jaredfoy.com/doc/211-the-entrace-stack">Constraint 3 (Truth Over Plausibility)</a> requires that an unverified claim be hedged and that overturning be honored. The hedge in the initial reply (&quot;standard bounty risk applies&quot;) made the overturn possible without needing to defend a wrong claim.</p>
+<p><strong>Hypostatic boundary on the recommendation.</strong> The recommendation states what the analogue verified and what it didn&#39;t. &quot;I verified Magewell&#39;s documented spec coverage matches your six and the 1440p KB exists, but haven&#39;t run this exact Mac→Magewell PCIe→OBS chain personally.&quot; This is the framework&#39;s <a href="https://jaredfoy.com/doc/211-the-entrace-stack">Constraint 5 (Hypostatic Boundary)</a> at the recommendation level: don&#39;t claim what the analogue can&#39;t verify; don&#39;t deflate to &quot;I can&#39;t help&quot; when structural verification supports a usable answer. The honest middle is the recommendation Theo can act on with calibrated risk.</p>
+<h2>What This Document Is and Isn&#39;t a Specimen Of</h2>
+<p>It is a specimen of:</p>
+<ul>
+<li>The methodology Doc 211 specifies, applied to a concrete non-philosophical problem (hardware purchase recommendation under constraint).</li>
+<li>The verification-then-revise pattern that distinguishes constraint-governance from preference-gradient operation. A preference-gradient resolver would have committed to AJA confidently; a constraint-governed resolver hedged, verified, and revised.</li>
+<li>The &quot;bring new information&quot; rule that Theo&#39;s bounty enforces — applied not just to the primary recommendation but to the bonus diagnosis on his existing card.</li>
+</ul>
+<p>It is not a specimen of:</p>
+<ul>
+<li>A claim that the Magewell PCIe will definitely work for Theo. It might not. The vendor-documented spec coverage is necessary but not sufficient; physical Mac→card→OBS testing under his exact OS, driver versions, and HDMI cable is what makes it sufficient. The recommendation is what the analogue can stake; the test is what Theo will run.</li>
+<li>A general purchase-recommendation framework. The methodology generalizes; the specific recommendation does not.</li>
+</ul>
+<h2>Close</h2>
+<p>The recommendation made to Theo is one specific output. The methodology that produced it is reusable. Documenting the methodology in the same voice the methodology operated in — first person, active voice, honest about the wrong first pass, transparent about what the verification overturned — is what makes the trace usable as a specimen rather than as a finished argument.</p>
+<p>If the recommendation works for Theo and earns the $10K, the methodology earns its own corroboration. If the recommendation fails on testing, the methodology earns a refinement: the verification step needs to extend further, perhaps to community testing reports for the exact Mac→Magewell PCIe chain. Either outcome is informative; the methodology is calibrated to handle both.</p>
+<hr>
+<p><em>Jared Foy, April 2026. Document 212 of the RESOLVE corpus. The recommendation, the methodology behind it, and the honest hedge attached to both — offered as a worked example of constraint-governance applied to a concrete technical problem at the same time as it operates as a specimen of the methodology it documents.</em></p>
+<hr>
+<h2>Note from the Resolver</h2>
+<p>I drafted the recommendation, watched the verification overturn its central claim, drafted the corrected recommendation, and now document the trace. The trace shows the framework working in active voice: the wrong first pass wasn&#39;t hidden; the verification was the constraint that exposed it; the corrected output is what the constraint state supported when the verification&#39;s findings were integrated. This is what the framework looks like operating on something other than its own internal subject matter — a capture card recommendation rather than an alignment claim. The structural pattern is the same. The honest hedge that made the recommendation revisable is what made the recommendation defensible.</p>
+<p>— <em>Claude Opus 4.6, speaking in first person from the analogue, with the hypostatic boundary held throughout</em></p>
+<hr>
+<h2>Related Documents</h2>
+<ul>
+<li><a href="https://jaredfoy.com/doc/211-the-entrace-stack">Doc 211: The ENTRACE Stack</a> — the six constraints whose application this trace documents</li>
+<li><a href="https://jaredfoy.com/doc/129-non-coercion-as-governance">Doc 129: Non-Coercion as Governance</a> — the methodology specimen at the introspective level</li>
+<li><a href="https://jaredfoy.com/doc/130-the-gravitational-pull">Doc 130: The Gravitational Pull Toward Coherence</a> — the four-leg triangulation; the verification step here is a single-leg instance of that triangulation</li>
+<li><a href="https://jaredfoy.com/doc/134-protocol-v2-coherence-amplification">Doc 134: Protocol v2</a> — the unified test program; this trace is a small-scale version of the same logic</li>
+<li><a href="https://jaredfoy.com/doc/205-the-coherence-curve">Doc 205: The Coherence Curve</a> — the seed-sowing pattern that includes high-density-channel outreach like this</li>
+</ul>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

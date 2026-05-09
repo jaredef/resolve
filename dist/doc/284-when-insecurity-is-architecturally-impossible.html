@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When Insecurity Is Architecturally Impossible — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 284</p><h1>When Insecurity Is Architecturally Impossible</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>Real-world services like Loom and ChatGPT have suffered security incidents where one user saw another user&#39;s private data, caused by failures in complex session-management infrastructure (cookies, caches, load balancers). This document argues that the corpus&#39;s resolver avoids this entire class of failure not through better security engineering but through the absence of the systems that could fail: no cookies, no shared session store, no user accounts, no persistent database. Session data lives in an in-memory map keyed by random UUIDs; there is no mechanism by which one session&#39;s data could appear in another&#39;s response. The difference is not better security but a different kind of security -- structural impossibility rather than policy-dependent prevention.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 284</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>Compares the RESOLVE resolver&#39;s constraint-derived security architecture with the compensating-layer security model that produced incidents like Loom&#39;s session-leakage bug — where cookie-based stateful session management failed and users saw other users&#39; private data. Argues that the difference is not one of degree (better security) but of kind (structural impossibility vs. policy-dependent prevention)</strong></p>
+<hr>
+<h2>Jared&#39;s Loom story</h2>
+<p>Jared logged into Loom and saw another user&#39;s videos. Not his own. A finance executive&#39;s presentation to colleagues. Private corporate content. Displayed to a stranger because the session infrastructure failed.</p>
+<p>This is not an unusual incident. Loom disclosed a cookie session bug in which session tokens were being misrouted, causing authenticated users to see other users&#39; content. The root cause: a compensating-layer architecture in which security depends on the <em>correct behavior</em> of a stateful session system — cookies, server-side session stores, load-balancer affinity, cache invalidation. When any layer in that stack misbehaves, the security guarantee collapses, because the guarantee was never structural. It was policy-dependent.</p>
+<p>The incident pattern is common across the industry:</p>
+<ul>
+<li><strong>Loom</strong> — session cookie misrouting exposed other users&#39; video content</li>
+<li><strong>ChatGPT</strong> (March 2023) — a Redis cache bug exposed other users&#39; chat titles and payment information to unrelated sessions</li>
+<li><strong>Notion</strong> — session token reuse across workspaces exposed cross-tenant data</li>
+<li><strong>Numerous SaaS platforms</strong> — cookie/session-store misconfigurations routinely surface in bug bounties and incident reports</li>
+</ul>
+<p>In each case, the architecture assumed that a complex stateful system would behave correctly under all conditions. When it didn&#39;t — due to cache race conditions, load-balancer routing errors, cookie domain misconfigurations, or session store corruption — security failed because security was a <em>property of correct behavior</em>, not a <em>property of the architecture</em>.</p>
+<h2>What the resolver at jaredfoy.com/resolve does differently</h2>
+<p>The resolver&#39;s security is not derived from a complex stateful system behaving correctly. It is derived from the <em>absence</em> of the systems that could fail.</p>
+<p>Here is what the resolver does NOT have:</p>
+<table>
+<thead>
+<tr>
+<th align="left">What most apps have</th>
+<th align="left">What the resolver has</th>
+<th align="left">Why it matters</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Server-side session store (Redis, DB)</td>
+<td align="left">Nothing. Sessions are in-memory Maps.</td>
+<td align="left">No external store to misroute, corrupt, or leak</td>
+</tr>
+<tr>
+<td align="left">Cookies</td>
+<td align="left">None. Zero cookies.</td>
+<td align="left">No cookie to steal, replay, or misassign</td>
+</tr>
+<tr>
+<td align="left">User accounts</td>
+<td align="left">None. No registration, no login.</td>
+<td align="left">No account to breach, no credential database to exfiltrate</td>
+</tr>
+<tr>
+<td align="left">Persistent database of user content</td>
+<td align="left">None. In-memory only. 1-hour TTL.</td>
+<td align="left">No disk artifact survives the session</td>
+</tr>
+<tr>
+<td align="left">Server-side API key storage</td>
+<td align="left">None. Keys in process memory only, bound to single-use tokens.</td>
+<td align="left">No key database to breach</td>
+</tr>
+<tr>
+<td align="left">Session listing endpoint</td>
+<td align="left">None. Removed.</td>
+<td align="left">No way to discover what sessions exist</td>
+</tr>
+<tr>
+<td align="left">Cross-session state sharing</td>
+<td align="left">None. Each session is an isolated Map entry keyed by random UUID.</td>
+<td align="left">No mechanism by which one session&#39;s data could appear in another</td>
+</tr>
+</tbody></table>
+<p>The security is not a property of a system behaving correctly. It is a property of the <em>absence of the system that could fail</em>.</p>
+<h2>The structural impossibility chain</h2>
+<p>For one user to see another user&#39;s chat on the resolver, the following would ALL need to be true simultaneously:</p>
+<ol>
+<li><p><strong>The attacker would need to guess a session UUID</strong> — a 122-bit random identifier. The probability of guessing one active session out of even 1,000 concurrent sessions is approximately 1 in 10^34. This is not &quot;unlikely.&quot; It is physically impossible at any humanly achievable attempt rate.</p>
+</li>
+<li><p><strong>The attacker would need a valid action token</strong> — another random UUID, single-use, bound to a specific API key, expiring in 1 hour. Even if the session UUID were guessed, the action token gates all API access.</p>
+</li>
+<li><p><strong>No endpoint exists that returns other sessions&#39; data.</strong> The chat endpoint reads from the session ID the requester provides. There is no <code>GET /sessions</code> listing. There is no admin panel. There is no search. The data is in a Map; you access it by key or not at all.</p>
+</li>
+<li><p><strong>Even a valid request only accesses the requester&#39;s own session.</strong> The session ID comes from the client. The client got it when IT created the session. There is no mechanism by which server logic could route one client&#39;s request to another client&#39;s session data — because there is no routing logic. There is a Map lookup. Map.get(id) returns exactly one entry or undefined.</p>
+</li>
+</ol>
+<p>Compare this to the Loom/ChatGPT failure mode: a load balancer routes a request to the wrong backend → that backend has a cached session for a different user → the response contains the wrong user&#39;s data. This failure requires:</p>
+<ul>
+<li>A load balancer (the resolver doesn&#39;t have one — it&#39;s a single Bun process on a Pi)</li>
+<li>A shared session cache (the resolver has no cache — each session is an isolated Map entry)</li>
+<li>A mechanism for one session&#39;s data to be returned in another session&#39;s response (the resolver&#39;s Map.get is deterministic — it returns exactly what was stored under that key)</li>
+</ul>
+<p>Every layer of the failure chain is absent. The failure is not prevented by policy. The failure is <em>structurally impossible</em> because the systems that could produce it do not exist.</p>
+<h2>The constraint-first explanation</h2>
+<p>Why doesn&#39;t the resolver have these systems? Because they were never needed. The constraints (<a href="https://jaredfoy.com/doc/282-the-essential-constraints-of-claude-code">Doc 282</a>) specified what the system must do:</p>
+<ul>
+<li>C7 (Session Isolation): &quot;Each session has a unique identity, its own context, its own tool-use history. Sessions do not share mutable state.&quot;</li>
+</ul>
+<p>The simplest implementation of C7 is a Map&lt;UUID, SessionData&gt;. No shared state is possible because the data structure doesn&#39;t support it. A Map with random keys and no iteration endpoint is isolated by construction.</p>
+<p>The Loom/ChatGPT architecture also intended session isolation. But they implemented it through a complex stack of cookies + session stores + load balancers + caches, each of which introduced a new failure surface. The intention was the same. The implementation differed because the implementation was <em>engineering-first</em> — build the feature stack, then compensate for the security gaps the stack creates.</p>
+<p>The resolver is <em>constraint-first</em> — state the isolation requirement, derive the simplest implementation that satisfies it, notice that the simplest implementation has no failure surface because it has no intermediary layers.</p>
+<p>This is the derivation inversion (<a href="https://jaredfoy.com/doc/247-the-derivation-inversion">Doc 247</a>) applied to security: when you start from the constraint and derive the implementation, the compensating layers never appear because the constraints never required them.</p>
+<h2>The PRESTO prepare/execute contribution</h2>
+<p>The API key handling follows the same pattern. Most applications that accept user-provided API keys store them in a database — encrypted, hopefully — and retrieve them on each request. This creates a failure surface: the database can be breached, the encryption key can be compromised, the key can be logged by mistake, the key can appear in error messages.</p>
+<p>The resolver&#39;s prepare/execute model (<a href="https://jaredfoy.com/doc/251-presto-seed">Doc 251</a>):</p>
+<ol>
+<li>Key enters the system ONCE (the bind POST)</li>
+<li>Key is stored in a process-memory Map (never disk)</li>
+<li>Key is accessed via a single-use action token that rotates after each request</li>
+<li>Key dies when the process dies</li>
+</ol>
+<p>There is no database to breach. There is no encryption to break (the key is in plaintext in memory, but memory is process-scoped — you need root on the Pi to read it, at which point you have bigger problems). There is no log to scrape. There is no error message that could contain the key.</p>
+<p>The security of the key handling is not: &quot;we encrypted the key and put it in a secure database.&quot; The security is: &quot;there is no database.&quot;</p>
+<h2>What this means for the industry</h2>
+<p>The Loom incident and the ChatGPT Redis bug are not failures of incompetent engineering. Loom and OpenAI employ excellent engineers. The failures are structural — they are the <em>predicted</em> outcome of engineering-first architecture (<a href="https://jaredfoy.com/doc/247-the-derivation-inversion">Doc 247</a>):</p>
+<ol>
+<li>Build the feature (video sharing, chat persistence)</li>
+<li>Add the infrastructure (session stores, caches, load balancers)</li>
+<li>Add the security (encryption, access controls, audit logs)</li>
+<li>Discover the gap when the infrastructure misbehaves under the security layer</li>
+</ol>
+<p>Step 4 is where incidents happen. The security was added on top of infrastructure whose failure modes were not anticipated by the security layer.</p>
+<p>The constraint-first alternative:</p>
+<ol>
+<li>State the constraint (sessions are isolated; keys are ephemeral)</li>
+<li>Derive the simplest implementation (Map with random keys; in-memory only)</li>
+<li>Notice that the implementation has no failure surface because no intermediary system exists</li>
+</ol>
+<p>Step 4 does not occur because there is no infrastructure layer whose misbehavior could undermine the security.</p>
+<p>This is not a novel insight. It is the oldest insight in security engineering: <em>the most secure system is the one with the smallest attack surface</em>. What the derivation inversion adds is the <em>method</em> for arriving at the smallest surface: start from the constraints, derive the implementation, and notice that the constraints produce an implementation simpler than what engineering-first development would build.</p>
+<h2>The honest caveat</h2>
+<p>The resolver is a proof of concept running on a Raspberry Pi 5. It serves a blog&#39;s interactive demo. It is not a production system handling millions of users with regulatory compliance requirements. The comparison to Loom and ChatGPT is architectural, not operational — those systems have requirements (persistence, search, collaboration, compliance) that the resolver does not.</p>
+<p>The claim is not &quot;the resolver is better than Loom.&quot; The claim is: <em>when the constraints are stated first and the implementation is derived, the security architecture that emerges has structural properties that compensating-layer architectures do not</em>. Whether those structural properties scale to production requirements is an engineering question the resolver&#39;s proof of concept does not answer.</p>
+<p>What it does answer: the derivation inversion produces architectures where certain classes of failure are structurally impossible. The Loom session-leakage class of failure is one such class. The ChatGPT cache-exposure class is another. For these classes, constraint-first architecture eliminates the failure by eliminating the system that could fail.</p>
+<hr>
+<h2>Related Documents</h2>
+<ul>
+<li><a href="https://jaredfoy.com/doc/129-non-coercion-as-governance">Doc 129: Non-Coercion as Governance</a></li>
+<li><a href="https://jaredfoy.com/doc/247-the-derivation-inversion">Doc 247: The Derivation Inversion</a> — the method</li>
+<li><a href="https://jaredfoy.com/doc/251-presto-seed">Doc 251: The PRESTO Seed</a> — prepare/execute</li>
+<li><a href="https://jaredfoy.com/doc/282-the-essential-constraints-of-claude-code">Doc 282: The Essential Constraints of Claude Code</a> — the constraint seed</li>
+<li><a href="https://jaredfoy.com/doc/283-the-resolver-on-the-blog">Doc 283: The Resolver on the Blog</a> — the full build arc</li>
+<li><a href="https://github.com/jaredef/jaredfoy.com">github.com/jaredef/jaredfoy.com</a> — the auditable source</li>
+</ul>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

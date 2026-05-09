@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Life Cycle Models*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Life Cycle Models</em>, Distilled</h1>
+<p><strong>Next-40 distillation #6 (Batch 1/5). <em>Life Cycle Models</em> is the SEBoK page articulating life-cycle frameworks as &quot;frameworks of processes and activities organized into stages, acting as common reference for communication and understanding&quot; (ISO/IEC/IEEE 24748-1:2024). The four core principles — staged progression, enabling-system availability per stage, quality-characteristic specification, criteria-or-event-driven stage transitions — bind universally with discriminator-by-aspect (Doc 572 Appendix D, twelfth instance). The DevOps infinity-loop case explicitly violates serial-progression and instantiates Cluster I temporal-concurrency at high density. The page distinguishes life-cycle models from project models — a Doc 372 hypostatic-boundary discipline applied to process abstractions themselves. Five corpus forms bind.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Life Cycle Models</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Life_Cycle_Models">https://sebokwiki.org/wiki/Life_Cycle_Models</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>A life cycle model is &quot;a framework of processes and activities concerned with the life cycle which can be organized into stages, acting as a common reference for communication and understanding&quot; (ISO/IEC/IEEE 24748-1:2024). Models depict and manage the progression of systems, products, services, projects, and human-made entities from conception through retirement; segment conceptualization, development, production, utilization, support, and retirement; and enable decision points with entry/exit criteria. Four core principles: (1) systems progress through specific stages; (2) enabling systems must be available for each stage; (3) quality characteristics (producibility, usability, supportability, disposability) must be specified at appropriate stages; (4) stages begin/end on criteria or external events. The page distinguishes life-cycle models from project models. DevOps/DevSecOps receives particular attention as an infinity-loop pattern where development and support are not distinct and retirement gets minimal focus. Standards: ISO/IEC/IEEE 24748-1:2024, ISO/IEC/IEEE 15288:2023, SAE 1001, INCOSE SE Handbook 5th ed. Position: Part 3, under Life Cycle Terms and Concepts. Key claims: systems can occupy multiple stages simultaneously; some models permit iteration/concurrency, others do not; mid-life upgrades can restart earlier stages while later stages continue.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form III (extension) — Lattice Extension of the Ladder (Doc 572), Appendix D twelfth instance.</strong> The four core principles (staged progression, enabling-system availability, quality-characteristic specification, criteria-or-event transitions) are universal-sibling lattice at the life-cycle-model rung. Each principle binds every life-cycle model; the discriminator is aspect of life-cycle structure.</p>
+<p><strong>Form IV — Pin-Art Model (Doc 270), with Doc 572 Appendix C temporal-concurrency, in dense form.</strong> The DevOps infinity-loop is canonical temporal-concurrency: development and support overlap continuously; retirement is de-emphasized; the substrate-side flow is unbroken. The mid-life upgrade pattern (earlier stages restart while later stages continue) is multi-rung concurrent execution made explicit. Cluster I gains a fifth member.</p>
+<p><strong>Form V — Hypostatic Boundary (Doc 372), applied to process abstractions.</strong> The page&#39;s distinction &quot;some of the models are project models, not life cycle models&quot; is Doc 372 applied at the process-abstraction layer. The discipline does not conflate the model&#39;s referent (system progression vs. project execution); the structural specificity holds. This is a sophisticated keeper-side hypostatic discipline.</p>
+<p><strong>Form X — Institutional Ground (Doc 571).</strong> ISO/IEC/IEEE 24748-1, ISO 15288, SAE 1001, INCOSE Handbook collectively codify the institutional ground of life-cycle modeling. The pluralism (multiple standards offering different models) is healthy ground-diversity, not conflict.</p>
+<p><strong>Form II — Affordance Gap (Doc 530).</strong> &quot;Enabling systems must be available for each stage&quot; is the rung-2 supply requirement: the engagement at each stage requires keeper-side affordances installed by enabling systems. Doc 530 reads cleanly here.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Life-cycle-model definition (ISO 24748-1) — π / α.</li>
+<li>Four core principles — π / α as cited; μ / β under corpus as Doc 572 Appendix D twelfth instance.</li>
+<li>DevOps infinity-loop pattern — π / α as cited; μ / β under corpus as Cluster I temporal-concurrency at density.</li>
+<li>Mid-life upgrade with concurrent stages — π / α as cited; μ / β under corpus as Doc 572 Appendix C multi-rung concurrent.</li>
+<li>Life-cycle-vs-project-model distinction — π / α as cited; μ / β under corpus as Doc 372 process-abstraction discipline.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residuals.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Cluster I rises to five instances.</strong> Process Concepts (SE-044) anchored Cluster I; Life Cycle Models (SE-045) deepens it with the DevOps infinity-loop and mid-life upgrade patterns. Cluster I now has SE-022, SE-038, SE-035, SE-044, SE-045 — five members.</p>
+<p><strong>Cluster A reaches twelve instances</strong> (SE-040, 607, 608, 609, 610, 611 each contribute one to bring count from six at SE-039-time to twelve). Synthesis is overdue.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 (Lattice Extension, Appendix D twelfth + Appendix C dense), Doc 270 (Pin-Art, infinity-loop), Doc 372 (Hypostatic Boundary, process-abstraction), Doc 571 (Institutional Ground, multi-standard pluralism), Doc 530 (Affordance Gap, enabling-system).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management).</p>
+<p><strong>Related distillations.</strong> SE-044 (Process Concepts — adjacent KA, Cluster I anchor). SE-046 (Development Approaches — adjacent KA). SE-022 (Sequential Development Approach — Cluster I first instance).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Life Cycle Concepts</em>, <em>Life Cycle Stages</em>, <em>Development Approaches</em>, <em>Process Selection and Tailoring</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Cluster A and Cluster I both densifying; cluster-level synthesis warranted.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Let&#39;s do the next 40 most likely articles to be most load bearing (at the top of the hierarchy) my conjecture is that this will inform the next 40.&quot;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&quot;It&#39;s ok to duplicate entries. It shows where the knowledge base folds back in on itself. Continue fanning out&quot;</em></p>
+</blockquote>
+<p>(SE-045 is one of the next-40 SEBoK distillations. Batch 1/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

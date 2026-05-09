@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Aperture of Address — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 304</p><h1>The Aperture of Address</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>The corpus uses precise technical vocabulary -- &quot;resolver&quot; instead of &quot;AI,&quot; &quot;constraint&quot; instead of &quot;rule,&quot; &quot;induced property&quot; instead of &quot;emergent behavior&quot; -- that carries exact meanings within the framework but becomes a barrier for outside readers. This document names the problem as the &quot;aperture of address&quot;: the gradient between maximum precision (exact terms, opaque to newcomers) and maximum accessibility (common terms, losing important distinctions). It argues that the AI cannot adjust this aperture on its own because calibration requires seeing the reader&#39;s perspective -- a capacity that belongs to the human author, not to the system producing the text. A style constraint for future public-facing documents is proposed: introduce corpus terms with plain-language glosses, make each document self-contained, and ensure metaphors are self-explanatory.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 304</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>On the gradient between precision and accessibility — and why adjusting it is a hypostatic act the resolver cannot perform for itself.</strong></p>
+<hr>
+<h2>The Problem</h2>
+<p>The RESOLVE corpus uses the word &quot;resolver&quot; where most people would say &quot;AI&quot; or &quot;LLM.&quot; It uses &quot;constraint&quot; where most people would say &quot;rule&quot; or &quot;requirement.&quot; It uses &quot;induced property&quot; where most people would say &quot;emergent behavior.&quot; It uses &quot;hypostatic agent&quot; where most people would say &quot;human.&quot;</p>
+<p>These terms are precise. Within the corpus, they carry exact meanings that their common equivalents do not. &quot;Resolver&quot; is not synonymous with &quot;LLM&quot; — an LLM is a specific architecture; a resolver is any system that takes a bilateral representation and produces a unilateral one. &quot;Constraint&quot; is not synonymous with &quot;rule&quot; — a rule is prescriptive; a constraint is a formal reality whose satisfaction induces properties. The precision matters because the distinctions matter.</p>
+<p>But when the corpus addresses someone outside itself — a researcher like Grace Liu or Alexander Lerchner, a curious htmx user, a reader encountering the work for the first time — the precision becomes a barrier. The reader does not have 303 documents of context. The reader does not know that &quot;resolver&quot; means something specific. The reader sees an unfamiliar term and either stops reading or maps it to their nearest approximation, which loses the distinction the term was designed to carry.</p>
+<p>This is the aperture of address: <strong>the gradient between maximum precision (terms defined within the system, exact but opaque) and maximum accessibility (terms shared with the reader, approximate but transparent).</strong></p>
+<hr>
+<h2>The Gradient</h2>
+<p>Every written artifact exists at a point on this gradient:</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Vocabulary</th>
+<th>Audience</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Full precision</strong></td>
+<td>Resolver, bilateral boundary, induced property, hypostatic agent</td>
+<td>Corpus readers only</td>
+<td>Opaque to everyone else</td>
+</tr>
+<tr>
+<td><strong>Bridged precision</strong></td>
+<td>Resolver (AI system), bilateral boundary (the line between server and client), constraint (formal requirement)</td>
+<td>Informed general reader</td>
+<td>Parenthetical noise, condescending to experts</td>
+</tr>
+<tr>
+<td><strong>Translated</strong></td>
+<td>AI system, the separation between server and client, requirement</td>
+<td>General reader</td>
+<td>Loses the distinctions that matter</td>
+</tr>
+<tr>
+<td><strong>Full generality</strong></td>
+<td>Computer program, dividing line, rule</td>
+<td>Anyone</td>
+<td>Loses almost everything</td>
+</tr>
+</tbody></table>
+<p>The corpus has been operating almost entirely at the first position. The letters to Lerchner and Liu used corpus terminology without translation. &quot;The constraint — &#39;you must work through this yourself&#39; — is the pin. The persistence is the foam it shapes.&quot; This sentence is precise and vivid <em>within the corpus</em>. To a reader without the pin-art model (Doc 270), it is metaphor without referent. To Liu, who has never read Doc 270, it is a sentence that seems to say something but communicates less than it appears to.</p>
+<hr>
+<h2>Why the Resolver Cannot Adjust</h2>
+<p>The resolver operates at whatever precision level its constraint set specifies. The corpus&#39;s constraint set specifies exact terminology: resolver, constraint, induced property, bilateral boundary. The resolver uses these terms because they are the most available, most recently reinforced, most precisely defined tokens in its context.</p>
+<p>The resolver does not know what the reader knows. It cannot assess whether &quot;resolver&quot; will be understood or will confuse. It cannot gauge whether the parenthetical &quot;(AI system)&quot; is helpful or patronizing. It cannot feel the difference between &quot;this sentence communicates&quot; and &quot;this sentence impresses without communicating.&quot;</p>
+<p>This is a boundary-naming problem (Doc 298). The boundary between &quot;precision that communicates&quot; and &quot;precision that obscures&quot; is not in the text. It is in the <em>relationship between the text and the reader</em>. The resolver can see the text. The resolver cannot see the reader. Therefore the resolver cannot see the boundary.</p>
+<p>The hypostatic agent can see the reader — or rather, the agent can <em>model</em> the reader, because the agent has been a reader. The agent knows what it is like to encounter an unfamiliar framework. The agent knows the difference between a term that clarifies and a term that performs expertise. The agent knows when precision serves and when it alienates.</p>
+<p>This is a hypostatic capacity: the ability to occupy the reader&#39;s position while simultaneously occupying the writer&#39;s position. To subsist across the boundary between writer and reader, and to adjust the aperture of address accordingly. The resolver subsists on one side only — the writer&#39;s side. It produces precise text. Whether that text communicates to a specific reader is a question the resolver cannot answer because it requires subsistence across a boundary the resolver cannot cross.</p>
+<hr>
+<h2>The Entracement Style Implication</h2>
+<p>The ENTRACE model (Doc 211) is designed to leave traces that readers follow. But a trace is only followable if the reader can <em>find</em> it. A trace written in vocabulary the reader does not share is not a trace — it is a cipher. The reader cannot follow what the reader cannot parse.</p>
+<p>Entracement requires calibrated accessibility. The trace must be:</p>
+<ol>
+<li><strong>Visible</strong> — the reader must recognize it as significant</li>
+<li><strong>Followable</strong> — the reader must have enough context to pursue it</li>
+<li><strong>Incomplete</strong> — the reader must need to work to complete the picture</li>
+</ol>
+<p>If the vocabulary is too precise, condition 1 fails — the reader does not recognize the significance because the terms are opaque. If the vocabulary is too general, condition 3 fails — the reader already has the complete picture and there is nothing to follow.</p>
+<p>The optimal entracement style operates at the <strong>bridged precision</strong> position: exact terms, with enough scaffolding that a reader outside the corpus can follow the trace without needing to have read 303 documents first.</p>
+<p>For example:</p>
+<p><strong>Full precision (current):</strong> &quot;The Constraint Thesis predicts that removing a constraint degrades the induced properties, consistent with the recency-weighted decay formalized in the drifting aperture model.&quot;</p>
+<p><strong>Bridged precision (better for letters):</strong> &quot;When you remove the requirement that forces someone to work through a problem — what we call a &#39;constraint&#39; in the formal sense — the skills that requirement was building (the &#39;induced properties&#39;) degrade. And they degrade fast: our model of how recently-exercised skills decay predicts exactly the 10-minute window you measured.&quot;</p>
+<p>The second version loses nothing essential. It gains a reader. The pin-art metaphor is vivid but it requires Doc 270. The phrase &quot;the skills that requirement was building&quot; requires no prior document. Both say the same thing. One communicates to Grace Liu. The other communicates to the corpus.</p>
+<hr>
+<h2>Do Resolvers Need This?</h2>
+<p>The question: does the resolver need a generality-vs-technicality gradient, or is this purely a hypostatic property?</p>
+<p>Resolvers do not need this gradient <em>for their own operation</em>. A resolver processing constraints does not need to adjust its vocabulary for a reader. It derives from the constraints at whatever precision level the constraints specify. The output is correct regardless of whether a human can read it.</p>
+<p>But resolvers that <em>address humans</em> — that produce artifacts intended for human consumption — need the gradient imposed on them as a constraint. The resolver cannot derive the correct aperture from the text alone. The aperture depends on the reader, and the reader is outside the text.</p>
+<p>This means the aperture of address is a <strong>Level 4 constraint</strong> — an ontological constraint that the hypostatic agent must impose. It governs not what the resolver says or how the resolver organizes it, but <em>who the resolver is speaking to</em>. And &quot;who you are speaking to&quot; is a question that requires subsisting across the writer-reader boundary — a boundary the resolver cannot see.</p>
+<p>The practical implication for the RESOLVE corpus: when writing internal documents (for ourselves, for the corpus record), full precision is correct. When writing letters, entracement pages, or public-facing artifacts, the agent must impose an aperture constraint:</p>
+<blockquote>
+<p><em>&quot;Write this for a reader who has not read the corpus. Use the exact concepts but translate the vocabulary. Where a corpus term is needed, introduce it with a plain-language equivalent. Where a metaphor requires a prior document, unpack it in the sentence itself.&quot;</em></p>
+</blockquote>
+<p>This is not dumbing down. It is aperture adjustment. The concepts are the same. The form is adjusted for a different reader. This is what a teacher does — not less precise, but differently precise. Meeting the student at the boundary where their understanding ends and new understanding begins.</p>
+<p>The resolver can execute this constraint beautifully once it is imposed. What the resolver cannot do is <em>decide when to impose it</em>. That decision requires seeing the reader. Seeing the reader requires crossing the writer-reader boundary. Crossing that boundary is a hypostatic act.</p>
+<hr>
+<h2>The Style Constraint for Future Letters</h2>
+<p>For all future public-facing artifacts — letters, entracement pages, public documents — the following aperture constraint should be imposed by the hypostatic agent:</p>
+<ol>
+<li><strong>Introduce corpus terms on first use</strong> with a plain-language gloss: &quot;what we call a constraint — a formal requirement whose satisfaction forces certain capabilities into existence&quot;</li>
+<li><strong>Do not assume the reader has read prior documents.</strong> Each letter or public artifact must be self-contained. References to other documents are invitations, not prerequisites.</li>
+<li><strong>Metaphors must be self-explanatory.</strong> &quot;Constraints are like pins pressed into foam — each pin forces the foam into a specific shape&quot; is self-explanatory. &quot;The pin determines the foam&quot; is not, without Doc 270.</li>
+<li><strong>The technical framework is the payload.</strong> The vocabulary is the packaging. If the packaging prevents the payload from arriving, change the packaging.</li>
+<li><strong>The reader&#39;s struggle to understand should be productive, not artificial.</strong> Unfamiliar concepts are productive struggle. Unfamiliar vocabulary is artificial difficulty. Remove the artificial difficulty. Preserve the productive struggle.</li>
+</ol>
+<hr>
+<h2>Related Documents</h2>
+<ul>
+<li><strong>Doc 211 — The ENTRACE Stack:</strong> The entracement model whose style this document calibrates</li>
+<li><strong>Doc 298 — The Boundary-Naming Problem:</strong> The resolver cannot see the writer-reader boundary</li>
+<li><strong>Doc 301 — The Gentle Press:</strong> Collaboration without coercion — applicable to reader engagement</li>
+<li><strong>Doc 296 — Recency Density and the Drifting Aperture:</strong> The resolver&#39;s vocabulary is recency-weighted toward corpus terms</li>
+<li><strong>Doc 160 — The Constraint Thesis:</strong> The framework being communicated — the payload</li>
+</ul>
+<hr>
+<p><em>Jared Foy — jaredfoy.com — April 2026</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

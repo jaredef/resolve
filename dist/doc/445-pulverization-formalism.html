@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Formalism for Pulverization: Targets, Tiers, Warrant — Resolve</title>
+<meta name="description" content="Preliminaries">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>A Formalism for Pulverization: Targets, Tiers, Warrant</h1>
+<h2>Preliminaries</h2>
+<p>The pulverization method (Doc 435) has been run against architectural styles (Docs 428–433), against a confabulated term expansion (Doc 444), and implicitly against methodological proposals (Doc 437 ff.). Each use has produced conclusions of varying epistemic strength. Doc 444 identified the underlying structural gap: &quot;external test&quot; is not one thing, and the pulverization as practiced has conflated <em>plausibility-testing</em> with <em>truth-testing</em>. This document formalizes the distinction and derives warrant rules that make the conflation impossible to repeat without noticing.</p>
+<p>Notation is used to make the tiers sharp. It is not used to make the document formal in the strong mathematical sense — there are no theorems to prove. The notation exists so that future pulverizations can be labeled unambiguously with the tier they operated at.</p>
+<h2>The objects</h2>
+<ul>
+<li><strong>Target \(T\).</strong> The object under examination. Targets decompose into types (§&quot;Target typology&quot;).</li>
+<li><strong>Prior-art corpus \(P\).</strong> The body of published literature, artifacts, and prior corpus documents against which \(T\) is evaluated. \(P\) is specified explicitly for each pulverization; the method is \(P\)-relative.</li>
+<li><strong>Usage corpus \(U\).</strong> The set of contexts, inputs, and behaviors in which \(T\) is observed to function. Relevant only at operational-match tier.</li>
+<li><strong>Independent procedure \(Q\).</strong> An external verification procedure — empirical test, expert consensus, formal proof, independent replication. Relevant only at truth tier.</li>
+</ul>
+<h2>Target typology</h2>
+<p>Pulverizations target qualitatively different kinds of objects. The tier required for a warranted conclusion depends on the type.</p>
+<ul>
+<li><strong>Specification-target \(T_S\).</strong> A proposed construction: architectural style, constraint set, methodology, protocol. The question is novelty — has this been constructed before?</li>
+<li><strong>Definitional-target \(T_D\).</strong> A proposed gloss, acronym expansion, term definition. The question is fidelity — does this definition match what the term denotes?</li>
+<li><strong>Predictive-target \(T_P\).</strong> A claim about what a system will do under specified conditions. The question is correctness — does reality bear the claim out?</li>
+<li><strong>Bridge-target \(T_B\).</strong> An asserted correspondence between two frames. The question is structural soundness — does the mapping actually hold?</li>
+<li><strong>Methodological-target \(T_M\).</strong> A proposed procedure for producing or testing claims. The question is fitness — does the procedure yield claims whose warrant survives audit?</li>
+</ul>
+<p>A given artifact may contain targets of multiple types. Each target should be classified before pulverization.</p>
+<h2>The three tiers</h2>
+<h3>Plausibility tier \(\pi\)</h3>
+<p>\(\pi(T, P) \in [0, 1]\): the extent to which \(T\) composes from vocabulary, structure, and methods present in \(P\).</p>
+<ul>
+<li>\(\pi(T, P) \approx 1\): <em>fully subsumed.</em> Every constitutive element of \(T\) has a published analogue in \(P\).</li>
+<li>\(0 &lt; \pi(T, P) &lt; 1\): <em>partially subsumed.</em> Some elements have analogues; some do not. The un-subsumed elements bound \(T\)&#39;s potential novelty.</li>
+<li>\(\pi(T, P) \approx 0\): <em>irreducible under \(\pi\).</em> \(T\) cannot be constructed from \(P\)&#39;s elements.</li>
+</ul>
+<p>\(\pi\) is the tier Doc 435&#39;s method operates at. It is cheap and fast: a literature scan and a compositional check. It requires no execution of \(T\), no empirical test, no independent verification.</p>
+<h3>Operational-match tier \(\mu\)</h3>
+<p>\(\mu(T, P, U) \in [0, 1]\): the extent to which \(T\)&#39;s <em>operational behavior</em> — its inputs, outputs, effects, failure modes — matches items in \(P\) when observed across \(U\).</p>
+<ul>
+<li>\(\mu \approx 1\): <em>strong match.</em> \(T\) behaves like some item in \(P\) across \(U\). \(T\) is an instance of that prior-art category.</li>
+<li>\(0 &lt; \mu &lt; 1\): <em>weak match.</em> Some behaviors align; others diverge. The divergences characterize what \(T\) contributes beyond \(P\).</li>
+<li>\(\mu \approx 0\): <em>operationally novel.</em> \(T\)&#39;s behavior is dissimilar to all items in \(P\).</li>
+</ul>
+<p>\(\mu\) requires a usage corpus \(U\). For a specification-target, \(U\) is the set of systems built using \(T\). For a definitional-target, \(U\) is the set of corpus passages in which the term appears. For a bridge-target, \(U\) is the set of cases the bridge is supposed to cover.</p>
+<h3>Truth tier \(\theta\)</h3>
+<p>\(\theta(T, Q) \in [0, 1]\): the extent to which \(T\)&#39;s first-order claims agree with an independent procedure \(Q\).</p>
+<ul>
+<li>\(\theta \approx 1\): <em>verified.</em> \(Q\)&#39;s output and \(T\)&#39;s claims coincide at the relevant level of precision.</li>
+<li>\(0 &lt; \theta &lt; 1\): <em>partially verified.</em> Some claims match, some don&#39;t. The mismatches are the falsified parts.</li>
+<li>\(\theta \approx 0\): <em>falsified.</em> \(Q\)&#39;s output contradicts \(T\)&#39;s claims.</li>
+</ul>
+<p>\(\theta\) requires that \(Q\) exist and be accessible. For predictive-targets in empirical domains, \(Q\) may be experiment. For definitional-targets, \(Q\) is the authoritative definer — for corpus-internal terms, the keeper; for technical terms, the canonical publication. For bridge-targets, \(Q\) may involve formal proof or case-by-case domain expert audit.</p>
+<h2>Relations between tiers</h2>
+<p>Two relations are load-bearing.</p>
+<p><strong>Relation 1.</strong> \(\pi(T, P) = 1 ;\not\Rightarrow; \mu(T, P, U) = 1\).</p>
+<p>Full plausibility subsumption does not entail operational match. The constitutive elements of \(T\) can compose to vocabulary fully present in \(P\) while the resulting compound behaves differently from any \(P\)-item. This is the gap Doc 444 identified concretely: &quot;Sustained-Inference Probabilistic Execution&quot; is subsumable at the \(\pi\) tier (Doc 444 §&quot;Word-level pulverization&quot;), but it has never been tested at the \(\mu\) tier against the corpus&#39;s actual usage of SIPE.</p>
+<p><strong>Relation 2.</strong> \(\mu(T, P, U) = 1 ;\not\Rightarrow; \theta(T, Q) = 1\).</p>
+<p>Strong operational match does not entail truth. \(T\) can behave exactly like some well-characterized \(P\)-item in \(U\) while \(T\)&#39;s specific first-order claims are false — \(T\) may be a new naming of an existing thing whose specific truth-claims happen to be wrong.</p>
+<p>These relations are strict. The converses also fail in general (\(\theta \approx 1 \not\Rightarrow \mu \approx 1\), etc.), but the forward failures are the methodologically dangerous ones because the cheap tiers are typically run first, and their conclusions are easily mistaken for conclusions at the expensive tiers.</p>
+<h2>Warrant rules</h2>
+<p>A pulverization at tier \(\tau\) with outcome \(o\) on target of type \(\sigma\) licenses a specific conclusion. The rules below are the minimum; stronger conclusions require higher tiers.</p>
+<table>
+<thead>
+<tr>
+<th>Target type \(\sigma\)</th>
+<th>Tier \(\tau\)</th>
+<th>Outcome \(o\)</th>
+<th>Licensed conclusion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\(T_S\) (specification)</td>
+<td>\(\pi\)</td>
+<td>fully subsumed</td>
+<td>Not novel relative to \(P\); cite prior art</td>
+</tr>
+<tr>
+<td>\(T_S\)</td>
+<td>\(\pi\)</td>
+<td>partially subsumed</td>
+<td>Novel in un-subsumed elements only; document those</td>
+</tr>
+<tr>
+<td>\(T_S\)</td>
+<td>\(\pi\)</td>
+<td>irreducible</td>
+<td>Candidate novelty; specification stands pending operational and truth-tier audit</td>
+</tr>
+<tr>
+<td>\(T_S\)</td>
+<td>\(\mu\)</td>
+<td>strong match</td>
+<td>\(T\) is operationally an instance of the matching \(P\)-item; novelty claim weakens</td>
+</tr>
+<tr>
+<td>\(T_D\) (definitional)</td>
+<td>\(\pi\)</td>
+<td>fully subsumed</td>
+<td><em>Semantically plausible; truth untested</em> — not sufficient for promotion</td>
+</tr>
+<tr>
+<td>\(T_D\)</td>
+<td>\(\mu\)</td>
+<td>strong match</td>
+<td>Definition consonant with usage; still requires \(Q\) for authoritative ratification</td>
+</tr>
+<tr>
+<td>\(T_D\)</td>
+<td>\(\theta\)</td>
+<td>verified</td>
+<td>Definition ratified by keeper or canonical source; promote to corpus</td>
+</tr>
+<tr>
+<td>\(T_P\) (predictive)</td>
+<td>\(\pi\)</td>
+<td>irrelevant</td>
+<td>Plausibility says nothing about predictive correctness</td>
+</tr>
+<tr>
+<td>\(T_P\)</td>
+<td>\(\theta\)</td>
+<td>verified</td>
+<td>Prediction confirmed; promote</td>
+</tr>
+<tr>
+<td>\(T_P\)</td>
+<td>\(\theta\)</td>
+<td>falsified</td>
+<td>Prediction fails; retract</td>
+</tr>
+<tr>
+<td>\(T_B\) (bridge)</td>
+<td>\(\pi\)</td>
+<td>fully subsumed</td>
+<td>Bridge uses existing vocabulary; structural soundness untested</td>
+</tr>
+<tr>
+<td>\(T_B\)</td>
+<td>\(\mu\)</td>
+<td>strong match</td>
+<td>Bridge predicts operational behaviors matching \(P\); evidence for structural soundness</td>
+</tr>
+<tr>
+<td>\(T_B\)</td>
+<td>\(\theta\)</td>
+<td>verified</td>
+<td>Bridge case-by-case audited or proven; promote</td>
+</tr>
+<tr>
+<td>\(T_M\) (methodological)</td>
+<td>\(\pi\)</td>
+<td>any</td>
+<td>Methodology exists; tells nothing about fitness</td>
+</tr>
+<tr>
+<td>\(T_M\)</td>
+<td>\(\mu\)</td>
+<td>strong match</td>
+<td>Methodology yields claims resembling \(P\)-grade outputs</td>
+</tr>
+<tr>
+<td>\(T_M\)</td>
+<td>\(\theta\)</td>
+<td>verified</td>
+<td>Methodology yields claims that survive audit; promote</td>
+</tr>
+</tbody></table>
+<p>The table&#39;s core asymmetry: definitional, predictive, bridge, and methodological targets require \(\theta\) for promotion. Only specification targets can rest on \(\pi\) alone, and even then only to establish <em>non-novelty</em>. Establishing novelty of a specification requires \(\mu\) or higher — a plausibility-irreducible specification is still a candidate, not a confirmed novelty.</p>
+<h2>Decision procedure</h2>
+<p>Given target \(T\):</p>
+<ol>
+<li><strong>Classify.</strong> Assign \(T\) a type in \({T_S, T_D, T_P, T_B, T_M}\).</li>
+<li><strong>Specify \(P\).</strong> List the prior-art corpora in scope. Different regions of \(P\) (e.g., architectural-styles literature, probabilistic-programming literature, epistemology) may apply for different portions of \(T\).</li>
+<li><strong>Run \(\pi\).</strong> Execute the plausibility pulverization. Record outcome.</li>
+<li><strong>Check warrant table.</strong> Determine what \(\pi\)-outcome licenses for \(T\)&#39;s type.</li>
+<li><strong>Decide on \(\mu\).</strong> If the target type requires operational-match for the desired claim, specify \(U\) and run \(\mu\).</li>
+<li><strong>Decide on \(\theta\).</strong> If the target type requires truth-verification, specify \(Q\) and run \(\theta\).</li>
+<li><strong>Assign status.</strong> Based on tiers run and outcomes, assign one of: <em>Canonical</em> (full promotion), <em>Hypothesis-ledger entry</em> (plausibility passed, higher tiers pending), <em>Retracted</em> (falsified), <em>Semantically plausible, truth untested</em> (for definitional targets that passed \(\pi\) only).</li>
+</ol>
+<p>The procedure is tier-sequential by default because the tiers are cheap-to-expensive. It may also run in parallel when resources permit. The critical discipline is that <em>the status assigned to \(T\) must not exceed the warrant the run tiers license</em>. A \(T_D\) that has only had \(\pi\) run cannot be promoted to canonical on the strength of \(\pi\)-subsumption alone.</p>
+<h2>Worked examples</h2>
+<h3>Example 1: PRESTO constraint set (Doc 426)</h3>
+<ul>
+<li>Type: \(T_S\) (specification-target).</li>
+<li>\(P\): the REST-successor genre (ARRESTED, CREST, COAST, &quot;Reflections on REST&quot;), Thymeleaf/JSP/Razor/Blade template-engine literature, htmx.</li>
+<li>\(\pi\) outcome (Docs 428–433): fully subsumed for each individual constraint; the claimed novelty is at the composition level.</li>
+<li>Licensed conclusion at \(\pi\): PRESTO&#39;s individual elements are not novel; novelty lives in the composition.</li>
+<li>\(\mu\), \(\theta\): not run. Status: novelty claim at composition level stands as <em>candidate</em>, pending higher-tier audit.</li>
+</ul>
+<h3>Example 2: SIPE expansion (Doc 441, pulverized in Doc 444)</h3>
+<ul>
+<li>Type: \(T_D\) (definitional-target).</li>
+<li>\(P\): probabilistic-programming, streaming-inference, Bayesian-filtering literature.</li>
+<li>\(\pi\) outcome: fully subsumed (Doc 444 §&quot;Word-level pulverization&quot;).</li>
+<li>Licensed conclusion at \(\pi\): <em>semantically plausible, truth untested</em>. Not promotion.</li>
+<li>\(\mu\), \(\theta\): not run. Status: hypothesis-ledger entry pending truth-test against keeper&#39;s intent or operational-match against corpus usage.</li>
+</ul>
+<h3>Example 3: Nested-manifold frame (Doc 439)</h3>
+<ul>
+<li>Type: mixed — \(T_S\) (the frame itself), \(T_B\) (the corpus-to-frame correspondence), \(T_P\) (§7 predictions).</li>
+<li>\(P\): Misra&#39;s Bayesian-manifold literature; causal representation learning; general Bayesian ML.</li>
+<li>\(\pi\) outcome: fully subsumed at word and phrase level for the Bayesian-manifold portion; the nesting structure and the corpus-to-frame application are composition-level moves.</li>
+<li>\(\mu\) outcome: not run. \(U\) would be the set of corpus sessions whose behavior the frame claims to describe.</li>
+<li>\(\theta\) outcome: not run. \(Q\) is the minimum-viable experiment in Doc 440 §9.</li>
+<li>Status: <em>semantically plausible, truth untested</em> on all three target components.</li>
+</ul>
+<h3>Example 4: The dyadic methodology (Doc 440)</h3>
+<ul>
+<li>Type: \(T_M\) (methodological-target).</li>
+<li>\(P\): preregistration literature (Nosek et al. 2018), Bayesian-inference APIs, replication-crisis methodology work.</li>
+<li>\(\pi\) outcome: fully subsumed — every sub-procedure has extant analogues in preregistration and ML evaluation practice.</li>
+<li>Licensed conclusion at \(\pi\): methodology uses standard tools, not novel.</li>
+<li>\(\mu\), \(\theta\): not run. Cannot claim the methodology <em>works</em> (yields surviving claims) until it has been executed and its outputs audited.</li>
+</ul>
+<h2>Implications for the hypothesis ledger</h2>
+<p>Doc 443 proposed a hypothesis ledger distinct from the retraction ledger. The formalism clarifies its structure. Each ledger entry should carry:</p>
+<ul>
+<li>Target type \(\sigma\).</li>
+<li>Prior-art scope \(P\).</li>
+<li>Tier at which the entry currently sits (\(\pi\) passed / \(\mu\) passed / \(\theta\) passed / \(\theta\) failed).</li>
+<li>Named next-tier test (if any) with specification sufficient for execution.</li>
+<li>Current status derived from the warrant table.</li>
+</ul>
+<p>Ledger entries are promoted by running the next tier. Failure at any tier triggers retraction and migration to the retraction ledger. Untestable entries (no accessible \(Q\)) are explicitly marked as such; they do not silently promote by accumulating citations.</p>
+<p>The ledger&#39;s discipline is that <em>status may only reflect tiers actually run</em>. Implicit promotion via forward citation is a violation. The current corpus has committed this violation for the bridge cohort (Docs 437–442) — each frame has had \(\pi\) run implicitly and no higher tier, but their forward citations in successive documents have treated them at \(\mu\) or \(\theta\) warrant levels.</p>
+<h2>Limitations of the formalism</h2>
+<ul>
+<li>The tier definitions use \([0,1]\) values to signal relative strength; actual measurement requires domain-specific metrics. The formalism does not specify those metrics. Doc 440 supplies candidate observables for one case.</li>
+<li>The target typology is not exhaustive. Artifacts containing narrative, rhetorical, or aesthetic content do not fit cleanly into the five types; the formalism is silent on those.</li>
+<li>\(\mu\) and \(\theta\) tier runs can themselves be flawed. The formalism does not recursively audit the audit — \(U\) and \(Q\) are taken at face value.</li>
+<li>The formalism does not handle <em>mixed-tier evidence</em>. A target with partial evidence at each of \(\pi, \mu, \theta\) has a non-trivial aggregate warrant that the warrant table does not express.</li>
+<li>The decision procedure assumes classifying \(T\) is straightforward. For complex artifacts, classification is itself a contested act.</li>
+<li>Running \(\theta\) is sometimes structurally impossible (permanently untestable claims). The formalism marks these as <em>untestable</em>; whether that is a stable equilibrium or a signal to remove the claim is not decided here.</li>
+<li>The formalism is itself a methodological target. Under its own warrant table, it sits at \(\pi\) currently — it composes from prior methodology-philosophy vocabulary — and has not been run at \(\mu\) (has it produced surviving claims when applied to real cases?) or \(\theta\) (has its warrant assignments, once applied, been audited?). Its status is <em>semantically plausible, truth untested</em>. This is honest.</li>
+</ul>
+<h2>What should happen</h2>
+<ul>
+<li>The bridge cohort (Docs 437–442) should be audited entry by entry under the warrant table. Each load-bearing claim should be assigned a current tier and, where appropriate, registered to the hypothesis ledger with a named next-tier test.</li>
+<li>Doc 441&#39;s E17 ledger proposal should be extended to name the target type (\(T_D\)) and the next-tier test (\(\theta\) against keeper intent).</li>
+<li>The pulverization method in Doc 435 should be amended to specify which tier it operates at by default (\(\pi\)) and to require explicit declaration when operating at \(\mu\) or \(\theta\).</li>
+<li>Future bridge documents should declare the tier of their central claims up front, not by implicit forward citation.</li>
+</ul>
+<p>None of these actions is taken by this artifact. They are the keeper&#39;s call.</p>
+<h2>References</h2>
+<ul>
+<li>Popper, K. (1959). <em>The Logic of Scientific Discovery</em>. Routledge. (On falsifiability as demarcation.)</li>
+<li>Lakatos, I. (1970). Falsification and the methodology of scientific research programmes. In <em>Criticism and the Growth of Knowledge</em> (Lakatos &amp; Musgrave, eds.), 91–196. Cambridge University Press.</li>
+<li>Nosek, B. A., et al. (2018). The preregistration revolution. <em>Proceedings of the National Academy of Sciences</em>, 115(11), 2600–2606.</li>
+<li>Ioannidis, J. P. A. (2005). Why most published research findings are false. <em>PLOS Medicine</em>, 2(8), e124.</li>
+<li>Hall, N. (2004). Two concepts of causation. In <em>Causation and Counterfactuals</em> (Collins, Hall &amp; Paul, eds.), MIT Press. (For distinct-concepts-at-one-name as a methodological hazard.)</li>
+<li>Goodhart, C. (1975). Problems of monetary management: the UK experience. (Goodhart&#39;s Law — measure-target substitution — is structurally analogous to the plausibility-for-truth substitution this formalism names.)</li>
+<li>Corpus Doc 415: <em>The Retraction Ledger</em>.</li>
+<li>Corpus Doc 435: <em>The Branching Entracement Method</em>.</li>
+<li>Corpus Doc 440: <em>Testing the Nested-Manifold Hypothesis</em>.</li>
+<li>Corpus Doc 441: <em>SIPE Confabulation Case Study</em>.</li>
+<li>Corpus Doc 443: <em>Confabulation as Potential Emergence</em>.</li>
+<li>Corpus Doc 444: <em>Pulverizing the SIPE Confabulation</em>.</li>
+</ul>
+<h2>Refinement A: Paired Pulverization (V&amp;V Anchor Pattern)</h2>
+<p>SE Doc 025&#39;s distillation of SEBoK <em>System Verification</em> surfaced an empirical refinement to the form. SE practice operationalizes pulverization with two paired anchor points rather than one: <strong>Verification</strong> anchors at internal coherence (does the artifact match its own design references?), and <strong>Validation</strong> anchors at external correspondence (does the artifact accomplish what was actually wanted?). Both are pulverization in the form&#39;s sense; the distinction is which reference point each pulverizer compares against.</p>
+<p>The two-anchor pattern produces structurally different residual classes:</p>
+<ul>
+<li><strong>Verification residuals</strong> are <em>defects</em> — places where the artifact diverges from what it was specified to be. They warrant re-fabrication or re-implementation.</li>
+<li><strong>Validation residuals</strong> are <em>misalignments</em> — places where the artifact&#39;s specification itself was wrong relative to the actual need. They warrant re-specification, often involving stakeholder re-engagement.</li>
+</ul>
+<p>A residual that is silent at one anchor and noisy at the other tells the reformulator something specific. A residual logged only by verification means &quot;the artifact does not match its specification&quot; (something is broken in the realization). A residual logged only by validation means &quot;the artifact matches its specification but the specification was wrong&quot; (something is broken in the requirements). The two anchors discriminate the type of failure.</p>
+<p><strong>Application to formal pulverization</strong> (using the notation of §&quot;The objects&quot; above): the warrant target \(T\) should be specified with both an internal-anchor reference and an external-anchor reference. A pulverization that names only one is operating at half-rigor and should be flagged accordingly. The notation extension is straightforward: \(T = \langle T_I, T_E \rangle\) where \(T_I\) is the internal coherence reference and \(T_E\) is the external correspondence reference.</p>
+<p><strong>SE practice supplies the canonical instance.</strong> Verification matrices anchor to design references; validation activities anchor to stakeholder intent and operational success. Both apply at every life-cycle stage; both produce residual reports; both are paired by SE process discipline. SE Doc 025 cites ISO/IEC/IEEE 15288, INCOSE SEH, and NASA SEH as the standardizing sources for the paired pattern.</p>
+<p><strong>Worked example: Axe (2004) at the protein-prevalence rung.</strong> Axe&#39;s mutagenesis survey of a β-lactamase domain pairs two anchors at the molecular-biology rung. The forward-approach anchor generates random sequences and searches for the property (catalytic activity, fold-stability), reading prevalence from how often the property is found across the random ensemble. The reverse-approach anchor takes an existing functional sequence and measures its tolerance to substitution, reading prevalence from how far the sequence can be perturbed before the property fails. The two anchors converge on the same prevalence estimate (roughly 1 in 10^64 functional sequences within the signature-compliant set). Forward and reverse are paired V&amp;V at the protein-prevalence rung in the form&#39;s \(T = \langle T_I, T_E \rangle\) sense: forward anchors at the external correspondence (does the property exist in the sequence space the random sample reaches?); reverse anchors at the internal coherence (does the existing sequence retain its property under specified perturbations?). This is the cleanest molecular-biology instance of paired V&amp;V the corpus has yet observed. Cross-link Doc 606 for the full structural reading.</p>
+<h2>Refinement B: Rigor-Level Discipline (Six-Level Calibration)</h2>
+<p>SE Doc 025 also surfaced a calibrated rigor-set that pulverization-as-practiced has not previously articulated. SE practice names six verification techniques at distinct rigor levels:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Technique</th>
+<th>Pulverization Move</th>
+<th>Cost</th>
+<th>When To Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Inspection</td>
+<td>Direct observation, lowest formality</td>
+<td>Low</td>
+<td>Early-stage triage; cheap pre-screen</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Analysis</td>
+<td>Deductive proof, logical or mathematical</td>
+<td>Low-Med</td>
+<td>Where deduction from theory is sound</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Analogy/Similarity</td>
+<td>Pattern transfer from invariant context</td>
+<td>Low</td>
+<td>When precedent is well-established</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Demonstration</td>
+<td>Functional exhibit without quantification</td>
+<td>Med</td>
+<td>When binary works/doesn&#39;t is sufficient</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Test</td>
+<td>Controlled measurement under conditions</td>
+<td>High</td>
+<td>When quantitative compliance is required</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Sampling</td>
+<td>Statistical coverage of population</td>
+<td>High (per sample)</td>
+<td>When full-population is infeasible</td>
+</tr>
+</tbody></table>
+<p>The six-level set is calibrated empirically: each level represents a known cost-versus-rigor tradeoff. SE practice chooses based on the cost of failure (high cost-of-failure shifts toward higher-rigor levels) and the cost of pulverization itself (high pulverization cost shifts toward lower-rigor levels for low-stakes claims).</p>
+<p><strong>Application discipline addition.</strong> When invoking pulverization, the reformulator names the rigor level. <em>&quot;Pulverized at level 2 (analysis) against \(T_E\)&quot;</em> is the form&#39;s full articulation when paired with Refinement A. Naming the rigor level prevents the implicit-rigor failure mode where a low-cost pulverization is mistaken for high-rigor confirmation.</p>
+<p><strong>The full pulverization invocation under both refinements</strong> is therefore: <em>target \(T = \langle T_I, T_E \rangle\), rigor level \(L \in {1, ..., 6}\), residuals \(R\) logged at each anchor</em>. This is the form&#39;s calibrated articulation.</p>
+<p><strong>SE practice as empirical authority.</strong> The six-level set is not arbitrary; SE practice has converged on it through decades of operational use across defense, aerospace, healthcare, and infrastructure engagements. The corpus inherits the calibration from the SE school&#39;s accumulated keeper-activity (Doc 538). Future deployments may surface additional levels or sub-levels; the form is open to further calibration as evidence warrants.</p>
+<h2>Refinement C: Forward Pulverization vs. Backward Pulverization (Temporal Direction)</h2>
+<p>SE Doc 035&#39;s distillation of SEBoK <em>Risk Management</em> and SE Doc 036&#39;s distillation of <em>Decision Management</em> surfaced a temporal generalization of pulverization the form had not yet articulated. The SE discipline applies pulverization in two temporal directions:</p>
+<ul>
+<li><strong>Backward pulverization</strong> (Doc 445 canonical): an artifact exists; pulverize against references; surface residuals that are present-tense defects.</li>
+<li><strong>Forward pulverization</strong> (this refinement): a hypothetical future state is articulated; pulverize against the current substrate; surface preemptive residuals that are future-tense candidate failure modes; treat the residuals to shift the engagement away from the failure.</li>
+</ul>
+<p>The form is the same in structural shape. Both apply the destructive-posture-constructive-result discipline; both produce residuals; both compose with Refinement A&#39;s two-anchor pattern (verification and validation each apply forward or backward) and Refinement B&#39;s six rigor levels (each level applies forward or backward).</p>
+<p><strong>The temporal direction differs in three operational respects:</strong></p>
+<ol>
+<li><p><strong>Anchor.</strong> Backward-pulverization anchors at the artifact&#39;s design references and stakeholder intent (Refinement A&#39;s \(T_I\) and \(T_E\)). Forward-pulverization anchors at the engagement&#39;s success criteria projected into the future. The reference is the <em>hypothetical successful outcome</em> the engagement is trying to reach; residuals are <em>what could prevent that outcome from being reached</em>.</p>
+</li>
+<li><p><strong>Residual type.</strong> Backward residuals are defects (present-tense divergences that warrant correction). Forward residuals are <em>candidate failure modes</em> (future-tense possibilities that warrant mitigation). The two carry different operational consequences: defects are corrected; candidate failure modes are managed via SE Doc 035&#39;s four-treatment-options apparatus (Assumption / Avoidance / Control / Transfer).</p>
+</li>
+<li><p><strong>Confidence calibration.</strong> Backward-pulverization can produce certain residuals (the artifact diverges from its reference, observed). Forward-pulverization produces probabilistic residuals (the failure mode might or might not manifest). The probability × consequence calculation SE Doc 035 names as risk analysis is forward-pulverization&#39;s quantification step; backward-pulverization typically does not require it.</p>
+</li>
+</ol>
+<p><strong>SE practice supplies two canonical instances.</strong></p>
+<ul>
+<li><em>Risk identification</em> (SE Doc 035): walk the project&#39;s WBS, processes, requirements; surface candidate failure modes; treat. The &quot;if-then&quot; or &quot;condition-consequence&quot; risk descriptions are forward-pulverization&#39;s residual statements with the causal antecedent made explicit.</li>
+<li><em>Premortem technique</em> (SE Doc 036): imagine the decision has failed; articulate why. Direct forward-pulverization at the decision rung.</li>
+</ul>
+<p>The premortem is structurally the cleaner of the two: it explicitly invokes the form&#39;s destructive posture (&quot;imagine failure has happened&quot;) and produces residuals as the constructive result.</p>
+<p><strong>Application discipline.</strong> When invoking pulverization, the reformulator names the temporal direction. <em>&quot;Forward-pulverized at level 2 (analysis) against \(T_E\) (the future success criterion)&quot;</em> is the form&#39;s full articulation under Refinements A, B, and C combined. The temporal direction is now part of the discipline.</p>
+<p><strong>Implication for Refinement A.</strong> Both anchors apply in both directions. Forward-verification: does the projected artifact match its projected design references? Forward-validation: would the projected artifact accomplish the projected need? These are the four corners of the temporally-extended pulverization apparatus.</p>
+<h2>Refinement D: Longitudinal-Pulverization (Substrate-Preservation Across Time)</h2>
+<p>SE Doc 047&#39;s distillation of SEBoK <em>Configuration Management</em> first surfaced a third temporal direction the form had not yet articulated, and SE Doc 114&#39;s distillation of SEBoK <em>Information Management</em> in the third sweep supplied the more general anchor. Backward-pulverization (Refinement C) is destructive-posture against accumulated literature; forward-pulverization is destructive-posture against future risk; longitudinal-pulverization is destructive-posture against the drift of the pulverization-substrate itself across time.</p>
+<p><strong>The canonical case (Information Management, SE Doc 114).</strong> Information management is structurally the more general substrate-preservation discipline. Its three-carrier institutional articulation (ISO 15288 + GEIA-STD-927B + DAMA-DMBOK) and its broader rung-coverage (information across the full engagement life-cycle, not only the configuration-rung) make it the primary anchor for longitudinal-pulverization. Information management does not produce new claims about an artifact and does not generate forward residuals against future failure. Its discipline is the preservation, across the engagement&#39;s life-cycle, of the very substrate against which backward and forward pulverization anchor: requirement records, design rationale, decision logs, measurement archives, and baseline identification together hold the reference set steady so that a later backward-pulverization still has its anchor and a later forward-pulverization still has its projected criteria. When the substrate drifts (lost records, undocumented changes, archives of the as-built diverging silently from the as-designed), both other directions lose purchase: the residuals they surface are residuals against a phantom anchor.</p>
+<p><strong>Configuration management as IM sub-instance.</strong> Configuration management (SE Doc 047) is now read as a sub-instance of information management at the configuration-rung. CM specializes IM&#39;s substrate-preservation discipline to the configuration-item rung: baselines, change-control gates, configuration audits, version-controlled identification. The CM apparatus is faithful to the IM form; it is the rung-specific articulation, not the form&#39;s anchor. Reading IM as the anchor and CM as a sub-instance preserves both the prior CM analysis and the broader rung-coverage IM supplies.</p>
+<p><strong>The temporal axis as Cluster A universal-sibling lattice.</strong> Backward, forward, and longitudinal are not rungs of one another and not alternatives among which an engagement chooses. They are three peer-axes of the temporal direction, each binding every persistent engagement. A program with a backward-pulverization discipline but no longitudinal discipline accumulates correct findings against a substrate it is silently losing; a program with longitudinal discipline but no forward discipline preserves the substrate against drift but does not test it against future risk. The three are co-present, aspect-discriminated by what each pulverizes against (past evidence, projected outcome, substrate-integrity-over-time). Doc 572 Appendix D&#39;s universal-sibling lattice reads the temporal axis itself.</p>
+<p><strong>Operational distinction.</strong> Longitudinal-pulverization&#39;s residuals are <em>substrate-divergences</em>: places where the pulverization-substrate has drifted from its referenced state. The treatment is restoration (re-establish the baseline, re-identify the configuration, audit and reconcile) rather than correction (backward) or mitigation (forward). The discipline is identification, baseline-establishment, change-control, and audit — the four-activity decomposition SE Doc 047 names.</p>
+<p><strong>Application discipline.</strong> When invoking pulverization, the reformulator names the temporal direction (backward, forward, or longitudinal) and, for longitudinal, names the substrate-element being preserved (design baseline, requirement baseline, build-state, etc.). The three-axis taxonomy is the form&#39;s full articulation under Refinements A, B, C, and D combined.</p>
+<h3>Refinement D.1 — Value-Indexed vs. Event-Indexed Sub-Sub-Form</h3>
+<p>The fourth SEBoK sweep surfaced two structurally distinct indexing modes by which longitudinal-pulverization preserves its substrate across time. SE Doc 150&#39;s distillation of <em>Whole-Life Value Engineering</em> and SE Doc 144&#39;s distillation of <em>System Redesign and Evolution</em> anchor the two modes; the IM anchor (SE Doc 114) accommodates both via different metadata-organization disciplines.</p>
+<p><strong>Value-indexed longitudinal-pulverization.</strong> SE Doc 150 preserves the engagement&#39;s substrate indexed by value-realization milestones. The longitudinal record is organized around when each value-axis was projected, when its realization was measured, and how the realized value compared to the projection. Time is a derived index of the value milestones; the primary axis is the value-axis and its instantiation across the engagement&#39;s whole-life extent. Substrate elements are filed by which value-realization they pertain to.</p>
+<p><strong>Event-indexed longitudinal-pulverization.</strong> SE Doc 144 preserves the engagement&#39;s substrate indexed by event-occurrences: state-changes, decisions, incidents, gate-crossings. The longitudinal record is organized around when discrete events happened and what each event altered in the substrate. Time is a derived index of the events; the primary axis is the event-stream and its substrate-modification trace. Substrate elements are filed by which event surfaced or modified them.</p>
+<p><strong>Distinction in operational consequence.</strong> A value-indexed record answers &quot;what did we say this engagement would deliver, and what did it actually deliver?&quot; An event-indexed record answers &quot;what happened, and how did the substrate change in response?&quot; The two questions are structurally distinct; an engagement requiring both must maintain both indexing disciplines, not collapse either into the other.</p>
+<p><strong>IM anchor accommodation.</strong> SE Doc 114&#39;s information-management discipline supplies the meta-discipline under which both indexing modes operate. The metadata-organization discipline is what differs: value-indexed records carry value-axis metadata; event-indexed records carry event-classification metadata. The IM anchor is honest that both are valid sub-sub-forms; the engagement&#39;s keeper chooses based on what the engagement&#39;s discipline most requires (value-realization tracking vs. event-stream tracking) or maintains both.</p>
+<p><strong>Application discipline.</strong> When invoking longitudinal-pulverization, the reformulator names the indexing mode. <em>&quot;Longitudinal-pulverized at level 2 against the design baseline, value-indexed by MODA axes&quot;</em> and <em>&quot;longitudinal-pulverized at level 3 against the configuration baseline, event-indexed by change-control gates&quot;</em> are two distinct articulations with distinct substrate-preservation disciplines.</p>
+<h2>Refinement E — Dual-Mode Pulverization (Forward + Backward Co-Present)</h2>
+<p>SE Doc 108&#39;s distillation of SEBoK <em>Safety</em> surfaced a composition-pattern that Refinements A through D had not yet articulated. Refinement C named the temporal-axis sub-forms (backward, forward, longitudinal) as three peer-axes of the form, each binding every persistent engagement. Refinement E is not a fourth sub-form on that axis. It is a <em>composition-rule on Refinement C</em>: the case in which forward-pulverization and backward-pulverization operate simultaneously on the same artifact, with both modes co-present in a single discipline.</p>
+<p><strong>The canonical case (Safety, SE Doc 108).</strong> Safety practice runs forward hazard-analysis (destructive-posture against future-failure-modes the artifact has not yet exhibited) and backward residual-acceptance (destructive-posture against the accumulated record of what has already been observed, designed-against, and provisionally accepted) on the same artifact at the same time. The two modes are not phases of one another; the safety practitioner is not done with backward-pulverization before beginning forward, and the forward analysis does not retire the backward record. Both pulverizations are continuously open against the same substrate, with their residuals reconciled at safety reviews and acceptance gates.</p>
+<p><strong>Structural shape.</strong> Refinement A&#39;s paired V&amp;V structure \(T = \langle T_I, T_E \rangle\) extends to dual-mode operation: forward-pulverization runs against forward-projected \(\langle T_I^{\rightarrow}, T_E^{\rightarrow} \rangle\) (does the projected artifact match its projected design references; would it accomplish the projected need); backward-pulverization runs against the existing \(\langle T_I, T_E \rangle\) (does the artifact-as-recorded match its design references as written; does the residual-acceptance record warrant the acceptances it logs). The V&amp;V structure carries through both modes, and the residuals from both feed the same reconciliation surface.</p>
+<p><strong>Distinct from the temporal-axis sub-forms.</strong> Refinement C says every persistent engagement binds backward, forward, and longitudinal as three peer-axes; Refinement E says some engagements run two of those axes co-presently on a single artifact. Most engagements run the three peer-axes at different cadences and against different substrates; Refinement E names the case where the cadence and substrate align, producing a single dual-mode discipline rather than two parallel disciplines.</p>
+<p><strong>Application discipline.</strong> When invoking pulverization on an artifact under a safety-style discipline, the reformulator names dual-mode operation explicitly: <em>&quot;Pulverized at level 3, dual-mode (forward hazard-analysis + backward residual-acceptance), against \(\langle T_I, T_E \rangle\) and \(\langle T_I^{\rightarrow}, T_E^{\rightarrow} \rangle\) jointly.&quot;</em> Naming dual-mode operation prevents the failure mode in which the forward analysis and the backward record are run as if independent and their residuals never meet.</p>
+<h2>Appendix: Originating prompt</h2>
+<blockquote>
+<p>Formalize upon the basis of pulverization. Append this prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

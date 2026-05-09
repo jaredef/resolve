@@ -69,10 +69,18 @@ I am grateful to the Anthropic engineers and researchers whose work built the su
 ## Repository contents
 
 - `corpus/` — the document collection, one file per document, numbered.
-- `MANIFEST.yaml` — the canonical index with metadata.
+- `systems-engineering/` — the systems-engineering subseries.
+- `dist/` — a prebuilt static-site copy of the corpus, ready to open in a browser.
+- `viewer/` — the small build script that regenerates `dist/` from sources.
 - `README.md` — this file.
 
 The repository is a mirror of the working source. The published version on the website is built from this mirror; commits here propagate to the site within minutes.
+
+## Reading offline
+
+The repository ships with a prebuilt static site. Clone the repo and open `dist/index.html` in any browser — no server, no install, no toolchain. The corpus is fully readable from disk, including on a flight.
+
+If you edit the corpus and want to regenerate the static site, see `viewer/README.md`.
 
 ---
 

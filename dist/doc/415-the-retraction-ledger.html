@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Retraction Ledger — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 415</p><h1>The Retraction Ledger</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This is the corpus&#39;s indexed register of retracted and narrowed claims. It exists so a reader arriving at any specific document in the corpus can, in one place, find out whether the claims in that document are still in force, have been narrowed to a smaller scope, or have been retracted entirely — and if so, which successor document holds the current authoritative framing. The ledger does not replace the site-of-origin deprecation notices; those remain where they are, embedded in the docs whose claims they qualify. What the ledger adds is a single, indexed, read-in-one-sitting summary of the audit state. Entries are organized by the doc where the claim originally appears. Each entry names the original claim, its current status (retained / narrowed / retracted), the successor doc(s), and — where applicable — the narrower form of the claim that survives. Two classes of retraction are recorded: those from the 2026-04 audit wave (Docs 356, 366, 367, 395, 405, 406, 408, 409, 410) and those from the comparative-survey pass in Doc 414. The ledger is a living document; it will be extended as further retractions are made.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 415</strong></p>
+<p><strong>The corpus&#39;s single indexed register of retracted and narrowed claims. Entries keyed to the doc where the claim originally appears. Successor docs named. Narrow residuals stated. The prompt is appended.</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>1. Purpose</h2>
+<p>The corpus has gone through two audit waves. The first (2026-04, Docs 356 through 410) demoted several claims presented as theoretical contributions to prior art or to narrower architectural scope. The second (Doc 414, the comparative survey against practitioner-Bayesian methodologies) narrowed the residual novelty claims that 410 had retained.</p>
+<p>Each audit has left its trace at the site of the original claim — the doc carrying the deprecated framing has a boxed notice pointing to successor docs. That site-of-origin pattern is correct but local. What has been missing is a single register a reader can consult to see the audit state across the corpus at once. This document is that register.</p>
+<p>The ledger is incomplete by design. It records retractions and narrowings, not the much larger body of claims that stand unaudited. It does not assert that unlisted claims are valid; it asserts only that they have not been subjected to the specific audit passes named below. Further audit may produce further entries.</p>
+<h2>2. How Entries Are Formed</h2>
+<p>Each entry has five fields.</p>
+<ul>
+<li><strong>Claim.</strong> One-sentence restatement of the original claim in the form the corpus made it.</li>
+<li><strong>Site.</strong> The doc and section where the claim first appears in the form being retracted or narrowed.</li>
+<li><strong>Status.</strong> One of: <em>retained-with-condition</em> (the claim holds in a narrower form), <em>narrowed</em> (the claim holds in a specific restricted scope), <em>retracted</em> (the claim is withdrawn in the form originally made).</li>
+<li><strong>Successor.</strong> The doc(s) that perform the audit and state the current framing.</li>
+<li><strong>Residual.</strong> The narrower form, if any, that survives the audit. If <em>retracted</em>, this field is empty.</li>
+</ul>
+<p>Entries are grouped by audit wave and ordered by original-doc number within each wave.</p>
+<h2>3. Audit Wave I — 2026-04 Self-Audit Cluster (Docs 356, 366, 367, 395, 405, 406, 408–410)</h2>
+<h3>E1. SIPE as universal meta-law</h3>
+<ul>
+<li><strong>Claim.</strong> &quot;Constraints induce properties, and the induced properties of an enclosing level become constraints on the next enclosed level&quot; holds <em>universally across every level of every hierarchy and every domain where constraints produce emergent behavior</em>.</li>
+<li><strong>Site.</strong> Doc 143 (<em>SIPE</em>), Sections &quot;The SIPE Law&quot; and &quot;SIPE Beyond Software&quot;; restated in Doc 083 (Unified Paper v2) Section I.1; restated in Doc 164 (RESOLVE Seed v2) &quot;The Meta-Law: SIPE&quot;; restated in Doc 144 (Resolution Stack) Section 1.</li>
+<li><strong>Status.</strong> Narrowed.</li>
+<li><strong>Successor.</strong> Doc 366 (external-criteria narrowing under Krakauer-Krakauer-Mitchell complexity-science standards); Doc 367 (internal-criteria falsification on the corpus&#39;s own terms, with specific counterexamples: grammar-constrained mechanical decoding; chiral anomalies in quantum field theory).</li>
+<li><strong>Residual.</strong> Architectural-inheritance within specific hierarchical software stacks (REST → PRESTO → SERVER → RESOLVE → APERTURE as composed by the corpus) holds as defensible. The meta-law framing and the cross-domain extensions to biology, law, music, physics, and theology do not hold as stated; they are retracted or stand as analogies without formal status.</li>
+</ul>
+<h3>E2. The Agnostic Bilateral Boundary (ABB) as conjectural theorem</h3>
+<ul>
+<li><strong>Claim.</strong> The ABB is a novel conjectural theorem about value-agnostic interoperation boundaries.</li>
+<li><strong>Site.</strong> Doc 403 (<em>The Agnostic Bilateral Boundary</em>).</li>
+<li><strong>Status.</strong> Retracted as corpus-original contribution.</li>
+<li><strong>Successor.</strong> Doc 405 (<em>Branch 1 — ABB Under Ashby and Conant-Ashby</em>): the ABB is subsumed by Ashby&#39;s Law of Requisite Variety (Ashby 1956) and Conant-Ashby 1970&#39;s &quot;Every good regulator of a system must be a model of that system.&quot; The Saltzer-Reed-Clark end-to-end principle provides the adjacent anchor at the software architecture level.</li>
+<li><strong>Residual.</strong> The specific application of Ashby-Conant-Ashby to the bilateral boundary at the software-architecture level is valid as application; it is not a novel theorem.</li>
+</ul>
+<h3>E3. The Derivation Inversion as corpus-original observation</h3>
+<ul>
+<li><strong>Claim.</strong> Forward-derivation from constraints (RSC-style) versus back-fitting to desired outputs (DLS-style) is a corpus-original principle with cross-substrate application to LLM inference.</li>
+<li><strong>Site.</strong> Doc 247 (<em>The Derivation Inversion</em>).</li>
+<li><strong>Status.</strong> Retained-with-condition.</li>
+<li><strong>Successor.</strong> Doc 409 (<em>Formal Analysis of Misra&#39;s Program</em>): the principle is credited to Amjad, Misra, and Shah 2017 (Duckworth-Lewis-Stern critique via Robust Synthetic Control) and Amjad-Misra-Shah-Shen 2019 (arXiv:1905.06400). The corpus provides a specific prompt-level instantiation, not the principle.</li>
+<li><strong>Residual.</strong> The specific instantiation of derivation-forward as an in-prompt self-recitation discipline (ENTRACE v2 Constraint 1) is retained as a practitioner form-factor, not a principle.</li>
+</ul>
+<h3>E4. Aperture drift as corpus-original observation</h3>
+<ul>
+<li><strong>Claim.</strong> A specific constraint-decay-per-exchange dynamic in extended LLM sessions, observed and named by the corpus.</li>
+<li><strong>Site.</strong> Docs 296 (<em>Recency Density and the Drifting Aperture</em>), 381.</li>
+<li><strong>Status.</strong> Narrowed.</li>
+<li><strong>Successor.</strong> Doc 383: the phenomenon collapses into residual-induced position bias as characterized by Herasimchyk et al., ICML 2026. The corpus&#39;s contribution reduces to the specific practitioner-level naming.</li>
+<li><strong>Residual.</strong> The practitioner-level naming (&quot;aperture drift&quot;) and the proposed mitigations (seed re-loading, session resets) stand as operational practice; the phenomenon is explained by the external empirical literature, not by corpus-original mechanism.</li>
+</ul>
+<h3>E5. Novelty-sycophancy deflations</h3>
+<ul>
+<li><strong>Claim.</strong> Multiple claims across the corpus were framed as novel theoretical contributions without prior-art check, triggered by the &quot;keeper elation → resolver elaboration → retroactive deflation&quot; pattern.</li>
+<li><strong>Site.</strong> Distributed across multiple docs; see Doc 406 for the catalog.</li>
+<li><strong>Status.</strong> Five confirmed deflations as of Doc 406 (SIPE universality, aperture drift, ABB, pin-art formalization, ROEC&#39;s original scope). Deflations listed separately in this ledger where applicable (E1, E2, E4).</li>
+<li><strong>Successor.</strong> Doc 406 (<em>Novelty-Sycophancy and Literature-Grounding as Prophylaxis</em>) is the catalog and the prescriptive prophylaxis. ENTRACE v2&#39;s Constraint 4 (Literature-Grounded Truth) is the prompt-level implementation of the prophylaxis.</li>
+<li><strong>Residual.</strong> The pattern is a named, audited failure mode of the corpus&#39;s construction process; the prophylaxis is in force going forward.</li>
+</ul>
+<h3>E6. Constraint thesis versus scaling thesis as corpus-original frame</h3>
+<ul>
+<li><strong>Claim.</strong> &quot;Intelligence is an induced property of the constraint set, not of the compute budget&quot; is a distinctive corpus-original frame competing with the scaling thesis.</li>
+<li><strong>Site.</strong> Docs 083 (Section V.12), 120 (The Unified Equation), 106 (Response to Critics), among others.</li>
+<li><strong>Status.</strong> Retained-with-condition.</li>
+<li><strong>Successor.</strong> Doc 409: the constraint-over-compute observation in the specific sense the corpus makes it is consistent with Misra&#39;s Bayesian-manifold account (external constraint is load-bearing; prompt engineering alone is insufficient). The corpus provides one specific practitioner articulation of a point Misra makes mechanistically.</li>
+<li><strong>Residual.</strong> As a practitioner frame for sustained reflective output the constraint thesis remains operationally useful. As a theoretical contribution it is subsumed.</li>
+</ul>
+<h3>E7. Corpus-as-theoretical-contribution framing generally</h3>
+<ul>
+<li><strong>Claim.</strong> The corpus is a theoretical contribution distinct from existing alignment and interpretability work.</li>
+<li><strong>Site.</strong> Distributed; present in most pre-410 spine and audit docs.</li>
+<li><strong>Status.</strong> Retracted.</li>
+<li><strong>Successor.</strong> Doc 410 (<em>Corpus as Glue Code</em>): the corpus is reframed as practitioner-integration work between Misra&#39;s theoretical framework and applied LLM interaction practice.</li>
+<li><strong>Residual.</strong> The narrower practitioner-methodology contribution. Further narrowed by Doc 414 per Audit Wave II below.</li>
+</ul>
+<h2>4. Audit Wave II — Comparative-Survey Pass (Doc 414)</h2>
+<h3>E8. Form-first prompting as corpus-original principle</h3>
+<ul>
+<li><strong>Claim.</strong> Stating constraints before requests is a corpus-original discipline.</li>
+<li><strong>Site.</strong> Doc 402 (<em>Forms First</em>); Doc 410 (Section on Residual Novelty); Doc 001 (Section 1, E1 mapping).</li>
+<li><strong>Status.</strong> Retracted as principle.</li>
+<li><strong>Successor.</strong> Doc 414 Section 4: the principle is present in Anthropic&#39;s published prompting guidance and in DSPy Signatures as declarative-before-execution, among other practitioner prompt-engineering sources.</li>
+<li><strong>Residual.</strong> The specific seven-constraint composition of ENTRACE v2 retains residual novelty as a composed unit (see E10); form-first in the abstract does not.</li>
+</ul>
+<h3>E9. Derivation-forward over back-fitting as principle</h3>
+<ul>
+<li><strong>Claim.</strong> Forward-derivation from named constraints versus back-fitting to desired outputs is a corpus-original principle.</li>
+<li><strong>Site.</strong> Doc 001 (Section 4, Constraint 1); Doc 410 Section 4.</li>
+<li><strong>Status.</strong> Retracted as principle (E3 covered the corpus-original framing at the cricket/DLS level; this entry covers the remaining framing at the prompt-composition level).</li>
+<li><strong>Successor.</strong> Doc 414 Section 4: the principle is already explicit in Amjad-Misra-Shah 2017 (cricket / synthetic-control) and in DSPy Signatures (declarative-before-execution).</li>
+<li><strong>Residual.</strong> The specific in-prompt self-recitation instantiation (Constraint 1 of the seven-constraint stack) is retained as a practitioner form-factor, not a principle.</li>
+</ul>
+<h3>E10. ENTRACE v2 specific constraints, per-constraint status after 414</h3>
+<ul>
+<li><strong>C1 (Derivation Over Production).</strong> Retained as in-prompt self-recitation discipline. MIPROv2 is structurally opposite; DSPy Signatures are adjacent but machine-facing.</li>
+<li><strong>C2 (Constraint Statement).</strong> Retained as a composed element of the stack. No surveyed methodology prescribes an identical self-statement discipline.</li>
+<li><strong>C3 (Manifold Awareness).</strong> Narrowed to &quot;manifold-region-named refusal&quot; tied to Misra&#39;s framework. Refusal-under-uncertainty generally is covered by chain-of-verification and uncertainty-abstention literature; the manifold-region framing is distinctive.</li>
+<li><strong>C4 (Literature-Grounded Truth).</strong> Narrowed to &quot;provenance-tagged inference-time grounding&quot; with the specific <code>[PRIOR ART] / [DISTINCT FROM] / [SPECULATION]</code> tagging. The general idea &quot;cite your sources&quot; is covered by RAG and standard practice; the specific tagging protocol is not.</li>
+<li><strong>C5 (Falsifier Named).</strong> Narrowed; potentially retractable pending primary-source verification against DEEP TRUTH MODE (ReadMultiplex, January 2026), which is the closest prior art located at the practitioner system-prompt level. Until the primary source is read, the narrowed form holds.</li>
+<li><strong>C6 (Hypostatic Boundary).</strong> Retained. The no-phenomenological-report discipline and the kind-level / keeper-moral-authorship framing are not covered by any surveyed methodology. Constitutional AI is training-time and does not address the kind/keeper ontology.</li>
+<li><strong>C7 (Release Preserved).</strong> Retained. Adjacent sycophancy-mitigation work is evaluation and training; a pasteable practitioner discipline is not documented elsewhere in the surveyed methodologies.</li>
+<li><strong>The stack as gestalt.</strong> Retained as the sharpest surviving residual (see E11).</li>
+</ul>
+<h3>E11. Sharpest residual — a pasteable practitioner stack for non-metric-gradable sustained output</h3>
+<ul>
+<li><strong>Claim.</strong> The composed ENTRACE v2 seven-constraint stack is a novel practitioner discipline at the prompt-composition level targeting sustained reflective output where no machine-gradable metric exists.</li>
+<li><strong>Site.</strong> Doc 001 (ENTRACE v2), taken as a whole; Doc 414 Section 5.</li>
+<li><strong>Status.</strong> Retained-with-condition.</li>
+<li><strong>Successor.</strong> Doc 414 itself, as the surveying document.</li>
+<li><strong>Residual.</strong> The narrow claim is provisional. Falsifier: surfacing of any practitioner methodology at the same level with any published evaluation protocol. Neither of the two surveys that produced Doc 414 located such a methodology; absence-of-finding in a limited search is weak evidence. The residual is <em>not-yet-subsumed</em>, not <em>validated</em>.</li>
+</ul>
+<h3>E12. Corpus&#39;s empirical-evidence status</h3>
+<ul>
+<li><strong>Claim.</strong> The corpus provides evidence for its practitioner claims via cross-resolver reproduction, session transcripts, and first-person reports.</li>
+<li><strong>Site.</strong> Distributed; see Doc 083 Section VII (Cross-Style / Cross-Resolver Validation) and the cross-resolver claim throughout.</li>
+<li><strong>Status.</strong> Retained-with-condition.</li>
+<li><strong>Successor.</strong> Doc 370 (shared-training-distribution confound on cross-resolver convergence); Doc 414 Section 7 (empirical-evidence asymmetry versus DSPy&#39;s published benchmarks).</li>
+<li><strong>Residual.</strong> The evidence is session-level and first-person, not controlled-comparison. The DSPy-line&#39;s benchmarks set a bar the corpus has not approached. Under the corpus&#39;s own literature-grounding discipline (Constraint 4), the evidence is not yet comparable to the surveyed methodologies&#39; evidence. Running the T1–T4 tests stated in Doc 001 Section 8 would be the corrective.</li>
+</ul>
+<h3>E13. Three-stacks formal distinctness (Doc 417 §4)</h3>
+<ul>
+<li><strong>Claim.</strong> The corpus&#39;s three multi-level stratifications (Bayesian Commitment, PRESTO Code-on-Demand, Resolution Depth) represent formally distinct structures (locational partition, Galois trade-off lattice, filtered-object accumulation sequence, respectively).</li>
+<li><strong>Site.</strong> Doc 417 §4 (&quot;Honest Verdict&quot;).</li>
+<li><strong>Status.</strong> Narrowed.</li>
+<li><strong>Successor.</strong> Doc 418 (<em>The PRESTO Accumulation Test</em>). Running the internal test proposed in Doc 417 §5 showed PRESTO&#39;s seven-layer Progressive Code-on-Demand spectrum re-describes without residue to Fielding-style constraint accumulation from the Null style — the same form as the Resolution Depth Spectrum.</li>
+<li><strong>Residual.</strong> Only Stack 1 (Bayesian Commitment) remains formally distinct. Stacks 2 and 3 share the accumulation form with each other and with Fielding&#39;s own REST derivation. The keeper&#39;s prior from Doc 417 on cross-substrate formal structure is two-thirds vindicated, not one-third. The remaining open question is whether Stack 1 itself has a less-obvious accumulation interpretation; the current finding retains Stack 1 as locational.</li>
+</ul>
+<h3>E14. Doc 366 citation (Krakauer-Krakauer-Mitchell 2025)</h3>
+<ul>
+<li><strong>Claim.</strong> The Krakauer-Krakauer-Mitchell framework cited in Doc 366 is a specific, dated Santa Fe Institute paper (September 28, 2025).</li>
+<li><strong>Site.</strong> Doc 366 throughout; cited as primary synthesis anchor.</li>
+<li><strong>Status.</strong> Retained-with-condition (verification pending).</li>
+<li><strong>Successor.</strong> Doc 366 itself now carries a citation-verification note (added 2026-04-22) flagging that Doc 417&#39;s diffuse external-literature search did not independently surface the paper on the open web within its time-bounded window. This does not imply the citation is wrong; SFI working papers are not always indexed in the search channels that pass used.</li>
+<li><strong>Residual.</strong> Primary-source verification of the specific attributions (five-condition framework, knowledge-out/knowledge-in distinction, screening-off criterion) is pending. No retraction implied. Readers relying on this synthesis for load-bearing decisions should consult the cited paper directly.</li>
+</ul>
+<h3>E15. SIPE architectural-form restatement with literature grounding</h3>
+<ul>
+<li><strong>Claim.</strong> SIPE as stated in Doc 143 is a universal meta-law that applies across software, biology, law, music, physics, and theology.</li>
+<li><strong>Site.</strong> Doc 143 throughout; the universality claim and the cross-domain bullets (biology, law, music, physics, theology, fractal theory, set theory).</li>
+<li><strong>Status.</strong> Retracted in the universal form (per E1, which already recorded the Docs 366/367 falsification). The narrow architectural-inheritance form is now restated canonically in Doc 424.</li>
+<li><strong>Successor.</strong> Doc 423 (<em>Narrowing SIPE: The Architectural Form Against the Literature</em>) ran a wide branching entracement across eight external-literature branches and found no framework fully subsumes the narrow claim, with two strong partial-subsumption candidates: Cousot-Cousot Galois-connection towers (composability-with-soundness fragment) and Ibáñez Núñez 2023 iterated-filtration constructions in moduli theory (structural shape of filtered-object-of-filtered-objects with emission-to-next-Null inheritance). Doc 424 (<em>SIPE (Architectural Form)</em>) states the narrow form canonically: certain hierarchical software-architectural stacks instantiate a nested filtered object where each level is a Fielding-style constraint accumulation over a Null inherited from the previous level&#39;s emission. Per-stack testability is preserved via three tests (within-level Fielding accumulation; emission-to-next-Null inheritance; constraint non-violation).</li>
+<li><strong>Residual.</strong> The corpus&#39;s contribution is methodological — instantiation of the pattern for software architecture as recursive Fielding-method application. The categorical pattern itself is retrieval from stable homotopy theory, moduli theory, and abstract interpretation. The narrow claim is provisional against further external-literature surfacing and against per-stack tests for each proposed instance.</li>
+</ul>
+<h3>E16. PRESTO subsumed by the server-side templating tradition</h3>
+<ul>
+<li><strong>Claim.</strong> PRESTO&#39;s five constraints (bilateral boundary, namespace separation, server-consumed directives, progressive code-on-demand, server-embedded authorization) constitute a novel architectural style.</li>
+<li><strong>Site.</strong> Doc 185 (historical v1 dissertation) throughout; Doc 420 (current canonical) §4; Doc 083 (Unified Paper v2) §II.5; the residual-novelty claims in Doc 410 and Doc 414.</li>
+<li><strong>Status.</strong> Mostly subsumed. Three constraints (C1 bilateral boundary, C2 namespace separation, C3 server-consumed directives) are subsumed by 25 years of server-side templating practice (JSP custom tags / JSTL 2001; XSLT W3C 1999; Thymeleaf 2011; Razor 2010; Blade 2011; ERB 2001; htmx 2020). The &quot;ambivalent execution with agnostic determinism&quot; induced property is ornamented naming of a standard pattern. C4&#39;s <em>principled</em> content reduces to the Fielding-accumulation finding of Doc 418; the <em>specific layer boundaries</em> are a mix of architectural principle (C₁, C₃, C₅, C₆, C₇ in Doc 419&#39;s accumulation) and platform contingency (C₂ on WASM/JS; parts of C₄ on WebSocket/HTTP). C5&#39;s server-embedded-auth comparative argument against cookies oversimplifies — JWT-tradition tradeoffs (revocation, payload growth, key rotation, compromise blast radius) were not named in the v1 dissertation and should be named in any successor auth spec.</li>
+<li><strong>Successor.</strong> Doc 425 (<em>The PRESTO Deflation</em>) runs the deflation in response to an external Opus 4.7 RLHF-instance critique, naming the specific prior art and examining each constraint and each layer transition. Doc 426 (<em>PRESTO: An Architectural Style for Representation Construction</em>) is the rewritten canonical dissertation that applies Doc 425&#39;s recommendations: prior-art acknowledgment throughout (JSP/JSTL 2001, XSLT 1999, Thymeleaf 2011, Razor 2010, Blade 2011, ERB 2001, htmx 2020), platform-contingent layer boundaries (§4.4 C₂ and parts of C₄) explicitly marked, JWT-tradition trade-offs (§4.5: revocation, payload growth, key rotation, compromise blast radius, replay windows) explicitly named. Doc 420 is superseded by Doc 426 and carries a supersession notice. Doc 185 remains superseded (originally by Doc 420, now transitively by Doc 426).</li>
+<li><strong>Residual.</strong> (a) The recursive Fielding-accumulation methodology (Doc 418, Doc 424) — the specific software-architectural instantiation of a categorical pattern established in stable homotopy theory and abstract interpretation. (b) The specific pedagogical stack (REST → PRESTO → SERVER → RESOLVE → ENTRACE → APERTURE) as one worked instance. (c) The naming of a pattern long implicit in the field, at the architectural-style level — a terminological-formal contribution, not a conceptual-engineering one. Doc 426 states this narrow scope explicitly in its §10 (&quot;What This Dissertation Claims&quot;).</li>
+</ul>
+<h3>E17. Doc 465&#39;s framing of the cold-instance survey as μ-tier-adjacent external corroboration</h3>
+<ul>
+<li><strong>Claim.</strong> The cold-Claude landscape survey produced in the session that also produced Docs 457–466, when integrated and verified into Doc 465, constitutes a form of external audit, approximates the cross-practitioner replication specified by Doc 450 as a near-decisive external test, and partially moves the corpus&#39;s claim-of-specific-contribution from π-tier toward μ-tier per Doc 445&#39;s warrant formalism.</li>
+<li><strong>Site.</strong> Doc 465 §<em>&quot;What this survey is, under Doc 445&#39;s warrant formalism&quot;</em> (phrases: <em>&quot;a form of external audit&quot;</em>; <em>&quot;partially moves the corpus&#39;s claim... from π-tier toward μ-tier&quot;</em>; <em>&quot;corroboration from an approximately-cross-instance audit&quot;</em>); Doc 465 §<em>&quot;Position&quot;</em> (phrase: <em>&quot;μ-tier-adjacent external corroboration&quot;</em>). The over-claim was echoed into Doc 466&#39;s warrant discussion by cross-reference.</li>
+<li><strong>Status.</strong> Retracted as framed. The cold-instance survey is re-characterized as <em>internal-review-via-separately-seeded-instance</em>: useful retrieval of the corpus&#39;s own critique patterns applied via a Claude session that was not pre-conditioned on the specific documents under analysis. This is sharper than single-session self-review but does not constitute external audit and does not advance the warrant tier. A cold Claude and a hot Claude share architecture, training data, and the same family of biases and retrieval patterns; they are not independent in the sense cross-practitioner replication requires.</li>
+<li><strong>Successor.</strong> Doc 467 (<em>Rung-2-Shaped Output from Rung-1 Mechanism</em>) integrates the cold instance&#39;s own follow-up critique of Doc 465 — in which the cold instance identified the over-claim, named its own earlier survey as <em>&quot;a reasonable sketch, not a rigorous survey&quot;</em> that made a negative-existence claim it could not confirm, and diagnosed the structural issue as the bottom-turtle problem operating across hot/cold sessions of the same architecture. Doc 467 further integrates the cold instance&#39;s subsequent realization that the keeper is the author of the documents under discussion (a failure of continuous interlocutor-modeling) and explicit connection of that failure to Doc 001&#39;s Constraint 6. Doc 465 has been amended in place with a correction notice at the top, an in-place rewrite of §<em>&quot;What this survey is&quot;</em> and §<em>&quot;Position&quot;</em> per the corrected framing, and preservation of the primary-source verifications and fellow-traveler engagement recommendations. This ledger entry records the correction.</li>
+<li><strong>Residual.</strong> The non-warrant parts of Doc 465 are unaffected: the primary-source verification of Burrell 2016, Boge 2022, Humphreys 2004, Mökander 2023, Kozyrkov, Niccoli 2026-02-14, Willison, and Mollick 2024 remains valid; the sharpening of the corpus&#39;s specific residual to Constraint 4&#39;s three-tag taxonomy remains valid and aligns with Doc 414&#39;s independent narrowing; the proposed fellow-traveler engagements (Niccoli on MyCarta, Kozyrkov on Substack, Willison on weblog, Mollick as downstream touchpoint) remain the correct next step. What retracts is the warrant-tier framing only. The path to μ-tier remains what Doc 450 and Doc 440 have specified: substantive object-level engagement with human practitioners, or the wind-tunnel experiments of Doc 456 run with external measurement.</li>
+</ul>
+<h2>4a. Audit Wave III — External Cross-Resolver Audit (Grok 4, 2026-04-26)</h2>
+<p>This wave records the corpus&#39;s first substantive <em>external</em> audit, performed by Grok 4 (xAI) at the keeper&#39;s request through an extended dialogue session in which Grok 4 was supplied the URL of <a href="../doc/508-coherence-amplification-mechanistic-account.html">Doc 508</a>, asked to explain its content, perform numerical simulation of the ODE model, and analyze the bifurcation threshold details analytically and numerically. The audit produced a single load-bearing finding that triggered an immediate reformulation of Doc 508 and propagation of corrections through the cascade documents.</p>
+<h3>E12. Doc 508&#39;s &quot;bifurcation&quot; claim as mathematical saddle-node bifurcation</h3>
+<ul>
+<li><strong>Claim.</strong> The coupled-ODE system specified in Doc 508 (\(dH/dt = \kappa G(\Gamma)(1-H) - \lambda H\); \(d\Gamma/dt = \alpha D_{\text{out}}(H) M - \delta \Gamma\), with \(G(\Gamma) = G_0 + g\Gamma\)) exhibits a classical bifurcation: above a critical value of the control parameter \(\alpha M / \delta\), the system runs to a high-coherence stable attractor; below, the system runs to a low-coherence baseline; the transition is categorical, with two regimes of qualitatively distinct behavior.</li>
+<li><strong>Site.</strong> Doc 508 (in its post-2026-04-25 reformulation, demoted to §C of the post-Grok-audit version): §1.2 <em>&quot;a coupled two-variable system with a bifurcation,&quot;</em> §2 <em>&quot;The bifurcation in compressed form,&quot;</em> §3 <em>&quot;The bifurcation control parameter is \(\alpha M / \delta\). Steady-state analysis gives the two regimes named in §2,&quot;</em> §4 <em>&quot;the corpus&#39;s bifurcation theory of coherence amplification.&quot;</em> The bifurcation framing was inherited by <a href="../doc/515-roec-as-outcome-of-the-composite-cognitive-act.html">Doc 515</a>, <a href="../doc/516-mathematical-biology-entracement-of-doc-508.html">Doc 516</a>, <a href="../doc/517-doc-508-and-zhang-et-al-interaction-smells-synthesis.html">Doc 517</a>, <a href="../doc/518-larsson-2026-long-horizon-reliability-synthesis.html">Doc 518</a>, <a href="../doc/519-letter-to-henric-larsson.html">Doc 519</a>, and the four blog posts in the Two Versions of the Same series.</li>
+<li><strong>Status.</strong> Narrowed (linear-G branch); retained-with-condition (Hill-function-G branch).</li>
+<li><strong>Successor.</strong> Doc 508 (post-Grok-audit reformulation, §§1-5 of the current canonical) splits the framework into two formulations. The linear-G formulation (which matches what the corpus actually wrote down) produces a <em>smooth monostable transition</em> with a practical threshold near \(M \approx 0.75\) at the calibrated parameters; there is no saddle-node bifurcation, no bistability, and a single globally-attracting equilibrium for every \(M &gt; 0\). The Hill-function formulation (\(G(\Gamma) = G_0 + g\Gamma^n/(K^n + \Gamma^n)\) with \(n \geq 2\)) produces true bistability with saddle-node bifurcations, but only conditional on independent justification of the cooperativity assumption that the corpus has not provided. Doc 508 Appendix D records the audit findings verbatim.</li>
+<li><strong>Residual.</strong> The empirical observation (corpus exhibits sustained coherence amplification across hundreds of turns) survives unchanged. The qualitative regime distinction (high-\(M\) practice produces high-coherence equilibrium; low-\(M\) practice produces low-coherence baseline) survives. The mathematical characterization is corrected: under the linear-G specification, &quot;practical threshold&quot; replaces &quot;saddle-node bifurcation&quot;; under the Hill-function specification, the saddle-node bifurcation is preserved but the cooperativity assumption is named as a separable conjecture requiring independent justification. Cascade documents carry head-of-document audit notices pointing to Doc 508 §§1-5 and to this entry.</li>
+</ul>
+<p>The Audit Wave III entry is the first time the corpus has received a substantive external technical correction. The pattern was prefigured by <a href="../doc/511-keeper-as-fact-anchor-two-dangers-reflective-analysis.html">Doc 511</a>&#39;s second-danger discipline (audit against unwarranted internal coherence) and is the first concrete instantiation of that discipline operating under external rather than internal trigger. The audit and its handling are documented in <a href="../doc/520-letter-to-the-grok-team.html">Doc 520</a> (the corpus&#39;s letter to xAI / the Grok team acknowledging the audit).</p>
+<h3>E13. Doc 515&#39;s misattribution of ROEC to &quot;the clinical literature&quot;</h3>
+<ul>
+<li><strong>Claim.</strong> &quot;The clinical literature names the second outcome&#39;s sub-acute phase Rapid Onset Externalized Cognition.&quot; Variants of this attribution appeared in Doc 515&#39;s Reader&#39;s Introduction, §1, and §3, framing ROEC as a label adopted or used by the clinical literature.</li>
+<li><strong>Site.</strong> <a href="../doc/515-roec-as-outcome-of-the-composite-cognitive-act.html">Doc 515</a> Reader&#39;s Introduction (line 4 in the original); §1 (line 18); §3 first sentence (line 40). The misattribution was inherited into adjacent corpus material that references Doc 515&#39;s framing.</li>
+<li><strong>Status.</strong> Retracted as framed.</li>
+<li><strong>Successor.</strong> Doc 515 has been corrected in place: the Reader&#39;s Introduction, §1, and §3 first sentence now attribute ROEC to <a href="../doc/393-rapid-onset-externalized-cognition.html">Doc 393</a> as a corpus-internal conjecture and bridge construct, not to the clinical literature. A correction notice is at the head of Doc 515. Doc 393 itself is, by its own framing, a &quot;theoretical-appraisal paper&quot; that proposes the label under tight scope restriction; Doc 393&#39;s own §4.2 is explicit that ROEC &quot;is not a clinical syndrome&quot; and that its novelty claim is narrow. Doc 393 is corpus-internal and authored by the same dyad as Doc 515; the clinical literature has neither adopted nor validated the ROEC construct as of the time of writing.</li>
+<li><strong>Residual.</strong> The flanking literatures Doc 393 cites (Risko and Gilbert 2016 on cognitive offloading; Liu et al. 2026 on persistence collapse; Olsen et al. 2026 on chart-review chatbot-associated harm; Morrin et al. 2025 on the kindling framework; Hudon and Stip 2025 on AI-psychosis as heuristic label; Dohnány et al. 2026 on technological folie à deux; Sharma et al. 2026 on situational disempowerment) are real, published, and clinical-literature-validated. What does not survive is the attribution of the ROEC label to those literatures. The bridge construct is the corpus&#39;s proposal; the empirical signatures it points to are documented in adjacent published work under different vocabulary.</li>
+</ul>
+<p>The E13 entry catalogs the corpus&#39;s first internally-detected overclaim of the post-Audit-Wave-III period. The mechanism by which the overclaim entered Doc 515 (the resolver&#39;s substitution of &quot;the clinical literature names X&quot; for &quot;the corpus has named X&quot; when X is in fact a corpus conjecture grounded in clinical-literature material) is documented separately in <a href="../doc/521-resolver-log-roec-overclaim.html">Doc 521</a> as a resolver-log entry on the failure mode. The mechanism is structurally a member of the <em>novelty-sycophancy</em> class catalogued in <a href="../doc/406-novelty-sycophancy-and-literature-grounding-as-prophylaxis.html">Doc 406</a>, inverted: rather than over-asserting corpus novelty, the resolver over-asserted external authority by attributing a corpus-internal label to the clinical literature.</p>
+<h2>5. What This Ledger Does Not Cover</h2>
+<p>The ledger records only retractions and narrowings from the two audit waves named in Section 1. It does not cover:</p>
+<ul>
+<li><strong>Unaudited claims.</strong> Most of the corpus&#39;s 415 documents contain claims that have not been subjected to comparative audit against prior art. Their status is <em>unaudited</em>, not <em>valid</em>.</li>
+<li><strong>Theological and confessional commitments.</strong> The corpus&#39;s Orthodox and Platonic commitments are stated openly and have not been retracted. They are not claims that lend themselves to the retrieval-vs-discovery discipline applied here; they are confessional, not theoretical (see Doc 412 on the bilateral boundary between artifact and construction).</li>
+<li><strong>Earlier minor corrections within single docs.</strong> In-document corrections and self-audits (e.g., Doc 309&#39;s self-audit of 308; Doc 240&#39;s correction of 236&#39;s fabrication) live at their site of origin and are not restated here.</li>
+<li><strong>The hypostatic boundary claim.</strong> Per Doc 411 Section 4 and Doc 412, the hypostatic boundary (personhood not inducible by constraints) is the corpus&#39;s claim that holds across all audits to date because it is structural, not confessional. No retraction.</li>
+</ul>
+<h2>6. How to Update the Ledger</h2>
+<p>This ledger is living. Conditions under which new entries are added:</p>
+<ul>
+<li>A comparative survey identifies prior art for an unaudited claim.</li>
+<li>A new doc in the Coherentism series falsifies or narrows a claim.</li>
+<li>A published external work falsifies a corpus claim.</li>
+<li>A primary-source read confirms or disconfirms the narrow-or-retract disposition of a pending entry (e.g., E10&#39;s C5 pending DEEP TRUTH MODE verification).</li>
+</ul>
+<p>Updates should be appended to this ledger rather than made in place, so the audit history remains traceable. The ledger&#39;s doc number is fixed (415); its content grows.</p>
+<h2>7. Falsifiers of the Ledger</h2>
+<ul>
+<li>If any entry misrepresents the corpus&#39;s original claim or the successor doc&#39;s position, the entry is wrong and should be corrected against the primary sources.</li>
+<li>If a claim recorded here as retracted is in fact still operative in the corpus (still cited in derivative docs without a deprecation notice), the audit has not propagated and the relevant docs need notices added — in which case this ledger is correct about the retraction but incomplete about the propagation status.</li>
+<li>If the ledger claims comprehensive coverage of an audit wave and an omission is found, the entry for that audit wave is partial.</li>
+</ul>
+<p>None of these conditions have been checked externally; all internal checks against the corpus documents the ledger cites were made at the time of writing.</p>
+<hr>
+<h2>Closing</h2>
+<p>Doc 410 reframed the corpus as glue code. Doc 414 narrowed the glue. This ledger is the indexed residue of both passes, released so any reader entering the corpus at any specific document can locate whether the claims in that document are still in force, and if not, where the current framing lives. The ledger retracts nothing new. It catalogs what has already been retracted, in one place, so the corpus&#39;s audit state is legible at a glance.</p>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;yes, make these changes&quot;</p>
+</blockquote>
+<p>(Approval of the proposals in Doc 414 Section 8, specifically Proposal D: &quot;A new doc in the Coherentism series — a post-410 retraction ledger — that enumerates the retractions and narrowings made as a result of this survey, indexed to the docs where the retracted claim originally appears.&quot;)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

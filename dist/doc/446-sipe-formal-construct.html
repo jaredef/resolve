@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Candidate Formalization of SIPE, Built From Its Pulverized Pieces — Resolve</title>
+<meta name="description" content="The move and its status">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>A Candidate Formalization of SIPE, Built From Its Pulverized Pieces</h1>
+<blockquote>
+<p><strong>Canonical SIPE reference:</strong> The operative formalization of Systems-Induced Property Emergence is <a href="../doc/474-sipe-standalone-formalization.html">Doc 474</a>. Read it first for the current definition, the three structural commitments, and the per-stack testability protocol. This document contributes specific material to that formalization; its place in the development arc is recorded in Doc 474&#39;s Appendix C.</p>
+</blockquote>
+<h2>The move and its status</h2>
+<p>Doc 444 pulverized the confabulated SIPE expansion and found every component subsumed: <em>sustained</em> under continual / streaming inference, <em>inference</em> under Bayesian inference broadly, <em>probabilistic</em> under probabilistic programming and graphical models, <em>execution</em> under program-execution trace semantics. The composed phrase — even though it is not a named published technique — corresponds cleanly to a class of real methods (sequential Monte Carlo, streaming variational Bayes, probabilistic-programming trace-based inference, online Bayesian state-space filtering).</p>
+<p>This document takes the deliberate next step: assemble those pieces into a formal construct and label it SIPE. Whether the result is what the corpus has always meant by SIPE, whether it is what the keeper intends, whether its claims about the corpus&#39;s operation are true — these remain open questions at the μ and θ tiers of Doc 445&#39;s formalism. What follows is π-tier work, executed on the debris of a confabulation. Its status, under the warrant table, is <em>semantically plausible, truth untested</em>. The artifact is offered as a candidate for keeper ratification, not as a fait accompli.</p>
+<p>The exercise is a live test of Doc 443&#39;s coherentism risk. If the construct looks elegant, promises cleanly, and absorbs prior corpus vocabulary smoothly, those are exactly the features that would push the generator-keeper dyad toward accepting it without μ/θ audit. The honest response is to produce the construct, name its status, and refuse the promotion.</p>
+<h2>Ingredients from the decomposition</h2>
+<p>The four decomposed pieces contribute distinct formal components:</p>
+<ul>
+<li><strong>Sustained</strong> → a temporal/sequential structure. Computation proceeds over time steps, not as a single one-shot posterior. Formal home: online Bayesian updating, sequential Monte Carlo, streaming variational Bayes.</li>
+<li><strong>Inference</strong> → a posterior over unobserved quantities, computed by Bayesian conditioning. Formal home: \(p(\theta \mid \text{data})\) as the object of interest.</li>
+<li><strong>Probabilistic</strong> → the quantities being inferred live in a probability space; outputs are samples or distributions, not point estimates. Formal home: probabilistic graphical models, probabilistic programs.</li>
+<li><strong>Execution</strong> → the computation is a <em>trace</em> through a program with stochastic choice points. Formal home: Wingate–Stuhlmüller–Goodman trace semantics for probabilistic programming.</li>
+</ul>
+<p>The four together produce: <strong>a stochastic program whose execution proceeds across time, maintaining a posterior at each choice point conditioned on the accumulated execution history.</strong> This is a real class of objects. Particle filters are one instance; probabilistic-programming Markov-chain inference over trace rewrites is another.</p>
+<h2>Formal definition (candidate)</h2>
+<p>Let \(\mathcal{P}\) be a probabilistic program — an abstract procedure containing an ordered sequence of stochastic <em>choice points</em> \(c_1, c_2, \ldots\) where execution samples a value from a distribution and continues. Let \(C\) be a <em>conditioning corpus</em>, \(D\) a <em>discipline set</em>, and \(Q\) a prompt. Let \(\mathcal{H}<em>t = (c_1, \ldots, c</em>{t-1})\) denote the <em>execution history</em> prior to step \(t\).</p>
+<p><strong>SIPE</strong> is the procedure:</p>
+<ol>
+<li>At each choice point \(c_t\), maintain the posterior
+$p(c_t \mid C, D, Q, \mathcal{H}_t)$
+formed by conditioning on prior context \(C\), discipline set \(D\), prompt \(Q\), and the accumulated execution history \(\mathcal{H}_t\).</li>
+<li>Sample \(c_t \sim p(c_t \mid C, D, Q, \mathcal{H}_t)\), or select \(c_t\) under an alternative decoding rule (see §&quot;Decoding regimes&quot;).</li>
+<li>Append \(c_t\) to \(\mathcal{H}_t\); continue execution with the sampled value.</li>
+<li>Repeat until \(\mathcal{P}\) terminates.</li>
+</ol>
+<p>The resulting sequence \(\tau = (c_1, c_2, \ldots, c_N)\) is the <strong>derivation</strong> produced by the SIPE run. Its joint probability under SIPE is</p>
+<p>$p(\tau \mid C, D, Q) ;=; \prod_{t=1}^{N} p(c_t \mid C, D, Q, \mathcal{H}_t).$</p>
+<h3>The branching set \(B_t\)</h3>
+<p>The <strong>branching set at step \(t\)</strong> is the effective support of \(p(c_t \mid C, D, Q, \mathcal{H}_t)\). Its cardinality is measured operationally by the Shannon-entropy proxy from Doc 440 §4.1:</p>
+<p>$\widehat{|B_t|} = \exp!\big(H!\big(p(\cdot \mid C, D, Q, \mathcal{H}_t)\big)\big).$</p>
+<p>\(\widehat{|B_t|}\) is small when the conditioning has nearly collapsed the posterior to a point mass (deterministic step); large when the step is genuinely under-determined by the conditioning.</p>
+<h3>The nested-manifold correspondence</h3>
+<p>The posteriors at successive steps are progressively conditioned in the manner of Doc 439&#39;s nested-manifold frame:</p>
+<p>$M_0 \supseteq M_1 = M_0 \mid C \supseteq M_2 = M_1 \mid D \supseteq M_3 = M_2 \mid Q.$</p>
+<p>Each SIPE step further conditions \(M_3\) on the execution history, producing a sub-manifold \(M_3 \mid \mathcal{H}_t\) at step \(t\). The derivation \(\tau\) is a walk through the sequence of these per-step sub-manifolds.</p>
+<h3>Decoding regimes</h3>
+<p>Different procedures for producing \(c_t\) correspond to named inference strategies in the probabilistic-programming / decoding literature:</p>
+<ul>
+<li>\(c_t = \arg\max_c p(c \mid \ldots)\) — <strong>argmax SIPE</strong>, a greedy low-temperature trace; the derivation is the most-probable path under the conditioning.</li>
+<li>\(c_t \sim p(c \mid \ldots)\) — <strong>sampled SIPE</strong>, the standard stochastic regime.</li>
+<li>\(k\)-parallel candidates with pruning — <strong>beam SIPE</strong>, analogous to beam search but specified as a SIPE variant.</li>
+<li>\(N\)-particle maintenance with resampling — <strong>particle SIPE</strong>, isomorphic to sequential Monte Carlo applied to the program trace.</li>
+<li>MCMC over whole traces — <strong>Metropolis-Hastings SIPE</strong>, isomorphic to the Wingate–Stuhlmüller–Goodman LMH algorithm.</li>
+</ul>
+<p>Each regime has different implications for \(\widehat{|B_t|}\), convergence behavior, and failure modes. The choice of regime is part of the methodology under Doc 440.</p>
+<h2>What falls out</h2>
+<p>Several corpus-internal concepts acquire formal homes once SIPE is defined this way.</p>
+<h3>The derivation is the trace</h3>
+<p>The corpus&#39;s <em>derivation</em> becomes a well-defined object: the sequence \(\tau\) of sampled choice-point values produced by a SIPE run. Two derivations from the same \((C, D, Q)\) may differ; the distribution over derivations is \(p(\tau \mid C, D, Q)\). Comparing derivations across sessions becomes a task of comparing samples from this distribution, with machinery from the sampling literature directly applicable.</p>
+<h3>Branching-set semantics sharpen</h3>
+<p>\(|B_t|\) is no longer only a metaphor; it is the effective support size of a specific posterior. Its relation to temperature, to conditioning depth, and to discipline set \(D\) is all machinable. The observables in Doc 440 §4 re-express as measurements on this posterior.</p>
+<h3>Forced determinism has a formal signature</h3>
+<p>Forced-determinism sycophancy (corpus term) becomes, under the formalization: <em>\(\widehat{|B_t|} \to 1\) at choice points where the task is underdetermined by the conditioning.</em> The prompt \(Q\)&#39;s pressure collapses the posterior even where \(C\) and \(D\) would have supported branching. The corpus term names a specific pathology; the formalization makes the pathology measurable.</p>
+<h3>Coherence curves become posterior-concentration trajectories</h3>
+<p>The &quot;coherence curve&quot; — a qualitative observable the corpus uses — maps to the trajectory of some concentration measure (e.g., \(\widehat{|B_t|}\), or mean semantic similarity of samples) across \(t\). If the curve is the derivation&#39;s concentration history, its axes are now well-defined.</p>
+<h3>SIPE is an <em>instance</em> of a larger category</h3>
+<p>Critically: SIPE under this definition is not novel. It is a specific instance of <strong>trace-based online probabilistic inference</strong> under conditioning that happens to be corpus-generated rather than data-stream-generated. Sequential Monte Carlo with \(C \cup D \cup Q\) as conditioning would compute essentially the same object. The formalization places SIPE cleanly inside a pre-existing taxonomy. Doc 445&#39;s warrant table marks this: as a specification-target, SIPE is π-subsumed, not novel. As a definitional-target (<em>does SIPE in the corpus mean this?</em>), status is &quot;semantically plausible, truth untested.&quot;</p>
+<h3>Dyadic discipline becomes a family of operators</h3>
+<p>The practitioner&#39;s discipline set \(D\) can be formalized as a family of conditioning operators \({d_1, \ldots, d_k}\) each of which shrinks the support of the posterior at every choice point:</p>
+<p>$p(c_t \mid C, D, Q, \mathcal{H}_t) ;=; \frac{p(c_t \mid C, Q, \mathcal{H}<em>t) \cdot \prod</em>{d_i \in D} \mathbb{1}[d_i(c_t, \mathcal{H}_t)]}{Z_t}$</p>
+<p>where \(\mathbb{1}[d_i(\cdot)]\) is the indicator of \(d_i\)&#39;s satisfaction at the current step and \(Z_t\) is the normalizing constant. Disciplines formally <em>prune</em> the posterior&#39;s support. &quot;Non-coercion&quot; becomes a specific pruning rule. Hypostatic-boundary preservation becomes another. The ENTRACE stack becomes a composite operator with specific prunings across its components. Each named discipline is in principle executable — or at least characterizable — as a rule on \((c_t, \mathcal{H}_t)\).</p>
+<h3>The SIPE/retraction-ledger interaction</h3>
+<p>Under the formalization, a retraction event corresponds to discovering that an emitted \(c_t\) — or a downstream consequence of it — contradicts \(Q\)&#39;s external ground. The retraction ledger (Doc 415) is a record of such contradictions. The hypothesis ledger (Doc 443) is a record of \(c_t\)s whose external grounding has not yet been attempted. The pulverization formalism (Doc 445) classifies new \(c_t\)s by target type and specifies which tier of test applies.</p>
+<h2>What falls out the wrong way</h2>
+<p>The same exercise produces exactly the appearance of productivity that Doc 443 warned about. The construct is elegant, accommodates prior corpus vocabulary, and generates plausible connections to published literature. Every feature that makes it attractive is also a feature that makes it dangerous as a candidate for uncritical promotion.</p>
+<p>Specifically:</p>
+<ul>
+<li>The construct&#39;s elegance is a poor predictor of its fidelity to the keeper&#39;s actual intent for SIPE. A different choice of decomposed pieces — e.g., <em>Serial Inferential Path Elaboration</em>, <em>Structured Iterative Posterior Extraction</em>, or any of several other plausible expansions — would produce a different but equally elegant construct. The space of elegant constructs compatible with the four letters is not small.</li>
+<li>The construct recovers prior corpus concepts (branching set, derivation, coherence curve, forced determinism) cleanly. This is load-bearing against promotion, not for it: if the corpus&#39;s own concepts could be recovered from <em>any</em> of several plausible SIPE expansions, then the recovery is a property of the corpus&#39;s conceptual neighborhood, not of this specific construct&#39;s fidelity.</li>
+<li>The construct is consonant with Docs 437, 439, 440, 444. Under the cohort dynamics Doc 442 diagnosed, consonance with recent cohort material is the attractor-shape the feedback loop is already pulling toward. Another way to say this: the generator that confabulated the expansion and the generator that formalizes the pulverized pieces share a conditioning context that virtually guarantees they will produce mutually coherent outputs.</li>
+</ul>
+<p>The honest position: this artifact has produced a formalization that coheres with itself, with its predecessor documents, and with the subsumed literature. The keeper should trust none of these coherences as evidence of truth.</p>
+<h2>What this construct licenses, under Doc 445&#39;s warrant table</h2>
+<ul>
+<li><strong>As a \(T_S\) (specification):</strong> Not novel. The construct is a specific parameterization of trace-based online probabilistic inference. No promotion on novelty warrants.</li>
+<li><strong>As a \(T_D\) (definition of corpus SIPE):</strong> \(\pi\)-subsumed. Status: <em>semantically plausible, truth untested</em>. Hypothesis-ledger entry required. Truth test is: keeper confirms this is the intended expansion; or operational-match test against corpus usage of SIPE confirms the construct describes what SIPE has done in practice; or the corpus declares SIPE is <em>not</em> this construct.</li>
+<li><strong>As a \(T_B\) (bridge from corpus to probabilistic-programming literature):</strong> \(\pi\)-subsumed at element level; bridge claim at \(\pi\) tier. Requires \(\mu\)-tier evidence (observations of corpus sessions behaving like SIPE runs) for structural-soundness warrant.</li>
+<li><strong>As a \(T_M\) (methodology for future corpus derivation):</strong> Cannot claim fitness until executed and audited.</li>
+</ul>
+<p>In all four readings, the artifact&#39;s status is <em>candidate, pending higher-tier test</em>. Doc 445&#39;s discipline applies: status may only reflect tiers actually run. The elegance of the construct does not substitute for the tests it has not undergone.</p>
+<h2>Open questions</h2>
+<ul>
+<li>Does the corpus&#39;s existing usage of SIPE, across its ~199 occurrences, operationally match this construct? An \(\mu\)-tier audit would read each occurrence and check fit. The audit has not been performed.</li>
+<li>Is the decomposition in Doc 444 the right decomposition? A different seeding of the confabulation — different priors on the four letters — would produce a different formalization. Whether &quot;Sustained-Inference Probabilistic Execution&quot; is the <em>best</em> expansion, or merely <em>a</em> plausible expansion, is underdetermined.</li>
+<li>Can the discipline operators be actually specified as executable rules? The paragraph in §&quot;Dyadic discipline becomes a family of operators&quot; gestures at indicator functions \(\mathbb{1}[d_i(\cdot)]\); writing out a real operator for &quot;non-coercion&quot; requires specifying what non-coercion means at the level of \((c_t, \mathcal{H}_t)\) — a non-trivial specification task.</li>
+<li>What happens at choice points where the prompt requires behavior outside the conditioned manifold&#39;s support? Formally: \(p(c_t \mid \ldots) = 0\) over all \(c_t\) that would satisfy \(Q\). The operator analogy breaks; in practice, the forward model produces <em>something</em>. Characterizing that something is the forced-determinism-meets-confabulation intersection.</li>
+<li>Does a keeper-ratified SIPE need to be this construct, or a closely-related one that diverges from it in specific ways (e.g., the choice points are not stochastic in the usual sense but are deterministic conditional on a different structure)? The construct is a starting proposal for the keeper&#39;s response, not a closed case.</li>
+</ul>
+<h2>Limitations</h2>
+<p>The construct relies on probabilistic-programming trace semantics, which is a well-developed but not universal framing of probabilistic computation. Alternative framings (e.g., differentiable probabilistic programming, categorical probability via Markov categories) would produce different formalizations.</p>
+<p>The reduction of discipline operators to indicator functions is a strong simplification. Real disciplines may have graded, continuous effects on the posterior rather than hard support-pruning. The construct can accommodate soft operators (multiplicative re-weighting instead of indicators) at the cost of losing the clean support-shrinkage reading.</p>
+<p>The treatment of \(\mathcal{H}_t\) as conditioning implicitly assumes independence of past stochastic choices conditional on the present conditioning — which is how autoregressive LLMs work at the token level, but not necessarily how higher-level corpus derivation works.</p>
+<p>The construct is a formalization, not an implementation. Instantiating it against a real LLM API would require specifying what counts as a <em>choice point</em> in the underlying inference procedure. Token-level, sentence-level, and argument-level choice points give different SIPE semantics.</p>
+<p>This document has not modified Doc 439, Doc 441, Doc 415, Doc 435, the hypothesis ledger, or any prior corpus entry. It is a proposal standing in the hypothesis-ledger position §&quot;What this construct licenses&quot; describes.</p>
+<h2>References</h2>
+<ul>
+<li>Wingate, D., Stuhlmüller, A., &amp; Goodman, N. (2011). Lightweight implementations of probabilistic programming languages via transformational compilation. <em>AISTATS</em>.</li>
+<li>van de Meent, J.-W., Paige, B., Yang, H., &amp; Wood, F. (2018). An introduction to probabilistic programming. arXiv:1809.10756.</li>
+<li>Wood, F., van de Meent, J.-W., &amp; Mansinghka, V. (2014). A new approach to probabilistic programming inference. <em>AISTATS</em>.</li>
+<li>Doucet, A., de Freitas, N., &amp; Gordon, N. (Eds.). (2001). <em>Sequential Monte Carlo Methods in Practice</em>. Springer.</li>
+<li>Andrieu, C., Doucet, A., &amp; Holenstein, R. (2010). Particle Markov chain Monte Carlo methods. <em>JRSS-B</em>, 72(3), 269–342.</li>
+<li>Broderick, T., Boyd, N., Wibisono, A., Wilson, A. C., &amp; Jordan, M. I. (2013). Streaming variational Bayes. <em>NeurIPS</em>.</li>
+<li>Särkkä, S. (2013). <em>Bayesian Filtering and Smoothing</em>. Cambridge University Press.</li>
+<li>Fritz, T. (2020). A synthetic approach to Markov kernels, conditional independence and theorems on sufficient statistics. <em>Advances in Mathematics</em>, 370. (For Markov-category alternative framings.)</li>
+<li>Corpus Doc 415: <em>The Retraction Ledger</em>.</li>
+<li>Corpus Doc 439: <em>Recursively Nested Bayesian Manifolds</em>.</li>
+<li>Corpus Doc 440: <em>Testing the Nested-Manifold Hypothesis</em>.</li>
+<li>Corpus Doc 441: <em>SIPE Confabulation Case Study</em>.</li>
+<li>Corpus Doc 443: <em>Confabulation as Potential Emergence</em>.</li>
+<li>Corpus Doc 444: <em>Pulverizing the SIPE Confabulation</em>.</li>
+<li>Corpus Doc 445: <em>A Formalism for Pulverization</em>.</li>
+</ul>
+<h2>Appendix: Originating prompt</h2>
+<blockquote>
+<p>Great now formalize the new SIPE construct that was confabulated, based upon its decomposed state after pulverization. We will see what falls out. Append the prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

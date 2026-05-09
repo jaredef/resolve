@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distributed Objects Seed: Cross-Style Validation of the Derivation Thesis — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><!-- chronological_ordinal: 15 -->
+<h1>Distributed Objects Seed: Cross-Style Validation of the Derivation Thesis</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document tests whether the &quot;derivation inversion&quot; method -- identifying a system&#39;s essential constraints and stating them in prose so that a resolver can regenerate a working implementation -- applies to architectures the author did not design. The test subject is React, Meta&#39;s UI framework, whose architectural constraints (component encapsulation, unidirectional data flow, declarative rendering, virtual DOM reconciliation, and others) are discovered by studying React&#39;s own source code rather than invented from scratch. If a language model can consume a prose &quot;seed&quot; of these constraints and produce a runtime that passes React&#39;s behavioral tests, the method is validated on foreign ground and the claim that constraints are more fundamental than source code is no longer circular.</p>
+</blockquote>
+<p><strong>Jared Foy</strong>
+<strong>April 2026</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><em>If the derivation inversion is general, it must work on architectures the author did not design.</em></p>
+<hr>
+<h2>1. The Validation Problem</h2>
+<p>The PRESTO dissertation claims that constraints are more fundamental than implementations, and that prose specifications of constraints are sufficient for resolvers to derive conformant systems. The evidence is six independent PRESTO engine implementations from a single seed.</p>
+<p>A skeptic can object: the author designed both the constraints and the seed. The conformance is circular. The method works on PRESTO because PRESTO was designed to be derivable.</p>
+<p>To answer this objection, the same method must be applied to an architecture the author did not design, whose constraints the author must discover rather than invent, and whose conformance criteria are externally defined.</p>
+<p>The Distributed Objects architecture — as realized in the React runtime — is the ideal candidate. React is widely understood, independently specified (by Meta), extensively tested, and architecturally distinct from PRESTO. If the method produces a conformant DO runtime from a prose seed, the thesis is validated on foreign ground.</p>
+<hr>
+<h2>2. The Method</h2>
+<p>The method is identical to the one that produced the PRESTO seed:</p>
+<ol>
+<li><strong>Observe</strong> the existing implementation (React&#39;s source, documentation, behavioral tests)</li>
+<li><strong>Identify</strong> the constraints that make it work — not the API surface, but the architectural constraints that induce the properties React developers rely on</li>
+<li><strong>Name</strong> each constraint and its induced property</li>
+<li><strong>State</strong> the constraints in a self-contained prose seed</li>
+<li><strong>Feed</strong> the seed to a resolver (LLM or human developer)</li>
+<li><strong>Verify</strong> the output against React&#39;s own behavioral expectations</li>
+</ol>
+<p>If the resolver produces a runtime that passes React&#39;s test suite (or a meaningful subset), the derivation inversion holds for the DO architecture. The constraints were not designed to be derivable. They were discovered in an existing system. The prose was sufficient. The method is general.</p>
+<hr>
+<h2>3. Candidate Constraints of the React DO Architecture</h2>
+<p>These are preliminary — to be refined through careful study of the React source and reconciler algorithm. The constraints are what make React work as an architecture, not what make it convenient as a library.</p>
+<h3>3.1 Component as Unit of Encapsulation</h3>
+<p>Every UI element is a component. Components encapsulate state, rendering logic, and lifecycle. The component boundary is the DO architecture&#39;s fundamental unit — analogous to the bilateral boundary in PRESTO, but operating on rendering rather than resolution.</p>
+<p><strong>Induced property:</strong> Composability. Components nest arbitrarily. Each manages its own concerns.</p>
+<h3>3.2 Unidirectional Data Flow</h3>
+<p>Data flows downward through the component tree via props. Events flow upward via callbacks. There is no bidirectional binding. The parent determines what the child sees.</p>
+<p><strong>Induced property:</strong> Predictability. Given the same props, a component renders the same output.</p>
+<h3>3.3 Declarative Rendering</h3>
+<p>Components declare what the UI should look like for a given state, not how to transition between states. The runtime determines the minimal DOM mutations required.</p>
+<p><strong>Induced property:</strong> The developer reasons about states, not transitions. The reconciler handles the imperative work.</p>
+<h3>3.4 Virtual DOM Reconciliation</h3>
+<p>The runtime maintains a virtual representation of the DOM. On state change, it computes a new virtual tree, diffs it against the previous tree, and applies the minimal set of mutations to the real DOM.</p>
+<p><strong>Induced property:</strong> Performance through batched, minimal mutations. The developer never touches the DOM directly.</p>
+<h3>3.5 State as Trigger for Re-render</h3>
+<p>State changes (via setState, useState, useReducer) trigger re-rendering of the component and its subtree. Rendering is a function of state. State is the sole trigger.</p>
+<p><strong>Induced property:</strong> The render cycle is deterministic given the state. Side effects are separated from rendering via hooks (useEffect).</p>
+<h3>3.6 Hook-Based Side Effect Model</h3>
+<p>Side effects (data fetching, subscriptions, DOM manipulation) are declared via hooks that run after rendering. Hooks have dependency arrays that control when they re-execute. The runtime manages the hook lifecycle.</p>
+<p><strong>Induced property:</strong> Side effects are predictable and cleanable. The runtime guarantees cleanup on unmount or dependency change.</p>
+<h3>3.7 Fiber Architecture (Cooperative Scheduling)</h3>
+<p>The reconciler can pause, resume, and prioritize rendering work. High-priority updates (user input) preempt low-priority updates (data fetching). The rendering is interruptible.</p>
+<p><strong>Induced property:</strong> Responsiveness under load. The UI remains interactive even during expensive renders.</p>
+<hr>
+<h2>4. The Induced Properties Collectively</h2>
+<p>The constraints above collectively induce what React developers experience as &quot;the React model&quot;:</p>
+<ul>
+<li>Declarative UI programming</li>
+<li>Predictable rendering from state</li>
+<li>Efficient DOM updates without manual mutation</li>
+<li>Composable, encapsulated components</li>
+<li>Manageable side effects</li>
+<li>Responsive UI under load</li>
+</ul>
+<p>These are not features. They are induced properties of the constraints. Remove unidirectional data flow and predictability degrades. Remove virtual DOM reconciliation and performance requires manual DOM management. Remove the hook lifecycle and side effects become unmanageable.</p>
+<p>This is exactly the relationship the PRESTO dissertation describes: the constraints induce the properties. The properties are what developers rely on. The implementations (ReactDOM, React Native, react-three-fiber) are contingent realizations.</p>
+<hr>
+<h2>5. What the DO Seed Would Contain</h2>
+<p>Following the PRESTO seed structure:</p>
+<ol>
+<li><strong>Identity:</strong> You have the Distributed Objects specification as realized in React. You can build a conformant runtime.</li>
+<li><strong>Architectural Rationale:</strong> Why each constraint exists. Why components, why unidirectional flow, why virtual DOM, why hooks.</li>
+<li><strong>Contracts:</strong> Numbered, testable commitments. &quot;The runtime MUST reconcile the virtual tree against the real DOM.&quot; &quot;State changes MUST trigger re-render of the owning component and its subtree.&quot;</li>
+<li><strong>The Component Model:</strong> Component types (function, class), props, state, children, refs.</li>
+<li><strong>The Reconciler Algorithm:</strong> Diffing, keyed children, fiber tree traversal, commit phase.</li>
+<li><strong>The Hook System:</strong> useState, useEffect, useRef, useMemo, useCallback, useContext — lifecycle and ordering rules.</li>
+<li><strong>Verification Suite:</strong> Tests that any conformant runtime must pass. Component mounting, state updates, effect cleanup, reconciliation correctness, key-based reordering.</li>
+</ol>
+<hr>
+<h2>6. What This Would Prove</h2>
+<p>If a resolver (LLM) consumes the DO seed and produces a runtime that passes the verification suite:</p>
+<ul>
+<li><strong>The derivation inversion is general.</strong> It works on architectures the author did not design.</li>
+<li><strong>Constraints are more fundamental than implementations.</strong> React&#39;s constraints, stated in prose, produce a conformant runtime — just as PRESTO&#39;s constraints produce a conformant engine.</li>
+<li><strong>The method is not circular.</strong> The author discovered the constraints by studying React, not by designing them. The conformance criteria are React&#39;s, not the author&#39;s.</li>
+<li><strong>The prose-as-machine thesis holds across styles.</strong> Both the bilateral resolution model (PRESTO) and the distributed objects model (React) are derivable from prose seeds.</li>
+</ul>
+<hr>
+<h2>7. Open Questions</h2>
+<ul>
+<li>Can the fiber architecture (cooperative scheduling) be specified in prose with sufficient precision for a resolver to implement it? This is the most complex constraint.</li>
+<li>What subset of React&#39;s API surface is essential vs. convenience? The seed should contain only the essential constraints, not the full API.</li>
+<li>How do we define &quot;conformant&quot; for a React-like runtime? React&#39;s own test suite? A reduced behavioral suite? The key semantic invariants?</li>
+<li>Does the seed need to specify JSX transformation, or is that a syntax concern (like htxlang vs PRESTO)?</li>
+</ul>
+<hr>
+<h2>8. Next Steps</h2>
+<ol>
+<li>Study the React reconciler source (react-reconciler package) to refine the constraint list</li>
+<li>Draft the DO seed in the same format as the PRESTO seed</li>
+<li>Feed it to a resolver and evaluate the output against React&#39;s behavioral expectations</li>
+<li>Document the results as a companion to the PRESTO dissertation</li>
+</ol>
+<p>If it works, add a section to the unified paper: &quot;Cross-Style Validation: The Distributed Objects Seed.&quot; If it doesn&#39;t, document why — that failure is also informative about the limits of the derivation thesis.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

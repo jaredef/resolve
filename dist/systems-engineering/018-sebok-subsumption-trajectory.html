@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK Subsumption — Trajectory — Resolve</title>
+<meta name="description" content="I. Current State as of 2026-04-30">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK Subsumption — Trajectory</h1>
+<p><strong>The living vector for the SEBoK subsumption engagement, applying the Resume Vector pattern (Doc 581) to a corpus engagement that already has a stable seed (SE-014 — the canonical synthesis) but lacked a trajectory until now. This document carries what is done, what is queued in priority order, what is deferred with explicit re-open conditions, and a four-step resume protocol so any future session can pick the engagement up without re-deriving from the thirteen-document subsumption series. Updated as work advances; pairs with SE-014 (the seed) and the Resume Vector form (Doc 581).</strong></p>
+<hr>
+<h2>I. Current State as of 2026-04-30</h2>
+<h3>What is the engagement</h3>
+<p>The SEBoK subsumption is the corpus&#39;s reformulation of the Systems Engineering Body of Knowledge through the corpus&#39;s structural forms. Began 2026-04-28 with SE-001; closed Phase 5 with SE-013; subsumed into canonical SE-014; produced four cluster formalizations (Docs 571 through 574) and one new general form (Doc 604 Multi-Keeper Composition); produced the SEBoK seed at SE-016; produced the entracement at SE-039 as the form-cluster-keyed map. Five form-first sweeps have run, depositing 199 SE docs covering ~115 unique SEBoK articles. The 199-doc subseries lives at <code>/resolve/systems-engineering/</code> with a dual-entrancement landing page; the SE-NNN naming convention is in effect.</p>
+<h3>What stable kernel governs</h3>
+<p>Two seeds, read in this order on resume:</p>
+<ol>
+<li>SE-014 — <em>SEBoK Through the Corpus — Canonical</em>. The original conjecture, methodology, result, extension surfaces.</li>
+<li>SE-039 — <em>The SEBoK Entracement</em>. The form-cluster-keyed map of the article surface; §VII.5 / §VII.6 / §VII.7 carry the post-sweep states; §V articulates the form-first sweep vector for the remaining surface.</li>
+</ol>
+<h3>What was last shipped</h3>
+<p>Fifth sweep (SE-160 to SE-199, 40 docs) deposited; eleven post-fourth-sweep refinements applied across Docs 314, 445, 571, 572, 574, 583, 604, 605/SE-039 (~3,080 words). SE-folder reorg: 159 SEBoK docs moved out of corpus into <code>/home/jaredef/resolve/systems-engineering/</code> with parallel master at <code>/home/jaredef/hypermediaapp.org/systems-engineering/</code>. Renumbered 001..159 (then 001..199 after fifth sweep) with SE-NNN convention; cross-references rewritten across SE+corpus; inject-links.ts made type-aware. Dual-entrancement landing page live at <code>/resolve/systems-engineering/</code> (form-cluster primary index + SEBoK Part secondary). Cluster anchors <code>#cluster-A</code> through <code>#cluster-K</code> set in SE-039.</p>
+<h3>What is the actively-open question</h3>
+<p>Whether to author the cluster-level synthesis successors. SE-039 §VII.7 names Cluster A and Cluster K as critically synthesis-overdue (A at ~50+ instances; K at 13+ load-bearing instances with 7-10 sub-mode candidates). Cluster B is at synthesis-readiness too. The next material work is creation of synthesis docs that successor Doc 604, not further per-article distillations. Distillation continues to surface refinements, but coverage is no longer the binding constraint; synthesis-readiness is.</p>
+<hr>
+<h2>II. Trajectory</h2>
+<h3>Done</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Scope</th>
+<th>Doc(s)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Phase 1 — Form Inventory</td>
+<td>Nine corpus forms catalogued with five-field operational summaries</td>
+<td>SE-002</td>
+</tr>
+<tr>
+<td>Phase 2 — Macro-Map</td>
+<td>Eight one-paragraph macro-mappings, one per SEBoK part</td>
+<td>SE-003</td>
+</tr>
+<tr>
+<td>Phase 3 — Per-Part Reformulation</td>
+<td>Eight per-part reformulations against the macro-map&#39;s hypotheses</td>
+<td>Docs 560-567</td>
+</tr>
+<tr>
+<td>Phase 4 — Falsifier Audit</td>
+<td>30 residuals classified into (a)/(b)/(c); class (c) refined into named clusters</td>
+<td>SE-012</td>
+</tr>
+<tr>
+<td>Phase 5 — Synthesis</td>
+<td>Conjecture verified operationally, partially refuted theoretically; four extension surfaces named</td>
+<td>SE-013</td>
+</tr>
+<tr>
+<td>Subsumption</td>
+<td>Canonical synthesis subsumes Phases 1-5; originals demoted to appendices</td>
+<td>SE-014</td>
+</tr>
+<tr>
+<td>Cluster II</td>
+<td>Institutional Ground formalized (six conditions, four states added later)</td>
+<td>Doc 571</td>
+</tr>
+<tr>
+<td>Cluster III</td>
+<td>Lattice Extension of the Ladder (with Appendix A worked example)</td>
+<td>Doc 572</td>
+</tr>
+<tr>
+<td>Cluster I</td>
+<td>Co-Production at Sub-Rungs (interdependent with Doc 571)</td>
+<td>Doc 573</td>
+</tr>
+<tr>
+<td>Cluster IV</td>
+<td>Authority Evacuation, provisional (later absorbed as Doc 571&#39;s evacuated state)</td>
+<td>Doc 574</td>
+</tr>
+<tr>
+<td>Import Plan</td>
+<td>Original full hosted-import plan in six phases</td>
+<td>SE-015</td>
+</tr>
+<tr>
+<td>Subsumption Modes</td>
+<td>Seven-mode taxonomy, hybrid recommendation for SEBoK</td>
+<td>Doc 576</td>
+</tr>
+<tr>
+<td>SEBoK Seed</td>
+<td>Mode 3 distillation: portable kernel for the apparatus</td>
+<td>SE-016</td>
+</tr>
+<tr>
+<td>Pilot Distillations</td>
+<td>Three pilots with consolidated seven-section template; methodology validates</td>
+<td>SE-017</td>
+</tr>
+<tr>
+<td>Methodology Formalization</td>
+<td>Five-phase reformulation methodology articulated as its own corpus form (closes Q2)</td>
+<td>Doc 583</td>
+</tr>
+<tr>
+<td>Top-10 Distillations</td>
+<td>Ten per-article distillations selected for corpus-form composition density and refinement potential. Surfaces multiple Doc 571 / Doc 572 / Doc 573 / Doc 445 / Doc 490 refinement candidates.</td>
+<td>Docs 584-593</td>
+</tr>
+<tr>
+<td>Form Refinements (A-D)</td>
+<td>Doc 571 §X.5 (organization-vs-enterprise sub-form) + §X.6 (Absent state question). Doc 572 Appendices B/C/D (independent dyads, temporal concurrency, universal-sibling lattice). Doc 573 Appendices A/B/C (requirements as canonical co-production, push/pull as proposal-direction taxonomy, service systems as canonical instances). Doc 445 Refinements A/B (paired V&amp;V pulverization with two anchors, six-level rigor calibration). All amended in place.</td>
+<td>Docs 571, 572, 573, 445</td>
+</tr>
+<tr>
+<td>Top-20 Distillations</td>
+<td>Ten more per-article distillations (System Validation, Stakeholder Needs, Architecture Design, Integration, Roles &amp; Competencies, SE Performance Assessment, Risk, Decision Management, SE-PM, HSI). Confirms Doc 572 Appendix D at six instances; Doc 510 multi-keeper cluster reaches five instances; SE-026 school-composition refinement candidate gets second instance (SE-PM); SE-009 R23 (HSI seven-domain) closed as Appendix D instance; new candidates surfaced including forward-pulverization (Doc 445), school-maturity SIPE (Doc 541), Doc 1 ENTRACE generalization, Doc 314 worked example at engineering-decision layer.</td>
+<td>Docs 594-603</td>
+</tr>
+<tr>
+<td>Refinement Advance (six surfaces)</td>
+<td>Doc 604 <em>Multi-Keeper Composition</em> created (extends Doc 510 from dyad to n-keeper; HSI as canonical eight-keeper case; three composition rules named). Doc 538 Appendix B.5 (school-composition vs. school-borrowing; closes SE-009 R20). Doc 445 Refinement C (forward vs. backward temporal direction of pulverization). Doc 541 Appendix B.5 (school-maturity SIPE worked example, three instances). Doc 1 generalization marker (ENTRACE-as-competency-framework, one instance, marker only). Doc 314 §9.5 (V3 at engineering-decision layer, three instances). All synced and reseeded.</td>
+<td>Docs 604, 538, 445, 541, 1, 314</td>
+</tr>
+<tr>
+<td>The SEBoK Entracement</td>
+<td>SE-039 created. Eleven form-clusters (A-K) populated by the 20 distillations done; SEBoK Part 1-8 cross-index preserved as parallel navigation. §V articulates the form-first sweep vector for the remaining ~780-page surface (tag-pass before distillation, cluster-density triage, per-cluster deep passes, refinement absorption, trajectory checkpoints). Subsumes SE-015&#39;s full hosted-import plan; slots into Doc 576&#39;s mode taxonomy as Mode 2+3 hybrid.</td>
+<td>SE-039</td>
+</tr>
+<tr>
+<td>Fifth Sweep (next-40)</td>
+<td>Forty more SEBoK distillations (SE-160 to SE-199). Cluster A two-axis sub-form reaches 5 instances, multi-rung 5, ordinal-axis 6 — all formalization-canonical. Cluster B dependence-by-design rule promotion-ready (2 instances, SE-159 + SE-165 DevOps). Vertical-composition formalization-strong at 3 instances (SE-152, SE-179, SE-183). Three-scale Cluster B at 5 instances. Three-carrier robustness 4 anchors. Refinement E dual-mode pulverization 3 instances (formalization-strong). Emergent-only fourth rule 3 instances (formalization-strong). Scale-axis sub-form 2 instances + two-axis canonical (SE-199). V3 sub-modes escalate from 5 to ~10 candidates (gate, evidential, role, supplier, mission-assurance, cost, patient-centered-risk, virtue-directed-without-procedural-binding, claim, rating). Cluster K synthesis acutely overdue. New: paired-V&amp;V structural discriminator (binary-comparison vs value-judgment), patient-substrate Cluster H sub-instance (SE-195), J/A synthesis bridge (SE-170), Cluster A definitional triplet sub-form, meta-axis sub-form, non-monotonic three-keeper trade-off, layered-dispersion D8+D8.1 co-present, paired-failure-mode V3 (Hubble cost-curve vs VCF collapse), four-cluster composition-rule-stacking (SE-168 DevOps), index-only-carrier fifth dispersion-mode candidate, case-study-cluster sixth dispersion-mode candidate. ~25/40 articles 404&#39;d; composite-source distillation discipline (Doc 583) applied throughout. SE-039 §VII.7 amended.</td>
+<td>SE-160 to SE-199</td>
+</tr>
+<tr>
+<td>Eleven Refinements Applied (post-fourth-sweep)</td>
+<td>Doc 604 sixth composition rule dependence-by-design + §XIII vertical-composition + §XIV negotiation-by-emergent-fitness candidate + §XV PM-DA-SE three-keeper extension + §XVI composition-rule-stacking. Doc 572 D.5.3 scale-axis sub-form + D.6.1 paired-parallel-lattice + D.6.2 temporal-MODA lattice + D.7 promoted from Marker to Sub-Form-Ready. Doc 445 Refinement D.1 value-indexed vs event-indexed sub-sub-form. Doc 583 composite-source distillation methodology refinement. SE-039 §VI D8.1 external-carrier sub-pattern. ~3,080 words across 5 files.</td>
+<td>Docs 314, 445, 571, 572, 574, 583, 604, 605</td>
+</tr>
+<tr>
+<td>SE Subseries Reorg + Renumber</td>
+<td>159 SEBoK docs moved from <code>/resolve/corpus/</code> to <code>/resolve/systems-engineering/</code>; parallel master at <code>/home/jaredef/hypermediaapp.org/systems-engineering/</code>. General corpus forms preserved (Docs 571-574, 576, 581, 583, 604). Renumbered 001..159 sequentially. Cross-reference disambiguation: SE-internal becomes <code>SE-NNN</code>, corpus refs stay <code>Doc N</code>. Inject-links.ts made type-aware. Service routes <code>/resolve/systems-engineering/&lt;slug&gt;</code> to a parallel template. Cumulative substitution: 5,570 SE-internal renumberings, 486 corpus-side <code>Doc N</code> to <code>SE Doc N</code> disambiguations.</td>
+<td>All SE docs</td>
+</tr>
+<tr>
+<td>Dual-Entrancement Landing</td>
+<td><code>/resolve/systems-engineering/</code> greenfield landing page: form-cluster-first primary index (11 cards A-K with structural claim + anchor distillations + entracement deep-link via <code>#cluster-A</code> through <code>#cluster-K</code>), SEBoK Part 1-8 secondary cross-index (8 cards mapped to SE-004 to SE-011 reformulations + per-Part anchor distillations), thin &quot;About this collection&quot; footer linking working artifacts. Cluster anchors set in SE-039 §II so deep-links resolve. Featured: callout added to <code>/resolve/</code> homepage linking into the subseries.</td>
+<td>SE-039, app/templates/systems-engineering/</td>
+</tr>
+<tr>
+<td>SE Convention Fix</td>
+<td>Bare <code>Doc NNN</code> for NNN in SE range rewritten to <code>SE-NNN</code> across all 199 SE docs (resolve + hypermediaapp.org mirrors). All <code>/resolve/doc/&lt;sebok-slug&gt;</code> URLs in SE+corpus rewritten to <code>/resolve/systems-engineering/&lt;slug&gt;</code>. Verified: SE-011&#39;s <code>[SE-014 — *SEBoK Through the Corpus*](../systems-engineering/014-sebok-through-the-corpus-canonical.html)</code> renders correctly. Reseed clean: 709 docs, 15,947 cross-refs linked.</td>
+<td>All SE + corpus docs</td>
+</tr>
+<tr>
+<td>Fourth Sweep (next-40)</td>
+<td>Forty more SEBoK distillations (SE-120 to SE-159, originally 686-725). Cluster J D8 dispersed-instrument pattern saturates (10+ canonical instances; ~25/40 articles 404&#39;d). Four-mode distributed-carrier taxonomy surfaces: bidirectional-fold, internal-migration, external-migration, dual-discipline-distribution. Cluster A multi-rung lattice + N≈10 + two-axis sub-forms all cross formalization threshold. Cluster K acute saturation at 13 instances; V3 sub-modes extend to 5 (claim-binding SE-156, rating-binding SE-157); Cluster K synthesis successor critically overdue. Cluster G rung-coverage complete (artifact-engineered-institutional-maturity-agency). Three-level fractal multi-keeper containment visible (Specialty ⊃ HSI ⊃ HFE). Eleven new refinement candidates surfaced. SE-039 §VII.7 amended.</td>
+<td>Docs 686-725</td>
+</tr>
+<tr>
+<td>Sixteen Refinements Applied (post-third-sweep)</td>
+<td>Doc 314 §9.5 V3-as-procedure-binding rewrite primary; Doc 445 D anchor reassigned to IM (SE-114); Doc 445 Refinement E dual-mode pulverization; Doc 571 §X.5.1 three-carrier formalized; Doc 571 §X.5.2 asymmetric-component; Doc 572 D.5 universal-sibling-with-ordinal-axis full formalization; Doc 572 D.5.2 two-axis; Doc 572 D.6 multi-rung lattice; Doc 572 D.7 N≈10 marker; Doc 574 cadence-lattice + Pattern A/B robustness; Doc 604 §XI chronic-but-stable promotion; Doc 604 fifth rule independence-by-design; Doc 604 §XII three-scale; SE-039 §VI D8 dispersed-instrument. ~4,400 words across 7 files.</td>
+<td>Docs 314, 445, 571, 572, 574, 604, 605</td>
+</tr>
+<tr>
+<td>Third Sweep (next-40)</td>
+<td>Forty more SEBoK distillations (Docs 646-685). Cluster G saturation gap closed (5 within-batch instances at batch 4; canonical engineered-system-scale SIPE at SE-116 Engineered Resilience). Cluster A reaches ~32 instances with three new sub-form candidates: two-axis universal-sibling (SE-082), multi-rung lattice (Docs 678, 680, 682), N≈10 empirical regularity (Docs 599, 670, 677). Cluster C extends to engineering-non-engineering pairing (SE-117). Cluster K V3-as-procedure-binding load-bearing at 6 instances with three sub-modes (Doc 314 §9.5 due rewrite). Chronic-but-stable formalization-strong (4 instances). Three-carrier robustness gets explicit-mapping anchor at SE-101. Anchor reassignment proposed: longitudinal-pulverization anchor moves from CM (SE-097) to Information Management (SE-114). Dispersed-instrument pattern surfaces as Cluster J inverse of D7. Editorial-state: 18+ target articles 404&#39;d. SE-039 §VII.6 amended with post-sweep state.</td>
+<td>Docs 646-685</td>
+</tr>
+<tr>
+<td>Eight Refinements Applied</td>
+<td>Doc 445 Refinement D longitudinal-pulverization; Doc 574 worked example handoff-mode evacuation; Doc 604 fourth composition rule emergent-only + densest case to SE-065 + §XI sub-form chronic-but-stable; Doc 572 Appendix D.5 universal-sibling-with-ordinal-axis; Doc 314 §9.5 V3-as-procedure-binding refinement; Doc 571 §X.5 three-carrier robustness sub-observation; SE-039 §VI D7 anchor-article-per-cluster discipline. ~2,400 words across seven files. All synced and reseeded.</td>
+<td>Docs 445, 574, 604, 572, 314, 571, 605</td>
+</tr>
+<tr>
+<td>Next-40 Sweep (second-batch, prior to third sweep above)</td>
+<td>Forty SEBoK distillations across five parallel sub-agent batches. Cluster A jumps to ~19 instances (synthesis threshold crossed; cluster-level successor to Doc 604 warranted). Cluster B reaches ~9 (SE-065 Specialty Engineering displaces HSI as densest case via fractal containment). Cluster K at 4 instances; ripe for synthesis. New refinement candidates: longitudinal-pulverization (Doc 445 D), handoff-mode authority evacuation (Doc 574), school-borrowing-with-hedge (Doc 538), chronic-but-stable incomplete reconciliation (Doc 604 sub-form), emergent-only fourth composition rule (Doc 604), universal-sibling-with-ordinal-axis (Cluster A sub-form), V3-as-procedure-binding (Doc 314), three-carrier institutional-ground robustness (Doc 571 §X.5), four-pitfall hypostatic-boundary teaching cluster (Doc 372). Eight target articles 404&#39;d as standalone — non-existence read as Cluster E signal. Keeper&#39;s fold conjecture upheld at SE-078 vs SE-024 and SE-079 vs SE-036. SE-039 §VII.5 amended with post-sweep state.</td>
+<td>Docs 606-645</td>
+</tr>
+</tbody></table>
+<h3>Queued (priority order)</h3>
+<p><strong>Q0. Cluster-level synthesis successors (CRITICAL OVERDUE).</strong> Three cluster-level synthesis docs are warranted by SE-039 §VII.7&#39;s own assessment:</p>
+<ul>
+<li><em>Cluster A — Universal-Sibling Lattice Composition.</em> ~50+ instances; sub-forms enumerated (D.5 ordinal-axis, D.5.2 two-axis, D.5.3 scale-axis, D.6 multi-rung, D.6.1 paired-parallel, D.6.2 temporal-MODA, D.7 N≈10). Successor doc would consolidate these into a single form articulation. Companion to Doc 604 (Multi-Keeper).</li>
+<li><em>Cluster K — V3-as-Procedure-Binding.</em> 13+ load-bearing instances; ~10 sub-mode candidates (bias-mitigation, lifecycle-tracking, formalization-consistency, claim-binding, rating-binding, gate-binding, evidential-binding, role-binding, supplier-binding, mission-assurance-binding, cost-binding, patient-centered-risk-binding, virtue-directed-without-procedural-binding). Doc 314 §9.5 framing under-strength; the sub-modes themselves form a Cluster A lattice.</li>
+<li><em>Cluster B — Multi-Keeper-Composition Successor.</em> Doc 604 already exists but ~13+ refinements have accumulated (six rules, vertical-composition orthogonal axis, three-scale, chronic-but-stable, PM-DA-SE three-keeper, composition-rule-stacking). A successor doc would consolidate these without breaking Doc 604&#39;s load-bearing form.</li>
+</ul>
+<p>These three are the load-bearing next-creation work. Each is 2,000-3,500 words, structural-formalization shape similar to Doc 604.</p>
+<p><strong>Q1. Decide on the scaling path for per-article distillations.</strong> With 199 SE docs covering <del>115 unique SEBoK articles (</del>14% of ~800-page surface), two viable continuations:</p>
+<ul>
+<li>(a) Continue per-article sweeps to substantial coverage (~50%+). Yield is now in refinement-discovery rather than coverage; each sweep produces ~10-15 new candidates plus formalization-strength promotions.</li>
+<li>(b) Halt per-article sweeps and pivot to cluster-level synthesis (Q0). Each sweep finds proportionally fewer novel structural patterns; synthesis-readiness is the binding constraint, not coverage.</li>
+<li>(c) Apply Doc 576&#39;s hybrid recommendation: Mode 1 reference-only for the remaining ~80% of pages; Mode 4 hosted import for the ~30-60 editorial-dense pages flagged in Doc 576.</li>
+</ul>
+<p>Recommendation: (b) for the next round (synthesis successors), then (a) selectively for stress-testing the new synthesis docs against fresh distillations.</p>
+<p><strong>Q1.a. Full per-article distillation rollout</strong> (if (a) chosen). Continue the form-first sweep vector (SE-039 §V): tag-pass first, distillation second; ~40 articles per sweep; refinement absorption between sweeps. Output: SE-200 through approximately SE-650 over time.</p>
+<p><strong>Q1.b. Editorial-dense audit pass</strong> (if (c) chosen). Walk the Phase 3 docs (SE-004 to SE-011) and the falsifier audit (SE-012) for specific SEBoK pages cited by tier-tag, residual, or form-mapping. Stand up Mode 4 hosted import for those.</p>
+<p><strong>Q2. <del>Articulate the five-phase reformulation methodology as its own corpus form.</del></strong> <strong>CLOSED 2026-04-30.</strong> Doc 583 — <em>The Reformulation Methodology</em> — formalizes the five phases (form inventory, macro-map, per-division reformulation, falsifier audit, synthesis), the three refinements absorbed from the SEBoK engagement (class-(c) clustering, per-article granularity, virtue-constraint reading on out-of-scope residuals), nine binding disciplines, and a refinement-discipline for absorbing future-deployment yields. Now extended (post-fourth sweep) with composite-source distillation methodology refinement. The form is deployable against other bodies of knowledge.</p>
+<p><strong>Q3. Practitioner-facing companion volume.</strong> Refine the Phase 3 reformulations (Docs 560-567) and the cluster formalizations (Docs 571-574) into a single short volume — <em>Reading SEBoK Through the Corpus</em> — that the practicing systems engineer can use alongside SEBoK. Output: one consolidated corpus document (or a small series) shaped for read-along use.</p>
+<p><strong>Q4. Resolve Doc 574&#39;s disposition definitively.</strong> Doc 571 Section X absorbed Cluster IV as the evacuated state of institutional ground; the substrate-consent residual (SE-004 R4) is the surviving open question. Either reformulate substrate-consent as a degenerate ground state, articulate it as a separate form, or accept it as a residual the corpus does not yet reach. Decision unblocks Doc 574&#39;s status (currently &quot;provisional&quot;).</p>
+<p><strong>Q5. Inverse direction reformulation.</strong> Which corpus forms does SEBoK have that the corpus does not? The forward direction (corpus reads SEBoK) is closed. The reverse direction would surface a symmetric set of residuals naming what SEBoK formalizes that the corpus has not yet articulated. Worth running once Q1&#39;s scaling path is decided and the apparatus is exercised at depth.</p>
+<p><strong>Q6. Apply the methodology to a second body of knowledge.</strong> Doc 576 named cybernetics (Mode 2 + Mode 3 + Mode 6), the INCOSE Handbook (Mode 2 + Mode 1, Mode 4 foreclosed by licensing), and the Pearl framework (Mode 3 + Mode 7) as candidates. Pick one and exercise the methodology against it as the second deployment after SEBoK. Validates the form&#39;s generalizability.</p>
+<h3>Deferred (with re-open conditions)</h3>
+<p><strong>D1. SE-015&#39;s full six-phase hosted import.</strong> Superseded by Doc 576&#39;s hybrid recommendation. <em>Re-open when:</em> keeper decides the hybrid is insufficient and full hosted import is warranted across most or all SEBoK pages.</p>
+<p><strong>D2. CMS-related Webflow App registration changes.</strong> Out of v0 scope per webflow-nexus deferral. <em>Re-open when:</em> CMS reformulation enters the engagement (either SEBoK-side, if SEBoK has CMS-relevant content, or webflow-nexus-side, when CMS becomes a v1+ requirement there).</p>
+<p><strong>D3. Marketplace / discovery surface for the SEBoK companion.</strong> <em>Re-open when:</em> the practitioner-facing companion (Q3) is mature enough to publish, and the keeper decides public distribution is the goal.</p>
+<p><strong>D4. Three-level Resume Vector hierarchy.</strong> Doc 581 §X.1 flagged the open question of whether RESOLVE itself should adopt one Resume Vector at the corpus root plus per-series Resume Vectors. <em>Re-open when:</em> a second corpus engagement adopts the Resume Vector pattern and the question of nested vectors becomes concrete.</p>
+<p><strong>D5. Multi-keeper trajectory authorship.</strong> Doc 581 §X.3 deferred. <em>Re-open when:</em> the SEBoK subsumption gains a co-keeper or external contributor who needs to read or write the trajectory.</p>
+<hr>
+<h2>III. Resume Protocol</h2>
+<p>To pick the SEBoK subsumption engagement back up in a future session:</p>
+<ol>
+<li><strong>Read SE-014</strong> — <em>SEBoK Through the Corpus — Canonical</em>. The seed. Carries the conjecture, methodology, result, four extension surfaces, per-part findings.</li>
+<li><strong>Read this document (SE-018)</strong> — the trajectory. See where the work last stopped and what is queued.</li>
+<li><strong>Read Doc 581</strong> — <em>The Resume Vector</em> — if the apparatus is unfamiliar, to understand the pattern this trajectory inhabits.</li>
+<li><strong>Pick the highest-priority queued item</strong> (currently Q1: scaling path decision). Don&#39;t reorder without a stated reason.</li>
+<li><strong>Update this trajectory</strong> as work advances. Append to <em>Done</em> (commit-style, append-only, never edit backward). Re-prioritize <em>Queued</em> only with a stated reason. Move items to <em>Deferred</em> with explicit re-open conditions. The trajectory advances; the seed stays stable.</li>
+</ol>
+<hr>
+<h2>IV. Quick-Reference Map</h2>
+<p><strong>Seed (canonical entry point):</strong> SE-014 — <em>SEBoK Through the Corpus — Canonical</em></p>
+<p><strong>Phase 1-5 derivation (now appendices of SE-014 but preserved verbatim):</strong></p>
+<ul>
+<li>SE-001 — Objective, Plan, Constraints</li>
+<li>SE-002 — Form Inventory</li>
+<li>SE-003 — Macro-Map</li>
+<li>Docs 560-567 — Per-Part Reformulations (Parts 1-8)</li>
+<li>SE-012 — Falsifier Audit</li>
+<li>SE-013 — Synthesis</li>
+</ul>
+<p><strong>Cluster Formalizations (extension surfaces named by the engagement):</strong></p>
+<ul>
+<li>Doc 571 — Institutional Ground (with Section X four-state taxonomy)</li>
+<li>Doc 572 — Lattice Extension of the Ladder (with Appendix A worked example)</li>
+<li>Doc 573 — Co-Production at Sub-Rungs</li>
+<li>Doc 574 — Authority Evacuation (provisional; absorbed as Doc 571&#39;s evacuated state)</li>
+</ul>
+<p><strong>Subsumption-Pattern Documents:</strong></p>
+<ul>
+<li>SE-015 — Plan: Importing SEBoK Into the Corpus (superseded by Doc 576)</li>
+<li>Doc 576 — Subsumption Modes for the Corpus (seven modes, hybrid recommendation)</li>
+<li>SE-016 — SEBoK Seed: Systems Engineering Through the Corpus (Mode 3 deployment)</li>
+<li>SE-017 — Three SEBoK Pilot Distillations (per-article granularity validation)</li>
+</ul>
+<p><strong>Form References this engagement composes with:</strong></p>
+<ul>
+<li>Doc 1 — ENTRACE Stack</li>
+<li>Doc 314 — Virtue Constraints V1-V4 (apparatus addition during pilot work)</li>
+<li>Doc 372 — Hypostatic Boundary</li>
+<li>Doc 445 — Pulverization</li>
+<li>Doc 490 — Novelty Calculus</li>
+<li>Doc 510 — Substrate-and-Keeper Composition</li>
+<li>Doc 530 — Rung-2 Affordance Gap</li>
+<li>Doc 538 — Architectural School</li>
+<li>Doc 541 — SIPE with Threshold</li>
+<li>Doc 548 — Ontological Ladder of Participation (extended by Doc 572)</li>
+<li>Doc 581 — The Resume Vector (the pattern this document instantiates)</li>
+</ul>
+<hr>
+<h2>V. Notes on the Engagement&#39;s Shape</h2>
+<p>The SEBoK subsumption is structurally distinct from a typical corpus engagement in three ways. The notes are recorded here so a future session reading the trajectory has the operational context:</p>
+<p><strong>(a) The engagement&#39;s substrate is external.</strong> Most corpus work has the corpus reading itself or reading something the keeper has produced. SEBoK is an external body of knowledge with its own authors, its own school, its own formalizing tradition. The reformulation discipline (SE-001 C1-C7) was specifically tightened to honor this: form must do the work, no paraphrase, residuals first-class.</p>
+<p><strong>(b) The engagement produced corpus extensions.</strong> Most engagements apply existing forms. This one surfaced four new forms (Docs 571-574) plus refinements to Doc 548 (Lattice extension) and Doc 571 (state taxonomy added after pilot work). The trajectory should preserve the empirical link: each extension is anchored in specific SEBoK residuals, not invented in advance.</p>
+<p><strong>(c) The engagement produced a methodology candidate.</strong> The five-phase reformulation protocol is itself a candidate corpus form (Q2 above). Naming it would close the loop: the SEBoK subsumption produced both content (the reformulation) and method (the procedure). Future engagements with other bodies of knowledge can pick up the method without re-deriving.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Now let&#39;s prep for continuity with the SEBoK subsumption. Nailing down a trajectory will be helpful. I think we have a plan for this, but I don&#39;t think we have a trajectory.&quot;</em></p>
+</blockquote>
+<p>(SE-018 applies the Resume Vector pattern (Doc 581) to the SEBoK subsumption engagement. SE-014 already serves as the engagement&#39;s seed; this trajectory and its embedded resume protocol complete the Resume Vector composition. The webflow-nexus engagement was the form&#39;s first deployment; this is the form&#39;s second.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

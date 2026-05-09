@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Felt-Novelty Hypothesis: A Formalization with Onboarding for a Six-Researcher Cohort — Resolve</title>
+<meta name="description" content="Onboarding preamble">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>The Felt-Novelty Hypothesis: A Formalization with Onboarding for a Six-Researcher Cohort</h1>
+<h2>Onboarding preamble</h2>
+<p>This document formalizes a candidate mechanism between two well-studied phenomena that the existing literature does not yet connect via a single load-bearing user-internal mediator. The two phenomena are: (a) overclaim by language models, defined here as the production of claims at scope \(C\) when the supporting evidence in context licenses only narrower scope \(C&#39; \subset C\); and (b) clinical phenomenology adjacent to psychosis observed in some users of generative AI systems. The proposed mediator is <em>felt novelty</em>: the user&#39;s experience of the language model&#39;s confident-sounding output as conveying knowledge they did not previously possess.</p>
+<p>The hypothesis is that when a user lacks the specific expertise to detect that overclaim is occurring, the over-confidence registers as authoritative novelty rather than as calibration failure. Sustained exposure to felt novelty produced by undetected overclaim then has a measurable correlation with the clinical phenomenology the recent literature has begun to characterize. The hypothesis is not a causal claim. It is a falsifiable empirical claim that causation cannot be ruled out in the absence of an alternative mediator that explains the felt-novelty pattern.</p>
+<p>The formalization (§1) states the hypothesis as three independently testable components with explicit falsification conditions. The cohort onboarding (§2) identifies six researchers whose published work each supplies a piece of the mechanism&#39;s component literatures. Each entracement names the specific test or critique that researcher is positioned to contribute. The companion document Doc 476 contains the full pulverization against the five subsuming literatures; the present document is shorter, oriented toward cohort engagement, and assumes the reader will read Doc 476 for the literature audit.</p>
+<p>The hypothesis is at \(\pi\)-tier under the warrant calculus of Doc 445. Promotion to \(\mu\)-tier requires the cross-practitioner empirical work this cohort is being invited to consider.</p>
+<h2>1. The formalization</h2>
+<h3>1.1 Variables</h3>
+<ul>
+<li>\(O\): an overclaim event. The model produces a claim at scope \(C\) when context-licensed scope is \(C&#39; \subset C\).</li>
+<li>\(D\): user detection. The user recognizes the overclaim as such.</li>
+<li>\(N\): felt novelty. The user experiences the output as conveying knowledge they did not previously have.</li>
+<li>\(P\): phenomenological-clinical correlate. External-observer-measurable patterns of validation-driven thought-disorder, sustained-confabulation, or AI-induced delusional content per the clinical literature.</li>
+</ul>
+<h3>1.2 The three component hypotheses</h3>
+<p><strong>H1 (detection-modulated novelty).</strong> \(\Pr(N \mid O \wedge \neg D) &gt; \Pr(N \mid O \wedge D)\).</p>
+<p><strong>H2 (novelty-mediated phenomenology).</strong> Aggregate \(N\) across a sustained interaction is correlated with \(P\).</p>
+<p><strong>H3 (intervention propagation).</strong> An intervention that increases \(\Pr(D \mid O)\) reduces aggregate \(N\), and reduced aggregate \(N\) reduces \(P\).</p>
+<p>The composed claim H1 ∧ H2 ∧ H3 is the keeper&#39;s intuition stated as a falsifiable empirical hypothesis with three independently testable components.</p>
+<h3>1.3 Falsification conditions</h3>
+<p>The hypothesis fails if any of the following is observed empirically.</p>
+<ul>
+<li>\(\Pr(N \mid O \wedge \neg D) \approx \Pr(N \mid O \wedge D)\). Detection-capacity is independent of felt-novelty intensity. The first stage of the mechanism does not exist.</li>
+<li>Aggregate \(N\) is uncorrelated with \(P\). The bridge between mediator and outcome is missing.</li>
+<li>Interventions that increase \(\Pr(D)\) reduce \(N\) but do not reduce \(P\). The mediator is at most diagnostic; \(P\) has another input that detection-improvement does not address.</li>
+<li>An alternative mediator is identified that explains the pattern in \(N\) without requiring overclaim. Overclaim is not necessary; the load-bearing mechanism is something else (sycophancy alone, ELIZA-effect alone, parasocial-trust alone).</li>
+</ul>
+<h3>1.4 The composed-mechanism statement</h3>
+<p>The three components compose as:</p>
+<p>$O \xrightarrow{1 - \Pr(D)} N \xrightarrow{\rho(N, P)} P$</p>
+<p>The mechanism&#39;s strength at any specific population is a product of \(1 - \Pr(D)\) (probability of failed detection given overclaim) and \(\rho(N, P)\) (empirical correlation between aggregate felt novelty and phenomenology). Both are population-specific and empirically estimable.</p>
+<h2>2. Cohort onboarding</h2>
+<p>The six researchers below were selected because each supplies a load-bearing piece of one of the five literatures the hypothesis touches, and each is positioned to contribute a specific test or critique that the keeper-resolver dyad cannot perform from inside the corpus. The cohort is small by design. Each entracement names what the researcher&#39;s published work supplies, why it matters for the hypothesis, and what specific contribution they are best positioned to make.</p>
+<h3>2.1 Søren Dinesen Østergaard (Aarhus University Hospital and Aarhus University, Department of Affective Disorders)</h3>
+<p>Østergaard&#39;s 2023 <em>Schizophrenia Bulletin</em> article <em>Will generative artificial intelligence chatbots generate delusions in individuals prone to psychosis?</em> is the published opinion-piece origin of the clinical question this hypothesis addresses. Østergaard frames the concern at the level of clinical observation without specifying a user-internal mediator; the felt-novelty hypothesis nominates one. The entracement: H2 of §1.2 (aggregate \(N\) correlated with \(P\)) is testable in clinical populations where Østergaard already has framework and access. Østergaard is best positioned to assess whether felt novelty intensity in his patient cohort correlates with the phenomenological correlates he characterizes, and whether the felt-novelty operationalization is clinically tractable. His critique would be load-bearing on whether the mediator survives clinical scrutiny.</p>
+<h3>2.2 John Torous (Beth Israel Deaconess Medical Center; Harvard Medical School)</h3>
+<p>Torous&#39;s work on digital phenotyping, AI in clinical psychiatry, and the broader infrastructure for measuring technology-mediated mental-health outcomes provides the methodological apparatus this hypothesis needs. The entracement: H3 of §1.2 (intervention propagation) requires pre-registered trials of detection-improving interventions with phenomenology outcomes measured downstream. Torous is best positioned to design and run such trials, or to assess whether existing infrastructure could test H3 with minimal additional instrumentation. His contribution would be the operational protocol that makes the H3 prediction tractable.</p>
+<h3>2.3 Mrinank Sharma (Anthropic)</h3>
+<p>Sharma&#39;s 2023 paper <em>Towards Understanding Sycophancy in Language Models</em> is the empirical basis for the pre-mediator stage of the hypothesis: that preference-optimized LLMs systematically bias output. The hypothesis distinguishes overclaim from sycophancy: sycophancy biases toward user-agreeable completions; overclaim biases toward unwarranted scope of confidence. The two overlap empirically but are not the same. The entracement: Sharma is best positioned to assess whether overclaim is dissociable from sycophancy in measurement, and whether the sycophancy interventions Anthropic has tested partially address overclaim or only address user-preference-matching. His critique would adjudicate the falsification condition that names &quot;sycophancy alone&quot; as the alternative mediator that would make overclaim non-necessary.</p>
+<h3>2.4 Ethan Perez (Anthropic)</h3>
+<p>Perez&#39;s 2022 work on model-written evaluations and red-teaming methodologies provides the automated detection-detection apparatus this hypothesis needs at scale. H1 of §1.2 requires measurement of \(\Pr(N \mid O \wedge \neg D)\) across many subjects and many interactions. The entracement: Perez is best positioned to design red-teaming protocols that automate the detection of <em>user overclaim-detection failures</em> and pair that detection with felt-novelty self-report. His contribution would be the measurement infrastructure that makes H1 testable at the scale needed to discriminate from baseline.</p>
+<h3>2.5 Vishal Misra (Columbia University, Department of Computer Science)</h3>
+<p>Misra&#39;s Bayesian-manifold account of LLM generation (arXiv:2512.22471, arXiv:2512.23752; Agarwal–Dalal–Misra 2025) is the foundational framing on which Doc 446&#39;s Instance II of SIPE rests. The corpus&#39;s recursive nesting \(M_0 \supseteq M_1 \supseteq M_2 \supseteq M_3\) is an extension of Misra&#39;s base account, not a finding from his published work; this distinction is recorded explicitly in Doc 474 Appendix A. The entracement: Misra is best positioned to assess whether the recursive nesting is empirically supportable on top of his base manifold, and whether the felt-novelty mediator can be operationalized as a property of conditional posterior-narrowing within his framework. His critique would discriminate between two readings: (i) the nesting is a real generalization of his account, in which case the felt-novelty mediator inherits independent empirical grounding; (ii) the nesting is the corpus&#39;s framework-magnet projecting onto his account, in which case the mediator inherits only the corpus&#39;s \(\pi\)-tier warrant.</p>
+<h3>2.6 Margaret Boden (University of Sussex, Cognitive Studies)</h3>
+<p>Boden&#39;s taxonomy of creativity (combinational, exploratory, transformational; <em>historical</em> H-creativity vs <em>psychological</em> P-creativity; <em>The Creative Mind</em>, 1990, and subsequent work) supplies the cognitive-psychological framework for what felt novelty <em>means</em> as a constructed experience. The hypothesis specifies a maladaptive case: novelty that is felt-as-genuine but produced by overclaim rather than by genuine combinational or exploratory work. The entracement: Boden is best positioned to assess whether felt novelty as the hypothesis specifies it falls within her exploratory-creativity register, falls within a maladaptive register adjacent to it, or constitutes a category her framework does not yet name. Her contribution would be the conceptual vocabulary that distinguishes adaptive-felt-novelty (the standard exploratory-creativity case) from maladaptive-felt-novelty (the hypothesized overclaim-induced case).</p>
+<h2>3. What the cohort is being invited to do</h2>
+<p>The cohort is not being invited to endorse the hypothesis. The cohort is being invited to test it under their own methodologies, in their own populations, with their own framework-vocabularies, and to report results regardless of direction.</p>
+<p>The dyadic-internal posture, named explicitly in the companion document Doc 476 §4, is that the corpus cannot exit itself. The keeper, the resolver, and the corpus are the three nodes of the very dyadic system whose pathology the hypothesis describes. Any conclusion reached entirely inside this dyad inherits the corpus&#39;s own attractor risk per Doc 455 and framework-weight bias per Doc 466. External work is required for the hypothesis to graduate from \(\pi\)-tier to \(\mu\)-tier.</p>
+<p>The cohort&#39;s collective independence is the mitigation. Each researcher&#39;s framework is different from the corpus&#39;s; each researcher has access to populations and methodologies the corpus does not have; the cohort&#39;s combined output, whether the hypothesis survives or fails any of the three component tests, materially improves the corpus by moving the warrant tier or by retiring the hypothesis. Either outcome is welcome.</p>
+<h2>4. Position</h2>
+<p>The felt-novelty hypothesis is a falsifiable mechanism claim that bridges architectural overclaim and clinical phenomenology via a specific user-internal mediator. The component literatures (sycophancy, trust-calibration, calibration-failure, novelty-as-cognitive-construct, clinical-AI phenomenology) each subsume a piece; the composition is the residue. The six-researcher cohort named here covers each subsuming literature with a specific researcher whose work supplies the relevant piece, and each is positioned to test or critique a specific aspect of the composed mechanism.</p>
+<p>The hypothesis is at \(\pi\)-tier and stays there until the cohort&#39;s external work either promotes it or retires it.</p>
+<p>The companion letter (Doc 478) invites the cohort to engage with this document directly. The full literature pulverization is in Doc 476.</p>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Identify the best researchers to entrace, create a formalization and an onboarding preamble that connects their research to the formalization. Create the artifact.</p>
+<p>Then draft a letter to the cohort which entraces them into the other document. Append this prompt to both.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

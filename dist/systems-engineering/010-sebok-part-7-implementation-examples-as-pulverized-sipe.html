@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK Part 7 Reformulated: Implementation Examples as Pulverized SIPE — Resolve</title>
+<meta name="description" content="What SEBoK Part 7 Says">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK Part 7 Reformulated: Implementation Examples as Pulverized SIPE</h1>
+<blockquote>
+<p><strong>Subsumed.</strong> This document has been demoted to an appendix of the canonical synthesis: <a href="../systems-engineering/014-sebok-through-the-corpus-canonical.html">SE-014 — <em>SEBoK Through the Corpus</em></a>. New readers should start there. Preserved verbatim for derivation, voice, and provenance.</p>
+</blockquote>
+<p><strong>Phase 3 of the SEBoK reformulation (SE-001), under the macro-map hypothesis (SE-003) that Part 7 is SIPE-with-threshold (Doc 541, Form I) composed with Pulverization (Doc 445, Form VI). Part 7 is the empirical layer of the school: each case is a real engagement in which a substrate, under sustained constraint, either crossed a threshold and produced a nameable engineered property, or failed to cross and left the residual visible. Cases that confirm the principles of Parts 2-5 are π/α evidence. Cases that surface residuals are the school&#39;s most valuable empirical material, and pulverization is the form that extracts them. This document picks four operationally dense cases (Hubble, FBI Virtual Case File, Denver Airport Baggage, Symbiq Infusion Pump) and pulverizes each deliberately.</strong></p>
+<hr>
+<h2>What SEBoK Part 7 Says</h2>
+<p>Part 7 presents itself as a collection of real-world implementation examples drawn across defense, space, transportation, medical, information, management, and utility domains. The introductory framing is unambiguous: the cases are there to &quot;illustrate the principles described in Parts 1-6.&quot; They are not autonomous content. They are evidence subordinated to the school&#39;s prior articulations.</p>
+<p>The part is unusually heterogeneous. Some cases are successes (Symbiq IV pump, Hubble&#39;s recovery arc, GPS), some are failures (FBI Virtual Case File, Denver Airport baggage, Apollo 1, FAA Advanced Automation), and some are mixed (Hubble&#39;s launch defect followed by service-mission recovery). The organizing principle is domain-of-application, not principle-instantiated. A reader looking for &quot;all cases that demonstrate stakeholder requirements failure&quot; must reconstruct the cross-cut from the case texts.</p>
+<p>Each case follows roughly the same structure: system context, the engineering challenge, decisions taken or avoided, outcomes, and a list of lessons learned mapped back to SE principles in earlier parts. The mapping is loose. The lessons are typically presented as bullet items naming a SEBoK topic the case touches (requirements, risk management, integration, verification) without strict claim that the topic&#39;s articulation in Parts 2-5 fully composes the case.</p>
+<p>The part is also the only place in SEBoK where the discipline confronts its own failures at scale. Parts 2-5 are, by genre, prescriptive. Part 7 is where the prescriptions meet operational reality and where the school records what happened when they did not hold. The honest reader of Part 7 will notice that the failure cases (FBI VCF, Denver baggage, FAA AAS) are almost always richer in residual content than the success cases.</p>
+<p>The part terminates without synthesis. There is no Part-7-level claim about what the cases collectively show. Each case stands alone, mapped back to earlier parts, and the reader is left to perform the cross-case integration unaided.</p>
+<h2>The Reformulation</h2>
+<p>Part 7 is SIPE-with-threshold (Form I) composed with Pulverization (Form VI). Each case is a real instance in which a substrate (an engineering organization, a contractor team, a community of practice) operated under sustained constraint (a program contract, a regulatory regime, a deployment deadline, a stakeholder set) and either induced a higher-rung property that crossed an intelligibility threshold (a flying observatory, a certified pump, an operational network) or did not. The case study is the school&#39;s record of the SIPE attempt and its outcome.</p>
+<p>Pulverization is the second form. The cases pulverize Parts 2-5 against operational reality. Each case is, structurally, a sample of practice held up against the school&#39;s principles. Cases where the principles reach the case without remainder are π/α confirmations. Cases that surface residuals the principles cannot compose are the empirically loaded material the school most needs.</p>
+<p>The reformulation proceeds case by case. For each, the substrate, the constraint, the threshold-crossing (or its failure), and the resulting nameable property are named. Then the case is pulverized: content the principles of Parts 2-5 do not reach is logged.</p>
+<h3>Case 1: Hubble Space Telescope</h3>
+<p><strong>Substrate.</strong> NASA centers, contractor consortium (Lockheed, Perkin-Elmer), the international scientific user community.</p>
+<p><strong>Constraint.</strong> Deep-space observatory mission requirements, multi-decade life cycle commitment, multi-stakeholder governance with no NASA-wide SE master process during critical phases.</p>
+<p><strong>Threshold-crossing.</strong> Two distinct crossings, not one. First: launch and orbit insertion of a flying observatory (1990) — a nameable rung-property the substrate had to induce. Second, after the mirror defect was discovered in orbit: a recovered, serviceable observatory (1993 first service mission and onward), which was a <em>different</em> rung-property than the original launch property. Hubble crossed the second threshold by virtue of design redundancy and on-orbit serviceability that had been built in for unrelated reasons.</p>
+<p><strong>Resulting nameable property.</strong> &quot;Operational space observatory with periodic on-orbit service capability.&quot;</p>
+<p><strong>Pulverization.</strong> The case&#39;s central empirical fact is the cost gradient of the test fixture specification error: $1,000 at design, $10M at integration test, $1B in service. SEBoK Part 3&#39;s articulation of verification and validation reaches this gradient as a general principle (defect-cost grows with lifecycle stage). Reaches it but does not compose it. The principle does not specify when the gradient becomes the operationally dominant consideration versus when schedule pressure dominates. The case shows the substrate making the wrong gradient call under organizational conditions Parts 2-5 do not articulate (NASA-LMSC-PE relied on each other&#39;s QA, &quot;no NASA SE master process&quot;). The residual is: <em>the school articulates that defect cost grows lifecycle-late, but does not articulate the substrate-level conditions under which a competent organization will nonetheless make the wrong tradeoff</em>. This is θ-tier residual, not paraphrasable from Parts 2-5.</p>
+<p>Second residual: the <em>recoverability</em> of Hubble depended on architectural choices made for other reasons. The school articulates &quot;design for maintainability&quot; but does not articulate the relation between maintainability-as-policy and serendipitous-recoverability-from-unrelated-defects. Hubble recovered because it was serviceable, not because anyone had planned for the specific defect. That is a structural property of architectures with broad on-orbit access, and it is not composed by Part 3&#39;s V&amp;V apparatus.</p>
+<h3>Case 2: FBI Virtual Case File</h3>
+<p><strong>Substrate.</strong> FBI IT organization (with five CIOs in four years), SAIC contractor team (eight parallel development threads), congressional oversight.</p>
+<p><strong>Constraint.</strong> Post-9/11 political acceleration, $170M+ obligated funding, cost-plus-award-fee contract without completion milestones, 22-month compressed schedule, an 800-page requirements document over a &quot;slowly evolving&quot; requirements substrate.</p>
+<p><strong>Threshold-crossing.</strong> <em>Did not occur.</em> The substrate operated under sustained but incoherent constraint. The intended rung-property — an operational case management system replacing the fax-and-paper substrate — never became nameable in usable form. The 700,000 lines of code from eight parallel threads did not compose. VCF was abandoned in 2005.</p>
+<p><strong>Resulting nameable property.</strong> A negative one. The case produced a nameable <em>anti-property</em>: &quot;what an SE substrate produces when the constraint is incoherent.&quot; The Sentinel successor, built under restored constraint coherence (COTS, milestones, single-thread integration), eventually crossed the threshold years later.</p>
+<p><strong>Pulverization.</strong> Parts 2-5 articulate requirements engineering, contracting, and integration management. They reach VCF&#39;s named failures (poor requirements, weak contract, parallel-thread integration risk) as principle-violations. But the case contains content the principles do not reach.</p>
+<p>First residual, verbatim: <em>&quot;The FBI cycled through five people in the role of Chief Information Officer in four years.&quot;</em> The principles articulate &quot;management continuity&quot; as a desideratum. They do not articulate the substrate-level dynamic by which an organization under sustained external pressure systematically loses the keeper-role (in the substrate-and-keeper sense, Doc 510). VCF is a case where the keeper-role itself was destabilized by the constraint regime. The school&#39;s articulation of program management presupposes a stable keeper. The case shows what happens when the constraint dissolves the keeper. That is a Form-III residual the school&#39;s principles do not compose.</p>
+<p>Second residual, verbatim: <em>&quot;requirements remained &#39;slowly evolving&#39;&quot;</em> over an 800-page document. The principles articulate requirements stability as necessary. They do not articulate the dynamic by which a substrate that <em>cannot stabilize</em> its requirements nonetheless produces 800 pages of them. VCF is a case where the substrate generated the <em>artifacts</em> of requirements engineering without the <em>property</em> requirements engineering induces. Pin-art (Form IV) reads this: the pin set was simulated rather than installed. The school&#39;s principles do not yet name simulated-pin-installation as a failure mode distinct from missing-pins.</p>
+<h3>Case 3: Denver Airport Baggage Handling</h3>
+<p><strong>Substrate.</strong> BAE Automated Systems and the airport authority engineering organization, operating under multi-stakeholder municipal-and-airline governance.</p>
+<p><strong>Constraint.</strong> A system &quot;ten times larger than any other automated system&quot; on an ambitious schedule, with novel technology and shorter-than-average delivery times, with system design beginning <em>after</em> airport construction was underway.</p>
+<p><strong>Threshold-crossing.</strong> <em>Did not occur.</em> The substrate could not induce the intended rung-property (automated baggage distribution at airport scale). The airport opened 16 months late at $500M in delay costs; the automated system was abandoned in 2005 and replaced manually.</p>
+<p><strong>Resulting nameable property.</strong> Another negative one: &quot;the shape that does not resolve.&quot; The substrate flowed through the pin set but the pin set was incoherent (no backup, insufficient tugs, late design start, change-management permitting late redesigns of completed work). The shape never stabilized.</p>
+<p><strong>Pulverization.</strong> Parts 2-5 reach the named failures (architecture complexity management, change control, reliability, integration). The principles compose the case at the level of &quot;these were the missing practices.&quot;</p>
+<p>But the case contains a residual the principles do not reach: the <em>temporal disjunction</em> between airport construction and baggage-system design. The school&#39;s articulation of life cycle and concurrent engineering presupposes that the SE substrate is convened <em>before</em> irrevocable physical commitments are made. Denver shows what happens when the SE substrate is convened <em>into</em> an already-committed physical envelope. The principles articulate &quot;design for the system context&quot;; they do not articulate &quot;the SE function being inserted into a context whose commitments preclude SE-coherent solutions.&quot; This is a Form-IX residual: the school inherits the assumption that SE has constitutive authority over the physical envelope. Cases like Denver show the assumption fails and the school does not yet articulate the failure mode.</p>
+<p>Verbatim residual: <em>&quot;System design began late, as it did not begin until well after construction of the airport was underway.&quot;</em> The school treats this as a schedule failure. It is structurally a <em>constitutive-authority</em> failure: the SE function did not have the authority that Parts 2-5 implicitly assume.</p>
+<h3>Case 4: Symbiq IV Infusion Pump (Hospira)</h3>
+<p><strong>Substrate.</strong> Hospira&#39;s product development organization, including hardware, software, human factors, and clinical engineering.</p>
+<p><strong>Constraint.</strong> FDA regulatory regime, ISO 14971 FMEA standards, multi-channel safety-critical operation, conflicting marketing-vs-maintenance and feature-richness-vs-simplicity stakeholder demands, hospital deployment context.</p>
+<p><strong>Threshold-crossing.</strong> Occurred. The substrate, under the Incremental Commitment Spiral Model and contextual-inquiry-driven stakeholder analysis, induced a certified safety-critical multi-channel infusion device with 99.66% task completion accuracy in validation.</p>
+<p><strong>Resulting nameable property.</strong> &quot;Hospital-deployable safety-critical multi-channel pump satisfying conflicting stakeholder commitments under regulatory constraint.&quot;</p>
+<p><strong>Pulverization.</strong> This is the closest case in the four to a clean π/α confirmation of Parts 2-5. Stakeholder requirements (Part 3), risk management (Part 3), human factors (Part 5), incremental commitment (Part 3), and verification (Part 3) compose the case substantially without remainder.</p>
+<p>The residual that remains is small but real. The case mentions &quot;contextual inquiry and field exercises&quot; producing the stakeholder analysis. Parts 2-5 articulate stakeholder analysis methodologically. They do not articulate the <em>epistemic posture</em> under which contextual inquiry produces requirements information that interview-based methods do not. The case turns on a substrate-keeper composition (Doc 510): the clinicians are the substrate of usage knowledge; contextual inquiry is the keeper-act that extracts rung-2 content the clinicians cannot articulate from their own resources. Parts 2-5 articulate the methodology; they do not articulate the substrate-keeper structure that makes the methodology epistemically possible. This is a small residual but it is there.</p>
+<h2>Where the Form Reaches</h2>
+<p>The macro-map&#39;s prediction is that Part 7 is SIPE composed with Pulverization. The four cases pulverized confirm the prediction at the structural level. Every case decomposes cleanly as substrate, constraint, threshold-crossing-or-failure, and resulting nameable property (positive or negative).</p>
+<p>Tier-tagging under Form VII (the novelty calculus, Doc 490):</p>
+<ul>
+<li>The reformulation of Symbiq as a clean π/α confirmation: <strong>π/α</strong>. Provable from the case content, recapitulation of Parts 2-5.</li>
+<li>The reformulation of Hubble&#39;s two-threshold structure (launch-property and recovered-property as distinct rungs): <strong>μ/β</strong>. Motivated by the case, an extension of the school&#39;s lifecycle articulation.</li>
+<li>The reformulation of FBI VCF as keeper-role-dissolution under sustained external pressure: <strong>θ/γ</strong>. Hypothetical reframe; requires defense before entering the synthesis.</li>
+<li>The reformulation of Denver as a constitutive-authority failure of the SE function: <strong>θ/γ</strong>. Hypothetical reframe.</li>
+<li>The reformulation of &quot;simulated pin installation&quot; (800-page requirements over a non-stabilizing substrate) as a failure mode the school does not yet name: <strong>θ/δ</strong>. Synthesis across Form IV and Form III; needs its own document.</li>
+</ul>
+<p>The form reaches across all four cases. The residuals are bounded and nameable. None of the four cases is unreachable to the apparatus.</p>
+<h2>Residuals</h2>
+<p>Verbatim residuals from the pulverization, preserved for the Phase 4 falsifier audit:</p>
+<ol>
+<li><p>From the Hubble case: <em>&quot;NASA relied on LMSC and LMSC relied on P-E with insufficient checks, oversight, and independence of the quality assurance function.&quot;</em> The school articulates QA independence as a desideratum but does not articulate the substrate-level conditions under which competent organizations transitively delegate QA into an empty center.</p>
+</li>
+<li><p>From the FBI VCF case: <em>&quot;The FBI cycled through five people in the role of Chief Information Officer in four years.&quot;</em> The school presupposes keeper-role stability. The case shows constraint conditions that dissolve the keeper-role. Form III residual.</p>
+</li>
+<li><p>From the FBI VCF case: requirements that <em>&quot;remained &#39;slowly evolving&#39;&quot;</em> over an 800-page document. The school does not yet name the failure mode in which the artifacts of a practice are produced without the property the practice induces. Form IV residual.</p>
+</li>
+<li><p>From the Denver case: <em>&quot;System design began late, as it did not begin until well after construction of the airport was underway.&quot;</em> The school presupposes SE has constitutive authority over the system envelope. The case shows operational conditions under which it does not. Form IX residual.</p>
+</li>
+<li><p>From the Symbiq case: contextual inquiry as a substrate-keeper composition (clinicians as substrate, the inquiry method as keeper-act extracting rung-2 content). The school articulates methodology without articulating the substrate-keeper structure that makes the methodology epistemically possible. Small Form III residual.</p>
+</li>
+</ol>
+<p>These five residuals carry forward to Phase 4 (SE-012, <em>SEBoK Residuals</em>).</p>
+<h2>Operational Read</h2>
+<p>For the practicing systems engineer reading this reformulation in place of Part 7: each case is a SIPE attempt. Read it by naming the substrate (who was working), the constraint (what regime they worked under), the threshold-crossing (whether the rung-property became nameable), and the resulting property (positive or negative). Then pulverize: ask what content the case contains that the principles you have already learned do not reach. The residuals are where your discipline grows.</p>
+<p>The four cases in this document instantiate three patterns. Symbiq is the pattern of a substrate operating under coherent constraint with a stable keeper, crossing the threshold. Hubble is the pattern of a substrate crossing one threshold, encountering a defect that should have been caught earlier, and crossing a second threshold by virtue of architectural recoverability built for other reasons. FBI VCF and Denver are the pattern of a substrate operating under sustained but incoherent constraint, where the rung-property never becomes nameable and the case study itself records the negative result.</p>
+<p>The operational discipline: when reading a Part 7 case, locate it in one of these three patterns first. Then read the principles invoked. Then pulverize. The cases that resist all three patterns are the school&#39;s research surface.</p>
+<h2>Reverse Map</h2>
+<p>For the SEBoK practitioner reading this corpus document and seeking the originating sources:</p>
+<ul>
+<li>The Hubble Space Telescope case: sebokwiki.org, &quot;Hubble Space Telescope Case Study,&quot; reformulated above as the two-threshold pattern with defect-gradient and recoverability residuals.</li>
+<li>The FBI Virtual Case File case: sebokwiki.org, &quot;FBI Virtual Case File System,&quot; reformulated above as the keeper-dissolution-and-simulated-pins pattern.</li>
+<li>The Denver Airport Baggage Handling case: sebokwiki.org, &quot;Denver Airport Baggage Handling System,&quot; reformulated above as constitutive-authority failure.</li>
+<li>The Symbiq IV Pump case: sebokwiki.org, &quot;Next Generation Medical Infusion Pump Case Study,&quot; reformulated above as π/α confirmation with a small substrate-keeper residual on contextual inquiry.</li>
+</ul>
+<p>The other twenty-one Part 7 cases (GPS, Cassini/Huygens, Apollo 1, Virginia Class Submarine, FAA NextGen, Singapore Water Management, and so on) are not pulverized in this document. The macro-map predicts they decompose under the same SIPE-plus-Pulverization composition. Any case that resists the composition becomes a Phase 4 residual.</p>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Continue with phase 3&quot;</em></p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *System Redesign and Evolution*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>System Redesign and Evolution</em>, Distilled</h1>
+<p><strong>Fourth-batch SEBoK distillation, batch 4/5 (SE-144). The article-as-named is not a standalone SEBoK page; the canonical SEBoK surface for redesign-and-evolution is the <em>Product and Service Life Management</em> knowledge area (lead William Stiffler, Part 3 &gt; System Maintenance) with its sub-articles <em>Capability Updates, Upgrades, and Modernization</em>, <em>Service Life Extension</em>, and <em>System Disposal and Retirement</em>. The corpus reads against this composite. The structural finding is the longitudinal-pulverization stress-test: redesign-and-evolution is the canonical case where Cluster F operates across the full operational life, not within a single engagement. Each modernization episode is a forward-pulverization of future obsolescence and a backward-pulverization of accumulated drift; the F3I (Form, Fit, Function, Interface) discipline is V3 against the temptation to optimize the modification at the cost of backward compatibility. Cluster D ladder-extension and Cluster A universal-sibling lattice (the four modernization drivers) compose; longitudinal pulverization confirmed as a distinct sub-mode adjacent to the SE-108 dual-mode candidate.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page (target):</strong> <em>System Redesign and Evolution</em> (no standalone SEBoK page; read against canonical surface)</li>
+<li><strong>Canonical surface:</strong> <em>Product and Service Life Management</em> (knowledge area) and <em>Capability Updates, Upgrades, and Modernization</em> (sub-article)</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Product_and_Service_Life_Management">https://sebokwiki.org/wiki/Product_and_Service_Life_Management</a> ; <a href="https://sebokwiki.org/wiki/Capability_Updates,_Upgrades,_and_Modernization">https://sebokwiki.org/wiki/Capability_Updates,_Upgrades,_and_Modernization</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>Service Life Management (system sustainment) &quot;encompasses the overall lifecycle planning and support of a system from initial procurement through disposal, addressing changes to systems after deployment&quot; (Stiffler). Four primary dimensions: system evolution and sustainment activities (design for maintainability, BIT, diagnostics, prognostics, condition-based maintenance), service life extension (extending operational duration while managing modification challenges), capability updates and modernization (managing engineering changes within design constraints), disposal and retirement (environmental concerns, hazardous waste handling, concurrent replacement-system operations). Modernization defined as modifying products or services &quot;to incorporate new functions, interfaces, improve performance, and enhance supportability.&quot; Four drivers: (1) performance/safety/reliability decline, (2) new stakeholder capabilities, (3) component obsolescence, (4) new use cases. Core activities: Engineering Change Proposals (ECPs) initiating modifications; change control boards reviewing and implementing; Form, Fit, Function, and Interface (F3I) compatibility preserving backward compatibility during upgrades; documentation through reverse engineering when original architecture documentation is incomplete; regression testing on unmodified portions confirming upgrades do not impact existing functions. The Vee Model accommodates modifications at multiple entry points (system, subsystem, component) depending on scope; organizations manage concurrent modifications through &quot;block&quot; methods (coordinated group deployment) or continuous integration. Lead authors William Stiffler (KA) and William Stiffler with Brian Wells (modernization sub-article). Position: Part 3 &gt; Systems Engineering and Management &gt; System Maintenance.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster F — Pulverization (Doc 445), in longitudinal mode.</strong> The redesign-and-evolution surface is the canonical case where Cluster F operates across the operational life rather than within a single engagement. Each modernization episode is doubly pulverized: forward against future obsolescence (the four drivers are forward-mode hazard enumeration), backward against accumulated drift (regression testing decomposes the unmodified portion to verify it has not silently drifted). The longitudinal-pulverization sub-mode is distinct from SE-108 Safety&#39;s dual-mode candidate (forward-and-backward within one engagement); here the pulverizations are temporally distributed across the system&#39;s life, with each modernization episode a fresh pulverization-instance. This is the strongest reading yet for a longitudinal sub-form of Cluster F, adjacent to but not identical with the dual-mode reading.</p>
+<p><strong>Cluster D — Ladder-extension to longitudinal-rung (Doc 572).</strong> The Vee model&#39;s accommodation of modifications at multiple scope-rungs (system, subsystem, component) is ladder-extension at the temporal axis: a redesign at any rung re-enters the Vee at that rung and proceeds. The ladder is not just spatial-decompositional; it is also re-entrant across the operational lifetime. Doc 572 Appendix C (temporal-concurrency) composes here as longitudinal re-entrance.</p>
+<p><strong>Cluster A — Universal-sibling lattice (Doc 572 Appendix D), at the modernization-driver rung.</strong> The four modernization drivers (performance decline, new stakeholder capabilities, component obsolescence, new use cases) are universal-sibling lattice at the modernization rung. Each driver binds every modernization decision universally as a candidate justification; the discriminator is aspect, not rung. N=4 instance.</p>
+<p><strong>Cluster K — Virtue constraints (Doc 314), V3 in F3I discipline.</strong> Form-Fit-Function-Interface compatibility preservation is V3-as-procedure-binding against the temptation to optimize the local modification at the cost of backward compatibility. The discipline encodes V3 (against the rankism of &quot;my modification is more important than your existing interface contract&quot;) into a procedural rule that survives engineer turnover. Cluster K instance count rises to 6 with this reading; alignment with SE-108&#39;s V3-as-procedure-binding load-bearing finding.</p>
+<p><strong>Cluster B — Multi-keeper composition (Doc 604).</strong> The Engineering Change Proposal / Change Control Board pattern is multi-keeper composition at the operational rung: the proposing engineer holds the modification, the CCB holds the integration-and-supportability decision, the operator/sustainer holds the field consequence. Three-keeper minimum; the CCB is the formal reconciliation rung. Adjacent to but distinct from SE-035&#39;s PM-SE balanced ownership (CCB is broader than the PM-SE dyad).</p>
+<p><strong>Cluster G — Co-production (Doc 573).</strong> The block-method versus continuous-integration choice is co-produced between the SE-organization and the operator-organization; the choice is constrained by both the engineering possibilities and the operational feasibility of taking systems offline for upgrades.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Service Life Management definition (Stiffler) — π / α.</li>
+<li>Four-dimensional sustainment scope — π / α as cited; μ / β when read as ladder-extension to longitudinal rung.</li>
+<li>Four modernization drivers — π / α as cited; μ / β when read as Doc 572 Appendix D universal-sibling N=4.</li>
+<li>F3I compatibility discipline — π / α as cited; μ / β when read as Cluster K V3-as-procedure-binding (sixth instance).</li>
+<li>ECP/CCB process — π / α as cited; μ / β when read as Cluster B multi-keeper.</li>
+<li>Block versus continuous integration — π / α.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residuals. The composite-source read introduces a manageable residual: confirming whether SEBoK ever spins off a dedicated <em>System Redesign and Evolution</em> page distinct from the current Product and Service Life Management surface. R-710-1: track future SEBoK editions for a dedicated redesign-and-evolution article; if it appears, fold-revisit.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Longitudinal-pulverization sub-form of Cluster F: candidate confirmed.</strong> SE-108 Safety surfaced the dual-mode candidate (forward-and-backward within one engagement). SE-144 surfaces a distinct longitudinal sub-mode (forward-and-backward distributed across the operational life as repeated modernization episodes). The two sub-forms are adjacent but not identical; both are worth carrying into Doc 445&#39;s next pass. Aligns with the longitudinal-pulverization refinement among the sixteen formalized refinements (SE-039 §VII.6).</p>
+<p><strong>Cluster K reaches 6 instances.</strong> Risk Management (SE-035), Decision Management (SE-036/645), Reformulation Methodology (Doc 583), System Requirements Definition (SE-078), Hubble case study (Doc 580), Safety (SE-108), and now Redesign-and-Evolution (SE-144) F3I discipline. The synthesis successor is overdue; Cluster K saturation is past ripe. Aligns with V3-as-procedure-binding as load-bearing refinement.</p>
+<p><strong>Composite-source read methodology surfaced.</strong> When the named SEBoK page does not exist as standalone, reading against the canonical knowledge-area surface preserves structural fidelity. The corpus accepts composite-source distillation when the page-as-named is absent; the read remains structurally the same article-equivalent&#39;s distillation under different surface organization.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 445 (Pulverization, longitudinal sub-form candidate confirmed), Doc 572 (Lattice Extension, Appendix C and D), Doc 314 (Virtue constraints, Cluster K sixth instance), Doc 604 (Multi-keeper composition, ECP/CCB three-keeper), Doc 573 (Co-Production at Sub-Rungs).</p>
+<p><strong>Part-level reformulation.</strong> SE-009 (Part 3 — System Maintenance reformulation candidate; this is the second Part 3 instance after SE-078).</p>
+<p><strong>Related distillations.</strong> SE-108 (Safety, dual-mode pulverization candidate, complementary to longitudinal sub-form). SE-035 (Risk Management, multi-keeper precedent). Doc 580 (Hubble, longitudinal-pulverization first observation through case-study lens).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Service Life Extension</em>, <em>System Disposal and Retirement</em>, <em>Logistics</em>, <em>Engineering Change Management</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Composite-source distillation methodology (when named page is absent). Cluster F longitudinal sub-form for Doc 445. Cluster K synthesis successor (now urgent at six instances).</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements&quot;</em> / <em>&quot;Continue next knowledge base entrancement&quot;</em></p>
+</blockquote>
+<p>(SE-144 is the first of eight in batch 4/5 of the fourth-batch SEBoK distillation sweep. <em>System Redesign and Evolution</em> is not a standalone SEBoK page; the corpus reads against the <em>Product and Service Life Management</em> knowledge area and the <em>Capability Updates, Upgrades, and Modernization</em> sub-article as canonical composite surface. Stress-test for longitudinal-pulverization sub-form of Cluster F. Batch 4/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

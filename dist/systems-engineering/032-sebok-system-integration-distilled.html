@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *System Integration*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>System Integration</em>, Distilled</h1>
+<p><strong>Top-20 distillation #14. <em>System Integration</em> is the SEBoK page that operationalizes SIPE at the composition rung. The act of integration is canonical SIPE: implemented elements (substrate) under integration constraint produce the integrated SoI&#39;s emergent capability (threshold-crossing into nameability). Six integration strategies (Big-Bang / Incremental / Top-Down / Bottom-Up / Subsets / Criterion-Driven) are alternative pin-sets at the integration rung; Doc 572 Appendix A&#39;s development-approach worked example pattern applies. The integration-vs-assembly distinction is a structural distinction the corpus apparatus reaches via the substrate-keeper composition. Five corpus forms compose; no new residuals.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> System Integration</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Integration">https://sebokwiki.org/wiki/System_Integration</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>System Integration &quot;involves taking delivery of the implemented system elements which compose the system-of-interest (SoI), assembling these implemented elements together, and performing verification and validation actions in the course of the assembly.&quot; Distinguished from production-line assembly: integration encompasses both assembly and V&V; production-line assembly is sequenced for manufacturing efficiency rather than developmental verification. Six integration strategies (often combined): Big-Bang/Global, Incremental, Top-Down, Bottom-Up, Subsets, Criterion-Driven. Process: establish plans → obtain means → take delivery with config checks → assemble per procedures → verify each aggregate. Standards: ISO/IEC 15288:2015. Position: Part 3 SE &amp; Management, System Realization KA, between System Implementation and System Verification in the Vee bottom-up branch.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form I — SIPE with Threshold (Doc 541).</strong> Integration is canonical SIPE at the composition rung. The substrate is the set of implemented system elements (each with its own internal coherence). The constraint is the integration architecture (interface specifications, assembly procedures, expected aggregate behavior). The threshold-crossing is the moment the integrated aggregate&#39;s capability becomes nameable as the SoI&#39;s intended function — the system &quot;operates as one&quot; rather than as a collection. Doc 541&#39;s apparatus reads each integration step as a small SIPE producing a slightly larger nameable system, with the full SoI emerging at the final assembly threshold.</p>
+<p><strong>Form III (extension) — Lattice Extension of the Ladder (Doc 572), with Appendix A pin-set siblings.</strong> The six integration strategies are alternative pin-sets at the integration rung. Doc 572 Appendix A&#39;s development-approach worked example pattern applies precisely: an engagement may use <em>Top-Down at the architectural rung, Bottom-Up at the implementation rung, Criterion-Driven for risk-critical components</em>, with the strategies sibling-composing via rung-of-application discrimination. The corpus reads SEBoK&#39;s &quot;often combined&quot; framing as direct evidence for the lattice composition.</p>
+<p><strong>Form III — Substrate-and-Keeper Composition (Doc 510).</strong> The integration-vs-assembly distinction is a substrate-keeper composition distinction. Production-line assembly is keeper-supplied procedure operating on substrate-output (the elements produced by manufacturing); the keeper&#39;s discipline at this rung is throughput optimization. Integration is keeper-supplied procedure operating on substrate-output where the keeper&#39;s discipline is verification and the substrate&#39;s outputs are tested for fitness. SEBoK names them as different activities; the corpus reads them as substrate-keeper compositions with different keeper-side disciplines. Manufacturing keeper optimizes; engineering integration keeper verifies.</p>
+<p><strong>Form VI — Pulverization (Doc 445), with Refinement A paired pulverization at integration.</strong> &quot;V&amp;V actions in the course of the assembly&quot; is paired pulverization in real time. Each integration step is followed by both verification (does the aggregate match its design references? — $T_I$) and validation (does the aggregate accomplish its intended sub-function? — $T_E$). Doc 445 Refinement A&#39;s notation $T = \langle T_I, T_E \rangle$ applies at every aggregate. Integration is pulverization-during-composition, distinct from end-of-life-cycle V&amp;V (which pulverizes the completed system).</p>
+<p><strong>Form IV — Pin-Art Model (Doc 270).</strong> The integration plan, integration procedures, integration tools, integration aggregates compose pin-art at the integration activity rung. Each integration action is a pin; the plan is the pin-set sequence; the substrate (the elements being assembled) flows through the pin-set and the resulting aggregates are the shape. Pin-art at this rung is recursive: pin-art applied to the act of integration is itself a pin-art instance.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Integration definition — π / α (well-cited; 15288).</li>
+<li>Integration-vs-assembly distinction — π / α (well-warranted by SE practice and INCOSE).</li>
+<li>Six integration strategies — π / α as cited; μ / β under corpus when read as Doc 572 Appendix A pin-set siblings.</li>
+<li>&quot;V&amp;V actions in the course of the assembly&quot; — π / α; μ / β under corpus when read as Doc 445 Refinement A paired pulverization at every aggregate.</li>
+<li>Process steps (plan / means / delivery / assembly / verify) — π / α.</li>
+<li>&quot;Often combined&quot; strategy framing — π / α; μ / β under corpus when read as lattice composition with rung-of-application discrimination.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No residuals against the apparatus. The page composes cleanly with multiple confirmations of recently-landed refinements:</p>
+<ul>
+<li>Doc 572 Appendix A pin-set sibling pattern (six integration strategies).</li>
+<li>Doc 445 Refinement A paired pulverization (integration-time V&amp;V).</li>
+<li>Doc 510 substrate-keeper composition with two distinct keeper disciplines (integration vs. assembly).</li>
+</ul>
+<h2>VI. Provisional Refinements</h2>
+<p>No new candidates unique to this distillation. The page is structurally clean and provides confirmation rather than refinement surface.</p>
+<p>The integration-vs-assembly distinction is itself an interesting structural pattern that may warrant naming separately at some point — &quot;same substrate-keeper structure, different keeper disciplines&quot; — but the cluster strength (one instance) does not yet warrant a refinement. Defer until a second case independent of integration/assembly supplies the second instance.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 541 (SIPE with Threshold), Doc 572 (Lattice Extension, Appendix A pin-set siblings), Doc 510 (Substrate-and-Keeper), Doc 445 (Pulverization, Refinement A paired anchors), Doc 270 (Pin-Art).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management).</p>
+<p><strong>Related distillations.</strong> SE-031 (System Architecture Design Definition — upstream; integration realizes the architecture). SE-025 (System Verification — paired in V&amp;V). SE-029 (System Validation — paired in V&amp;V).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>System Implementation</em>, <em>System Verification</em>, <em>System Validation</em>, <em>System Transition</em>.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Continue with next 10&quot;</em></p>
+</blockquote>
+<p>(SE-032 is the fourteenth of twenty. <em>System Integration</em> was selected as the canonical SIPE-at-composition-rung instance and as a stress test for whether Doc 572 Appendix A&#39;s pin-set siblings reach SE realization practice. It does. No new residuals.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

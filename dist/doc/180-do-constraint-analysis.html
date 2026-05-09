@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Distributed Objects Constraint Analysis: From Fielding Through React — Resolve</title>
+<meta name="description" content="Part 1: Fielding&#39;s DO Style (Chapter 3)">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 180</p><!-- chronological_ordinal: 14 -->
+<h1>Distributed Objects Constraint Analysis: From Fielding Through React</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This research document traces the architectural lineage from Roy Fielding&#39;s formal description of Distributed Objects (where independent components interact as peers with hidden state) through React&#39;s realization of that pattern. It identifies 16 constraints in React&#39;s architecture across six levels -- from basic component encapsulation through reconciliation, fiber scheduling, hooks, and purity rules -- and classifies each as essential (the architecture breaks without it), necessarily contingent (the need is essential but the mechanism could vary), or truly contingent (an implementation detail with no architectural weight). This classification is the analytical foundation for the DO Seed experiment, where the ten essential constraints were encoded in prose and a conformant 379-line runtime was derived from them.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 180</strong></p>
+<p><strong>Research document for the DO Seed project</strong>
+<strong>April 2026</strong></p>
+<hr>
+<h2>Part 1: Fielding&#39;s DO Style (Chapter 3)</h2>
+<p>Fielding defines DO as a system organized &quot;as a set of components interacting as peers.&quot; An object encapsulates &quot;private state information or data, a set of associated operations or procedures that manipulate the data, and possibly a thread of control, so that collectively they can be considered a single unit.&quot;</p>
+<h3>Fielding&#39;s DO Constraints</h3>
+<ol>
+<li><strong>State encapsulation</strong> -- all state is hidden inside objects, accessible only through defined operations</li>
+<li><strong>Identity coupling</strong> -- objects must know the identities of other objects to interact</li>
+<li><strong>Custom per-object interfaces</strong> -- each object defines its own operations (no uniform interface)</li>
+<li><strong>Peer interaction model</strong> -- objects interact as peers rather than through hierarchical client-server separation</li>
+</ol>
+<h3>Properties DO Induces (Fielding&#39;s Evaluation)</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Rating</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Efficiency</td>
+<td>+</td>
+<td>Local computation within an object can be efficient</td>
+</tr>
+<tr>
+<td>Evolvability</td>
+<td>+</td>
+<td>Internal changes don&#39;t break external interface</td>
+</tr>
+<tr>
+<td>Extensibility</td>
+<td>+</td>
+<td>New operations can be added</td>
+</tr>
+<tr>
+<td>Configurability</td>
+<td>+</td>
+<td>Objects can be reconfigured at runtime</td>
+</tr>
+<tr>
+<td>Reusability</td>
+<td>+</td>
+<td>Objects can be reused across systems</td>
+</tr>
+</tbody></table>
+<h3>Properties DO Fails to Induce</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Rating</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Network Performance</td>
+<td>-</td>
+<td>Fine-grained invocations degrade throughput</td>
+</tr>
+<tr>
+<td>User-Perceived Performance</td>
+<td>-</td>
+<td>Chatty interactions</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>-</td>
+<td>Fine-grained coupling impedes scaling</td>
+</tr>
+<tr>
+<td>Simplicity</td>
+<td>-</td>
+<td>Custom interfaces per object</td>
+</tr>
+<tr>
+<td>Visibility</td>
+<td>-</td>
+<td>Hidden state prevents system-wide observation</td>
+</tr>
+<tr>
+<td>Portability</td>
+<td>-</td>
+<td>Tied to specific runtime</td>
+</tr>
+<tr>
+<td>Reliability</td>
+<td>-</td>
+<td>Action chains create cascading failures</td>
+</tr>
+</tbody></table>
+<p>Fielding&#39;s verdict: &quot;they fare poorly when compared to most other network-based architectural styles.&quot;</p>
+<hr>
+<h2>Part 2: React as DO Realization</h2>
+<p>React exhibits every DO characteristic Fielding identified:</p>
+<ul>
+<li><strong>Encapsulation</strong>: useState/useReducer. State hidden; access only through render output and callbacks.</li>
+<li><strong>Identity coupling</strong>: Components reference each other by import paths. Renaming breaks all importers.</li>
+<li><strong>Custom per-object interfaces</strong>: Each component has unique props. No uniform interface.</li>
+<li><strong>Action chains</strong>: State change -&gt; re-render -&gt; child effects -&gt; further state changes -&gt; further re-renders.</li>
+<li><strong>Distributed state</strong>: State distributed across component tree. DevTools exist because visibility is poor by default.</li>
+</ul>
+<p>React inherits DO&#39;s negative properties and compensates:</p>
+<ul>
+<li>Poor visibility -&gt; React DevTools</li>
+<li>Poor network performance -&gt; SSR/SSG/ISR</li>
+<li>Poor reliability -&gt; Error Boundaries</li>
+<li>Poor scalability -&gt; Code splitting, lazy loading</li>
+</ul>
+<hr>
+<h2>Part 3: React&#39;s Architectural Constraints (16 Identified)</h2>
+<h3>Level 1: DO Constraints (inherited)</h3>
+<p><strong>C1. Component as unit of encapsulation.</strong>
+Every UI element is a component. Components encapsulate state, rendering logic, and lifecycle.
+<em>Induced property:</em> Composability.</p>
+<h3>Level 2: React&#39;s Narrowing of DO</h3>
+<p><strong>C2. Unidirectional data flow.</strong>
+Data flows downward via props. Events flow upward via callbacks. No bidirectional binding.
+<em>Induced property:</em> Predictability -- same props, same output.</p>
+<p><strong>C3. Declarative rendering (state-to-UI mapping).</strong>
+Components declare what the UI should look like for a given state, not how to transition.
+<em>Induced property:</em> Developer reasons about states, not transitions.</p>
+<p><strong>C4. State as sole trigger for re-render.</strong>
+State changes are the sole mechanism triggering re-rendering of a component and its subtree.
+<em>Induced property:</em> Deterministic render cycle given state.</p>
+<h3>Level 3: Reconciliation Constraints</h3>
+<p><strong>C5. Virtual DOM reconciliation.</strong>
+Runtime maintains a virtual DOM. On state change, computes new virtual tree, diffs against previous, applies minimal mutations.
+<em>Induced property:</em> Performance through batched, minimal mutations.</p>
+<p>Two heuristic sub-constraints:</p>
+<ul>
+<li><strong>C5a. Type stability:</strong> Different component types generate different trees. React replaces entire subtree on type change.</li>
+<li><strong>C5b. Key uniqueness:</strong> Within sibling lists, keys must be stable, predictable, and unique.</li>
+</ul>
+<p>Violating C5a/C5b produces: wrong element reuse, broken state, unnecessary remounts.</p>
+<p><strong>C6. Separation of reconciliation from rendering.</strong>
+Reconciliation (computing diffs) is architecturally separated from rendering (applying to host environment).
+<em>Induced property:</em> Same reconciler targets multiple hosts (DOM, Native, three.js, etc.).</p>
+<p><strong>C7. Singular reconciliation context.</strong>
+The architecture assumes one virtual tree within one JavaScript runtime.
+<em>Consequence:</em> Breaks in micro-frontend and distributed UI scenarios.</p>
+<h3>Level 4: Fiber/Scheduling Constraints</h3>
+<p><strong>C8. Interruptible rendering.</strong>
+Rendering is broken into discrete fibers. Work is pausable, resumable, and abandonable without corrupting state.
+<em>Induced property:</em> Responsiveness under load.</p>
+<p><strong>C9. Two-phase commit.</strong></p>
+<ul>
+<li>Render/reconciliation phase: pure computation, interruptible, no side effects, may execute multiple times.</li>
+<li>Commit phase: imperative mutation, NOT interruptible, runs to completion atomically.</li>
+</ul>
+<p>Violating this produces visual tearing.</p>
+<p><strong>C10. Priority-based cooperative scheduling.</strong>
+Higher-priority updates (user input) preempt lower-priority (data fetching). React maintains control over when component functions execute (pull-based).
+<em>Induced property:</em> UI remains interactive during expensive work.</p>
+<p><strong>C11. Dual-fiber invariant.</strong>
+At most two fibers per component: current (flushed) and work-in-progress. Bidirectional alternate references. Only completed WIP trees may be committed.
+<em>Consequence of violation:</em> Memory leaks or state inconsistency.</p>
+<p><strong>C12. State consistency under concurrency (no tearing).</strong>
+All components in a render pass must see the same consistent snapshot of external data. If store mutates during yield, React falls back to synchronous re-execution.
+<em>Induced property:</em> Consistent UI -- no component sees stale data while another sees fresh.</p>
+<h3>Level 5: Hook Constraints</h3>
+<p><strong>C13. Hook state stored as positional linked list.</strong>
+Hooks are stored in a singly linked list traversed by call position. No name-based lookup.</p>
+<p>Sub-constraints:</p>
+<ul>
+<li><strong>C13a. Hooks must be called in the same order on every render.</strong> Conditional calls corrupt positional mapping.</li>
+<li><strong>C13b. Hooks may only be called from React functions</strong> (components or other hooks).</li>
+<li><strong>C13c. Hooks must be called at top level, before any early returns.</strong></li>
+</ul>
+<p><em>Design rationale:</em> Ordered list avoids mapping overhead, increases reconciliation efficiency. The constraint is the price.</p>
+<h3>Level 6: Purity Constraints</h3>
+<p><strong>C14. Component render functions must be idempotent.</strong>
+Same inputs -&gt; same output, always. This is mandatory, not a style preference.
+<em>Induced property:</em> Concurrent rendering, batched updates, and interruptible scheduling are safe.</p>
+<p><strong>C15. Props and state are immutable snapshots.</strong>
+Cannot be mutated directly. Props frozen at render time. State updated only through setter functions.
+<em>Induced property:</em> Memoization and dependency tracking work correctly.</p>
+<p><strong>C16. Side effects excluded from render phase.</strong>
+No DOM mutation, no network I/O, no non-deterministic functions during render. Side effects declared via hooks (useEffect) that run after commit.
+<em>Induced property:</em> Render phase is safe to pause, resume, or discard.</p>
+<hr>
+<h2>Part 4: Essential vs. Contingent</h2>
+<p>The critical question for the seed: which constraints are essential to the DO-as-realized-in-React architecture, and which are contingent implementation choices?</p>
+<h3>Likely Essential (the architecture breaks without them)</h3>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Why Essential</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1 Component encapsulation</td>
+<td>Defines the unit of composition</td>
+</tr>
+<tr>
+<td>C2 Unidirectional data flow</td>
+<td>Predictability depends on it</td>
+</tr>
+<tr>
+<td>C3 Declarative rendering</td>
+<td>The developer mental model depends on it</td>
+</tr>
+<tr>
+<td>C4 State as re-render trigger</td>
+<td>The reconciliation model depends on it</td>
+</tr>
+<tr>
+<td>C5 Virtual DOM reconciliation</td>
+<td>Performance model depends on it</td>
+</tr>
+<tr>
+<td>C9 Two-phase commit</td>
+<td>Correctness of DOM updates depends on it</td>
+</tr>
+<tr>
+<td>C13a Hook call ordering</td>
+<td>State association depends on it</td>
+</tr>
+<tr>
+<td>C14 Render purity</td>
+<td>Concurrent safety depends on it</td>
+</tr>
+<tr>
+<td>C15 Immutable props/state</td>
+<td>Memoization depends on it</td>
+</tr>
+<tr>
+<td>C16 No side effects in render</td>
+<td>Interruptibility depends on it</td>
+</tr>
+</tbody></table>
+<h3>Necessary Contingencies (the need is essential, the mechanism is contingent)</h3>
+<p>The seed must state these as abstract requirements, not as specific mechanisms.</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>The Essential Need</th>
+<th>React&#39;s Contingent Mechanism</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C5a Type stability heuristic</td>
+<td>The reconciler needs a rule for when to diff vs. replace a subtree</td>
+<td>React replaces on type change. Another reconciler could use structural comparison.</td>
+</tr>
+<tr>
+<td>C5b Key uniqueness</td>
+<td>List reconciliation needs an identity mechanism for elements</td>
+<td>React uses developer-supplied string keys. Another reconciler could use positional hashing, content fingerprinting, or structural identity.</td>
+</tr>
+<tr>
+<td>C12 No-tearing invariant</td>
+<td>Concurrent rendering needs a consistency guarantee for shared data</td>
+<td>React falls back to synchronous re-execution via useSyncExternalStore. Another runtime could use snapshot isolation, MVCC, or transactional reads.</td>
+</tr>
+</tbody></table>
+<h3>Important Contingencies (the architecture works without them but significantly degrades)</h3>
+<p>The seed should include these as recommended constraints — properties that a mature realization should exhibit but that a minimal conformant runtime may omit.</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>What Degrades Without It</th>
+<th>Why Not Essential</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C6 Reconciler/renderer separation</td>
+<td>Cannot target multiple host environments (DOM, Native, canvas)</td>
+<td>A single-target runtime works without separation</td>
+</tr>
+<tr>
+<td>C7 Singular reconciliation context</td>
+<td>Cannot compose multiple independent React trees on one page</td>
+<td>Single-tree applications work. The limitation surfaces in micro-frontends.</td>
+</tr>
+<tr>
+<td>C8 Interruptible rendering</td>
+<td>UI blocks during expensive renders. Responsiveness degrades under load.</td>
+<td>React pre-Fiber (v15 and earlier) was fully synchronous and functionally correct. Interruptibility is an optimization, not a correctness requirement.</td>
+</tr>
+<tr>
+<td>C10 Priority scheduling</td>
+<td>All updates treated equally. User input competes with background work.</td>
+<td>Synchronous rendering treats all work at the same priority and still produces correct output.</td>
+</tr>
+</tbody></table>
+<h3>Truly Contingent (implementation details with no architectural weight)</h3>
+<p>The seed should omit these entirely. They are artifacts of React&#39;s specific implementation, not constraints of the DO style or even of React&#39;s architectural model.</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Why It&#39;s Implementation, Not Architecture</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C11 Dual-fiber invariant</td>
+<td>How Fiber specifically bookkeeps work-in-progress. Another concurrent reconciler could use immutable snapshots, copy-on-write trees, or transactional state. The &quot;two fibers with alternate references&quot; is a data structure choice.</td>
+</tr>
+<tr>
+<td>C13b/c Hook location restrictions</td>
+<td>Consequences of storing hooks as a positional linked list. A name-based or map-based hook store would not require these restrictions. The ordering constraint (C13a) is essential; the location restrictions are artifacts of the storage mechanism.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Part 5: Properties REST Induces That React Abandons</h2>
+<table>
+<thead>
+<tr>
+<th>REST Property</th>
+<th>How React Abandons It</th>
+<th>Compensating Technology</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Complete representations</td>
+<td>Empty HTML shell + JS bundle</td>
+<td>SSR</td>
+</tr>
+<tr>
+<td>Statelessness</td>
+<td>Component-local state</td>
+<td>State management libraries</td>
+</tr>
+<tr>
+<td>Uniform interface</td>
+<td>Custom props per component</td>
+<td>TypeScript/PropTypes</td>
+</tr>
+<tr>
+<td>Server-mediated navigation</td>
+<td>Client-side routing</td>
+<td>React Router</td>
+</tr>
+<tr>
+<td>Visibility</td>
+<td>State hidden in component tree</td>
+<td>DevTools</td>
+</tr>
+<tr>
+<td>Cacheability</td>
+<td>Client renders dynamically</td>
+<td>ISR/SSG</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Sources</h2>
+<ul>
+<li>Fielding, R.T. (2000). Chapter 3, Section 3.6: Distributed Objects.</li>
+<li>Fielding, R.T. (2000). Chapter 5, Sections 5.2.1, 5.4.</li>
+<li>Clark, A. (2016). React Fiber Architecture. github.com/acdlite/react-fiber-architecture</li>
+<li>Markbage, S. (2019). The Rules of React. gist.github.com/sebmarkbage</li>
+<li>React Documentation: Components and Hooks Must Be Pure. react.dev/reference/rules</li>
+<li>React Design Principles. legacy.reactjs.org/docs/design-principles.html</li>
+<li>Journal of Information Systems Engineering and Management (2025). React&#39;s Architectural Limitations in Distributed UI Systems.</li>
+</ul>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

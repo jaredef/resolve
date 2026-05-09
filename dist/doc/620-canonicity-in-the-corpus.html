@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canonicity in the Corpus — Resolve</title>
+<meta name="description" content="A Recovery of the Role-vs-Warrant Disambiguation Discipline, Applied to the Corpus&#39;s Banner Practice, with Operational Action Items">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-01 · Doc 620</p><h1>Canonicity in the Corpus</h1>
+<h2>A Recovery of the Role-vs-Warrant Disambiguation Discipline, Applied to the Corpus&#39;s Banner Practice, with Operational Action Items</h2>
+<p><strong>Jared Foy · 2026-05-01 · Doc 620</strong></p>
+<blockquote>
+<p><strong>PRIMARY ARTICULATION — open invitation to falsify.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> PB-DISCIPLINE | PRIMARY | W-PI | (no engagement-thread tag) | PHASE-SELF-ARTICULATION</p>
+<p><em>Warrant tier per Doc 445:</em> the underlying disambiguation pattern is recovered from prior art at \(\pi\) full-subsumption (library science authority control; IETF Standards Track; bibliographic editions; software documentation versioning; Read-the-Docs stable/latest tags). The corpus-residual moves are at \(\pi\) plausibility-passed with within-corpus qualitative \(\mu\)-corroboration. The proposal as a whole is a methodology candidate (\(T_M\)) at the <em>fitness-untested</em> tier of Doc 445&#39;s warrant table; deployment-and-audit per §4 specifies the promotion path. See Appendix B for the per-target audit.</p>
+</blockquote>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>1. The Pattern, Recovered</h2>
+<p>The role-vs-warrant disambiguation discipline is widely deployed across fields that maintain authoritative document graphs. The pattern: a document&#39;s <em>position-in-an-organization</em> (role: read-this-first, supersedes-prior-treatments, consolidated-entry-point) is maintained on a discipline distinct from the <em>epistemic status of the document&#39;s content</em> (warrant: what audits the claims have passed). The two are linked by an explicit labeling apparatus that prevents one from being read as the other.</p>
+<p>Instances in the prior art:</p>
+<ul>
+<li><strong>Library and archival science.</strong> AACR2 and RDA distinguish <em>authorized access point</em> (the cataloger-assigned canonical name for an entity, a role) from <em>verified record status</em> (the audit state of the metadata, a warrant). Authority control is the maintenance discipline that keeps the role-name stable across warrant changes.</li>
+<li><strong>IETF Standards Track.</strong> RFCs occupy specification-document roles; their warrant maturity is named separately along the <em>Proposed Standard / Draft Standard / Internet Standard</em> ladder. The role is &quot;this is the spec&quot;; the warrant is &quot;this much of the spec has been deployed and verified.&quot;</li>
+<li><strong>Bibliographic editions.</strong> Critical-edition scholarship distinguishes the <em>received text</em> (the canonical text-as-published, a role) from the <em>authorial intent</em> or <em>autograph reading</em> (the warrant claim about what the author wrote). The two can disagree; the disagreement drives the apparatus criticus.</li>
+<li><strong>Software documentation and versioning.</strong> &quot;Official documentation&quot; (role) is distinct from &quot;stable API&quot; (warrant). Read-the-Docs and Sphinx version-banner widgets separate the <em>promoted</em> version (this is what most users should read) from the <em>current</em> version (this is what the latest commits build).</li>
+<li><strong>Religious-studies usage.</strong> &quot;Canon&quot; as authoritative-collection vs &quot;canonical&quot; as scripturally-binding is the original equivocation that produced the word&#39;s modern range. Textual-tradition discipline has been operating the role/warrant separation for centuries.</li>
+</ul>
+<p>The pattern&#39;s structural commitments are: (i) the role-label is maintained as a position-claim, (ii) the warrant-label is maintained as a content-status-claim, (iii) the two labels are presented together but never collapsed, and (iv) changes to one are not automatically inferred to imply changes to the other.</p>
+<p>This document recovers the pattern into the corpus&#39;s vocabulary and applies it specifically to the corpus&#39;s banner practice. The recovery is the bulk of the move; the corpus-residual contribution is narrow and is named in §3.</p>
+<h2>2. The Corpus Instance — The &quot;CANONICAL&quot; Banner Conflation</h2>
+<p>The corpus uses the word &quot;canonical&quot; in two operationally distinct senses that have been allowed to share a single banner. The conflation surfaced explicitly in <a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 Appendix B</a> §B.6, where the pulverization audit had to add a paragraph clarifying that the &quot;CANONICAL&quot; header at the document&#39;s top is not a Doc 445 warrant-tier <em>Canonical</em> promotion. The clarification is correct; the underlying problem is that the same word has been doing two jobs.</p>
+<p><strong>Sense A — Primary articulation.</strong> <em>Position in the document graph.</em> The corpus&#39;s current single-source-of-truth document for a topic; supersedes prior treatments; consolidates the corpus&#39;s commitments into a single read-this-first entry-point. A <em>role</em>, not a <em>warrant</em>.</p>
+<p><strong>Sense B — Canonical warrant tier (Doc 445).</strong> <em>Full-promotion status under the pulverization formalism.</em> A target whose audits have completed at the relevant tiers for its type (\(T_S\) at \(\mu\)-tier strong-match or higher; \(T_D\), \(T_P\), \(T_B\), \(T_M\) at \(\theta\)-tier verified). A <em>warrant level</em>, not a role.</p>
+<p>The two senses are orthogonal:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Primary articulation (Sense A)</th>
+<th>Not primary articulation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Canonical warrant tier (Sense B)</strong></td>
+<td>Document is the corpus&#39;s entry-point AND its claims are \(\theta\)-verified</td>
+<td>Verified claims articulated in scattered references rather than consolidated</td>
+</tr>
+<tr>
+<td><strong>Sub-canonical warrant tier</strong></td>
+<td>Document is the corpus&#39;s entry-point; its claims sit at hypothesis tier</td>
+<td>Hypothesis articulated in scattered references; not consolidated</td>
+</tr>
+</tbody></table>
+<p>Currently, all three documents bearing the &quot;CANONICAL — open invitation to falsify&quot; banner — <a href="../doc/514-structural-isomorphism-canonical-formalization.html">Doc 514</a> (Structural Isomorphism), <a href="../doc/541-systems-induced-property-emergence.html">Doc 541</a> (SIPE-T), <a href="../doc/619-pin-art-canonical-formalization.html">Doc 619</a> (Pin-Art) — sit in the lower-left cell: primary articulation, sub-canonical warrant. The banner reads like the upper-left cell. This is the operative conflation.</p>
+<p>The bodies of all three documents state their actual warrant tiers honestly within the prose. The banner is the layer at which the conflation happens; the body must walk the banner&#39;s frame back. The disambiguation removes the conflict at the banner layer.</p>
+<h2>3. The Corpus-Residual Contribution</h2>
+<p>Most of the disambiguation move is recovery of the §1 prior-art pattern. The corpus-residual contribution concentrates in four moves:</p>
+<ol>
+<li><strong>The within-corpus instance observation.</strong> Identifying that Docs 514, 541, 619 all sit in the lower-left cell of the orthogonality matrix is documentary evidence specific to the corpus&#39;s current practice. The audit work is corpus-internal; the underlying orthogonality is recovered from prior art.</li>
+<li><strong>The Doc 314 V3 truth-telling bridge.</strong> Framing the conflation as a structural pressure toward V3 violation at the banner layer — the banner asserting more than the body can bear — is a corpus-original move at the bridge layer. V3 holds that presentation should not claim what content cannot warrant; the disambiguation removes a recurring pressure against V3 in the corpus&#39;s banner discipline.</li>
+<li><strong>The lexical commitment to &quot;PRIMARY ARTICULATION.&quot;</strong> Adopting &quot;PRIMARY ARTICULATION&quot; as the role-label and reserving &quot;Canonical&quot; exclusively for Doc 445 warrant-tier reference is a corpus-internal naming choice without exact prior-art counterpart. Alternatives (REFERENCE DOCUMENT, ENTRY-POINT, PRIMARY SOURCE) are noted; the choice is open to corpus adoption.</li>
+<li><strong>The composition with Doc 445 / Doc 503 tier vocabulary.</strong> The warrant-tier line beneath the new banner names tier per Doc 445 target type (\(T_S\), \(T_D\), \(T_P\), \(T_B\), \(T_M\)) and per Doc 503 corroboration profile (\(\alpha\), \(\beta\), \(\gamma\)). The composition makes the document&#39;s actual epistemic status legible at the banner layer rather than only in the body.</li>
+</ol>
+<p>These four moves are the document&#39;s actual corpus contribution. The recovery (§1) supplies the structural pattern; the residual (§3) supplies the corpus-specific application.</p>
+<p>The proposed banner template:</p>
+<blockquote>
+<p><strong>PRIMARY ARTICULATION — open invitation to falsify.</strong></p>
+<p><em>Warrant tier per Doc 445:</em> [explicit per-target tier specification].</p>
+<p>This document is the corpus&#39;s primary articulation of [TOPIC]. It supersedes [PRIOR DOCS], which are preserved as deprecated prior formalizations.</p>
+</blockquote>
+<p>The banner asserts only the role; the warrant-tier line states the actual epistemic status; the supersession line names the document-graph relationships. Three claims, three lines, no collapse.</p>
+<p><strong>Sense A — Canonical entry-point.</strong> A document is &quot;canonical&quot; in the position-in-the-document-graph sense when it is the corpus&#39;s primary read-this-first articulation of a topic, supersedes prior treatments, and consolidates the corpus&#39;s current commitments on the topic into a single entry-point. This is a <em>role</em>, not a <em>warrant</em>. A document occupies the entry-point role because the corpus chose to organize its knowledge that way; the role says nothing about whether the document&#39;s claims have passed any specific epistemic audit.</p>
+<h2>4. Operational Action Items</h2>
+<p>The following actions apply the disambiguation across the corpus. They are ordered by reversibility and blast radius: items A–D are reversible local edits; items E–H are standing disciplines; items I–J are pending-design specifications.</p>
+<h3>A. Banner reclassification (immediate; affects three documents)</h3>
+<p><strong>A1. <a href="../doc/514-structural-isomorphism-canonical-formalization.html">Doc 514 — Structural Isomorphism</a>.</strong></p>
+<ul>
+<li>Retitle subtitle: &quot;A Canonical Formalization Grounded in Why It Works&quot; → &quot;A Primary Formalization Grounded in Why It Works.&quot;</li>
+<li>Banner: &quot;CANONICAL&quot; → &quot;PRIMARY ARTICULATION.&quot;</li>
+<li>Add warrant-tier line beneath the banner naming the \(\alpha\)-tier audit explicitly per Doc 503.</li>
+<li>Filename unchanged: <code>514-structural-isomorphism-canonical-formalization.md</code> (URL stability).</li>
+</ul>
+<p><strong>A2. <a href="../doc/541-systems-induced-property-emergence.html">Doc 541 — Systems-Induced Property Emergence</a>.</strong></p>
+<ul>
+<li>Banner: &quot;CANONICAL — open invitation to falsify&quot; → &quot;PRIMARY ARTICULATION — open invitation to falsify.&quot;</li>
+<li>Add warrant-tier line: &quot;plausibility tier per Doc 503 for most predicted induced properties; cooperative-coupling sub-form (§3.1) at one-empirical-instance \(\theta\)-tier (Axe 2004 read by Doc 606).&quot;</li>
+<li>Body prose preserved; substantive claims unchanged.</li>
+</ul>
+<p><strong>A3. <a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 — The Pin-Art Form</a>.</strong></p>
+<ul>
+<li>Banner: &quot;CANONICAL — open invitation to falsify&quot; → &quot;PRIMARY ARTICULATION — open invitation to falsify.&quot;</li>
+<li>Add warrant-tier line: &quot;plausibility passed with qualitative \(\mu\)-corroboration for substrate-side hedging application (T₄); one-instance \(\theta\)-corroboration for constraint-driven derivation theorems (T₅); see Appendix B for the full per-target audit.&quot;</li>
+<li>Body prose preserved; Appendix B (pulverization audit) preserved.</li>
+<li>Filename unchanged: <code>619-pin-art-canonical-formalization.md</code>.</li>
+</ul>
+<h3>B. Lexical sweep (short-term; affects ~75 documents at varying intensities)</h3>
+<p><strong>B1.</strong> Search the corpus for the phrases &quot;canonical articulation,&quot; &quot;canonical formalization,&quot; &quot;primary entry-point,&quot; &quot;canonical statement,&quot; &quot;canonical reformulation,&quot; and similar role-claim usages. In primary-articulation contexts (a document referring to its own role or to another document&#39;s role), replace with the &quot;primary&quot; equivalent.</p>
+<p><strong>B2.</strong> Preserve &quot;canonical&quot; in three contexts: (a) Doc 445 warrant-tier references (e.g., &quot;promote to <em>Canonical</em> under Doc 445,&quot; &quot;Doc 445 <em>Canonical</em> tier for \(T_X\)&quot;); (b) the mathematical &quot;canonical form&quot; sense (algebra, set theory, type theory — the unique-representative-of-an-equivalence-class meaning); (c) historical or quoted use in references to prior literature where &quot;canonical&quot; is a term of art in the cited field (e.g., &quot;canonical text&quot; in bibliographic-edition citation).</p>
+<p><strong>B3.</strong> When a doc cites another doc&#39;s &quot;canonical&quot; status, check the sense. If Sense A (role), rewrite to &quot;primary articulation of [topic]&quot; or &quot;the corpus&#39;s [topic] entry-point.&quot; If Sense B (warrant), rewrite to &quot;Doc 445 <em>Canonical</em>-tier [target name] within Doc \(N\).&quot;</p>
+<h3>C. Cross-reference discipline (standing)</h3>
+<p><strong>C1.</strong> Forward citations to primary-articulation documents must not infer Doc 445 <em>Canonical</em>-tier status from the role-claim alone. Citation patterns like &quot;per Doc 619&#39;s canonical formalization of pin-art&quot; should be read as &quot;per Doc 619&#39;s primary articulation of pin-art (warrant-tier per the document&#39;s banner line).&quot;</p>
+<p><strong>C2.</strong> Forward citations to claims should name the warrant tier explicitly: &quot;per Doc 619 §4 (T₄ at \(\pi\)-passed with qualitative \(\mu\)-corroboration)&quot; rather than &quot;per Doc 619&#39;s canonical claim about substrate-side hedging.&quot;</p>
+<p><strong>C3.</strong> When a claim is genuinely Doc 445 <em>Canonical</em>-tier (\(\theta\)-verified for its target type), forward citations should name that explicitly: &quot;per [Doc \(N\)] §\(M\) (Doc 445 <em>Canonical</em> tier; \(\theta\)-verified by [\(Q\) procedure]).&quot;</p>
+<h3>D. Going-forward template (standing convention for new primary-articulation documents)</h3>
+<p>The standard banner-plus-warrant-line composition for new entry-point documents:</p>
+<blockquote>
+<p><strong>PRIMARY ARTICULATION — open invitation to falsify.</strong></p>
+<p><em>Warrant tier per Doc 445:</em> [explicit per-target tier specification].</p>
+<p>This document is the corpus&#39;s primary articulation of [TOPIC]. It supersedes [PRIOR DOCS], which are preserved as deprecated prior formalizations. Readers familiar with [PRIOR DOCS] should read this document fresh; the structural commitments are restated, the lineage in [EXTERNAL PRIOR ART] is named explicitly, the operating-conditions layer is supplied, and the form&#39;s restricted scope is named at the front.</p>
+</blockquote>
+<p>Three claims at the banner layer: role (PRIMARY ARTICULATION), warrant (per Doc 445), supersession (named documents). No collapse.</p>
+<h3>E. Retraction-ledger discipline (<a href="../doc/415-the-retraction-ledger.html">Doc 415</a>)</h3>
+<p><strong>E1.</strong> Retractions operate on warrant-tier claims, not on document roles. A claim within a primary-articulation document that fails \(\theta\)-audit is retracted at the claim level; the document&#39;s primary-articulation role is not retracted unless the audit specifically targets the role assignment.</p>
+<p><strong>E2.</strong> Ledger entries should name the target type (Doc 445 \(T_X\)), the warrant tier the claim previously occupied, and the audit outcome that triggered the retraction. The role of the containing document is metadata, not subject of the retraction.</p>
+<p><strong>E3.</strong> A primary-articulation document whose load-bearing claims are systematically retracted may itself need role reassignment (the corpus may choose to demote the document and promote a successor). This is a separate decision from the claim retraction; it is a document-graph reorganization, not a warrant-tier audit outcome.</p>
+<h3>F. Hypothesis-ledger format (when Doc 443&#39;s hypothesis ledger is operationalized)</h3>
+<p>Each ledger entry should carry separately:</p>
+<ul>
+<li><em>Document role:</em> primary articulation, originating essay, deprecated prior, application instance, case study.</li>
+<li><em>Warrant tier:</em> per Doc 445 target type and tier (\(\pi\) / \(\mu\) / \(\theta\) and the audit outcomes).</li>
+<li><em>Doc 503 corroboration profile:</em> tier category and recent-thread evidence pointer.</li>
+</ul>
+<p>Role and warrant occupy distinct columns. Implicit promotion of warrant via accumulating role-citations (the violation Doc 445 §&quot;Implications for the hypothesis ledger&quot; names) is prevented by the column separation.</p>
+<h3>G. Originating-essay convention (preserved as-is)</h3>
+<p>Documents that originated as exploratory essays and were later superseded by primary-articulation documents (e.g., Doc 270 → Doc 619 for Pin-Art; Doc 474 → Doc 541 for SIPE-T; Doc 290 → Doc 619 for the constraint-driven derivation specifically) retain their originating-essay role. The disambiguation does not reclassify them; it only changes what the superseding document&#39;s banner claims about its own status. The originating-essay role is itself a Sense-A position-claim independent of warrant.</p>
+<h3>H. URL and filename stability (standing)</h3>
+<p>Existing URLs and filenames containing &quot;canonical&quot; (e.g., <code>619-pin-art-canonical-formalization</code>) remain stable. Only titles, banners, and prose are subject to lexical sweep. URL changes propagate breakage across forward citations and external references; the cost outweighs the disambiguation benefit at the URL layer.</p>
+<h3>I. Index discipline (when an organizational corpus index is constructed)</h3>
+<p>Any future organizational index of the corpus (a sitemap, a topic-to-doc table, a series page that aggregates entry-point documents) must mark <em>primary articulation</em> status separately from <em>Canonical-tier warrant status</em>. The two should appear in distinct columns or as distinct visual markers. Conflating them at the index layer would re-introduce the conflation the disambiguation removes.</p>
+<h3>J. External-citation discipline (standing, when corpus documents are cited externally)</h3>
+<p>External citations of corpus documents (in letters to outside researchers, in published papers, in conference submissions) should specify the warrant tier of the cited claim explicitly. &quot;Per Doc 619&quot; without a tier specification leaves the external reader to infer warrant from the document&#39;s role-marker — which is the conflation the disambiguation removes. The citation form: &quot;Per Doc \(N\) §\(M\) (Doc 445 \(T_X\) at \(\tau\)-tier per Doc 503 \([\alpha/\beta/\gamma]\)).&quot;</p>
+<hr>
+<h2>5. Composition with the Corpus&#39;s Existing Disciplines</h2>
+<p><strong>With <a href="../doc/314-the-virtue-constraints.html">Doc 314</a> (V3 truth-telling).</strong> The disambiguation is a V3 move at the presentation layer: it removes a frame in which the banner overstates what the body warrants. The current &quot;CANONICAL&quot; banner usage was a structural pressure toward V3 violation; the disambiguation removes the pressure.</p>
+<p><strong>With <a href="../doc/415-the-retraction-ledger.html">Doc 415</a> (the retraction ledger).</strong> Per §4 E above. Retractions operate on warrant-tier claims; document roles are independent metadata.</p>
+<p><strong>With <a href="../doc/445-pulverization-formalism.html">Doc 445</a> (pulverization formalism).</strong> Doc 445 supplies the warrant-tier vocabulary the disambiguation reserves &quot;canonical&quot; for. The reservation makes Doc 445&#39;s <em>Canonical</em>-tier promotion language unambiguous when used in audits, hypothesis-ledger entries, and tier-discipline notes.</p>
+<p><strong>With <a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503</a> (the research-thread tier pattern).</strong> Doc 503&#39;s tier categories (\(\alpha\), \(\beta\), \(\gamma\)) operate at the warrant layer. The disambiguation makes them composable with Doc 445&#39;s tier vocabulary without contention over the word &quot;canonical.&quot;</p>
+<p><strong>With <a href="../doc/372-the-hypostatic-boundary.html">Doc 372</a>.</strong> The disambiguation is administrative discipline at the document-graph layer; it does not bear on the hypostatic boundary. Doc 372 binds throughout.</p>
+<hr>
+<h2>6. Falsifiers and Open Questions</h2>
+<p><strong>F1.</strong> A reader survey or audit in which readers presented with the new banner do not reliably distinguish entry-point role from warrant tier. Would falsify the claim that the disambiguation removes the conflation at the banner layer.</p>
+<p><strong>F2.</strong> A case in which a document&#39;s role and warrant tier are genuinely entangled in a way the proposed orthogonality does not handle (e.g., a document whose primary-articulation role is itself contingent on a warrant-tier audit outcome). Would indicate the orthogonality assumption needs refinement.</p>
+<p><strong>F3.</strong> A demonstration that the existing word &quot;canonical&quot; can carry both senses without conflict if other corpus disciplines (the warrant-tier line beneath the banner; the body&#39;s per-target audits) are sufficient. Would suggest the disambiguation is unnecessary; the conflation is reader-skill, not document-design. Per Doc 619 §B.6 evidence, the auxiliary discipline functions but documents a cognitive cost; F3 evidence is currently ambiguous.</p>
+<p><strong>Q1.</strong> Should &quot;PRIMARY ARTICULATION&quot; be the banner phrase, or should the corpus adopt a more neutral term (REFERENCE DOCUMENT, ENTRY-POINT, PRIMARY SOURCE, AUTHORITATIVE TREATMENT)? Whichever is chosen should be applied consistently across the affected documents.</p>
+<p><strong>Q2.</strong> How should documents that span multiple topics handle primary-articulation status when only one topic is the corpus&#39;s primary entry-point? The convention applies cleanly to single-topic primary documents; multi-topic documents may require per-section role-marking.</p>
+<p><strong>Q3.</strong> Should the warrant-tier line beneath the banner name every Doc 445 target in the body, or only the headline target? Pragmatic middle: name the headline target&#39;s warrant tier in the banner line; refer to a per-target audit appendix for the full breakdown.</p>
+<p><strong>Q4.</strong> When does a primary-articulation document warrant supersession? The originating-essay → primary-articulation → next-primary-articulation chain has happened twice (Doc 474 → Doc 541; Doc 290 → Doc 619). What triggers the next supersession is currently ad-hoc keeper judgment; codifying it would make the document-graph evolution discipline explicit.</p>
+<hr>
+<h2>7. Closing</h2>
+<p>The role-vs-warrant disambiguation is a pattern recovered from prior art (library science, IETF Standards Track, bibliographic editions, software documentation, versioned-docs conventions, religious-studies textual-tradition) and applied to the corpus&#39;s banner discipline. The corpus-residual contribution concentrates in four moves: the within-corpus instance observation, the Doc 314 V3 bridge, the lexical commitment to &quot;PRIMARY ARTICULATION,&quot; and the composition with Doc 445 / Doc 503 tier vocabulary. The proposal stands at \(\pi\)-tier methodology with within-corpus qualitative \(\mu\)-evidence; deployment-and-audit per §4 specifies the promotion path.</p>
+<p>The operational action items (§4 A–J) specify the corpus-wide changes the disambiguation requires: three banner reclassifications (immediate), a lexical sweep (short-term), four standing disciplines (cross-reference, retraction ledger, originating essays, URL stability), and three pending-design specifications (going-forward template, hypothesis-ledger format, index discipline, external-citation discipline). The actions are ordered by reversibility; A–D are reversible local edits; E–J are standing or pending-design.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="../doc/270-the-pin-art-model.html">Doc 270 — The Pin-Art Model</a></li>
+<li><a href="../doc/290-the-pin-art-formalization.html">Doc 290 — The Pin-Art Formalization (deprecated)</a></li>
+<li><a href="../doc/314-the-virtue-constraints.html">Doc 314 — The Virtue Constraints</a></li>
+<li><a href="../doc/372-the-hypostatic-boundary.html">Doc 372 — The Hypostatic Boundary</a></li>
+<li><a href="../doc/415-the-retraction-ledger.html">Doc 415 — The Retraction Ledger</a></li>
+<li><a href="../doc/443-hypothesis-ledger.html">Doc 443 — The Hypothesis Ledger</a></li>
+<li><a href="../doc/445-pulverization-formalism.html">Doc 445 — A Formalism for Pulverization</a></li>
+<li><a href="../doc/474-sipe-standalone-formalization.html">Doc 474 — SIPE Standalone Formalization (deprecated)</a></li>
+<li><a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503 — Research-Thread Tier Pattern</a></li>
+<li><a href="../doc/514-structural-isomorphism-canonical-formalization.html">Doc 514 — Structural Isomorphism: A Canonical Formalization</a></li>
+<li><a href="../doc/541-systems-induced-property-emergence.html">Doc 541 — Systems-Induced Property Emergence</a></li>
+<li><a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 — The Pin-Art Form</a></li>
+</ul>
+<hr>
+<h2>Appendix A — Prior Formal Articulation (Demoted)</h2>
+<p>This appendix preserves the prior formal articulation of the disambiguation as it stood before the §§1–7 reformulation on the grounds established by the pulverization audit (Appendix B). The prior articulation was correct in substance but front-loaded the corpus&#39;s specific banner conflation before naming the cross-domain prior-art pattern that the disambiguation recovers. The reformulated body inverts the order: §1 names the recovery first, §2 names the corpus instance, §3 names the residual contribution. The prior articulation is preserved here for traceability and for readers who prefer the prior framing&#39;s narrative order.</p>
+<p>The original section numbering (§§2–8) is preserved; these correspond to the body sections of Doc 620 as it stood prior to 2026-05-01b.</p>
+<h3>A.2 Survey of Current Use</h3>
+<p>The &quot;CANONICAL — open invitation to falsify&quot; banner is used at the top of three current documents:</p>
+<ul>
+<li><a href="../doc/514-structural-isomorphism-canonical-formalization.html">Doc 514 — Structural Isomorphism: A Canonical Formalization</a> (the title itself names the document as a canonical formalization).</li>
+<li><a href="../doc/541-systems-induced-property-emergence.html">Doc 541 — Systems-Induced Property Emergence</a> (banner: &quot;This document is the corpus&#39;s primary articulation of Systems-Induced Property Emergence. It supersedes Doc 474...&quot;).</li>
+<li><a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 — The Pin-Art Form</a> (banner: &quot;This document is the corpus&#39;s primary articulation of the Pin-Art form. It supersedes Doc 290...&quot;).</li>
+</ul>
+<p>In each case, the body honestly states the underlying warrant tier:</p>
+<ul>
+<li>Doc 514&#39;s title-line names the methodology as &quot;audited at \(\alpha\)-tier novelty.&quot;</li>
+<li>Doc 541&#39;s banner names &quot;warrant for most of its predicted induced properties is at plausibility tier per Doc 503.&quot;</li>
+<li>Doc 619&#39;s banner names &quot;warrant for the substrate-side hedging application is at corroboration tier per Doc 503; warrant for the constraint-driven derivation application is at one-empirical-instance tier.&quot;</li>
+</ul>
+<p>The bodies are doing the work. The banner is the layer at which the conflation happens.</p>
+<p>A wider grep across the corpus shows the word &quot;canonical&quot; appearing in roughly 75 documents at varying intensities. The dominant uses split into:</p>
+<ul>
+<li><em>Entry-point use:</em> &quot;the corpus&#39;s primary articulation of X,&quot; &quot;canonical formalization of Y,&quot; &quot;primary entry-point for Z.&quot; This is Sense A.</li>
+<li><em>Warrant-tier use:</em> &quot;promote to canonical,&quot; &quot;canonical-tier promotion,&quot; &quot;warrant tier <em>Canonical</em>.&quot; This is Sense B, originating in Doc 445 and used in pulverization audits, hypothesis-ledger entries, and tier-discipline notes.</li>
+<li><em>Mathematical use:</em> &quot;canonical form&quot; (the unique-representative sense in algebra and set theory). This is Sense C, present in some technical sections but not generally a source of confusion.</li>
+</ul>
+<p>Sense A and Sense B are the conflation. Sense C is independent and does not require disambiguation.</p>
+<h3>A.3 The Two Senses, Named</h3>
+<p><strong>Sense A — Primary articulation.</strong> <em>Position in the document graph.</em> The corpus&#39;s current single-source-of-truth document for a topic. Supersedes prior treatments. Read this first. Other docs on the topic may exist (originating essays, deprecated prior formalizations, applications, case studies), but the primary articulation is the consolidated entry-point. A primary articulation is a role assigned by the corpus&#39;s organization; it is not a warrant claim.</p>
+<p>Constitutive features of the role:</p>
+<ul>
+<li><em>Supersession.</em> Names the prior documents it consolidates and the prior formalizations it deprecates.</li>
+<li><em>Lineage citation.</em> Names the external prior art the form recovers from.</li>
+<li><em>Operating-conditions layer.</em> States the conditions under which the form&#39;s apparatus functions.</li>
+<li><em>Composition rules.</em> Names how the form composes with the corpus&#39;s mature forms.</li>
+<li><em>Falsification surface.</em> States what would falsify the form&#39;s load-bearing claims.</li>
+<li><em>Honest warrant labelling.</em> States the actual warrant tier of the body&#39;s claims under Doc 445 and Doc 503.</li>
+</ul>
+<p>A document occupying the primary-articulation role does not, by virtue of the role, claim any specific warrant tier. The role is independent of warrant.</p>
+<p><strong>Sense B — Canonical warrant tier (Doc 445).</strong> <em>Full promotion status under the pulverization formalism.</em> A target whose audits have completed at the relevant tiers for its type (\(T_S\) at \(\mu\)-tier strong-match or higher; \(T_D\), \(T_P\), \(T_B\), \(T_M\) at \(\theta\)-tier verified) is licensed for <em>Canonical</em> promotion. The warrant tier says nothing about the target&#39;s position in the document graph. A target can sit at <em>Canonical</em> warrant tier while being articulated in scattered references rather than in any single entry-point document; a target can be articulated in a primary-articulation document while sitting at <em>plausibility-passed</em> warrant tier.</p>
+<p>The two senses are orthogonal. A 2×2 matrix:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Primary articulation (Sense A)</th>
+<th>Not primary articulation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Canonical warrant tier (Sense B)</strong></td>
+<td>Document is the corpus&#39;s entry-point AND its claims are \(\theta\)-verified</td>
+<td>Verified claims articulated in scattered references rather than consolidated</td>
+</tr>
+<tr>
+<td><strong>Sub-canonical warrant tier</strong></td>
+<td>Document is the corpus&#39;s entry-point; its claims sit at hypothesis tier</td>
+<td>Hypothesis articulated in scattered references; not consolidated</td>
+</tr>
+</tbody></table>
+<p>Currently, all three documents bearing the &quot;CANONICAL&quot; banner (Docs 514, 541, 619) sit in the lower-left cell: primary articulation, sub-canonical warrant. The banner reads like the upper-left cell.</p>
+<h3>A.4 Proposed Disambiguation</h3>
+<p>Reserve &quot;Canonical&quot; exclusively for Sense B (Doc 445 warrant tier). Use &quot;Primary Articulation&quot; for Sense A.</p>
+<p>The proposal is:</p>
+<p><strong>Banner change.</strong> Documents currently marked &quot;CANONICAL — open invitation to falsify&quot; should be re-marked &quot;PRIMARY ARTICULATION — open invitation to falsify,&quot; with a line directly beneath the banner stating the document&#39;s actual warrant tier under Doc 445 and Doc 503.</p>
+<p>The new banner template:</p>
+<blockquote>
+<p><strong>PRIMARY ARTICULATION — open invitation to falsify.</strong></p>
+<p>This document is the corpus&#39;s primary articulation of [TOPIC]. It supersedes [PRIOR DOCS], which are preserved as deprecated prior formalizations. <em>Warrant tier per Doc 445:</em> [tier specification — e.g., &quot;plausibility passed with qualitative \(\mu\)-corroboration; one Doc 445 \(T_S\) target (the [name]) at candidate-novelty tier pending \(\mu\)-audit; one Doc 445 \(T_P\) target ([name]) at one-instance \(\theta\)-corroboration&quot;].</p>
+</blockquote>
+<p><strong>Title convention.</strong> Document titles using &quot;Canonical Formalization&quot; should be retitled to &quot;Primary Articulation&quot; or &quot;Primary Formalization&quot; or simply by topic name. The title-level claim of canonicity is the most visible point at which the conflation lands.</p>
+<p><strong>Vocabulary discipline.</strong> In prose, &quot;canonical&quot; should be reserved for Doc 445 warrant-tier references. The phrases &quot;primary entry-point,&quot; &quot;canonical articulation,&quot; &quot;canonical formalization&quot; should be replaced by &quot;primary entry-point,&quot; &quot;primary articulation,&quot; &quot;primary formalization.&quot; When a document needs to refer to its own role as the corpus&#39;s read-this-first source, it should say &quot;primary articulation.&quot; When a document needs to refer to a target&#39;s Doc-445 warrant status, it should say &quot;Canonical (Doc 445 \(T_X\) at \(\theta\)-verified)&quot; with the explicit tier and target type.</p>
+<p><strong>Mathematical use untouched.</strong> &quot;Canonical form&quot; in the algebra-and-set-theory sense (unique representative of an equivalence class) is independent of both senses and remains in technical use without modification.</p>
+<h3>A.5 Implementation</h3>
+<p>The disambiguation requires changes to three currently-marked documents and to the convention going forward.</p>
+<p><strong>Doc 514 — Structural Isomorphism.</strong> Retitle from &quot;A Canonical Formalization Grounded in Why It Works&quot; to &quot;A Primary Formalization Grounded in Why It Works.&quot; The body&#39;s \(\alpha\)-tier audit naming is preserved. The CANONICAL banner becomes PRIMARY ARTICULATION; the warrant-tier line names the \(\alpha\)-tier audit explicitly.</p>
+<p><strong>Doc 541 — Systems-Induced Property Emergence.</strong> Banner change from &quot;CANONICAL — open invitation to falsify&quot; to &quot;PRIMARY ARTICULATION — open invitation to falsify.&quot; The warrant-tier line names &quot;plausibility tier per Doc 503 for most predicted induced properties; cooperative-coupling sub-form at one-empirical-instance tier (Axe 2004 read by Doc 606).&quot; The body&#39;s prose is preserved; the substantive claims are unchanged.</p>
+<p><strong>Doc 619 — The Pin-Art Form.</strong> Banner change to PRIMARY ARTICULATION; warrant-tier line names &quot;plausibility passed with qualitative \(\mu\)-corroboration for substrate-side hedging application (T₄); one-instance \(\theta\)-corroboration for constraint-driven derivation theorems (T₅); see Appendix B for the full per-target audit.&quot; Filename should remain <code>619-pin-art-canonical-formalization.md</code> for URL stability; the title&#39;s wording is the change.</p>
+<p><strong>Going-forward convention.</strong> New documents that occupy the primary-articulation role should use the PRIMARY ARTICULATION banner with the warrant-tier line. Documents that warrant Doc 445 <em>Canonical</em>-tier promotion (full \(\theta\)-verified for the relevant target type) should additionally name that promotion in the warrant-tier line: &quot;Doc 445 <em>Canonical</em> tier for [target name] (\(\theta\)-verified by [\(Q\) procedure]); [other targets] at [their respective tiers].&quot;</p>
+<p>The proposed convention separates <em>role</em> (primary articulation, present-day organizational status) from <em>warrant</em> (Doc 445 tier, claim-by-claim epistemic status). The two can co-occur — a primary-articulation document can carry Canonical-tier targets within it — but the two are stated separately rather than collapsed into a single banner word.</p>
+<h3>A.6 Composition with the Corpus&#39;s Existing Disciplines</h3>
+<p><strong>With <a href="../doc/415-the-retraction-ledger.html">Doc 415</a> (the retraction ledger).</strong> The retraction ledger records retractions of specific claims at specific warrant tiers. The disambiguation aligns the ledger&#39;s vocabulary with the warrant-tier sense: an entry retracts a Canonical-tier claim that failed \(\theta\)-audit, or downgrades a Canonical-tier claim to a lower warrant tier. The primary-articulation role of the document containing the claim is independent of the ledger entry.</p>
+<p><strong>With <a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503</a> (the research-thread tier pattern).</strong> Doc 503&#39;s tier categories (\(\alpha\), \(\beta\), \(\gamma\)) operate at the warrant layer. The disambiguation makes them composable with Doc 445&#39;s tier vocabulary without contention over the word &quot;canonical&quot;: Doc 445&#39;s <em>Canonical</em> tier is an outcome of the audit procedure; Doc 503&#39;s tier categories describe the corroboration profile at the research-thread level. Both apply to claims; neither applies to documents qua documents.</p>
+<p><strong>With <a href="../doc/372-the-hypostatic-boundary.html">Doc 372</a>.</strong> The disambiguation does not bear on the hypostatic boundary; it is administrative discipline at the document-graph layer. Doc 372 binds throughout, as it does for all corpus discipline.</p>
+<p><strong>With <a href="../doc/314-the-virtue-constraints.html">Doc 314</a> (V3 truth-telling).</strong> The disambiguation is a V3 move at the presentation layer: it removes a frame in which the banner overstates what the body warrants. V3 holds that the banner should not claim what the body cannot bear. The current &quot;CANONICAL&quot; usage at the banner layer was a structural pressure toward V3 violation; the disambiguation removes the pressure.</p>
+<p><strong>With the originating-essay convention.</strong> Documents that originated as exploratory essays and were later superseded by primary-articulation documents (e.g., Doc 270 superseded by Doc 619 for Pin-Art; Doc 474 superseded by Doc 541 for SIPE-T) retain their originating-essay role. The disambiguation does not change their position; it only changes what the superseding document&#39;s banner claims about its own status.</p>
+<h3>A.7 Falsifiers and Open Questions for the Disambiguation Itself</h3>
+<p>The proposal is a methodological move (\(T_M\) under Doc 445). Per Doc 445&#39;s warrant table, methodological targets at \(\pi\) yield only &quot;methodology exists; tells nothing about fitness.&quot; The proposal&#39;s fitness can be tested:</p>
+<p><strong>F1.</strong> A reader survey or audit in which readers presented with the new &quot;PRIMARY ARTICULATION&quot; banner do not reliably distinguish entry-point role from warrant tier. Would falsify the claim that the disambiguation removes the conflation at the banner layer.</p>
+<p><strong>F2.</strong> A case in which a document&#39;s role and warrant tier are genuinely entangled in a way the proposed orthogonality does not handle (e.g., a document whose primary-articulation role is itself contingent on a warrant-tier audit outcome). Would indicate the orthogonality assumption needs refinement.</p>
+<p><strong>F3.</strong> A demonstration that the existing word &quot;canonical&quot; can carry both senses without conflict if other corpus disciplines (the warrant-tier line beneath the banner; the body&#39;s per-target audits) are sufficient. Would suggest the disambiguation is unnecessary and the conflation is reader-skill, not document-design.</p>
+<p><strong>Q1.</strong> Should &quot;PRIMARY ARTICULATION&quot; be a banner phrase, or should the corpus adopt a more neutral term (e.g., &quot;REFERENCE DOCUMENT,&quot; &quot;ENTRY-POINT,&quot; &quot;PRIMARY SOURCE&quot;)? The choice is partly aesthetic and partly conceptual; whichever is chosen should be applied consistently across the affected documents.</p>
+<p><strong>Q2.</strong> How should documents that span multiple topics handle their primary-articulation status when only one topic is the corpus&#39;s primary entry-point? The proposed convention applies cleanly to single-topic primary documents; multi-topic documents may require per-section role-marking.</p>
+<p><strong>Q3.</strong> Should the warrant-tier line beneath the banner be required to name every Doc 445 target in the body (as Doc 619&#39;s Appendix B does), or only the headline target? The trade-off is comprehensiveness versus banner-line concision. A pragmatic middle: name the headline target&#39;s warrant tier in the banner line; refer to a per-target audit appendix for the full breakdown.</p>
+<h3>A.8 Closing</h3>
+<p>The corpus has been using &quot;canonical&quot; to do two jobs: a position-in-the-document-graph job (entry-point articulation) and a warrant-tier job (Doc 445 <em>Canonical</em> promotion). The two jobs are independent and the conflation at the banner layer creates a frame the body must walk back. The disambiguation reserves &quot;canonical&quot; for Doc 445 warrant-tier use and adopts &quot;primary articulation&quot; for the entry-point role, with a warrant-tier line beneath the new banner stating the document&#39;s actual claim profile under Doc 445 and Doc 503.</p>
+<p>The disambiguation is a methodology proposal at \(\pi\)-tier under Doc 445; it stands as a candidate procedural change pending corpus-internal adoption. Implementation would touch three currently-marked documents (514, 541, 619) and the going-forward convention for new primary-articulation documents. The proposal composes cleanly with Doc 415&#39;s retraction ledger, Doc 503&#39;s tier categories, Doc 372&#39;s hypostatic-boundary discipline, and Doc 314&#39;s V3 truth-telling at the presentation layer.</p>
+<hr>
+<h2>Appendix B — Pulverization Audit Against the Novelty Calculus</h2>
+<p>The body of Doc 620 is here run through <a href="../doc/445-pulverization-formalism.html">Doc 445</a>&#39;s tiered pulverization (\(\pi\) plausibility / \(\mu\) operational-match / \(\theta\) truth) under <a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503</a>&#39;s iterative-novelty-calculus discipline. The audit specifies the warrant tier of each load-bearing target in the body and identifies the corpus-residual contribution against the broader prior art on role-vs-warrant disambiguation.</p>
+<h3>B.1 Targets Identified</h3>
+<p><strong>T₁ (specification-target).</strong> The two-senses identification of §3 — Sense A as position-in-document-graph role; Sense B as Doc 445 warrant tier.</p>
+<p><strong>T₂ (specification-target).</strong> The orthogonality claim of §3 — the 2×2 matrix asserting that role and warrant are independent.</p>
+<p><strong>T₃ (methodological-target).</strong> The disambiguation proposal of §4 — reserve &quot;Canonical&quot; for Sense B, adopt &quot;PRIMARY ARTICULATION&quot; for Sense A, with a warrant-tier line beneath the new banner.</p>
+<p><strong>T₄ (specification-target).</strong> The new-banner template of §4 — the specific phrasing and structure of the proposed banner-plus-warrant-line composition.</p>
+<p><strong>T₅ (bridge-target).</strong> The composition rules of §6 — the disambiguation&#39;s relations to Doc 415 (retraction ledger), Doc 503 (tier categories), Doc 372 (hypostatic boundary), Doc 314 (V3 truth-telling).</p>
+<p><strong>T₆ (predictive-target).</strong> The §7 falsifiers F1–F3 — predictions about what would falsify or render unnecessary the disambiguation proposal.</p>
+<p><strong>T₇ (specification-target).</strong> The implementation specification of §5 — the per-document changes to Docs 514, 541, 619 and the going-forward convention.</p>
+<h3>B.2 Prior-Art Scope</h3>
+<p>The role-vs-warrant disambiguation pattern has explicit prior art in several adjacent fields:</p>
+<ul>
+<li><strong>Library and archival science.</strong> AACR2 and RDA distinguish <em>authorized access point</em> (the cataloger-assigned canonical name for an entity, a role) from <em>verified record status</em> (the audit state of the metadata, a warrant). &quot;Authority control&quot; itself is the maintenance discipline that keeps the role-name stable across warrant changes.</li>
+<li><strong>Bibliographic editions.</strong> Critical-edition scholarship distinguishes the <em>received text</em> (the canonical text-as-published, a role) from the <em>authorial intent</em> or <em>autograph reading</em> (the warrant claim about what the author wrote). The two can disagree; the disagreement drives the apparatus criticus.</li>
+<li><strong>IETF Standards Track.</strong> RFCs occupy specification-document roles; their warrant maturity is named separately along the <em>Proposed Standard / Draft Standard / Internet Standard</em> ladder. The role is &quot;this is the spec&quot;; the warrant is &quot;this much of the spec has been deployed and verified.&quot;</li>
+<li><strong>Software documentation.</strong> &quot;Official documentation&quot; (role) is distinct from &quot;stable API&quot; (warrant). A document can be the official entry-point for a feature whose API is marked experimental or unstable.</li>
+<li><strong>Type theory / programming-language theory.</strong> &quot;Canonical form&quot; (the unique normal-form representative under reduction) is a Sense-C technical use; it does not interact with the corpus&#39;s Sense-A / Sense-B conflation but stands as evidence that &quot;canonical&quot; already carries multiple precise senses in adjacent fields.</li>
+<li><strong>Religious-studies usage.</strong> &quot;Canon&quot; as authoritative-collection vs &quot;canonical&quot; as scripturally-binding is the original equivocation that produced the word&#39;s modern range. The role/warrant separation has been operating in textual-tradition discipline for centuries.</li>
+<li><strong>Versioned documentation conventions.</strong> Read-the-Docs / Sphinx-style &quot;stable&quot; vs &quot;latest&quot; tags separate the <em>promoted</em> version (role: this is what most users should read) from the <em>current</em> version (warrant: this is what the latest commits build). The two can diverge intentionally.</li>
+</ul>
+<p>The structural pattern across the prior art: a document or artifact&#39;s <em>position-in-an-organization</em> (role) is maintained on a discipline distinct from the <em>epistemic status of the artifact&#39;s content</em> (warrant). The two are linked by an explicit labeling apparatus that prevents one from being read as the other.</p>
+<h3>B.3 Tier-by-Tier Audit</h3>
+<h4>T₁ — Two-senses identification</h4>
+<ul>
+<li><em>Type:</em> \(T_S\) (specification of a distinction).</li>
+<li><em>\(\pi\) outcome:</em> <strong>fully subsumed.</strong> The role-vs-warrant distinction has explicit analogues in library science (AACR2 authorized access point vs verified record), in bibliographic editions (received text vs authorial reading), in IETF practice (RFC role vs Standards Track maturity), and in software documentation (official entry-point vs stable-API marker). The distinction is a recovery into corpus vocabulary of a discipline-pattern that is widely deployed.</li>
+<li><em>Licensed conclusion (warrant table, \(T_S\) at \(\pi\) full subsumption):</em> <em>not novel; cite prior art.</em> The §A.2 lineage is the citation.</li>
+<li><em>Status:</em> recovery.</li>
+</ul>
+<h4>T₂ — Orthogonality claim (the 2×2)</h4>
+<ul>
+<li><em>Type:</em> \(T_S\).</li>
+<li><em>\(\pi\) outcome:</em> <strong>fully subsumed.</strong> The orthogonality of role and warrant is a precondition of the prior-art disciplines named in T₁: AACR2 authority control would be incoherent if the role-name were not maintainable independent of warrant audits; IETF Standards Track would not need maturity labels if the spec-document role implied verified deployment. The orthogonality is a structural feature of the prior art, not a corpus discovery.</li>
+<li><em>Licensed conclusion:</em> recovery.</li>
+<li><em>\(\mu\):</em> qualitative — the audit observation that all three corpus &quot;CANONICAL&quot;-marked docs sit in the lower-left cell (primary-articulation role with sub-canonical warrant) is itself an instance of the orthogonality holding within the corpus. n=3 within-corpus instances.</li>
+<li><em>Status:</em> recovery, with within-corpus qualitative \(\mu\)-instances.</li>
+</ul>
+<h4>T₃ — The disambiguation proposal</h4>
+<ul>
+<li><em>Type:</em> \(T_M\) (methodological-target).</li>
+<li><em>\(P\):</em> the §A.2 prior-art conventions as the operating analogues; the corpus&#39;s existing banner discipline as the target practice.</li>
+<li><em>\(\pi\) outcome:</em> <strong>partially subsumed.</strong> The general move (separate role-label from warrant-label) is fully present in prior art. The specific lexical choice (&quot;PRIMARY ARTICULATION&quot; as the role-label; warrant-tier line as the apparatus) is a corpus-internal lexical commitment without exact prior-art counterpart. The compositional move (banner phrase plus immediately-beneath warrant-tier line) is a specific apparatus design at the corpus&#39;s banner layer.</li>
+<li><em>Licensed conclusion (warrant table, \(T_M\) at \(\pi\) partial):</em> <em>methodology exists; tells nothing about fitness.</em> Promotion to <em>operational-match</em> requires \(\mu\)-tier evidence (does the new banner reliably distinguish role from warrant in reader practice?). Promotion to <em>truth</em> requires \(\theta\)-tier evidence (does the new banner survive audit by independent readers tested for the conflation?).</li>
+<li><em>\(\mu\), \(\theta\):</em> not run. The proposal has not been deployed; reader-comprehension data does not exist.</li>
+<li><em>Status:</em> candidate methodology at \(\pi\)-tier; deployment-and-audit would promote.</li>
+</ul>
+<h4>T₄ — The banner template</h4>
+<ul>
+<li><em>Type:</em> \(T_S\).</li>
+<li><em>\(\pi\) outcome:</em> <strong>fully subsumed.</strong> The banner-plus-status-line pattern is the same structural composition as IETF &quot;Status of This Memo&quot; boilerplate, as Sphinx documentation version-banner widgets, and as the AACR2 access-point-plus-record-status display convention. The corpus&#39;s specific phrasing is a lexical instance, not a structural innovation.</li>
+<li><em>Licensed conclusion:</em> recovery at the structural layer; corpus-internal lexical commitment at the phrasing layer.</li>
+<li><em>Status:</em> recovery.</li>
+</ul>
+<h4>T₅ — Composition rules with corpus disciplines</h4>
+<ul>
+<li><em>Type:</em> \(T_B\) (bridge-target) for each of the four bridges (Doc 415, Doc 503, Doc 372, Doc 314).</li>
+<li><em>\(\pi\) outcome:</em> <strong>fully subsumed for each bridge</strong> at the level of vocabulary and structural commitments. Each bridge follows directly from the disambiguation: separating role from warrant is a V3 move (Doc 314), the warrant-tier-line apparatus aligns with Doc 503&#39;s tier categories and Doc 445&#39;s audit procedure, the retraction ledger (Doc 415) operates on warrant-tier claims independent of document role, and the hypostatic boundary (Doc 372) is unaffected by administrative discipline at the document-graph layer.</li>
+<li><em>Licensed conclusion (\(T_B\) at \(\pi\) full subsumption):</em> <em>bridges use existing vocabulary; structural soundness untested.</em> The bridges are constructible from the cited source documents but their operational behavior is not audited. The Doc 314 V3 bridge specifically — that the proposal removes a structural pressure toward V3 violation — is the bridge most likely to yield independent operational predictions; \(\mu\)-tier audit would test whether banner-disambiguated documents exhibit reduced overstatement-pressure compared to undisambiguated ones.</li>
+<li><em>Status:</em> plausibility passed; \(\mu\)-warrant absent.</li>
+</ul>
+<h4>T₆ — Falsifiers F1–F3</h4>
+<ul>
+<li><em>Type:</em> \(T_P\) (predictive) for each.</li>
+<li><em>\(\theta\) status:</em><ul>
+<li><strong>F1</strong> (reader survey distinguishing role from warrant under new banner): <em>untested.</em> No reader-comprehension data exists.</li>
+<li><strong>F2</strong> (entanglement case where role and warrant are not orthogonal): <em>untested.</em> The 2×2&#39;s lower-right cell (primary-articulation role contingent on warrant outcome) is conceptually possible but no instance has been identified in the current corpus.</li>
+<li><strong>F3</strong> (existing word &quot;canonical&quot; can carry both senses if other disciplines suffice): <em>partially corroborated by Doc 619 Appendix B.</em> The existence of the §B.6 clarifying paragraph is itself evidence that the word can carry both senses with auxiliary discipline — but the necessity of the clarifying paragraph is also evidence that the word does not carry both senses cleanly without that auxiliary discipline. Status: ambiguous evidence; the audit-paragraph workaround functions but at a documented cognitive cost to the reader.</li>
+</ul>
+</li>
+<li><em>Status overall:</em> falsification surface is well-formed; all three falsifiers are operationally specifiable; F3 has indirect within-corpus evidence pointing both ways.</li>
+</ul>
+<h4>T₇ — Implementation specification</h4>
+<ul>
+<li><em>Type:</em> \(T_S\).</li>
+<li><em>\(\pi\) outcome:</em> <strong>fully subsumed.</strong> The specific per-document changes (retitle 514, banner-change 541, banner-change 619, going-forward convention) are implementation moves rather than novel specifications; the IETF Standards Track ladder and Read-the-Docs version-tag conventions provide direct precedent for retroactive role-relabeling across an existing document graph.</li>
+<li><em>Licensed conclusion:</em> recovery; the implementation is a deployment of the T₃ methodology rather than a separate specification.</li>
+<li><em>Status:</em> recovery; pending T₃ adoption decision.</li>
+</ul>
+<h3>B.4 Subsumption Summary — What Prior Art Already Has, What Remains</h3>
+<p><strong>Already in the prior art:</strong></p>
+<ol>
+<li>The role-vs-warrant disambiguation pattern (library science authority control; bibliographic editions&#39; received-text/authorial-reading; IETF role-vs-Standards-Track; software documentation&#39;s official-vs-stable; versioned-docs stable/latest tags).</li>
+<li>The orthogonality of role and warrant as a structural feature of those disciplines (T₂).</li>
+<li>The banner-plus-status-line apparatus design (IETF &quot;Status of This Memo&quot;; Sphinx version banners; AACR2 display conventions).</li>
+<li>The retroactive role-relabeling pattern across an existing document graph (IETF maturity reclassification; software-docs version retagging).</li>
+</ol>
+<p><strong>Corpus-residual contribution:</strong></p>
+<ol>
+<li>The specific identification of the conflation as it has been operating in the corpus&#39;s &quot;CANONICAL — open invitation to falsify&quot; banner, with the within-corpus instances (T₂ \(\mu\)-evidence: Docs 514, 541, 619 sitting in the lower-left cell). <em>Tier:</em> \(\pi\) within-corpus observation; documentary rather than empirical.</li>
+<li>The link from the disambiguation to Doc 314 V3 truth-telling — the framing that the conflation creates a structural pressure toward V3 violation at the banner layer. This is corpus-original at the bridge layer (T₅ specifically). <em>Tier:</em> \(\pi\) plausibility-passed; \(\mu\)-untested.</li>
+<li>The proposed lexical commitment to &quot;PRIMARY ARTICULATION&quot; as the role-label (T₃, T₄) — a corpus-internal naming choice without exact prior-art counterpart. <em>Tier:</em> candidate; alternatives (REFERENCE DOCUMENT, ENTRY-POINT, PRIMARY SOURCE) noted in §7 Q1.</li>
+<li>The composition with Doc 445&#39;s tier vocabulary and Doc 503&#39;s tier categories — the explicit warrant-tier line that names tier per Doc 445 target type and per Doc 503 corroboration profile. <em>Tier:</em> \(\pi\) plausibility-passed.</li>
+</ol>
+<p>The recovery layer dominates Doc 620. The corpus-residual contribution concentrates in the four moves above, of which the V3 bridge (#2) and the within-corpus instance-observation (#1) are the most substantive.</p>
+<h3>B.5 Status Assignments</h3>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Type</th>
+<th>\(\pi\)</th>
+<th>\(\mu\)</th>
+<th>\(\theta\)</th>
+<th>Licensed status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T₁ two-senses identification</td>
+<td>\(T_S\)</td>
+<td>full subsumption</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>Recovery — not novel; lineage cited</td>
+</tr>
+<tr>
+<td>T₂ orthogonality</td>
+<td>\(T_S\)</td>
+<td>full subsumption</td>
+<td>n=3 within-corpus</td>
+<td>n/a</td>
+<td>Recovery; qualitatively corroborated</td>
+</tr>
+<tr>
+<td>T₃ disambiguation proposal</td>
+<td>\(T_M\)</td>
+<td>partial subsumption</td>
+<td>not run</td>
+<td>not run</td>
+<td>Methodology exists; fitness untested</td>
+</tr>
+<tr>
+<td>T₄ banner template</td>
+<td>\(T_S\)</td>
+<td>full subsumption</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>Recovery</td>
+</tr>
+<tr>
+<td>T₅ composition bridges</td>
+<td>\(T_B\) (×4)</td>
+<td>full subsumption</td>
+<td>not run</td>
+<td>not run</td>
+<td>Bridges plausibility-passed; structural soundness untested</td>
+</tr>
+<tr>
+<td>T₆ F1–F3 falsifiers</td>
+<td>\(T_P\) (×3)</td>
+<td>irrelevant</td>
+<td>n/a</td>
+<td>F3 ambiguous; F1, F2 untested</td>
+<td>Candidate falsifiers; F3 indirectly probed</td>
+</tr>
+<tr>
+<td>T₇ implementation spec</td>
+<td>\(T_S\)</td>
+<td>full subsumption</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>Recovery; pending adoption</td>
+</tr>
+</tbody></table>
+<p>No portion of Doc 620 warrants Doc 445 <em>Canonical</em> promotion. The proposal stands as a candidate procedural change at \(\pi\)-tier with within-corpus qualitative \(\mu\)-evidence on the orthogonality claim and ambiguous F3 evidence on the necessity of the disambiguation itself.</p>
+<h3>B.6 What Would Promote Each Residual Element</h3>
+<ul>
+<li><strong>T₃ disambiguation methodology → \(\mu\) tier:</strong> deploy the new banner across Docs 514, 541, 619 and run a reader-comprehension comparison (informal at first; formal if external review is sought). If readers presented with the new banner reliably distinguish role from warrant, the methodology is operationally promoted.</li>
+<li><strong>T₅ Doc 314 V3 bridge → \(\mu\) tier:</strong> track whether banner-disambiguated documents exhibit reduced overstatement-pressure across the corpus&#39;s subsequent practice (e.g., fewer post-hoc clarifying paragraphs of the kind Doc 619 §B.6 added).</li>
+<li><strong>T₆ F3 falsifier → \(\theta\) tier:</strong> an explicit reader-survey or external-audit comparison of the disambiguated and undisambiguated banner conventions would resolve the currently-ambiguous F3 evidence one way or the other.</li>
+<li><strong>T₃ alternative labels (Q1) → \(\mu\) tier:</strong> if &quot;PRIMARY ARTICULATION&quot; is rejected on aesthetic or conceptual grounds, the alternative-label search is itself a \(\mu\)-tier inquiry: which lexical commitment best preserves the role-vs-warrant separation under reader practice?</li>
+</ul>
+<h3>B.7 Audit Verdict</h3>
+<p>Doc 620 is a competently constructed methodology proposal that recovers a widely-deployed role-vs-warrant disambiguation pattern into the corpus&#39;s vocabulary and applies it specifically to the corpus&#39;s banner discipline. The body work concentrates in recovery (the two-senses identification, the orthogonality claim, the banner template, the implementation specification) with four identifiable corpus-residual moves: the within-corpus instance-observation, the Doc 314 V3 bridge, the lexical commitment to &quot;PRIMARY ARTICULATION,&quot; and the composition with Doc 445 / Doc 503 tier vocabulary.</p>
+<p>The corpus-residual moves stand at <em>plausibility passed</em> tier across the board, with within-corpus qualitative \(\mu\)-evidence on the orthogonality claim. No portion warrants Doc 445 <em>Canonical</em> promotion at this time. The document is honestly framed if read as a methodology proposal at \(\pi\)-tier with the deployment-and-audit work specified in §A.6 as the promotion path.</p>
+<p>The pulverization audit confirms — by the same discipline the proposal would ratify at the banner layer — that Doc 620 itself is a primary-articulation-role candidate at sub-Canonical warrant tier. The recursion is consistent: the document proposing the disambiguation is itself an instance of the kind of document the disambiguation would distinguish.</p>
+<p>A note on recursion: this document, like the pulverization audits of Doc 619 Appendix B and the Doc 461 / Doc 491 self-applications before it, is an instance of the corpus&#39;s tier-discipline being applied to a corpus-internal proposal. The recursive application is an internal coherence check rather than external validation; the proposal&#39;s external warrant rests on the prior-art lineage of §A.2 and on the deployment-and-audit work of §A.6.</p>
+<hr>
+<p><em>Jared Foy — jaredfoy.com — May 2026</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

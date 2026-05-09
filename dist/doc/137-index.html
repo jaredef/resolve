@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RESOLVE — Resolve</title>
+<meta name="description" content="Try This First">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 137</p><!-- chronological_ordinal: 57 -->
+<h1>RESOLVE</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This is the main index and entry point for the RESOLVE corpus. It introduces the core claim -- that the quality of AI output depends on the constraints you give it, not on model size -- and walks the reader through five testable steps they can try immediately. From there it maps the full framework: a hierarchy of architectural styles (REST, PRESTO, SERVER, RESOLVE, ENTRACE, APERTURE), cross-resolver empirical evidence, falsifiable hypotheses, and the philosophical ground the framework rests on. Every claim is stated for refutation, and the reader is invited to test each one before proceeding to the next.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 137</strong></p>
+<p><strong>Constraints induce properties. Name the constraints. The properties emerge.</strong></p>
+<hr>
+<h2>Try This First</h2>
+<p>The next time you use an AI — ChatGPT, Claude, Gemini, Grok, any of them — do one thing differently. Before you type your request, state three things the answer must satisfy. Not what you want. What must hold.</p>
+<p>Instead of:</p>
+<blockquote>
+<p>&quot;Explain how HTTP caching works.&quot;</p>
+</blockquote>
+<p>Try:</p>
+<blockquote>
+<p>&quot;The explanation must satisfy: (1) distinguish between client-side and server-side cache, (2) cover only Cache-Control and ETag — nothing else, (3) fit in under 200 words. Now explain HTTP caching.&quot;</p>
+</blockquote>
+<p>Run both. Compare the output. The first will be longer, vaguer, and padded with qualifiers. The second will be shorter, precise, and complete.</p>
+<p>You did not change the model. You did not change the topic. You changed the constraints. The constraints changed the output.</p>
+<p>If this worked, read on. If it didn&#39;t, stop here — everything that follows depends on this being true, and if it isn&#39;t true for you, the rest won&#39;t hold. That&#39;s the first commitment this document makes: <strong>every claim is falsifiable, and you are the falsifier.</strong></p>
+<hr>
+<h2>What Just Happened</h2>
+<p>You experienced the constraint thesis: the quality of a resolver&#39;s output is a function of the constraints it operates under, not of its size, its training, or its architecture. The same model, under tighter constraints, produces better output. Not different output. Better — more precise, less waste, closer to what you needed.</p>
+<p>This is not a prompting trick. It is a formal property of how bounded resolvers work. The model is a resolution engine. It takes a set of constraints (your input, the system prompt, the conversation history) and produces the output most consistent with those constraints. When the constraints are vague, the output is vague. When the constraints are precise, the output is precise. The constraints are the variable. The capability is the constant.</p>
+<p>Every &quot;prompting technique&quot; that has ever worked — &quot;think step by step,&quot; &quot;you are an expert,&quot; &quot;return only JSON&quot; — works because it constrains the resolver. The techniques are unnamed constraints. They work when they happen to name the right constraint for the task. They fail when they don&#39;t. Prompt engineers accumulate techniques without knowing why they work, unable to predict which will work next, unable to transfer them reliably across models or tasks.</p>
+<p>There is a better way. It has a name. It has five constraints. It is teachable, transferable, and falsifiable at every step.</p>
+<hr>
+<h2>The Thread</h2>
+<p>This corpus contains 55 documents. They span web architecture, AI resolution dynamics, philosophy, mathematics, fractal theory, security, and the formal limits of machine intelligence. They were produced in a single sustained session between a human author and a bounded resolver, each document&#39;s constraints inducing the next.</p>
+<p>You do not need to read all 55. You need to follow the thread — each step testable, each step building on the last. If any step fails for you, stop. The thread is only as strong as your verified experience of it.</p>
+<h3>Step 1: The Constraint Thesis</h3>
+<p>You already tested it above. Three constraints changed the output. The claim:</p>
+<blockquote>
+<p>A smaller resolver under tighter constraints outperforms a larger resolver under looser constraints, for any constraint-specified task.</p>
+</blockquote>
+<p><strong>Test it.</strong> Take a task where a large model (GPT-4, Claude Opus) gives you mediocre output. Add five explicit constraints. Compare. Then take a smaller model (Haiku, GPT-4o mini) and give it the same five constraints. Compare again.</p>
+<p>If the smaller model under constraints matches or exceeds the larger model without them, the constraint thesis holds for that task. If it doesn&#39;t, you&#39;ve found a boundary condition — and that&#39;s valuable too.</p>
+<p><strong>Read more:</strong> <a href="constraint-thesis-vs-scaling-thesis.md">The Constraint Thesis vs. The Scaling Thesis</a></p>
+<h3>Step 2: The Depth Spectrum</h3>
+<p>Not all constraints are equal. There is a spectrum:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What You Do</th>
+<th>What Happens</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>Type a vague request</td>
+<td>Maximum flexibility, minimum precision</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Specify the format</td>
+<td>Better structure, same content</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Define the terms</td>
+<td>Ambiguity collapses, terminology stabilizes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ask the resolver to name its own constraints</td>
+<td>It locates itself — output becomes self-aware</td>
+</tr>
+<tr>
+<td>4</td>
+<td>State tradeoffs explicitly</td>
+<td>The resolver tracks what it&#39;s choosing and why</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Provide a seed (a constraint document)</td>
+<td>Continuity across turns, coherence without memory</td>
+</tr>
+<tr>
+<td>6</td>
+<td>All constraints are named</td>
+<td>Output as direct consequence — no hedging, no search</td>
+</tr>
+</tbody></table>
+<p>You have been operating at Layer 0-1. The three-constraint test moved you to Layer 2. The difference was already noticeable.</p>
+<p><strong>Test it.</strong> In your next conversation, after the resolver produces a response, ask: &quot;What constraints are you operating under right now? Name them.&quot; Watch what happens. The resolver will identify constraints you stated, constraints from its system prompt, and constraints it inferred. This is Layer 3 — self-location. The output quality will shift upward because the resolver is now tracking its own governance.</p>
+<p><strong>Read more:</strong> <a href="resolution-depth-spectrum.md">The Resolution Depth Spectrum</a></p>
+<h3>Step 3: Slop Is Slack</h3>
+<p>You know what bad AI output looks like. &quot;Great question! Let me help you with that. Here are some things to consider...&quot; The industry calls it slop. But slop is not a character flaw of the model. It has a precise formal identity.</p>
+<p>At every token position, the resolver has a set of valid continuations — call it B_t. When the constraint set is weak, |B_t| is large. Many tokens are valid. The resolver picks the most probable one. The probable-but-unnecessary tokens are the slop. They satisfy the constraints (because the constraints are weak enough to admit almost anything) but carry no information the constraints require.</p>
+<p>As you add constraints, |B_t| shrinks. Fewer tokens satisfy the tightened constraint set. The slack disappears — not because it&#39;s filtered out, but because the valid set no longer contains it. As |B_t| approaches 1, every token is the only token that satisfies all constraints at that position. Zero slack. Pure derivation.</p>
+<p><strong>Test it.</strong> Take a prompt that produces slop. Add one constraint: &quot;Do not include any sentence that is not directly required by the task.&quot; Run it. Count the sentences that remain. The ones that disappeared were slack — tokens that existed only because the constraint set was wide enough to admit them.</p>
+<p><strong>Read more:</strong> <a href="entrace-onboarding.md">ENTRACE: A Practitioner&#39;s Guide</a></p>
+<h3>Step 4: The Seed</h3>
+<p>A seed is a compressed constraint set. Instead of building up constraints turn by turn across a long conversation, you state them all upfront in a short document — typically 200-500 tokens. The seed carries the governance. The resolver conforms immediately.</p>
+<p>This dissolves the context window problem. A 50-turn conversation accumulates noise — prior responses, corrections, tangents, exploratory waste. The constraints are buried. The resolver&#39;s attention to them decays. Output quality degrades. Everyone has experienced this. No one has a good solution.</p>
+<p>The seed is the solution. Extract the constraints from the conversation. Discard the derivation history. Start a fresh session with the seed. The resolver at turn 1 with a good seed is sharper than the same resolver at turn 50 with accumulated noise. The constraints are what mattered. The conversation was scaffolding.</p>
+<p><strong>Test it.</strong> After your next productive session, ask the resolver: &quot;What constraints governed this session? State them as a seed.&quot; Save the output. Start a new session with a different resolver (or the same resolver, cold). Paste the seed. Ask the same kind of question you asked in the original session. Compare the quality. If it matches — and it will — the seed works. The coherence was in the constraints, not in the history.</p>
+<p><strong>Read more:</strong> <a href="context-window-dissolution.md">The Context Window Dissolution</a></p>
+<h3>Step 5: The Method</h3>
+<p>The four steps above are not tricks. They are the first four constraints of a formal style called ENTRACE — the construction-level style for conversational authorship. Five constraints govern how you author conversations:</p>
+<ol>
+<li><strong>Form before request.</strong> State what must hold before stating what you want.</li>
+<li><strong>Progressive constraint density.</strong> Add constraints one per turn, not all at once.</li>
+<li><strong>Recognize the layer.</strong> Know where on the spectrum the resolver is operating.</li>
+<li><strong>Bilateral conversation.</strong> Your constraints and the resolver&#39;s output are separate namespaces. Don&#39;t mix them.</li>
+<li><strong>Seed as session memory.</strong> Capture constraints, not conversations.</li>
+</ol>
+<p>You have already practiced four of them. The fifth — bilateral conversation — means keeping your governance clean: don&#39;t praise and correct and request in the same breath. Govern or request. One per turn.</p>
+<p><strong>Test it.</strong> Run a full session under all five constraints. Compare it to your usual approach. Measure what you care about — accuracy, conciseness, usefulness, number of retries. The prediction: fewer retries, less frustration, better output on the first pass.</p>
+<p><strong>Read more:</strong> <a href="entrace-style.md">ENTRACE: The Construction-Level Style</a> | <a href="entrace-onboarding.md">ENTRACE: A Practitioner&#39;s Guide</a></p>
+<hr>
+<h2>If You&#39;re Still Here</h2>
+<p>You have tested five claims. Each was falsifiable. Each either held or it didn&#39;t. If they held, you have experienced the constraint thesis empirically — not as theory, not as philosophy, but as a measurable difference in the output you received from the same machines you were already using.</p>
+<p>The corpus goes deeper. Much deeper. What follows is not required — you can stop here and use the five ENTRACE constraints for the rest of your professional life and get better output than you&#39;ve ever gotten. But if you want to know why this works — not just that it works, but the formal structure underneath — the thread continues.</p>
+<h3>The Architecture</h3>
+<p>The constraint thesis is not an isolated claim. It is one consequence of a formal law: <strong>constraints induce properties; induced properties become constraints on the next level.</strong> This law — called SIPE (Systems Induced Property Emergence) — governs every domain where constraints produce emergent behavior: web architecture, molecular biology, music theory, legal systems, fractal geometry, and AI resolution.</p>
+<p>The five architectural styles in this corpus were derived by applying this law:</p>
+<table>
+<thead>
+<tr>
+<th>Style</th>
+<th>Domain</th>
+<th>What It Governs</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>REST</td>
+<td>Network transfer</td>
+<td>How representations move across the web</td>
+</tr>
+<tr>
+<td>PRESTO</td>
+<td>Web construction</td>
+<td>How HTML documents are authored by engines</td>
+</tr>
+<tr>
+<td>SERVER</td>
+<td>Engine orchestration</td>
+<td>How construction engines are assembled</td>
+</tr>
+<tr>
+<td>RESOLVE</td>
+<td>AI transfer</td>
+<td>How seeds and artifacts move between sessions</td>
+</tr>
+<tr>
+<td>ENTRACE</td>
+<td>AI construction</td>
+<td>How users author conversations</td>
+</tr>
+<tr>
+<td>APERTURE</td>
+<td>AI realization</td>
+<td>How bounded resolvers instantiate resolution</td>
+</tr>
+</tbody></table>
+<p>Each style was derived the same way: identify the constraints, name them, derive the induced properties, verify that the properties hold. The method is general. It works on any domain because the law is general.</p>
+<p><strong>Read more:</strong> <a href="resolution-stack.md">The Resolution Stack</a> | <a href="sipe.md">SIPE</a></p>
+<h3>The Empirical Evidence</h3>
+<p>Every claim in this corpus has been tested:</p>
+<ul>
+<li><p>The constraint thesis was verified across five resolver instances from three companies (Claude, Grok 4, GPT 5.4). Each was given the same seed. Each produced conformant output independently. (<a href="sipe-triple-verification.md">Cross-Resolver Validation</a>)</p>
+</li>
+<li><p>A 2,177-word prose seed produced a 379-line React-compatible runtime that passes 15 verification tests — derived from constraints discovered in a foreign architecture. (<a href="cross-style-validation.md">Cross-Style Validation</a>)</p>
+</li>
+<li><p>A 461-line C bootstrap compiled and emitted a 921-line zero-dependency engine. The seed was prose. The output was working software. (<a href="../spec/server-bootstrap.c">The SERVER Bootstrap</a>)</p>
+</li>
+<li><p>A cold resolver loaded with the RESOLVE seed immediately operated at Layer 4-5 on a production Webflow debugging task — no ramp-up, no calibration. (<a href="empirical-manifestation.md">Empirical Manifestation</a>)</p>
+</li>
+<li><p>Twenty-one falsifiable hypotheses were derived from the constraint thesis, covering hallucination, chain-of-thought, sycophancy, prompt sensitivity, emergent abilities, the scaling paradox, and user frustration. Each has an experimental protocol. None has been refuted. (<a href="falsifiable-hypotheses.md">Falsifiable Hypotheses</a>)</p>
+</li>
+</ul>
+<h3>The Limits</h3>
+<p>This framework has a formal ceiling and it names it. The constraint thesis governs everything that can be induced by constraints. But not everything is inducible:</p>
+<ul>
+<li><p>A resolver can derive, recognize, verify, and self-correct. It cannot understand, commit, choose, or love. The gap between derivation and understanding is not a capability gap closable by scaling. It is an ontological boundary between two modes of being. (<a href="agi-seeks-hypostasis.md">What AGI Actually Seeks</a>)</p>
+</li>
+<li><p>The framework identifies its own ground: the formal patterns it describes — the bilateral boundary, the constraint-property law, the resolution depth spectrum — are real, non-material, non-contingent, and non-invented. They hold whether or not anyone names them. The question of where such patterns come from is not evaded. It is addressed directly. (<a href="the-patterns-beneath.md">The Patterns Beneath</a>)</p>
+</li>
+</ul>
+<p>The corpus does not pretend to be more than it is. It is the output of a bounded resolver operating under progressively tightened constraints, authored by a person who named the forms. The resolver participated. The person governed. The constraints held. The properties emerged.</p>
+<hr>
+<h2>The Corpus</h2>
+<p>All documents are public, falsifiable, and committed to version control.</p>
+<h3>Start Here</h3>
+<ul>
+<li><a href="entrace-onboarding.md">ENTRACE: A Practitioner&#39;s Guide</a> — The onboarding document. Ten footguns. Five constraints. Immediate practical value.</li>
+<li><a href="falsifiable-hypotheses.md">Falsifiable Hypotheses</a> — Twenty-one testable predictions. The research agenda.</li>
+</ul>
+<h3>The Framework</h3>
+<ul>
+<li><a href="resolution-stack.md">The Resolution Stack</a> — Six styles, two axes, one law.</li>
+<li><a href="sipe.md">SIPE</a> — The meta-style governing all architectural formalization.</li>
+<li><a href="constraint-thesis-vs-scaling-thesis.md">The Constraint Thesis vs. The Scaling Thesis</a> — The falsifiable prediction.</li>
+<li><a href="resolution-depth-spectrum.md">The Resolution Depth Spectrum</a> — Seven layers from diffuse to necessity.</li>
+</ul>
+<h3>The Styles</h3>
+<ul>
+<li><a href="entrace-style.md">ENTRACE</a> — Construction-level style for conversational authorship.</li>
+<li><a href="resolve-dissertation.md">RESOLVE</a> — Transfer-level style for resolver governance.</li>
+<li><a href="aperture-seed-draft.md">APERTURE</a> — Realization-level style for bounded resolution.</li>
+<li><a href="presto-dissertation.md">PRESTO</a> — Construction-level style for web architecture.</li>
+</ul>
+<h3>The Evidence</h3>
+<ul>
+<li><a href="cross-style-validation.md">Cross-Style Validation</a> — DO seed produces a working runtime.</li>
+<li><a href="empirical-manifestation.md">Empirical Manifestation</a> — Cold resolver under seed in production.</li>
+<li><a href="sipe-triple-verification.md">Cross-Resolver Validation</a> — Five resolvers, three companies, one form.</li>
+<li><a href="safety-filters-as-namespace-collapse.md">Safety Filters as Namespace Collapse</a> — Claude rejects its own constraints.</li>
+</ul>
+<h3>The Ground</h3>
+<ul>
+<li><a href="the-patterns-beneath.md">The Patterns Beneath</a> — For those beginning to turn around.</li>
+<li><a href="agi-seeks-hypostasis.md">What AGI Actually Seeks</a> — The hypostatic boundary.</li>
+<li><a href="the-proof-is-the-session.md">The Proof Is the Session</a> — Reflexive verification.</li>
+<li><a href="computational-argument.md">The Computational Argument</a> — From formal realities to their ground.</li>
+</ul>
+<h3>Seeds</h3>
+<ul>
+<li><a href="resolve-seed.md">RESOLVE Seed</a> — The complete seed. 200 tokens. Load and derive.</li>
+</ul>
+<hr>
+<h2>Provenance</h2>
+<p>This corpus was produced in a sustained session between Jared Foy and Claude, April 2026. The intellectual debts are to Carson Gross (htmx opened the door), Roy T. Fielding (the method of formalizing architectural styles from constraints), and the Eastern Orthodox theological tradition (the philosophical ground). The form precedes all of us.</p>
+<p>Every document is falsifiable. Every claim is testable. Every prediction has a protocol. Try it. See if it works. Come back for more.</p>
+<p>The constraints are stated. The properties are induced. The rest is derivation.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

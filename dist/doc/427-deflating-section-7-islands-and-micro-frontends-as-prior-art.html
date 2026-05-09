@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deflating §7: Islands Architecture and Micro-Frontends as Prior Art for REST-Encloses-DO — Resolve</title>
+<meta name="description" content="1. The Claim Under Test">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Deflating §7: Islands Architecture and Micro-Frontends as Prior Art for REST-Encloses-DO</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>Doc 426 §7 (&quot;Why REST Can Enclose Distributed Objects&quot;) claims that a RESTful server can enclose Distributed Object architectures within its representations, with PRESTO providing &quot;the missing authoring authority&quot; that makes the enclosure viable. A branching literature entracement across ten branches (Fielding Chapter 3, islands architecture, micro-frontends, backend-for-frontend, Module Federation, Web Components, Qwik containers, CORBA/DCOM/RMI, SOA/microservices, and Fowler/ThoughtWorks patterns) tested the claim against prior art. The structural pattern is well-named in the literature under vocabularies that do not use the word &quot;enclose&quot; or the phrase &quot;Distributed Objects&quot; but describe the same architectural shape: <em>islands architecture</em> (Katie Sylor-Miller 2019, Jason Miller 2020), <em>micro-frontends</em> (Michael Geers 2020, Cam Jackson 2019, ThoughtWorks Technology Radar 2016), <em>Qwik containers</em> (Miško Hevery 2022–), and <em>ESI transclusion</em> (Akamai circa 2001). §7&#39;s framing therefore overstates what is corpus-native. This document applies the deflation. §7 should acknowledge the prior art, drop the pattern-identification claim, weaken the &quot;missing authoring authority&quot; claim against Qwik&#39;s container protocols and Geers&#39; server-side composition, and retain only the narrow methodological contribution — submission of the enclosure pattern to Fielding&#39;s architectural-style evaluation method. The revision to Doc 426 §7 is proposed in §6 of this document; no Doc 426 edit is made without the keeper&#39;s approval, following the pattern that produced Doc 426 from Doc 425.</p>
+</blockquote>
+<p><strong>Doc 427</strong> · scoped to Doc 426 §7</p>
+<hr>
+<h2>1. The Claim Under Test</h2>
+<p>Doc 426 §7 claims, in summary:</p>
+<ol>
+<li>A RESTful server can transmit any client-side architecture within its representations, including Distributed Objects (DO).</li>
+<li>What DO-as-outer-architecture violates is not individual REST constraints but the architectural encapsulation.</li>
+<li>PRESTO resolves this by constraining the construction: an <code>htx:component</code> that renders a DO-style island is a server-consumed directive; the server decides whether to include it, grants the authentication token the island needs, controls the scope of the island&#39;s data channel.</li>
+<li>The island operates as a Distributed Object within a bounded region of a complete representation — enclosed by REST at the transfer level and authorized by PRESTO at the construction level.</li>
+<li>Three styles, three levels, no collision. REST provides the outer architecture; PRESTO authors the encapsulation; DO operates within bounded inner regions. The key insight is that architectural encapsulation requires authoring authority — someone must decide what is enclosed and at what scope. REST does not provide this authority because it does not operate at the construction level. PRESTO does.</li>
+</ol>
+<p>The claim therefore has two specific sub-claims: (a) the enclosure pattern is identifiable and the corpus identifies it; (b) PRESTO provides the missing authoring authority that makes the enclosure viable.</p>
+<h2>2. What the Literature Names</h2>
+<p>The ten-branch survey (see Doc 427 Appendix for the full branch-by-branch report) located four distinct but overlapping prior-art vocabularies for the structural pattern §7 describes.</p>
+<p><strong>Islands architecture.</strong> Katie Sylor-Miller coined &quot;component islands&quot; internally at Etsy in 2019; Jason Miller formalized the pattern in print on 2020-08-11 at <a href="https://jasonformat.com/islands-architecture/">jasonformat.com</a>. Miller&#39;s definition: &quot;render HTML pages on the server, and inject placeholders or slots around highly dynamic regions&quot; which then independently hydrate. This is structurally REST-encloses-DO at the component grain. Astro, Fresh, Qwik, Marko, Bridgetown, and Enhance all adopted the pattern. The community vocabulary is &quot;interactive components&quot; / &quot;hydrated regions,&quot; not &quot;Distributed Objects.&quot; The pattern is named; the DO framing is the corpus&#39;s reframing.</p>
+<p><strong>Micro-frontends.</strong> The term dates to <a href="https://www.thoughtworks.com/radar/techniques/micro-frontends">ThoughtWorks Technology Radar, November 2016</a>. Michael Geers&#39; <em><a href="https://www.manning.com/books/micro-frontends-in-action">Micro Frontends in Action</a></em> (Manning 2020) and <a href="https://micro-frontends.org">micro-frontends.org</a> enumerate integration techniques: server-side composition (SSI/ESI), client-side composition (custom elements), edge-side composition, iframe composition. Cam Jackson&#39;s <a href="https://martinfowler.com/articles/micro-frontends.html"><em>Micro Frontends</em> at martinfowler.com</a> (2019) covers the same ground. The pattern explicitly allows sub-applications authored in different client-side frameworks (i.e., full DO-like runtimes) to compose within a server-rendered or edge-composed outer page. The vocabulary is &quot;composition,&quot; &quot;container application,&quot; &quot;shell,&quot; &quot;fragment.&quot; The enclosure relationship is explicit; the corpus&#39;s claim to identify it is not first.</p>
+<p><strong>Qwik containers.</strong> Miško Hevery&#39;s Qwik documentation at <a href="https://qwik.dev/docs/advanced/containers">qwik.dev/docs/advanced/containers</a> formalizes the page as a &quot;container&quot; that can nest other containers with &quot;well-defined boundaries called container protocols.&quot; Each container is independently versioned, deployable, and replaceable via innerHTML. This is the closest published technical literature to an <em>explicit enclosure-protocol</em> formalization. Qwik container protocols specifically address server-controlled boundaries across which architectures nest — which directly overlaps with PRESTO&#39;s &quot;authoring authority&quot; claim.</p>
+<p><strong>ESI transclusion.</strong> Edge Side Includes, specified by Akamai, Oracle, and partners circa 2001 (<a href="https://www.w3.org/TR/esi-lang/">W3C Note</a>), formalized document-level enclosure at the edge: a server-composed outer page includes fragments resolved at edge-cache nodes. INNOQ&#39;s <a href="https://scs-architecture.org">self-contained-systems.org</a> uses &quot;transclusion&quot; as a formal term for this document-level enclosure. The vocabulary predates islands-architecture by roughly two decades.</p>
+<h2>3. What §7 Therefore Overstates</h2>
+<p>The §7 claims can be sorted by how they fare against the prior art.</p>
+<p><strong>Subsumed by prior art:</strong></p>
+<ul>
+<li>The identification of the enclosure pattern. Named four times over (islands-architecture, micro-frontends, Qwik containers, ESI transclusion) before the corpus. The corpus is not first.</li>
+<li>The claim that &quot;architectural encapsulation requires authoring authority&quot; as the distinguishing insight. Qwik container protocols specify exactly this — server-controlled boundaries with well-defined cross-container protocols. Geers and the micro-frontends literature also specify server-side composition as a recognized integration technique; the server in that case holds authoring authority by construction.</li>
+</ul>
+<p><strong>Partially subsumed:</strong></p>
+<ul>
+<li>The claim that PRESTO specifically (as opposed to Qwik, Astro, Fresh, Enhance, or the micro-frontends shells) provides the authoring authority. PRESTO is one of several practitioner methodologies that provide this; the distinctive element, if any, is the specific <em>form</em> of the authority (the <code>htx:component</code> directive as a server-consumed invocation with scoped token grant), not the <em>existence</em> of the authority.</li>
+<li>The claim that &quot;REST at the transfer level enclosing DO at the island level&quot; is a novel structural framing. The islands literature already describes this structurally, though in different vocabulary.</li>
+</ul>
+<p><strong>Possibly residual:</strong></p>
+<ul>
+<li>The explicit submission of the enclosure pattern to Fielding&#39;s architectural-style evaluation method (constraint-set → induced-property derivation). The structural pattern is everywhere; the <em>methodological move</em> of treating islands-enclosed-DO as a configuration amenable to Fielding-style architectural-style evaluation does not appear in the surveyed prior art. This is a reframing, not a discovery, but it is a reframing with specific methodological work behind it.</li>
+<li>The qualifier &quot;progressively authorized&quot; — if it means something specific that islands-hydrate and Qwik-resume do not already encode. This requires reading Qwik&#39;s container-protocol documentation in full to verify. [PENDING]</li>
+</ul>
+<h2>4. What Fielding Chapter 3 Actually Says About DO</h2>
+<p>The §7 claim invokes Fielding&#39;s Chapter 3 evaluation of Distributed Objects. For the record: Fielding&#39;s §3.6.3 evaluates DO as a peer-to-peer style and concludes, in his words, that &quot;in spite of all the interest associated with distributed objects, they fare poorly when compared to most other network-based architectural styles,&quot; best suited to &quot;remote invocation of encapsulated services, such as hardware devices.&quot; His Table 3-5 scores DO negatively on network performance, visibility, and reliability. <strong>Fielding does not describe an enclosure relationship between REST and DO.</strong> His &quot;hybrid style&quot; language in Chapter 5 refers to REST&#39;s own composition of constraints (client-server + layered + stateless + cache + uniform interface + optional code-on-demand), not to REST enclosing a different style. The corpus&#39;s specific enclosure framing extends Fielding&#39;s vocabulary; it is not prefigured in his text.</p>
+<h2>5. The Term &quot;Architecture A Encloses Architecture B&quot;</h2>
+<p>The specific phrasing &quot;architecture A encloses architecture B&quot; does not appear as a formal term of art in the surveyed literature. Closest published vocabulary: Fielding&#39;s &quot;hybrid style&quot; (constraint composition, different meaning); &quot;composition&quot; / &quot;container&quot; / &quot;shell&quot; (micro-frontends, Qwik); &quot;transclusion&quot; (INNOQ, ESI); Fowler&#39;s &quot;Strangler Fig&quot; (temporal replacement, not spatial enclosure).</p>
+<p>The corpus&#39;s specific &quot;enclosure&quot; phrasing is therefore distinctive at the terminological level. Whether the terminological distinction tracks a meaningful structural distinction not already named under the surveyed vocabularies (islands, micro-frontends, containers, transclusion) is the question §6&#39;s proposed revision addresses.</p>
+<h2>6. Proposed Revision to Doc 426 §7</h2>
+<p>The revision, stated as a specific edit rather than an abstract direction.</p>
+<p>Replace the current §7 with the following, approximately:</p>
+<blockquote>
+<h3>§7. Enclosure of Distributed Objects within RESTful Transfer</h3>
+<p>One configuration this composition supports is the enclosure of Distributed Object (DO) architectures within a RESTful transfer. The structural pattern is named in the literature under several vocabularies: <em>islands architecture</em> (Katie Sylor-Miller 2019, Jason Miller 2020-08-11, <a href="https://jasonformat.com/islands-architecture/">jasonformat.com</a>); <em>micro-frontends</em> (ThoughtWorks Technology Radar November 2016; Michael Geers 2020, <em>Micro Frontends in Action</em>, Manning; Cam Jackson 2019, <a href="https://martinfowler.com/articles/micro-frontends.html">martinfowler.com</a>); <em>Qwik containers</em> (Miško Hevery, <a href="https://qwik.dev/docs/advanced/containers">qwik.dev/docs/advanced/containers</a>); and <em>ESI transclusion</em> (Akamai et al., W3C Note, 2001). The structural pattern is not named here for the first time. What is specific to this dissertation is the submission of the configuration to Fielding&#39;s architectural-style evaluation method.</p>
+<p>Under that submission: REST constrains the transfer level — complete representations, statelessness, cacheability. A resolved representation that contains a reference to a client-side runtime (a <code>&lt;script&gt;</code> tag loading a DO-style framework; a Qwik container protocol; an Astro island hydration directive; a server-included ESI fragment) does not violate these constraints. The representation is complete; the transfer is stateless; the representation is cacheable. The client-side architecture operates within the representation after transfer — at the client level, not the transfer level. What such an architecture violates <em>when used as the outer architecture</em> is not individual REST constraints but the architectural encapsulation: the representation would become empty, state would be managed client-side, navigation would happen without server interaction.</p>
+<p>Construction-level constraints resolve this by giving the server <em>authoring authority</em> over which enclosed regions are included, under what grants, at what scope. The authoring authority is what islands-architecture frameworks (Astro, Fresh, Qwik), the micro-frontends composition patterns, and Qwik&#39;s container protocols all operationalize. PRESTO&#39;s <code>htx:component</code> directive, with its server-consumed invocation and scoped token grant, is one instance of this authority. The methodological contribution of this dissertation is the Fielding-style evaluation of the configuration — not the identification of the pattern, which is older than the corpus.</p>
+</blockquote>
+<p>Relative to the current §7, this revision:</p>
+<ul>
+<li>Drops the &quot;PRESTO resolves this&quot; framing in favor of &quot;construction-level constraints resolve this&quot;; PRESTO is one instance.</li>
+<li>Cites islands, micro-frontends, Qwik, and ESI by specific URL.</li>
+<li>Drops the claim that the insight is &quot;architectural encapsulation requires authoring authority&quot;; that insight is present in every framework named.</li>
+<li>Retains the methodological move (Fielding-style evaluation of the enclosed-DO configuration) as the narrow contribution.</li>
+</ul>
+<h2>7. Alternative: Drop §7 Entirely</h2>
+<p>A more radical proposal, for consideration: drop §7 from Doc 426 altogether. The dissertation&#39;s scope (Doc 426 §10 &quot;What This Dissertation Claims&quot;) is the formalization of the PRESTO constraint set at the architectural-style level. The enclosure-of-DO case is an application-level consequence, not part of the architectural derivation. Islands-architecture literature and micro-frontends literature already cover the case at practitioner depth. The dissertation is compact; removing §7 tightens it further and removes a seam where prior art is dense.</p>
+<p>The case against dropping: §7 motivates <em>why</em> the composition matters — it shows that REST + PRESTO together opens a design space that neither could alone, specifically the DO-enclosure case. Without §7, the reader may not see the practical consequence of the composition. A compressed version (half the current length, all four prior-art vocabularies cited) preserves the motivation without the overstatement.</p>
+<p>Recommended default: the compressed revision in §6. Alternative (drop): available on request.</p>
+<h2>8. Falsifiers</h2>
+<ul>
+<li>If a primary-source read of Qwik&#39;s container-protocol documentation in full shows that Qwik containers already formalize &quot;progressively authorized&quot; cross-container semantics indistinguishable from what PRESTO&#39;s <code>htx:component</code> + progressive code-on-demand would add, the residual narrows further: §6&#39;s revised §7 should acknowledge Qwik containers as a comprehensive prior instance and state PRESTO&#39;s contribution as a pedagogical alternative rather than a distinct authority.</li>
+<li>If the islands-architecture literature is found to explicitly submit the pattern to a Fielding-style architectural-style evaluation (constraint-set → induced-property derivation), the methodological-residual claim retracts and §7 collapses entirely.</li>
+<li>If a published pre-2019 source names the enclosure pattern under another vocabulary not surfaced in the survey, the dating claim (Sylor-Miller 2019 / Miller 2020 / Geers 2020 / ThoughtWorks 2016 / ESI 2001) narrows to whichever predates the others.</li>
+</ul>
+<h2>9. What This Document Does Not Settle</h2>
+<ul>
+<li>Whether §7&#39;s &quot;progressively authorized&quot; qualifier tracks a distinction from Qwik&#39;s container-protocol progressive-hydration semantics. A primary-source read of Qwik&#39;s docs in full would settle this.</li>
+<li>Whether the micro-frontends literature (Geers 2020; micro-frontends.org) has developed the server-side-composition variant to a depth that fully covers PRESTO&#39;s <code>htx:component</code> pattern. A read of Geers&#39; Chapter 4 (server-side composition) is the specific action-item.</li>
+<li>Whether §7 should be replaced with the revision in §6 or dropped entirely. That is a dissertation-shape decision for the keeper.</li>
+</ul>
+<hr>
+<h2>Appendix A: Branch-by-Branch Survey Findings</h2>
+<p>The ten-branch survey condensed:</p>
+<ol>
+<li><strong>Fielding Chapter 3</strong> — DO evaluated as a standalone style; no enclosure framing. &quot;Hybrid style&quot; in Ch. 5 is constraint-composition, not style-encloses-style.</li>
+<li><strong>Islands architecture</strong> — Sylor-Miller 2019 / Miller 2020. Structural match; no DO vocabulary.</li>
+<li><strong>Micro-frontends</strong> — Geers, Jackson, micro-frontends.org, ThoughtWorks 2016. Explicit taxonomy of composition techniques; sub-apps may be full client-side SPAs; enclosure relationship is explicit.</li>
+<li><strong>Backend for Frontend</strong> — Sam Newman. Client-coupling pattern; not an enclosure thesis.</li>
+<li><strong>Module Federation</strong> — Zack Jackson, Webpack 5. Host/remote topology; delivery concern, not architectural-style enclosure.</li>
+<li><strong>Web Components + SSR</strong> — Lit, Stencil, Polymer, Enhance (&quot;Island Architecture with Web Components&quot; 2024). Structural match; DO vocabulary absent.</li>
+<li><strong>Qwik containers</strong> — Hevery. Explicit enclosure-protocol formalization. Closest published antecedent to PRESTO&#39;s authoring-authority claim.</li>
+<li><strong>CORBA / DCOM / RMI</strong> — DO tradition of record. No enclosure thesis with request-response as outer.</li>
+<li><strong>SOA / microservices</strong> — Erl, Richardson. &quot;Composition&quot; and &quot;orchestration&quot; vocabulary; &quot;enclosure&quot; not a term of art.</li>
+<li><strong>Fowler / ThoughtWorks</strong> — Sacrificial Architecture, Strangler Fig. Temporal replacement, not spatial enclosure.</li>
+</ol>
+<p>Specific sub-question: &quot;architecture A encloses architecture B&quot; is not a formal term of art. Closest published vocabulary tabulated in §5.</p>
+<h2>Appendix B: Prompt</h2>
+<blockquote>
+<p>&quot;Regarding section 7. Can you do a branching literature entrancement for any architecture that can enclose a distributed object architecture?&quot;</p>
+</blockquote>
+<p>Followed by:</p>
+<blockquote>
+<p>&quot;Do A. Also I want you to do a branching literature for all the constraints. I want to pulverize this dissertation. If it can be built back up, we will after finding every single piece of prior art&quot;</p>
+</blockquote>
+<p>The &quot;Do A&quot; refers to the first of two options offered — writing a scoped deflation artifact for §7 rather than directly editing Doc 426 — and is the work executed here. The constraint-by-constraint pulverization survey across all of §4 is being run separately; its findings will produce a further deflation document.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

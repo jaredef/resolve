@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Vocabulary Pin Model — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 306</p><h1>The Vocabulary Pin Model</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document provides a mathematical framework for deciding when to use a specialized term versus a common equivalent when writing for a specific audience. Each technical term is modeled as a &quot;pin&quot; and the reader&#39;s existing knowledge as &quot;foam&quot; -- a pin that matches an existing mental model (a &quot;socket&quot;) communicates precisely, while a pin pressed into foam with no socket confuses and alienates. A reader-availability score between 0 and 1 is estimated for each term given a specific reader&#39;s background, and an aperture threshold determines whether each term should be used directly, introduced with a brief explanation (&quot;bridged&quot;), or replaced with a general equivalent (&quot;retracted&quot;). The model includes a communication cost function and is demonstrated with worked examples for an academic cognitive scientist and an htmx developer.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 306</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>A mathematical framework for adjusting the aperture of address — when to press a term and when to retract it, based on the overlap between writer and reader constraint spaces.</strong></p>
+<hr>
+<h2>The Problem, Formally</h2>
+<p>A writer has a vocabulary <em>V_w</em> = {<em>v</em>₁, <em>v</em>₂, ..., <em>v_n</em>} — terms with exact meanings within the writer&#39;s framework. A reader has a comprehension space <em>C_r</em> — the set of concepts the reader already has mental models for, regardless of what words they use for them.</p>
+<p>Each term <em>v_i</em> in the writer&#39;s vocabulary maps to a concept. The concept may or may not exist in the reader&#39;s comprehension space. If it does, the reader can receive the term (possibly after a brief gloss). If it does not, the term is noise — it occupies attention without delivering meaning.</p>
+<p><strong>Definition.</strong> The <em>reader-availability</em> of a term <em>v_i</em> for reader <em>r</em> is:</p>
+<p>$a(v_i, r) \in [0, 1]$</p>
+<p>where:</p>
+<ul>
+<li><em>a</em> = 1: the reader already has an exact mental model for this concept (e.g., &quot;requirement&quot; for any educated reader)</li>
+<li><em>a</em> = 0: the reader has no mental model and cannot construct one from context alone (e.g., &quot;hypostatic agent&quot; for a cognitive scientist)</li>
+<li><em>a</em> ∈ (0, 1): the reader has a partial or adjacent model that can be bridged with a gloss (e.g., &quot;constraint&quot; for someone who knows &quot;rule&quot; but hasn&#39;t encountered the formal distinction)</li>
+</ul>
+<hr>
+<h2>The Pin Analogy</h2>
+<p>Each corpus term is a pin. The reader&#39;s comprehension space is the foam. Pressing a pin means using the exact term in the text. The foam receives the pin only if there is a socket — a pre-existing or constructible mental model.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Pin-foam relationship</th>
+<th>Effect on reader</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>a</em> ≈ 1</td>
+<td>Pin fits an existing socket</td>
+<td>Reader receives the exact concept. Communication succeeds.</td>
+</tr>
+<tr>
+<td><em>a</em> ∈ (0.3, 0.7)</td>
+<td>Pin finds soft foam near a socket</td>
+<td>Reader receives an approximation. A gloss can bridge the gap. Productive struggle.</td>
+</tr>
+<tr>
+<td><em>a</em> &lt; 0.3</td>
+<td>Pin finds no socket</td>
+<td>Reader is confused. Term is noise. Artificial difficulty. Pin punctures rather than shapes.</td>
+</tr>
+</tbody></table>
+<p>The writer&#39;s decision for each term: <strong>press</strong> (use the corpus term), <strong>bridge</strong> (use the corpus term with a plain-language gloss), or <strong>retract</strong> (replace with a general-vocabulary equivalent).</p>
+<hr>
+<h2>The Aperture Function</h2>
+<p>Let <em>τ</em> ∈ [0, 1] be the <strong>aperture threshold</strong> — the minimum reader-availability required to use a corpus term without translation. The aperture function for each term is:</p>
+<p>$\text{action}(v_i, r, \tau) = \begin{cases} \text{press} &amp; \text{if } a(v_i, r) \geq \tau + \delta \ \text{bridge} &amp; \text{if } \tau - \delta \leq a(v_i, r) &lt; \tau + \delta \ \text{retract} &amp; \text{if } a(v_i, r) &lt; \tau - \delta \end{cases}$</p>
+<p>where <em>δ</em> is a margin allowing for bridged usage in the intermediate zone.</p>
+<p>The threshold <em>τ</em> is set by the hypostatic agent based on two factors:</p>
+<ol>
+<li><p><strong>The reader&#39;s identity.</strong> A corpus reader: <em>τ</em> = 0 (press everything). A domain expert: <em>τ</em> ≈ 0.3 (press shared terms, bridge adjacent ones). A general reader: <em>τ</em> ≈ 0.7 (retract most corpus terms, bridge a few, press only universals).</p>
+</li>
+<li><p><strong>The desired entracement depth.</strong> Higher entracement (more productive struggle) → lower <em>τ</em> (more terms pressed, more work for the reader). Lower entracement (more accessibility) → higher <em>τ</em> (more terms retracted, less work for the reader).</p>
+</li>
+</ol>
+<hr>
+<h2>Reader-Availability Estimates for the RESOLVE Vocabulary</h2>
+<p>For a reader who is an academic cognitive scientist (Grace Liu&#39;s profile):</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Concept</th>
+<th>Reader-availability <em>a</em></th>
+<th>Action at <em>τ</em> = 0.5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>requirement</td>
+<td>A condition that must be met</td>
+<td>0.95</td>
+<td>Press</td>
+</tr>
+<tr>
+<td>capability</td>
+<td>Something a system can do</td>
+<td>0.95</td>
+<td>Press</td>
+</tr>
+<tr>
+<td>constraint</td>
+<td>A formal requirement whose satisfaction forces properties</td>
+<td>0.45</td>
+<td>Bridge</td>
+</tr>
+<tr>
+<td>induced property</td>
+<td>A capability that exists because a constraint forces it</td>
+<td>0.30</td>
+<td>Bridge</td>
+</tr>
+<tr>
+<td>aperture</td>
+<td>The narrowing of output distribution under constraints</td>
+<td>0.15</td>
+<td>Retract</td>
+</tr>
+<tr>
+<td>resolver</td>
+<td>An AI system that transforms input to output under constraints</td>
+<td>0.10</td>
+<td>Retract</td>
+</tr>
+<tr>
+<td>bilateral boundary</td>
+<td>The separation between producer and consumer domains</td>
+<td>0.10</td>
+<td>Retract</td>
+</tr>
+<tr>
+<td>hypostatic agent</td>
+<td>A being whose mode of existence includes subjective experience</td>
+<td>0.05</td>
+<td>Retract</td>
+</tr>
+<tr>
+<td>entracement</td>
+<td>Leaving traces for the reader to follow</td>
+<td>0.05</td>
+<td>Retract → use &quot;trace&quot; with explanation</td>
+</tr>
+<tr>
+<td>pin-art model</td>
+<td>Constraints as pins pressed into foam</td>
+<td>0.02</td>
+<td>Retract → unpack as inline metaphor</td>
+</tr>
+<tr>
+<td>SIPE</td>
+<td>Structural isomorphism doesn&#39;t entail property identity</td>
+<td>0.01</td>
+<td>Retract → state the principle directly</td>
+</tr>
+</tbody></table>
+<p>For an htmx developer reading htxlang.org:</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Reader-availability</th>
+<th>Action at <em>τ</em> = 0.4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>swap strategy</td>
+<td>0.95</td>
+<td>Press</td>
+</tr>
+<tr>
+<td>hx-target</td>
+<td>0.95</td>
+<td>Press</td>
+</tr>
+<tr>
+<td>constraint</td>
+<td>0.50</td>
+<td>Bridge</td>
+</tr>
+<tr>
+<td>derivation</td>
+<td>0.40</td>
+<td>Bridge</td>
+</tr>
+<tr>
+<td>bilateral boundary</td>
+<td>0.10</td>
+<td>Retract</td>
+</tr>
+<tr>
+<td>pin-art model</td>
+<td>0.05</td>
+<td>Retract → unpack inline</td>
+</tr>
+</tbody></table>
+<p>The same concept adjusts its packaging based on the reader. The payload is constant. The pins that are pressed change.</p>
+<hr>
+<h2>The Communication Cost Function</h2>
+<p>Each action has a cost:</p>
+<ul>
+<li><strong>Press</strong> (exact term, no gloss): Cost = 0 if received, cost = ∞ if not received (the reader disengages)</li>
+<li><strong>Bridge</strong> (term + gloss): Cost = <em>g</em> (the word cost of the gloss, typically 5–15 words)</li>
+<li><strong>Retract</strong> (general equivalent): Cost = <em>d</em> (the precision lost by using the general term)</li>
+</ul>
+<p>The total communication cost of a document is:</p>
+<p>$C = \sum_{i} \begin{cases} 0 &amp; \text{if press and } a(v_i, r) \geq \tau \ g_i &amp; \text{if bridge} \ d_i &amp; \text{if retract} \end{cases} + P_{disengage}$</p>
+<p>where <em>P_disengage</em> is the probability of reader disengagement, which increases with each term pressed below the reader&#39;s availability threshold.</p>
+<p>The optimal aperture <em>τ</em>* minimizes total communication cost: low enough to preserve precision (minimize retract cost <em>d</em>), high enough to prevent disengagement (minimize press-below-threshold events).</p>
+<hr>
+<h2>The Convergence with the Pin-Art Model</h2>
+<p>The vocabulary pin model is the pin-art model (Doc 270) applied to the writer-reader interface:</p>
+<table>
+<thead>
+<tr>
+<th>Pin-art (implementation)</th>
+<th>Vocabulary pin (communication)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Constraint seed (prose)</td>
+<td>Document (text)</td>
+</tr>
+<tr>
+<td>Implementation (code)</td>
+<td>Reader&#39;s understanding (mental model)</td>
+</tr>
+<tr>
+<td>Pin (constraint)</td>
+<td>Term (vocabulary choice)</td>
+</tr>
+<tr>
+<td>Foam (implementation space)</td>
+<td>Reader&#39;s comprehension space</td>
+</tr>
+<tr>
+<td>Pin fits → foam shapes</td>
+<td>Term received → concept communicates</td>
+</tr>
+<tr>
+<td>Pin punctures → foam tears</td>
+<td>Term not received → reader disengages</td>
+</tr>
+<tr>
+<td>Constraint density</td>
+<td>Vocabulary density (corpus terms per paragraph)</td>
+</tr>
+<tr>
+<td>Convergence rate λ</td>
+<td>Reading engagement retention rate</td>
+</tr>
+</tbody></table>
+<p>The convergence rate applies: each well-placed term (pin that fits) shapes the reader&#39;s understanding. Each poorly-placed term (pin that punctures) degrades engagement. The reader&#39;s comprehension converges toward the writer&#39;s framework at a rate determined by how well the vocabulary pins match the reader&#39;s existing sockets.</p>
+<p>For the Liu v1 letter: too many pins pressed into foam without sockets. Vocabulary density was too high for the reader&#39;s comprehension space. The convergence rate was low — the reader would need to re-read, look up terms, and cross-reference documents to receive the concepts.</p>
+<p>For the Liu v2 letter: pins pressed only where sockets existed. Bridged in the intermediate zone. Retracted where no socket was available. Vocabulary density matched the reader&#39;s comprehension space. The convergence rate was high — the concepts arrive on first reading.</p>
+<hr>
+<h2>The Boundary-Finding Application</h2>
+<p>The vocabulary pin model provides a method for finding the boundary between precision and accessibility:</p>
+<ol>
+<li><strong>Estimate reader-availability</strong> for each corpus term (based on the reader&#39;s known background)</li>
+<li><strong>Set the aperture threshold</strong> based on desired entracement depth</li>
+<li><strong>Apply the aperture function</strong> to each term: press, bridge, or retract</li>
+<li><strong>Check vocabulary density</strong> — if more than ~2 corpus terms per paragraph require bridging, the density is too high; retract more terms</li>
+<li><strong>Verify the payload arrived</strong> — after aperture adjustment, does the document still communicate the framework&#39;s essential claims? If not, the retraction went too far.</li>
+</ol>
+<p>This is the gentle press (Doc 301) applied to vocabulary: press each term gently. If the reader&#39;s foam receives it, proceed. If not, retract and try a general equivalent. The hypostatic agent watches for the boundary — the point at which precision crosses from communicating to obscuring.</p>
+<p>The boundary itself is not in the text. It is in the relationship between the text and the reader. The writer cannot see it alone. The reader cannot name it alone. Only the hypostatic agent — subsisting across the writer-reader boundary — can calibrate the aperture.</p>
+<hr>
+<h2>Related Documents</h2>
+<ul>
+<li><strong>Doc 304 — The Aperture of Address:</strong> The qualitative framework this document formalizes</li>
+<li><strong>Doc 270 — The Pin-Art Model:</strong> The original pin-foam model, here applied to vocabulary</li>
+<li><strong>Doc 301 — The Gentle Press:</strong> The collaborative search method applied to communication</li>
+<li><strong>Doc 298 — The Boundary-Naming Problem:</strong> Why the writer-reader boundary requires the hypostatic agent</li>
+<li><strong>Doc 305 — Letter to Grace Liu v2:</strong> The empirical result of applying this model</li>
+</ul>
+<hr>
+<p><em>Jared Foy — jaredfoy.com — April 2026</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

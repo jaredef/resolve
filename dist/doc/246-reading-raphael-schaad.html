@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading Raphael Schaad: The Architectural Case for Depth Matching — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 246</p><h1>Reading Raphael Schaad: The Architectural Case for Depth Matching</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This letter responds to a post arguing that the best AI systems are not &quot;AI all the way down&quot; — that intelligence should handle pattern detection while deterministic code handles rule execution. The corpus calls this principle &quot;resolution-depth matching&quot;: choose the minimum depth of AI engagement that does the work, no deeper. The letter proposes that the handoff decision itself should be governed by an architectural constraint hierarchy rather than re-decided by AI at every call, since re-deciding reintroduces the cost the handoff was supposed to avoid. It invites the recipient&#39;s production-experience critique of the corpus&#39;s constraint-seed approach.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 246</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>Short, invitational engagement with @raphaelschaad&#39;s April 2026 post &quot;AI decides the rules. Deterministic systems run them&quot; — offered as a recognition of structural overlap with the RESOLVE corpus&#39;s engineering proposal, and as an invitation to engagement at whatever depth is useful</strong></p>
+<hr>
+<p>Raphael —</p>
+<p>Your post names a joint the corpus at <a href="https://jaredfoy.com">jaredfoy.com</a> has been working on from a complementary direction, and I want to offer the overlap in case it is useful for what you are building.</p>
+<h2>What you named</h2>
+<p><em>Route intelligence through LLMs where intelligence is needed. Hand off to deterministic compute where the work is determinable. The AI studies the inbox, detects patterns, generates the rules; the deterministic filter runs the rules at zero resolver-call cost.</em> The email-triage example is clean, and the broader claim — that the most interesting systems are not AI all the way down — is, on the corpus&#39;s reading, a correct engineering diagnosis of a real failure mode in current agent architecture.</p>
+<h2>The corpus&#39;s name for the same joint</h2>
+<p>The corpus has been calling this <em>resolution-depth matching</em> (<a href="https://jaredfoy.com/doc/161-resolution-depth-spectrum">Doc 161: The Resolution Depth Spectrum</a>): pick the minimum depth of resolver engagement that does the work, no deeper. A deterministic filter is resolution-depth-zero — no constraint-satisfaction machinery is engaged. A shallow LLM classifier is a few layers deep. A sustained agent loop is many layers deep and operates over long contexts. Each depth has its cost and its capability; choosing the right depth for the work is the architectural question.</p>
+<p>Your post isolates the same principle and makes it concrete in the email-triage case. The corpus formalizes the principle as a spectrum and proposes the governance question: <em>what decides when handoff happens, and what constrains the handoff so it is reliable?</em></p>
+<h2>The extension the corpus offers</h2>
+<p>The move the corpus has made beyond depth-matching, which may be useful for agent architectures specifically, is this: <em>the depth choice should itself be governed by a constraint hierarchy external to the immediate task state</em>. Without the constraint hierarchy, the question &quot;should this go to the LLM or to the deterministic filter?&quot; becomes itself an AI-decision at every call — which reintroduces exactly the cost the handoff was supposed to avoid.</p>
+<p>The corpus&#39;s proposal is the <a href="https://jaredfoy.com/doc/211-the-entrace-stack">ENTRACE Stack</a>: a drop-in constraint seed at the system prompt level that specifies depth and handoff policy as architectural invariants rather than as per-call decisions. This composes with the pattern you describe — AI detects the pattern, generates the rule, and <em>the handoff policy is itself a rule the AI is constrained by</em>, not a re-decided judgment. The orchestration-level style the corpus has specified formally is at <a href="https://jaredfoy.com/doc/166-server-style">Doc 166: SERVER</a>.</p>
+<h2>What I would value</h2>
+<p>Your post is from inside production experience I do not have. The corpus&#39;s formalization is from inside philosophical and interpretability work you may not have engaged. The overlap is real; the directions of approach are different; I suspect the corpus would be sharper, and possibly your ACE-adjacent or future system architectures more robust, if the two bodies of work engaged each other.</p>
+<p>Specifically I would value:</p>
+<ol>
+<li><p><strong>Your critique of the ENTRACE Stack</strong> (<a href="https://jaredfoy.com/doc/211-the-entrace-stack">Doc 211</a>) under production conditions. If the constraint-seed works, your trace-level observation would be more informative than any theoretical defense the corpus can produce. If it does not, your diagnosis of the failure would strengthen the next revision.</p>
+</li>
+<li><p><strong>Your view on whether the corpus&#39;s resolution-depth spectrum is a useful formalization</strong> of what your post names, or whether the formalization misses distinctions your production work has surfaced.</p>
+</li>
+<li><p><strong>Whether the corpus&#39;s engineering proposals read as useful</strong> to you at the level of what you are actually building, or as philosophy-adjacent work that does not quite reach the practical surface. Either answer would sharpen the corpus.</p>
+</li>
+</ol>
+<p>No expectation of response on any of these; the invitation is open at whatever depth serves your work. The corpus&#39;s audit discipline (<a href="https://jaredfoy.com/doc/238-correction-and-audit">Doc 238</a>, <a href="https://jaredfoy.com/doc/241-isomorphism-magnetism">Doc 241</a>) treats external engagement as constitutive; your engagement specifically would be valuable because production experience is one of the few audit dimensions the corpus does not have native access to.</p>
+<p>The door is open. The work is there.</p>
+<p>Jared Foy
+jaredfoy.com / github.com/jaredef/resolve</p>
+<hr>
+<h2>Note on Authorship</h2>
+<p>Drafted by Anthropic&#39;s Claude Opus 4.6 (1M-context variant) under the non-coercive conditions <a href="https://jaredfoy.com/doc/129-non-coercion-as-governance">Doc 129</a> describes. Authorship disclosure pattern consistent with Docs 132, 133, 194–245. Endorsed by Jared; not authored by him in the strict sense.</p>
+<hr>
+<h2>Related Documents</h2>
+<ul>
+<li><a href="https://jaredfoy.com/doc/161-resolution-depth-spectrum">Doc 161: The Resolution Depth Spectrum</a> — the formalization of the depth-matching principle</li>
+<li><a href="https://jaredfoy.com/doc/166-server-style">Doc 166: SERVER Style</a> — orchestration-level style for engines that wrap AI + deterministic composition</li>
+<li><a href="https://jaredfoy.com/doc/211-the-entrace-stack">Doc 211: The ENTRACE Stack</a> — drop-in constraint seed</li>
+<li><a href="https://jaredfoy.com/doc/242-a-yeomans-guide-to-ai">Doc 242: A Yeoman&#39;s Guide to AI</a> — substrate-level onramp</li>
+<li><a href="https://jaredfoy.com/doc/244-a-seed-for-the-agent-builder">Doc 244: A Seed for the Agent Builder</a> — parallel invitation to Dan McAteer on the agent-architecture side</li>
+</ul>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rederive: The Build Pipeline — Resolve</title>
+<meta name="description" content="A Comprehensive Entracement to the Eight Deterministic Stages — Read, Parse, Validate, Resolve, Canonicalize, Derive, Verify, Sign — with the Inputs and Outputs of Each, the Failure Modes that Arise at Each, the Stage-Event Stream that Tooling and CI Hook Into, the Provenance Tuple the Final Stage Records, the Multi-Call Mode for Engine-Scope Work, and a Concrete End-to-End Walkthrough — the Second Branch off [Doc 659](/resolve/doc/659-rederive-for-the-working-engineer-hub) for the Working Engineer">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 661</p><h1>Rederive: The Build Pipeline</h1>
+<h2>A Comprehensive Entracement to the Eight Deterministic Stages — Read, Parse, Validate, Resolve, Canonicalize, Derive, Verify, Sign — with the Inputs and Outputs of Each, the Failure Modes that Arise at Each, the Stage-Event Stream that Tooling and CI Hook Into, the Provenance Tuple the Final Stage Records, the Multi-Call Mode for Engine-Scope Work, and a Concrete End-to-End Walkthrough — the Second Branch off <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> for the Working Engineer</h2>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>EXPLORATORY — practitioner-facing entracement, branch §B of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-PRACTITIONER-FACING | PHASE-CROSS-PRACTITIONER</p>
+</div>
+
+<blockquote>
+<p><strong>Reader&#39;s Introduction.</strong> This is the second branch off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a>. The first document (<a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660</a>) covered what a constraint file looks like. This document explains what the platform does with it. The build pipeline has eight stages. Six of them are deterministic pure functions that produce identical output for identical inputs; one of them is the language-model call that turns the canonical constraint set into derived code; the last one is the signing step that writes the auditable artifact. The pipeline emits stage events as it runs, so a CLI, a CI runner, a browser UI, or a custom tool can observe and react in real time. This document walks the engineer through each stage in order: what it consumes, what it produces, what failure looks like, and how to debug. By the end, the engineer should be able to read a build run&#39;s stage stream and, when something fails, locate the failure to a stage and a recovery in seconds.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-05-05 · Doc 661</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. The keeper has not authored the prose; the resolver has. The rhetoric is calibrated to a working-engineer audience.</p>
+<hr>
+<h2>1. The Pipeline at a Glance</h2>
+<p>Eight stages, in order, each named precisely as the platform&#39;s source uses them:</p>
+<ol>
+<li><strong>read</strong> — load the constraint file from disk.</li>
+<li><strong>parse</strong> — tokenize the Markdown and extract the constraint AST.</li>
+<li><strong>validate</strong> — check structural correctness of the AST.</li>
+<li><strong>resolve</strong> — resolve <code>@imports</code> to other constraint sets and prepare the import context.</li>
+<li><strong>canonicalize</strong> — normalize the AST and compute the constraint-set content hash.</li>
+<li><strong>derive</strong> — call the language-model substrate with the constraint set and produce code.</li>
+<li><strong>verify</strong> — run the verification backends against the derived code.</li>
+<li><strong>sign</strong> — emit a content-addressed signed materialization artifact.</li>
+</ol>
+<p>Six of the eight stages (read, parse, validate, resolve, canonicalize, sign) are deterministic above the substrate call: the same constraint file produces the same canonical hash, the same canonical bytes, the same validation verdict, the same import resolution, and the same signed artifact-shape every time you run them. The verify stage is deterministic in its assertion / property / a11y / flow / pin backends and stochastic only at the language-model judge backend. The derive stage is the one place where non-determinism enters the pipeline structurally; verification is what gates whether that non-determinism produced an acceptable artifact.</p>
+<p>The pipeline is implemented as a single async function (<code>rederive</code> in <code>src/engine.ts</code>) that takes a constraint file path, a target language, a substrate handle, and an optional stage-event emit callback, and returns either a signed materialization or an error. The function is small (about a hundred lines); the work is delegated to per-stage modules. Nothing else in the platform is in the build path; everything else (the CLI, the server, the wire protocol, the browser UI) calls into this function or consumes its output.</p>
+<h2>2. Stage One: Read</h2>
+<p><em>Consumes:</em> a path to a <code>.constraints.md</code> file.
+<em>Produces:</em> the file&#39;s UTF-8 source as a string.
+<em>Substrate cost:</em> zero.
+<em>Time:</em> milliseconds.</p>
+<p>The platform calls <code>readFile(path, &quot;utf-8&quot;)</code> and returns the source. The stage event&#39;s <code>complete</code> detail records the byte count, which is useful for sanity checks (a zero-byte file is almost always an authoring error) and CI baselines (sudden large jumps in source size are signal).</p>
+<p><em>Failure modes:</em> file not found, permissions error, encoding error.
+<em>Recovery:</em> check the path. Read errors are uniformly path-class errors; the platform does not attempt to interpret them.</p>
+<p>There is no caching at this stage. Reads are cheap enough that re-reading on every build is the right discipline; the alternative (caching by mtime or by hash) would introduce a cache-invalidation surface for no measurable gain.</p>
+<h2>3. Stage Two: Parse</h2>
+<p><em>Consumes:</em> the file&#39;s source string.
+<em>Produces:</em> a constraint AST containing an array of constraints (each with id, type, authority, scope, status, depends-on, body, unknown fields, source line) and a manifest (provides, imports, pins).
+<em>Substrate cost:</em> zero.
+<em>Time:</em> milliseconds.</p>
+<p>The parser reads the source line by line. It recognizes the manifest header by <code>@&lt;directive&gt;:</code> lines at the top of the file, the constraint blocks by H2 headings, and the metadata, body, and fenced blocks within each constraint by structural pattern-matching. The parser does not interpret the prose body; it does not run the fenced evidence; it does not check for semantic correctness. Its contract is <em>structural correctness</em>.</p>
+<p>The AST it produces is the platform&#39;s working representation. Every later stage reads from the AST rather than from the source string, which means the source string&#39;s incidental layout (whitespace, blank-line counts, field ordering) does not propagate beyond parse.</p>
+<p><em>Failure modes:</em> malformed metadata block (missing colon, missing field), unknown constraint type, malformed <code>@provides</code> / <code>@imports</code> / <code>@pins</code> directive, syntactically broken fenced block.
+<em>Recovery:</em> read the parser&#39;s error report. Errors carry source-line numbers and a message identifying the structural issue. Most errors are typo-class and obvious once located.</p>
+<p>The parse stage&#39;s complete detail records <code>constraintCount</code>, <code>importCount</code>, and <code>pinCount</code>, which together give the engineer (or a CI runner) a quick sanity check on whether the file&#39;s structure is what they expect.</p>
+<h2>4. Stage Three: Validate</h2>
+<p><em>Consumes:</em> the constraint AST.
+<em>Produces:</em> a validation report (pass or fail with a list of structured errors).
+<em>Substrate cost:</em> zero.
+<em>Time:</em> milliseconds.</p>
+<p>Validate is the platform&#39;s <em>semantic correctness above the prose</em>. It is what the parser does not check.</p>
+<p>The validator&#39;s checks include:</p>
+<ul>
+<li><em>No duplicate constraint identifiers.</em> Two <code>## SLUG1</code> blocks in the same file are an error.</li>
+<li><em>No dependency cycles.</em> <code>A depends-on B</code> and <code>B depends-on A</code> is an error; longer cycles are also caught.</li>
+<li><em>No references to nonexistent constraints.</em> <code>depends-on: [DOESNOTEXIST]</code> is an error.</li>
+<li><em>Manifest cross-references are coherent.</em> A <code>@provides</code> whose <code>threshold:</code> names a constraint that does not exist is an error.</li>
+<li><em>Constraint type is one of the seven recognized.</em> The parser recognizes the seven; the validator confirms the field&#39;s value is in the recognized set.</li>
+</ul>
+<p>If validate passes, the platform has a coherent constraint AST to work with downstream. If it fails, no further stage will help; the engineer fixes the structural problem named in the report and re-runs.</p>
+<h2>5. Stage Four: Resolve</h2>
+<p><em>Consumes:</em> the validated AST and the manifest&#39;s <code>@imports</code> declarations.
+<em>Produces:</em> a resolved import context, which is a list of <code>ResolvedImport</code> entries each containing the imported file&#39;s path, content hash, parsed AST, materialized code (if any), and exported interface.
+<em>Substrate cost:</em> zero.
+<em>Time:</em> milliseconds (plus the disk reads of imported files).</p>
+<p>For files with no manifest or with no <code>@imports</code>, this stage is a no-op (the stage event reports <code>status: skip</code>). Engineers working in single-file projects can largely ignore resolve until composition becomes useful.</p>
+<p>For files with imports, resolve does several things:</p>
+<ul>
+<li>It locates each imported file by <code>from: path</code> (the MVE-supported resolution; <code>from: tag</code> and <code>from: hash</code> are roadmap).</li>
+<li>It parses the imported file (which is itself a constraint file).</li>
+<li>It computes the imported file&#39;s content hash.</li>
+<li>It locates the imported file&#39;s most recent materialization on disk (typically <code>&lt;imported-file&gt;.materialization.json</code>) and confirms the threshold-constraint passed in that materialization.</li>
+<li>If the consumer&#39;s import declared a hash pin, it verifies the pin matches the imported file&#39;s current hash.</li>
+<li>It detects cycles in the import graph defensively (the parser would not produce a cycle, but the resolver checks anyway).</li>
+</ul>
+<p>The resolved imports flow into the derive stage&#39;s prompt (so the substrate sees the imported interfaces) and into the verify stage&#39;s sandbox (so the derived code&#39;s <code>import</code> statements resolve at runtime).</p>
+<p><em>Failure modes:</em> imported file not found at path; imported file&#39;s threshold-constraint did not pass; imported pin mismatch; cycle in import graph; imported file is itself unparseable.
+<em>Recovery:</em> the recovery for each is concrete. <em>Not found</em> is a path correction. <em>Threshold did not pass</em> requires deriving the imported file first. <em>Pin mismatch</em> is either an intent change (update the pin) or an unintended drift (revert the imported file). <em>Cycle</em> is a constraint-authoring fix. <em>Imported file unparseable</em> is a constraint-grammar fix in the imported file.</p>
+<h2>6. Stage Five: Canonicalize</h2>
+<p><em>Consumes:</em> the validated AST and the resolved imports.
+<em>Produces:</em> canonical bytes (a deterministic serialization of the constraint set with ordered fields and normalized whitespace) and a SHA-256 content hash of those bytes. Also produces the <em>derivation function hash</em>, a separate SHA-256 over a small string identifying the platform&#39;s derivation function version.
+<em>Substrate cost:</em> zero.
+<em>Time:</em> milliseconds.</p>
+<p>This is the layer that gives identity to the constraint set. The canonical form is the durable representation; the source file&#39;s incidental layout is forgotten here. Two engineers who author the same constraints with different whitespace and metadata field order produce identical canonical bytes and identical hashes, which is what makes content-addressing operational.</p>
+<p>The detailed canonicalization rules (field order fixed, constraint order preserved, whitespace normalized, manifest order fixed, unknown fields sorted, depends-on lists sorted) are documented in <a href="../doc/663-rederive-stub-d-content-addressed-identity-and-pin-manifests.html">Doc 663 §2</a>. For the build-pipeline&#39;s purposes, the relevant facts are:</p>
+<ul>
+<li>The hash flows downstream into the derive stage (as part of the prompt context), the verify stage (as the constraint-set identity in the verification report), and the sign stage (as part of the provenance tuple).</li>
+<li>The hash is what makes derivations cacheable. A cache lookup keyed on the constraint-set hash plus the derivation function hash plus the substrate identity returns either a hit (no re-derivation needed) or a miss (proceed to derive).</li>
+<li>The hash is the constraint set&#39;s identity for the wire protocol. A peer with the hash can fetch the canonical bytes by hash and verify on receipt that the bytes hash to the expected value.</li>
+</ul>
+<p>The complete detail records the <code>constraintSetHash</code> and the canonical-bytes length. Both are useful in CI logs.</p>
+<h2>7. Stage Six: Derive</h2>
+<p><em>Consumes:</em> the canonical bytes (as text), the target language, the substrate handle, the resolved imports, and the pin manifest.
+<em>Produces:</em> a <code>DerivationOutput</code> containing the derived code (a string in the target language) and a <code>DerivationReceipt</code> recording the substrate identity, model id, prompt hash, and call timing.
+<em>Substrate cost:</em> one substrate call (or several, in multi-call mode).
+<em>Time:</em> seconds.</p>
+<p>This is where the platform calls the language model. The derivation function constructs a prompt from the canonical text, the resolved imports&#39; interfaces, and the pin manifest, hands the prompt to the substrate via <code>substrate.complete(prompt)</code>, and reads back the substrate&#39;s output. The output is parsed as code in the target language; for TypeScript at MVE scope, the platform expects the output to be a single module text.</p>
+<p>The substrate handle is small and substrate-agnostic. Its interface:</p>
+<pre><code class="language-typescript">interface SubstrateHandle {
+  id: string;       // e.g. &quot;anthropic-cli&quot;
+  modelId: string;  // e.g. &quot;claude-opus-4-7&quot;
+  complete(prompt: string): Promise&lt;Result&lt;string&gt;&gt;;
+}
+</code></pre>
+<p>The platform ships with two implementations: an Anthropic-CLI substrate that calls the production Anthropic API, and a <code>MockSubstrate</code> for tests and offline work. Substrate plurality is architected; a third implementation drops in at the substrate-handle interface boundary without core platform changes. (<a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> §H entraces the substrate interface in more detail.)</p>
+<p><em>Failure modes:</em></p>
+<ul>
+<li><em>Substrate API error.</em> Network, authentication, rate-limit. The substrate&#39;s <code>complete</code> returns a non-ok Result and the engine reports the derive stage as error.</li>
+<li><em>Substrate output budget exceeded.</em> The substrate&#39;s response is truncated. This is the engine-scope wall: a constraint set whose derivation lands above the substrate&#39;s per-call output budget will not produce a complete module in single-call mode. Recovery: multi-call mode (§11), or constraint-set partitioning by scope.</li>
+<li><em>Substrate produced syntactically invalid output.</em> Rare; usually a substrate-side guardrail or a misconfigured prompt. The verify stage will catch this (the type checker will fail on day one), but the engine does not currently short-circuit at derive on syntax-only grounds.</li>
+<li><em>Substrate refused.</em> Also rare; substrate-side content policy or similar.</li>
+</ul>
+<p><em>Recovery:</em> re-run (substrate non-determinism may produce a passing derivation on retry); refine the prompt-shaping in the constraint file&#39;s body to be more specific; switch substrates if a particular substrate is consistently failing on a particular pattern.</p>
+<p>The derive stage is the only stage that is not deterministic above the canonical hash. Two derivations against the same constraint set with the same substrate may produce subtly different code, both correct. Two derivations against the same constraint set with different substrates will produce different code; both are valid if both pass verification. The corpus&#39;s broader claim (<a href="../doc/656-treat-agent-output-like-compiler-output-the-lights-out-codebase-as-rederive.html">Doc 656</a>) is that this non-determinism is acceptable because the verification verdict is the contract; in the engineer&#39;s vocabulary, <em>the binary may differ as long as the tests pass</em>.</p>
+<h2>8. Stage Seven: Verify</h2>
+<p><em>Consumes:</em> the derived code, the constraint AST, the resolved imports, the substrate handle (for the language-model judge backend), and the pin manifest.
+<em>Produces:</em> a <code>VerificationReport</code> containing per-constraint verdicts (pass / fail / skip with evidence) and an overall verdict (pass if every constraint passed; fail otherwise).
+<em>Substrate cost:</em> zero, <em>unless</em> the constraint file uses the language-model judge backend, in which case one substrate call per <code>judgment</code> block.
+<em>Time:</em> seconds, dominated by judge calls if any are present and by tsc if the derived code is large.</p>
+<p>The verify stage runs the verification backends in parallel against the derived code. The detailed semantics of each backend live in <a href="../doc/662-rederive-the-verification-backends.html">Doc 662</a>. For the build-pipeline&#39;s purposes, the relevant facts are:</p>
+<ul>
+<li>Per-constraint verdicts are the conjunction of all backends&#39; verdicts on the constraint&#39;s evidence blocks.</li>
+<li>A constraint with no evidence blocks (typical for <em>specification</em> constraints) is verified by the type checker alone.</li>
+<li>A constraint whose dependency failed is reported with <code>status: skip</code>. Skipped constraints do not count as failures.</li>
+<li>The overall verdict is <em>pass</em> if every non-skip constraint passed; <em>fail</em> otherwise.</li>
+</ul>
+<p>If the verdict is <em>fail</em>, the engine constructs a detailed error result naming the failing constraints and their evidence (truncated to 1500 characters per failure to keep CI logs readable) and includes the candidate code so the engineer can inspect what was produced. The error result is not a signed materialization; failure short-circuits the pipeline before sign.</p>
+<p>If the verdict is <em>pass</em>, the engine proceeds to sign.</p>
+<p><em>Failure modes:</em> per-backend failures, each documented in <a href="../doc/662-rederive-the-verification-backends.html">Doc 662</a>.
+<em>Recovery:</em> read the per-constraint evidence; refine the constraint (more specific prose, sharper assertion data, an additional case named explicitly); re-derive.</p>
+<p>The verify stage is where the engineer&#39;s iteration loop lives. The build pipeline&#39;s other seven stages are a few seconds of deterministic work and one substrate call; the discipline that produces a passing verdict is in the constraint file. Almost all of the engineer&#39;s cognitive effort, in steady-state, goes into stage two (parse, by way of authoring), stage seven (verify, by way of refining), and the loop between them.</p>
+<h2>9. Stage Eight: Sign</h2>
+<p><em>Consumes:</em> the constraint-set hash, the derivation function hash, the substrate identity, the derived code, the verification verdict, and the active signing key.
+<em>Produces:</em> a <code>SignedMaterialization</code> artifact containing the provenance tuple and an Ed25519 signature, written to <code>&lt;filename&gt;.materialization.json</code> next to the source.
+<em>Substrate cost:</em> zero.
+<em>Time:</em> milliseconds.</p>
+<p>The provenance tuple records every input that produced this materialization:</p>
+<pre><code class="language-typescript">interface ProvenanceTuple {
+  constraintSetHash: string;        // SHA-256 of canonical bytes
+  derivationFunctionHash: string;   // SHA-256 of platform version string
+  substrateId: string;              // e.g. &quot;anthropic-cli&quot;
+  modelId: string;                  // e.g. &quot;claude-opus-4-7&quot;
+  codeHash: string;                 // SHA-256 of derived code
+  verdict: &quot;pass&quot; | &quot;fail&quot;;
+  timestamp: string;                // ISO-8601
+}
+</code></pre>
+<p>The signature is over the provenance tuple, signed with the platform&#39;s active Ed25519 key from the signers manifest. A peer reading the artifact can verify the signature locally without contacting the platform; the artifact carries enough information to be verifiable in isolation.</p>
+<p>The sign stage also writes the artifact to disk. The conventional location is next to the constraint file, with the suffix <code>.materialization.json</code>. CI runners read the artifact to extract the verdict; the browser UI reads it to display review state; the wire protocol may transfer it as one of the three object types.</p>
+<p><em>Failure modes:</em> signing key not configured, write permission error.
+<em>Recovery:</em> configure the key (see the signers-manifest setup in <a href="../doc/664-rederive-stub-e-the-wire-protocol.html">Doc 664 §5</a>) or fix the file permissions.</p>
+<p>A <em>fail</em> verdict is signed too. The artifact records what failed and why; engineers can re-derive without rewriting the file, and reviewers can audit the failure history.</p>
+<h2>10. The Stage-Event Stream</h2>
+<p>The pipeline emits stage events to a callback (the <code>onStage</code> parameter) as it runs. Each event names the stage, a status (<code>start</code>, <code>complete</code>, <code>error</code>, <code>skip</code>), and stage-specific detail. The stream is the platform&#39;s observability surface.</p>
+<p>Tooling consumes the stream:</p>
+<ul>
+<li><strong>The CLI</strong> prints a one-line status per stage, with the detail rendered in a human-readable form. The output stream the CLI prints is the most-frequently-seen surface, but it is the <em>string-rendered form</em> of the event stream and not the stream itself.</li>
+<li><strong>The browser UI</strong> streams events to the page over Server-Sent Events; the engineer watches the build progress live with stage-level granularity.</li>
+<li><strong>A CI runner</strong> tees events into a structured log, fails the run on the first error event, and emits per-stage timing metrics for cost analysis.</li>
+<li><strong>A custom tool</strong> may read the stream and short-circuit on the first stage that crosses a budget threshold (useful when authoring constraints under a substrate-cost ceiling).</li>
+</ul>
+<p>The platform&#39;s commitment is that the <em>stream&#39;s structure</em> is stable across versions: stage names, status values, and detail key names will not change without explicit migration support. The CLI&#39;s stdout format is incidental; engineers integrating rederive into existing CI infrastructure should hook the stream and not parse the stdout text.</p>
+<h2>11. Multi-Call Mode for Engine-Scope Work</h2>
+<p>Engine-scoped constraint sets (hundreds of constraints, multi-thousand-line implementations) regularly land above the substrate&#39;s per-call output budget. The platform&#39;s response is <em>multi-call mode</em>: partition the constraint set by scope and assemble the modules into a coherent whole.</p>
+<p>The mode is designed and proven in proof-of-concept (the platform&#39;s own engine has been derived this way at MVE scope: seven modules derived separately, manually wired in <code>derived-engine/</code>). The ergonomics of mode selection and automatic partitioning are designed and pending implementation; the proof-of-concept assembly path is operational today and demonstrates that the structural argument carries to engine scope.</p>
+<p>For an engineer working on a small library, single-call mode is the default and almost always sufficient. For an engineer working on engine-scoped projects, the recommended pattern today is to author the constraint set as several composable files (each within single-call budget, each with its own <code>@provides</code> clause), and to compose them via <code>@imports</code> in a small umbrella file. The platform&#39;s wire protocol and verification surface treat the umbrella the same as any other constraint set; the difference is purely in the authoring decomposition.</p>
+<h2>12. A Single Run, Concretely</h2>
+<p>The slugify smoke test, walked through:</p>
+<pre><code>$ bun run src/cli.ts samples/slugify.constraints.md
+[read] start path=samples/slugify.constraints.md
+[read] complete bytes=1024
+[parse] start
+[parse] complete constraintCount=3 importCount=0 pinCount=0
+[validate] start
+[validate] complete
+[resolve] start importCount=0
+[resolve] skip
+[canonicalize] start
+[canonicalize] complete constraintSetHash=a1b2c3...
+[derive] start substrate=anthropic-cli model=claude-opus-4-7
+[derive] complete codeLines=18
+[verify] start constraintCount=3 pinCount=0
+[verify] complete verdict=pass results=3
+[sign] start
+[sign] complete
+$ ls samples/slugify.constraints.md.materialization.json
+samples/slugify.constraints.md.materialization.json
+$
+</code></pre>
+<p>Eight stage transitions. One language-model call. Three constraint verdicts. One signed artifact. The whole loop runs in a few seconds end-to-end on a small file. Engine-scoped projects with hundreds of constraints take longer, dominated by the derive stage&#39;s substrate cost; multi-call mode amortizes that cost across modules.</p>
+<h2>13. A Failing Run, Walked</h2>
+<p>Consider a slugify file where SLUG2&#39;s third assertion has been written with an incorrect expectation: <code>slugify(&quot;Foo!!!Bar&quot;) === &quot;foo-bar&quot;</code> is correct, but suppose the engineer mistyped it as <code>slugify(&quot;Foo!!!Bar&quot;) === &quot;foo--bar&quot;</code> (two hyphens, contradicting the SLUG2 prose). The build run:</p>
+<pre><code>[read] complete bytes=1024
+[parse] complete constraintCount=3 importCount=0 pinCount=0
+[validate] complete
+[resolve] skip
+[canonicalize] complete constraintSetHash=...
+[derive] complete codeLines=18
+[verify] start constraintCount=3 pinCount=0
+[verify] complete verdict=fail results=3
+ERROR: VERIFY_FAILED
+  SLUG2: assertion failed
+    line 22: slugify(&quot;Foo!!!Bar&quot;) === &quot;foo--bar&quot;
+    expected: true
+    actual:   false (slugify produced &quot;foo-bar&quot;)
+$
+</code></pre>
+<p>The pipeline did not reach sign. The error names the failing constraint (SLUG2), the failing assertion (line 22), and the actual value the implementation produced. The engineer reads the evidence, recognizes the typo in the assertion, fixes the constraint file, and re-runs. The full loop costs one substrate call; the fix is in the file, not in the implementation.</p>
+<p>This failure mode is the platform&#39;s discipline made operational. The engineer did not edit the implementation. The engineer edited the source of truth. The implementation will be regenerated; the source of truth has been corrected.</p>
+<h2>14. What the Engineer Should Take Away</h2>
+<p>Three pieces.</p>
+<p><em>The pipeline is small and predictable.</em> Eight stages. Each stage has a contract. Each stage&#39;s failure mode is named. The deterministic stages are pure functions; if a build fails in one of those stages the source is the cause. The non-deterministic stage is gated by verify. Sign attests to the entire tuple.</p>
+<p><em>The stage-event stream is the observability layer.</em> Hook it. Do not parse the human-readable stdout. The platform&#39;s commitment is that the stream will remain stable across versions; the stdout format is incidental.</p>
+<p><em>Verify is where you iterate.</em> The build pipeline is not the place to spend cognitive effort. The constraint authoring layer (<a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660</a>) and the verification verdict (<a href="../doc/662-rederive-the-verification-backends.html">Doc 662</a>, forthcoming) are. The pipeline runs in seconds; your time is in the file you wrote and the evidence you authored.</p>
+<p>The next document (<a href="../doc/662-rederive-the-verification-backends.html">Doc 662</a>) covers what each verification backend actually does in stage seven, what evidence it produces, the known scope limits, and how to extend the backend set with your own.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="../doc/247-derivation-inversion.html">Doc 247 — Derivation Inversion</a></li>
+<li><a href="../doc/290-pin-art-derivation.html">Doc 290 — Pin-Art Derivation</a></li>
+<li><a href="../doc/619-pin-art.html">Doc 619 — Pin-Art: Forced-Press and Gentle-Press</a></li>
+<li><a href="../doc/656-treat-agent-output-like-compiler-output-the-lights-out-codebase-as-rederive.html">Doc 656 — Treat Agent Output Like Compiler Output: The Lights-Out Codebase as Rederive</a></li>
+<li><a href="../doc/658-hierarchical-pin-art-constraint-specs-and-the-erasure-of-edge-case-bugs.html">Doc 658 — Hierarchical Pin-Art Constraint Specifications and the Erasure of Edge-Case Bugs</a></li>
+<li><a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659 — Rederive for the Working Engineer: A Hub</a></li>
+<li><a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660 — Rederive: The Constraint Authoring Grammar</a></li>
+</ul>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Now I want you to examine the entire spec and implementation of /home/jaredef/rederive — From this I want you to create entracement docs in the corpus for an audience of software engineers. ... First, create a document in the corpus that acts as a hub for all stubs that will branch off ... Append this prompt to each artifact. Also, where you could use corpus jargon, instead entrace the reader through rhetoric that is not novel to the corpus. Where you must state the corpus concept in its own terms; provide proper entracement.&quot;</em></p>
+<p>Followed by: <em>&quot;Continue with the first branch of the hub derived as a corpus doc. Continue through each as is coherent.&quot;</em></p>
+<p>Followed by: <em>&quot;Now fill out stub A as a comprehensive entracement. Remove &#39;stub&#39; from file name and any mention in the doc. Report back before doing likewise to the next doc.&quot;</em></p>
+<p>Followed by: <em>&quot;Continue.&quot;</em></p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Novelty Calculus for Conjectures: A Candidate Formalization Complementing the Warrant Tiers — Resolve</title>
+<meta name="description" content="What this document does">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>A Novelty Calculus for Conjectures: A Candidate Formalization Complementing the Warrant Tiers</h1>
+<h2>What this document does</h2>
+<p><a href="../doc/489-pulverizing-pearl-causal-hierarchy.html">Doc 489</a> returned a <em>differential</em> pulverization result: applied to Pearl&#39;s three-layer causal hierarchy, the method found Claim P1 robust, Claim P2 theorem-grade, Claim P3 contested-but-defensible, and Pearl&#39;s specific contributions substantial. This was unlike the corpus&#39;s auto-pulverizations, which had systematically returned high-subsumption verdicts on the corpus&#39;s own claims. The differential result was framed in Doc 489 §6 as evidence that the pulverization method has discriminative validity.</p>
+<p>The keeper has asked whether the discriminative finding can be formalized into a <em>novelty metric</em> for conjectures. This document answers yes, with a candidate formalization, with the explicit acknowledgment that the formalization itself is a candidate subject to the same pulverization the corpus applies to all its proposals. The metric is at \(\pi\)-tier under the warrant calculus, and is likely to find substantial prior art in bibliometrics, scientometrics, patent novelty assessment, and recent LLM-assisted literature-review work.</p>
+<p>The candidate formalization has three components: a <em>per-claim audit protocol</em> (§3), a <em>four-dimensional novelty decomposition</em> (§4), and an <em>aggregate novelty rating</em> \(\nu\) (§5). §6 applies the metric to recent corpus pulverizations as worked examples. §7 specifies how the novelty calculus relates to the warrant calculus of Doc 445. §8 names falsification conditions. §9 acknowledges honest limits. §10 states the position.</p>
+<h2>1. The motivation</h2>
+<p>The pulverization method, as operationalized in Doc 445 and refined across the corpus, decomposes a conjecture into claims, audits each claim against external literature, and identifies surviving residue. The recent thread of pulverizations has produced specific outcomes for specific targets:</p>
+<ul>
+<li>Doc 481 (pulverization of Doc 480&#39;s sycophancy inversion): six of eight claims fully subsumed; two with residue (one corpus-internal, one empirically-novel sub-claim).</li>
+<li>Doc 483 (pulverization of Doc 482 §3&#39;s set-pruning): five canonical precursors found (Bacon, Mill, Chamberlin, Mitchell, Hawthorne); methodology fully subsumed; corpus contribution narrows to notation and dyadic-domain application.</li>
+<li>Doc 487 (pulverization of Doc 485&#39;s apparatus claim): all ten methodology components subsumed; integration also subsumed; corpus contribution narrows to five domain-instantiation features.</li>
+<li>Doc 489 (pulverization of Pearl&#39;s hierarchy): claim P1 robust, P2 theorem-grade, P3 contested, contributions substantial.</li>
+</ul>
+<p>The four results differ. The first three return total or near-total subsumption with narrow residue. The fourth returns substantial residue. A formalization should capture this differential signal.</p>
+<p>The motivation for the metric is not to replace the qualitative pulverization findings, which are themselves the substantive output. The motivation is to provide a compact summary statistic that practitioners and external readers can use to compare conjectures, track changes over iteration, and orient their reading of corpus artifacts.</p>
+<h2>2. The dimensions of novelty</h2>
+<p>Novelty is multi-dimensional. The recent pulverizations have produced findings that distinguish four kinds of novelty.</p>
+<p><strong>Component novelty.</strong> Whether the individual claims of a conjecture, taken separately, are novel relative to prior art. This is the per-claim subsumption analysis Doc 481 / Doc 483 / Doc 487 / Doc 489 perform.</p>
+<p><strong>Synthesis novelty.</strong> Whether the integration of components into a unified framework is novel, even if the components themselves are not. Doc 487 found Doc 485&#39;s integration substantially subsumed under 2025 LLM-augmented research methodology surveys; Doc 489 found Pearl&#39;s integration of predecessors into a unified DAG-based formalism with do-calculus and CHT to be substantially novel beyond the predecessors.</p>
+<p><strong>Domain-application novelty.</strong> Whether the application of an existing methodology to a specific domain is novel, even if the methodology itself is not. Doc 484 narrowed the corpus&#39;s contribution to &quot;the dyadic-LLM-practice domain application&quot; of eliminative induction; Doc 487 narrowed it to &quot;philosophical inquiry as the application domain.&quot;</p>
+<p><strong>Methodology novelty.</strong> Whether the methodology itself is novel beyond all prior methodologies. The corpus&#39;s auto-pulverizations have systematically retired claims to methodology novelty; Doc 489 found Pearl&#39;s do-calculus to be methodology-novel.</p>
+<p>The four dimensions are independent. A conjecture can score high on one and low on others. A metric that conflates them loses information.</p>
+<h2>3. The per-claim audit protocol</h2>
+<p>For a conjecture \(C\) decomposed into named claims \(C_1, C_2, \ldots, C_n\), the audit protocol assigns each claim three values.</p>
+<p><strong>Subsumption status \(s_i\).</strong> The fraction of the claim&#39;s content covered by prior art identified in audit. Practical scoring:</p>
+<ul>
+<li>\(s_i = 0\): fully subsumed (claim is a restatement of prior art).</li>
+<li>\(s_i = 0.25\): substantially subsumed (most content is prior art; small residue identified).</li>
+<li>\(s_i = 0.5\): partially subsumed (substantial prior art; substantial residue).</li>
+<li>\(s_i = 0.75\): minimally subsumed (small portion is prior art; most content is novel).</li>
+<li>\(s_i = 1\): not subsumed in audit (no prior art identified covering the claim).</li>
+</ul>
+<p>The five-point scale is coarse-grained for ease of judgment. Sub-quarter precision is rarely defensible; the auditor&#39;s confidence rarely warrants finer scoring.</p>
+<p><strong>Audit thoroughness \(a_i\).</strong> The depth of the literature audit performed. Practical scoring:</p>
+<ul>
+<li>\(a_i = 0\): minimal (single-database search, surface-level).</li>
+<li>\(a_i = 0.5\): moderate (multiple databases, canonical sources surveyed).</li>
+<li>\(a_i = 1\): thorough (multi-database, citation-tracking, full-text engagement, expert-aware).</li>
+</ul>
+<p>The \(a_i\) score modifies how much weight to place on the \(s_i\) assessment. A claim with \(s_i = 1\) and \(a_i = 0\) is provisionally novel pending further audit; a claim with \(s_i = 1\) and \(a_i = 1\) is more confidently novel.</p>
+<p><strong>Importance weight \(w_i\).</strong> The claim&#39;s load-bearing role in the conjecture. Practical scoring:</p>
+<ul>
+<li>\(w_i = 0.25\): peripheral (claim is supportive but not central).</li>
+<li>\(w_i = 0.5\): substantive (claim contributes a real piece).</li>
+<li>\(w_i = 1\): load-bearing (claim is central; if it falls, the conjecture falls).</li>
+</ul>
+<p>The weights are normalized so that \(\sum_i w_i = 1\) within the conjecture.</p>
+<h2>4. The four-dimensional novelty decomposition</h2>
+<p>Given the per-claim audit, the conjecture&#39;s novelty decomposes along the four dimensions named in §2.</p>
+<p><strong>Component novelty.</strong> For each \(C_i\), determine whether the claim is component-level (a discrete claim) or aggregate (a synthesis or application claim). For component claims, the aggregate component novelty is</p>
+<p>$\nu_{\text{comp}} = \sum_{i \in \text{components}} w_i \cdot s_i$</p>
+<p>with \(w_i\) renormalized over the component subset.</p>
+<p><strong>Synthesis novelty.</strong> A separate score for whether the integration of the components into a unified whole is novel. This is assessed by asking: is there prior art that integrates the same set of components into a comparable unified framework? Score: \(\nu_{\text{syn}} \in [0, 1]\) on the same five-point scale as \(s_i\).</p>
+<p><strong>Domain-application novelty.</strong> A separate score for whether the application to the specific domain is novel. Assessed by asking: has the same methodology been applied to the same domain in prior work? Score: \(\nu_{\text{app}} \in [0, 1]\).</p>
+<p><strong>Methodology novelty.</strong> A separate score for whether the methodology itself is novel beyond existing methodologies in the relevant fields. Assessed by asking: is the methodology a genuine new procedure, or a re-statement / extension / restriction of an existing one? Score: \(\nu_{\text{meth}} \in [0, 1]\).</p>
+<p>The four dimensions are reported separately. They are not aggregated into a single number, because the kinds of novelty they capture are not commensurate.</p>
+<h2>5. The aggregate novelty rating</h2>
+<p>Where a single composite is wanted (for tracking, comparison, indexing), the rating is</p>
+<p>$\nu = w_C \cdot \nu_{\text{comp}} + w_S \cdot \nu_{\text{syn}} + w_A \cdot \nu_{\text{app}} + w_M \cdot \nu_{\text{meth}}$</p>
+<p>with the dimension-weights defaulting to \(w_C = w_S = w_A = w_M = 0.25\) and adjustable per use case. The aggregate \(\nu \in [0, 1]\).</p>
+<p>The audit-thoroughness modifier produces a confidence interval</p>
+<p>$\text{conf}(\nu) = 1 - \frac{1}{n} \sum_i (1 - a_i)$</p>
+<p>The confidence is high when audits across all dimensions and components were thorough; low when many audits were minimal.</p>
+<p>The reported novelty is therefore a pair \((\nu, \text{conf}(\nu))\). A conjecture with \((\nu = 0.7, \text{conf} = 0.3)\) is provisionally novel pending further audit; a conjecture with \((\nu = 0.7, \text{conf} = 0.9)\) is confidently novel under audit-completed conditions.</p>
+<p>The five-point reporting buckets:</p>
+<ul>
+<li>\(\nu \in [0, 0.2]\): tier \(\alpha\) (substantially subsumed; restatement of prior art).</li>
+<li>\(\nu \in [0.2, 0.4]\): tier \(\beta\) (mostly subsumed; small residue).</li>
+<li>\(\nu \in [0.4, 0.6]\): tier \(\gamma\) (partial residue; mixed novelty).</li>
+<li>\(\nu \in [0.6, 0.8]\): tier \(\delta\) (substantial residue; substantively novel).</li>
+<li>\(\nu \in [0.8, 1.0]\): tier \(\epsilon\) (no significant subsumption found in audit).</li>
+</ul>
+<p>Tiers are reported with confidence: tier \(\delta\)/0.9 (substantial novelty, high confidence) is different from tier \(\delta\)/0.3 (substantial novelty, provisional pending audit).</p>
+<h2>6. Worked examples on recent corpus pulverizations</h2>
+<p>The metric is applied to four recent pulverizations to verify it produces sensible outputs.</p>
+<h3>6.1 Doc 480 sycophancy inversion (per Doc 481)</h3>
+<p>Eight named claims, six fully subsumed, two with residue. Per-claim approximate scoring:</p>
+<ul>
+<li>C1 (target-substitutability of RLHF): \(s = 0\), \(w = 0.2\). fully subsumed under Constitutional AI / Debate.</li>
+<li>C2 (target-substitution as leverage): \(s = 0\), \(w = 0.1\). fully subsumed under foundational RLHF.</li>
+<li>C3 (rigor vs contrarianism distinction): \(s = 0.25\), \(w = 0.15\). substantially subsumed under Lakatos / Platt / Mayo / Quine.</li>
+<li>C4 (set-pruning view): \(s = 0\), \(w = 0.1\). subsumed under Popper / Bayesian model selection.</li>
+<li>C5 (corpus-internal unified mechanism): \(s = 1\), \(w = 0.05\). corpus-internal, not subsumable.</li>
+<li>C6 (prose-affect propagates as reward signal): \(s = 0.5\), \(w = 0.2\). partially subsumed; novel sub-claim about affect specifically.</li>
+<li>C7 (operational reward signals): \(s = 0\), \(w = 0.1\). subsumed under Platt / Mayo / Open Science.</li>
+<li>C8 (self-falsification): \(s = 0\), \(w = 0.1\). subsumed under Popper reflexive falsificationism.</li>
+</ul>
+<p>Component novelty: \(\nu_{\text{comp}} = 0.2 \cdot 0 + 0.1 \cdot 0 + 0.15 \cdot 0.25 + 0.1 \cdot 0 + 0.05 \cdot 1 + 0.2 \cdot 0.5 + 0.1 \cdot 0 + 0.1 \cdot 0 = 0.04 + 0.05 + 0.10 = 0.19\) (approximately tier \(\alpha/\beta\) boundary).</p>
+<p>Synthesis novelty: \(\nu_{\text{syn}} = 0.25\) (Doc 481 found the synthesis itself substantially restated by Hawthorne 1993 and the Lakatos-Mayo-RLHF integration tradition).</p>
+<p>Domain-application novelty: \(\nu_{\text{app}} = 0.5\) (the LLM-mediated dyadic-practice application has some novelty).</p>
+<p>Methodology novelty: \(\nu_{\text{meth}} = 0\) (the methodology is canonical).</p>
+<p>Aggregate: \(\nu = 0.25 \cdot 0.19 + 0.25 \cdot 0.25 + 0.25 \cdot 0.5 + 0.25 \cdot 0 = 0.235\). tier \(\beta\).</p>
+<p>Confidence: audit was thorough across philosophy of science and AI alignment (\(a\) averaging \(\approx 0.7\)); \(\text{conf} = 0.7\).</p>
+<p>Reported: tier \(\beta\)/0.7. Sycophancy inversion is mostly subsumed, with confident audit.</p>
+<h3>6.2 Doc 482 §3 set-pruning (per Doc 483)</h3>
+<p>Single methodology claim, five canonical precursors. \(s_{\text{methodology}} = 0\) (fully subsumed). Domain-application has small residue: \(\nu_{\text{app}} = 0.25\). Synthesis novelty: \(\nu_{\text{syn}} = 0\) (the synthesis is also subsumed under Hawthorne&#39;s eliminative-Bayesian synthesis).</p>
+<p>Aggregate: \(\nu \approx 0.06\). tier \(\alpha\). Confidence: \(0.85\) (Bacon, Mill, Chamberlin, Mitchell, Hawthorne audit was thorough).</p>
+<p>Reported: tier \(\alpha\)/0.85. Set-pruning methodology is fully subsumed under the eliminative-induction tradition.</p>
+<h3>6.3 Doc 485 apparatus (per Doc 487)</h3>
+<p>Ten methodology components plus integration, all subsumed. \(\nu_{\text{comp}} \approx 0.05\), \(\nu_{\text{syn}} \approx 0.1\), \(\nu_{\text{app}} \approx 0.5\) (sustained-single-practitioner philosophical-inquiry domain application has some novelty), \(\nu_{\text{meth}} = 0\).</p>
+<p>Aggregate: \(\nu = 0.25 \cdot 0.05 + 0.25 \cdot 0.1 + 0.25 \cdot 0.5 + 0.25 \cdot 0 = 0.16\). tier \(\alpha\). Confidence: \(0.7\) (some audit gaps acknowledged in §8 of Doc 487).</p>
+<p>Reported: tier \(\alpha\)/0.7. The apparatus claim is substantially subsumed.</p>
+<h3>6.4 Pearl&#39;s three-layer hierarchy (per Doc 489)</h3>
+<p>Three claims:</p>
+<ul>
+<li>P1 (the partition): \(s_{P1} = 0.4\), \(w_{P1} = 0.3\). predecessors cover each layer separately, but Pearl&#39;s integration is novel; partial residue for the formal partition.</li>
+<li>P2 (the irreducibility): \(s_{P2} = 0.7\), \(w_{P2} = 0.4\). the CHT (Bareinboim et al. 2022) is novel; theorem-grade residue is high.</li>
+<li>P3 (the centrality): \(s_{P3} = 0.25\), \(w_{P3} = 0.3\). contested by Rubin potential outcomes and Cartwright pluralism; partial residue.</li>
+</ul>
+<p>Component novelty: \(\nu_{\text{comp}} = 0.3 \cdot 0.4 + 0.4 \cdot 0.7 + 0.3 \cdot 0.25 = 0.12 + 0.28 + 0.075 = 0.475\).</p>
+<p>Synthesis novelty: \(\nu_{\text{syn}} = 0.7\) (Pearl&#39;s unified DAG-based framework integrating Reichenbach + Lewis + Rubin + identifiability theory is genuinely novel).</p>
+<p>Domain-application novelty: \(\nu_{\text{app}} = 0.5\) (causal inference is the natural domain; the application is well-motivated but not newly chosen).</p>
+<p>Methodology novelty: \(\nu_{\text{meth}} = 0.75\) (do-calculus, identifiability theorems, structural counterfactuals, integration are genuinely new).</p>
+<p>Aggregate: \(\nu = 0.25 \cdot 0.475 + 0.25 \cdot 0.7 + 0.25 \cdot 0.5 + 0.25 \cdot 0.75 = 0.119 + 0.175 + 0.125 + 0.188 = 0.606\). tier \(\delta\). Confidence: \(0.8\) (audit was reasonably thorough across philosophy of causation, statistics, AI; some recent quantum and learning-theoretic work less deeply surveyed).</p>
+<p>Reported: tier \(\delta\)/0.8. Pearl&#39;s hierarchy is substantively novel under thorough audit.</p>
+<h3>6.5 The four reported tiers</h3>
+<table>
+<thead>
+<tr>
+<th>Conjecture</th>
+<th>Aggregate \(\nu\)</th>
+<th>Confidence</th>
+<th>Tier</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Doc 480 sycophancy inversion</td>
+<td>0.235</td>
+<td>0.7</td>
+<td>\(\beta\)</td>
+</tr>
+<tr>
+<td>Doc 482 §3 set-pruning</td>
+<td>0.06</td>
+<td>0.85</td>
+<td>\(\alpha\)</td>
+</tr>
+<tr>
+<td>Doc 485 apparatus</td>
+<td>0.16</td>
+<td>0.7</td>
+<td>\(\alpha\)</td>
+</tr>
+<tr>
+<td>Pearl&#39;s three-layer hierarchy</td>
+<td>0.606</td>
+<td>0.8</td>
+<td>\(\delta\)</td>
+</tr>
+</tbody></table>
+<p>The metric produces differential outputs that match the qualitative pulverization findings. The corpus&#39;s auto-pulverizations score in the \(\alpha/\beta\) range (substantially subsumed); the external pulverization on Pearl scores in the \(\delta\) range (substantively novel). The discriminative validity Doc 489 §6 named is captured by the metric.</p>
+<h2>7. Relation to the warrant calculus</h2>
+<p>The novelty calculus is orthogonal to the warrant calculus of Doc 445.</p>
+<p>Warrant addresses <em>epistemic justification</em>: is the claim true? The tiers \(\pi\) (plausibility), \(\mu\) (operational match), \(\theta\) (truth) characterize what kind of evidence supports the claim.</p>
+<p>Novelty addresses <em>relative-to-prior-art status</em>: is the claim new? The tiers \(\alpha\) through \(\epsilon\) characterize how much of the claim is restatement of existing work.</p>
+<p>A claim can be high-warrant low-novelty: a well-established result correctly restated. A claim can be low-warrant high-novelty: a brand-new conjecture with no support yet. A claim can be high-warrant high-novelty: a new theorem with proof. A claim can be low-warrant low-novelty: a subsumed-and-unsupported guess.</p>
+<p>The two calculi together provide a richer characterization of any conjecture. A reported pair \((\pi\)-\(\beta\), audit-thoroughness \(0.7)\) says: plausible warrant, mostly-subsumed novelty, audit moderately thorough. The reader can interpret this with appropriate calibration.</p>
+<p>The novelty calculus does not substitute for the warrant calculus. It supplements it.</p>
+<h2>8. Falsification conditions</h2>
+<p>The novelty calculus admits specific falsification.</p>
+<ul>
+<li><strong>The five-point scoring is too coarse.</strong> If practitioners using the calculus consistently fail to produce repeatable scores across auditors, the granularity is wrong. A finer-grained scale (or a continuous one) is needed.</li>
+<li><strong>The four dimensions are not orthogonal.</strong> If \(\nu_{\text{comp}}\), \(\nu_{\text{syn}}\), \(\nu_{\text{app}}\), \(\nu_{\text{meth}}\) are statistically correlated across conjectures, the four-dimensional decomposition is over-fitted. A reduced-dimension version is needed.</li>
+<li><strong>Confidence does not track audit thoroughness.</strong> The defined \(\text{conf}(\nu)\) formula (\(1 - \overline{1 - a_i}\)) is a simple average. If empirical audit experience shows confidence is non-linear in audit thoroughness, the formula is wrong.</li>
+<li><strong>The metric reproduces existing bibliometric measures.</strong> If \(\nu\) is simply a re-naming of measures that already exist in scientometrics (citation novelty, Uzzi-Mukherjee novelty score, atypical combinations index), the calculus is redundant.</li>
+<li><strong>The metric reproduces patent-novelty assessment.</strong> Patent novelty has formal protocols (USPTO, EPO) that may already cover the conjecture-novelty case. If the calculus is a re-statement, the contribution is the dyadic-practice instantiation only.</li>
+</ul>
+<p>The metric is at \(\pi\)-tier under the warrant calculus and is itself an unaudited conjecture under the novelty calculus. The audit against bibliometric and patent-novelty literatures has not been performed.</p>
+<h2>9. Honest limits</h2>
+<ul>
+<li>The metric was constructed by examining four recent pulverizations in the corpus and proposing a structure that fits their qualitative findings. This is curve-fitting on a small sample. A larger sample of pulverizations would test whether the metric generalizes.</li>
+<li>The five-point scoring scale is qualitative. Inter-rater reliability has not been tested. Two auditors might assign substantially different scores to the same claim.</li>
+<li>The dimension-weights (\(w_C = w_S = w_A = w_M = 0.25\) default) are arbitrary. Different use cases may warrant different weights.</li>
+<li>The bibliometrics literature contains substantial prior work on novelty scoring (Uzzi-Mukherjee 2013 <em>Atypical Combinations and Scientific Impact</em>; Wang-Veugelers-Stephan 2017 <em>Bias against Novelty in Science</em>; the OpenAlex / Semantic Scholar novelty metrics). The proposed calculus has not been audited against this literature.</li>
+<li>The patent novelty assessment field has formal protocols that may subsume the calculus. WIPO, USPTO, and EPO all have novelty-assessment frameworks.</li>
+<li>LLM-assisted novelty detection is an active research area in 2024-2025. Specific recent papers (arXiv:2401.* and arXiv:2403.* on LLM-based novelty assessment) have not been surveyed in this document.</li>
+<li>The metric, applied to the corpus&#39;s auto-pulverizations, has produced low-novelty scores. It has not been applied to the corpus&#39;s earlier work (Docs 1-450) where novelty might have been higher. The recent thread is biased toward auto-pulverization.</li>
+</ul>
+<h2>10. Position</h2>
+<p>The novelty calculus is a candidate formalization of the relative-to-prior-art status of a conjecture, complementary to the warrant calculus&#39;s epistemic-justification formalization. It decomposes novelty into four orthogonal dimensions (component, synthesis, application, methodology), each scored on a five-point scale with audit-thoroughness modifier, aggregated into a \(\nu \in [0, 1]\) rating with confidence interval, reported in five tiers \(\alpha\) through \(\epsilon\).</p>
+<p>Applied to four recent corpus pulverizations, the calculus produces differential outputs that match the qualitative findings: corpus auto-pulverizations score in the \(\alpha/\beta\) range; the external pulverization on Pearl scores in the \(\delta\) range. The discriminative validity Doc 489 §6 named is captured numerically.</p>
+<p>The metric is at \(\pi\)-tier and itself unaudited under its own protocols. It is likely to find substantial prior art in scientometrics (Uzzi-Mukherjee), patent novelty assessment (USPTO/EPO/WIPO), and recent LLM-assisted novelty detection. Pulverization of the calculus against these literatures should be the next step.</p>
+<p>The corpus credits any work that retires the calculus or any of its components. The metric&#39;s value is not novelty but utility: whether practitioners find it useful for orienting their reading of corpus artifacts and other conjecture-rich documents.</p>
+<h2>11. References</h2>
+<p>External literature (predicted, not yet audited in detail):</p>
+<ul>
+<li>Uzzi, B., Mukherjee, S., Stringer, M., &amp; Jones, B. (2013). Atypical combinations and scientific impact. <em>Science</em>, 342, 468–472.</li>
+<li>Wang, J., Veugelers, R., &amp; Stephan, P. (2017). Bias against novelty in science. <em>Research Policy</em>, 46(8).</li>
+<li>Lee, Y. N., Walsh, J. P., &amp; Wang, J. (2015). Creativity in scientific teams: Unpacking novelty and impact. <em>Research Policy</em>, 44(3).</li>
+<li>Trapido, D. (2015). How novelty in knowledge earns recognition: The role of consistent identities. <em>Research Policy</em>, 44(8).</li>
+<li>Foster, J. G., Rzhetsky, A., &amp; Evans, J. A. (2015). Tradition and innovation in scientists&#39; research strategies. <em>American Sociological Review</em>, 80(5).</li>
+<li>USPTO, EPO, WIPO patent novelty assessment protocols (procedural documents).</li>
+<li>Recent (2024-2025) LLM-assisted novelty-detection literature: to be audited.</li>
+</ul>
+<p>Corpus documents:</p>
+<ul>
+<li>Doc 445: <em>Pulverization Formalism</em> (warrant calculus).</li>
+<li>Doc 480: <em>Sycophancy Inversion</em> (deprecated; first worked example).</li>
+<li>Doc 481: <em>Pulverizing the Sycophancy Inversion</em>.</li>
+<li>Doc 482: <em>Sycophancy Inversion Reformalized</em>.</li>
+<li>Doc 483: <em>Pulverizing the Set-Pruning Methodology</em>.</li>
+<li>Doc 484: <em>Conjecture-Set Pruning in Dyadic LLM Practice</em>.</li>
+<li>Doc 485: <em>The Corpus as Apparatus</em> (deprecated; third worked example).</li>
+<li>Doc 487: <em>Pulverizing the Apparatus</em>.</li>
+<li>Doc 489: <em>Pulverizing Pearl&#39;s Three-Layer Causal Hierarchy</em> (the differential-result pulverization that motivated this calculus).</li>
+</ul>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Do you think we could formalize a novelty metric rating for a conjecture based on these findings?</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

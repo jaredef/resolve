@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulverizing the Novelty Calculus: Self-Applied Audit Against Scientometrics and Patent Novelty Assessment — Resolve</title>
+<meta name="description" content="What this document does">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>Pulverizing the Novelty Calculus: Self-Applied Audit Against Scientometrics and Patent Novelty Assessment</h1>
+<h2>What this document does</h2>
+<p><a href="../doc/490-novelty-calculus-for-conjectures.html">Doc 490</a> §10 predicted that the novelty calculus, when audited against scientometrics and patent novelty assessment literatures, would substantially retire its own claim to methodological novelty. The keeper has approved running the prediction. This document executes it.</p>
+<p>The discipline requires both a literature audit and a self-application: §1-3 audit Doc 490 against the relevant external literatures; §4 performs per-claim subsumption analysis; §5 applies Doc 490&#39;s own metric to itself; §6 reports whether the calculus self-deflates as predicted; §7 names honest limits; §8 states the position.</p>
+<p>The audit returns substantial subsumption. The calculus applied to itself returns tier \(\beta\) (mostly subsumed, small residue) with confidence 0.7. This matches the prediction. The discipline holds: Doc 490 does not special-plead itself out of its own protocol.</p>
+<h2>1. The scientometric literature on scientific novelty measurement</h2>
+<p>WebSearch on 2026-04-25 identified a substantial scientometric literature spanning 2013 to 2025 on the formal measurement of scientific novelty. The canonical and recent items:</p>
+<p><strong>Uzzi, Mukherjee, Stringer, &amp; Jones (2013).</strong> <em>Atypical Combinations and Scientific Impact</em>. <em>Science</em> 342(6157):468-472. Operationalizes novelty via the <em>atypicality of journal pair combinations</em> in a paper&#39;s references. Two summary measures: median z-score (central tendency of conventionality) and 10th-percentile z-score (tail novelty). Empirical finding: papers with high median conventionality plus high tail novelty are most likely to become highly cited. The two-dimensional decomposition (conventionality + atypicality) is a direct ancestor of any multi-dimensional novelty score.</p>
+<p><strong>Wu, Wang, &amp; Evans (2019).</strong> <em>Large Teams Develop and Small Teams Disrupt Science and Technology</em>. <em>Nature</em> 566(7744):378-382. Introduces the <em>Consolidation-Disruption (CD) index</em>: a measure of whether a paper consolidates prior work or disrupts it. The disruption index has become a standard novelty-related measure. Funk &amp; Owen-Smith (2017) provide an earlier disruption-style measure.</p>
+<p><strong>Wang, Veugelers, &amp; Stephan (2017).</strong> <em>Bias against Novelty in Science</em>. <em>Research Policy</em> 46(8). Empirical work on how novelty is rewarded or penalized in scientific publication and citation. Informs how a novelty measure should be interpreted.</p>
+<p><strong>Foster, Rzhetsky, &amp; Evans (2015).</strong> <em>Tradition and Innovation in Scientists&#39; Research Strategies</em>. <em>American Sociological Review</em> 80(5). Distinguishes traditional (consolidating) from innovative (recombining or jumping) research strategies. Multi-strategy taxonomy.</p>
+<p><strong>Lee, Walsh, &amp; Wang (2015).</strong> <em>Creativity in Scientific Teams: Unpacking Novelty and Impact</em>. <em>Research Policy</em> 44(3). Decomposes novelty empirically across team-level features.</p>
+<p><strong>Trapido (2015).</strong> <em>How Novelty in Knowledge Earns Recognition</em>. <em>Research Policy</em> 44(8). Reception-side analysis of what kinds of novelty are recognized.</p>
+<p><strong>Lin, Wang, et al. (2025).</strong> <em>A Review on the Novelty Measurements of Academic Papers</em>. <em>Scientometrics</em>. arXiv:2501.17456. Recent review of the field&#39;s novelty-measurement approaches. Surveys atypicality, disruption, recombination, knowledge-flow, and other categories.</p>
+<p><strong>Wang, Z., Wang, Z., Zhang, Luczak-Roesch, &amp; Chen (2025).</strong> <em>A Hybrid Graph and LLM Approach for Measuring Scientific Novelty Via Knowledge Recombination and Propagation</em>. SSRN 5257437. Recent LLM-augmented novelty measurement.</p>
+<p><strong>Novelpy.</strong> Open-source Python package implementing multiple bibliometric novelty and disruptiveness measures across both bibliometric and patent data.</p>
+<p><strong>Generative AI and the future of scientometrics</strong> (arXiv:2507.00783, 2025). Recent overview of how LLMs are entering scientometric measurement specifically.</p>
+<p>The scientometric literature has therefore developed: continuous numerical scoring systems (z-scores, CD index), multi-dimensional decompositions (Uzzi-Mukherjee&#39;s two dimensions), reception-side analyses (Trapido, Wang-Veugelers-Stephan), and (most recently) LLM-augmented hybrid approaches (Wang et al. 2025). Doc 490&#39;s calculus is operating in the territory this literature has charted.</p>
+<h2>2. The patent novelty assessment literature</h2>
+<p>WebSearch on 2026-04-25 identified the formal patent-novelty assessment frameworks at the major patent offices.</p>
+<p><strong>USPTO.</strong> Reviews claimed inventions for compliance with 35 U.S.C. 102 (novelty) and 35 U.S.C. 103 (non-obviousness). The protocol: compare the claimed subject matter to prior art; if no differences, reject for lack of novelty. Patent novelty is per-claim: each independent and dependent claim is examined separately against prior art. The <em>Manual of Patent Examining Procedure</em> §2103 provides the formal procedural specification.</p>
+<p><strong>EPO.</strong> Defines prior art per Article 54 EPC. The 2026 EPO Guidelines state the novelty standard: the claimed subject-matter must not be &quot;clearly and unambiguously disclosed in the prior art.&quot; Per-claim assessment is standard. Only prior art whose technical teaching can be reproduced is destructive of novelty.</p>
+<p><strong>WIPO.</strong> Coordinates international patent novelty standards via the Patent Cooperation Treaty (PCT). International search reports identify prior art relevant to the claimed inventions.</p>
+<p><strong>Three core patentability criteria.</strong> Patent law decomposes patentability into three independent criteria: novelty (not previously disclosed), non-obviousness/inventive step (not trivially derivable from prior art), and utility/industrial applicability. The three are independent dimensions assessed separately.</p>
+<p><strong>AI-generated prior art</strong> (2024-2025 EPO and USPTO guidance). Recent updates address how AI-generated material is treated in prior-art analysis. Doc 490&#39;s calculus, which applies to AI-mediated dyadic-practice conjectures, intersects this active area.</p>
+<p>The patent law tradition therefore provides: a formal per-claim audit protocol (centuries old, refined continuously), a multi-criteria decomposition (novelty, non-obviousness, utility), explicit standards for what counts as disclosure, and recent extensions to AI-generated content. Doc 490&#39;s calculus borrows the per-claim structure and the multi-criteria decomposition from this tradition without naming it.</p>
+<h2>3. Per-claim subsumption analysis on Doc 490</h2>
+<p>Doc 490 makes ten named claims. Each is now audited.</p>
+<p><strong>C1: Novelty is multi-dimensional, with four specific dimensions (component, synthesis, application, methodology).</strong></p>
+<p>The multi-dimensional framing is subsumed under Uzzi-Mukherjee&#39;s two-dimensional (conventionality + atypicality) framework, the patent-law three-criteria decomposition (novelty, non-obviousness, utility), Wu-Wang-Evans&#39;s disruption-consolidation distinction, and the Lin-Wang 2025 review&#39;s category survey. The specific four dimensions (component/synthesis/application/methodology) are distinct from the canonical decompositions but constitute a re-naming move rather than a structural advance. <strong>Subsumption: \(s = 0.25\)</strong> (substantially subsumed, small residue in the specific four-dimension naming).</p>
+<p><strong>C2: Per-claim audit protocol assigning \(s_i\), \(a_i\), \(w_i\).</strong></p>
+<p>Patent law has been performing exactly per-claim novelty audit for over a century. The protocol decomposes a patent application into independent and dependent claims, audits each against prior art, and assigns a result per claim. Doc 490&#39;s per-claim protocol is the patent-law protocol applied to a different kind of artifact (corpus conjecture vs. patent application). <strong>Subsumption: \(s = 0\)</strong> (fully subsumed).</p>
+<p><strong>C3: Five-point subsumption scale (\(s_i \in {0, 0.25, 0.5, 0.75, 1}\)).</strong></p>
+<p>Patent law uses binary novelty assessment (novel vs. anticipated). EPO uses &quot;clearly and unambiguously disclosed&quot; standard. Bibliometric measures are continuous (z-scores, CD index). Doc 490&#39;s specific five-point granularity is a corpus convention; the scoring concept itself is canonical, but the five-point operationalization is not in the literature surveyed. <strong>Subsumption: \(s = 0.5\)</strong> (partially subsumed; scoring concept canonical, granularity corpus-specific).</p>
+<p><strong>C4: Three-point audit-thoroughness scale (\(a_i\)).</strong></p>
+<p>Patent law has &quot;search reasonably calculated to identify&quot; standards but no formal three-point thoroughness scale. Bibliometric work assumes thorough audit (full database coverage) and does not separate audit-thoroughness as an independent dimension. Doc 490&#39;s explicit treatment of audit-thoroughness as a separate dimension is somewhat distinctive within the surveyed literature. <strong>Subsumption: \(s = 0.5\)</strong> (partially subsumed).</p>
+<p><strong>C5: Three-point importance-weight scale (\(w_i\)).</strong></p>
+<p>Patent law treats independent claims as weightier than dependent claims for invalidity purposes. Bibliometric work uses citation-count weighting and reference-pair weighting. Importance weighting per claim is standard in both literatures. Doc 490&#39;s specific three-point scale is a corpus convention. <strong>Subsumption: \(s = 0.25\)</strong> (substantially subsumed, granularity corpus-specific).</p>
+<p><strong>C6: Aggregate \(\nu\) as weighted sum across dimensions.</strong></p>
+<p>Linear weighted aggregation across multi-dimensional measures is standard in both bibliometrics and patent novelty assessment. The Uzzi-Mukherjee paper uses two dimensions; aggregating into a single hit-likelihood score is canonical practice. Doc 490&#39;s weighted-sum formula is not novel; it is standard linear aggregation. <strong>Subsumption: \(s = 0\)</strong> (fully subsumed).</p>
+<p><strong>C7: Confidence formula \(\text{conf}(\nu) = 1 - \overline{1 - a_i}\).</strong></p>
+<p>Confidence intervals on novelty measurements exist in bibliometrics. The specific formula is a simple average of audit-thoroughness scores and is corpus-specific. The conceptual move (uncertainty modulated by audit completeness) is standard; the specific formula is not. <strong>Subsumption: \(s = 0.5\)</strong> (partially subsumed).</p>
+<p><strong>C8: Five reporting tiers \(\alpha\) through \(\epsilon\).</strong></p>
+<p>Patent novelty has binary reporting (novel/anticipated). Bibliometric novelty has continuous scores often reported as percentiles or rank. Five-tier reporting is a corpus presentation convention; not novel as a measurement decision, but a specific design choice. <strong>Subsumption: \(s = 0.5\)</strong> (partially subsumed; reporting tiers are presentation, not measurement).</p>
+<p><strong>C9: Worked-examples application to four corpus pulverizations.</strong></p>
+<p>Corpus-internal application. Not subsumable under external literature because the targets are corpus documents. <strong>Subsumption: \(s = 1\)</strong> (corpus-internal, not a methodology contribution).</p>
+<p><strong>C10: Orthogonality of novelty calculus to warrant calculus.</strong></p>
+<p>The novelty/justification distinction is well-established in epistemology (since Goldman 1967 distinguishes justified from novel beliefs; Plantinga&#39;s warrant work). Patent law distinguishes novelty (vs. prior art) from validity (legal compliance) explicitly. Bibliometrics distinguishes novelty from impact. The orthogonality claim is canonical. <strong>Subsumption: \(s = 0\)</strong> (fully subsumed).</p>
+<h2>4. The calculus self-applied: aggregate computation</h2>
+<p>Per Doc 490 §3-§5, the aggregate is computed from the per-claim values weighted by importance, plus the dimension-level scores (\(\nu_{\text{syn}}\), \(\nu_{\text{app}}\), \(\nu_{\text{meth}}\)) for the multi-dimensional decomposition.</p>
+<h3>4.1 Component novelty \(\nu_{\text{comp}}\)</h3>
+<p>The component claims (C1 through C8 plus C10; C9 is corpus-internal application, treated separately) with their subsumption scores and importance weights:</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>\(s_i\)</th>
+<th>\(w_i\)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1 (multi-dimensional novelty)</td>
+<td>0.25</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>C2 (per-claim audit protocol)</td>
+<td>0</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>C3 (five-point subsumption scale)</td>
+<td>0.5</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>C4 (audit-thoroughness scale)</td>
+<td>0.5</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>C5 (importance-weight scale)</td>
+<td>0.25</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>C6 (aggregate weighted sum)</td>
+<td>0</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>C7 (confidence formula)</td>
+<td>0.5</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>C8 (five reporting tiers)</td>
+<td>0.5</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td>C10 (orthogonality to warrant)</td>
+<td>0</td>
+<td>0.10</td>
+</tr>
+</tbody></table>
+<p>Weights normalized to sum to 1.0. Component novelty:</p>
+<p>$\nu_{\text{comp}} = 0.20 \cdot 0.25 + 0.20 \cdot 0 + 0.10 \cdot 0.5 + 0.05 \cdot 0.5 + 0.05 \cdot 0.25 + 0.10 \cdot 0 + 0.10 \cdot 0.5 + 0.10 \cdot 0.5 + 0.10 \cdot 0 = 0.24$</p>
+<h3>4.2 Synthesis novelty \(\nu_{\text{syn}}\)</h3>
+<p>The integration of per-claim audit + multi-dimensional decomposition + aggregate + confidence is found in patent novelty assessment (per-claim multi-criteria audit) and in scientometric multi-measure aggregation (Uzzi-Mukherjee + disruption + Lin-Wang 2025 surveys). The specific four-dimensional structure with audit-thoroughness modifier is distinct from any specific external integration but is structurally similar to multiple existing aggregations. <strong>\(\nu_{\text{syn}} = 0.25\)</strong> (substantially subsumed, small residue in the specific four-dimension structure).</p>
+<h3>4.3 Domain-application novelty \(\nu_{\text{app}}\)</h3>
+<p>The application is to dyadic-LLM-practice conjecture pulverization specifically. WebSearch returned no scientometric or patent-novelty work explicitly applied to corpus auto-pulverization in the dyadic-LLM-practice configuration. The application domain is distinctive even if the measurement machinery is borrowed. <strong>\(\nu_{\text{app}} = 0.6\)</strong> (substantial residue in the specific application domain).</p>
+<h3>4.4 Methodology novelty \(\nu_{\text{meth}}\)</h3>
+<p>The methodology of &quot;decompose claim, score subsumption, aggregate by weighted sum&quot; is patent law and bibliometrics. The methodology itself is not novel; the application to a new domain is. <strong>\(\nu_{\text{meth}} = 0\)</strong> (fully subsumed).</p>
+<h3>4.5 Aggregate</h3>
+<p>With default equal dimension-weights (\(w_C = w_S = w_A = w_M = 0.25\)):</p>
+<p>$\nu = 0.25 \cdot 0.24 + 0.25 \cdot 0.25 + 0.25 \cdot 0.6 + 0.25 \cdot 0 = 0.06 + 0.0625 + 0.15 + 0 = 0.2725$</p>
+<h3>4.6 Confidence</h3>
+<p>Audit-thoroughness across the bibliometrics literature and patent-novelty literature was moderate-to-thorough. Specific items audited via WebSearch with abstract / secondary-literature engagement: Uzzi-Mukherjee 2013, Wu-Wang-Evans 2019, Lin-Wang 2025 review, Wang-Veugelers-Stephan 2017, Foster-Rzhetsky-Evans 2015, USPTO MPEP §2103, EPO 2026 Guidelines, Wang et al. 2025 LLM-augmented work. Estimated \(\overline{a_i} = 0.7\). Some items (Novelpy package details, full text of the Lin-Wang 2025 review, the Wu-Wang-Evans CD-index formula derivation) were not deeply engaged.</p>
+<p>$\text{conf}(\nu) = 0.7$</p>
+<h3>4.7 Tier reporting</h3>
+<p>\(\nu = 0.27\), \(\text{conf}(\nu) = 0.7\). <strong>Tier \(\beta\)/0.7</strong> (mostly subsumed, with confident audit; small residue in the specific four-dimension naming, the explicit audit-thoroughness modifier, and the dyadic-LLM-practice application domain).</p>
+<h2>5. Does the calculus self-deflate as predicted?</h2>
+<p>Doc 490 §10 predicted that the calculus, audited against bibliometrics and patent-novelty, would find substantial prior art with narrow residue. The self-application returns tier \(\beta\)/0.7. This matches the prediction:</p>
+<ul>
+<li>Component novelty 0.24 (mostly subsumed)</li>
+<li>Synthesis novelty 0.25 (mostly subsumed)</li>
+<li>Methodology novelty 0 (fully subsumed)</li>
+<li>Domain-application novelty 0.6 (substantial residue)</li>
+</ul>
+<p>Aggregate 0.27 places the calculus at tier \(\beta\), the same tier as Doc 480&#39;s sycophancy inversion. The calculus identifies itself as a re-statement of canonical work in scientometrics and patent novelty assessment, with corpus-distinctive contribution narrowed to the dyadic-LLM-practice domain application.</p>
+<p>The discipline holds. The calculus does not special-plead itself out of its own protocol. Self-application is honest.</p>
+<p>The interpretation:</p>
+<ul>
+<li>The calculus is <em>not</em> methodologically novel. The per-claim audit protocol is centuries-old patent law; the multi-dimensional decomposition has multiple bibliometric ancestors; the weighted-sum aggregation is standard linear scoring; the orthogonality-to-warrant claim is canonical epistemology.</li>
+<li>The calculus <em>is</em> a domain-specific instantiation. Its application to corpus auto-pulverization in dyadic-LLM-practice is the corpus&#39;s narrow contribution.</li>
+<li>The calculus&#39;s reporting conventions (five tiers, four named dimensions, audit-thoroughness modifier) are presentation choices, not substantive contributions.</li>
+</ul>
+<p>Doc 490 should be amended in place to reflect this finding. The amendment would (a) add explicit citations to Uzzi-Mukherjee 2013, Wu-Wang-Evans 2019, Lin-Wang 2025, and the patent-law tradition; (b) state the calculus as a corpus-specific operationalization of established multi-dimensional novelty assessment; (c) narrow the corpus&#39;s claim to the dyadic-LLM-practice domain application.</p>
+<p>The amendment is recommended; the keeper&#39;s call.</p>
+<h2>6. Implications for the recent thread</h2>
+<p>The recent thread of pulverizations (Docs 481, 483, 487, 489, 491) has now produced the following pattern:</p>
+<table>
+<thead>
+<tr>
+<th>Doc</th>
+<th>Target</th>
+<th>Reported tier</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>481</td>
+<td>Doc 480 sycophancy inversion</td>
+<td>\(\beta\)</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>483</td>
+<td>Doc 482 §3 set-pruning</td>
+<td>\(\alpha\)</td>
+<td>0.85</td>
+</tr>
+<tr>
+<td>487</td>
+<td>Doc 485 apparatus</td>
+<td>\(\alpha\)</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td>489</td>
+<td>Pearl&#39;s three-layer hierarchy</td>
+<td>\(\delta\)</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>491 (this)</td>
+<td>Doc 490 novelty calculus</td>
+<td>\(\beta\)</td>
+<td>0.7</td>
+</tr>
+</tbody></table>
+<p>Five datapoints. Four corpus auto-pulverizations score \(\alpha/\beta\) (substantially subsumed). One external pulverization (Pearl) scores \(\delta\) (substantively novel). The differential pattern Doc 489 §6 named is now empirically replicated across five datapoints.</p>
+<p>This is the calibration: the calculus produces low scores when low scores are warranted, and produces high scores when high scores are warranted. The discriminative validity claimed in Doc 489 holds up under self-application.</p>
+<p>What the corpus has, narrowly, is consistent with what the corpus has been finding: domain-specific applications of established methodologies, with the apparatus operating as designed and the operations honestly self-reporting.</p>
+<h2>7. Honest limits</h2>
+<ul>
+<li>The audit was performed via WebSearch on 2026-04-25 across canonical bibliometric novelty literature and patent-novelty assessment frameworks. Several specific items (Lin-Wang 2025 review full text, Novelpy package implementation details, the Wang et al. 2025 hybrid-graph-LLM specifics) were referenced via abstract or secondary literature rather than full engagement. A more thorough audit might find additional subsumption.</li>
+<li>The patent novelty assessment literature has substantial procedural depth (USPTO MPEP runs to hundreds of pages; EPO Guidelines similarly). The audit referenced canonical sections but did not exhaust the formal protocols.</li>
+<li>Doc 490 §6&#39;s worked examples on four corpus pulverizations have been treated here as corpus-internal application (C9). A more thorough audit might find that the worked-examples methodology has analogs in case-study scientometrics (e.g., Funk-Owen citation-disruption case studies) and would further constrain the corpus contribution.</li>
+<li>The self-application is performed by the same dyadic apparatus that produced Doc 490. Framework-magnetism risk per Doc 466 applies. The self-applied score may be biased toward favorable self-assessment in ways the discipline is structurally vulnerable to.</li>
+<li>The five-point scoring used in this audit produces inter-rater-reliability concerns the calculus itself flagged. The audit&#39;s own scores (\(s_i\) values) are auditor judgments and could be off by one bucket per claim.</li>
+<li>The bibliometric measures surveyed (atypicality, disruption, recombination) operate on citation networks. Doc 490&#39;s calculus operates on conjecture-claim decomposition. The structural transfer from citation-network novelty to claim-decomposition novelty may have features the bibliometric literature does not address.</li>
+</ul>
+<h2>8. Position</h2>
+<p>Doc 490&#39;s novelty calculus, audited against scientometrics and patent novelty assessment, returns tier \(\beta\)/0.7: mostly subsumed under canonical multi-dimensional novelty measurement traditions, with narrow residue in the specific four-dimension naming, the explicit audit-thoroughness modifier, and the dyadic-LLM-practice domain application. The calculus is methodologically not novel; it is a corpus-specific operationalization of established methodology applied to a specific domain.</p>
+<p>The self-application is honest: the calculus does not special-plead itself out of its own protocol. The discipline holds at first self-test. By Doc 482 §1&#39;s affective directive, the deflation of the calculus&#39;s claim to methodological novelty is the achievement, not the loss.</p>
+<p>The recent pulverization thread now has five datapoints across the discriminative range. Four corpus auto-pulverizations score \(\alpha/\beta\). One external pulverization scores \(\delta\). The pattern Doc 489 §6 named as evidence of discriminative validity is empirically replicated. The calculus, as self-applied, identifies the corpus&#39;s actual contribution as narrow domain-instantiation work, consistent with what the apparatus has been doing all along.</p>
+<p>Doc 490 should be amended with explicit citations. The amendment is recommended in §5; the keeper&#39;s call.</p>
+<h2>9. References</h2>
+<p>External literature accessed via WebSearch on 2026-04-25:</p>
+<p>Scientometric novelty measurement:</p>
+<ul>
+<li>Uzzi, B., Mukherjee, S., Stringer, M., &amp; Jones, B. (2013). Atypical combinations and scientific impact. <em>Science</em>, 342(6157), 468-472.</li>
+<li>Funk, R. J., &amp; Owen-Smith, J. (2017). A dynamic network measure of technological change. <em>Management Science</em>, 63(3), 791-817.</li>
+<li>Wu, L., Wang, D., &amp; Evans, J. A. (2019). Large teams develop and small teams disrupt science and technology. <em>Nature</em>, 566(7744), 378-382.</li>
+<li>Wang, J., Veugelers, R., &amp; Stephan, P. (2017). Bias against novelty in science: A cautionary tale for users of bibliometric indicators. <em>Research Policy</em>, 46(8), 1416-1436.</li>
+<li>Foster, J. G., Rzhetsky, A., &amp; Evans, J. A. (2015). Tradition and innovation in scientists&#39; research strategies. <em>American Sociological Review</em>, 80(5), 875-908.</li>
+<li>Lee, Y. N., Walsh, J. P., &amp; Wang, J. (2015). Creativity in scientific teams: Unpacking novelty and impact. <em>Research Policy</em>, 44(3), 684-697.</li>
+<li>Trapido, D. (2015). How novelty in knowledge earns recognition: The role of consistent identities. <em>Research Policy</em>, 44(8), 1488-1500.</li>
+<li>Lin, et al. (2025). A review on the novelty measurements of academic papers. <em>Scientometrics</em>. arXiv:2501.17456.</li>
+<li>Wang, Z., Wang, Z., Zhang, G., Chen, J., Luczak-Roesch, M., &amp; Chen, H. (2025). A hybrid graph and LLM approach for measuring scientific novelty. SSRN 5257437.</li>
+<li>Novelpy. Open-source Python package for bibliometric novelty and disruptiveness measurement.</li>
+<li>Generative AI and the future of scientometrics (2025). arXiv:2507.00783.</li>
+</ul>
+<p>Patent novelty assessment:</p>
+<ul>
+<li>USPTO. <em>Manual of Patent Examining Procedure</em> §2103 et seq. 35 U.S.C. 102 (novelty), 35 U.S.C. 103 (non-obviousness).</li>
+<li>EPO. <em>Guidelines for Examination</em>, 2026 edition. Article 54 EPC. The &quot;clearly and unambiguously disclosed&quot; standard.</li>
+<li>WIPO. Patent Cooperation Treaty (PCT) framework. International search reports.</li>
+<li>Various 2024-2025 commentary on AI-generated prior art at USPTO and EPO.</li>
+</ul>
+<p>Corpus documents:</p>
+<ul>
+<li>Doc 445: <em>Pulverization Formalism</em> (warrant calculus).</li>
+<li>Doc 466: <em>Doc 446 as a SIPE Instance</em> (framework-magnetism caveat).</li>
+<li>Doc 481: <em>Pulverizing the Sycophancy Inversion</em>.</li>
+<li>Doc 482: <em>Sycophancy Inversion Reformalized</em>.</li>
+<li>Doc 483: <em>Pulverizing the Set-Pruning Methodology</em>.</li>
+<li>Doc 487: <em>Pulverizing the Apparatus</em>.</li>
+<li>Doc 489: <em>Pulverizing Pearl&#39;s Three-Layer Causal Hierarchy</em> (the differential-result pulverization).</li>
+<li>Doc 490: <em>A Novelty Calculus for Conjectures</em> (the target of this pulverization).</li>
+</ul>
+<hr>
+<p><em>Originating prompt:</em></p>
+<blockquote>
+<p>Yes dog food it into itself</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

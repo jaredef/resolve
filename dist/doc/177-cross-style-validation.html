@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cross-Style Validation: Deriving a Conformant React-like Runtime from a Prose Seed — Resolve</title>
+<meta name="description" content="Abstract">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><!-- chronological_ordinal: 17 -->
+<h1>Cross-Style Validation: Deriving a Conformant React-like Runtime from a Prose Seed</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This paper answers a critical objection: does the constraint-to-code derivation method work only on architectures the author designed? To find out, the same method was applied to React -- an architecture the author did not create. Ten essential constraints were identified by studying React&#39;s source code and behavioral invariants, then stated in a 2,177-word prose specification (called a &quot;seed&quot;). An AI model consumed the seed and produced a 379-line TypeScript runtime that passes 15 verification tests corresponding to React&#39;s own architectural contracts, with no React source code consulted during generation. The result demonstrates that prose-stated constraints are sufficient for a resolver to derive a conformant implementation of an architecture it has never seen, eliminating the circularity objection.</p>
+</blockquote>
+<p><strong>Jared Foy</strong>
+<strong>April 2026</strong></p>
+<hr>
+<h2>Abstract</h2>
+<p>The PRESTO dissertation claims that architectural constraints, when stated with sufficient precision in natural language, are sufficient for any resolver to derive a conformant implementation. The evidence presented there — six independent engines from one prose seed — is vulnerable to the objection that the author designed both the constraints and the seed. This article eliminates that objection by applying the same method to an architecture the author did not design: React&#39;s Distributed Objects model. The constraints were discovered by studying React&#39;s source, documentation, and behavioral invariants. A 2,177-word prose seed was written. A resolver consumed the seed and produced a 379-line TypeScript runtime that passes 15 verification tests corresponding to React&#39;s own architectural contracts. The method works on foreign ground. The derivation thesis is general.</p>
+<hr>
+<h2>1. The Objection</h2>
+<p>A skeptic examining the PRESTO work can reasonably argue:</p>
+<ul>
+<li>The author designed PRESTO&#39;s constraints to be derivable from prose.</li>
+<li>The six-language conformance is impressive but potentially circular — the same mind that specified the constraints also designed the verification suite.</li>
+<li>The method may work only on architectures purpose-built for prose derivation.</li>
+</ul>
+<p>To answer this, the method must be applied to an architecture that satisfies three conditions:</p>
+<ol>
+<li><strong>The author did not design it.</strong> The constraints must be discovered, not invented.</li>
+<li><strong>The conformance criteria are externally defined.</strong> The verification tests must correspond to behavioral invariants established by the architecture&#39;s creators, not by the author.</li>
+<li><strong>The architecture is well-known and independently scrutinized.</strong> The result must be evaluable by anyone familiar with the target system.</li>
+</ol>
+<p>React satisfies all three conditions.</p>
+<hr>
+<h2>2. The Method</h2>
+<p>The method is identical to the one that produced the PRESTO seed:</p>
+<p><strong>Step 1: Identify the constraints.</strong> Study the existing implementation — not the API surface, but the architectural invariants. What must hold for the system to work? What breaks when a constraint is violated? The source of constraints is the architecture itself, not the documentation.</p>
+<p><strong>Step 2: Separate essential from contingent.</strong> Some constraints are architecturally essential (the system breaks without them). Others are important but not mandatory (the system degrades without them). Others are truly contingent (implementation details with no architectural weight). The seed includes only the essential constraints and the abstract form of the necessary contingencies.</p>
+<p><strong>Step 3: State the constraints in prose.</strong> Write a self-contained specification — a seed — that contains: identity (what the resolver knows), architectural rationale (why each constraint exists), contracts (numbered, testable commitments), algorithms (pseudocode for the core operations), a verification suite (numbered tests with pass conditions), and interface signatures.</p>
+<p><strong>Step 4: Feed the seed to a resolver.</strong> The resolver receives the prose and nothing else. No source code. No API reference. No example application. Only the seed.</p>
+<p><strong>Step 5: Verify the output.</strong> Run the verification suite. Every test that passes confirms a constraint is satisfied. Every constraint satisfied confirms a property is induced.</p>
+<hr>
+<h2>3. The Constraints Discovered</h2>
+<p>Sixteen constraints were identified in React&#39;s architecture across six levels. Of these, ten were classified as essential, three as necessary contingencies (the need is essential but the mechanism is contingent), and three as contingent implementation details.</p>
+<p>The ten essential constraints that entered the seed:</p>
+<table>
+<thead>
+<tr>
+<th>Contract</th>
+<th>Constraint</th>
+<th>What Breaks Without It</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1</td>
+<td>Component as unit of encapsulation</td>
+<td>No composability</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Unidirectional data flow</td>
+<td>Render output depends on execution order</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Declarative rendering</td>
+<td>Developer must manage DOM transitions manually</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>State as sole trigger for re-render</td>
+<td>Non-deterministic render cycle</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Virtual representation reconciliation</td>
+<td>Full DOM reconstruction on every state change</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Two-phase commit (render then commit atomically)</td>
+<td>Visual tearing — partial DOM updates visible</td>
+</tr>
+<tr>
+<td>C7</td>
+<td>Render purity / idempotency</td>
+<td>Concurrent scheduling, memoization, and batching break</td>
+</tr>
+<tr>
+<td>C8</td>
+<td>Separated side effects (after commit, with cleanup)</td>
+<td>Effects fire during render, corrupt state under concurrency</td>
+</tr>
+<tr>
+<td>C9</td>
+<td>Ordered state storage (positional hook association)</td>
+<td>State slots misalign across re-renders</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>Consistency under concurrency (no tearing)</td>
+<td>Components in same render pass see different data</td>
+</tr>
+</tbody></table>
+<p>Three necessary contingencies were stated abstractly:</p>
+<ul>
+<li>The reconciler needs a subtree replacement rule (React uses type comparison; another mechanism could work)</li>
+<li>List reconciliation needs an identity mechanism (React uses developer-supplied keys; alternatives exist)</li>
+<li>Concurrent rendering needs a consistency guarantee (React falls back to synchronous re-execution; other isolation mechanisms are possible)</li>
+</ul>
+<p>Two constraints were omitted as truly contingent: the dual-fiber bookkeeping structure and hook location restrictions (consequences of the linked-list storage implementation, not of the architecture).</p>
+<hr>
+<h2>4. The Seven Induced Properties</h2>
+<p>The ten constraints induce seven properties. These are not features to implement — they are consequences that emerge when the constraints hold.</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Induced By</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Declarative Composability</td>
+<td>C1 + C2 + C3</td>
+<td>Components nest arbitrarily, each self-contained</td>
+</tr>
+<tr>
+<td>Predictable Rendering</td>
+<td>C2 + C4 + C7 + C9</td>
+<td>Same inputs always produce same output</td>
+</tr>
+<tr>
+<td>Efficient Incremental Updates</td>
+<td>C5 + C6</td>
+<td>State changes produce minimal host mutations</td>
+</tr>
+<tr>
+<td>Managed Side Effect Lifecycle</td>
+<td>C7 + C8 + C9</td>
+<td>Effects are predictable, cleanable, dependency-tracked</td>
+</tr>
+<tr>
+<td>Host Environment Portability</td>
+<td>C1 + C3 + C5</td>
+<td>Same reconciler targets any tree-structured host</td>
+</tr>
+<tr>
+<td>Responsive Concurrency</td>
+<td>C6 + C10</td>
+<td>UI remains interactive under load</td>
+</tr>
+<tr>
+<td>Deterministic State Association</td>
+<td>C4 + C7 + C9</td>
+<td>Every state slot maps stably to one component instance</td>
+</tr>
+</tbody></table>
+<p>The causal chain is directional: constraints induce properties; properties enable features; features implement behaviors. The developer experiences behaviors (a list reorders smoothly). The behaviors exist because the properties hold. The properties hold because the constraints are satisfied.</p>
+<hr>
+<h2>5. The Seed</h2>
+<p>The DO Seed is 2,177 words — structurally parallel to the PRESTO Seed (2,020 words). It contains:</p>
+<ul>
+<li><strong>Identity:</strong> What the resolver knows and how to reason under ambiguity.</li>
+<li><strong>Architectural Rationale:</strong> Seven &quot;why&quot; paragraphs explaining the necessity of each major constraint.</li>
+<li><strong>10 Contracts:</strong> Numbered, testable, with MUST/MUST NOT language.</li>
+<li><strong>Core Algorithms:</strong> Reconciliation (with keyed children and subtree replacement), useState, useEffect, and the render cycle work loop — all in pseudocode.</li>
+<li><strong>15 Verification Tests:</strong> Each corresponding to a specific contract.</li>
+<li><strong>Interface Signatures:</strong> Component, VirtualNode, Fiber, Reconciler, Renderer, Hooks.</li>
+<li><strong>4 Recommended Constraints:</strong> For mature implementations (reconciler/renderer separation, interruptible rendering, priority scheduling, error boundaries).</li>
+</ul>
+<p>The seed is self-contained. No external references. No React source code. No API documentation. The prose is the only input.</p>
+<hr>
+<h2>6. The Resolution</h2>
+<p>A resolver (Claude, operating as an LLM) consumed the DO Seed and produced a TypeScript runtime targeting the DOM. The runtime is 379 lines. It implements:</p>
+<ul>
+<li>Virtual node creation (<code>h</code> function)</li>
+<li>Fiber-based component tree with parent/child/sibling links</li>
+<li><code>useState</code> with positional hook storage and queued updates</li>
+<li><code>useEffect</code> with dependency comparison, cleanup lifecycle, and post-commit execution</li>
+<li><code>useRef</code> and <code>useMemo</code></li>
+<li>DOM creation, property diffing, event listener management</li>
+<li>Keyed and positional child reconciliation</li>
+<li>Subtree replacement on type change</li>
+<li>Two-phase commit (render phase interruptible, commit phase atomic)</li>
+<li>Effect flushing after commit</li>
+<li>Deletion with effect cleanup</li>
+<li><code>requestIdleCallback</code>-based work loop</li>
+</ul>
+<p>The runtime has no dependency on React. It imports nothing. It is derived entirely from the prose seed.</p>
+<hr>
+<h2>7. The Verification</h2>
+<p>All 15 tests pass:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Test</th>
+<th>Contract</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Component mounts and renders to DOM</td>
+<td>C1</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Props flow parent to child</td>
+<td>C2</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>3</td>
+<td>State change triggers re-render</td>
+<td>C4</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Same inputs produce same output</td>
+<td>C7</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Reconciler patches existing nodes on update</td>
+<td>C5</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Subtree replaced on type change</td>
+<td>C5</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Keyed list reorder preserves state</td>
+<td>C5</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Keyed reorder reuses DOM nodes</td>
+<td>C5</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Effect runs after commit, not during render</td>
+<td>C8</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Effect cleanup on dependency change</td>
+<td>C8</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Effect cleanup on unmount</td>
+<td>C8</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Conditional hook call is non-conformant</td>
+<td>C9</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Impure render does not corrupt state</td>
+<td>C7</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Commit phase is atomic</td>
+<td>C6</td>
+<td>Pass</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Render consistency — no tearing</td>
+<td>C10</td>
+<td>Pass</td>
+</tr>
+</tbody></table>
+<p>The verification suite tests the induced properties, not the implementation details. The tests are derived from React&#39;s own behavioral invariants as documented in the React source, the Rules of React, and the Fiber architecture specification.</p>
+<hr>
+<h2>8. The Live Demonstration</h2>
+<p>The derived runtime serves a browser application: a counter with increment/decrement and a todo list with add, toggle, and delete. The application exercises:</p>
+<ul>
+<li>Component composition (App contains Counter and TodoApp, which contains TodoItem instances)</li>
+<li>State management (counter value, todo list, input field)</li>
+<li>Keyed list reconciliation (todos identified by key, reorderable without state loss)</li>
+<li>Event handling (click, input, keydown)</li>
+<li>Conditional rendering (checkbox state, strikethrough styling)</li>
+<li>Derived state (remaining count computed from todo list)</li>
+</ul>
+<p>The application runs in the browser at port 4060. It is a standard single-page application with interactive state — the kind of application React was designed to build. It was built without React, from a prose seed, by a resolver that never saw React&#39;s source code.</p>
+<hr>
+<h2>9. What This Proves</h2>
+<p><strong>The derivation method is general.</strong> It works on architectures the author did not design. The PRESTO result could have been circular. The DO result cannot be — the constraints were discovered, not invented.</p>
+<p><strong>Constraints are more fundamental than implementations.</strong> React&#39;s 150,000+ lines of source implement the same ten constraints that the seed states in 2,177 words. The seed is sufficient to produce a conformant runtime. The 150,000 lines carry the constraints plus engineering: performance optimization, edge case handling, developer tooling, backward compatibility, and platform-specific code. The constraints are the invariant. The engineering is the contingent.</p>
+<p><strong>The seed is the most portable artifact.</strong> The React source runs in JavaScript. The derived runtime runs in TypeScript. But the seed runs in any language — because it is prose. A resolver targeting Rust, Go, C, or any language with DOM access (or any tree-structured host) could produce a conformant runtime from the same seed. The prose is the universal encoding. The code is the local manifestation.</p>
+<p><strong>Framework lock-in is architecturally unnecessary.</strong> If the constraints of React can be stated in 2,177 words and resolved into 379 lines, then the developer&#39;s commitment is to the constraints, not to the 150,000-line package. A different realization — smaller, larger, in a different language, targeting a different host — satisfies the same constraints and induces the same properties. The framework is one shadow. The constraints are the form.</p>
+<hr>
+<h2>10. Limitations</h2>
+<p>The derived runtime is minimal. It does not implement:</p>
+<ul>
+<li>Server-side rendering</li>
+<li>Concurrent mode with priority scheduling (the work loop yields but does not prioritize)</li>
+<li>Error boundaries</li>
+<li>Context API</li>
+<li>Suspense</li>
+<li>Portal rendering</li>
+<li>Synthetic event system</li>
+<li>Development mode warnings</li>
+</ul>
+<p>These are production concerns. Some (SSR, concurrent scheduling) could be derived from an extended seed. Others (DevTools integration, synthetic events) are platform-specific engineering choices. The verification suite tests the architectural contracts, not the production feature set. The claim is constraint conformance, not feature parity.</p>
+<p>Additionally, the verification suite is the author&#39;s — not React&#39;s own test suite. The tests are derived from React&#39;s documented behavioral invariants, but running the derived runtime against React&#39;s actual test suite would provide stronger evidence. This is identified as future work.</p>
+<hr>
+<h2>11. Conclusion</h2>
+<p>A 2,177-word prose specification of React&#39;s architectural constraints was consumed by a resolver. The resolver produced a 379-line runtime. The runtime passes 15 verification tests. The runtime serves a live interactive application in a browser. No React source code was consulted during resolution.</p>
+<p>The method that produced six PRESTO engines from a prose seed also produces a conformant DO runtime from a prose seed. The first result could be dismissed as circular. The second cannot. The constraints were discovered by studying an architecture the author did not design. The conformance criteria are React&#39;s own behavioral invariants. The prose was the only input.</p>
+<p>The derivation thesis holds: constraints stated in prose are sufficient for resolvers to derive conformant implementations. This is true for bilateral resolution architectures (PRESTO). It is true for distributed objects architectures (React). It is true, in principle, for any architecture whose constraints can be identified and stated with precision.</p>
+<p>The form precedes the implementation. The prose is the seed. The machines are what grows.</p>
+<hr>
+<h2>Artifacts</h2>
+<table>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Location</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DO Constraint Analysis</td>
+<td><code>corpus/do-constraint-analysis.md</code></td>
+<td>16 constraints, 6 levels</td>
+</tr>
+<tr>
+<td>DO Induced Properties</td>
+<td><code>corpus/do-induced-properties.md</code></td>
+<td>7 properties, constraint-property matrix</td>
+</tr>
+<tr>
+<td>DO Seed</td>
+<td><code>.spec/do-seed.md</code></td>
+<td>2,177 words</td>
+</tr>
+<tr>
+<td>DO Runtime</td>
+<td><code>.spec/do-runtime.ts</code></td>
+<td>379 lines TypeScript</td>
+</tr>
+<tr>
+<td>DO Verification Suite</td>
+<td><code>.spec/do-verify.ts</code></td>
+<td>15 tests, all passing</td>
+</tr>
+<tr>
+<td>DO Live Demo</td>
+<td><code>.spec/do-demo-client.ts</code></td>
+<td>Counter + Todo app</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Incremental Development Approach*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Incremental Development Approach</em>, Distilled</h1>
+<p><strong>Next-40 distillation, batch 2/5, doc 5 of 8. <em>Incremental Development Approach</em> is the SEBoK page that names iterative-with-deliverable-segments as a development pattern. The structural reading: the approach is Cluster I (pin-art / temporal-concurrency, Doc 270 / Doc 572 Appendix C) explicitly, and the SEBoK&#39;s &quot;not every iteration results in a tangible increment&quot; caveat surfaces a Cluster D (co-production, Doc 573) instance — learning iterations are co-produced sub-rung outputs distinct from delivery iterations. The &quot;high-uncertainty projects&quot; framing lines up with Cluster F (pulverization, Doc 445) forward-direction: each iteration is a premortem-against-uncertainty, with the iteration&#39;s evidence pulverized backward into the next planning cycle. Four corpus forms compose.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Incremental Development Approach</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Incremental_Development_Approach">https://sebokwiki.org/wiki/Incremental_Development_Approach</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>&quot;A system evolves through repeated cycles (iterations) of planning, designing, implementing, and evaluating.&quot; &quot;Not every iteration results in a tangible increment (i.e., a deliverable or prototype).&quot; &quot;Especially useful in complex, high-uncertainty projects such as those involving new technologies, evolving requirements, or significant stakeholder interaction.&quot; Systems &quot;evolve&quot; with &quot;each providing a subset of capabilities,&quot; enabling &quot;potential early deployment, faster feedback, and continuous improvement based on real-world insights.&quot; &quot;Some iterations serve primarily as learning opportunities — exploring technical feasibility, user needs, or integration challenges.&quot; Distinguished from waterfall by &quot;continuous refinement of both requirements and solutions based on feedback and learning obtained during each iteration.&quot; References: Boehm 1987 Spiral Model, Boehm et al. 2014 ICSM, INCOSE SEH 5th ed. Position: Part 3 SE and Management, Development Approaches knowledge area, between Sequential and Evolutionary.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster I — Pin-art / temporal-concurrency (Doc 270 / Doc 572 Appendix C), explicit instance.</strong> The iteration cycle is exactly the pin-art structure: each iteration is a pin-set into which planning, design, implementation, and evaluation are pressed; successive iterations record the discipline&#39;s accumulated shape. Doc 572 Appendix C&#39;s temporal-concurrency lattice composes naturally: multiple iterations may overlap (planning iteration N+1 while implementing iteration N), and the gates between iterations are the integration points.</p>
+<p><strong>Cluster D — Co-production at sub-rungs (Doc 573), via the learning-iteration distinction.</strong> The &quot;not every iteration results in a tangible increment&quot; caveat distinguishes delivery-iterations from learning-iterations. Learning iterations are co-produced sub-rung outputs: the keeper investigates a technical question, the substrate (the technology, users, integration ground) supplies evidence, and the iteration&#39;s output is keeper-substrate co-produced understanding rather than deliverable artifact. This is Doc 573&#39;s push/pull pattern at iteration granularity: the keeper pushes a hypothesis, the substrate pulls back with evidence.</p>
+<p><strong>Cluster F — Pulverization (Doc 445), forward and backward composition.</strong> &quot;High-uncertainty projects&quot; framing lines up with forward-pulverization (Refinement C): each iteration is a premortem against unrealized risk; the iteration&#39;s plan is pulverized against what could go wrong. Then the iteration&#39;s actual outcome is pulverized backward against the planned outcome (Refinement A&#39;s paired V&amp;V anchors apply). Incremental development is structurally a tight forward-backward pulverization loop running at iteration cadence.</p>
+<p><strong>Cluster B — Multi-keeper composition (Doc 510 / Doc 604), at the stakeholder rung.</strong> &quot;Significant stakeholder interaction&quot; surfaces multi-keeper composition: each iteration&#39;s evaluation phase composes stakeholder-keeper feedback with engineering-keeper assessment. The reconciliation rung is the iteration boundary itself; rule is coordination-by-rung (each iteration&#39;s gate composes the keepers).</p>
+<p><strong>SE-022 (Sequential) and SE-052 (Incremental) as Cluster A pair-of-axes.</strong> The Development Approaches knowledge area is itself Cluster A candidate: sequential vs. incremental vs. evolutionary vs. agile vs. lean as peer-axes of development-approach choice. Each binds universally (any project picks one or composes them); discriminator is aspect of cadence-and-structure. Worth flagging at the knowledge-area level (SE-050&#39;s territory).</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Iteration-cycle definition — π / α as cited.</li>
+<li>Learning-vs-delivery iteration distinction — π / α as cited; μ / β under corpus when read as Cluster D co-production at iteration rung.</li>
+<li>High-uncertainty applicability framing — π / α as cited; μ / β under corpus when read as Cluster F forward-pulverization.</li>
+<li>Boehm Spiral / ICSM heritage — π / α.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residuals. The page composes well with the apparatus.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Cluster I gains a development-approach explicit instance.</strong> Prior Cluster I members were life-cycle-stage instances (SE-022 sequential, SE-035 risk register, SE-038 HSI). Incremental development is the first explicit iteration-pin-art instance. Worth noting in future Cluster I synthesis: pin-art operates at multiple cadences (life-cycle gates, iteration gates, daily standups), each one a recurrence of the form at finer grain.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 270 / Doc 572 Appendix C (Cluster I, explicit instance), Doc 573 (Cluster D, learning iterations), Doc 445 (Cluster F, forward-backward loop), Doc 510 / Doc 604 (Cluster B, stakeholder co-keeping at gates).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3).</p>
+<p><strong>Related distillations.</strong> SE-022 (Sequential Development Approach, paired peer-axis). SE-053 (Agile Development Approach, adjacent peer-axis, this batch). SE-050 (Life Cycle Model Selection and Adaptation, the knowledge-area parent, this batch).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Sequential Development Approach</em>, <em>Evolutionary Development Approach</em>, <em>Agile Development Approach</em>, <em>Lean Engineering</em>.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Let&#39;s do the next 40 most likely articles to be most load bearing... my conjecture is that this will inform the next 40.&quot;</em></p>
+</blockquote>
+<blockquote>
+<p><em>&quot;It&#39;s ok to duplicate entries. It shows where the knowledge base folds back in on itself. Continue fanning out&quot;</em></p>
+</blockquote>
+<p>(SE-052 is one of the next-40 SEBoK distillations. Batch 2/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

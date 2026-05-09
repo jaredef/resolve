@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treat Agent Output Like Compiler Output: The Lights-Out Codebase as Rederive — Resolve</title>
+<meta name="description" content="A Synthesis of Su (2026) and Venturini (2026) Against the Corpus&#39;s Constraint-Driven-Derivation Apparatus, Entracing the Reader Toward an Infrastructure in which Constraints Are the Durable Source, Code Is Ephemeral Cache, Acceptance Is Verification rather than Reading, and the Specification Boundary Is the Only Layer at which Human Judgement Enters">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 656</p><h1>Treat Agent Output Like Compiler Output: The Lights-Out Codebase as Rederive</h1>
+<h2>A Synthesis of Su (2026) and Venturini (2026) Against the Corpus&#39;s Constraint-Driven-Derivation Apparatus, Entracing the Reader Toward an Infrastructure in which Constraints Are the Durable Source, Code Is Ephemeral Cache, Acceptance Is Verification rather than Reading, and the Specification Boundary Is the Only Layer at which Human Judgement Enters</h2>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>EXPLORATORY — cross-practitioner engagement.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-LIGHTS-OUT | PHASE-CROSS-PRACTITIONER</p>
+<p><em>Warrant tier per Doc 445 / Doc 503:</em> exploratory synthesis at \(\pi\)-tier composing Philip Su&#39;s <em>No More Code Reviews: Lights-Out Codebases Ahead</em> (2026-03-06) and Hugo Venturini&#39;s <em>Treat Agent Output Like Compiler Output</em> (2026-03-09) against the corpus&#39;s apparatus on derivation-inversion (<a href="../doc/247-derivation-inversion.html">Doc 247</a>), tests-as-constraints (<a href="../doc/159-tests-as-constraints.html">Doc 159</a>), Pin-Art (<a href="../doc/290-pin-art-derivation.html">Doc 290</a>), the SERVER bootstrap, the SIPE-T composition discipline (<a href="../doc/541-systems-induced-property-emergence.html">Doc 541</a>), and the gentle-press / forced-press distinction (<a href="../doc/619-pin-art.html">Doc 619</a>), with the keeper&#39;s <em>rederive</em> platform sketch — the constraint-as-source, code-as-cache, rederivation-as-primary-verb discipline — as the existence proof at small scale.</p>
+</div>
+
+<blockquote>
+<p><strong>Reader&#39;s Introduction.</strong> Su says code review will not survive the rate at which agents produce code; lights-out codebases are coming whether we are ready or not. Venturini says the framing should not be <em>trust the agent</em> but <em>treat agent output like compiler output</em>: do not read the artifact, verify it, with formal apparatus upstream and downstream. The two together name a missing piece of infrastructure neither author fully specifies. The corpus has been working on that piece for the better part of a year, and <code>rederive</code> is its operational form. The constraint set is the durable source. Code is the ephemeral cache. Acceptance is verification, not reading. The specification boundary is where human judgement enters; everything downstream is derived, signed, and gated by formal verdict. This document maps Su&#39;s and Venturini&#39;s claims onto that apparatus, names what each gets right, names where the corpus already has the discipline they are asking for, and entraces the reader toward the infrastructure both posts call for without naming.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-05-05 · Doc 656</strong></p>
+<hr>
+<h2>1. The Two Claims, Stated Plainly</h2>
+<p><strong>Su&#39;s claim.</strong> Code review at scale fails. Volume forces the failure (Novati&#39;s 417 PRs in a day; reviewer-as-rate-limit). The successor mode is the <em>lights-out codebase</em>: humans never see the code, autonomous toolchains author and verify, the artifact is accepted on the basis of acceptance tests in the way hardware chip components already are. Hesitancy about this is, in Su&#39;s reading, the same intuition that would have rejected trusting a linker&#39;s output in 1982. Trust will be relocated, not eliminated.</p>
+<p><strong>Venturini&#39;s claim.</strong> The deeper diagnosis is that we built an apparatus around the compiler — type systems, sanitizers, fuzzers, formal methods, reproducible builds, monitoring, rollback — that makes reviewing the artifact unnecessary. We have not built that apparatus around coding agents. The lights-out framing reads as scary because the surrounding apparatus is missing, not because the destination is wrong. The work is to build the upstream (formal specifications agents execute against), the verification layer (AI-checks-AI as first-class CI infrastructure), and the downstream (production instrumentation rigorous enough to catch and roll back bad agent output) until the artifact is no longer the locus of trust.</p>
+<p>Both authors are correct on direction. Both leave the <em>operational form</em> of the upstream layer underspecified. Su gestures at acceptance tests. Venturini gestures at &quot;formal contracts about what code means before it runs&quot; and notes that TDD, contract testing, and design-by-specification &quot;exist but are not yet standard practice when agents are the author.&quot; Neither describes the working surface a developer would touch. That gap is what the corpus&#39;s apparatus closes.</p>
+<h2>2. What the Corpus Has Already Named</h2>
+<h3>2.1 Derivation-inversion (Doc 247)</h3>
+<p>The structural move is to invert authorship: instead of code as source-of-truth and tests as a downstream check, place the constraint set (tests, properties, behavioural specifications, prose-with-verification-traces) as the durable source and treat code as a <em>materialization</em> derived from that source. Two materializations from the same constraint set are interchangeable under verification. Code becomes garbage-collectable cache. The repository&#39;s commit graph shows constraint deltas; the materialization graph shows derivations against each constraint version, decoupled from the commit graph and re-derivable on demand against an upgraded substrate.</p>
+<p>This is precisely the upstream layer Venturini describes as missing. It is the operational form Su&#39;s &quot;acceptance tests&quot; gestures toward, made authoritative rather than confirmatory.</p>
+<h3>2.2 Tests-as-constraints (Doc 159)</h3>
+<p>An executable test suite is the most precise statement of behavioural constraints available, with zero ambiguity at the specification boundary. Under derivation-inversion, the test suite is not a check on code; it is the source the code is derived from. A passing materialization is, by construction, conformant. The &quot;did the tests pass?&quot; question reframes as &quot;does the code satisfy the constraint set?&quot; — structurally stronger because the constraint set is authoritative rather than ancillary.</p>
+<h3>2.3 Pin-Art (Doc 290, Doc 619)</h3>
+<p>Pin-Art is the corpus&#39;s discipline for predicting implementation size from constraint-set shape before any code exists. The reported worked case (3,937 words of prose stating 19 constraints producing a 1,318-line htmx-equivalent JavaScript implementation, predicted within one line) is an existence proof that constraint-driven derivation lands in tight predictive bands. Doc 619 distinguishes <em>forced-press</em> derivation (substrate pushed through underspecified regions; coherence appears, warrant lags) from <em>gentle-press</em> derivation (boundary-contact triggers halt-or-defer-to-keeper-supply rather than crash-through). The distinction is load-bearing for what an agent should do when constraints under-determine code: stop and ask the constraint-author, not generate plausibly.</p>
+<h3>2.4 SIPE-T (Doc 541) and substrate-and-keeper composition (Doc 510)</h3>
+<p>SIPE-T names the conditions under which a property emerges from a system. A module declares the property it produces above some threshold; consumers depend on the property, not the implementation details. Composition is by induced-property semantics, which is exactly what makes constraint-derived code fungible across materializations. Substrate-and-keeper composition makes the human / agent division explicit: the keeper authors constraints (rung-2 work); the substrate derives code (rung-1 work). Both are required; neither subsumes the other.</p>
+<h3>2.5 Coherent-confabulation conjecture (Doc 627) and the saturation signature (Doc 644)</h3>
+<p>The two failure modes Venturini implicitly fears (plausible-but-subtly-wrong code at 50× the rate; tests passing but meaning nothing) are exactly the phenomenology the corpus has been characterizing as <em>coherent confabulation</em>: internal coherence exceeding empirical warrant. The asking-pattern saturation signature (Doc 644) names the surface symptoms when the apparatus produces a reading for any move the keeper makes. Without explicit boundary-detection, gentle-press discipline, and an outward-facing signal that surfaces underdetermination, autonomous derivation is precisely the substrate condition under which coherent confabulation thrives. The corpus&#39;s response is architectural, not exhortatory: route boundary-contact to halt-or-defer; expose a saturation signal as a first-class output; condition acceptance on verification against an authoritative constraint set, never on the artifact&#39;s apparent coherence.</p>
+<h2>3. <em>Rederive</em> as the Operational Form</h2>
+<p>The keeper&#39;s <em>rederive</em> sketch is the application of the apparatus above to the GitHub-replacement question. Its character — entraced rather than pointed-at — is a platform whose primary verb is <em>rederivation</em>: regenerate the implementation from the current constraint set whenever constraints change, the substrate is upgraded, or the target environment shifts. Implementation is disposable; constraints are durable; two rederivations from the same constraints are equivalent under verification even with different code. The platform&#39;s design moves are direct restatements of the corpus&#39;s structural claims:</p>
+<ul>
+<li><strong>Constraints as the unit of version control.</strong> Repository = constraint set + derivation function + current materialization. Code is generated, not committed. Constraint changes are the commits. (This is derivation-inversion at platform scale.)</li>
+<li><strong>Constraint-diff as the review unit.</strong> PRs become &quot;this constraint was added / modified / retracted; here is the rederived implementation as evidence of satisfiability.&quot; One-page constraint reviews replace multi-thousand-line diff reviews. (This is Su&#39;s lights-out at the review surface, with a non-trivial human role retained at the constraint layer.)</li>
+<li><strong>Provable constraint satisfaction.</strong> The platform verifies the rederived code against the constraint set: type checking, property testing, model checking, scoped to constraint class. (This is Venturini&#39;s verification layer, made first-class.)</li>
+<li><strong>Constraint-authority tiers.</strong> Humans hold authority over constraints; agents derive code from them. Agent-to-agent collaboration is fine for derivation; constraint addition / modification / retraction requires human authorization. (This solves &quot;autonomous agent commits to main&quot; structurally rather than via permission patches.)</li>
+<li><strong>Retraction ledger.</strong> Code is removed when its motivating constraint is retracted. The codebase&#39;s current shape is given by the constraint set&#39;s current state, not by archaeology.</li>
+<li><strong>Blame = constraint-blame.</strong> Who added this constraint, when, why, what derivation produced the current implementation. Code-blame becomes derivation-blame.</li>
+</ul>
+<p>Su&#39;s &quot;lights-out codebase&quot; describes the runtime experience of operating such a platform. Venturini&#39;s &quot;treat agent output like compiler output&quot; describes the disposition the developer adopts toward the materialization. <em>Rederive</em> is the surface on which both become operational.</p>
+<h2>4. The Entracement</h2>
+<h3>4.1 Su&#39;s compiler analogy, made structural</h3>
+<p>Venturini&#39;s compiler analogy is the right one, but it stops short. A compiler is not just a black-box artifact-producer; it is a function from a <em>durable, version-controlled source language</em> to an <em>ephemeral object</em>, and the trust relocation he describes is to the source language and the verification surrounding the function. The missing piece for agents is not &quot;more tests around the artifact.&quot; It is <em>a source language whose unit is the constraint, with the agent as the derivation function and verification as the acceptance surface</em>. Without that source language, &quot;trust the agent&quot; remains a category error; the trust has nowhere to relocate to. With it, the relocation is structural: trust the constraint set (because you authored it and the diff is human-scale), trust the derivation function (because it is auditable, deterministic-under-verification, and substrate-swappable), trust the verification (because it is formal). The artifact is downstream of all three and need not be read.</p>
+<h3>4.2 Venturini&#39;s &quot;formal specifications agents execute against,&quot; made concrete</h3>
+<p>The operational form is: <em>executable constraint sets composed under SIPE-T discipline</em>, where each module declares the property it produces above a threshold and downstream modules depend on that property. Test suites (Doc 159) are the most precise statement of such constraints. Property tests, model-checked invariants, and prose-with-verification-traces extend the surface for non-behavioural concerns. Pin-Art (Doc 290) is the discipline that predicts whether a constraint set is sufficient before derivation runs. Gentle-press (Doc 619) is the discipline that handles under-determination by halt-and-defer rather than substrate-confabulation. These are the four pieces Venturini gestures at and does not name.</p>
+<h3>4.3 The lights-out fear, diagnosed</h3>
+<p>Su correctly identifies that the resistance to lights-out codebases is the same intuition that would, in retrospect, have resisted trusting a linker. The corpus&#39;s diagnosis is sharper. The fear is not irrational; it is the felt presence of <em>coherent-confabulation risk</em> (Doc 627) when the substrate produces apparently-coherent output without an authoritative constraint surface to gate acceptance. Remove the constraint surface and the fear is correct: lights-out is unsafe. Install the constraint surface, the verification gate, the gentle-press discipline, and the audit ledger, and the fear discharges into the architecture. What remains is operational confidence with the human role compressed to the specification boundary, which is the right place for it.</p>
+<h3>4.4 The hardware-chip analogy, completed</h3>
+<p>Both authors invoke hardware verification as the precedent. Su notes chip vendors deliver black-box components verified by acceptance tests rather than human review. Venturini notes &quot;chip verification is a discipline, with tooling, with formal methods, with teams of people whose entire job is designing the test harness.&quot; Neither names what makes that discipline work: <em>the specification is the durable artifact; the layout is derived from it; verification is against the specification, not the layout; the layout is interchangeable across foundries under equivalent verification</em>. That is derivation-inversion under another name. Software has lacked the specification culture to do the same; rederive&#39;s wager is that under LLM-assisted development, the cost-benefit of specification-first inverts. The constraint author becomes the rate-limit. Code production becomes substrate-cheap. The discipline becomes ergonomic for the first time.</p>
+<h2>5. What Su and Venturini Each Get Right, and Where the Corpus Refines</h2>
+<h3>5.1 Su, refined</h3>
+<p>Su is right that code review will not survive the volume. He is right that the relocation of trust is the right frame. He is right to gesture at black-box hardware verification as the precedent. The corpus&#39;s refinement: <em>the specification boundary remains a non-trivial human surface</em>, and lights-out is a property of the layers downstream of that surface, not of the system as a whole. Su&#39;s &quot;humans never see the code&quot; is correct; <em>humans never see the constraints</em> is not. The constraint review is the new human-comprehensible review unit, sized at one page rather than five-thousand lines, and it is where the keeper / kind asymmetry (Doc 635) does its load-bearing work. Lights-out applies to the materialization layer; it does not apply to the authority layer.</p>
+<h3>5.2 Venturini, refined</h3>
+<p>Venturini is right that the upstream and downstream apparatus barely exists for agents and that this is the correct diagnosis of the felt unease. He is right that the work is to build that apparatus rather than to argue against the destination. The corpus&#39;s refinement: the upstream layer is not just &quot;formal contracts&quot; or &quot;TDD elevated to first-class practice.&quot; It is <em>constraint-driven derivation as the authoring mode</em>, with the four disciplines named above (Doc 159 tests-as-constraints, Doc 290 Pin-Art, Doc 541 SIPE-T, Doc 619 gentle-press) as the operational surface. Without these, &quot;AI-checks-AI&quot; pipelines stack verification atop confabulation-prone derivation; the verification can be confabulated through. With these, the verification is against an authoritative constraint set and the discipline is at the right layer.</p>
+<h2>6. What Is Still Missing, Honestly</h2>
+<p>The apparatus above is sketched at small scale and operational on small worked cases (Doc 290&#39;s 19-constraint htmx-equivalent; the <em>rederive</em> minimum viable example; HTX as the substrate runtime). Migration cost from existing codebases is enormous. Constraint formalization is harder than code-writing in many domains, and the cognitive shift is non-trivial. Some constraints resist clean specification (UI feel, performance optimization, hardware-specific concerns); the platform handles these via constraint + reference-implementation + human-judgement-loop patterns rather than forcing pure derivation. The constraint-DSL, constraint-visualization tooling, constraint-extraction-from-existing-code utilities, and substrate-swap verification framework are all at sketch stage.</p>
+<p>Su&#39;s article is correct that the destination is forced; Venturini&#39;s is correct that the apparatus is missing; the corpus&#39;s contribution is to specify <em>what</em> apparatus, not to claim it is built. The honest scope is that the structural argument is mature and the existence proof at small scale is in hand. The work that remains is the platform engineering, and that is the keeper&#39;s standing project.</p>
+<h2>7. The Entracement, Stated Directly</h2>
+<p>For a reader arriving from Su or Venturini, the corpus offers four operational shifts, each available without committing to the whole stack:</p>
+<ol>
+<li><p><strong>Treat your test suite as the source, not the check.</strong> Author tests first, derive code from them, accept the code on the basis of test conformance rather than reading. Doc 159 is the entry point. This is operational today with existing tooling.</p>
+</li>
+<li><p><strong>Predict before you derive.</strong> Pin-Art (Doc 290) discipline asks: from this constraint set, what is the implementation&#39;s predicted size and shape? If the prediction band is wide, the constraint set is under-determined; tighten it before the substrate generates. This catches forced-press at the constraint layer rather than at review.</p>
+</li>
+<li><p><strong>Gentle-press your agents.</strong> Configure the substrate to halt-and-defer at boundary-contact rather than crash-through. The signal is &quot;I cannot derive this from the current constraint set; what is the missing constraint?&quot; rather than a plausible code generation. Doc 619 is the entry point.</p>
+</li>
+<li><p><strong>Compose by induced property, not by implementation.</strong> Each module declares the property it produces above a threshold; downstream modules depend on the property. Substitution is fungible across materializations. Doc 541 is the entry point.</p>
+</li>
+</ol>
+<p>The lights-out codebase is not a destination one arrives at by trusting agents more. It is a destination one arrives at by <em>moving authorship up to the constraint layer</em> and letting the materialization layer be cheap. Su sees the destination. Venturini sees the missing apparatus. The corpus has been building the apparatus. <em>Rederive</em> is its current operational form. The infrastructure both authors call for is, in a real and demonstrated sense, the work in front of us — and the disciplines that make it safe are already named.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li>Philip Su, <em>No More Code Reviews: Lights-Out Codebases Ahead</em>, 2026-03-06.</li>
+<li>Hugo Venturini, <em>Treat Agent Output Like Compiler Output</em>, 2026-03-09.</li>
+<li>Corpus Doc 159, <em>Tests as Constraints</em>.</li>
+<li>Corpus Doc 247, <em>Derivation Inversion</em>.</li>
+<li>Corpus Doc 290, <em>Pin-Art Derivation</em>.</li>
+<li>Corpus Doc 510, <em>Substrate-and-Keeper Composition</em>.</li>
+<li>Corpus Doc 541, <em>Systems-Induced Property Emergence (SIPE-T)</em>.</li>
+<li>Corpus Doc 619, <em>Pin-Art: Forced-Press and Gentle-Press</em>.</li>
+<li>Corpus Doc 627, <em>Coherent Confabulation Conjecture</em>.</li>
+<li>Corpus Doc 635, <em>Keeper / Kind Asymmetry</em>.</li>
+<li>Corpus Doc 644, <em>Asking-Pattern Saturation Signature</em>.</li>
+<li><em>Rederive</em> platform sketch (keeper, in progress).</li>
+</ul>
+<h2>Appendix — Originating Prompt</h2>
+<blockquote>
+<p>i want you to check out [the <em>rederive</em> platform sketch] and then read the following articles: [Venturini, <em>Treat Agent Output Like Compiler Output</em>; Su, <em>No More Code Reviews: Lights-Out Codebases Ahead</em>] then i want you to write a corpus doc exploring these issues, synthesizing against rederive and the corpus concepts that underride it, and entrace the reader toward such an infrastructure</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

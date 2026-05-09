@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *System Decommissioning, Disposal, and Sustainment*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>System Decommissioning, Disposal, and Sustainment</em>, Distilled</h1>
+<p><strong>Next-40 distillation #48 (Batch 2/5 in the third-batch sweep). The closest SEBoK article is <em>System Disposal and Retirement</em> (sustainment is treated under <em>System Maintenance</em> and <em>System Operation</em>). The discipline aims &quot;to remove a system element from the operation environment with the intent of permanently terminating its use&quot; while addressing hazardous materials. Across product, service, and enterprise applications, disposal binds three distinct handoff structures: terminal-destruction (product), parallel-operation-then-cutover (service), and phased-capital-replacement (enterprise). Each is a Doc 574 handoff-mode evacuation case at a different cadence; the article names two of the three pitfalls explicitly. The &quot;lower priority because external to primary business function&quot; observation is canonical authority-evacuation: the discipline is structurally underweighted at the institutional ground because its returns accrue outside the engagement. Six forms bind, with handoff-mode evacuation as the load-bearing read.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> System Disposal and Retirement (sustainment treated under sister articles)</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/System_Disposal_and_Retirement">https://sebokwiki.org/wiki/System_Disposal_and_Retirement</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>System disposal and retirement aims &quot;to remove a system element from the operation environment with the intent of permanently terminating its use&quot; while addressing hazardous materials responsibly. Three application classes. <em>Product Systems</em>: disposal planning addresses timing of removal, economic feasibility, and environmental impacts; &quot;disposability often receives lower priority because it&#39;s viewed as external to the primary business function and generates no direct revenue.&quot; <em>Service Systems</em>: parallel operation of new and existing systems is essential to minimize service interruption (air traffic control modernization, digital television migration are canonical examples). <em>Enterprise Systems</em>: capital planning is phased, with parallel operation to prevent functionality loss. Environmental and regulatory considerations are &quot;of prime importance&quot;: air and water pollution, noise, radiation, solid waste. In the U.S., EPA and OSHA govern disposal; internationally, parallel regulators apply; the EU&#39;s REACH regulation requires manufacturers to disclose chemical substances. Modern SE integrates recycling and sustainability into initial design (green engineering), incorporating disposal costs into lifecycle assessments. Sustainment is treated in adjacent articles as the long operational tail before disposal; <em>System Maintenance</em> covers Service Life Management. Position: Part 3 → Life Cycle Terms and Concepts (or Realization).</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form XII — Handoff-Mode Evacuation (Doc 574), as the load-bearing read.</strong> Disposal is structurally a handoff: the engagement transfers the system from operational to non-operational status, with substrate ownership transferring (to recyclers, scrap processors, regulators, replacement systems). Three distinct handoff structures appear in the article and each is a different Doc 574 cadence. <em>Terminal-destruction</em> (product disposal) is single-handoff: substrate ownership transfers once and the engagement ends. <em>Parallel-operation-then-cutover</em> (service disposal) is double-handoff with overlap: the new substrate runs alongside the old until the cutover completes. <em>Phased-capital-replacement</em> (enterprise disposal) is staged-handoff: substrate ownership transfers piece by piece across multiple cutovers. The three are universal-sibling at the disposal rung (Cluster A seventeenth instance) and Doc 574 cadences at the handoff rung simultaneously.</p>
+<p><strong>Form XII — Authority Evacuation (Doc 574), in the named-pitfall pattern.</strong> &quot;Disposability often receives lower priority because it&#39;s viewed as external to the primary business function and generates no direct revenue&quot; is canonical authority evacuation Pattern A: the discipline&#39;s authority decays because the institutional ground reads its returns as accruing outside the engagement. The substrate routes around the discipline because the discipline is structurally underweighted. The article names this pitfall explicitly; the corpus reads it as Doc 574 authority decay. SE-047 named three Doc 574 patterns at the CM rung; SE-090 names a fourth at the disposal rung.</p>
+<p><strong>Form III — Lattice Extension (Doc 572 Appendix D), seventeenth instance.</strong> Three application classes (product, service, enterprise) with three corresponding handoff structures form a universal-sibling lattice at the disposal-application rung. Each application class binds disposal universally; the discriminator is application-class, not rung-of-application.</p>
+<p><strong>Form XI — Co-Production at Sub-Rungs (Doc 573), in the green-engineering observation.</strong> &quot;Modern SE integrates recycling and sustainability into initial design&quot; is co-production: the disposal-discipline keeper composes with the design-discipline keeper at design time, producing a co-product (a disposable-by-design system) that neither keeper alone could produce. The lifecycle&#39;s last stage is co-produced at its first stage. This is canonical Doc 573 co-production at the design rung.</p>
+<p><strong>Form X — Institutional Ground (Doc 571).</strong> Multiple regulatory grounds: EPA, OSHA (U.S.); REACH (EU); parallel regulators globally. Section X.5 organization-vs-enterprise: regulators live at organization-component (formal authority); practiced disposal lives at enterprise-component (the engagement&#39;s accumulated disposal tradition, which often lags formal compliance). Three-carrier robustness is supplied across at least four independent regulatory carriers; the discipline travels.</p>
+<p><strong>Form V — Hypostatic Boundary (Doc 372), at the system-element-versus-substrate rung.</strong> &quot;Permanently terminating its use&quot; describes the system element&#39;s operational status, not its physical existence. The hypostatic boundary holds: disposal terminates the engagement-bound system element while the matter persists (often in recycled or destructed form). The corpus&#39;s hypostatic-boundary discipline is sharper than SEBoK&#39;s; the article does not articulate the system-element-vs-matter distinction explicitly.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>Disposal definition (terminate operational use) — π / α.</li>
+<li>Three application classes (product, service, enterprise) — π / α as cited; μ / β under corpus as Cluster A seventeenth.</li>
+<li>Three handoff structures (terminal, parallel, phased) — μ / β under corpus as Doc 574 cadence-instances.</li>
+<li>&quot;Lower priority because external&quot; pitfall — π / α as cited; μ / β under corpus as Doc 574 Pattern A authority decay.</li>
+<li>Green engineering and design-time integration — π / α as cited; μ / β under corpus as Doc 573 co-production.</li>
+<li>Multi-regulator pluralism — π / α as cited; μ / β under corpus as Doc 571 multi-ground.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>The article does not name a <em>system-element-versus-matter</em> distinction; the hypostatic boundary at disposal is implicit. Small residual; the corpus articulates this where SEBoK does not.</p>
+<p>The conflation of <em>disposal</em> with <em>retirement</em> in SEBoK&#39;s title obscures the sustainment-then-disposal sequence. Sustainment is the long operational tail; the disposal-and-retirement framing collapses the tail into the terminal event.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 574 handoff-mode evacuation reaches a fourth Pattern A instance (after the three named in SE-047). Pattern A authority decay is now well-attested across the substrate-discipline lifecycle: configuration (SE-047), reviews (implicit in SE-089), risk (SE-035), and disposal (SE-090). The pattern is robust.</strong></p>
+<p><strong>Three handoff cadences (terminal, parallel, phased) as Doc 574 refinement.</strong> Doc 574&#39;s handoff-mode evacuation has been read as a single mode; this article surfaces three cadences. Worth recording as a Doc 574 refinement candidate: handoff-mode is itself a universal-sibling lattice at the cadence rung.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 574 (Handoff-Mode Evacuation, three cadences refinement; Pattern A fourth instance), Doc 572 (Appendix D seventeenth), Doc 573 (Co-Production at design-disposal sub-rung), Doc 571 (Institutional Ground, multi-regulator), Doc 372 (Hypostatic Boundary, system-element-versus-matter), Doc 530 (Affordance Gap, terminal closure of the dyad).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management, Life Cycle).</p>
+<p><strong>Related distillations.</strong> SE-047 (CM — sister longitudinal substrate-discipline). SE-089 (Technical Reviews — punctuated transitions, parallel structure). SE-035 (Risk Management — risks at end-of-life).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>System Maintenance</em>, <em>System Operation</em>, <em>System Deployment and Use</em>, <em>Cycles and the Phases of Systems</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Doc 574 cadence-lattice refinement; Pattern A authority-decay across substrate-disciplines; sustainment-tail vs disposal-event distinction the corpus articulates beyond SEBoK.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements; report back for next 40&quot;</em> / <em>&quot;Continue&quot;</em></p>
+</blockquote>
+<p>(SE-090 is one of the third-batch SEBoK distillations. Batch 2/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

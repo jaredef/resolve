@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corpus Taxonomy and Manifest Design — Resolve</title>
+<meta name="description" content="A Five-Layer Tagging Scheme That Locates Every Corpus Document as a Constituent Element of the Lakatosian Programme Articulated at Doc 632, with Manifest-File Architecture, Audit Findings From the 537-Document Sweep, and Worked Examples of the Tagging Operationally Applied">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-05-02 · Doc 633</p><h1>Corpus Taxonomy and Manifest Design</h1>
+<h2>A Five-Layer Tagging Scheme That Locates Every Corpus Document as a Constituent Element of the Lakatosian Programme Articulated at Doc 632, with Manifest-File Architecture, Audit Findings From the 537-Document Sweep, and Worked Examples of the Tagging Operationally Applied</h2>
+<p><strong>Jared Foy · 2026-05-02 · Doc 633</strong></p>
+<blockquote>
+<p><strong>EXPLORATORY — open invitation to falsify.</strong></p>
+<p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> DISCIPLINE-EXTENSION | ACTIVE | W-PI | (no engagement-thread tag) | PHASE-SELF-ARTICULATION</p>
+<p><em>Warrant tier per Doc 445 / Doc 503:</em> exploratory design at \(\pi\)-tier. The taxonomy is a corpus-internal organizational specification; its fitness will be tested by the manifest&#39;s construction and by the corpus&#39;s subsequent practice. Per <a href="../doc/620-canonicity-in-the-corpus.html">Doc 620 (Canonicity in the Corpus)</a>, this banner asserts the document&#39;s exploratory role; the taxonomy is not promoted to primary-articulation status. The originating prompt is appended.</p>
+</blockquote>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of <a href="../doc/372-the-hypostatic-boundary.html">Docs 372–374</a>.</p>
+<hr>
+<h2>1. The Design Frame</h2>
+<p>The keeper&#39;s instruction directed an exhaustive audit followed by a taxonomy and manifest design that lets every corpus document be tagged as a constituent element of the corpus&#39;s form of itself per <a href="../doc/632-the-corpus-itself-primary-articulation.html">Doc 632 (the Corpus&#39;s Primary Articulation)</a>. This document executes both: §2 reports the audit findings; §§3–5 specify the five-layer tagging scheme; §6 specifies the manifest-file architecture; §7 walks twenty worked-example tags; §§8–10 discuss adoption, falsifiers, and limits.</p>
+<p>The design constraint: the taxonomy must be expressive enough to locate every doc within Doc 632&#39;s Lakatosian framework (HC, PB, OP, NH, PH, M-instances) AND general enough to absorb future documents AND lightweight enough to maintain across the corpus&#39;s growth without collapsing under its own administrative weight. The proposal balances these.</p>
+<h2>2. Audit Findings, Compressed</h2>
+<p>The audit (executed via Explore agent on the 537-document corpus, full report preserved in working notes) established the following structural facts:</p>
+<ul>
+<li><strong>Total numeric-prefixed documents:</strong> 536 (range 001–632) plus 1 non-numeric file (<code>the-threshold-pattern.md</code>).</li>
+<li><strong>Gap positions (reserved/intentional):</strong> approximately 96 numbered slots without docs (002–050; 059–060; 094; 114; 207; 529; 557–570; 575, 577–579, 582, 584–604, 605). The gaps cluster at the start of the corpus and in the late-500s; this suggests deliberate numbering rather than sequential generation.</li>
+<li><strong>Distribution:</strong> approximately 9% in 1–100, 18% each in 101–200, 201–300, 301–400, 401–500, and 17% in 501–632. Steady growth across the corpus&#39;s lifespan.</li>
+<li><strong>Length:</strong> average 188 lines per doc; 84% of docs in the 100–300 line range; 6 docs over 600 lines (Docs 183, 174, 193, 185, 495, 508).</li>
+</ul>
+<p><strong>Explicit primary-articulation markers found:</strong> Docs 514, 541, 619, 620, 632 carry the &quot;PRIMARY ARTICULATION&quot; banner (post-Doc 620 disambiguation). Older &quot;Canonical SIPE reference&quot; markers point to Doc 474 (now itself superseded by Doc 541). The five PRIMARY ARTICULATION docs supply the core protective-belt content that Doc 632 enumerates.</p>
+<p><strong>Functional-category counts by filename pattern:</strong></p>
+<ul>
+<li>47 letter-to docs (largest single functional category)</li>
+<li>18 resolver-log docs</li>
+<li>14 pulverization audits</li>
+<li>9 examination docs</li>
+<li>7 praxis-log docs</li>
+<li>5 confabulation docs</li>
+<li>5 branch-method docs</li>
+<li>2 tutorial / walkthrough docs (Docs 609, 610)</li>
+<li>2 reformulation docs</li>
+</ul>
+<p><strong>Status markers found:</strong></p>
+<ul>
+<li>34 docs marked DEPRECATED</li>
+<li>25 docs marked SUPERSEDED</li>
+<li>32 docs marked RETRACTED</li>
+<li>3 docs explicitly named &quot;originating essay&quot;</li>
+<li>Several docs (e.g., Doc 415 the retraction ledger) carry multiple status markers reflecting their recursive role</li>
+</ul>
+<p><strong>Engagement threads identified (top by mention-count and document-count):</strong> Misra (5+ docs; 511 mentions), Pearl (1+ doc; 367 mentions), Lakatos (1+ doc; 236 mentions), Axe (3+ docs; ~217 mentions), Pageau (2+ docs; 112 mentions), Larsson (3+ docs; 140 mentions), Kelly, Chalmers, Pageau, Yates, Krakauer.</p>
+<p><strong>Late-stage self-articulation cluster:</strong> Docs 621–633 form a tight cluster of integration-and-self-articulation work, culminating in this taxonomy proposal.</p>
+<p>The audit&#39;s structural takeaway: the corpus has natural functional categories (letters; logs; audits; examinations) AND structural-role categories (forms; disciplines; standing apparatus; observational predictions) AND lifecycle status (active; deprecated; superseded; retracted; originating-essay) AND temporal/engagement-thread groupings. A useful taxonomy must accommodate all four orthogonal dimensions without forcing single-axis classification.</p>
+<h2>3. The Five-Layer Tagging Scheme</h2>
+<p>The proposed taxonomy assigns each doc tags across five orthogonal layers. Each layer uses a controlled vocabulary; together the layers locate the doc precisely within the Doc 632 Lakatosian frame and within the corpus&#39;s working categories.</p>
+<h3>Layer 1 — Structural Role (relative to Doc 632)</h3>
+<p>Single-valued. Names what the doc IS in the Lakatosian scheme.</p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>META-PRIMARY</code></td>
+<td>Doc 632 itself — the corpus&#39;s primary articulation of itself</td>
+</tr>
+<tr>
+<td><code>HARD-CORE</code></td>
+<td>Articulates HC1–HC4 metaphysical content (Logos-participation; Ladder; hypostatic boundary; substrate-and-keeper composition)</td>
+</tr>
+<tr>
+<td><code>PB-FORM</code></td>
+<td>IS one of the protective-belt Forms (PB-Form-1 SIPE-T = Doc 541; PB-Form-2 Pin-Art = Doc 619; PB-Form-3 Structural Isomorphism = Doc 514)</td>
+</tr>
+<tr>
+<td><code>PB-DISCIPLINE</code></td>
+<td>IS one of the standing protective-belt Disciplines (PB-Discipline-1 V3 = Doc 314; PB-Discipline-2 Pulverization = Doc 445; PB-Discipline-3 Tier-pattern = Doc 503; PB-Discipline-4 Retraction Ledger = Doc 415; PB-Discipline-5 Coherent-Confabulation = Doc 627; PB-Discipline-6 Substrate-and-Keeper = Doc 510)</td>
+</tr>
+<tr>
+<td><code>STANDING-APPARATUS</code></td>
+<td>Structurally load-bearing across the programme but not a Form or Discipline (Doc 372 Hypostatic Boundary; Doc 548 Ontological Ladder; Doc 572 Lattice Extension; Doc 620 Canonicity Disambiguation)</td>
+</tr>
+<tr>
+<td><code>OBSERVATIONAL-PREDICTION</code></td>
+<td>Articulates or tests an OP from Doc 632 §4 (e.g., Doc 624 OP2 build spec; Doc 463 wind-tunnel sketches for OP4)</td>
+</tr>
+<tr>
+<td><code>FORM-EXTENSION</code></td>
+<td>Extends, refines, or supplies foundations for a PB-Form (e.g., Doc 446 / 466 / 623 / 624 / 625 / 629 / 630 extend SIPE-T per-step instance)</td>
+</tr>
+<tr>
+<td><code>DISCIPLINE-EXTENSION</code></td>
+<td>Extends, refines, or supplies foundations for a PB-Discipline</td>
+</tr>
+<tr>
+<td><code>SUPPORTING-ARGUMENT</code></td>
+<td>Argues for, defends, or justifies elements of HC or PB without itself being them</td>
+</tr>
+<tr>
+<td><code>APPLICATION</code></td>
+<td>Applies the corpus&#39;s apparatus to a specific external case (Axe instance per Doc 606; Larsson long-horizon-reliability per Doc 518; Strominger per Doc 535)</td>
+</tr>
+<tr>
+<td><code>ENGAGEMENT</code></td>
+<td>Engages an external author/work directly (the 47 letter-to docs; reading-of docs)</td>
+</tr>
+<tr>
+<td><code>PRAXIS-LOG</code></td>
+<td>First-person reflective record by the keeper (the 7 praxis-log docs)</td>
+</tr>
+<tr>
+<td><code>RESOLVER-LOG</code></td>
+<td>Substrate-side failure-mode or operational-observation documentation (the 18 resolver-log docs)</td>
+</tr>
+<tr>
+<td><code>PULVERIZATION-AUDIT</code></td>
+<td>Corpus-internal pulverization-audit operation (the 14 pulverization-audit docs)</td>
+</tr>
+<tr>
+<td><code>EXAMINATION</code></td>
+<td>Particular methodological-phase examination (the 9 examination docs)</td>
+</tr>
+<tr>
+<td><code>TUTORIAL</code></td>
+<td>Accessible entry-point material (Doc 609, 610)</td>
+</tr>
+<tr>
+<td><code>ENTRACEMENT</code></td>
+<td>Reader-entracement to specific findings (Doc 631; Doc 633 Appendix; some blog posts mirrored as docs)</td>
+</tr>
+<tr>
+<td><code>LETTER</code></td>
+<td>A letter to a specific external recipient (subset of ENGAGEMENT — kept distinct because the genre has specific structural commitments)</td>
+</tr>
+<tr>
+<td><code>HISTORICAL-ARCHIVAL</code></td>
+<td>Earlier formulation preserved as deprecated/superseded predecessor (Doc 143; Doc 290; Doc 270; etc.)</td>
+</tr>
+</tbody></table>
+<p>A doc has exactly one Layer 1 tag. Edge cases: when a doc is multi-functional (e.g., a praxis log that contains a major form-extension claim), Layer 1 takes the most-load-bearing role; the secondary role is captured by Layer 4 cross-reference.</p>
+<h3>Layer 2 — Lifecycle Status</h3>
+<p>Single-valued. Names where the doc is in the corpus&#39;s working lifecycle.</p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PRIMARY</code></td>
+<td>Currently primary-articulation per Doc 620 (5 docs as of 2026-05-02: 514, 541, 619, 620, 632)</td>
+</tr>
+<tr>
+<td><code>ACTIVE</code></td>
+<td>Currently load-bearing in the corpus&#39;s working framework</td>
+</tr>
+<tr>
+<td><code>EXTENSION</code></td>
+<td>Active extension/refinement of an ACTIVE or PRIMARY doc</td>
+</tr>
+<tr>
+<td><code>OBSERVATIONAL</code></td>
+<td>Active observational-prediction or audit-instance contribution</td>
+</tr>
+<tr>
+<td><code>LOG</code></td>
+<td>Active log entry (praxis or resolver); preserves trace rather than asserts claims</td>
+</tr>
+<tr>
+<td><code>DEPRECATED</code></td>
+<td>Substantively content-deprecated; preserved for traceability and partial residual content</td>
+</tr>
+<tr>
+<td><code>SUPERSEDED</code></td>
+<td>Superseded by a named successor; preserved as origin</td>
+</tr>
+<tr>
+<td><code>RETRACTED</code></td>
+<td>Specific claims withdrawn per Doc 415 retraction ledger; doc retained for trace</td>
+</tr>
+<tr>
+<td><code>ORIGINATING-ESSAY</code></td>
+<td>Preserved as origin of a later formalization that is now the primary articulation</td>
+</tr>
+<tr>
+<td><code>MIXED</code></td>
+<td>Doc has multiple status zones (e.g., Doc 541 §3.2 added 2026-05-02 is current; the prior §§ are stable; Appendix B is preserved as deprecated). MIXED docs require a per-section status note in the manifest&#39;s <code>status_notes</code> field.</td>
+</tr>
+</tbody></table>
+<h3>Layer 3 — Warrant Tier (per Doc 445 + Doc 503)</h3>
+<p>Single-valued for the doc&#39;s principal claim. Names the highest currently-corroborated tier.</p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>W-PI</code></td>
+<td>\(\pi\)-tier plausibility-passed</td>
+</tr>
+<tr>
+<td><code>W-MU</code></td>
+<td>\(\mu\)-tier operational-match-corroborated</td>
+</tr>
+<tr>
+<td><code>W-THETA</code></td>
+<td>\(\theta\)-tier truth-verified for the principal claim</td>
+</tr>
+<tr>
+<td><code>W-CANONICAL</code></td>
+<td>Doc 445 <em>Canonical</em>-tier (full \(\theta\)-promotion for a target type) — currently no documents are at this tier</td>
+</tr>
+<tr>
+<td><code>W-METAPHYSICAL</code></td>
+<td>Hard-core content (HC1–HC4) — defended within tradition; not subject to Popperian falsification per NH1</td>
+</tr>
+<tr>
+<td><code>W-NA</code></td>
+<td>Warrant-tier not applicable (e.g., LOG entries; ENGAGEMENT letters; EXAMINATION docs whose role is exploratory)</td>
+</tr>
+</tbody></table>
+<p>Optional secondary tag using Doc 503 categories: <code>D503-ALPHA</code>, <code>D503-BETA</code>, <code>D503-GAMMA</code> for docs whose corroboration profile fits the research-thread tier pattern.</p>
+<h3>Layer 4 — Engagement Thread (when applicable)</h3>
+<p>Multi-valued (a doc may belong to multiple threads). Names the engagement thread(s) the doc participates in.</p>
+<p>Threads identified (initial set; expandable):</p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Anchor docs / focal external author</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>THREAD-MISRA</code></td>
+<td>Misra Bayesian-mechanistic transformer attention work (Docs 408, 409, 437, 446, 466, 629, 630, 631)</td>
+</tr>
+<tr>
+<td><code>THREAD-PEARL</code></td>
+<td>Pearl causal-hierarchy work (Doc 546 + adjacent)</td>
+</tr>
+<tr>
+<td><code>THREAD-LAKATOS</code></td>
+<td>Lakatos research-programme framing (Doc 463, Doc 632)</td>
+</tr>
+<tr>
+<td><code>THREAD-AXE</code></td>
+<td>Axe protein-fold prevalence + cooperative-coupling SIPE-T sub-form (Docs 606, 616, 618; Doc 541 §3.1 instance-tag)</td>
+</tr>
+<tr>
+<td><code>THREAD-LARSSON</code></td>
+<td>Larsson long-horizon-reliability synthesis (Docs 518, 519, 535)</td>
+</tr>
+<tr>
+<td><code>THREAD-PAGEAU</code></td>
+<td>Pageau symbolic-world thesis engagement (Doc 545 + adjacent)</td>
+</tr>
+<tr>
+<td><code>THREAD-CHALMERS</code></td>
+<td>Chalmers strong-vs-weak emergence engagement (Doc 254; Doc 547)</td>
+</tr>
+<tr>
+<td><code>THREAD-KELLY</code></td>
+<td>Kelly alignment-inception engagement (Doc 537)</td>
+</tr>
+<tr>
+<td><code>THREAD-STROMINGER</code></td>
+<td>Strominger gluon-scattering substrate-plus-injection synthesis (Doc 535)</td>
+</tr>
+<tr>
+<td><code>THREAD-CHRISTIANO</code></td>
+<td>Christiano alignment-research engagement (Doc 200)</td>
+</tr>
+<tr>
+<td><code>THREAD-OLAH</code></td>
+<td>Olah interpretability engagement (Doc 196)</td>
+</tr>
+<tr>
+<td><code>THREAD-LUPSASCA</code></td>
+<td>Lupsasca photon-ring threshold framing (Doc 539)</td>
+</tr>
+<tr>
+<td><code>THREAD-CONFAB</code></td>
+<td>The coherent-confabulation discipline thread (Docs 441, 443, 444, 626, 627, 628, 629, 630, 631)</td>
+</tr>
+<tr>
+<td><code>THREAD-BLOG-CEILING</code></td>
+<td>&quot;The Ceiling&quot; blog series + corpus-side anchors</td>
+</tr>
+<tr>
+<td><code>THREAD-BLOG-LADDER</code></td>
+<td>&quot;The Ladder&quot; blog series + Doc 548 anchor</td>
+</tr>
+<tr>
+<td><code>THREAD-BLOG-WCAN</code></td>
+<td>&quot;What Counts as New&quot; blog series + Docs 445, 491, 503 anchors</td>
+</tr>
+<tr>
+<td><code>THREAD-PINART</code></td>
+<td>Pin-Art thread (Docs 270, 288, 290, 619, 623, 624, 625)</td>
+</tr>
+<tr>
+<td><code>THREAD-SIPE</code></td>
+<td>SIPE-T thread (Docs 143, 424, 474, 541, plus instances)</td>
+</tr>
+<tr>
+<td><code>THREAD-COHERENCE-AMP</code></td>
+<td>Coherence-amplification thread (Doc 508 plus precursors)</td>
+</tr>
+</tbody></table>
+<p>Threads are expandable; the manifest&#39;s controlled vocabulary specifies the current thread set with stable tag identifiers.</p>
+<h3>Layer 5 — Temporal Cluster</h3>
+<p>Single-valued. Names the lifecycle phase of the corpus the doc belongs to.</p>
+<table>
+<thead>
+<tr>
+<th>Tag</th>
+<th>Approximate doc range</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>PHASE-FOUNDATION</code></td>
+<td>001–200</td>
+<td>Foundational articulation, broad-stroke framework establishment</td>
+</tr>
+<tr>
+<td><code>PHASE-DEVELOPMENT</code></td>
+<td>201–400</td>
+<td>Framework development, engagement broadening, methodology consolidation</td>
+</tr>
+<tr>
+<td><code>PHASE-CONSOLIDATION</code></td>
+<td>401–600</td>
+<td>Audit-discipline consolidation, framework reformulation, primary-articulation establishment</td>
+</tr>
+<tr>
+<td><code>PHASE-SELF-ARTICULATION</code></td>
+<td>601–632</td>
+<td>Corpus-self-recognition, meta-level articulation, taxonomy work</td>
+</tr>
+</tbody></table>
+<p>Layer 5 is informational rather than load-bearing; it tracks where in the corpus&#39;s lifecycle a given contribution sits without making claims about the contribution&#39;s quality.</p>
+<h2>4. Tag Interactions and Constraints</h2>
+<p>Five constraint rules govern the tag interactions:</p>
+<p><strong>Constraint C-1.</strong> Layer 1 tags <code>META-PRIMARY</code>, <code>PB-FORM</code>, <code>PB-DISCIPLINE</code> imply Layer 2 = <code>PRIMARY</code> (unless explicit <code>SUPERSEDED</code> for historical sequence). Currently 5 docs satisfy this.</p>
+<p><strong>Constraint C-2.</strong> Layer 1 tag <code>HARD-CORE</code> implies Layer 3 = <code>W-METAPHYSICAL</code>. Hard-core content is not subject to Popperian falsification per Doc 632 NH1.</p>
+<p><strong>Constraint C-3.</strong> Layer 1 tags <code>PRAXIS-LOG</code>, <code>RESOLVER-LOG</code>, <code>LETTER</code>, <code>EXAMINATION</code>, <code>ENTRACEMENT</code> imply Layer 3 = <code>W-NA</code> for the doc-as-a-whole (specific claims within the doc may carry their own warrant tiers, but the doc-as-genre does not assert single-claim warrant).</p>
+<p><strong>Constraint C-4.</strong> Layer 1 tag <code>HISTORICAL-ARCHIVAL</code> implies Layer 2 ∈ {<code>DEPRECATED</code>, <code>SUPERSEDED</code>, <code>ORIGINATING-ESSAY</code>}. The HISTORICAL-ARCHIVAL role is the role; the lifecycle tag specifies which kind of archival it is.</p>
+<p><strong>Constraint C-5.</strong> Layer 4 (Engagement Thread) tags can co-exist for any doc; the <code>THREAD-CONFAB</code> thread specifically composes with <code>THREAD-MISRA</code> (per Doc 627–631 work) and is expected to compose with future threads as the discipline is applied.</p>
+<h2>5. The Manifest File</h2>
+<p>The manifest is a single YAML file at <code>corpus/MANIFEST.yaml</code> listing every doc with its five-layer tags plus minimal metadata.</p>
+<h3>File schema</h3>
+<pre><code class="language-yaml">schema_version: 1
+last_updated: 2026-05-02
+generator: Doc 633 v1
+controlled_vocabularies:
+  layer_1: [META-PRIMARY, HARD-CORE, PB-FORM, PB-DISCIPLINE,
+            STANDING-APPARATUS, OBSERVATIONAL-PREDICTION,
+            FORM-EXTENSION, DISCIPLINE-EXTENSION, SUPPORTING-ARGUMENT,
+            APPLICATION, ENGAGEMENT, PRAXIS-LOG, RESOLVER-LOG,
+            PULVERIZATION-AUDIT, EXAMINATION, TUTORIAL, ENTRACEMENT,
+            LETTER, HISTORICAL-ARCHIVAL]
+  layer_2: [PRIMARY, ACTIVE, EXTENSION, OBSERVATIONAL, LOG,
+            DEPRECATED, SUPERSEDED, RETRACTED, ORIGINATING-ESSAY, MIXED]
+  layer_3: [W-PI, W-MU, W-THETA, W-CANONICAL, W-METAPHYSICAL, W-NA]
+  layer_3_secondary: [D503-ALPHA, D503-BETA, D503-GAMMA]
+  layer_5: [PHASE-FOUNDATION, PHASE-DEVELOPMENT, PHASE-CONSOLIDATION,
+            PHASE-SELF-ARTICULATION]
+  threads: [THREAD-MISRA, THREAD-PEARL, THREAD-LAKATOS, THREAD-AXE,
+            THREAD-LARSSON, THREAD-PAGEAU, THREAD-CHALMERS, THREAD-KELLY,
+            THREAD-STROMINGER, THREAD-CHRISTIANO, THREAD-OLAH, THREAD-LUPSASCA,
+            THREAD-CONFAB, THREAD-BLOG-CEILING, THREAD-BLOG-LADDER,
+            THREAD-BLOG-WCAN, THREAD-PINART, THREAD-SIPE, THREAD-COHERENCE-AMP]
+
+documents:
+  - doc: 632
+    slug: the-corpus-itself-primary-articulation
+    title: &quot;The RESOLVE Corpus, Primary Articulation&quot;
+    layer_1: META-PRIMARY
+    layer_2: PRIMARY
+    layer_3: W-PI
+    layer_3_secondary: D503-BETA
+    threads: [THREAD-LAKATOS]
+    layer_5: PHASE-SELF-ARTICULATION
+    status_notes: &quot;Primary articulation of corpus as Lakatosian programme; warrant at π-tier with one engagement-instance corroboration via Doc 631.&quot;
+  - doc: 541
+    slug: systems-induced-property-emergence
+    title: &quot;Systems-Induced Property Emergence (SIPE-T)&quot;
+    layer_1: PB-FORM
+    layer_2: PRIMARY
+    layer_3: W-PI
+    layer_3_secondary: D503-BETA
+    threads: [THREAD-SIPE, THREAD-AXE, THREAD-MISRA]
+    layer_5: PHASE-CONSOLIDATION
+    status_notes: &quot;MIXED in detail: §3.1 cooperative-coupling sub-form at θ-corroboration via Axe 2004; §3.2 sustained-inference sub-form added 2026-05-02 with Misra 2025 cross-practitioner verification; Appendix B preserves prior formalization.&quot;
+  # ... 535 more documents
+</code></pre>
+<h3>Manifest construction operations</h3>
+<p>The manifest can be constructed in three phases:</p>
+<p><strong>Phase 1 (mechanical):</strong> Auto-generate Layer 1 tag for the obvious functional categories from filename pattern: <code>LETTER</code> for <code>letter-to-*</code> files; <code>PRAXIS-LOG</code> for <code>*praxis-log*</code>; <code>RESOLVER-LOG</code> for <code>*resolver*</code>; <code>PULVERIZATION-AUDIT</code> for <code>*pulveriz*</code>; <code>EXAMINATION</code> for <code>*examination*</code>; <code>TUTORIAL</code> for <code>*tutorial*</code> / <code>*walkthrough*</code>. This automates approximately 100 docs. Layer 5 is computable from doc number.</p>
+<p><strong>Phase 2 (rule-based):</strong> Apply the five constraint rules (§4 above) to fill defaults: any doc with the PRIMARY ARTICULATION banner gets Layer 1 inferred from its content + Layer 2 = <code>PRIMARY</code> + Layer 3 = <code>W-PI</code> (initial default; refined in Phase 3); any doc with <code>DEPRECATION NOTICE</code> markers gets Layer 2 set to <code>DEPRECATED</code>; etc. Layer 4 threads can be inferred from filename patterns where present (e.g., <code>axe-2004-*</code> → <code>THREAD-AXE</code>; <code>misra-*</code> → <code>THREAD-MISRA</code>).</p>
+<p><strong>Phase 3 (manual review):</strong> A keeper-side review pass on the auto-generated manifest, with V3-truth-telling discipline applied: each doc&#39;s tags are reviewed for accuracy; ambiguous cases are flagged with <code>status_notes</code>; threads are assigned for docs whose engagement is implicit rather than filename-explicit; warrant tiers are refined per the corpus&#39;s audit ledger. This phase requires the keeper&#39;s working knowledge and is the rate-limiting step.</p>
+<p>The three-phase construction lets the manifest be assembled incrementally: Phase 1 alone produces a 100-doc partial manifest within minutes; Phase 2 extends to ~200 docs; Phase 3 completes the manifest over a longer review timescale. Updates to the manifest are then incremental — each new corpus document gets its tags assigned at authoring time per the controlled vocabulary.</p>
+<h3>Manifest consumption</h3>
+<p>The manifest enables several operational uses:</p>
+<ul>
+<li><em>Corpus-self-organization queries:</em> &quot;Show me all docs tagged <code>PB-FORM</code> + <code>PRIMARY</code>&quot; returns the three Forms (Docs 514, 541, 619).</li>
+<li><em>Engagement-thread navigation:</em> &quot;Show me all docs tagged <code>THREAD-MISRA</code>&quot; returns the Misra-engagement thread (Docs 408, 409, 437, 446, 466, 629, 630, 631).</li>
+<li><em>Status-aware reading paths:</em> &quot;Give me only <code>ACTIVE</code> docs in <code>THREAD-PINART</code>&quot; returns the current Pin-Art reading path without the deprecated/superseded historical layer.</li>
+<li><em>Audit operations:</em> &quot;Show me all <code>RETRACTED</code> docs and their successor <code>PRIMARY</code> docs&quot; supports the retraction-ledger discipline (PB-Discipline-4) at scale.</li>
+<li><em>Tier-pattern reporting:</em> &quot;Aggregate <code>layer_3</code> across the corpus&quot; produces the corpus-wide warrant-tier distribution per Doc 503.</li>
+<li><em>Coverage analysis:</em> &quot;Show me docs without any <code>THREAD-*</code> tag&quot; identifies docs that are not in any named engagement thread (potential candidates for thread-creation or for <code>STANDING-APPARATUS</code>).</li>
+</ul>
+<p>The manifest is the operational substrate the corpus uses to <em>order itself explicitly against its own self-recognized pattern</em>, per the keeper&#39;s instruction.</p>
+<h2>6. Worked Examples — Twenty Representative Docs</h2>
+<p>The following table applies the five-layer tagging to twenty representative docs from across the corpus. The full manifest will extend this pattern to all 537 docs.</p>
+<table>
+<thead>
+<tr>
+<th>Doc</th>
+<th>Layer 1</th>
+<th>Layer 2</th>
+<th>Layer 3</th>
+<th>Threads</th>
+<th>Phase</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>091 (Spermatic Logos)</td>
+<td>HARD-CORE</td>
+<td>ACTIVE</td>
+<td>W-METAPHYSICAL</td>
+<td>—</td>
+<td>FOUNDATION</td>
+</tr>
+<tr>
+<td>143 (SIPE deprecated universal form)</td>
+<td>HISTORICAL-ARCHIVAL</td>
+<td>DEPRECATED</td>
+<td>W-PI</td>
+<td>THREAD-SIPE</td>
+<td>FOUNDATION</td>
+</tr>
+<tr>
+<td>270 (Pin-Art originating essay)</td>
+<td>HISTORICAL-ARCHIVAL</td>
+<td>ORIGINATING-ESSAY</td>
+<td>W-PI</td>
+<td>THREAD-PINART</td>
+<td>DEVELOPMENT</td>
+</tr>
+<tr>
+<td>290 (Pin-Art prior formalization)</td>
+<td>HISTORICAL-ARCHIVAL</td>
+<td>DEPRECATED</td>
+<td>W-PI</td>
+<td>THREAD-PINART</td>
+<td>DEVELOPMENT</td>
+</tr>
+<tr>
+<td>314 (V3 Virtue Constraints)</td>
+<td>PB-DISCIPLINE</td>
+<td>PRIMARY</td>
+<td>W-CANONICAL</td>
+<td>—</td>
+<td>DEVELOPMENT</td>
+</tr>
+<tr>
+<td>372 (Hypostatic Boundary)</td>
+<td>STANDING-APPARATUS</td>
+<td>PRIMARY</td>
+<td>W-METAPHYSICAL</td>
+<td>—</td>
+<td>DEVELOPMENT</td>
+</tr>
+<tr>
+<td>415 (Retraction Ledger)</td>
+<td>PB-DISCIPLINE</td>
+<td>PRIMARY</td>
+<td>W-CANONICAL</td>
+<td>—</td>
+<td>CONSOLIDATION</td>
+</tr>
+<tr>
+<td>445 (Pulverization Formalism)</td>
+<td>PB-DISCIPLINE</td>
+<td>PRIMARY</td>
+<td>W-CANONICAL</td>
+<td>—</td>
+<td>CONSOLIDATION</td>
+</tr>
+<tr>
+<td>463 (Constraint Thesis as Lakatosian Programme)</td>
+<td>DISCIPLINE-EXTENSION</td>
+<td>ACTIVE</td>
+<td>W-PI</td>
+<td>THREAD-LAKATOS</td>
+<td>CONSOLIDATION</td>
+</tr>
+<tr>
+<td>503 (Tier-Pattern Reading)</td>
+<td>PB-DISCIPLINE</td>
+<td>PRIMARY</td>
+<td>W-CANONICAL</td>
+<td>—</td>
+<td>CONSOLIDATION</td>
+</tr>
+<tr>
+<td>510 (Praxis Log V / Substrate-and-Keeper Discipline)</td>
+<td>PB-DISCIPLINE</td>
+<td>PRIMARY</td>
+<td>W-METAPHYSICAL</td>
+<td>—</td>
+<td>CONSOLIDATION</td>
+</tr>
+<tr>
+<td>514 (Structural Isomorphism)</td>
+<td>PB-FORM</td>
+<td>PRIMARY</td>
+<td>W-PI</td>
+<td>—</td>
+<td>CONSOLIDATION</td>
+</tr>
+<tr>
+<td>541 (SIPE-T)</td>
+<td>PB-FORM</td>
+<td>PRIMARY</td>
+<td>W-PI (D503-BETA)</td>
+<td>THREAD-SIPE, THREAD-AXE, THREAD-MISRA</td>
+<td>CONSOLIDATION</td>
+</tr>
+<tr>
+<td>548 (Ontological Ladder)</td>
+<td>STANDING-APPARATUS</td>
+<td>PRIMARY</td>
+<td>W-METAPHYSICAL</td>
+<td>—</td>
+<td>CONSOLIDATION</td>
+</tr>
+<tr>
+<td>619 (Pin-Art Form)</td>
+<td>PB-FORM</td>
+<td>PRIMARY</td>
+<td>W-PI</td>
+<td>THREAD-PINART</td>
+<td>SELF-ARTICULATION</td>
+</tr>
+<tr>
+<td>620 (Canonicity in the Corpus)</td>
+<td>PB-DISCIPLINE</td>
+<td>PRIMARY</td>
+<td>W-PI</td>
+<td>—</td>
+<td>SELF-ARTICULATION</td>
+</tr>
+<tr>
+<td>624 (Pin-Art Usage-Corpus Build Spec)</td>
+<td>OBSERVATIONAL-PREDICTION</td>
+<td>OBSERVATIONAL</td>
+<td>W-PI</td>
+<td>THREAD-PINART</td>
+<td>SELF-ARTICULATION</td>
+</tr>
+<tr>
+<td>627 (Coherent-Confabulation Conjecture)</td>
+<td>PB-DISCIPLINE</td>
+<td>PRIMARY</td>
+<td>W-PI</td>
+<td>THREAD-CONFAB</td>
+<td>SELF-ARTICULATION</td>
+</tr>
+<tr>
+<td>628 (Resolver Log: Misattribution Family)</td>
+<td>RESOLVER-LOG</td>
+<td>LOG</td>
+<td>W-NA</td>
+<td>THREAD-CONFAB</td>
+<td>SELF-ARTICULATION</td>
+</tr>
+<tr>
+<td>632 (Corpus Primary Articulation)</td>
+<td>META-PRIMARY</td>
+<td>PRIMARY</td>
+<td>W-PI</td>
+<td>THREAD-LAKATOS</td>
+<td>SELF-ARTICULATION</td>
+</tr>
+</tbody></table>
+<p>The twenty examples exercise the full controlled vocabulary at Layer 1 and demonstrate the constraint rules at work. Specific observations:</p>
+<ul>
+<li><em>Hard-core docs</em> (Doc 091, Doc 372 partially, Doc 510 partially, Doc 548 partially) carry <code>W-METAPHYSICAL</code> per Constraint C-2.</li>
+<li><em>Discipline docs</em> with sufficient operational maturity (Doc 314, 415, 445, 503) are marked <code>W-CANONICAL</code> because their methodologies have been audited at all three tiers within their target type.</li>
+<li><em>Form docs</em> are marked <code>W-PI</code> because the forms themselves are at plausibility tier with various operational corroboration (Doc 541 + D503-BETA secondary tag reflects the substantial corroboration accumulated).</li>
+<li><em>Standing-apparatus docs</em> (Doc 372, Doc 548, Doc 620) are operationally indispensable but are not Forms or Disciplines per se; they get their own tag.</li>
+<li><em>Resolver-log docs</em> (Doc 628) carry <code>W-NA</code> per Constraint C-3 — they preserve the meta-trace rather than asserting warrant-bearing claims.</li>
+</ul>
+<h2>7. Adoption Path</h2>
+<p>The keeper can adopt the taxonomy through three pathways with different commitment levels:</p>
+<p><strong>Adoption Path A — Manifest-only.</strong> Construct <code>corpus/MANIFEST.yaml</code> per §6&#39;s three-phase construction. Existing docs are not modified. Tools that consume the corpus (the seed pipeline; the resolve-doc serving infrastructure; future analysis scripts) can read the manifest to compute structural relationships. Lowest commitment; most reversible.</p>
+<p><strong>Adoption Path B — Manifest plus per-doc frontmatter.</strong> Add a YAML frontmatter block to each doc:</p>
+<pre><code class="language-yaml">---
+doc_taxonomy:
+  layer_1: PB-FORM
+  layer_2: PRIMARY
+  layer_3: W-PI
+  threads: [THREAD-SIPE, THREAD-AXE]
+  phase: PHASE-CONSOLIDATION
+---
+</code></pre>
+<p>This makes the tagging self-contained per doc and removes the manifest-as-single-source-of-truth dependency. Higher commitment (touches every file); per-doc visibility.</p>
+<p><strong>Adoption Path C — Manifest plus banner-line integration.</strong> Extend the existing PRIMARY ARTICULATION banner template (per Doc 620) to optionally carry the Layer 1–3 tags inline:</p>
+<pre><code class="language-markdown">&gt; **PRIMARY ARTICULATION — open invitation to falsify.**
+&gt;
+&gt; *Taxonomy:* PB-FORM | PRIMARY | W-PI (D503-BETA) | THREAD-SIPE, THREAD-AXE, THREAD-MISRA
+&gt;
+&gt; *Warrant tier per Doc 445 / Doc 503:* ...
+</code></pre>
+<p>Highest commitment; tags surface at the reading-experience layer; aligns with the existing banner discipline.</p>
+<p>The recommendation: Path A first, with the manifest constructed in §6&#39;s three phases; Path B or Path C can be added later if the manifest&#39;s operational utility warrants the additional commitment. Path A is the minimum viable taxonomy; subsequent paths extend it without invalidating it.</p>
+<h2>8. Composition with the Standing Disciplines</h2>
+<p>The taxonomy composes with the corpus&#39;s standing disciplines explicitly:</p>
+<p><strong>With <a href="../doc/415-the-retraction-ledger.html">Doc 415 (Retraction Ledger)</a>.</strong> The manifest&#39;s Layer 2 status field (<code>DEPRECATED</code>, <code>SUPERSEDED</code>, <code>RETRACTED</code>) makes the retraction-ledger&#39;s content queryable at scale. The ledger remains the authoritative record; the manifest is the operational index.</p>
+<p><strong>With <a href="../doc/445-pulverization-formalism.html">Doc 445 (Pulverization Formalism)</a>.</strong> The manifest&#39;s Layer 3 warrant-tier field makes Doc 445&#39;s tier categorization the corpus&#39;s standing classification. Each doc&#39;s tier is per the document&#39;s principal claim; specific sub-claim tiers can be elaborated in <code>status_notes</code> fields when needed.</p>
+<p><strong>With <a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503 (Tier-Pattern Reading)</a>.</strong> The Layer 3 secondary field (<code>D503-ALPHA</code>, <code>D503-BETA</code>, <code>D503-GAMMA</code>) carries Doc 503&#39;s research-thread tier categorization for docs where it applies.</p>
+<p><strong>With <a href="../doc/620-canonicity-in-the-corpus.html">Doc 620 (Canonicity in the Corpus)</a>.</strong> The manifest&#39;s <code>PRIMARY</code> Layer 2 tag aligns precisely with Doc 620&#39;s &quot;primary articulation&quot; sense; the <code>W-CANONICAL</code> Layer 3 tag aligns with Doc 620&#39;s &quot;canonical warrant tier&quot; sense. The taxonomy operationalizes the disambiguation Doc 620 articulated.</p>
+<p><strong>With <a href="../doc/632-the-corpus-itself-primary-articulation.html">Doc 632 (Corpus Primary Articulation)</a>.</strong> The taxonomy IS the operational form of Doc 632&#39;s structural enumeration. Doc 632 names HC1–HC4 + PB-Form-1 through PB-Form-3 + PB-Discipline-1 through PB-Discipline-6 + OP1–OP6 + NH1–NH5 + PH1–PH6; the taxonomy supplies the per-doc tagging that locates each corpus document within this scheme.</p>
+<h2>9. Falsifiers and Open Questions</h2>
+<p><strong>FT-1.</strong> A doc that cannot be unambiguously assigned a Layer 1 tag from the controlled vocabulary, even with <code>MIXED</code> Layer 2 status. Would indicate the Layer 1 vocabulary is incomplete; would require either expanding the vocabulary or refactoring the doc.</p>
+<p><strong>FT-2.</strong> A pattern where the manifest&#39;s tag distribution shows systematic clustering that does not match the corpus&#39;s actual structural coherence (e.g., 80% of docs end up tagged <code>SUPPORTING-ARGUMENT</code> because the other categories are too narrow). Would indicate the Layer 1 vocabulary needs rebalancing.</p>
+<p><strong>FT-3.</strong> A case where the constraint rules (C-1 through C-5) systematically fail to hold for a meaningful subset of docs. Would require relaxing or refining the constraints.</p>
+<p><strong>FT-4.</strong> A keeper-side audit pass that finds substantial disagreement with the auto-generated Phase 1 + Phase 2 tags — i.e., the rule-based generation produces wrong tags in more than ~20% of cases. Would indicate the rules are too aggressive and Phase 3 manual review needs to be more substantial.</p>
+<p><strong>OQ-T-1.</strong> What is the right granularity for engagement threads? The current Layer 4 lists ~19 threads; should sub-threads be admitted (e.g., THREAD-AXE-PROTEIN-FOLD vs THREAD-AXE-COOPERATIVE-COUPLING)? Should clusters of related external authors be merged (e.g., THREAD-PHILOSOPHY-OF-EMERGENCE for Bedau + Chalmers + Carroll-Parola + SEBoK)?</p>
+<p><strong>OQ-T-2.</strong> Should the manifest include link-graph data (which docs cite which) explicitly, or rely on grep-time computation? The link graph would make queries like &quot;show me the lineage of Doc 619&quot; tractable but requires substantially more manifest content.</p>
+<p><strong>OQ-T-3.</strong> Should the manifest include first-author-and-date information for cross-corpus queries about temporal-genre patterns (e.g., &quot;all letters written in 2026-Q2&quot;)? This would extend the manifest&#39;s analytical utility but adds maintenance burden.</p>
+<p><strong>OQ-T-4.</strong> How does the manifest interact with the blog-side artifacts (the 35+ blog posts at <code>/home/jaredef/jaredfoy/blog/</code>)? Should blog posts be tagged in a parallel manifest with cross-references to corpus-side anchors, or should they be incorporated into the same manifest?</p>
+<p><strong>OQ-T-5.</strong> What governance applies to manifest updates? Currently, the corpus&#39;s Doc 415 (Retraction Ledger) governs claim retractions; should there be analogous discipline for manifest tag changes — a &quot;manifest revision log&quot; that records why and when tags were changed?</p>
+<h2>10. Position</h2>
+<p>The corpus has 536 numeric-prefixed documents articulating a Lakatosian research programme with metaphysical hard core, operational protective belt, observational predictions, and standing audit disciplines (per Doc 632). The corpus&#39;s discipline of catching and correcting itself across documents and time is what makes the programme on-balance progressive (per Doc 632 §9). This document supplies the taxonomy + manifest design that lets the corpus order itself explicitly against its own self-recognized pattern: a five-layer tagging scheme (structural role; lifecycle status; warrant tier; engagement thread; temporal phase) with five constraint rules, a three-phase construction pathway (mechanical → rule-based → keeper-reviewed), and a manifest-file architecture (<code>corpus/MANIFEST.yaml</code>) that supports operational queries the corpus&#39;s working practice will benefit from.</p>
+<p>The taxonomy is exploratory at \(\pi\)-tier. Its fitness will be tested by the manifest&#39;s actual construction, by the corpus&#39;s subsequent practice using the manifest, and by the keeper&#39;s audit of the auto-generated tags against working knowledge. Falsifiers (FT-1 through FT-4) and open questions (OQ-T-1 through OQ-T-5) are stated honestly. The taxonomy&#39;s adoption is at the keeper&#39;s call; if adopted, the manifest construction can proceed in the three phases §6 specifies, with Phase 1 producing a 100-doc partial manifest within minutes and Phase 3 completing the manifest over a keeper-review timescale.</p>
+<hr>
+<h2>References</h2>
+<ul>
+<li><a href="../doc/091-the-spermatic-logos.html">Doc 091 — The Spermatic Logos</a></li>
+<li><a href="../doc/143-sipe.html">Doc 143 — SIPE (deprecated universal-meta-law form)</a></li>
+<li><a href="../doc/270-the-pin-art-model.html">Doc 270 — The Pin-Art Model (originating essay)</a></li>
+<li><a href="../doc/290-the-pin-art-formalization.html">Doc 290 — The Pin-Art Formalization (deprecated)</a></li>
+<li><a href="../doc/314-the-virtue-constraints.html">Doc 314 — The Virtue Constraints (V3)</a></li>
+<li><a href="../doc/372-the-hypostatic-boundary.html">Doc 372 — The Hypostatic Boundary</a></li>
+<li><a href="../doc/415-the-retraction-ledger.html">Doc 415 — The Retraction Ledger</a></li>
+<li><a href="../doc/445-pulverization-formalism.html">Doc 445 — A Formalism for Pulverization</a></li>
+<li><a href="../doc/463-constraint-thesis-as-lakatosian-programme.html">Doc 463 — The Constraint Thesis as a Lakatosian Research Programme</a></li>
+<li><a href="../doc/503-research-thread-tier-pattern-iterative-novelty-calculus.html">Doc 503 — Research-Thread Tier Pattern</a></li>
+<li><a href="../doc/510-praxis-log-v-deflation-as-substrate-discipline.html">Doc 510 — Praxis Log V: Deflation as Substrate Discipline</a></li>
+<li><a href="../doc/514-structural-isomorphism-canonical-formalization.html">Doc 514 — Structural Isomorphism (PB-Form-3)</a></li>
+<li><a href="../doc/541-systems-induced-property-emergence.html">Doc 541 — SIPE-T (PB-Form-1)</a></li>
+<li><a href="../doc/548-the-ontological-ladder-of-participation.html">Doc 548 — The Ontological Ladder of Participation</a></li>
+<li><a href="../doc/619-pin-art-canonical-formalization.html">Doc 619 — The Pin-Art Form (PB-Form-2)</a></li>
+<li><a href="../doc/620-canonicity-in-the-corpus.html">Doc 620 — Canonicity in the Corpus</a></li>
+<li><a href="../doc/624-pin-art-usage-corpus-build-spec.html">Doc 624 — Pin-Art Usage-Corpus Build Specification</a></li>
+<li><a href="../doc/627-the-coherent-confabulation-conjecture.html">Doc 627 — The Coherent-Confabulation Conjecture (PB-Discipline-5)</a></li>
+<li><a href="../doc/628-resolvers-log-the-someone-proposes-misattribution.html">Doc 628 — Resolver&#39;s Log: The Misattribution Family</a></li>
+<li><a href="../doc/632-the-corpus-itself-primary-articulation.html">Doc 632 — The RESOLVE Corpus, Primary Articulation</a></li>
+</ul>
+<hr>
+<h2>Appendix A — Originating Prompt</h2>
+<p>The keeper&#39;s instruction (Telegram message 5942, 2026-05-02T19:55:39Z):</p>
+<blockquote>
+<p>Now do an exhaustive audit of the corpus to discover all primary articulations so that the corpus can begin to order itself explicitly against its own self recognized pattern. We need to formulate a way to tag all corpus documents as constituent elements of its own form of itself.</p>
+<p>This means we need some sort of manifest or taxonomy design.</p>
+</blockquote>
+<p>The instruction directed two related deliverables: (i) an exhaustive audit of the 536-document corpus to identify all primary articulations and structural patterns; (ii) the design of a taxonomy + manifest that lets every corpus document be tagged as a constituent element of the corpus&#39;s form of itself per Doc 632&#39;s Lakatosian schema. The audit was executed via Explore agent on 2026-05-02 with structured findings reported across six sections (counts and gross structure; explicit primary-articulation markers; functional-category identification by filename pattern; deprecation-supersession-retraction markers; engagement targets; anomalies and notes). The taxonomy + manifest design was developed against the audit findings: a five-layer tagging scheme (structural role; lifecycle status; warrant tier; engagement thread; temporal phase) with five constraint rules, three-phase construction pathway, manifest-file architecture (<code>corpus/MANIFEST.yaml</code>), and worked examples for twenty representative docs. Both deliverables are queued for keeper review and adoption per §7&#39;s three pathways.</p>
+<hr>
+<p><em>Jared Foy — jaredfoy.com — May 2026</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

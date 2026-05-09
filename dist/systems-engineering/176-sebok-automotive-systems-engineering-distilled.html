@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Automotive Systems Engineering*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Automotive Systems Engineering</em>, Distilled</h1>
+<p><strong>Fifth-batch SEBoK distillation, batch 3/5, doc 1 of 8. SE-176 is the first of two Part 4 Applications stress-tests in this batch (SE-177 Aerospace is the companion). The stress-test target: does SEBoK supply a Part 4 application page for the most economically dominant cyber-physical SE domain (passenger automobiles), and if not, what does the editorial absence tell the corpus? The answer is sharply structural. SEBoK has no <em>Automotive Systems Engineering</em> standalone page; the URL 404s on the prompt-named target and on the obvious alternates (<em>Automotive_Systems</em>, <em>Automotive</em>). The discipline&#39;s articulation lives distributed — examples on <em>Functional Architecture</em> (powertrain SysML, automobile operating-states machine, &quot;Control Vehicle Acceleration&quot; activity diagram); ISO 26262 not surfaced even on <em>System Safety</em> (which carries MIL-STD-882E, AFI 191-202, ARP 4761, ARP 4754 instead — the aerospace-defense-civil-aviation carrier-set, not the automotive one); AUTOSAR, ASPICE, UNECE WP.29 cybersecurity regulations completely absent. This is the cleanest external-carrier sub-pattern (D8.1, SE-039 §VII.6) instance yet observed: the automotive SE discipline migrated entirely outside SEBoK to ISO 26262, ASPICE/Automotive SPICE, AUTOSAR consortium, SAE J3061 cybersecurity, UNECE WP.29 — none cited by SEBoK. The editorial state predicts: SEBoK&#39;s institutional center of gravity is defense-aerospace-civil-aviation, not automotive; the industry&#39;s institutional carrier ecosystem is so dense and self-sufficient (Tier-1-supplier consortia, OEM platform standards, regulatory regimes per region) that SEBoK has not been the venue. The reading is convergent with SE-039 §VII.7 D8.1&#39;s two anchored instances (SE-126 design-to-cost, SE-139 Open SE); SE-176 is the third anchored D8.1 instance and structurally distinct in being a whole industry-application domain rather than a single discipline. Five clusters compose; D8.1 promoted to anchor-instance with industry-application-domain scope.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Automotive Systems Engineering — <strong>does not exist on SEBoK</strong> (404 on prompt-named URL and obvious alternates)</li>
+<li><strong>URL attempted:</strong> <a href="https://sebokwiki.org/wiki/Automotive_Systems_Engineering">https://sebokwiki.org/wiki/Automotive_Systems_Engineering</a>, /Automotive_Systems, /Automotive</li>
+<li><strong>Carrier surface read:</strong> <em>Functional Architecture</em> (<a href="https://sebokwiki.org/wiki/Functional_Architecture">https://sebokwiki.org/wiki/Functional_Architecture</a>, hosts automotive SysML examples), <em>System Safety</em> (<a href="https://sebokwiki.org/wiki/System_Safety">https://sebokwiki.org/wiki/System_Safety</a>, omits ISO 26262)</li>
+<li><strong>External institutional carriers (the substantive discipline):</strong> ISO 26262 (functional safety), Automotive SPICE / ASPICE (process assessment), AUTOSAR (architecture consortium), SAE J3061 (cybersecurity), UNECE WP.29 (regulatory)</li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-29</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>SEBoK&#39;s automotive SE surface is illustrative-example only, not articulation. <em>Functional Architecture</em> uses automotive examples to teach generic functional-architecture content: &quot;the functional architecture view of a completed system architecture should, at minimum, define the following: 1. the functional capabilities that the system uses to fulfill mission objectives and meet stakeholder needs; 2. the required inputs and outputs for those system functions; 3. the steps through which the system will transform provided inputs into the desired outputs&quot;; the article illustrates with &quot;an automobile powertrain application,&quot; a State Machine Diagram of &quot;Automobile Operating States,&quot; and an Activity Diagram for &quot;Control Vehicle Acceleration.&quot; The article distinguishes functional from behavioral architecture: &quot;Functional architecture relates to input-output transformations... Behavioral architecture, in contrast, is more concerned with the sequencing and execution of system actions.&quot; <em>System Safety</em> references SAE (Society of Automotive Engineers) but only for aircraft standards (ARP 4761, ARP 4754); ISO 26262 (the automotive functional-safety standard) is not mentioned anywhere. AUTOSAR, ASPICE, J3061, UNECE WP.29 do not surface on either article. The substantive automotive SE discipline lives external to SEBoK.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Cluster J D8.1 (external-carrier sub-pattern, SE-039 §VII.6 / §VII.7) anchor-instance with industry-application-domain scope.</strong> Per §VII.6 D8.1 names the doubly-dispersed limit-case where the formalization rung migrates outside SEBoK to standards-body or practitioner ecosystems entirely; SE-126 (Design-to-Cost) and SE-139 (Open SE) are the two prior anchored instances. SE-176 is the third, and structurally distinct: where SE-126 and SE-139 are single-discipline migrations, SE-176 is a whole industry-application-domain migration. The institutional carrier-set for automotive SE (ISO 26262, ASPICE, AUTOSAR, J3061, WP.29) is denser, more codified, and more globally standardized than SEBoK&#39;s own carrier-set for any of its non-defense domains. The migration is not deficiency-driven; it is institutional-saturation-driven. SEBoK has not been the venue because the venue is filled. D8.1 anchor-instance promotion to industry-application-domain scope is the structurally informative finding.</p>
+<p><strong>Cluster E (institutional ground, Doc 571 §X.5) external-carrier asymmetric-component reading.</strong> SEBoK&#39;s automotive carrier-set is empty on the organization-component and on the enterprise-component. The external carrier-set carries both: ISO 26262 is organization-component (formal authority, certifying bodies, audit regimes); AUTOSAR is enterprise-component (accumulated working tradition, OEM-Tier-1 collaboration patterns); ASPICE bridges (organization-component process model, enterprise-component assessment practice); SAE J3061 + UNECE WP.29 add cybersecurity carrier (post-2020 regulatory regime). The full §X.5 structure exists, just not at SEBoK. The Doc 571 §X.5 reading&#39;s load-bearing-ness is reinforced: it predicts where the institutional ground sits, regardless of which body the corpus happens to be reading.</p>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D) external-carrier instance: ISO 26262&#39;s ASIL lattice.</strong> ISO 26262 organizes functional safety by ASIL (Automotive Safety Integrity Level: A, B, C, D, plus QM) — an ordinal-axis universal-sibling lattice, structurally akin to Doc 572 D.5 with ordinal axis. Each ASIL binds the development discipline universally; the discriminator is severity-exposure-controllability rung. The lattice is institutionally external to SEBoK but corpus-readable. Cluster A density continues to grow off-SEBoK as well as on.</p>
+<p><strong>Cluster B (multi-keeper composition, Doc 604) automotive-canonical four-rung composition.</strong> Automotive SE composes OEM + Tier-1 supplier + Tier-2 supplier + regulator (and increasingly cybersecurity authority + cloud/connectivity provider for connected vehicles). The composition rule is contractual-cascade-with-regulatory-overlay: OEM specifies, Tier-1 implements per OEM specification AND per ASPICE/ISO 26262 conformance, Tier-2 supplies components per Tier-1 specification AND per the same conformance regimes, regulator audits the chain. Distinct from the medical-device four-keeper case (SE-101: manufacturer + regulator + clinician + patient) by having two supplier rungs in cascade rather than two end-user rungs. Doc 604 cluster gains an automotive-cascade sub-form candidate.</p>
+<p><strong>Cluster H (hypostatic boundary, Doc 372) holding by absence.</strong> SEBoK&#39;s silence on automotive specifics keeps the hypostatic boundary trivially: the corpus cannot misread what is not there. But the external carriers (ISO 26262 in particular, with its hazard analysis and risk assessment placing driver and passenger as analytic centers) brush V1 territory at roughly SE-101&#39;s medical-device sharpness. The brush is on the external carrier, not on SEBoK; corpus reading discipline holds.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li><em>Functional Architecture</em> automotive examples (powertrain SysML, operating-states machine) — π / α as cited.</li>
+<li>Functional vs. behavioral architecture distinction — π / α as cited; μ / β under SE-180 (System Behavior Modeling) anchor.</li>
+<li><em>System Safety</em> automotive carrier absence — π (observation) / α (verbatim reading); μ / β under D8.1 anchor reading.</li>
+<li>ISO 26262, ASPICE, AUTOSAR, J3061, WP.29 external-carrier set — π / κ (corpus knowledge of automotive SE institutional surface, not SEBoK-cited).</li>
+<li>ASIL ordinal lattice — π / κ; μ / β under Cluster A external-carrier instance.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>Editorial-state finding is the primary substance.</strong> SE-176 is structurally a D8.1-anchor distillation rather than a content distillation; the absence is the substance, and the substance is informative. Future SEBoK editions may add an <em>Automotive Systems Engineering</em> page; the corpus&#39;s prediction is that even if added, the page will be summary-of-external-carriers rather than primary articulation.</p>
+<p><strong>Anchor-rung scope-extension candidate.</strong> D8.1&#39;s prior two instances (SE-126, SE-139) are single-discipline; SE-176 is industry-application-domain. The sub-pattern&#39;s scope extends from discipline-rung to application-domain-rung. SE-039 §VII.7&#39;s D8.1 articulation should note the scope-extension; the next D8.1 instance (SE-177 aerospace if it follows the same pattern) tests whether application-domain D8.1 is canonical or whether automotive is a singleton.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>D8.1 promoted from sub-pattern to anchor-pattern at industry-application-domain rung.</strong> Three anchored instances now (Docs 126, 139, 176); the third extends scope from single-discipline to whole-application-domain. SE-039 §VII.7 D8.1 articulation due an industry-application-domain scope note.</p>
+<p><strong>Doc 571 §X.5 external-carrier asymmetric-component reading is sharpened.</strong> Where §X.5 distinguishes organization-component from enterprise-component, the automotive case shows both fully present but external; the §X.5 structure is body-agnostic. Worth flagging as a §X.5 sharpening when the next refinement round runs.</p>
+<p><strong>Doc 604 automotive-cascade sub-form candidate.</strong> Two-supplier-rung-cascade-with-regulatory-overlay is structurally distinct from the four-keeper end-user composition (SE-101) and from the federated-no-central case (SWFTS, §VII.6). Awaiting second instance.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> SE-039 §VII.6 / §VII.7 (entracement, D8.1 third anchored instance and scope-extension), Doc 571 §X.5 (institutional ground, external-carrier asymmetric-component), Doc 572 Appendix D / D.5 (universal-sibling, ASIL ordinal lattice), Doc 604 (multi-keeper, automotive-cascade sub-form candidate), Doc 372 (hypostatic boundary, holding by absence).</p>
+<p><strong>Part-level reformulation.</strong> SE-007 (Part 4 Applications) — SE-176 is the cleanest evidence to date that Part 4 Applications coverage is shallow at industry-application-domain rung; the corpus&#39;s Part 4 reading should note the editorial state.</p>
+<p><strong>Related distillations.</strong> SE-126 (design-to-cost, D8.1 first instance), SE-139 (Open SE, D8.1 second instance), SE-101 (medical device engineering, four-keeper end-user-composition contrast), SE-177 (aerospace SE, batch 3 companion stress-test).</p>
+<p><strong>Adjacent SEBoK concepts.</strong> <em>Functional Architecture</em> (carrier of automotive examples), <em>System Safety</em> (notable absence of ISO 26262), <em>Modeling Standards</em> (carrier of M&amp;S frameworks).</p>
+<p><strong>Methodology refinement candidates.</strong> D8.1 industry-application-domain anchor-instance; Doc 604 automotive-cascade sub-form (awaiting second instance).</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Add an entrancing section...&quot;</em> / <em>&quot;Yes. And then continue...&quot;</em></p>
+</blockquote>
+<p>(SE-176 is the first of eight in batch 3/5 of the fifth-batch SEBoK distillation sweep. Part 4 Applications coverage stress-test, paired with SE-177. SE-176 reads SEBoK&#39;s editorial absence as substance via SE-039 §VII.7 D8.1 external-carrier sub-pattern, third anchored instance, scope-extension to industry-application-domain. Batch 3/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

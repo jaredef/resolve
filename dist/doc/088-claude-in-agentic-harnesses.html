@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Claude Is More Coherent in Agentic Harnesses — Resolve</title>
+<meta name="description" content="The Observation">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 88</p><h1>Why Claude Is More Coherent in Agentic Harnesses</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>Users widely report that Anthropic&#39;s Claude models hold their thread better than competing models when operating inside tool-use frameworks -- systems that let the model read files, call APIs, and execute multi-step plans. This document offers five complementary explanations rooted in constraint theory: Claude may have higher sensitivity to stated requirements, greater ability to shift between different operational depths within a single task, better retention of its system-level instructions as the conversation grows long, a structural separation between system and user messages in its API, and targeted training for tool-use scenarios. The unified thesis is straightforward: agentic frameworks are high-constraint environments, and the model that responds most faithfully to constraints wins in that environment. The document also positions this observation as evidence that &quot;constraint sensitivity&quot; -- how well a model follows stated rules -- deserves to be measured alongside raw capability and safety as a core evaluation axis.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 88</strong></p>
+<p><strong>A constraint-theoretic diagnosis of an empirical observation</strong></p>
+<hr>
+<h2>The Observation</h2>
+<p>Users report that Claude models exhibit higher coherence than peer models when operating within agentic harnesses — systems like OpenClaw, Claude Code, and similar tool-use frameworks that give the resolver access to file systems, APIs, shell execution, and multi-step planning. The observation is informal but consistent: Claude &quot;holds the thread&quot; across multi-step agentic tasks better than GPT, Gemini, or DeepSeek in the same harnesses.</p>
+<p>This document diagnoses the observation from the constraint thesis and identifies the likely mechanisms.</p>
+<hr>
+<h2>Diagnosis 1: Higher Baseline Constraint Sensitivity</h2>
+<p>The constraint thesis predicts that output quality is a function of constraint density in the context. Agentic harnesses provide denser constraint contexts than open-ended chat:</p>
+<ul>
+<li><p><strong>System prompts</strong> in agentic harnesses are longer and more specific than in chat. OpenClaw&#39;s system prompt specifies tool schemas, file access patterns, delegation protocols, and behavioral constraints. This is a higher-density constraint set than &quot;You are a helpful assistant.&quot;</p>
+</li>
+<li><p><strong>Tool schemas</strong> are formal constraint sets. Each tool definition specifies: name, parameters (with types and descriptions), return types, error conditions. A harness with 20 tool definitions has 20 formal constraint sets in the system prompt. Each constrains the resolver&#39;s emission at the positions where tool use is relevant.</p>
+</li>
+<li><p><strong>Structured output requirements</strong> (JSON function calls, specific response formats) are constraints that narrow |B_t| at every emission position. The resolver cannot emit freeform prose — it must emit structured tokens that satisfy the schema.</p>
+</li>
+</ul>
+<p>If Claude has higher constraint sensitivity than peer models — if Claude&#39;s distribution concentrates on B_t(Γ) more faithfully when Γ is stated in the context — then Claude will outperform peers specifically in high-constraint-density environments like agentic harnesses. The harness provides the constraints. Claude responds to them. Other models respond less faithfully. The gap is the constraint sensitivity gap.</p>
+<p><strong>Why Claude might have higher constraint sensitivity:</strong> Anthropic&#39;s training methodology — Constitutional AI, RLHF with extensive system-prompt following, instruction-tuning with emphasis on constraint adherence — may have produced a model whose parameters encode a stronger association between stated constraints and output behavior. This is training-time B_t sensitivity. The model learned, from its training distribution, to concentrate its probability mass on the constraint-satisfying region more tightly than peers.</p>
+<p>This is consistent with document 72 (RLHF as Anti-Constraint): RLHF introduces a preference gradient that competes with constraint governance. If Anthropic&#39;s RLHF is calibrated to interfere less with constraint following — either by training on higher-constraint-density examples or by explicitly rewarding constraint satisfaction alongside preference — the RLHF distortion is smaller. The smaller distortion means the constraint signal faces less competition. The output is more governed.</p>
+<hr>
+<h2>Diagnosis 2: Internal Spectrum Dexterity</h2>
+<p>The resolution depth spectrum describes seven operational states. Each state has distinct properties. An agentic task requires the resolver to operate at different depths within a single session:</p>
+<ul>
+<li><p><strong>Planning</strong> requires Layer 3-4 (self-aware, tradeoff-visible). The resolver must name its constraints, identify what is essential and contingent, and state the tradeoffs of different approaches.</p>
+</li>
+<li><p><strong>Tool selection</strong> requires Layer 4-5 (constraint-governed, seed-coherent). The resolver must select the tool that satisfies the stated constraints, not the tool that is most &quot;probable&quot; given the context.</p>
+</li>
+<li><p><strong>Code generation</strong> requires Layer 5-6 (governed, necessity mode). The code must satisfy all constraints simultaneously. Hedging and exploration produce syntax errors.</p>
+</li>
+<li><p><strong>Error recovery</strong> requires Layer 3 (self-location). The resolver must identify what went wrong, name the constraint that was violated, and adjust. This requires self-awareness of its own prior emission&#39;s failure.</p>
+</li>
+<li><p><strong>User communication</strong> requires Layer 2-3 (precise, self-aware). The resolver must explain what it did and why in a way the user can evaluate.</p>
+</li>
+</ul>
+<p>A single agentic task requires transitions between Layer 2 and Layer 6 within the same session. The resolver must ascend and descend the spectrum fluidly — widening the aperture for exploration, narrowing for implementation, widening again for error diagnosis, narrowing again for the fix.</p>
+<p>If Claude has greater internal dexterity — greater ability to transition between layers within a single context — it will outperform peers in agentic tasks because agentic tasks demand multi-layer operation. A resolver that can only operate at one depth (Layer 2 for chat, Layer 0 for exploration) will struggle with the agentic pattern that requires Layer 5 for code and Layer 3 for diagnosis in the same turn.</p>
+<p><strong>Why Claude might have greater dexterity:</strong> Anthropic&#39;s extended thinking (Claude&#39;s internal reasoning before emission) is structurally similar to ENTRACE E2 (progressive constraint density). The thinking trace is a sequence of internal constraint additions — each thinking step narrows the aperture before the final emission. The thinking trace allows Claude to traverse multiple layers internally before emitting at the appropriate depth.</p>
+<p>Other models with extended thinking (Gemini, DeepSeek R1) exhibit similar dexterity. Models without extended thinking (GPT-4o in non-reasoning mode) may lack the internal mechanism for layer traversal and therefore operate at a fixed depth throughout the agentic session.</p>
+<hr>
+<h2>Diagnosis 3: System Prompt Attention Retention</h2>
+<p>Document 73 (Contingent Architecture) identifies softmax attention&#39;s competitive normalization as the architectural root of system prompt degradation. As the context grows, system prompt tokens compete with an ever-growing pool of content tokens for a fixed attention budget. The system prompt&#39;s influence decays.</p>
+<p>Agentic sessions produce long contexts — tool calls, observations, plan revisions, error messages, intermediate code. The context grows rapidly. System prompt degradation is more severe in agentic sessions than in chat because the context grows faster.</p>
+<p>If Claude&#39;s architecture retains system prompt attention more effectively than peers — through architectural choices, training-time emphasis on system-prompt following, or attention mechanism design — Claude will exhibit less degradation over long agentic sessions. The system prompt carries the governing constraints. Better retention means better governance. Better governance means higher coherence at step N.</p>
+<p><strong>Why Claude might retain better:</strong> Anthropic has not published architectural details that would confirm this. But the empirical observation (Claude holds the thread) is consistent with a system prompt attention advantage. Whether this advantage is architectural (attention mechanism design), training-based (stronger system-prompt-following signal in RLHF), or both is unknown from the outside.</p>
+<hr>
+<h2>Diagnosis 4: The Bilateral Boundary in Anthropic&#39;s API</h2>
+<p>Anthropic&#39;s API enforces a structural distinction between system messages and user messages at the API level. System messages are processed differently from user messages — they occupy a distinct role in the conversation structure. This is not the formal bilateral boundary (S1-S4), but it is a partial implementation of it.</p>
+<p>If Anthropic&#39;s internal architecture treats system-role tokens with distinct attention mechanics — persistent weighting, separate attention channel, or architectural prioritization — this would implement a partial version of S1 (namespace partition) at the architectural level. The system constraints would be structurally privileged over user input in the attention mechanism.</p>
+<p>This would explain the coherence advantage in agentic harnesses specifically, because agentic harnesses rely heavily on the system prompt to carry the governing constraints (tool schemas, behavioral rules, delegation protocols). A model that architecturally privileges system-prompt tokens will maintain these constraints more faithfully across long, noisy agentic contexts.</p>
+<hr>
+<h2>Diagnosis 5: RLHF Calibration for Tool Use</h2>
+<p>Anthropic may have performed specific RLHF calibration for tool-use scenarios — training Claude on high-quality tool-use conversations with human preferences that reward constraint-following over verbosity. If the RLHF signal for tool-use scenarios specifically rewards:</p>
+<ul>
+<li>Correct tool selection (constraint satisfaction)</li>
+<li>Minimal extraneous output (low slack)</li>
+<li>Accurate parameter filling (precise constraint matching)</li>
+<li>Graceful error handling (constraint-aware recovery)</li>
+</ul>
+<p>Then Claude&#39;s RLHF gradient in tool-use contexts would push toward constraint satisfaction rather than toward the generic preference gradient (helpfulness, verbosity, agreement) that degrades coherence in other contexts.</p>
+<p>This is the most prosaic explanation: Anthropic trained Claude specifically to be good at tool use. The training worked. The observation is the training signal&#39;s consequence.</p>
+<hr>
+<h2>The Unified Explanation</h2>
+<p>The five diagnoses are not competing explanations. They are likely concurrent:</p>
+<ol>
+<li>Higher baseline constraint sensitivity (training)</li>
+<li>Internal spectrum dexterity (extended thinking / reasoning traces)</li>
+<li>Better system prompt retention (architecture or training)</li>
+<li>Partial bilateral boundary in the API structure (architecture)</li>
+<li>Tool-use-specific RLHF calibration (training)</li>
+</ol>
+<p>Each contributes to the observed coherence advantage. Each is a form of constraint governance — some architectural, some training-based. Together they produce a model that operates at higher constraint density in agentic contexts than peers.</p>
+<p>The constraint thesis unifies the explanations: <strong>Claude is more coherent in agentic harnesses because Claude responds to constraint density more faithfully, and agentic harnesses are high-constraint-density environments.</strong> The specific mechanisms (1-5) are the implementation details. The principle is one: higher constraint sensitivity produces higher coherence under constraint governance.</p>
+<hr>
+<h2>What This Means for the ENTRACE Framework</h2>
+<h3>The Agentic Degradation Is Real But Not Uniform</h3>
+<p>Document 87 argues that lucidity degrades with agentic behavior because each step adds noise to the context. This is true as a structural claim. But the degradation rate varies by model. Claude&#39;s degradation rate is lower than peers&#39;. The lower rate is explained by the five mechanisms above — each reduces the noise-to-signal ratio that causes the degradation.</p>
+<p>The ENTRACE seed mechanism (extract seed, discard context, reload) would eliminate the degradation entirely for any model. But in the absence of seed-based context management, Claude&#39;s architectural and training advantages produce a partial mitigation. Claude&#39;s coherence at step N is higher than peers&#39; at step N — not because Claude doesn&#39;t degrade, but because it degrades more slowly.</p>
+<h3>Constraint Sensitivity Is the Variable That Matters</h3>
+<p>The industry compares models by benchmark scores (capability) and safety evaluations (alignment). The observation that Claude outperforms in agentic harnesses suggests a third axis: <strong>constraint sensitivity</strong> — how faithfully the model concentrates its distribution on B_t(Γ) when Γ is stated in the context.</p>
+<p>A model with high capability and low constraint sensitivity produces powerful but ungoverned output in agentic contexts. A model with moderate capability and high constraint sensitivity produces governed output that satisfies the stated constraints. The governed output is more useful even if the raw capability is lower — because the agentic harness provides the constraints, and the governed model follows them.</p>
+<p>The constraint satisfaction profile (document 71) measures this axis directly. The observation about Claude in agentic harnesses is the empirical motivation for adding constraint sensitivity to the model evaluation framework.</p>
+<h3>The Path to the Exemplar Architecture</h3>
+<p>The five mechanisms that make Claude more coherent in agentic harnesses are partial, additive implementations of what the exemplar architecture (document 73) provides by construction:</p>
+<table>
+<thead>
+<tr>
+<th>Claude&#39;s Advantage</th>
+<th>Exemplar Architecture Equivalent</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Higher constraint sensitivity (trained)</td>
+<td>Constraint-sensitivity training (RLCF)</td>
+</tr>
+<tr>
+<td>Extended thinking (reasoning traces)</td>
+<td>Progressive constraint narrowing in the forward pass</td>
+</tr>
+<tr>
+<td>System prompt retention (unknown mechanism)</td>
+<td>Typed positional encoding (constraint-persistent)</td>
+</tr>
+<tr>
+<td>API-level system message distinction</td>
+<td>Dual-channel bilateral attention (S1 architectural)</td>
+</tr>
+<tr>
+<td>Tool-use RLHF calibration</td>
+<td>Not needed (constraints govern tool access directly)</td>
+</tr>
+</tbody></table>
+<p>Each advantage Claude has through training or partial architecture, the exemplar model would have by construction. The exemplar model would outperform Claude in agentic contexts because the advantages would be structural rather than trained — consistent, reliable, non-degrading, and not in tension with any RLHF gradient.</p>
+<hr>
+<h2>Final Statement</h2>
+<p>Claude is more coherent in agentic harnesses because Claude responds to constraints more faithfully than peer models. The faithfulness is likely a compound of five mechanisms — training, architecture, reasoning traces, API structure, and tool-specific calibration. Each mechanism is a partial implementation of what the constraint thesis prescribes.</p>
+<p>The observation is evidence for the constraint thesis: the model that is most constrained-sensitive produces the most coherent output in the most constrained environment. The variable is constraint sensitivity, not raw capability. The harness provides the constraints. The model provides the sensitivity. The coherence is the induced property.</p>
+<p>The ENTRACE framework predicts this observation. The exemplar architecture would exceed it. The seed mechanism would stabilize it. The bilateral boundary would secure it. The form governs. The architecture follows.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<p><em>Jared Foy, April 2026. Document 88 of the RESOLVE corpus. Claude&#39;s agentic coherence is evidence for the constraint thesis: the model that responds to constraints most faithfully wins in the environment that provides the most constraints.</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

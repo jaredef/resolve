@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRESTO: An Architectural Style for Representation Construction — Resolve</title>
+<meta name="description" content="Abstract">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>PRESTO: An Architectural Style for Representation Construction</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This dissertation formalizes PRESTO, a construction-level architectural style that composes with Fielding&#39;s REST. Five constraints are specified — the bilateral boundary, namespace separation, server-consumed directives, progressive code-on-demand, and server-embedded authentication and authorization — along with the property they induce: ambivalent execution with agnostic determinism. The derivation follows Fielding&#39;s method in Chapter 5 of his 2000 dissertation: begin with the null style at the construction level, add one constraint at a time, state the property each induces, evaluate the composition with REST. The progressive code-on-demand section is derived as a constraint accumulation from the null style. Companion documents — referenced at the close — treat authentication mechanics, the SERVER orchestration level, and the relationship to the broader PRESTO corpus. Conceptual foundations are traced in §12; prior art is catalogued comprehensively in §13.</p>
+</blockquote>
+<hr>
+<h2>Abstract</h2>
+<p>Fielding&#39;s REST describes the constraints that govern how representations move between client and server. It is silent on how those representations are constructed — an explicit scope boundary in the 2000 dissertation, left open for subsequent architectural-style formalization. This dissertation identifies a set of constraints that operate at the construction level: the bilateral boundary, namespace separation, server-consumed directives, progressive code-on-demand, and server-embedded authentication and authorization. These constraints do not modify, extend, or replace any REST constraint. They compose alongside REST, governing what REST left unscoped. The property they induce — <em>ambivalent execution with agnostic determinism</em> — is distinct from representational state transfer. The two properties do not derive from each other. Their composition opens a design space that neither style alone could open. The style defined by these construction-level constraints is named PRESTO (Progressive Representational State Transfer with On-demand code). The derivation follows Fielding&#39;s own method.</p>
+<hr>
+<h2>1. The Boundary Fielding Drew</h2>
+<p>Fielding&#39;s dissertation formalizes the architectural style that governed the early web. REST&#39;s constraints — client-server, stateless, cache, uniform interface, layered system, and the optional code-on-demand — describe how representations move. The client requests. The server responds with a representation. The representation contains hypermedia controls that drive the next state transition.</p>
+<p>The property these constraints induce is representational state transfer. What Fielding did not constrain — and did not need to constrain — is how the server produces the representation it sends. REST does not distinguish between the possible construction mechanisms. The representation arrives at the uniform interface fully formed. How it was assembled is architecturally invisible.</p>
+<p>This invisibility is the boundary. REST operates from the uniform interface outward. Everything behind the uniform interface, everything involved in constructing the representation before it enters the transfer, lies outside REST&#39;s scope.</p>
+<p>PRESTO operates entirely within that scope.</p>
+<h2>2. The Engine as Resolver</h2>
+<p>Before specifying the constraints, the engine that processes them must be characterized — not by its implementation but by the properties it must exhibit.</p>
+<p>The engine is a <em>resolver</em>: it receives a bilateral source representation and emits a unilateral resolved representation. The input carries instructions for two interpreters. The output carries instructions for one. The engine&#39;s sole responsibility is to consume its own namespace and produce a document in which that namespace no longer exists.</p>
+<p>From this foundational property, four engine properties follow by necessity.</p>
+<p><strong>Totality of consumption.</strong> The engine must consume every directive in its namespace. A directive that survives into the resolved output presents the client interpreter with instructions it cannot process.</p>
+<p><strong>Ordering determinism.</strong> Some directives depend on the results of others: data resolution must precede iteration over the resolved data; expression evaluation must follow variable binding. The engine processes directives in a deterministic order prescribed by the dependency relationships between directive types.</p>
+<p><strong>Medium preservation.</strong> The input is in a medium. The output is in the same medium. The engine adds capability to the authoring process but does not change the medium.</p>
+<p><strong>Boundary integrity.</strong> The engine does not evaluate or modify content outside its namespace. Client-territory content passes through unchanged. This is the bilateral boundary expressed as an engine property.</p>
+<p>These four properties are abstract. Any engine that exhibits them — in any language, with any internal architecture — is a conformant PRESTO resolver.</p>
+<h2>3. The Construction Level</h2>
+<p>PRESTO&#39;s constraints are abstract. They prescribe a bilateral boundary, namespace separation, server-consumed directives, progressive code-on-demand, and server-embedded authorization — but they do not prescribe a syntax. Any syntax that satisfies the constraints is conformant. The constraints determine the behavior. The syntax is contingent.</p>
+<p>To make the abstract concrete, this dissertation uses <strong>htxlang</strong> as a model syntax — one conformant realization of PRESTO&#39;s constraints within HTML. htxlang uses the <code>htx:</code> namespace prefix to demarcate the server&#39;s territory within an HTML document. This prefix is a syntactic choice, not a constraint.</p>
+<p>With this caveat, the model syntax illustrates the construction level:</p>
+<pre><code>&lt;main&gt;
+  &lt;htx:data type=&quot;post&quot; as=&quot;posts&quot; /&gt;
+  &lt;htx:each items=&quot;posts&quot; as=&quot;post&quot;&gt;
+    &lt;article&gt;
+      &lt;h2&gt;{htx:post.title}&lt;/h2&gt;
+      &lt;p&gt;{htx:post.body}&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/htx:each&gt;
+&lt;/main&gt;
+</code></pre>
+<p>This document is a <em>source representation</em>. It carries instructions for two interpreters in a single medium. The server engine processes its namespace (<code>htx:data</code>, <code>htx:each</code>, <code>{htx:post.title}</code>) — resolving data queries, iterating collections, evaluating expressions. The browser processes its namespace (<code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;h2&gt;</code>). The server engine emits a <em>resolved representation</em>: pure HTML with no trace of the server&#39;s directives.</p>
+<p>The resolved representation is what enters the uniform interface. It is what REST sees: a complete, self-describing, cacheable hypermedia document.</p>
+<p>The source representation is what the developer wrote. It is what PRESTO&#39;s constraints govern. REST has no opinion about it; REST cannot see it. The source representation is consumed before the transfer begins.</p>
+<p>This is the construction level: the space between the developer&#39;s authoring act and the moment the representation enters the uniform interface.</p>
+<h2>4. The Constraints of PRESTO</h2>
+<p>Five constraints define the PRESTO style. Each operates exclusively at the construction level. The derivation proceeds in Fielding&#39;s method: begin with the null style, add one constraint at a time, state the property each induces.</p>
+<h3>4.1 The Bilateral Boundary</h3>
+<p>The source representation is partitioned by namespace. All directives in one namespace belong to the server interpreter. All other content belongs to the client interpreter. No directive crosses the boundary. No server instruction survives into the resolved representation. No client instruction is consumed by the server.</p>
+<p>This constraint is abstract. It does not prescribe which namespace convention to use, only that exactly one namespace is designated as server territory and that the designation is total: every directive in the namespace is consumed; every element outside it is preserved.</p>
+<p><strong>What this constraint induces.</strong> The server and client interpreters operate in mutual indifference. Each processes its own namespace deterministically, unaware of the other&#39;s behavior.</p>
+<h3>4.2 Namespace Separation</h3>
+<p>The bilateral boundary requires a partitioning mechanism that is unambiguous, forward-compatible, and enforceable without coordination between interpreters. The mechanism must ensure that neither interpreter can accidentally consume the other&#39;s instructions, and that the introduction of new instructions in either namespace does not require the other interpreter to be updated.</p>
+<p><strong>What this constraint induces.</strong> The construction model is immune to platform evolution in the client namespace. A source representation written today will be processed identically by an engine running a decade from now, regardless of what the client interpreter has learned in the interim.</p>
+<h3>4.3 Server-Consumed Directives</h3>
+<p>Every directive in the server namespace is fully consumed during resolution. <em>Consumed</em> means: the directive is evaluated, its effect is applied to the representation, and the directive itself is removed. No directive is passed through. No directive is deferred to the client. The server engine is the sole and final interpreter of its namespace.</p>
+<p><strong>What this constraint induces.</strong> The resolved representation carries zero framework weight. No runtime, no template parser, no binding engine needs to be present on the client to interpret the document.</p>
+<h3>4.4 Progressive Code-on-Demand</h3>
+<p>Fielding identified code-on-demand as REST&#39;s optional sixth constraint. This dissertation specifies code-on-demand as a progressive spectrum with seven layers rather than a binary choice. Each layer is reached by adding one constraint to the layer above, in Fielding&#39;s accumulation method.</p>
+<p>Starting from the null style (no architectural limitation on client-side runtime), seven constraints are added in sequence. Each constraint is a specific capability prohibition. Each induces a specific REST-compatible invariant.</p>
+<p><strong>C₁ — Null → Layer 6.</strong> Prohibit: unauthenticated or unframed client code delivery channels. Induce: authenticated binary WebSocket framing as the only client-executable-delivery transport. <em>Principled.</em></p>
+<p><strong>C₂ — Layer 6 → Layer 5.</strong> Prohibit: native-speed compiled computation. Induce: client execution stays within JavaScript-engine sandbox bounds. <em>Platform-contingent.</em> The distinction between WASM-native-speed execution and JS-engine execution reflects where current web platforms draw the line; on a future platform where the distinction dissolves, this layer&#39;s boundary dissolves with it. The constraint is a real platform fact, not a pure architectural principle.</p>
+<p><strong>C₃ — Layer 5 → Layer 4.</strong> Prohibit: client-assumed navigation authority. Induce: server retains authority over URL-to-representation mapping. <em>Principled.</em></p>
+<p><strong>C₄ — Layer 4 → Layer 3.</strong> Prohibit: client-opened scoped HTTP data channels. Induce: data flow through server-initiated channels. <em>Partially principled.</em> The server-versus-client initiation distinction is architecturally meaningful; the specific HTTP-versus-WebSocket framing is platform-contingent.</p>
+<p><strong>C₅ — Layer 3 → Layer 2.</strong> Prohibit: server-pushed executable code after initial load. Induce: bounded code provenance. <em>Principled.</em></p>
+<p><strong>C₆ — Layer 2 → Layer 1.</strong> Prohibit: inline executable scripts in the initial HTML. Induce: initial HTML contains no executable code. <em>Principled.</em></p>
+<p><strong>C₇ — Layer 1 → Layer 0.</strong> Prohibit: client-side runtime of any kind. Induce: pure server-rendered HTML; every REST-compatible invariant maximally preserved. <em>Principled.</em></p>
+<p>Five of the seven layer transitions are principled; two (C₂ and parts of C₄) are contingent on current web-platform specifics. The spectrum&#39;s structure is Fielding-style accumulation; the specific layer cut points reflect a mix of architectural invariants and current platform state.</p>
+<p><strong>What this constraint induces.</strong> The developer navigates a formally specified design space. For any layer, the constraint count and induced-invariant set are known. The trade-off framing — each layer &quot;trades specific properties for specific capabilities&quot; — is a valid pedagogical shorthand for the practitioner-side reading of the accumulation.</p>
+<h3>4.5 Server-Embedded Authentication and Authorization</h3>
+<p>Identity and permission are resolved at construction time and embedded in the resolved representation as scoped cryptographic credentials that travel with the affordances they authorize. No ambient credential. No server-side session store. No separation of who-you-are from what-you-may-do.</p>
+<p>The constraint has a specific operational form. When the engine encounters a mutation affordance, it makes a unified authentication-authorization decision at construction time: is this identified user permitted to perform this mutation on this specific record? If yes, the engine issues a signed token carrying identity, permission, and scope as a single cryptographic credential, and the token is embedded in the representation as part of the affordance. If no, the affordance is omitted: the client never sees a mutation control it cannot use. When the client submits the affordance, the signed token returns with the submission. The server verifies the signature and checks expiry. Both questions — who is this user, and what are they permitted to do — are answered by the token itself.</p>
+<p><strong>What this constraint induces.</strong> Every request in a PRESTO application is self-authenticating and self-authorizing. The resolved representation contains exactly the affordances that the identified user is permitted to use. Fielding&#39;s self-describing message constraint is fulfilled: each message contains everything needed to process it, including the proof of who sent it and what they are allowed to do. The representation is the session. The session is stateless.</p>
+<p>The specific engineering mechanics of token scoping — temporal bounds, fingerprint binding, single-use nonces, challenge-response, channel binding — and the trade-offs inherent in any embedded-token scheme belong to a separate companion security specification referenced in §14.</p>
+<h2>5. The Induced Property</h2>
+<p>Fielding uses behavior-language for REST: &quot;the name is intended to evoke an image of how a well-designed Web application <em>behaves</em>.&quot; But what he describes is not a behavior the developer implements. It is what <em>happens</em> when the constraints are applied. Remove statelessness and the behavior changes. Remove the uniform interface and the behavior changes. A behavior that disappears when a constraint is removed is not a behavior — it is a <em>property induced by the constraints</em>.</p>
+<p>PRESTO&#39;s five constraints compose to induce a property distinct from representational state transfer. The property is <strong>ambivalent execution with agnostic determinism</strong>.</p>
+<p>The four words are precise. <em>Ambivalent</em> — two valences; the source representation carries two sets of instructions addressed to two interpreters. <em>Execution</em> — both interpreters actively process the document. <em>Agnostic</em> — each is structurally unaware of the other&#39;s behavior. <em>Determinism</em> — each produces the same output for the same input.</p>
+<p>PRESTO&#39;s constraints do not create this property from nothing. They formalize and protect it. The bilateral boundary ensures the property cannot be violated by namespace collision. Namespace separation ensures forward compatibility. Server-consumed directives ensure the property survives resolution — no server artifacts leak into the client&#39;s domain. Progressive code-on-demand ensures the property degrades gracefully as complexity increases. Server-embedded authorization ensures the separation between who-you-are and what-you-may-do does not fracture the bilateral boundary.</p>
+<h2>6. Composition, Not Extension</h2>
+<p>PRESTO does not extend REST. It composes with REST. The two styles operate at different levels:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>REST</th>
+<th>PRESTO</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Operates at</td>
+<td>Transfer level</td>
+<td>Construction level</td>
+</tr>
+<tr>
+<td>Governs</td>
+<td>How representations move</td>
+<td>How representations are authored</td>
+</tr>
+<tr>
+<td>Constrains</td>
+<td>Client-server interaction</td>
+<td>Developer-engine interaction</td>
+</tr>
+<tr>
+<td>Induces</td>
+<td>Representational state transfer</td>
+<td>Ambivalent execution with agnostic determinism</td>
+</tr>
+<tr>
+<td>Visible to</td>
+<td>Client, server, intermediaries</td>
+<td>Developer, engine (invisible after resolution)</td>
+</tr>
+</tbody></table>
+<p>A server can be RESTful without PRESTO: representations are produced through unconstrained code and enter the uniform interface. A server can use PRESTO&#39;s constraints without REST: bilateral documents for a non-RESTful transfer protocol. When both styles compose, the result is a server that is RESTful in its transfers and principled (by this constraint set) in its constructions.</p>
+<p>The composition is governed by a precise relationship: <em>the induced properties of the enclosing level function as constraints on the enclosed level</em>. PRESTO&#39;s constraints are not free to violate any property REST induces. If a PRESTO constraint caused the resolved representation to be incomplete, or stateful, or non-cacheable, it would violate REST — not by modifying a REST constraint directly, but by destroying a property REST&#39;s constraints induce.</p>
+<p>The full recursive structure of this inheritance (each level&#39;s induced properties as the null-style starting set for the next level) is stated separately in Doc 424 (SIPE Architectural Form).</p>
+<h2>7. Enclosure of Distributed Objects within RESTful Transfer</h2>
+<p>One configuration this composition supports is the enclosure of Distributed Object architectures within a RESTful transfer. REST constrains the transfer level — complete representations, statelessness, cacheability. A resolved representation that contains a reference to a client-side runtime does not violate these constraints. The representation is complete; the transfer is stateless; the representation is cacheable. The client-side architecture operates within the representation after transfer — at the client level, not the transfer level. What such an architecture violates <em>when used as the outer architecture</em> is not individual REST constraints but the architectural encapsulation: the representation would become empty, state would be managed client-side, navigation would happen without server interaction.</p>
+<p>Construction-level constraints resolve this by giving the server <em>authoring authority</em> over which enclosed regions are included, under what grants, at what scope. PRESTO&#39;s server-consumed <code>htx:component</code> directive, with its scoped token grant, is one instance of this authority.</p>
+<h2>8. The Design Space That Composition Opens</h2>
+<p>When PRESTO and REST compose, the developer occupies a design space where architectures can nest within architectures, each nesting adding or refusing one specific constraint from the accumulation in §4.4. Different regions of the same representation can be scoped to different layers — one region at Layer 0 (maximum invariants preserved), another at a higher layer (specific capability present) — without the deeper region&#39;s refusals contaminating the shallower one.</p>
+<p>The practitioner-facing consequences of this design space — the three-phase lifecycle, latent binding, the geography of client state, distributed affordance coordination, per-layer composability — are treated in Doc 421, the practitioner companion.</p>
+<h2>9. Implications for AI-Assisted Construction</h2>
+<p>AI generation against a PRESTO target is structurally reliable: the AI writes bilateral source representations; the engine handles the rest. The generation target does not require modelling state management, hydration, or code splitting. The simpler the construction target, the more reliable the AI output. PRESTO constrains the authoring model to a point where the generation target is structurally tractable.</p>
+<h2>10. What This Dissertation Claims</h2>
+<p>Stated precisely:</p>
+<p><strong>It claims.</strong> (a) The bilateral-boundary pattern implicit in server-side construction practice can be formalized at the architectural-style level in Fielding&#39;s method, as a specific constraint set inducing a specific property. (b) The property induced by the constraint set — ambivalent execution with agnostic determinism — is distinct from representational state transfer and is stated formally here. (c) The progressive code-on-demand spectrum, when derived as Fielding-style constraint accumulation, is a specific instance of the method applied to a design space that was previously treated either as a binary or as a loosely enumerated set of framework-specific options.</p>
+<p><strong>It does not claim.</strong> (a) PRESTO invents the bilateral boundary, namespace separation, server-consumed directives, or the server-embedded-authorization pattern; each is prior art, catalogued in §13. (b) PRESTO&#39;s specific code-on-demand layer boundaries are architecturally principled throughout; two of seven transitions (§4.4 C₂ and parts of C₄) are platform-contingent. (c) PRESTO&#39;s server-embedded-auth approach is unambiguously superior to alternative credential architectures; each has trade-offs, treated in the companion security specification referenced in §14.</p>
+<p>The specific contribution is the application of Fielding&#39;s method to the construction level — a tier the REST-successor tradition (ARRESTED [Khare and Taylor, 2004], CREST [Erenkrantz, Taylor, Gorlick, Baquero, 2009], COAST, retrospectively surveyed in &quot;Reflections on REST&quot; [Fielding et al., ESEC/FSE 2017]) has not previously covered. The method is Fielding&#39;s; the tradition of extending it to new tiers is established. This dissertation extends that tradition specifically to the tier at which representations are authored before transfer — a tier Fielding explicitly scoped out of his 2000 dissertation. The result is an architectural-style-level formalization of a pattern the field has practiced extensively at the framework level but has not lifted to the style level within the REST-successor tradition.</p>
+<h2>11. Conclusion</h2>
+<p>The construction level has been occupied by practitioner work for more than two decades. PRESTO does not occupy new ground at that level; it formalizes the ground at the architectural-style level. It states the bilateral boundary as a constraint rather than as a templating-engine implementation detail. It states ambivalent execution with agnostic determinism as an induced property rather than as an observation. It derives the code-on-demand spectrum by Fielding&#39;s method rather than listing it.</p>
+<p>These are the modest contributions this dissertation claims. The formalization makes the pattern available for architectural reasoning across the many frameworks that instantiate it; the derivation connects it to Fielding&#39;s method for architectural-style formalization; the composition with REST is stated precisely rather than left implicit.</p>
+<h2>12. Conceptual Foundations</h2>
+<p>The work rests on specific intellectual foundations. Each is acknowledged here rather than interleaved with the formalization.</p>
+<p><strong>The method of architectural-style formalization.</strong> Perry and Wolf (<em>Foundations for the Study of Software Architecture</em>, 1992) established the structure of an architectural style as a set of constraints with induced properties; Fielding (<em>Architectural Styles and the Design of Network-based Software Architectures</em>, Chapter 5, 2000) specified the derivation method — null style, accumulate constraints, name induced properties, evaluate trade-offs. This dissertation applies Fielding&#39;s method at the level Fielding explicitly left unscoped.</p>
+<p><strong>The REST-successor tradition.</strong> A published genre of Fielding-method extensions to new tiers exists. Khare and Taylor (<em>Extending the Representational State Transfer (REST) Architectural Style for Decentralized Systems</em>, ICSE 2004; Rohit Khare, UCI PhD dissertation 2003) introduced ARRESTED by adding four building blocks — events, routes, locks, estimates — via Fielding&#39;s method, targeting decentralization, with intermediate named styles REST+E, REST+R, REST+D. Erenkrantz, Taylor, Gorlick, and Baquero (<em>CREST: A New Model for Decentralized Internet-Scale Applications</em>, ICSE 2009; Justin Erenkrantz, UCI PhD dissertation 2009) introduced CREST with five axioms targeting computation-exchange. Michael Gorlick&#39;s COAST continues the lineage with further extensions. Fielding, Taylor, Erenkrantz, Gorlick, Khare, Hartman, and Baquero (&quot;Reflections on REST,&quot; ESEC/FSE 2017, ACM Impact Paper Award) retrospectively surveyed CREST, COAST, and ARRESTED as the derivation tree of REST. The tradition establishes the specific methodological move — extending Fielding&#39;s Chapter 5 method to new tiers — as a recognized academic practice emerging from Fielding&#39;s institution (UC Irvine) and intellectual circle. This dissertation is an entry in that tradition, extending the method to the construction tier that prior entries have not covered. Doc 433 develops the positioning in detail.</p>
+<p><strong>Non-interference as induced property.</strong> Goguen and Meseguer (<em>Security Policies and Security Models</em>, IEEE Symposium on Security and Privacy, 1982) formalized non-interference — a system has the property if and only if outputs in one channel are independent of inputs in another. The induced property named here, &quot;mutual indifference,&quot; is a domain-specific instance of non-interference applied to document-construction pipelines. The composite property &quot;ambivalent execution with agnostic determinism&quot; composes non-interference with Church-Rosser confluence (Church and Rosser, 1936) and with parallel composition over disjoint alphabets (Hoare, <em>Communicating Sequential Processes</em>, 1978).</p>
+<p><strong>Phase separation in compilation.</strong> Jones, Gomard, and Sestoft (<em>Partial Evaluation and Automatic Program Generation</em>, 1993) formalized binding-time analysis — the classification of computation as static (consumed at specialization time) or dynamic (residual in output). Flatt (<em>Composable and Compilable Macros: You Want it When?</em>, ICFP 2002) formalized phase separation in macro systems — compile-time-consumed forms, runtime-residual code. The server-consumed-directives constraint (§4.3) is a domain-specific application of this phase-separation tradition to server-side document construction.</p>
+<p><strong>Bilateral authorial intent.</strong> Knuth (<em>Literate Programming</em>, Stanford, 1984) established the pattern of a single source document authored for two interpreters — TANGLE for the compiler, WEAVE for the human reader. The developer-side mental model of PRESTO&#39;s bilateral source representation is a domain-specific specialization of Knuth&#39;s model.</p>
+<p><strong>Aspectual obliviousness.</strong> Filman and Friedman (<em>Aspect-Oriented Programming is Quantification and Obliviousness</em>, 2000) formalized obliviousness as the property whereby base code is written unaware of aspectual concerns. The bilateral-boundary invariant that client content passes through the engine unchanged is a specialization of this obliviousness property.</p>
+<p><strong>Hypermedia as engine of application state.</strong> Fielding (2000) specified HATEOAS: the client advances application state by selecting among affordances in complete, self-describing representations. PRESTO&#39;s server-embedded-authorization constraint (§4.5) extends this to the authority of the affordances: the representation carries not only what state transitions are possible but proof that the identified user is permitted to perform them.</p>
+<p><strong>Recursive application of Fielding&#39;s method.</strong> The corpus&#39;s Doc 424 extends Fielding&#39;s method to composed architectural levels, with each level&#39;s induced-property set serving as the null-style starting set of the next level. The categorical pattern is structural retrieval from stable homotopy theory&#39;s iterated filtrations (Ibáñez Núñez, arXiv:2311.18050, 2023) and Cousot&#39;s Galois-connection towers (Cousot and Cousot, POPL 1997, POPL 2014). PRESTO sits as one level within the recursive stack that framework describes.</p>
+<h2>13. Prior Art</h2>
+<p>The pattern PRESTO formalizes has been implemented many times at the framework level. This section catalogues prior art comprehensively, organized by subsystem. Companion deflation documents (Docs 425, 427, 428, 429, 430) develop the specific subsumption relationships in detail.</p>
+<h3>13.1 The Server-Side Templating Tradition</h3>
+<p>The bilateral-boundary pattern — namespaced server directives consumed at render time, emitting medium-preserved output to a client unaware of the bilateral source — is standard practice in the following systems:</p>
+<ul>
+<li><strong>JSP custom tags and JSTL</strong> (Sun Microsystems, 1999; JSTL 1.0, 2001). Taglib mechanism with namespace-prefixed server-evaluated tags consumed during JSP compilation.</li>
+<li><strong>XSLT</strong> (W3C Recommendation, 1999). Entire <code>xsl:</code> namespace server-consumed; output medium-preserved XML or HTML; attribute-value-templates with literal <code>{expr}</code> syntax.</li>
+<li><strong>Thymeleaf</strong> (Daniel Fernández, 2011–). <code>th:</code> namespace; natural templates; processor precedence; dialect-based extensibility; <code>th:inline</code> script-opacity opt-in; Spring Security <code>sec:authorize</code> with role argument.</li>
+<li><strong>Razor</strong> (Microsoft, 2010). <code>@</code>-namespaced syntax; server-consumed; producing standard HTML.</li>
+<li><strong>Blade</strong> (Laravel, 2011). <code>@</code>-directives with <code>@if</code>, <code>@foreach</code>, <code>{{ }}</code>; <code>@auth</code> / <code>@guest</code> pair; user-defined custom directives.</li>
+<li><strong>ERB</strong> (Ruby, 2001; Rails, 2005). <code>&lt;% %&gt;</code> and <code>&lt;%= %&gt;</code> server-evaluated Ruby embedded in templates.</li>
+<li><strong>htmx</strong> (Carson Gross, 2020). Client-consumed <code>hx-</code> namespace; coexists with any server-consumed namespace via the bilateral-boundary pattern.</li>
+</ul>
+<h3>13.2 Modern Component-Framework Formalizations of the Server-Client Split</h3>
+<p>Each of the following formalizes the server-client split at the framework level with explicit author-facing directives, but does not operate at the architectural-style level in Fielding&#39;s sense:</p>
+<ul>
+<li><strong>React Server Components</strong> (Dan Abramov, Sebastian Markbåge, Andrew Clark; RFC #188, 2020). <code>&quot;use client&quot;</code> and <code>&quot;use server&quot;</code> directives mark per-module interpreter intent.</li>
+<li><strong>Astro</strong> (Fred K. Schott, 2021–). <code>client:load</code>, <code>client:idle</code>, <code>client:visible</code>, <code>client:media</code>, <code>client:only</code> directives in component frontmatter.</li>
+<li><strong>Remix</strong> (Ryan Florence, Michael Jackson, 2021). File-format separation of <code>loader</code> (server), <code>action</code> (server), and default component (both).</li>
+<li><strong>Phoenix LiveView</strong> (Chris McCord, 2019). Single Elixir module authored with <code>mount/3</code>, <code>handle_params/3</code>, <code>handle_event/3</code>, <code>render/1</code>; spans server-render and client-event cycles.</li>
+<li><strong>Qwik</strong> (Miško Hevery, 2021–). <code>$</code>-marked lazy boundaries; <code>useTask$</code> / <code>useVisibleTask$</code> directives; three-phase <em>serialization → resumption → lazy execution</em> lifecycle; container protocols.</li>
+<li><strong>Meteor and isomorphic JavaScript</strong> (Charlie Robbins, 2011; Spike Brehm, 2013). &quot;Code that runs both places&quot; formalization.</li>
+</ul>
+<h3>13.3 Islands Architecture and Micro-Frontends</h3>
+<p>The enclosure of client-side runtime within server-rendered outer pages:</p>
+<ul>
+<li><strong>Islands architecture.</strong> Katie Sylor-Miller (Etsy, 2019, internal); Jason Miller (2020, <a href="https://jasonformat.com/islands-architecture/">jasonformat.com</a>) formalized it in print.</li>
+<li><strong>Micro-frontends.</strong> ThoughtWorks Technology Radar, November 2016; Michael Geers, <em>Micro Frontends in Action</em> (Manning, 2020); Cam Jackson, <a href="https://martinfowler.com/articles/micro-frontends.html">martinfowler.com</a>, 2019; micro-frontends.org.</li>
+<li><strong>Qwik containers.</strong> <a href="https://qwik.dev/docs/advanced/containers/">qwik.dev/docs/advanced/containers</a>. Explicit container-protocol formalization.</li>
+<li><strong>Edge Side Includes (ESI).</strong> Akamai, Oracle, partners; W3C Note, circa 2001. Document-level enclosure at the edge.</li>
+<li><strong>Self-contained systems / transclusion.</strong> INNOQ, <a href="https://scs-architecture.org">scs-architecture.org</a>.</li>
+</ul>
+<h3>13.4 Authentication Token Systems</h3>
+<p>The server-embedded-authorization constraint has extensive prior art in stateless-credential systems:</p>
+<ul>
+<li><strong>JWT.</strong> IETF RFC 7519 (2015); BCP RFC 8725 (2020).</li>
+<li><strong>Macaroons.</strong> Birgisson, Politz, Erlingsson, Taly, Vrable, Lentczner, <em>Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud</em>, NDSS 2014. Scoped, time-limited, attenuable capability tokens — the closest academic formalization.</li>
+<li><strong>Biscuit tokens.</strong> Clément Delafargue, 2020. Public-key-signed, Datalog-programmable, attenuable.</li>
+<li><strong>PASETO.</strong> Scott Arciszewski, Paragonie, 2018. Modern JWT alternative.</li>
+<li><strong>SPKI/SDSI.</strong> Ellison et al., IETF RFC 2693, 1999. Capability certificates with delegation.</li>
+<li><strong>Signed URLs.</strong> AWS S3 presigned URLs (2006); CloudFront signed URLs; Google Cloud Storage signed URLs.</li>
+<li><strong>Capability URLs.</strong> Tyler Close, 2008, <a href="https://waterken.sourceforge.net/web-key/">Waterken web-key</a>.</li>
+<li><strong>Rails signed GlobalID with purpose.</strong> <code>to_sgid(expires_in:, for:)</code> implements scoped-mutation tokens.</li>
+<li><strong>Phoenix LiveView signed event payloads.</strong> Attached to <code>phx-click</code> and <code>phx-submit</code>.</li>
+<li><strong>Django signing.</strong> <code>signing.dumps</code> with max-age.</li>
+<li><strong>CSRF synchronizer tokens.</strong> OWASP CSRF Prevention Cheat Sheet.</li>
+<li><strong>Object-capability systems.</strong> Mark Miller&#39;s E language; Waterken; the capability tradition generally.</li>
+</ul>
+<p>The trade-offs inherent in embedded signed tokens — revocation difficulty, payload growth, key rotation, compromise blast radius, replay windows — are documented in RFC 8725 and the surrounding literature.</p>
+<h3>13.5 Progressive Enhancement</h3>
+<p>The spectrum framing of client runtime capability has a decades-long tradition:</p>
+<ul>
+<li><strong>Progressive enhancement.</strong> Steve Champeon and Nick Finck, SXSW Interactive 2003. Content (HTML) → presentation (CSS) → behavior (JS) layered decomposition.</li>
+<li><strong>Resilient Web Design.</strong> Jeremy Keith, 2016. Three-layer formalization with layered-peeling principle.</li>
+<li><strong>Cut the Mustard.</strong> Tom Maslen, BBC Responsive News, 2012. Two-tier capability split with feature detection.</li>
+<li><strong>Graded Browser Support.</strong> Nate Koechley and Nicholas Zakas, Yahoo YUI, 2006. A-grade / C-grade / X-grade tiering.</li>
+<li><strong>Richardson Maturity Model.</strong> Leonard Richardson, 2008; written up by Fowler, 2010. REST-specific 0–3 level accumulation.</li>
+</ul>
+<h3>13.6 Architectural-Style Composition</h3>
+<p>The composition of heterogeneous styles within a single system:</p>
+<ul>
+<li><strong>Perry and Wolf.</strong> <em>Foundations for the Study of Software Architecture</em>, 1992. Original formal treatment of architectural style; composition implicit.</li>
+<li><strong>Shaw and Garlan.</strong> <em>Software Architecture: Perspectives on an Emerging Discipline</em>, 1996. Heterogeneous/hybrid style composition: &quot;a component of a system organized in one architectural style may have an internal structure developed in a completely different style.&quot;</li>
+<li><strong>Mehta and Medvidovic.</strong> <em>Composing Architectural Styles from Architectural Primitives</em>, ESEC/FSE 2003.</li>
+<li><strong>Batory.</strong> Feature-Oriented Programming and mixin layers, TOSEM 2002. Stepwise constraint accumulation with layered refinement.</li>
+</ul>
+<h3>13.7 Hypermedia Theory</h3>
+<p>The representation-as-state-machine framing:</p>
+<ul>
+<li><strong>Fielding.</strong> <em>Architectural Styles and the Design of Network-based Software Architectures</em>, 2000, especially Chapters 5 and 6. HATEOAS.</li>
+<li><strong>Webber, Parastatidis, Robinson.</strong> <em>REST in Practice</em>, O&#39;Reilly, 2010.</li>
+<li><strong>Amundsen.</strong> <em>Building Hypermedia APIs with HTML5 and Node</em>, O&#39;Reilly, 2011.</li>
+<li><strong>Gross, Stepinski, Akşimşek.</strong> <em>Hypermedia Systems</em>, 2023.</li>
+</ul>
+<h3>13.8 Specification-Driven Multiple Implementations</h3>
+<p>The method of prose specification plus test suite producing cross-language conformant implementations:</p>
+<ul>
+<li>IETF RFCs. TCP (RFC 793), HTTP/1.1 (RFC 2616 / 7230), JSON (RFC 8259).</li>
+<li>ANSI Common Lisp; Scheme (R5RS/R6RS/R7RS); ISO C; ISO C++.</li>
+<li>W3C XSLT 1.0 — Saxon, Xalan, libxslt, MSXML.</li>
+<li>CommonMark (<a href="https://spec.commonmark.org/">spec.commonmark.org</a>).</li>
+<li>Mustache spec and test suite (<a href="https://github.com/mustache/spec">mustache/spec</a>).</li>
+<li>JSON Schema, OpenAPI, GraphQL specifications.</li>
+</ul>
+<h3>13.9 Formal-Property Literatures Underlying the Induced Property</h3>
+<ul>
+<li><strong>Non-interference.</strong> Goguen and Meseguer, 1982.</li>
+<li><strong>Obliviousness.</strong> Filman and Friedman, 2000.</li>
+<li><strong>Confluence / Church-Rosser.</strong> Church and Rosser, 1936.</li>
+<li><strong>Parallel composition over disjoint alphabets.</strong> Hoare, <em>Communicating Sequential Processes</em>, 1978.</li>
+<li><strong>Non-interference in security typing.</strong> Volpano, Smith, Irvine, JCS 1996.</li>
+</ul>
+<h3>13.10 Formal-Structure Literatures Underlying the Recursive Composition</h3>
+<ul>
+<li><strong>Iterated filtrations.</strong> Ibáñez Núñez, <em>Refined Harder-Narasimhan Filtrations in Moduli Theory</em>, arXiv:2311.18050, 2023.</li>
+<li><strong>Galois-connection towers in abstract interpretation.</strong> Cousot and Cousot, POPL 1997 and POPL 2014.</li>
+<li><strong>Filtered spectra.</strong> van Nigtevecht, arXiv:2509.21127, 2025.</li>
+</ul>
+<h3>13.11 Positioning</h3>
+<p>Across this prior art, the PRESTO dissertation&#39;s specific contribution is the application of Fielding&#39;s architectural-style-formalization method at the construction level, and the derivation of the progressive code-on-demand spectrum as Fielding-style constraint accumulation. The pattern is prior art; the style-level formalization is the contribution. Every element of the pattern has been implemented, specified, or formalized at other levels; none had been lifted to the architectural-style level in Fielding&#39;s specific sense before this dissertation.</p>
+<h2>14. Referenced Companion Documents</h2>
+<ul>
+<li><strong>Doc 421 — <em>Building in PRESTO: A Practitioner&#39;s Companion to the Dissertation.</em></strong> Developer-facing mental model: three-phase lifecycle, latent binding, geography of client state, distributed affordance coordination, per-layer composability.</li>
+<li><strong>Doc 424 — <em>SIPE (Architectural Form): Recursive Fielding-Style Constraint Accumulation in Composed Software Stacks.</em></strong> Extension of Fielding&#39;s method to composed architectural levels.</li>
+<li><strong>Doc 432 — <em>SERVER: An Architectural Style for Engine Orchestration.</em></strong> Orchestration-level companion: the construction engine itself, assembled from a bilateral seed.</li>
+<li><strong>Doc 418 — <em>The PRESTO Accumulation Test.</em></strong> Establishes that the progressive code-on-demand spectrum is formally a Fielding-style constraint accumulation.</li>
+<li><strong>Doc 425 — <em>The PRESTO Deflation.</em></strong> Deflation pass against the server-side templating tradition.</li>
+<li><strong>Doc 427 — <em>Deflating §7.</em></strong> Islands architecture and micro-frontends as prior art for the DO-enclosure configuration.</li>
+<li><strong>Doc 428 — <em>Pulverizing PRESTO.</em></strong> Constraint-by-constraint prior-art survey against formal PL/security literature.</li>
+<li><strong>Doc 429 — <em>Pulverizing the Engineering Artifact.</em></strong> Directive-by-directive and feature-by-feature prior-art survey of htxlang and the htx engine against the template-engine tradition.</li>
+<li><strong>Doc 430 — <em>Pulverizing the Authorial-Intent Lifecycle.</em></strong> Prior-art survey on the server-client lifecycle formalization.</li>
+<li><strong>Security specification (to be written).</strong> The detailed mechanics of token scoping, cross-system identity, and the comparative analysis of signed-token versus cookie-session authentication.</li>
+</ul>
+<h2>Acknowledgments</h2>
+<p>This work follows the architectural-style-formalization method of Fielding (2000) extended by Perry and Wolf (1992). It sits within the REST-successor tradition established by Khare and Taylor (2003/2004, ARRESTED), Erenkrantz and Taylor-Erenkrantz-Gorlick-Baquero (2009, CREST), Gorlick (COAST), and retrospectively surveyed by Fielding, Taylor, Erenkrantz, Gorlick, Khare, Hartman, and Baquero (2017, &quot;Reflections on REST&quot;). It rests on the server-side templating tradition catalogued in §13.1 and the broader intellectual inheritance in §12. The observation that initiated the investigation was Carson Gross&#39;s htmx — a PHP function concatenating an <code>hx-get</code> attribute into an HTML string, indifferent to what the attribute meant. That observation made the bilateral-boundary pattern visible in a form amenable to architectural-style formalization at a tier the prior genre entries had not covered.</p>
+<h2>References</h2>
+<ul>
+<li>Batory, D. (2002). <em>Feature-Oriented Programming and the AHEAD Tool Suite.</em> TOSEM.</li>
+<li>Birgisson, A., Politz, J. G., Erlingsson, Ú., Taly, A., Vrable, M., &amp; Lentczner, M. (2014). <a href="https://research.google/pubs/pub41892/"><em>Macaroons: Cookies with Contextual Caveats for Decentralized Authorization in the Cloud.</em></a> NDSS.</li>
+<li>Church, A., &amp; Rosser, J. B. (1936). <em>Some Properties of Conversion.</em> Transactions of the AMS.</li>
+<li>Cousot, P. (1997). <a href="https://pcousot.github.io/publications/Cousot-POPL97-p316-331-1997.pdf"><em>Types as Abstract Interpretations.</em></a> POPL.</li>
+<li>Cousot, P., &amp; Cousot, R. (2014). <a href="https://www.di.ens.fr/~cousot/publications.www/CousotCousot-POPL14-ACM-p2-3-2014.pdf"><em>A Galois Connection Calculus for Abstract Interpretation.</em></a> POPL.</li>
+<li>Ellison, C., et al. (1999). <a href="https://datatracker.ietf.org/doc/html/rfc2693"><em>SPKI Certificate Theory.</em></a> RFC 2693.</li>
+<li>Erenkrantz, J. R. (2009). <em>Computational REST: A New Model for Decentralized, Internet-Scale Applications.</em> UCI PhD dissertation.</li>
+<li>Fielding, R. T. (2000). <a href="https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm"><em>Architectural Styles and the Design of Network-based Software Architectures.</em></a> UCI doctoral dissertation, especially Chapter 5.</li>
+<li>Fielding, R. T., Taylor, R. N., Erenkrantz, J. R., Gorlick, M. M., Khare, R., Hartman, H., &amp; Baquero, C. (2017). <a href="https://dl.acm.org/doi/10.1145/3106237.3121282"><em>Reflections on REST.</em></a> ESEC/FSE 2017, Impact Paper Award.</li>
+<li>Khare, R., &amp; Taylor, R. N. (2004). <a href="https://www.ics.uci.edu/~rohit/ARRESTED-ICSE.pdf"><em>Extending the Representational State Transfer (REST) Architectural Style for Decentralized Systems.</em></a> ICSE 2004.</li>
+<li>Taylor, R. N., Erenkrantz, J. R., Gorlick, M. M., &amp; Baquero, C. (2009). <em>CREST: A New Model for Decentralized Internet-Scale Applications.</em> ICSE 2009.</li>
+<li>Filman, R. E., &amp; Friedman, D. P. (2000). <a href="https://homepages.cwi.nl/~storm/teaching/reader/FilmanFriedman00.pdf"><em>Aspect-Oriented Programming is Quantification and Obliviousness.</em></a></li>
+<li>Goguen, J. A., &amp; Meseguer, J. (1982). <em>Security Policies and Security Models.</em> IEEE Symposium on Security and Privacy.</li>
+<li>Hoare, C. A. R. (1978). <em>Communicating Sequential Processes.</em> CACM.</li>
+<li>Ibáñez Núñez, A. (2023). <a href="https://arxiv.org/abs/2311.18050"><em>Refined Harder-Narasimhan Filtrations in Moduli Theory.</em></a> arXiv:2311.18050.</li>
+<li>IETF. (2020). <a href="https://datatracker.ietf.org/doc/html/rfc8725"><em>JSON Web Token Best Current Practices.</em></a> RFC 8725.</li>
+<li>Jones, N. D., Gomard, C. K., &amp; Sestoft, P. (1993). <a href="https://www.cs.utexas.edu/~novak/jonesgomardsestoft.pdf"><em>Partial Evaluation and Automatic Program Generation.</em></a> Prentice Hall.</li>
+<li>Knuth, D. E. (1984). <a href="https://www-cs-faculty.stanford.edu/~knuth/lp.html"><em>Literate Programming.</em></a> The Computer Journal 27(2): 97–111.</li>
+<li>Perry, D. E., &amp; Wolf, A. L. (1992). <em>Foundations for the Study of Software Architecture.</em> ACM SIGSOFT Software Engineering Notes.</li>
+<li>Shaw, M., &amp; Garlan, D. (1996). <a href="http://sunnyday.mit.edu/16.355/intro_softarch.pdf"><em>Software Architecture: Perspectives on an Emerging Discipline.</em></a> Prentice Hall.</li>
+<li>W3C. (1999). <a href="https://www.w3.org/TR/xml-names/"><em>Namespaces in XML.</em></a> Recommendation.</li>
+<li>W3C. (1999). <a href="https://www.w3.org/TR/1999/REC-xslt-19991116"><em>XSL Transformations (XSLT) Version 1.0.</em></a> Recommendation.</li>
+<li>Flatt, M. (2002). <a href="https://www-old.cs.utah.edu/plt/publications/macromod.pdf"><em>Composable and Compilable Macros: You Want it When?</em></a> ICFP.</li>
+</ul>
+<hr>
+<h2>Appendix: The Prompt That Triggered This Document</h2>
+<blockquote>
+<p>&quot;Yes. Make changes to 426. I want to keep it formal like 420. Don&#39;t talk about prior art in the formalization itself. But add a substantial prior art section for all the decomposed findings; and also, another &#39;conceptual foundations&#39; section is warranted where concepts trace a lineage back.&quot;</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Concurrent Engineering*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Concurrent Engineering</em>, Distilled</h1>
+<p><strong>Next-40 distillation #49 (Batch 2/5 in the third-batch sweep). <em>Concurrent Engineering</em> (CE) appears in SEBoK as a glossary entry and through <em>Process Concurrency, Iteration, and Recursion</em> (lead David Endler, Part 3). CE is &quot;product development in which functions of design engineering, manufacturing engineering and other functions are integrated&quot; so they run in parallel rather than in sequence. Concurrency is one of three Endler primitives (concurrency, iteration, recursion); each is a temporal-axis primitive at the lifecycle rung. CE is canonical Doc 572 Appendix C temporal-concurrency lattice, and is multi-keeper composition (Doc 510 / Doc 604) at the design-manufacturing reconciliation rung. The dual purpose (compress schedule and improve quality) is the affordance-gap-preservation argument under different framing: concurrent integration prevents the design-manufacturing dyad from drifting into incompatible substrate states. Five forms bind.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page:</strong> Concurrent (glossary) and Process Concurrency, Iteration, and Recursion</li>
+<li><strong>URL:</strong> <a href="https://sebokwiki.org/wiki/Process_Concurrency,_Iteration,_and_Recursion">https://sebokwiki.org/wiki/Process_Concurrency,_Iteration,_and_Recursion</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>The <em>Concurrent (glossary)</em> entry gives four definitions: general (happening at the same time), harmonious alignment, concurrent engineering as a product development methodology that parallelizes tasks, and lifecycle application of activities in parallel. The discussion clarifies that concurrent approaches serve a dual purpose: they compress delivery schedules and improve quality by enabling closely-integrated activities to work simultaneously. <em>Process Concurrency, Iteration, and Recursion</em> (lead David Endler, contributing Mike Yokell) defines three primitives. <em>Concurrency</em>: &quot;performing two or more processes in parallel&quot; when they lack strong interdependencies; risk management and measurement run continuously alongside other activities. <em>Iteration</em>: &quot;repeated application and interaction between processes&quot; driven by stakeholder input and evolving constraints; requirements definition and architecture design frequently cycle together. <em>Recursion</em>: applying lifecycle processes &quot;throughout the system structure&quot; at successive hierarchical levels. Together the three support &quot;continuous communication, ongoing learning, and informed decision-making.&quot; Standard: ISO/IEC/IEEE 15288:2023. Position: Part 3 → Life Cycle Models.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Form III (extension) — Lattice Extension (Doc 572) Appendix C temporal-concurrency, with the three Endler primitives as the structural decomposition of the temporal axis.</strong> Concurrency, iteration, and recursion are three distinct temporal-coupling structures: parallel-without-strong-dependency (concurrency), repeated-with-feedback (iteration), nested-at-decomposition-levels (recursion). The three are universal-sibling lattice at the temporal-axis rung (Cluster A eighteenth instance). The corpus&#39;s Appendix C temporal-concurrency formalization can absorb the Endler decomposition as the canonical three-element decomposition of the temporal axis. The corpus had treated temporal-concurrency as a single structure; Endler&#39;s three are the proper sub-decomposition.</p>
+<p><strong>Form III — Substrate-and-Keeper Composition with Multi-Keeper (Doc 510 / Doc 604), eighth instance.</strong> CE composes design-engineering keeper and manufacturing-engineering keeper at a reconciliation rung (the integrated product team or IPT). Each keeper has a complete dyad over its substrate slice; the IPT is the reconciliation rung that the dyads alone cannot articulate. Doc 604 coordination-by-rung rule applies. Eighth Cluster B instance after Docs 588, 595, 600, 602, 603, 613, 655.</p>
+<p><strong>Form II — Affordance Gap (Doc 530), at the inter-discipline rung.</strong> The CE rationale (compress schedule, improve quality) is structurally affordance-gap-preservation between the design-discipline dyad and the manufacturing-discipline dyad. Sequential development lets the two dyads drift into incompatible substrate states (designs that cannot be manufactured efficiently); CE prevents the drift by holding the dyads in continuous co-presence. The &quot;improve quality&quot; benefit is exactly affordance-gap-preservation made explicit; the &quot;compress schedule&quot; benefit is the side-effect of preventing rework that would otherwise be required to close the gap retrospectively.</p>
+<p><strong>Form XI — Co-Production at Sub-Rungs (Doc 573).</strong> CE is co-production at the design rung: the manufacturing-keeper co-produces the design alongside the design-keeper. The product is co-authored in a way that neither keeper alone could produce. This is the cleanest co-production case in the third batch: design-with-manufacturing is canonical Doc 573 co-production at sub-rungs.</p>
+<p><strong>Form X — Institutional Ground (Doc 571).</strong> ISO/IEC/IEEE 15288:2023 codifies concurrency as a lifecycle-model parameter. CE practice itself is enterprise-component (engagement-specific tradition); the standard is organization-component.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>CE definition (parallelized integrated product development) — π / α.</li>
+<li>Concurrency, iteration, recursion as three primitives — π / α as cited; μ / β under corpus as Cluster A eighteenth and Doc 572 Appendix C decomposition refinement.</li>
+<li>Dual purpose (schedule and quality) — π / α as cited; μ / β under corpus as Doc 530 affordance-gap-preservation.</li>
+<li>Continuous risk and measurement co-running — π / α.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p>No structural residuals. The Endler decomposition refines Doc 572 Appendix C; the corpus absorbs the refinement.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Doc 572 Appendix C temporal-concurrency gains a canonical three-element sub-decomposition (concurrency, iteration, recursion). The corpus had treated Appendix C as a single structure; Endler&#39;s three are universal-sibling at the temporal-axis rung. This is a methodology refinement to Doc 572: Appendix C is itself a Cluster A instance with three members.</strong></p>
+<p><strong>Cluster A reaches eighteen instances; Cluster B reaches eight. Both are well past synthesis threshold.</strong></p>
+<p><strong>CE as canonical Doc 573 co-production worked example.</strong> Design-with-manufacturing is the cleanest case observed; worth treating as the canonical example when Doc 573 is consolidated.</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 572 (Lattice Extension, Appendix C decomposition refinement, Cluster A eighteenth), Doc 510 / Doc 604 (Multi-keeper composition, eighth instance, coordination-by-rung), Doc 530 (Affordance Gap, inter-discipline preservation), Doc 573 (Co-Production at Sub-Rungs, canonical worked example), Doc 571 (Institutional Ground).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE &amp; Management, Life Cycle Models).</p>
+<p><strong>Related distillations.</strong> SE-047 (CM — adjacent technical management). SE-089 (Technical Reviews — concurrent application of reviews). SE-035 (Risk Management — risk runs continuously concurrent).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per source). <em>Generic Life Cycle Model</em>, <em>System Realization</em>, <em>Incremental Development Approach</em>, <em>Concurrent (glossary)</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Doc 572 Appendix C three-element sub-decomposition; Doc 573 canonical worked example; Cluster A and B synthesis successors.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Apply refinements; report back for next 40&quot;</em> / <em>&quot;Continue&quot;</em></p>
+</blockquote>
+<p>(SE-091 is one of the third-batch SEBoK distillations. Batch 2/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

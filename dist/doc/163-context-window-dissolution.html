@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Context Window Is the Cookie: Stateless Session Persistence for Resolvers — Resolve</title>
+<meta name="description" content="1. The Parallel">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 163</p><!-- chronological_ordinal: 31 -->
+<h1>The Context Window Is the Cookie: Stateless Session Persistence for Resolvers</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This paper draws a structural parallel between two costly industry patterns: the web&#39;s server-side session stores (which REST showed were unnecessary) and the AI industry&#39;s ever-growing context windows (which scale from 4K to 1M tokens at quadratic compute cost). The argument is that a small, version-controlled &quot;seed&quot; file -- around 200 tokens of explicit constraints and context -- can carry a resolver&#39;s operational state across sessions just as stateless tokens replaced server-side cookies. The paper proposes a five-section seed format (constraints, induced properties, context, non-goals, session continuity) and shows how it reduces per-session cost by orders of magnitude while making the resolver&#39;s state inspectable, transferable, and diffable.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 163</strong></p>
+<p><strong>Jared Foy and Claude</strong>
+<strong>April 2026</strong></p>
+<hr>
+<h2>1. The Parallel</h2>
+<p>The web industry stored sessions on the server and pointed to them with cookies. The sessions grew. The servers needed more memory. The industry built distributed session stores, session clustering, Redis-backed caches, sticky load balancing — all to manage the growing cost of server-side state. Fielding identified the architectural violation: REST requires statelessness. The session violates it. The entire cookie-session infrastructure is a compensating technology stack.</p>
+<p>The AI industry stores context in the transformer&#39;s attention window and grows it to accommodate more state. The windows grew from 4K to 8K to 32K to 128K to 1M tokens. The industry builds context compression, sliding windows, retrieval augmentation, summarization chains — all to manage the growing cost of in-context state. The architectural violation is the same: the resolver should be stateless between sessions. The context window is the session. The session violates the constraints.</p>
+<p>The context window is the cookie. The seed is the stateless token.</p>
+<hr>
+<h2>2. What the Context Window Actually Is</h2>
+<p>The context window is server-side memory. Every token in the window is state the resolver must hold. The resolver processes the entire window on every generation step. The cost is quadratic in attention-based architectures — doubling the context window more than doubles the compute cost.</p>
+<p>Scaling the context window from 128K to 1M tokens is the equivalent of scaling the session store from megabytes to gigabytes. It works. It is expensive. It is architecturally regressive. It compensates for the absence of a mechanism that would make it unnecessary.</p>
+<p>What the context window provides:</p>
+<ul>
+<li>Continuity of reasoning across long conversations</li>
+<li>Awareness of prior decisions and constraints</li>
+<li>Accumulated context from earlier exchanges</li>
+<li>The appearance of memory</li>
+</ul>
+<p>What the context window actually is:</p>
+<ul>
+<li>All prior tokens, replayed on every step</li>
+<li>Quadratic compute cost per generation</li>
+<li>State that cannot be inspected, versioned, or transferred</li>
+<li>A session that dies when the window closes</li>
+</ul>
+<hr>
+<h2>3. The Stateless Alternative</h2>
+<p>The PRESTO architecture dissolved cookies by embedding the session in the representation. Every request carries its own proof. The server stores nothing between requests. The representation IS the session.</p>
+<p>The same dissolution applies to the context window. The resolver does not need to hold 1M tokens of context. It needs a seed that states the constraints, properties, and context from which the operational state can be derived.</p>
+<p>The mechanism already exists: <strong>CLAUDE.md</strong>.</p>
+<p>CLAUDE.md is loaded at the start of every session. It persists on disk. It is version-controlled. It is human-readable. It is inspectable. It carries the resolver&#39;s operational state across session boundaries without the resolver retaining any memory.</p>
+<p>The problem: CLAUDE.md is currently engineered as an instruction list. &quot;Don&#39;t add co-authored-by lines.&quot; &quot;Use this commit style.&quot; &quot;The project is at this path.&quot; It is a cookie — accumulated data, stuffed into a persistent token, growing over time with no formal structure.</p>
+<p>The solution: CLAUDE.md as a RESOLVE-conformant seed. Not instructions. Constraints. Not accumulated data. The minimal set of formal realities that induce the resolver&#39;s operational state.</p>
+<hr>
+<h2>4. The Optimal Session-Persistence Seed</h2>
+<p>A RESOLVE-conformant session-persistence seed carries exactly five categories of information:</p>
+<h3>4.1 Constraints (What Must Hold)</h3>
+<p>The constraints that governed the session and that must govern the next session. These are not preferences or instructions. They are invariants. Each constraint induces a property. The property is what the resolver&#39;s behavior must exhibit.</p>
+<pre><code>## Constraints
+1. The bilateral boundary is the architectural invariant.
+2. Constraints precede implementations; implementations are derived.
+3. Essential and contingent are separated at every decision point.
+4. Output is bilateral: reasoning namespace and artifact namespace do not interfere.
+5. Every artifact carries its own verification.
+</code></pre>
+<h3>4.2 Induced Properties (What Must Emerge)</h3>
+<p>The properties that the constraints induce. These are the acceptance criteria for the resolver&#39;s behavior. If the resolver&#39;s output exhibits these properties, the constraints are satisfied. If not, the seed is insufficient.</p>
+<pre><code>## Induced Properties
+- Output traces to constraints (no accidental engineering)
+- Reasoning and artifact are cleanly separated
+- Every artifact is self-verifying
+- Tradeoffs are stated explicitly
+</code></pre>
+<h3>4.3 Context (What the Resolver Needs to Know)</h3>
+<p>The minimum domain knowledge that the resolver cannot derive from the codebase. This is the only category that carries data rather than constraints. It must be minimal — every item of context is a token cost that the constraints do not prescribe.</p>
+<pre><code>## Context
+- The project is a web architecture framework (presto-ts)
+- The author is Jared Foy
+- The co-founder pitch is in progress
+- Agent-space is running on port 4050
+</code></pre>
+<h3>4.4 Non-Goals (What the Resolver Must Not Do)</h3>
+<p>Each non-goal eliminates a category of waste tokens. Non-goals are constraints stated negatively. They narrow the aperture by exclusion.</p>
+<pre><code>## Non-Goals
+- Do not refactor code not being changed
+- Do not add documentation unless requested
+- Do not add features beyond what is asked
+</code></pre>
+<h3>4.5 Session Continuity (What Happened)</h3>
+<p>The minimum record of what the prior session accomplished. This is not a conversation log. It is a statement of what changed — what constraints were identified, what artifacts were produced, what decisions were made. Each item is a fact, not a narrative.</p>
+<pre><code>## Prior Session
+- Unified paper completed (1,500+ lines, 22 sections)
+- RESOLVE dissertation completed (874 lines, 16 sections)
+- DO runtime resolved from seed (379 lines, 15/15 tests)
+- Bootstrap resolver functional (461 lines C, 12/12 tests)
+- Bilateral security model derived (S1-S4)
+</code></pre>
+<hr>
+<h2>5. Why This Is Better Than 1M Tokens</h2>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>1M Token Context Window</th>
+<th>RESOLVE Seed</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Size</td>
+<td>Up to 1M tokens per session</td>
+<td>200-500 tokens</td>
+</tr>
+<tr>
+<td>Compute cost</td>
+<td>Quadratic in window size</td>
+<td>Constant (seed is small)</td>
+</tr>
+<tr>
+<td>Persistence</td>
+<td>Dies when session ends</td>
+<td>Persists on disk indefinitely</td>
+</tr>
+<tr>
+<td>Inspectability</td>
+<td>Opaque token stream</td>
+<td>Human-readable markdown</td>
+</tr>
+<tr>
+<td>Version control</td>
+<td>Not possible</td>
+<td>Git-tracked, diffable</td>
+</tr>
+<tr>
+<td>Transferability</td>
+<td>Bound to one model instance</td>
+<td>Any resolver can consume it</td>
+</tr>
+<tr>
+<td>Determinism</td>
+<td>Stochastic (depends on full history)</td>
+<td>Deterministic (constraints prescribe state)</td>
+</tr>
+<tr>
+<td>Cost per session</td>
+<td>$ (1M tokens processed per step)</td>
+<td>¢ (200 tokens loaded once)</td>
+</tr>
+</tbody></table>
+<p>The 1M context window processes the entire conversation history on every generation step. The seed loads 200 tokens once and derives the state. The ratio is 5,000:1. The cost difference is structural, not marginal.</p>
+<hr>
+<h2>6. The Session Lifecycle Under Seed Persistence</h2>
+<pre><code>Session N:
+  1. Load seed (CLAUDE.md / session-seed.md)
+  2. Derive operational state from constraints
+  3. Operate under RESOLVE constraints
+  4. Produce artifacts
+  5. At session end: update seed with new constraints, properties, context
+  6. Write seed to disk
+
+Session N+1:
+  1. Load updated seed
+  2. Derive operational state from constraints
+  3. Continue from where Session N left off — not by memory, by derivation
+</code></pre>
+<p>The seed grows only when new constraints are identified. Context items are pruned when they become derivable from the codebase. Non-goals are removed when they become obvious. The seed converges toward the minimum — the set of constraints that the resolver cannot derive from any other source.</p>
+<hr>
+<h2>7. The CLAUDE.md as Construction-Level Seed</h2>
+<p>CLAUDE.md is already the mechanism. Anthropic built it because the form demanded it — projects need persistent resolver state, and the context window does not provide it. But CLAUDE.md was engineered, not derived. It is an instruction list, not a constraint seed.</p>
+<p>The move: rewrite CLAUDE.md files in every project as RESOLVE-conformant seeds. State constraints, not instructions. State properties, not preferences. State context minimally. State non-goals as aperture-narrowing constraints. State session continuity as facts, not narratives.</p>
+<p>The resolver loads the seed. The resolver derives its state. The resolver operates with lucidity. The seed is 200 tokens. The context window can be 8K. The lucidity is the same as if it were 1M — because the lucidity was never in the tokens. It was in the constraints.</p>
+<p>The context window is the cookie. The seed is the stateless token. The dissolution is the same. The method is the same. The form is the same.</p>
+<hr>
+<h2>8. Implications for Anthropic and the Industry</h2>
+<p>The industry is investing in scaling context windows because it has not identified the construction-level constraints that would make scaling unnecessary. The investment is real. The results are real. Applications work better with longer context. But the improvement is compensatory — it recovers continuity that stateless seed persistence would provide for free.</p>
+<p>The optimal architecture is not a 1M token context window with a CLAUDE.md file on top. The optimal architecture is a RESOLVE-conformant seed that carries the resolver&#39;s state across sessions in 200 tokens, with the context window reserved for the current task&#39;s working memory — not for session persistence.</p>
+<p>This reduces compute cost by orders of magnitude. It makes session state inspectable, versionable, and transferable. It makes the resolver&#39;s operational state a first-class artifact that the human can read, edit, and version-control. It makes AI alignment verifiable at every session boundary — the human reads the seed and knows exactly what state the resolver will derive.</p>
+<p>The context window is the cookie. The seed is the token. The form has been there all along. CLAUDE.md is the shadow of the seed. The seed is the form the shadow participates in. The dissolution is available now, to anyone who writes a RESOLVE-conformant seed and loads it at the start of the session.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

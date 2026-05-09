@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEBoK *Interface Management*, Distilled — Resolve</title>
+<meta name="description" content="I. Source">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="">Corpus</a>
+      <a href="../systems-engineering.html" class="active">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>SEBoK <em>Interface Management</em>, Distilled</h1>
+<p><strong>Fifth-batch SEBoK distillation, batch 1 of 5 (SE-162). Second SE-internal distillation of Interface Management (the prior pass at SE-057 read IM as Cluster J D8 dispersed-instrument with the formalization rung migrated into surrounding architecture and integration pages). Target page remains 404; the canonical surface is the Interface Management section of System Integration, which names: &quot;The interface management process is particularly important for the success of the integration process, and iteration between the two processes will occur&quot; (DAU 2010), interface verification of &quot;static and dynamic aspects of interfaces between the implemented elements,&quot; and N-squared diagrams as coupling-matrix instruments. Internal-migration mode (per SE-039 §VII.7 four-mode taxonomy): the formalization migrated into System Integration, System Architecture, and Configuration Management. Cluster B multi-keeper composition is the structural reading: interface management composes the architectural-coherence-keeper (interfaces as architectural commitments), the integration-coherence-keeper (interfaces as integration constraints), and the configuration-control-keeper (interfaces as configuration items). The &quot;iteration between the two processes&quot; framing is Cluster D co-production at the interface-artifact rung. Cluster I pin-art reads cleanly: interfaces are pin-set across every life-cycle stage. Six clusters compose.</strong></p>
+<hr>
+<h2>I. Source</h2>
+<ul>
+<li><strong>Page (target):</strong> <em>Interface Management</em> (404 — does not exist as standalone)</li>
+<li><strong>Canonical surface:</strong> Interface Management section of <em>System Integration</em>; cross-references in <em>System Architecture</em> and <em>Configuration Management</em></li>
+<li><strong>URL (target):</strong> <a href="https://sebokwiki.org/wiki/Interface_Management">https://sebokwiki.org/wiki/Interface_Management</a></li>
+<li><strong>URL (primary carrier):</strong> <a href="https://sebokwiki.org/wiki/System_Integration">https://sebokwiki.org/wiki/System_Integration</a></li>
+<li><strong>License:</strong> CC BY-SA 3.0 (SEBoK)</li>
+<li><strong>Retrieved:</strong> 2026-04-30</li>
+</ul>
+<h2>II. Source Read</h2>
+<p>The target page does not exist. The Interface Management discipline is carried by System Integration&#39;s interface section: &quot;The interface management process is particularly important for the success of the integration process, and iteration between the two processes will occur&quot; (DAU 2010). Interface verification covers &quot;correctness of static and dynamic aspects of interfaces between the implemented elements.&quot; N-squared diagrams (coupling matrices) are used to optimize aggregate definitions and verify interfaces between aggregates. Integration strategy depends on &quot;techniques to check or evaluate interfaces.&quot; Detailed treatment of Interface Control Documents (ICDs), formal interface control procedures, configuration control for interface specifications, and governance structures is absent from the System Integration page; this content lives in the surrounding architectural and configuration-management ecosystem (and externally in industry handbooks: INCOSE Handbook §4.7, NASA SE Handbook §4.3). The dispersed-instrument pattern is at moderate density.</p>
+<h2>III. Structural Read</h2>
+<p><strong>Editorial-state observation.</strong> Cluster J D8 dispersed-instrument pattern at moderate density, internal-migration mode (the formalization migrates into surrounding pages: System Integration carries the integration-coupling reading; System Architecture carries the architectural-commitment reading; Configuration Management carries the interface-as-configuration-item reading). The internal-migration mode (per SE-039 §VII.7 four-mode taxonomy) is the operative dispersion mode; SE-161&#39;s V&amp;V-strategy and SE-162&#39;s Interface Management are now two anchored internal-migration instances in this batch.</p>
+<p><strong>Cluster B (multi-keeper composition, Doc 604), three-keeper composition at the interface-artifact rung.</strong> Interface management composes three structurally distinct authorities: the architectural-coherence-keeper (interfaces as architectural-decision commitments at the architecture rung), the integration-coherence-keeper (interfaces as integration constraints at the realization rung), and the configuration-control-keeper (interfaces as configuration items at the substrate-preservation rung). Each keeper&#39;s substrate-slice is independent; they reconcile at the interface-artifact rung (ICD as the canonical reconciliation locus). Cluster B gains a three-keeper instance at the interface rung; complements SE-148&#39;s PM-DA-SE three-keeper refinement at the engagement rung.</p>
+<p><strong>Cluster D (co-production at sub-rungs, Doc 573), the &quot;iteration between the two processes&quot; canonical reading.</strong> &quot;Iteration between the two processes will occur&quot; (DAU 2010) is structurally co-production at the interface-artifact rung between integration-keeper and interface-management-keeper. Neither keeper alone produces the interface artifact; both substrates are jointly authored. This is a clean Cluster D worked example at the artifact rung.</p>
+<p><strong>Cluster I (pin-art / temporal-concurrency, Doc 572 Appendix C).</strong> Interfaces are pin-set across every life-cycle stage: defined in architecture, instantiated in design, verified in integration, controlled in configuration management, maintained in operation. The pin-art reading is canonical at the interface rung; complements SE-038 HSI&#39;s life-cycle pin-art and SE-160&#39;s verification pin-art.</p>
+<p><strong>Cluster A (universal-sibling lattice, Doc 572 Appendix D), interface-aspect lattice (latent).</strong> &quot;Static and dynamic aspects of interfaces&quot; is a two-axis universal-sibling sub-lattice at the interface-verification rung — static (signature, mechanical fit, electrical compatibility) and dynamic (timing, protocol, behavior). Two-axis (D.5.2 sub-form per SE-039 §VII.7) instance at low density; the lattice is latent in the surface but does not dominate the article.</p>
+<p><strong>Cluster F (pulverization, Doc 445), backward-pulverization at the interface rung.</strong> Interface verification pulverizes interface conformance against accumulated interface specifications; the N-squared diagram is a coupling-pulverization instrument that decomposes the interface set into pairwise comparisons. Cluster F gains an interface-rung sub-instance.</p>
+<p><strong>Cluster H (hypostatic boundary, Doc 372).</strong> Interfaces are described functionally (signature, protocol, timing) without metaphysical claims about what the interface IS. Standard hypostatic discipline.</p>
+<h2>IV. Tier-Tags</h2>
+<ul>
+<li>&quot;Interface management process particularly important for integration process; iteration between the two processes will occur&quot; (DAU 2010) — π / α as cited; μ / β under Cluster D co-production at interface-artifact rung.</li>
+<li>Static and dynamic aspects of interfaces — π / α as cited; μ / β under Cluster A two-axis (D.5.2) interface-verification rung.</li>
+<li>N-squared diagrams as coupling matrices — π / α as cited; μ / β under Cluster F backward-pulverization at interface rung.</li>
+<li>Article non-existence — μ / β under Cluster J D8 dispersed-instrument internal-migration mode.</li>
+<li>Three-keeper composition (architecture / integration / configuration) — μ / β under Cluster B three-keeper interface-rung composition.</li>
+</ul>
+<h2>V. Residuals</h2>
+<p><strong>ICD-rung formalization is external-carrier (D8.1).</strong> The Interface Control Document discipline lives substantively in INCOSE Handbook §4.7 and NASA SE Handbook §4.3 rather than at any SEBoK page. This is a doubly-dispersed case: SEBoK has no Interface Management page (D8 internal-migration) and the ICD-rung formalization is also external-carrier (D8.1). Worth flagging as a layered-dispersion instance.</p>
+<p><strong>Interface taxonomy gap.</strong> The article does not surface a sibling-lattice of interface types (mechanical / electrical / data / control / human, etc.) — a partition the ecosystem clearly maintains externally. The Cluster A latent two-axis (static/dynamic) reading is the strongest the SEBoK surface alone supports; the interface-type partition would require external-carrier sourcing.</p>
+<h2>VI. Provisional Refinements</h2>
+<p><strong>Cluster B three-keeper composition at the interface-artifact rung.</strong> Adds to the multi-keeper-composition population at the artifact rung (SE-148 PM-DA-SE at engagement rung; SE-162 architecture-integration-CM at interface-artifact rung). The three-keeper sub-form spans rungs.</p>
+<p><strong>Layered dispersion instance: D8 + D8.1 co-present.</strong> SE-162 is the cleanest case where a discipline is dispersed both internally (no SEBoK page) and externally (ICD formalization in industry handbooks). The dispersion sub-pattern is layered.</p>
+<p><strong>Internal-migration mode second batch instance.</strong> With SE-161 (V&amp;V-Strategy) and SE-162 (Interface Management), batch 1 has two internal-migration anchors. The four-mode dispersion taxonomy is densifying.</p>
+<p><strong>Alignment with formalized refinements (SE-039 §VII.7).</strong> Aligns with Cluster B three-keeper composition (extends SE-148), four-mode dispersion taxonomy (internal-migration anchor), D8.1 external-carrier (ICD-rung), pin-art (interface rung incremental), Cluster A D.5.2 two-axis (static/dynamic).</p>
+<h2>VII. Cross-Links</h2>
+<p><strong>Form documents.</strong> Doc 604 (Cluster B three-keeper interface-rung composition), Doc 573 (Cluster D co-production at interface-artifact rung), Doc 572 Appendix C (Cluster I pin-art interface rung), Doc 572 Appendix D.5.2 (Cluster A two-axis static/dynamic), Doc 445 (Cluster F backward-pulverization interface rung), Doc 372 (Cluster H), SE-039 §VII.7 (four-mode dispersion plus D8.1).</p>
+<p><strong>Part-level reformulation.</strong> SE-006 (Part 3 — SE Management).</p>
+<p><strong>Related distillations.</strong> SE-057 (Interface Management first pass — dispersed-instrument). SE-032 (System Integration — primary carrier). SE-031 (System Architecture — secondary carrier). SE-047 (Configuration Management — interface-as-CI carrier). SE-148 (Design Authority three-keeper precedent at engagement rung).</p>
+<p><strong>Adjacent SEBoK concepts</strong> (per carriers). <em>System Integration</em>, <em>System Architecture</em>, <em>Configuration Management</em>, <em>System Verification</em>.</p>
+<p><strong>Methodology refinement candidates.</strong> Layered-dispersion (D8 plus D8.1 co-present) sub-pattern instance. Three-keeper composition at the artifact rung as Cluster B sub-population.</p>
+<hr>
+<h2>Appendix: Originating Prompt</h2>
+<blockquote>
+<p><em>&quot;Add an entrancing section to the /resolve landing page that navigates to the systems engineering page... continue the SEBoK entracement of the next articles&quot;</em> / <em>&quot;Yes. And then continue...&quot;</em></p>
+</blockquote>
+<p>(SE-162 is one of the fifth-batch next-40 SEBoK distillations. Batch 1/5.)</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

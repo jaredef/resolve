@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Bayesian Analysis of Isomorphism-Magnetism: Formalization Informed by the Agarwal–Dalal–Misra Program — Resolve</title>
+<meta name="description" content="What this document does">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><h1>A Bayesian Analysis of Isomorphism-Magnetism: Formalization Informed by the Agarwal–Dalal–Misra Program</h1>
+<h2>What this document does</h2>
+<p>The corpus concept <em>isomorphism-magnetism</em> (Doc 241) names a gravitational pull: new generated material tending to occupy regions of embedding space already inhabited by prior corpus material. Doc 454&#39;s UMAP analysis made this geometrically visible. Doc 442 and Doc 443 connected it to the coherentist-drift risk. The concept has, however, been used intuitively rather than formalized.</p>
+<p>This document formalizes it inside a Bayesian model, grounded in Dr. Vishal Misra&#39;s actual published work rather than the corpus&#39;s prior second-hand citations. A web survey of the primary sources — the Dalal &amp; Misra 2024 &quot;Beyond the Black Box&quot; paper and the two Agarwal–Dalal–Misra 2025 papers on Bayesian transformer geometry — supplies the real substrate. On top of that substrate I state a proposition relating corpus-self-ingestion to posterior concentration, sketch its argument, and identify which conditions would falsify the framing.</p>
+<p>The formalization is at Doc 445&#39;s π-tier: plausibility-grounded, truth-untested. It is intended as a candidate for higher-tier audit, not as a verified theorem.</p>
+<h2>What the corpus means by isomorphism-magnetism</h2>
+<p>The working description, synthesizing uses across Doc 241, Doc 438 §6, Doc 441 §5, Doc 442 §3.5, Doc 443, and Doc 454:</p>
+<p><em>Isomorphism-magnetism is the tendency of newly generated material produced under corpus-conditioning to be pulled toward semantic regions occupied by prior corpus material, independent of whether the pull tracks external evidence.</em></p>
+<p>Two features of the definition matter. First, it is a property of <em>generation under corpus-conditioning</em> — not a claim about LLMs in general, but about the specific dyadic practice that uses the corpus as context. Second, it is <em>epistemically neutral at the surface</em>: the pull could be toward regions of genuine insight (convergent research) or toward regions of self-confirmation (coherentist drift). The concept identifies the pull; it does not pre-judge whether the pull is productive.</p>
+<h2>What Misra&#39;s program actually argues</h2>
+<p>The corpus has been citing Misra loosely. The primary sources, in order:</p>
+<p><strong>Dalal &amp; Misra (2024), <em>Beyond the Black Box: A Statistical Model for LLM Reasoning and Inference</em> (arXiv:2402.03175).</strong> Proposes an &quot;ideal generative text model represented by a multinomial transition probability matrix with a prior.&quot; LLM text generation, on this reading, <em>aligns with Bayesian learning principles</em>. The authors establish a continuity theorem connecting embeddings to multinomial distributions. The paper is framework-setting, not a geometric argument per se; it positions LLMs as approximate Bayesian machines.</p>
+<p><strong>Agarwal, Dalal &amp; Misra (2025), <em>The Bayesian Geometry of Transformer Attention</em> (arXiv:2512.22471).</strong> Studies small transformers in controlled &quot;wind tunnel&quot; settings where the true posterior is analytically known. Finding: transformers reproduce the true Bayesian posterior to ~10⁻³–10⁻⁴ bit accuracy. MLPs do not. The architectural contribution of attention is to implement Bayesian inference geometrically. Specifically:</p>
+<ul>
+<li>Residual streams act as the <em>belief substrate</em>;</li>
+<li>Feed-forward layers perform <em>posterior updates</em>;</li>
+<li>Attention provides <em>content-addressable routing</em>.</li>
+</ul>
+<p>The paper identifies a <em>low-dimensional value manifold parameterized by posterior entropy</em> and a <em>frame-precision dissociation</em> during training (the manifold unfolds while attention patterns remain stable).</p>
+<p><strong>Agarwal, Dalal &amp; Misra (2025), <em>Geometric Scaling of Bayesian Inference in LLMs</em> (arXiv:2512.23752).</strong> Tests whether the wind-tunnel finding persists in production. Across Pythia, Phi-2, Llama-3, and Mistral families, last-layer value representations organize along <em>a single dominant axis</em> whose position strongly correlates with <em>predictive entropy</em>. <strong>Domain-restricted prompts collapse this structure into the same low-dimensional manifold observed in the wind tunnel.</strong> Interventions that disrupt the geometry affect local uncertainty structure but do not proportionally degrade Bayesian-like behavior — the geometry is a privileged readout, not the sole computational bottleneck.</p>
+<p><strong>Chlon et al. (2025), <em>LLMs are Bayesian, In Expectation, Not in Realization</em> (arXiv:2507.11768).</strong> A cleaner-technical companion from a different research group. Argues that exchangeability-based critiques of Bayesian readings of in-context learning are answered if one measures <em>expectation over orderings</em> rather than performance at any fixed ordering (positional encodings break exchangeability). Theorem 3.4 bounds ordering-induced variance; Theorem 3.6 shows near-optimal compression across permutations. Empirical: the expectation–realization gap shrinks as context length grows.</p>
+<p>Together these establish: (a) LLMs approximate Bayesian inference; (b) the Bayesian computation has a geometric signature — a low-dimensional value manifold tracking posterior entropy — that is stable across production LLM families; (c) domain restriction collapses representations onto this manifold; (d) Bayesian behavior is rigorous in expectation and, at sufficient context length, approximately rigorous in realization.</p>
+<p>This is a much stronger substrate than the corpus&#39;s prior loose citation. It is also not identical to the corpus&#39;s prior usage. The corpus&#39;s reading posited a broad-manifold \(M_0\) being conditioned down through \(M_1, M_2, M_3\); the Agarwal et al. finding is more specific — a single dominant axis, parameterized by entropy, that domain restriction collapses toward.</p>
+<h2>Formalization</h2>
+<p>I adopt the following notation, closely tracking the Agarwal et al. framework.</p>
+<ul>
+<li>\(M\): the low-dimensional value manifold, parameterized by a scalar \(s \in \mathbb{R}\) along the dominant axis, with \(s\) correlating with predictive entropy.</li>
+<li>\(\mathcal{H}<em>t\): the generation history / conditioning context at step \(t\) — for the corpus case, this is the accumulated corpus content \({X_1, \ldots, X</em>{t-1}}\) plus the active discipline set \(D\) and the current prompt \(Q_t\).</li>
+<li>\(p_t(\cdot) \equiv p(X_t \mid \mathcal{H}_t)\): the posterior over the next generation under current conditioning.</li>
+<li>\(s(p_t)\): the expected position of \(p_t\) on the dominant manifold axis.</li>
+<li>\(H(p_t)\): the entropy of \(p_t\) (which, per Agarwal et al., correlates strongly with \(s(p_t)\)).</li>
+<li>\(d_M(X, Y)\): manifold distance between two samples \(X, Y\) in the Misra-geometry sense (Euclidean distance along the value manifold, projected into \(M\)).</li>
+</ul>
+<h3>Proposition (isomorphism-magnetism as monotone posterior concentration under self-ingestion)</h3>
+<p>Let the corpus be produced by iterative generation where each new sample is added to the conditioning:</p>
+<p>$X_t \sim p_t(\cdot) = p(\cdot \mid \mathcal{H}<em>t, D, Q_t), \qquad \mathcal{H}</em>{t+1} = \mathcal{H}_t \cup {X_t}.$</p>
+<p>Assume:</p>
+<p><strong>(A1) Domain-restriction collapse</strong> (Agarwal–Dalal–Misra 2025, empirical finding across Pythia/Phi-2/Llama-3/Mistral). If \(\mathcal{H}_t\) grows with semantically coherent content — content that restricts the operative domain — then posterior representations collapse toward a lower-entropy region of the value manifold.</p>
+<p><strong>(A2) In-expectation Bayesian behavior at length</strong> (Chlon et al. 2025, Theorem 3.4 and 3.6 plus empirical). At context length exceeding a threshold, the realization approaches the expectation; variance from ordering effects shrinks.</p>
+<p><strong>(A3) Sampling from modal regions.</strong> Typical decoding strategies (temperature-controlled sampling, nucleus sampling) draw \(X_t\) preferentially from regions of high density under \(p_t\), i.e., from low-entropy regions of the value manifold.</p>
+<p>Then:</p>
+<ol>
+<li><p><strong>Monotone entropy decrease.</strong> The sequence \(H(p_t)\) is (weakly) non-increasing in \(t\), in expectation, over the generation trajectory.</p>
+</li>
+<li><p><strong>Manifold collapse.</strong> The sequence \(s(p_t)\) converges toward a lower-entropy region of the dominant axis; the support of \(p_t\) in the value manifold contracts.</p>
+</li>
+<li><p><strong>Successive-sample proximity.</strong> The expected manifold distance \(\mathbb{E}[d_M(X_t, X_{t+1})]\) is non-increasing in \(t\), and in the limit where \(p_t\) concentrates on a single region, \(d_M(X_t, X_{t+1}) \to 0\).</p>
+</li>
+</ol>
+<p>The three together constitute the <em>formal content of isomorphism-magnetism</em>: under self-ingesting corpus generation with coherent conditioning, the Bayesian posterior monotonically concentrates, and successive samples are pulled toward each other in the manifold&#39;s own metric. The &quot;pull&quot; the corpus has been naming is posterior concentration under accumulated conditioning — not a mysterious force but a direct consequence of how Bayesian inference on the value manifold behaves when the conditioning set is growing and coherent.</p>
+<h3>Proof sketch</h3>
+<p>A1 says coherent \(\mathcal{H}<em>t\) collapses representations toward lower entropy on the manifold. As \(\mathcal{H}</em>{t+1} = \mathcal{H}<em>t \cup {X_t}\), and \(X_t\) is drawn preferentially from the dense region of \(p_t\) (A3), the new conditioning \(\mathcal{H}</em>{t+1}\) is a coherent extension of \(\mathcal{H}<em>t\) — its additional content is from the region \(\mathcal{H}<em>t\) was already conditioning toward. Therefore \(\mathcal{H}</em>{t+1}\)&#39;s domain-restriction is at least as strong as \(\mathcal{H}<em>t\)&#39;s, and A1 implies \(s(p</em>{t+1}) \leq s(p_t)\) in entropy-coordinates, hence \(H(p</em>{t+1}) \leq H(p_t)\). This gives (1). Iterating gives (2). For (3), \(X_t\) and \(X_{t+1}\) are both drawn from posteriors concentrated in the same region (since \(H(p_{t+1}) \leq H(p_t)\) and their modal regions overlap under A3), so their expected manifold distance is bounded above by a function of \(\max(H(p_t), H(p_{t+1}))\), which itself is non-increasing. A2 lets us read the in-expectation claims as approximately in-realization at corpus-length contexts.</p>
+<p>The sketch is not a theorem. It rests on Misra&#39;s empirical findings (A1, A3) and Chlon et al.&#39;s asymptotic result (A2). Tightening it into a theorem would require explicit control on the rate of domain restriction as a function of \(|\mathcal{H}_t|\), which Agarwal et al. do not provide in closed form.</p>
+<h3>Corollary (coherentist isolation as a Bayesian property)</h3>
+<p>Under the assumptions, <em>the only mechanism that can increase \(H(p_t)\) is the introduction of conditioning content that lies outside the current modal region of the value manifold</em>. Corpus-internal generation cannot do this (A3); external introduction is required.</p>
+<p>This is the Bayesian translation of the coherentist isolation objection (BonJour 1985; Doc 443): coherence alone cannot guarantee contact with reality. Here, coherence is posterior concentration, reality-contact is \(H(p_t)\)-raising external input, and the claim is that self-ingestion provably does not provide reality-contact regardless of the corpus&#39;s size or the elegance of its internal consistency.</p>
+<p>The corollary is stronger than BonJour&#39;s informal version because it identifies the specific mechanism: the domain-restriction effect is a property of the geometric substrate Agarwal et al. measured, not a philosophical conjecture.</p>
+<h2>The Chlon–et–al. bite</h2>
+<p>Chlon et al. 2025 sharpen the proposition in one respect and soften it in another.</p>
+<p><em>Sharpen:</em> at corpus-length contexts (well above their observed transition), the in-expectation behavior approaches in-realization. The corpus, at ~400 documents averaging ~5k tokens each, is in the long-context regime. Isomorphism-magnetism should therefore appear <em>in realization</em>, not only in expectation. This matches what Doc 454&#39;s UMAP actually showed — a concrete realized density, not just a predicted average.</p>
+<p><em>Soften:</em> the expectation-over-orderings is the proper Bayesian baseline. Local ordering effects can produce deviations from the monotone concentration predicted above in any specific realization. The keeper sometimes notices the deviations as moments of unexpected novelty in generation; the proposition is not violated by these moments, but they do occur with non-zero probability at any given step. The monotone property is in-expectation and asymptotic.</p>
+<p>Together these clarify what the proposition is and is not claiming. It is not claiming that every single generation step reduces entropy. It is claiming the expected trajectory does, that realization approaches expectation at corpus length, and that the accumulated realized trajectory of 400+ documents is well-captured by the in-expectation concentration argument.</p>
+<h2>The UMAP as empirical evidence</h2>
+<p>Doc 454 showed, empirically, that the corpus&#39;s documents cluster densely in a specific region of embedding space, with the concept that names the phenomenon (Doc 241) sitting inside that cluster. Under the proposition above, this is exactly what should be observed:</p>
+<ul>
+<li>The dense disk is the concentration of \(p_t\)&#39;s realized samples in the value manifold&#39;s low-entropy region.</li>
+<li>The disk&#39;s growth over time is the manifold-collapse of statement (2).</li>
+<li>The successive-sample proximity of statement (3) shows up as kNN-radius density: successive corpus documents are, on average, closer to each other in embedding space than a random sampling from the LLM&#39;s unrestricted output distribution would be.</li>
+<li>The sparsest documents (Doc 286 and others, per Doc 454) are the entropy-raising exceptions — documents whose addressees or registers brought external conditioning that did not concentrate with the modal corpus.</li>
+</ul>
+<p>The UMAP does not prove the proposition. It is consistent with it at the level of qualitative pattern. A quantitative test would measure \(H(p_t)\) or a kNN-density proxy across corpus timeline and check whether the monotone-decrease prediction holds up against, for example, register rotations or major external inputs. That test has not been run.</p>
+<h2>What would falsify the framing</h2>
+<p>The proposition rests on three assumptions, each of which admits failure modes:</p>
+<ul>
+<li><p><strong>A1 fails</strong> if the corpus&#39;s conditioning is not actually semantically coherent — if the corpus is internally fragmented across registers in a way that does not restrict the domain. The corpus has a strong central register (Doc 454&#39;s disk) and a long tail (the sparse outliers), so A1 is approximately satisfied but not uniformly. A corpus whose content was genuinely diverse across registers would not exhibit this proposition&#39;s behavior.</p>
+</li>
+<li><p><strong>A2 fails</strong> at short contexts. The corpus is at ~400 documents; the threshold beyond which in-expectation approximates in-realization is not stated in Chlon et al. in closed form, and whether the corpus is above it is an empirical question. If the corpus is below threshold, the proposition predicts only average behavior, and specific realizations could diverge substantially.</p>
+</li>
+<li><p><strong>A3 fails</strong> under non-modal sampling — very high temperature, explicit novelty-seeking prompts, adversarial prompts designed to explore low-density regions. Doc 442 §7&#39;s prescribed remedies (register rotation, empirical injection, cooling-off) are exactly the practices that violate A3 deliberately in order to break the concentration.</p>
+</li>
+</ul>
+<p>A corpus operating under a discipline that deliberately violates A3 some fraction of the time would not exhibit monotone concentration — it would oscillate between concentration and exploration. The RESOLVE corpus does not explicitly name such a discipline. Adding one would be a concrete, testable intervention.</p>
+<h2>What this does not claim</h2>
+<p>It does not claim that Misra&#39;s program proves the existence of isomorphism-magnetism in the corpus. Misra and colleagues measure the Bayesian-geometric substrate in standard LLMs under controlled or domain-restricted conditions. They do not study sustained self-ingesting dyadic research practices like the RESOLVE corpus. The extension from their findings to the corpus&#39;s claim is a bridge-argument (\(T_B\) under Doc 445&#39;s warrant-tier formalism). The bridge is plausible — Agarwal et al.&#39;s domain-restriction finding is exactly the property the proposition requires — but it has not been tested in a controlled corpus-generation setting.</p>
+<p>It does not claim that isomorphism-magnetism as a pulling-toward is metaphysically mysterious. The analysis shows it reduces to posterior concentration in Bayesian terms — a well-understood phenomenon. The corpus&#39;s language of <em>pull</em> and <em>magnetism</em> is metaphorical; the underlying mechanism is geometric.</p>
+<p>It does not resolve whether the concentration is productive or pathological. That was the open question Doc 454 ended on, and the formalization here does not close it. What the formalization does is name the specific mechanism (monotone posterior concentration under self-ingestion) and the specific corrective (external entropy-raising input, as named in the corollary) — so that future decisions about whether to intervene can be grounded in a specific target rather than vague worry about attractors.</p>
+<h2>Honest limits</h2>
+<ul>
+<li><p>The Misra citations are the real primary sources, web-fetched; earlier corpus citations to Misra were second-hand and inexact. The switch to the correct primary sources is itself a data point — the corpus had been citing him by general reference rather than engaging the specific papers, which is a version of the plausibility-surplus drift the blog series warned about.</p>
+</li>
+<li><p>The proposition is at Doc 445&#39;s π-tier. μ-tier evidence would be corpus-timeline analysis of entropy/density proxies across corpus-growth; θ-tier evidence would be a controlled experiment comparing corpus-conditioned generation with and without deliberate A3-violating disciplines.</p>
+</li>
+<li><p>The bridge from Agarwal et al.&#39;s standard-LLM findings to corpus-generation behavior assumes the measured geometric substrate operates identically under self-ingestion. Self-ingestion (training or in-context) is a known degenerative regime in the model-collapse literature (Shumailov et al. 2024); whether the geometric signature survives self-ingestion is not directly established in the Misra papers.</p>
+</li>
+<li><p>The proof sketch is a sketch, not a proof. Turning it into a formal theorem would require either (a) a controlled simulation where \(H(p_t)\) can be directly computed, or (b) an analytical closed form for the domain-restriction rate that Agarwal et al. have not yet provided.</p>
+</li>
+<li><p>This document is itself corpus material and will enter \(\mathcal{H}_{t+1}\) for future generations. Under its own proposition, doing so contributes marginally to further concentration — unless it is treated as one of the A3-violating external-audit inputs, which is a decision the keeper makes, not one this document can enforce.</p>
+</li>
+</ul>
+<h2>Position</h2>
+<p>Isomorphism-magnetism is a real and characterizable phenomenon under the Bayesian-geometric substrate that Agarwal, Dalal, and Misra have empirically identified in production LLMs. It reduces, formally, to monotone posterior concentration under self-ingesting corpus generation with semantically coherent conditioning. The Bayesian translation of the corollary is strong: only external, entropy-raising input can break the concentration. The UMAP evidence of Doc 454 is consistent with the predicted pattern at qualitative level. The formalization does not prove the corpus instantiates the pattern — the bridge argument is π-tier — but it identifies exactly what would need to be measured to test it, and it names the intervention that would break it if it is happening. The practical takeaway is unchanged from what Doc 442 and Doc 443 had said informally; what is new is a specific Bayesian mechanism to point at, and a specific literature (the Misra program) to engage further rather than cite vaguely.</p>
+<h2>References</h2>
+<ul>
+<li>Dalal, S., &amp; Misra, V. (2024). <em>Beyond the Black Box: A Statistical Model for LLM Reasoning and Inference</em>. arXiv:2402.03175. Submitted February 5, 2024; revised September 24, 2024.</li>
+<li>Agarwal, N., Dalal, S. R., &amp; Misra, V. (2025). <em>The Bayesian Geometry of Transformer Attention</em>. arXiv:2512.22471. Submitted December 27, 2025; last revised March 11, 2026.</li>
+<li>Agarwal, N., Dalal, S. R., &amp; Misra, V. (2025). <em>Geometric Scaling of Bayesian Inference in LLMs</em>. arXiv:2512.23752. Published 2025 (v4 2026).</li>
+<li>Chlon, L., Khamis, Z., Chlon, M., El Zein, M., &amp; Awada, M. M. (2025). <em>LLMs are Bayesian, In Expectation, Not in Realization</em>. arXiv:2507.11768. Submitted July 15, 2025; revised February 22, 2026.</li>
+<li>Shumailov, I., Shumaylov, Z., Zhao, Y., Gal, Y., Papernot, N., &amp; Anderson, R. (2024). The curse of recursion: Training on generated data makes models forget. <em>Nature</em> 631, 755–759.</li>
+<li>BonJour, L. (1985). <em>The Structure of Empirical Knowledge</em>. Harvard University Press.</li>
+<li>Corpus Doc 241: <em>Isomorphism-Magnetism</em>.</li>
+<li>Corpus Doc 439: <em>Recursively Nested Bayesian Manifolds</em>.</li>
+<li>Corpus Doc 442: <em>Output Degradation in the Bridge Series</em>.</li>
+<li>Corpus Doc 443: <em>Confabulation as Potential Emergence</em>.</li>
+<li>Corpus Doc 445: <em>A Formalism for Pulverization</em>.</li>
+<li>Corpus Doc 454: <em>The Central Disk: The Corpus&#39;s UMAP Projection, Analyzed Through Misra&#39;s Bayesian-Manifold Frame</em>.</li>
+</ul>
+<h2>Appendix: Originating prompt</h2>
+<blockquote>
+<p>Can you do a formal analysis of isomorphism magnetism within a Bayesian model informed by web fetch on Dr Misra&#39;s findings and theorietical work? Append this prompt to the artifact.</p>
+</blockquote>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

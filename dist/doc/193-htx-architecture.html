@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An Architectural Style for Progressive Representational State Transfer with On-Demand Code — Resolve</title>
+<meta name="description" content="Abstract">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><!-- chronological_ordinal: 1 -->
+<h1>An Architectural Style for Progressive Representational State Transfer with On-Demand Code</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This is the central white paper introducing PRESTO, an architectural style that treats Fielding&#39;s code-on-demand constraint not as a binary option but as a progressive spectrum of seven layers, from static HTML through WebAssembly. A developer authors a &quot;source representation&quot; -- a template file declaring both server-side data needs and client-side behaviors -- which a resolution pipeline transforms into a complete HTML document before the browser ever sees it. The server controls what capabilities each client receives, and each layer of client-side power is independently adoptable without abandoning the layers below it. Six independent implementations in six programming languages demonstrate the style is language-agnostic, converges through independent implementation, and runs on minimal hardware with no build infrastructure.</p>
+</blockquote>
+<p><strong>Jared Foy</strong>
+<strong>April 2026</strong></p>
+<hr>
+<h2>Abstract</h2>
+<p>In 2000, Dr. Roy Fielding identified the architectural style underlying the World Wide Web as Representational State Transfer (REST), defined by six constraints — the last of which, code-on-demand, he designated as optional. In the twenty-six years since, the dominant approach to web application development has not extended this optional constraint but abandoned the others: client-rendered applications that violate statelessness, send empty representations, and rely on out-of-band API knowledge rather than hypermedia-driven discovery. The design space that REST&#39;s constraints permit — including the full progressive exploration of code-on-demand — has remained largely unmapped.</p>
+<p>This paper introduces the Progressive Representational State Transfer with On-demand code (PRESTO) architectural style, which formalizes code-on-demand as a progressive spectrum rather than a binary option. In PRESTO, client-side capability forms a monotonically increasing series of layers, from static hypermedia to WebAssembly-powered native computation, where each level is independently adoptable, mediated by the RESTful representation, and authorized by the server. The architecture does not introduce new protocols or mechanisms. It maps the design space that REST&#39;s existing constraints already permit when code-on-demand is explored to its full extent.</p>
+<p>The style introduces the concept of a <em>source representation</em> — an authoring artifact that declares both server affordances (data resolution, module engagement, layout composition) and client affordances (discoverable interactions, negotiable channels, activatable behaviors). A resolution pipeline transforms this bilateral form into a unilateral <em>resolved representation</em>: a complete hypermedia document in which the server&#39;s affordances have been consumed and only the client&#39;s affordances remain as discoverable structure.</p>
+<p>On the client, delivered code organizes into scoped behavioral units that coordinate state locally and signal changes lazily to the server. The client is autonomous between syncs. The server is authoritative over persistence.</p>
+<p>We evaluate this design through six independent implementations in six programming languages (TypeScript, Go, Elixir, Python, Rust, C), demonstrating that the specification is language-agnostic, converges through independent implementation, and produces conformant engines in as few as 3,122 lines of code operating within 11 megabytes of memory. The full progressive spectrum operates within the resource budget of a single-board computer with zero build infrastructure.</p>
+<hr>
+<h2>1. Introduction</h2>
+<p>A server-rendered HTML string is indifferent to the attributes it carries. A server that resolves a database query and populates an HTML template doesn&#39;t care whether that template contains declarative client-side attributes — the attributes are just characters in a string. The server&#39;s job is to resolve data and produce a complete representation. The client&#39;s job is to interpret what it receives. This separation — behavior embedded in a representation that only activates at the destination — is what REST calls code-on-demand. Dr. Fielding made it the only optional constraint in the style.</p>
+<p>This paper explores what happens when it is no longer optional, but progressive: each layer of client capability building on the previous, from declarative attributes to scoped scripts to pushed code to authenticated data channels to WebAssembly binaries — all mediated by the same initial representation, all authorized by the server, none requiring the previous layer to be abandoned.</p>
+<p>The five mandatory constraints (client-server, statelessness, cacheability, uniform interface, layered system) produced the properties that made the web successful: scalability, independent deployment, simplicity, and modifiability. The optional sixth was adopted in practice. JavaScript became ubiquitous. But its architectural implications were not explored progressively: code-on-demand was treated as a binary capability, present or absent, rather than as a spectrum of server-mediated client extension.</p>
+<p>As client-side JavaScript matured, a class of applications emerged that prioritized rich interactivity: client-rendered interfaces, client-managed routing, client-side state, with the server providing structured data through API endpoints. This approach produced capable applications and a productive ecosystem.</p>
+<p>It also shifted architectural authority from the server to the client. The server no longer controlled the representation, the interaction surface, or the code the client executed. The trade-off was accepted in exchange for instant navigation, optimistic updates, persistent client state, and rich interactive patterns that server-rendered HTML alone could not provide.</p>
+<p>The architectural style presented here seeks not to critique the applications founded upon the prevailing technique. Rather, it observes that the design space within REST&#39;s constraints contains a progressive path that was not explored, one where code-on-demand is not binary (either the client runs no code or all the code) but a layered spectrum, server-mediated and independently adoptable.</p>
+<p>The interactivity that motivated the client-authoritative approach becomes achievable along this path without the architectural concessions it required. The absence of this path from the design space was not a limitation of REST&#39;s constraints. It was an unexplored region within them.</p>
+<p>Carson Gross, in <em>Hypermedia Systems</em> (2023), demonstrated a portion of this space: declarative HTML attributes that achieve interactive patterns without imperative JavaScript. The work presented here extends this observation across the full spectrum, from declarative attributes to WebAssembly computation, mapping the architectural space that REST&#39;s constraints permit when code-on-demand is explored to its progressive extent.</p>
+<h3>1.1 What This Paper Examines</h3>
+<p>The individual technologies are established. Server-rendered HTML has existed since the web&#39;s inception. WebSocket communication is mature. WebAssembly runs in production at scale. Code-on-demand was identified as a REST constraint in 2000. What has not existed is their <em>composition into a unified architecture derived from first principles</em>, one where each capability is formally layered, independently adoptable, and mediated by the RESTful representation.</p>
+<p>Specifically, the PRESTO style introduces:</p>
+<p><strong>Progressive code-on-demand.</strong> A formal layering of client-side capability (Layers 0-6) where each layer is independently adoptable, the default is zero JavaScript, and the architecture supports a continuous spectrum from static hypermedia to native-speed client computation.</p>
+<p>Existing approaches to code-on-demand tend toward two patterns: frameworks that require a client-side runtime for any functionality (coupling the simplest page to the most complex), and server-driven libraries that intentionally constrain their scope to a single mode of enhancement.</p>
+<p>The progressive model provides neither a mandatory runtime nor a single mode, but seven independently-adoptable layers, independently selectable within a single application. The hypermedia-first philosophy demonstrated by declarative attribute libraries serves as the foundation; the layers beyond (pushed code, authenticated channels, binary delivery, full client applications) extend it without replacing it.</p>
+<p><strong>Representation-mediated extensions.</strong> The REST representation (HTML) explicitly authorizes non-RESTful extensions by embedding WebSocket tokens, channel credentials, and executable code. The client discovers capabilities by examining the representation: HATEOAS operating at the level of protocol negotiation, not just link-following. The REST representation is the root of authority. Every extended capability, whether a persistent connection, server-delivered code, a scoped data channel, or a binary delivery, traces its authorization to the initial HTTP response. The paths through which authority extends vary by use case, but the invariant holds: no extension exists that the representation did not mediate.</p>
+<p><strong>Server-authoritative client applications.</strong> Server-delivered code that creates rich interactive applications where the server controls what code runs, what data is accessible, and what compute capabilities exist. Different clients receive different capabilities based on context known to the server, decided at resolution time rather than build time.</p>
+<p><strong>Latent binding as an architectural property.</strong> The formal recognition that scripts executing after a complete HTML document is assembled can reach any element without state management, component communication patterns, or hydration, because the document <em>is</em> the shared state. This property is derived from REST&#39;s complete-representation constraint and eliminates entire categories of complexity that arise when the client constructs the document rather than enhancing it.</p>
+<p>The constraints also permit non-RESTful channels to be scoped in time as well as in capability. A WebSocket that opens, delivers a binary, and closes is not prescribed by the architecture but is consistent with it.</p>
+<p>The individual technologies are established. Their composition under a unified set of constraints derived from REST is what this paper examines.</p>
+<h3>1.2 Style, Specification, Syntax, and Implementation</h3>
+<p>Once constituted, an architecture is independent of its reasons for being. An architecture is the realization of an architectural design and not the design itself. To evaluate an architectural design, we examine the rationale behind the constraints it places on a system and compare the properties derived from those constraints to the target application&#39;s objectives. This means clarity requires distinguishing the levels of abstraction involved. The following layers are present in this work, and their separation is important for evaluating the design on its own terms.</p>
+<p><strong>The Architectural Style (PRESTO)</strong> describes the constraints and the properties they appear to induce. Extending the code-on-demand constraint Fielding identified into a progressive spectrum yields a coherent set of additional constraints: representation-mediated extension, granted capability, and monotonically increasing layers.</p>
+<p><strong>The Specification (htxlang)</strong> serves to advance a more precise description of the architectural style indicated within this work. It is a language-agnostic description of how a server should operate within a HATEOAS environment with progressive code-on-demand. It defines:</p>
+<ul>
+<li><em>The rendering pipeline</em> — the ordered sequence of resolutions (includes → components → data queries → expression evaluation → placeholder hydration → layout composition) that resolves a template into a complete HTML representation</li>
+<li><em>The module contract</em> — what an extension can register (middleware, context providers, channel handlers, template processors, content adapters, mutation handlers), the lifecycle guarantees the engine provides (boot order, error isolation, middleware chaining), and the optional manifest system that allows modules to declare their intended capabilities for sandboxed enforcement</li>
+<li><em>The mutation protocol</em> — two-phase prepare/execute with signed action tokens, replay protection, and context scoping</li>
+<li><em>The real-time protocol</em> — WebSocket ceremony (JWT authentication, upgrade, channels, pub/sub), the two-message WASM delivery format (JSON manifest + binary frame), channel token issuance and validation, and the <code>onMessage</code>/<code>onBinary</code> extension hooks</li>
+<li><em>The progressive layer model</em> — the formal definition of Layers 0-6, their properties, their constraint costs, and the authority chain that connects them to the REST representation</li>
+</ul>
+<p>The specification is not bound to any programming language. Conformant engines have been independently implemented in TypeScript, Go, Elixir, Python, Rust, and C, each passing the same verification suite. This cross-language validation is not incidental; it is the mechanism by which the specification discovers its own completeness. Each implementation, reasoning from the same constraints in a different language and paradigm, reveals consequences that previous implementations missed. The specification is then amended, and the next implementation receives a more complete set of rules.</p>
+<p><strong>The Syntax (.htx file format)</strong> is the concrete expression of the specification — the developer-facing language:</p>
+<ul>
+<li><em>Directives</em> declare data requirements and control flow — content type, query filters, ordering, pagination</li>
+<li><em>Expressions</em> evaluate dynamic values — field references, conditionals, pipe-based transformations</li>
+<li><em>Placeholders</em> mark positions for hydrated content within template blocks</li>
+<li><em>Composition</em> assembles pages from reusable parts — components with props and slots, includes for partials, layouts for page wrappers</li>
+<li><em>Behavior</em> binds client-side scripts scoped to their component&#39;s DOM element</li>
+<li><em>Mutations</em> declare what writes a page can perform, gated by signed action tokens</li>
+<li><em>Auth</em> conditionally renders content based on authentication state</li>
+</ul>
+<p>The syntax is declarative — it describes <em>what</em> the page needs, not <em>how</em> to resolve it. A template file is simultaneously a route declaration, a data query, a rendering template, a mutation handler, and a behavior binding. This colocation is a design choice of the syntax, not a requirement of the specification. An alternative syntax could separate these concerns and still conform to the specification&#39;s pipeline and contracts.</p>
+<p>The syntax bridges three audiences:</p>
+<ol>
+<li><strong>The developer</strong> — who writes <code>.htx</code> files, declaring intent in a superset of HTML</li>
+<li><strong>The engine</strong> — which resolves them, consuming every directive and expression through the pipeline</li>
+<li><strong>The user agent</strong> — which receives the product: a plain HTML string with no trace of HTX</li>
+</ol>
+<p>The engine is a <em>resolver</em>, not a compiler. A compiler translates from one language to a fundamentally different target (C → machine code). The HTX engine resolves a decorated form of HTML into a pure form of HTML — the input medium and the output medium are the same. Each stage of the pipeline (include resolution, component resolution, expression evaluation, placeholder hydration, layout composition) removes one layer of declarative augmentation until only standard HTML remains.</p>
+<p>This has a formal consequence: the HTX syntax is consumed entirely at resolution time. Nothing leaks to the client. The user agent cannot inspect, depend on, or be coupled to the template structure. It receives a self-describing HTML document — the same representation format that every browser has understood since 1993. The fact that it was generated from an <code>.htx</code> template is invisible to the client, which is precisely why the RESTful contract is preserved: the representation is complete, standard, and self-contained.</p>
+<p><strong>The Implementation (@htx/engine)</strong> is the reference implementation of the specification, currently in TypeScript running on the Bun runtime. It uses:</p>
+<ul>
+<li>Bun&#39;s native SQLite driver for content storage</li>
+<li>Bun&#39;s native WebSocket for real-time connections</li>
+<li>The <code>jose</code> library for JWT signing and validation</li>
+<li>A hand-written lexer, parser, and evaluator for the expression engine</li>
+<li>AssemblyScript for compiling WASM modules (optional, for compute-heavy workloads)</li>
+</ul>
+<p>These are implementation decisions, not specification requirements. The specification says &quot;evaluate expressions&quot; — the engine uses a recursive descent parser. Another engine could use a PEG parser, a regex-based evaluator, or compile expressions to native code. The specification says &quot;authenticate WebSocket connections with short-lived tokens&quot; — the engine uses HS256 JWTs. Another engine could use RS256, Ed25519, or opaque tokens validated against a database.</p>
+<p>The distinction matters at each level. The PRESTO style can be evaluated independently of any specification, as a set of constraints and properties. The htxlang specification can be evaluated independently of its current implementation; a conformant engine in a different language would produce the same architectural properties. And the implementation can evolve without changing the specification or the style.</p>
+<hr>
+<h2>2. Architectural Constraints</h2>
+<p>An architectural style is defined by its constraints. Each constraint is a deliberate restriction on the system&#39;s design that induces desirable properties.</p>
+<h3>2.1 Client-Server</h3>
+<p>The client and server have distinct roles. The server is authoritative over data, templates, and application logic. The client is responsible for presentation and user interaction. This separation allows each to evolve independently.</p>
+<p><strong>HTX application:</strong> Templates are server-side files. The server resolves all data queries, evaluates all expressions, and composes the complete HTML response. The client receives a finished document. There is no &quot;shared&quot; rendering logic between client and server.</p>
+<h3>2.2 Statelessness</h3>
+<p>Each request from client to server contains all information necessary to understand the request. The server does not store client session state between requests.</p>
+<p><strong>HTX application:</strong> Action tokens (signed JWTs) encode the full context of a mutation — what action, what content type, what record — in the token itself. The server validates the token without consulting a session store. WebSocket connections use short-lived JWTs (60 seconds) for authentication, with stateless token refresh via a middleware endpoint.</p>
+<h3>2.3 Cacheability</h3>
+<p>Responses must implicitly or explicitly define themselves as cacheable or non-cacheable. When a response is cacheable, the client can reuse it for equivalent future requests.</p>
+<p><strong>HTX application:</strong> Because every response is a complete HTML representation, HTTP caching works at every level — browser cache, CDN, reverse proxy — without coordination. There is no cache invalidation problem caused by partial representations or client-side state that may be stale.</p>
+<h3>2.4 Uniform Interface</h3>
+<p>The uniform interface between components is the central feature that distinguishes REST from other network-based architectural styles. It simplifies architecture and improves visibility of interactions.</p>
+<p><strong>HTX application:</strong> The <code>.htx</code> template file is the uniform interface. One file declares the route, the data it needs, the HTML it renders, and the mutations it supports. There is no separate router configuration, no controller class, no view model. The template is the complete description of the resource&#39;s representation.</p>
+<h3>2.5 Layered System</h3>
+<p>The architecture is composed of hierarchical layers, each constrained to interact only with its immediate neighbors. This enables intermediaries (proxies, gateways, load balancers) and encapsulation of legacy systems.</p>
+<p><strong>HTX application:</strong> The engine is composed of discrete layers — Router, IncludeResolver, ComponentResolver, DSLParser, Executors, ExpressionEngine, Hydrator, LayoutResolver — each operating on the output of the previous. Modules extend the system by registering into specific layers (middleware, context providers, template processors) without knowledge of the full pipeline.</p>
+<h3>2.6 Code-on-Demand (Extended)</h3>
+<p>The original constraint allows servers to extend client functionality by transferring executable code. When this constraint is explored not as a binary option but as a progressive spectrum, a design space emerges in which each degree of extension makes specific properties available. These properties are not prescribed by the architecture. They emerge from the intersection of code-on-demand with the other five constraints.</p>
+<table>
+<thead>
+<tr>
+<th>Degree of Extension</th>
+<th>Available Property</th>
+<th>What Becomes Negotiable</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>None</td>
+<td>Complete representation</td>
+<td>Content, navigation, mutation through hypermedia</td>
+</tr>
+<tr>
+<td>Declarative attributes</td>
+<td>Client-discovered behavior</td>
+<td>Enhanced interactions without custom code</td>
+</tr>
+<tr>
+<td>Scoped code execution</td>
+<td>Latent binding</td>
+<td>Behavior across disparate components of the assembled document</td>
+</tr>
+<tr>
+<td>Server-delivered code</td>
+<td>Granted capability</td>
+<td>Server-authoritative client logic, differentiated by context</td>
+</tr>
+<tr>
+<td>Authenticated data channels</td>
+<td>Scoped data negotiation</td>
+<td>Client-server data exchange within defined boundaries</td>
+</tr>
+<tr>
+<td>Autonomous client navigation</td>
+<td>Client state continuity</td>
+<td>Persistent experience across state transitions</td>
+</tr>
+<tr>
+<td>Binary execution</td>
+<td>Native computation</td>
+<td>Performance-critical operations at near-native speed</td>
+</tr>
+</tbody></table>
+<p>Each degree of extension is independently adoptable. A resolved representation may utilize the properties available at one degree for one region of its affordance surface and a different degree for another, within the same application. The degrees are not sequential steps. They are regions of the design space.</p>
+<p>This is the extended constraint: <strong>progressive code-on-demand</strong>. The system supports a monotonically increasing spectrum of client capability, where each degree adds properties without removing those available at lesser degrees. Moving further into the design space is purely additive. The developer gains capability without surrendering what the lower degrees provide.</p>
+<hr>
+<h2>3. The HTX Model</h2>
+<h3>3.1 Templates as the Unit of Composition</h3>
+<p>In HTX, the <code>.htx</code> file is the atomic unit of a web application. A single file serves as:</p>
+<ul>
+<li><strong>Route declaration</strong> — the file&#39;s path in the filesystem determines its URL</li>
+<li><strong>Data query</strong> — directives like <code>&lt;htx:type&gt;</code> and <code>&lt;htx:where&gt;</code> declare what data the page needs</li>
+<li><strong>Rendering template</strong> — HTML with expression placeholders (<code>{{ }}</code> and <code>__field__</code>) defines the output</li>
+<li><strong>Mutation handler</strong> — <code>&lt;htx:action&gt;</code> directives declare what writes the page can perform</li>
+<li><strong>Client behavior</strong> — <code>&lt;htx:script&gt;</code> blocks define scoped JavaScript that runs after rendering</li>
+</ul>
+<p>This colocation is intentional. When a developer opens a file, they see the complete truth about that route — what data it reads, what HTML it produces, what mutations it accepts, what client behavior it includes. There is no need to trace through router configurations, controller classes, service layers, or component trees.</p>
+<h4>Routing Escape Hatches</h4>
+<p>The filesystem is the <em>default</em> route source, not the only one. The architecture provides three escape hatches for routing beyond the filesystem:</p>
+<p><strong>Middleware routing</strong> — Modules register middleware that intercepts requests before the filesystem router executes. The ChannelMiddleware claims <code>/api/channel/*</code>. The authentication middleware claims <code>/api/auth/*</code>. The tenant resolver middleware routes by subdomain. These are programmatic routes defined in module code, not <code>.htx</code> files on disk. The module contract explicitly supports this: middleware runs first, and any middleware can short-circuit the pipeline by returning a response without calling <code>next()</code>.</p>
+<p><strong>Client-side routing</strong> — At Layer 5, a pushed SPA implements its own router (typically hash-based). The filesystem provides the entry point (one <code>.htx</code> file); the client handles all subsequent navigation internally. The server sees one route; the client sees many.</p>
+<p><strong>Dynamic route sources</strong> — The specification defines a route source contract that allows modules to resolve URLs to template strings when the filesystem has no match. The engine iterates registered sources when the filesystem router returns null. The first source to produce a result wins. The template string enters the same resolution pipeline as a filesystem template — includes, components, expressions, layouts, and data queries all work identically.</p>
+<p>This has a critical property: <strong>composition is preserved across the boundary</strong>. A database-stored template can reference filesystem resources — shared layouts, shared components, shared partials. The page-level route is dynamic; everything it references resolves from the filesystem. The resolution pipeline doesn&#39;t know or care whether the template came from a file or a database.</p>
+<p>The implications for multi-tenancy are significant. Tenants can create custom pages without filesystem access, using the same declarative syntax available to file-based templates. The filesystem provides the base template set; the database provides tenant customization. The two coexist, with the filesystem taking priority — a developer can always &quot;pin&quot; a route by creating a file, overriding any dynamic source.</p>
+<p>In each case, the filesystem remains the baseline — the simplest, most visible, most predictable routing model. Escape hatches exist for cases where filesystem routing is insufficient, but they are opt-in and do not disturb the default.</p>
+<h3>3.2 The Server as Authority</h3>
+<p>The server is the single authority over three concerns:</p>
+<ol>
+<li><strong>What the client sees</strong> — the server renders complete HTML representations</li>
+<li><strong>What the client can do</strong> — action tokens scope mutations; channel tokens scope data access</li>
+<li><strong>What code the client runs</strong> — Client State Transfer pushes executable code; the client does not choose what to download</li>
+</ol>
+<p>This authority model has security implications. In a thick-client architecture, the client decides what API calls to make, what routes to render, and what code to execute. Security is enforced by API-level authorization checks — the server must validate every possible client action because the client is untrusted.</p>
+<p>In HTX, the server controls the entire interaction surface. If a tenant shouldn&#39;t have access to a feature, the server simply doesn&#39;t render the template, doesn&#39;t push the module, doesn&#39;t issue the channel token. The absence of capability is the security model. There is nothing to exploit on the client because the client never received the capability.</p>
+<h3>3.3 Latent Binding</h3>
+<p>When an <code>htx:script</code> block is processed, the ComponentResolver extracts it from the template, wraps it in an Immediately Invoked Function Expression (IIFE), and places it before <code>&lt;/body&gt;</code> in the final HTML. The script executes in the browser after the entire document has been parsed, laid out, and painted.</p>
+<p>This timing is architecturally significant. By the time the script runs:</p>
+<ul>
+<li>The layout has been applied (navigation, sidebars, footers exist)</li>
+<li>All components have been resolved (sibling components are in the DOM)</li>
+<li>All data has been hydrated (expression values are rendered)</li>
+<li>The document is interactive (links and forms work)</li>
+</ul>
+<p>The script enhances a complete, functioning document. It does not construct one. This is progressive enhancement in the original sense — the document works without the script. The script adds behavior that HTML alone cannot express.</p>
+<p>Because the entire DOM exists when scripts execute, there is no &quot;how do I communicate with a sibling component&quot; problem. The document <em>is</em> the shared state. A script in the content area can query the sidebar. A portal component can write to a layout element. The architectural constraint that produces this property is the same one that makes REST work: the server sends complete representations.</p>
+<h3>3.4 REST as the Mediating Layer</h3>
+<p>Fielding&#39;s description of HATEOAS — Hypermedia as the Engine of Application State — defines the central principle of REST:</p>
+<blockquote>
+<p>The model application is therefore an engine that moves from one state to the next by examining and choosing from among the alternative state transitions in the current set of representations.
+— Fielding, §5.3.3, p. 103</p>
+</blockquote>
+<p>In a web browser, this is concrete: the server sends HTML containing links and forms. The user examines them and chooses a transition. The browser follows it. The server sends the next representation. At no point does the client rely on knowledge obtained outside the current representation.</p>
+<p>HTX preserves this principle. But it also extends the client with capabilities that REST cannot express: persistent bidirectional communication, binary data delivery, pushed executable code. These extensions use WebSocket — a protocol that violates REST&#39;s statelessness constraint (the connection is persistent), does not return representations (it exchanges JSON messages), and does not use the uniform interface (no URIs, no HTTP methods per message).</p>
+<p>This raises an architectural question: if HTX uses non-RESTful protocols, is the architecture still RESTful?</p>
+<p>Fielding addressed this directly in a 2008 clarification of the REST constraints:</p>
+<blockquote>
+<p>A REST API should be entered with no prior knowledge beyond the initial URI and set of standardized media types. From that point on, all application state transitions must be driven by client selection of server-provided choices that are present in the received representations or implied by the user&#39;s manipulation of those representations. The transitions may be determined (or limited by) the client&#39;s knowledge of media types and resource communication mechanisms, both of which may be improved on-the-fly (e.g., code-on-demand).
+— Fielding, &quot;REST APIs must be hypertext-driven&quot; (2008)</p>
+</blockquote>
+<p>Two phrases are critical here: &quot;server-provided choices that are present in the received representations&quot; and &quot;improved on-the-fly (e.g., code-on-demand).&quot; HTX satisfies both. The WebSocket capability is a server-provided choice present in the received representation. The client&#39;s ability to use it is improved on-the-fly via code-on-demand (htx:script).</p>
+<p>The answer lies in how the non-RESTful channel is established. The server embeds the WebSocket endpoint URL and a short-lived authentication token directly into the HTML representation — as expression values resolved at render time. The client does not discover them through an API specification, a configuration file, or a hardcoded constant. The server placed them in the hypermedia document, and the client followed them — exactly as HATEOAS prescribes.</p>
+<p>The WebSocket is a <strong>state transition advertised by the representation</strong>. The client examines the current representation, finds the WebSocket capability embedded in it, and chooses to activate it. This is HATEOAS operating at a higher level: not just &quot;here are links you can follow&quot; but &quot;here is an extended capability you can activate.&quot;</p>
+<h4>The Authority Chain</h4>
+<p>The relationship between REST and the WebSocket extension forms a strict authority chain. The REST representation contains the WebSocket credentials. Code-on-demand (delivered within the representation) activates the connection. The WebSocket enables extended capabilities: pushed code, binary delivery, and channel subscriptions. Each layer derives its authority from the one above:</p>
+<ol>
+<li><p><strong>The REST representation is the entry point.</strong> Every interaction begins with an HTTP request that returns a complete HTML document. HATEOAS is fully satisfied at this level.</p>
+</li>
+<li><p><strong>Code-on-demand is authorized by the representation.</strong> The server chose to include <code>htx:script</code> in the HTML. If the server omits it, no client code executes. The representation controls what extensions exist.</p>
+</li>
+<li><p><strong>The WebSocket is authorized by code-on-demand.</strong> The script that opens the WebSocket was delivered by the server as part of the representation. The token that authenticates it was minted by the server and embedded in the HTML. If the server doesn&#39;t render the token, the WebSocket cannot authenticate.</p>
+</li>
+<li><p><strong>Extended capabilities are authorized by the WebSocket.</strong> What modules the server pushes, what channel tokens it issues, what WASM binaries it delivers — all flow through the authenticated WebSocket that was opened by code that was embedded in the representation that was returned by the REST interaction.</p>
+</li>
+</ol>
+<p>The REST layer is never abandoned. It remains the foundation. The page works without the WebSocket — content is visible, links function, forms submit. The non-RESTful extension is a <em>progressive addition</em> mediated by the RESTful baseline, not a replacement of it.</p>
+<h4>The Escape Hatch Model</h4>
+<p>This architecture can be understood as an escape hatch pattern:</p>
+<ul>
+<li><strong>REST is the default.</strong> Complete representations, cacheable, stateless, self-describing.</li>
+<li><strong>The escape hatch is scoped.</strong> The REST representation determines whether it exists (by including or omitting the WebSocket token).</li>
+<li><strong>The escape hatch is progressive.</strong> Pages that don&#39;t need extended capabilities simply don&#39;t render the token. No WebSocket opens. The page is pure REST.</li>
+<li><strong>The escape hatch can be closed.</strong> Ephemeral WASM delivery opens the WebSocket, receives the binary, and immediately closes the connection. The non-RESTful channel existed for milliseconds.</li>
+<li><strong>The page degrades without the escape hatch.</strong> If JavaScript fails, if the WebSocket is blocked by a firewall, if the WASM module doesn&#39;t load — the server-rendered HTML is still there. The content is still readable. The forms still work.</li>
+</ul>
+<p>This is distinct from thick-client architectures where the non-RESTful protocol (typically a JSON API) is the <em>primary</em> interface. In a React application, the REST-like API calls are not mediated by a hypermedia representation — they are hardcoded in the client bundle. If the API is unreachable, nothing renders. There is no graceful degradation because there was no baseline representation to degrade to.</p>
+<p>In HTX, the baseline representation is always the HTML. Everything else is an extension that the representation itself authorizes.</p>
+<h4>Fielding&#39;s Code-on-Demand, Reconsidered</h4>
+<p>Fielding identified code-on-demand as the only optional constraint in REST, noting that it &quot;reduces visibility&quot; — the client&#39;s behavior is no longer fully determined by the representation alone. This is why he made it optional: the trade-off between extended functionality and reduced visibility is application-dependent.</p>
+<p>HTX makes code-on-demand non-optional but <em>layered</em>. The visibility concern is addressed by the progressive model: at Layer 0, visibility is total (the representation fully describes the client&#39;s behavior). Each subsequent layer reduces visibility incrementally. A developer choosing Layer 2 (htx:script) accepts a small visibility reduction. A developer choosing Layer 5 (full SPA) accepts a large one.</p>
+<p>Critically, the visibility reduction is <em>per-page</em>, not per-application. A content page at Layer 0 has full REST visibility. An admin dashboard at Layer 5 has reduced visibility. Both exist in the same application. The architecture does not force a global choice — it allows local decisions about the REST-visibility trade-off.</p>
+<hr>
+<h2>4. Progressive Code-on-Demand: Specification</h2>
+<p>The following sections describe how the htxlang specification realizes each degree of extension defined in §2.6. The architectural properties are restated here in terms of the specification&#39;s concrete mechanisms. These mechanisms are implementation choices that satisfy the architectural constraints; other specifications could satisfy the same constraints through different mechanisms.</p>
+<h3>4.1 Layer 0: Hypermedia</h3>
+<p>The default. A <code>.htx</code> template renders to HTML. No JavaScript is sent to the client. The page is a complete hypermedia document — links for navigation, forms for mutation, semantic markup for structure.</p>
+<p><strong>Properties:</strong> Maximum cacheability. Universal accessibility. Zero client-side failure modes. Search engine indexable. Works on any device that renders HTML.</p>
+<p><strong>Constraint cost:</strong> No dynamic behavior. No real-time updates. No client-side state.</p>
+<h3>4.2 Layer 1: Declarative Enhancement (htmx)</h3>
+<p>HTML attributes declare interactive behavior: <code>hx-get</code>, <code>hx-post</code>, <code>hx-swap</code>, <code>hx-trigger</code>. The htmx library (14KB gzipped) interprets these attributes and makes AJAX requests that swap HTML fragments into the page.</p>
+<p><strong>Properties:</strong> Interactive pages without custom JavaScript. The server still renders HTML — now in fragments as well as full pages. The uniform interface is preserved: requests return representations, not data.</p>
+<p><strong>Constraint cost:</strong> Requires the htmx library (code-on-demand). Cannot express behavior that isn&#39;t reducible to &quot;request HTML, swap it somewhere.&quot;</p>
+<h3>4.3 Layer 2: Scoped Behavior (htx:script)</h3>
+<p>Component-scoped JavaScript executes after the document is assembled. Each script receives an <code>el</code> binding — a reference to its component&#39;s root DOM element. Scripts are extracted at render time and injected as IIFEs before <code>&lt;/body&gt;</code>.</p>
+<p><strong>Properties:</strong> Latent binding — scripts can reach any element in the document. Component isolation — each script&#39;s <code>el</code> is scoped via <code>data-htx-id</code>. Progressive enhancement — the page renders before scripts execute.</p>
+<p><strong>Constraint cost:</strong> Custom JavaScript runs on the client. The server no longer has full control of client behavior. However, the code is static — defined in the template, not downloaded dynamically.</p>
+<h3>4.4 Layer 3: Client State Transfer</h3>
+<p>The server pushes executable JavaScript to the client over an authenticated WebSocket connection. The client executes it via <code>new Function(&#39;ws&#39;, &#39;el&#39;, code)</code>. The pushed code manages local state within a scoped container and syncs state back to the server.</p>
+<p><strong>Properties:</strong> Server-authoritative code delivery — the server decides what code the client runs. Dynamic capability — different users can receive different modules. Bidirectional state sync over WebSocket.</p>
+<p><strong>Constraint cost:</strong> The client executes server-provided code. The trust model shifts: the server must be trusted not to push malicious code (which it already is, since it controls all HTML). The client&#39;s execution environment is no longer fully predictable from the template alone.</p>
+<h3>4.5 Layer 4: Authenticated Islands</h3>
+<p>Pushed JavaScript opens a second HTTP connection to module-level JSON APIs. A scoped channel token (JWT) gates access. The ChannelMiddleware validates tokens and routes requests to registered ChannelHandlers.</p>
+<p><strong>Properties:</strong> REST-style data access from pushed code. Token scoping — a channel token for module A cannot access module B. Standard HTTP debugging (Network tab). Cacheable JSON responses.</p>
+<p><strong>Constraint cost:</strong> A second HTTP connection (in addition to the WebSocket). The client now fetches data independently of template rendering. This approaches — but does not reach — the thick-client model, because the server still controls what code makes the requests and what tokens grant access.</p>
+<h3>4.6 Layer 5: Full SPA</h3>
+<p>The pushed code implements a complete client-side router. All navigation happens without page reloads. Data is fetched via HTTP channels or WebSocket RPC.</p>
+<p><strong>Properties:</strong> Preserved client state across navigations. Smaller per-navigation payloads (JSON vs full HTML). Two transport options: HTTP (cacheable, debuggable) or WebSocket (low latency, optimistic updates).</p>
+<p><strong>Constraint cost:</strong> The initial page load is an empty shell — SEO requires the server-rendered version. Back/forward navigation must be managed by the client. The client is now responsible for rendering — though the server still controls what code it runs.</p>
+<h3>4.7 Layer 6: Native Compute (WASM)</h3>
+<p>The server delivers WebAssembly binaries over WebSocket. A two-message protocol — JSON manifest (text frame) followed by raw <code>.wasm</code> bytes (binary frame) — delivers the module. JS glue code bridges WASM exports to the DOM.</p>
+<p><strong>Properties:</strong> Near-native computation speed in the browser sandbox. Binary delivery (33% smaller than base64). Client-side caching via IndexedDB with version-hash invalidation. Combinable with any JavaScript library (Three.js, Canvas, Web Audio).</p>
+<p><strong>Constraint cost:</strong> WASM modules require compilation (AssemblyScript, Rust, C). The client performs significant computation. However, the server still controls delivery — it decides which WASM modules to push, and the WebSocket ceremony gates access.</p>
+<h3>4.8 Granted Capability, Not Transferred Control</h3>
+<p>At Layers 5 and 6, the architecture provides capabilities comparable to thick-client frameworks: client-side routing, optimistic state management, native-speed computation. A natural question arises: does progressive code-on-demand eventually converge with the React model?</p>
+<p>It does not. The convergence is in <em>capability</em>, not in <em>authority</em>. Understanding why requires distinguishing between two fundamentally different models of client empowerment.</p>
+<p>In the thick-client model, the server <em>transfers control</em> to the client. A React application ships its entire codebase — every route definition, every component, every API call, every rendering path — to every client, regardless of who the user is or what they need. Once the bundle arrives, the client is autonomous. It decides what to render, what data to fetch, and what state transitions to make. The server has relinquished architectural authority; it retains only data-level authorization (API endpoint checks). If the client has the code, it has the capability. The transfer is permanent and total.</p>
+<p>In the HTX model, the server <em>grants capability</em> to the client. The distinction is precise:</p>
+<ul>
+<li><strong>At Layer 0</strong>, the server grants the capability to view content (by sending HTML).</li>
+<li><strong>At Layer 2</strong>, the server grants the capability to execute scoped behavior (by embedding htx:script in the representation).</li>
+<li><strong>At Layer 3</strong>, the server grants the capability to run specific logic (by pushing a named module over WebSocket). The client did not request a URL — the server decided what code to send.</li>
+<li><strong>At Layer 4</strong>, the server grants the capability to access specific data (by issuing a scoped channel token alongside the pushed code). The token is short-lived, module-scoped, and revocable.</li>
+<li><strong>At Layer 5</strong>, the server grants the capability to route and render autonomously (by pushing a full SPA). But the SPA&#39;s data access is still gated by channel tokens or WebSocket RPC — the server controls what the autonomous client can see.</li>
+<li><strong>At Layer 6</strong>, the server grants the capability to compute at native speed (by delivering a WASM binary). The binary was chosen by the server. A different user might receive a different binary — or none at all.</li>
+</ul>
+<p>At every layer, the grant is:</p>
+<ul>
+<li><strong>Selective</strong> — different users receive different capabilities based on role, subscription, or runtime conditions</li>
+<li><strong>Scoped</strong> — channel tokens limit what data the granted code can access; module manifests limit what the granted module can register</li>
+<li><strong>Revocable</strong> — tokens expire; WebSocket connections can be closed; the next page load may push different code</li>
+<li><strong>Auditable</strong> — the server logs what it pushed, what tokens it issued, what manifests it enforced</li>
+</ul>
+<p>None of this is true in the thick-client model. A React bundle is not selective (every user gets the same code). It is not scoped (the client has all routes and all API calls). It is not revocable (the code is cached in the browser). It is not auditable at the architectural level (the server doesn&#39;t know what the client is doing with the code it shipped).</p>
+<p>This is not a difference of degree. It is a difference of kind. Transferring control and granting capability are architecturally distinct operations. The thick-client model transfers control once and hopes the API layer enforces boundaries. The HTX model grants capabilities incrementally, each grant scoped and revocable, with the server maintaining authority at every step.</p>
+<p>This asymmetry is not a limitation of the progressive model. It is its defining property. The server remains the authority at every layer. The distance between Layer 0 and Layer 6 is a distance of granted capability, not of transferred control.</p>
+<h4>The Boundary of Granted Autonomy</h4>
+<p>The grant model raises a terminal question: what happens when the granted capability is sufficient for the client to operate outside the constraints entirely?</p>
+<p>At the highest degree of extension, the server may grant the client autonomous navigation, full data access within a scoped channel, and native computation. The client operates independently. It renders its own interfaces, manages its own state transitions, computes at native speed. The server&#39;s constraints are no longer active in the client&#39;s execution. The client has been granted enough capability to transcend the style that granted it.</p>
+<p>This is not a violation. It is the consummation of the grant model.</p>
+<p>Every constraint was satisfied in the act of granting. The representation was complete. The extension was mediated. The capability was scoped, time-limited, and revocable. The server chose to grant this degree of autonomy to this client in this context. A different client, a different context, a different request might receive a different grant. The server&#39;s authority is expressed through the choice of what to grant, including the choice to grant full autonomy.</p>
+<p>What distinguishes this from the client-authoritative model is that the autonomy was granted, not assumed. The client did not seize control. The server delegated it. And delegation, unlike transfer, preserves the delegator&#39;s authority to make a different choice on the next interaction.</p>
+<p>The boundary between client autonomy and server authority remains negotiable. The channel token expires. The next page load produces a new resolved representation. The server reasserts authority at every interaction boundary. The client&#39;s autonomy exists between those boundaries, not in spite of them.</p>
+<p>At the extreme, the granted capability could include the architecture itself: a client-side resolution engine capable of composing templates, evaluating expressions, and mediating its own extensions. The server seeds the client with the ability to be a server. Code-on-demand at its terminal expression: the demand was for the architecture.</p>
+<p>This boundary condition is a property of any sufficiently complete grant-based style. A style that can express &quot;grant the client the capability to transcend me&quot; is more complete than one that cannot. The constraints are not abandoned at this boundary. They are fulfilled.</p>
+<h3>4.9 Architectural Encapsulation: Inner Styles Within the RESTful Boundary</h3>
+<p>The progressive code-on-demand model reveals a property more fundamental than the layered spectrum itself: the REST representation, because it is complete and self-describing, can serve as the enclosing boundary for any arbitrary client-side architecture — including architectures whose own constraints are incompatible with REST.</p>
+<h4>4.9.1 The Encapsulation Principle</h4>
+<p>A server-rendered HTML document is a complete representation. Every element in the DOM exists because the server resolved it. When the server renders an empty <code>&lt;div&gt;</code> with a unique identifier and a <code>&lt;script&gt;</code> that bootstraps a client-side framework into that element, two architectures coexist in the same document:</p>
+<ul>
+<li>The <strong>outer architecture</strong> (REST) governs the HTTP exchange, the completeness of the representation, the cacheability of the response, and the server&#39;s authority over what the client receives.</li>
+<li>The <strong>inner architecture</strong> (whatever the script instantiates) governs the interaction model within its bounded DOM sub-tree.</li>
+</ul>
+<p>The inner architecture inherits the outer architecture&#39;s properties at the boundary but is not constrained by them internally. A React component tree mounted into a server-rendered div operates as a distributed object (DO) architecture — components as objects, props as messages, a virtual DOM as the shared address space — entirely within the region the REST representation allocated for it. The DO model&#39;s constraints (shared mutable state, identity-based updates, synchronous message passing) apply within the sub-tree. The REST model&#39;s constraints (statelessness, complete representations, uniform interface) apply at the HTTP boundary.</p>
+<p>This is not a workaround. It is the natural consequence of REST&#39;s complete-representation constraint. If the representation is complete, it may contain anything — including the bootstrapping instructions for an alternative architectural style. The representation is the delivery vehicle; what activates within it is a granted capability.</p>
+<h4>4.9.2 Why Nesting Direction Matters</h4>
+<p>The encapsulation is asymmetric. A distributed object architecture can be nested within REST. REST cannot be nested within a distributed object architecture in a way that preserves REST&#39;s induced properties.</p>
+<p>The reason is structural. REST&#39;s properties — cacheability, scalability, independent deployability, universal accessibility — are induced by constraints on the <strong>outermost</strong> interaction: the exchange between client and server. If the outer architecture is REST, these properties are guaranteed at the system boundary regardless of what operates within the representation. An intermediary (CDN, proxy, cache) can operate on the response without knowledge of the inner architecture. The representation is cacheable whether it contains a React application or a static paragraph.</p>
+<p>If the outer architecture is the DO model — as in a conventional React application — the HTTP exchange serves a minimal shell (an empty <code>&lt;div id=&quot;root&quot;&gt;</code> and a script bundle). The representation is not complete. The content depends on subsequent API calls made by the client-side object graph. Cacheability is compromised: caching the shell is trivial but useless; caching the API responses requires per-endpoint strategies that the client controls. Server authority is transferred: the client determines what to render, what data to request, what transitions to make. The REST properties that depend on the outer boundary are structurally absent because the outer boundary does not enforce REST constraints.</p>
+<p>This is why server-side rendering (SSR) in React is a compensating mechanism rather than a restoration of REST. SSR produces a complete HTML document — satisfying the representation constraint momentarily — but the client immediately discards the server&#39;s authority through hydration, replacing the server-rendered DOM with a client-controlled object graph. The REST-compatible representation existed for the duration of the initial paint. The architectural properties it could have induced (cacheability of the complete page, server authority over the interaction surface, intermediary transparency) are abandoned the moment the React runtime assumes control.</p>
+<p>The asymmetry is therefore formal: the outer architecture&#39;s constraints dominate. Nesting DO within REST preserves REST&#39;s properties while gaining DO&#39;s interactivity within a bounded scope. Nesting REST within DO preserves nothing — the outer architecture&#39;s constraints (or lack thereof) determine the system&#39;s properties.</p>
+<h4>4.9.3 React as a Special Case, Not a Counterexample</h4>
+<p>This reframes the relationship between PRESTO and React. The progressive code-on-demand model does not oppose React. It <em>encloses</em> it.</p>
+<p>A React component mounted into a scoped region of a server-rendered HTML document is a Layer 2-5 capability operating within the REST boundary. The server decided that this user, on this page, at this time, receives a React island in a specific DOM location. The decision was made at resolution time, not build time. A different user might receive a simpler component, a different framework, or no client-side code at all. The representation carried the bootstrapping instructions as part of its complete, self-describing content. The React instance that activates within it is a granted capability — selective, scoped, revocable, and auditable.</p>
+<p>In this model, React&#39;s strengths are preserved: declarative component composition, efficient DOM diffing, rich interactivity. React&#39;s weaknesses are dissolved: there is no empty shell problem (the page is complete before React mounts), no hydration mismatch (the React instance mounts fresh into a prepared region rather than attempting to reclaim server-rendered markup), no global complexity tax (pages that don&#39;t need React don&#39;t pay for it), and no loss of server authority (the server controls whether React is delivered at all).</p>
+<p>The properties that React cannot independently produce — complete initial representations, server-authoritative capability control, per-page architectural selection, graceful degradation to pure HTML — are provided by the enclosing REST architecture. React does not need to produce them. It inherits them from the boundary it operates within.</p>
+<h4>4.9.4 The Dissolution of Compensating Mechanisms</h4>
+<p>The React ecosystem has developed an extensive set of mechanisms that compensate for properties lost when the DO model operates as the outer architecture:</p>
+<table>
+<thead>
+<tr>
+<th>Lost Property</th>
+<th>Compensating Mechanism</th>
+<th>Complexity Introduced</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Complete representations</td>
+<td>Server-Side Rendering (SSR)</td>
+<td>Dual execution environments, serialization constraints</td>
+</tr>
+<tr>
+<td>Server authority over rendering</td>
+<td>Hydration</td>
+<td>Mismatch bugs, &quot;uncanny valley&quot; of interactivity</td>
+</tr>
+<tr>
+<td>Cacheability at the page level</td>
+<td>Incremental Static Regeneration (ISR)</td>
+<td>Cache invalidation strategies, stale content windows</td>
+</tr>
+<tr>
+<td>Server-authoritative data flow</td>
+<td>React Server Components (RSC)</td>
+<td>Client/server component boundaries, serialization rules</td>
+</tr>
+<tr>
+<td>Efficient initial payload</td>
+<td>Code splitting, tree shaking</td>
+<td>Build tooling complexity, chunk management</td>
+</tr>
+<tr>
+<td>Streaming content delivery</td>
+<td>Streaming SSR with Suspense boundaries</td>
+<td>Fallback UI management, loading state coordination</td>
+</tr>
+</tbody></table>
+<p>Each mechanism reintroduces — partially and with additional complexity — a property that REST induces natively through its constraints. SSR recovers complete representations but requires maintaining two rendering environments. Hydration reconnects client behavior to server-rendered markup but introduces an entirely new failure mode. ISR recovers cacheability but adds temporal uncertainty about content freshness. RSC recovers server-authoritative data flow but partitions the component model into two categories with different rules.</p>
+<p>These are not problems to be solved within the DO model. They are symptoms of an inverted architectural relationship. When the DO model is enclosed by REST rather than enclosing it, the properties are present by default:</p>
+<ul>
+<li><strong>Complete representations</strong> — the server sends a finished HTML document. No SSR is needed because server rendering is the baseline, not an optimization.</li>
+<li><strong>No hydration</strong> — client-side code mounts into prepared regions of the complete document. There is nothing to reconcile because the server&#39;s representation and the client&#39;s mount target are not competing renderings of the same content.</li>
+<li><strong>Native cacheability</strong> — the complete HTML response is cacheable by any HTTP intermediary. No ISR strategy is needed because the representation is self-contained.</li>
+<li><strong>Server authority</strong> — the server decides what code, what data, and what capabilities the client receives. No server component model is needed because the server already controls the representation.</li>
+<li><strong>Minimal payload</strong> — pages that need no client-side code send no client-side code. No tree shaking is needed because there is no global bundle to reduce.</li>
+</ul>
+<p>The progressive code-on-demand model does not solve React&#39;s problems. It dissolves them by establishing the correct architectural encapsulation: REST as the outer style, DO as the inner style when and where interactivity demands it, with the representation as the mediating boundary between the two.</p>
+<h4>4.9.5 Generality of the Encapsulation</h4>
+<p>The principle extends beyond React. Any client-side architectural style — Model-View-ViewModel, Entity-Component-System, the actor model, a dataflow architecture — can be encapsulated within a REST representation, provided:</p>
+<ol>
+<li>The server renders a complete document that includes the bounded region and bootstrapping instructions for the inner architecture.</li>
+<li>The inner architecture operates within its allocated DOM sub-tree without depending on capabilities the representation did not provide.</li>
+<li>The outer REST constraints (statelessness, cacheability, uniform interface) are satisfied at the HTTP boundary independently of the inner architecture&#39;s behavior.</li>
+</ol>
+<p>The REST representation is the universal carrier. Because HTML is the representation format, and because HTML can contain arbitrary structure, script, and data attributes, the source representation can express the bootstrapping conditions for any client-side architecture that the web platform supports. The author of the representation — the developer writing the template — exercises authorial intent over what inner architecture is instantiated, where it is bounded, and what context it receives from the enclosing document.</p>
+<p>The progressive layer model (Layers 0-6) is therefore not a ladder of specific technologies but a spectrum of <em>encapsulated architectural grants</em>. Each layer describes a class of inner architecture that the REST representation can carry:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Encapsulated Style</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>None (pure hypermedia)</td>
+<td>The full document</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Declarative event-driven (htmx)</td>
+<td>Attribute-annotated elements</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Scoped imperative (htx:script)</td>
+<td>Component DOM sub-trees</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Server-pushed procedural (CST)</td>
+<td>WebSocket-delivered closures</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Channel-backed modular (Islands)</td>
+<td>Token-scoped data regions</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Distributed object (SPA/React)</td>
+<td>Full client application mount</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Native compute (WASM)</td>
+<td>Binary execution sandbox</td>
+</tr>
+</tbody></table>
+<p>At every layer, the REST boundary holds. The properties it induces — complete representations, server authority, cacheability, graceful degradation — are available because they are properties of the outer architecture, not the inner one. The inner architecture gains capability without the outer architecture losing its constraints.</p>
+<p>This is the completing observation: PRESTO does not compete with React, or with any other client-side architecture. It provides the enclosing architectural context within which any of them can operate — bounded, granted, and mediated by the representation that carried them into existence on the client.</p>
+<h3>4.10 Client-Side Organization: Maps, Topologies, and Islands</h3>
+<p>When the server pushes code to the client — whether via Client State Transfer, authenticated islands, or full SPAs — a structural question arises: how does the client organize what it receives?</p>
+<p>The answer emerges from the delivery model itself. The server delivers code as named units — a trading dashboard, a kanban board, a document browser. Each unit arrives with its own channel token, its own state, its own DOM target. These are not components in the React sense (composable render functions). They are <em>topologies</em> — self-contained units of delivered behavior that the server assembled and the client activates.</p>
+<p>A <strong>topology</strong> is the unit of server-delivered code. It corresponds to what the server pushes: a named JavaScript bundle (or TypeScript, compiled at delivery time) that receives a DOM element, a WebSocket reference, a channel token, and a <code>channelFetch</code> function. The topology manages everything within its DOM boundary — rendering, state, event handling, server communication. It is the client-side expression of a single module&#39;s granted capability.</p>
+<p>An <strong>island</strong> is a region within a topology. A trading dashboard topology might contain five islands: a price ticker, a portfolio summary, a chart, an order entry form, and an alerts panel. Each island renders independently and manages its own DOM subtree, but all five share the topology&#39;s store, channel token, and communication channel. Islands are not delivered separately — they are organized internally by the topology&#39;s own code.</p>
+<p>A <strong>map</strong> is the page-level aggregate of all topologies. When multiple topologies are active on the same page — a navigation topology, a content topology, a notification topology — the map is their shared context. The map is not an explicit construct the developer creates. It is the emergent result of multiple topologies operating on the same document.</p>
+<p>This hierarchy — map contains topologies, topologies contain islands — mirrors the delivery model. The server delivers topologies (one push per topology). The topology organizes islands (internal structure). The page collects topologies into a map (emergent aggregation). Each level has a different scope and a different actor:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Scope</th>
+<th>Actor</th>
+<th>Delivery</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Map</td>
+<td>Entire page</td>
+<td>Emergent</td>
+<td>N/A (the page itself)</td>
+</tr>
+<tr>
+<td>Topology</td>
+<td>One module&#39;s UI</td>
+<td>Server-pushed</td>
+<td>WebSocket, HTTP, or SSE</td>
+</tr>
+<tr>
+<td>Island</td>
+<td>One DOM region</td>
+<td>Topology code</td>
+<td>Internal organization</td>
+</tr>
+</tbody></table>
+<p>The vocabulary is precise because the boundaries are real. A topology cannot reach into another topology&#39;s DOM (it only has a reference to its own element). An island cannot use another topology&#39;s channel token (tokens are scoped per module). The map provides a read path across topologies but not a write path — each topology writes only to its own state.</p>
+<h3>4.11 Two-Tier Reactive State</h3>
+<p>Within a topology, islands need to coordinate. The price ticker updates; the chart should redraw. An order fills; the portfolio should recalculate. The pattern is reactive state — mutations propagate to subscribers.</p>
+<p>The architectural constraint is this: delivered code units must be able to coordinate state on the client — within a topology and across topologies — and signal state changes lazily to the server. The client is autonomous between syncs; the server is authoritative over persistence. This constraint follows from server-authoritative delivery (the server controls what code runs) combined with client autonomy (the client operates without waiting for the server between interactions).</p>
+<p>What follows is the reference implementation&#39;s expression of this constraint. The specific mechanisms — reactive subscriptions, two-tier stores, leader-coordinated flush — are implementation decisions. A conformant engine could satisfy the same constraint with signals, observables, a single flat store, or CRDTs. The constraint is the coordination model; the implementation is one realization of it.</p>
+<p>The <strong>TopologyStore</strong> is the first tier. Each topology creates a store initialized with a state shape. Islands subscribe to branches of the state tree and receive synchronous callbacks when values change. The reactive flow follows a specific sequence:</p>
+<ol>
+<li>An island calls <code>store.set(&#39;items&#39;, newItems)</code> — the value updates in memory (instant)</li>
+<li>The branch is marked dirty</li>
+<li>All subscribers to &#39;items&#39; are notified synchronously — in the same tick</li>
+<li>A debounced sync timer starts (configurable, default 500ms)</li>
+<li>If no further mutations occur within the quiet period, dirty branches flush to the server via the topology&#39;s channelFetch</li>
+</ol>
+<p>Steps 1-3 are synchronous. An island that subscribes to &#39;items&#39; re-renders in the same tick as the mutation. There is no wait for the server. The server sync is a background concern that doesn&#39;t affect the UI.</p>
+<p>Derived state follows the same path. A budget island subscribes to &#39;items&#39; and computes a total. When items change, the subscription fires, computes the derived value, and sets it on the &#39;budget&#39; branch — which in turn notifies the alerts island. The entire chain (items to budget to alerts) executes synchronously in a single tick.</p>
+<p>The <strong>MapStore</strong> is the second tier. It coordinates state across topologies on the same page. Each topology registers its TopologyStore under a name. The MapStore provides a unified read path — any topology can read any other topology&#39;s state synchronously, without a server round-trip. Writes remain scoped: a topology can only set values in its own store.</p>
+<p>The MapStore uses a leader pattern for server synchronization. The first topology to call <code>startSync()</code> becomes the leader. The leader runs a periodic flush cycle that triggers <code>sync()</code> on all registered stores. Each topology flushes its own dirty branches through its own channelFetch with its own channel token. The leader coordinates <em>when</em> to flush, but each topology flushes independently through its own authenticated channel. Token scoping is preserved across the sync boundary.</p>
+<p>This two-tier model — TopologyStore for intra-topology coordination, MapStore for inter-topology coordination — has a specific architectural property: <strong>mutations are instant on the client, and persistence is lazy to the server</strong>. The client is the authority for display. The server is the authority for persistence. Between syncs, the client operates autonomously. On page reload, the server provides the persisted state, the client resumes. This is the same model as offline-first databases: autonomous local operation with periodic writeback.</p>
+<p>The state management layer replaces two patterns that would otherwise be necessary:</p>
+<p><em>DOM events for island coordination.</em> Without a store, islands coordinate through CustomEvents on <code>document.body</code> — asynchronous and untyped. With the store, subscriptions are synchronous and path-scoped. The subscriber knows exactly what changed.</p>
+<p><em>Optimistic server round-trips for state updates.</em> Without lazy sync, every mutation requires a server request and a wait for the response before the UI updates. With the store, the UI updates in the same tick as the mutation. The server learns about the change on the next sync cycle — or never, if the page navigates before the sync fires. The client experience is never blocked by server latency.</p>
+<p>The total client infrastructure for the two-tier state system, the declarative UI helper, and the WebSocket/HTTP/SSE delivery layer is under 20KB — less than the React runtime alone, before any application code.</p>
+<h3>4.12 Authoring Independence</h3>
+<p>At Layers 3-6, the developer authors topology code — JavaScript or TypeScript that the server compiles and delivers to the client. A natural question arises: must the developer&#39;s authoring syntax be coupled to the client&#39;s execution model?</p>
+<p>In the thick-client paradigm, the answer is yes. A React developer writes JSX. The build pipeline compiles JSX to <code>React.createElement()</code> calls. The React runtime manages a virtual DOM, performs diffing, and patches the real DOM. The syntax (JSX), the compilation target (<code>createElement</code>), and the runtime (React) are a single welded system. The developer cannot use JSX without carrying React&#39;s 42KB runtime, its virtual DOM overhead, and its reconciliation model. The authoring experience <em>is</em> the execution model.</p>
+<p>The progressive model permits a different answer. Because topology code is compiled by the server at boot time — not by a build pipeline at development time — the compilation target is a server decision, not a syntax decision. The server can compile any syntax to any target, provided the target produces valid DOM operations on the client.</p>
+<p>This separation yields a formal property: <strong>authoring independence</strong> — the developer&#39;s syntax is decoupled from the client&#39;s execution model through server-side compilation. The authoring layer and the execution layer are connected only by the compilation boundary, and that boundary lives on the server.</p>
+<p>The concrete expression: a developer authors topology code in TSX — the same JSX syntax used by React applications. The server&#39;s transpiler (operating at boot time, not build time) compiles JSX expressions to <code>h()</code> calls — a function that creates real DOM elements directly, with no virtual DOM, no diffing, no reconciliation. The developer writes <code>&lt;div class=&quot;flex&quot;&gt;</code> and the client executes <code>h(&#39;div&#39;, { class: &#39;flex&#39; })</code>. The syntax is React&#39;s. The execution is direct DOM manipulation. The developer&#39;s experience is preserved; the architectural basis is entirely different.</p>
+<p>The same principle extends to every layer of the authoring stack:</p>
+<p><em>Component libraries</em> can mirror existing ecosystems without carrying their dependencies. A component library that produces the same visual output as shadcn/ui — the same Tailwind classes, the same variant props, the same composition patterns — can be built on <code>h()</code> calls instead of Radix UI primitives. The developer sees familiar components. The client receives direct DOM operations.</p>
+<p><em>Hook systems</em> can provide React-like ergonomics backed by different primitives. A <code>useState</code> hook that triggers component re-render, a <code>useStore</code> hook that subscribes to TopologyStore paths, a <code>useChannel</code> hook that wraps <code>channelFetch</code> with loading states — these provide the same developer interface as React hooks while being backed by PRESTO&#39;s state management and channel architecture.</p>
+<p><em>Design systems</em> can generate CSS at boot time rather than build time. The server runs a CSS utility scanner (such as Tailwind CLI) against topology source files at startup, producing a static stylesheet. The compilation that traditionally requires a build pipeline collapses into the server&#39;s boot sequence. No webpack. No PostCSS configuration. The server starts, scans, generates, and serves.</p>
+<p>The architectural consequence is that the build pipeline — the mandatory intermediate step in thick-client development — is absorbed into the server lifecycle. TypeScript compilation happens at boot. CSS generation happens at boot. JSX transformation happens at boot. The developer writes source files. The server compiles and delivers them. There is no build artifact, no <code>dist</code> directory, no CI step that must succeed before the application can run. The server <em>is</em> the build system.</p>
+<p>This is not an optimization. It is a structural consequence of server-authoritative code delivery. Because the server controls what code the client runs (§4.8), the server is the natural location for compilation. The build pipeline was always a proxy for the server — an offline step that produced what the server would eventually deliver. When the server compiles at boot, the proxy is eliminated. The compilation and the delivery are the same system.</p>
+<p>The implication for developer adoption is significant. A developer trained on React&#39;s syntax — JSX, hooks, component composition, Tailwind — can author PRESTO topologies with near-zero learning curve. The syntax is identical. The mental model (components receive props, hooks manage state, effects run after render) is preserved. What changes is invisible: the virtual DOM is gone, the framework runtime is gone, the build pipeline is gone, and the server controls delivery. The developer&#39;s fingers type the same code. The architecture underneath is fundamentally different.</p>
+<hr>
+<h2>5. Formal Properties</h2>
+<p>The constraints of the HTX architecture induce the following properties:</p>
+<h3>5.1 Security Through Absence</h3>
+<p>If the server doesn&#39;t render a template, the client never sees it. If the server doesn&#39;t push a module, the client can&#39;t execute it. If the server doesn&#39;t issue a channel token, the client can&#39;t access the data. Security is not enforced by checking permissions at API boundaries — it is enforced by the absence of capability on the client.</p>
+<p>This is a stronger security model than API authorization. In a thick-client architecture, the client has the full application code and can attempt any API call. The server must defend every endpoint. In HTX, the attack surface is what the server explicitly provides. Unprovided capabilities don&#39;t exist on the client.</p>
+<h3>5.2 Progressive Complexity</h3>
+<p>Each layer adds capability without requiring understanding of higher layers. A developer building content pages (Layer 0) never encounters WebSocket concepts. A developer adding htx:script (Layer 2) doesn&#39;t need to understand channel tokens. The layers are not tightly coupled — they are independently comprehensible.</p>
+<p>This property is distinct from &quot;progressive enhancement&quot; (which describes graceful degradation). Progressive complexity describes the <em>developer experience</em>: the cognitive load scales with the features used, not with the features available.</p>
+<h3>5.3 Compositional Independence</h3>
+<p>Different pages of the same application can operate at different layers. A marketing page at Layer 0, a dashboard at Layer 2, and a data explorer at Layer 5 share the same engine, module system, and deployment. No configuration change is required to use different layers on different pages.</p>
+<p>This property is absent from thick-client frameworks. A React application cannot serve a page without React. A Next.js application cannot serve a page without the Next.js runtime. The framework&#39;s minimum complexity is the developer&#39;s minimum complexity. HTX&#39;s minimum is zero client-side JavaScript.</p>
+<h3>5.4 Server Authority</h3>
+<p>The server is the single point of control for:</p>
+<ul>
+<li>Template rendering (what HTML the client sees)</li>
+<li>Code delivery (what JavaScript the client runs)</li>
+<li>Token issuance (what data the client can access)</li>
+<li>WASM delivery (what compute capabilities the client has)</li>
+</ul>
+<p>This authority is maintained at every layer. Even at Layer 6, the server decides which WASM binaries to deliver. The client is capable but leashed.</p>
+<h3>5.5 Three-Phase Lifecycle</h3>
+<p>The constraints induce a temporal structure that is not prescribed but emergent. The lifecycle of a PRESTO interaction passes through three distinct phases:</p>
+<ol>
+<li><p><strong>Declaration</strong> — the developer authors a source representation containing bilateral affordances: server affordances (data queries, module engagements, layout compositions) and client affordances (discoverable interactions, behavioral scripts, channel credentials) coexist as directives within a single artifact.</p>
+</li>
+<li><p><strong>Resolution</strong> — the engine consumes the server&#39;s affordances, producing a resolved representation. Within this resolved form, two qualities coexist: <em>materialized artifacts</em> (tokens, evaluated values, computed URLs — static strings the server produced) and <em>latent behaviors</em> (scripts, declarative attributes — dormant in the document, not yet activated).</p>
+</li>
+<li><p><strong>Emergence</strong> — the client activates the latent behaviors using the materialized artifacts. Scripts execute. Connections open. Modules load. Channels negotiate. The resulting state — a live WebSocket, a running WASM module, an authenticated data channel — was never specified in any representation. It emerges from the client realizing the potential that the source representation declared and the resolution pipeline prepared.</p>
+</li>
+</ol>
+<p>Each phase has a different actor (developer, engine, client), a different concern (declaration, resolution, activation), and a different product (source representation, resolved representation, emergent state). The phases are separated by well-defined boundaries: the resolution pipeline separates declaration from resolution; the moment of delivery separates resolution from emergence.</p>
+<h3>5.6 Module Sandboxing</h3>
+<p>The module system extends the capability-based security model inward — from the client-server boundary to the module-engine boundary.</p>
+<p>Every module may declare a <em>manifest</em>: a static description of what the module intends to register during boot. The manifest specifies trust level (first-party, marketplace, or tenant) and an explicit enumeration of capabilities — which context providers it will register, which middleware path prefixes it will claim, which channel handler names it will use, which functions it will define.</p>
+<p>When the engine boots a module with a non-first-party manifest, it wraps the module registry in a sandboxed proxy. The proxy allows declared registrations and silently drops undeclared ones. A marketplace module that declares only a context provider and a channel handler cannot register middleware that intercepts authentication routes. A tenant-authored module that declares only a context provider cannot register route sources that hijack arbitrary URL paths.</p>
+<p>The enforcement is policy-driven. The engine reads a module policy at startup (strict, permissive, or audit). In strict mode, modules without manifests are rejected. In permissive mode, unmanifested modules receive full access — enabling gradual migration. The policy is an operational decision, not an architectural one; the manifest contract is the same regardless of enforcement posture.</p>
+<p>This property — that modules declare their intentions and the engine enforces the declaration — mirrors the channel token model at a different layer. Channel tokens scope client access to specific module APIs. Module manifests scope module access to specific engine capabilities. Both are capability-based: the subject receives only the powers it was granted, and the grant is auditable.</p>
+<h3>5.7 Emergent Client Properties</h3>
+<p>The progressive model describes a spectrum of code-on-demand: each degree of extension makes architectural properties available. This spectrum runs along one axis, the degree to which the server extends the client&#39;s capability.</p>
+<p>A second axis emerges when the granted capability is scoped on the client. When delivered code operates within trust boundaries, the boundaries themselves function as constraints, and constraints induce properties.</p>
+<p>At the document level, no trust boundary exists between delivered code units. The assembled document is open. Any script can reach any element. The properties that emerge are those the paper has already described: latent binding, shared state through the DOM, and implicit coordination between code units that share the affordance surface. These properties exist because the boundary is absent.</p>
+<p>At a scoped boundary, delivered code operates within a constrained region of the document. It cannot reach beyond its grant into the host DOM or into sibling code units. The properties that emerge are distinct from those at the document level. Interaction becomes contractual: code units that cannot implicitly observe each other must declare their interfaces explicitly. Portability follows: a code unit that depends on nothing outside its scope operates in any host document. Trust becomes composable: the host can place scoped and unscoped code on the same surface with formal separation.</p>
+<p>At a quarantined boundary, delivered code operates in a sovereign execution context. Separate origin, separate memory, separate document. Communication is mediated entirely by the host. The properties that emerge at this level are those of orchestrated sovereignty: the host grants a context, the context executes independently, and all interaction passes through a mediating channel the host controls.</p>
+<p>This last level mirrors the PRESTO model itself. The server grants capability to the client. The client executes autonomously within the grant. Communication is mediated by the representation. At the quarantined boundary on the client, the same relationship reappears: the host grants capability to the embedded context, the context executes autonomously, communication is mediated by the host. The architectural pattern replicates at a lower level of the system.</p>
+<p>The three levels form a derivation chain that extends from the original constraints:</p>
+<p>REST&#39;s constraints produced the web&#39;s architectural properties. Extending the optional constraint progressively produced the properties described in this paper. Scoping the granted capabilities on the client produced a further set of properties, emergent from the same constraint-based reasoning. Each level is derived from the previous. Each level&#39;s properties are traceable to the constraints that produced them.</p>
+<p>The classes of applications enabled at each level differ correspondingly. At the document level: coordinating dashboards, real-time interfaces, collaborative views within a shared trust domain. At the scoped level: plugin ecosystems, marketplace extensions, embeddable components that declare their interface and operate within it. At the quarantined level: visual builders, design tools, and applications that contain other applications, where the host orchestrates sovereign embedded contexts.</p>
+<p>These are not speculative extrapolations. They are properties induced by constraints, following the same derivation method applied throughout this paper. The trust boundary is the constraint. The emergent property is what the constraint induces. The class of application is what the property enables.</p>
+<hr>
+<h2>6. Evaluation</h2>
+<h3>6.1 Implementation</h3>
+<p>The reference implementation is a TypeScript engine running on the Bun runtime. The engine is structured as a pipeline of resolvers, parsers, and executors. The module system allows arbitrary extensions via a registration API (middleware, context providers, channel handlers, template processors, content adapters).</p>
+<p>To evaluate the architecture under resource constraints, the reference implementation runs on a Raspberry Pi 5 (8GB RAM, ARM64) — a single-board computer serving a multi-tenant SaaS platform (authentication, billing, real-time WebSocket, WASM delivery, authenticated islands, 3D visualization) and a documentation site (42 articles, sidebar navigation with htmx fragment swapping, portal component TOC). Both are served by a single Bun process per site through a tunneled connection to the public internet.</p>
+<h3>6.2 Cross-Language Verification</h3>
+<p>To validate that the specification is language-agnostic and complete, six independent implementations were built in six programming languages spanning different paradigms, type systems, and concurrency models:</p>
+<table>
+<thead>
+<tr>
+<th>Engine</th>
+<th>Language</th>
+<th>Paradigm</th>
+<th>Lines</th>
+<th>Memory (RSS)</th>
+<th>Throughput</th>
+<th>Tests</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>presto-engine</td>
+<td>TypeScript</td>
+<td>OOP + async</td>
+<td>~4,000</td>
+<td>112 MB</td>
+<td>N/A (production)</td>
+<td>33/33</td>
+</tr>
+<tr>
+<td>presto-go</td>
+<td>Go</td>
+<td>Imperative + goroutines</td>
+<td>2,173</td>
+<td>19.8 MB</td>
+<td>1,449-8,139 req/s</td>
+<td>22/22</td>
+</tr>
+<tr>
+<td>presto-elixir</td>
+<td>Elixir</td>
+<td>Functional + BEAM actors</td>
+<td>1,906</td>
+<td>127 MB</td>
+<td>940-2,840 req/s</td>
+<td>22/22</td>
+</tr>
+<tr>
+<td>presto-python</td>
+<td>Python</td>
+<td>Dynamic + interpreted</td>
+<td>1,172</td>
+<td>38 MB</td>
+<td>613-676 req/s</td>
+<td>22/22</td>
+</tr>
+<tr>
+<td>presto-rust</td>
+<td>Rust</td>
+<td>Ownership + zero-cost abstractions</td>
+<td>2,322</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>22/22</td>
+</tr>
+<tr>
+<td>presto-c</td>
+<td>C</td>
+<td>Manual memory + pointers</td>
+<td>3,122</td>
+<td>11.2 MB</td>
+<td>2,434-3,789 req/s</td>
+<td>22/22</td>
+</tr>
+</tbody></table>
+<p>Each engine was built from the same specification document (the PRESTO seed, a 2,020-word self-contained knowledge capsule). Each passes the same 22-test verification suite covering routing, data binding, composition, expression evaluation, control flow, authentication conditionals, layout wrapping, grant materialization, channel authentication, and mutation token roundtrips.</p>
+<p>The verification suite is not exhaustive. It is diagnostic: a conformant engine that passes all 22 tests has demonstrated correct behavior for every directive, every pipeline ordering dependency, and every security-critical operation. The tests are designed to be implementable from the specification alone, without reference to any existing implementation.</p>
+<p>Three observations emerge from the cross-language verification:</p>
+<p><strong>The engine is bounded.</strong> The implementation ranges from 1,172 lines (Python) to 3,122 lines (C). The variation is explained by language expressiveness, not engine complexity. The specification defines a fixed-size problem. The engine does not grow with application complexity; a page with three posts and a page with three thousand posts traverse the same 22-stage pipeline. Template complexity is carried by the representation, not the machinery.</p>
+<p><strong>The specification converges through implementation.</strong> Each new implementation discovered consequences of the constraints that previous implementations had missed. The Go engine revealed that the layout directive must be extracted after expression evaluation but before directive stripping. The C engine revealed that where clauses resolved from user-controlled input create a SQL injection surface in any adapter that interpolates strings into queries. Each finding was promoted into the specification before the next implementation began. The specification improved with each iteration because independent intelligence, reasoning from the same constraints, found consequences the original intelligence had not considered.</p>
+<p><strong>Resource requirements are minimal.</strong> The C implementation operates within 11.2 megabytes of resident memory while serving the complete architectural spectrum. This is not a stripped-down subset; it is the full engine with all 16 directives, the 22-stage pipeline, HMAC-SHA256 token signing, SQLite data binding, and channel authentication. The engine can run on embedded devices, edge nodes, IoT hardware, or any system with a C compiler and a network socket.</p>
+<h3>6.3 Resource Utilization</h3>
+<p>The following measurements were taken from the TypeScript reference implementation under normal operation with all modules loaded:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Modules loaded</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Runtime memory (resident)</td>
+<td>112 MB</td>
+</tr>
+<tr>
+<td>Percentage of available RAM</td>
+<td>1.3% (of 8GB)</td>
+</tr>
+<tr>
+<td>WASM modules in memory</td>
+<td>3 binaries, 10.2KB total</td>
+</tr>
+<tr>
+<td>Database connections</td>
+<td>5 SQLite files (WAL mode)</td>
+</tr>
+<tr>
+<td>Estimated WebSocket capacity</td>
+<td>~1000 concurrent (at ~8KB per connection)</td>
+</tr>
+<tr>
+<td>Build step</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Client-side dependencies</td>
+<td>htmx (14KB gzipped), syntax highlighter (optional)</td>
+</tr>
+</tbody></table>
+<p>These figures demonstrate that the full architectural spectrum — from static templates to WASM-powered 3D visualization — operates within the resource budget of a single-board computer costing approximately \(80 for the board and \)120 fully equipped. The architecture&#39;s memory efficiency derives from three factors: the server holds no per-client state (statelessness), templates are resolved on demand rather than pre-compiled (no build artifact cache), and WASM binaries are small because they are purpose-built modules, not bundled frameworks.</p>
+<p>The cross-language benchmarks further demonstrate that this efficiency is not an artifact of the TypeScript implementation. The C engine achieves the same functionality in 11.2 MB. The Go engine achieves the highest throughput (8,139 req/s for static pages) in 19.8 MB. The resource floor for the complete PRESTO specification is approximately 11 MB of memory and 1,200 lines of code.</p>
+<h3>6.4 Expressiveness</h3>
+<p>We evaluate the architecture&#39;s expressiveness through implementations of increasing complexity:</p>
+<p><strong>Live Chat (Layer 2-3)</strong>
+A WebSocket-powered multi-room chat with join/leave announcements, real-time message sync, and room switching. The page template is 20 lines of markup with one component reference. The component handles WebSocket connection, message rendering, and input handling.</p>
+<p>Equivalent implementations in other frameworks require 150-500 lines across 6-10 files with build tooling.</p>
+<p><strong>Kanban Board (Layer 4-5)</strong>
+A persistent project board with create, move, edit, and delete operations. Two variants: HTTP channel (channelFetch with Bearer tokens) and WebSocket RPC (pure WebSocket with optimistic updates and rollback). State persists in SQLite. The optimistic variant renders changes instantly and rolls back on server rejection.</p>
+<p><strong>3D Visualization (Layer 6)</strong>
+A real-time particle visualization with Three.js rendering and WASM-computed geometry. The WASM module (3.4KB AssemblyScript) generates torus knots, spirals, and animated wave surfaces. Parameters are controlled by sliders and computed at &lt; 0.5ms per frame. The complete implementation is 231 lines in a single <code>.htx</code> file with no build step.</p>
+<p><strong>Distributed Affordance Coordination (Ephemeral Ceremony)</strong>
+Three coordinating islands — inventory management, budget computation, threshold alerts — delivered as a single module through one ephemeral WebSocket ceremony. The WebSocket opens, delivers the module code and a scoped channel token, and closes. Measured ceremony duration through a public internet tunnel to a Raspberry Pi 5: 662ms (456ms connection, 206ms delivery). After the ceremony closes, the three islands coordinate laterally through DOM events (zero network) and signal vertically to the server through stateless HTTP channel requests. Zero persistent connections in steady state. The entire coordination model — three independent state-aware regions, lateral communication, vertical persistence — was conceived, implemented, and measured within 30 minutes, requiring no changes to the engine or architecture. The constraints permitted it; the implementation followed.</p>
+<h3>6.5 Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>React/Next.js</th>
+<th>Phoenix LiveView</th>
+<th>htmx</th>
+<th>HTX</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Default client JS</td>
+<td>~200KB</td>
+<td>~30KB</td>
+<td>14KB</td>
+<td>0KB (Layer 0); ~12KB for WebSocket helper (Layer 3+)</td>
+</tr>
+<tr>
+<td>Build step required</td>
+<td>Yes</td>
+<td>Yes (Mix)</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Server-rendered by default</td>
+<td>Optional (SSR)</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Client routing</td>
+<td>Built-in</td>
+<td>Server-driven</td>
+<td>No</td>
+<td>Layer 5 (opt-in)</td>
+</tr>
+<tr>
+<td>WebSocket support</td>
+<td>Manual</td>
+<td>Built-in</td>
+<td>SSE only</td>
+<td>Built-in (raw WS is 0KB; helper is 12KB)</td>
+</tr>
+<tr>
+<td>WASM delivery</td>
+<td>Manual</td>
+<td>Not native</td>
+<td>No</td>
+<td>Built-in</td>
+</tr>
+<tr>
+<td>Progressive layers</td>
+<td>No (all-or-nothing)</td>
+<td>2 (HTML or LiveView)</td>
+<td>2 (HTML or htmx)</td>
+<td>7 (0-6)</td>
+</tr>
+<tr>
+<td>Files per feature</td>
+<td>6-10</td>
+<td>2-3</td>
+<td>1-2</td>
+<td>1-3 (page + optional component + optional module)</td>
+</tr>
+</tbody></table>
+<p>A note on the &quot;0KB&quot; claim: at Layer 0, HTX sends zero client-side JavaScript — the page is pure server-rendered HTML. At Layer 1, htmx adds 14KB (loaded from a CDN, browser-cached). At time of writing, htmx attributes are not part of the HTML specification — htmx is a third-party library that interprets custom attributes. When browsers natively adopt declarative hypermedia attributes, this dependency becomes zero. At Layer 2, htx:script adds inline IIFEs extracted by the engine — no additional file downloads. The WebSocket ceremony at Layer 3+ can operate with zero dependencies (the token and URL are server-rendered expressions; a raw WebSocket connection is five lines of inline script). The optional client helper (auto-reconnect, token refresh, channel subscriptions, WASM loading) is a 12KB file. Each layer&#39;s JS cost is independent and additive.</p>
+<hr>
+<h2>7. Related Work</h2>
+<h3>7.1 Fielding&#39;s REST (2000)</h3>
+<p>HTX is a direct application of Fielding&#39;s architectural style to application development. The key extension is the progressive formalization of the code-on-demand constraint Fielding identified as optional. HTX explores this constraint as a layered spectrum while preserving the other five constraints.</p>
+<h3>7.2 Hypermedia Systems (Gross, 2023)</h3>
+<p>Carson Gross&#39;s work demonstrates that hypermedia-driven applications can replace much of what single-page applications provide. The htmx library implements this thesis with declarative HTML attributes for AJAX, WebSocket, and Server-Sent Events. HTX builds on this foundation: htmx attributes serve as Layer 1, and the HTX engine provides the server-side infrastructure that htmx-enhanced pages require. The extension beyond htmx is the formalization of Layers 2-6, which htmx does not address.</p>
+<h3>7.3 Phoenix LiveView (McCord, 2018)</h3>
+<p>LiveView pioneered server-rendered real-time applications by maintaining a WebSocket connection and diffing server-rendered HTML. It eliminates the need for client-side JavaScript in many cases. HTX differs in two ways: (1) HTX does not maintain a persistent server-side process per connection (statelessness is preserved), and (2) HTX provides a path to client-side rendering when server-rendering is insufficient, while LiveView requires staying within its server-rendering model.</p>
+<h3>7.4 Rails Hotwire (Heinemeier Hansson, 2020)</h3>
+<p>Hotwire (Turbo + Stimulus) provides HTML-over-the-wire page updates with minimal JavaScript. Like HTX Layers 0-1, it preserves server-rendered HTML as the primary representation. HTX extends beyond Hotwire&#39;s scope with Layers 3-6 (pushed code, authenticated islands, WASM).</p>
+<h3>7.5 Astro Islands (Astro, 2022)</h3>
+<p>Astro&#39;s &quot;islands&quot; architecture allows embedding interactive components within static HTML. Each island is a framework component (React, Vue, Svelte) that hydrates independently. HTX&#39;s Authenticated Islands differ fundamentally: the island code is not bundled at build time — it is pushed by the server at runtime over an authenticated WebSocket. This enables server-authoritative control over what islands a client receives.</p>
+<h3>7.6 Qwik Resumability (Hevery, 2022)</h3>
+<p>Qwik eliminates hydration by serializing component state into HTML and lazily loading event handlers. This is an optimization within the thick-client paradigm — the client still needs a JavaScript framework. HTX avoids the hydration problem entirely: there is no client-side component tree to resume. Scripts run against a complete DOM, not a serialized component state.</p>
+<hr>
+<h2>8. Mobile Development Under HTX Constraints</h2>
+<p>The most common objection to HATEOAS-driven architectures is mobile: &quot;If you don&#39;t have any out-of-band knowledge about the service, you&#39;re basically reimplementing a web browser.&quot; This objection assumes that a HATEOAS client must interpret arbitrary hypermedia at runtime — that the mobile app must be a generic rendering engine.</p>
+<p>HTX reframes the question. The architecture&#39;s core principle is not &quot;render HTML&quot; — it is &quot;the server is authoritative over what the client sees, does, and runs.&quot; HTML is one representation format. The module contract, channel handlers, WebSocket ceremony, and progressive layer model are representation-format-agnostic. They work with any client that speaks HTTP and WebSocket.</p>
+<h3>8.1 WebView Shell</h3>
+<p>The simplest mobile implementation wraps the HTX server&#39;s output in a native WebView. The server renders HTML identically to desktop browsers. <code>htx:script</code> works. WebSocket works. WASM works (modern WebViews support <code>WebAssembly.instantiate</code>).</p>
+<p>This is not a compromise — it is the Basecamp/HEY model that has proven commercially viable. The HTX progressive layers make it more powerful than a typical WebView wrapper: the server can push a mobile-optimized SPA via Client State Transfer, delivering a full client-routed application that feels native but is entirely server-controlled. Different mobile users can receive different UIs based on device capability, subscription tier, or feature flags.</p>
+<p>The WebView approach preserves all HTX architectural properties: server authority, progressive layering, representation-mediated extensions, and the REST baseline.</p>
+<h3>8.2 Native Client with Channel API</h3>
+<p>A native iOS or Android application connects to the WebSocket, authenticates via the ceremony, and uses the channel API — the same <code>/api/channel/{module}/{path}</code> endpoints that Authenticated Islands use in the browser. The mobile app renders native UI (SwiftUI, Jetpack Compose) from JSON data returned by channel handlers.</p>
+<p>The native app authenticates via the WebSocket ceremony, receives a scoped channel token, and uses the channel API — the same endpoints that Authenticated Islands use in the browser — to fetch JSON data. The native UI framework (SwiftUI, Jetpack Compose) renders the data using platform-native components.</p>
+<p>The native app has &quot;out-of-band knowledge&quot; of the data schema — it knows what fields <code>items</code> contains and how to render them. But the <em>access</em> to that data is still mediated by the HTX architecture: the WebSocket ceremony authenticated the user, the channel token scoped the access, and the ChannelHandler controlled what data was returned. The server remains authoritative over <em>what</em> data the client receives, even though the client decides <em>how</em> to render it.</p>
+<p>This model separates two concerns:</p>
+<ul>
+<li><strong>Data authority</strong> — the server (HTX modules, channel handlers, token scoping)</li>
+<li><strong>Rendering authority</strong> — the client (native UI framework)</li>
+</ul>
+<p>The REST critic&#39;s concern — &quot;you&#39;re reimplementing a browser&quot; — doesn&#39;t apply because the native client doesn&#39;t interpret hypermedia. It consumes structured JSON from a server-controlled channel. The same ChannelHandler serves both the browser (where pushed JavaScript renders the data) and the native app (where SwiftUI renders it). The module system is client-agnostic.</p>
+<h3>8.3 Server-Driven Native UI</h3>
+<p>The frontier. Instead of the server returning raw data that the client renders with hardcoded layouts, the server pushes <em>UI descriptions</em> — structured schemas that declarative native frameworks interpret. A schema describes screens, components, data bindings, and interaction handlers in a declarative format. The native app receives this schema over WebSocket (Client State Transfer for native) and renders it using platform-native components. SwiftUI and Jetpack Compose are already declarative and data-driven — a <code>List</code> of <code>Card</code> views driven by server-provided structure is natural in both frameworks.</p>
+<p>This is <strong>Client State Transfer generalized beyond JavaScript</strong>. The server doesn&#39;t push executable code (the native platform won&#39;t <code>eval</code> it). It pushes a declarative UI description — a representation of the interface, not the logic. The native runtime interprets the schema, maps it to native components, and renders.</p>
+<p>The architectural properties are preserved:</p>
+<ul>
+<li><strong>Server authority</strong> — the server decides the UI structure, the layout, and what actions are available</li>
+<li><strong>Progressive capability</strong> — simple screens are static schemas; complex screens include conditional logic, animations, and real-time bindings</li>
+<li><strong>Representation-mediated</strong> — the UI schema is delivered over the authenticated WebSocket, scoped by the same token system</li>
+<li><strong>No out-of-band knowledge</strong> — the client interprets a schema format, not a specific API. A schema change on the server changes the UI on the client without an app update</li>
+</ul>
+<p>Server-driven UI is already deployed at scale. Airbnb&#39;s server-driven UI system renders entire flows from server-provided schemas. Spotify uses a similar approach for its home screen. Instagram&#39;s feed is server-composed. What these systems lack is a formal architectural framework that connects server-driven UI to REST constraints.</p>
+<p>HTX provides that framework. The progressive layer model extends naturally:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Web Client</th>
+<th>Native Client</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>Server-rendered HTML</td>
+<td>Server-driven UI schema</td>
+</tr>
+<tr>
+<td>1</td>
+<td>htmx attributes</td>
+<td>Schema-driven interactions</td>
+</tr>
+<tr>
+<td>2</td>
+<td>htx:script</td>
+<td>Custom native event handlers</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Client State Transfer (JS)</td>
+<td>Client State Transfer (UI schema)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Authenticated Islands</td>
+<td>Channel-backed components</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Full SPA</td>
+<td>Server-driven app with client routing</td>
+</tr>
+<tr>
+<td>6</td>
+<td>WASM compute</td>
+<td>Native compute (Metal, NEON)</td>
+</tr>
+</tbody></table>
+<p>The specification&#39;s pipeline — resolve, compose, deliver, extend — applies to both HTML and UI schemas. The syntax differs. The architecture is the same.</p>
+<h3>8.4 The HATEOAS Answer</h3>
+<p>The critic asks: &quot;How do you build a great mobile app under HATEOAS constraints?&quot;</p>
+<p>The answer: the same way HTX builds a great web app. The server sends complete representations (HTML or UI schemas). The client renders them with platform-native capabilities. Extended functionality (real-time, pushed logic, compute) is negotiated through the representation. The server remains authoritative. The client is capable but leashed.</p>
+<p>The representation format changes. The architectural style does not.</p>
+<hr>
+<h2>9. Future Art</h2>
+<p>The meta-architectural design described in this paper maps a space of possibilities. The reference implementation explores a portion of that space. Several directions remain that the architecture clearly enables but that have not yet been realized.</p>
+<h3>9.1 Offline-First via Client-Side WASM SQLite</h3>
+<p>The ephemeral WASM delivery pattern can deliver a SQLite engine compiled to WebAssembly (such as wa-sqlite or sql.js) to the client. Combined with Client State Transfer, the pushed module gains a local relational database — readable and writable without network access. State synchronization between the client-side database and the server-side database can occur over the existing WebSocket when connectivity is available.</p>
+<p>Every piece of this exists independently within the architecture: WASM binary delivery, pushed executable code, WebSocket bidirectional communication, and server-authoritative data via channel handlers. Combining them yields offline-first applications with no new architectural concepts — only a new composition of existing layers.</p>
+<h3>9.2 Content Negotiation Across Representation Formats</h3>
+<p>The same route, backed by the same data query and the same module system, could serve different representation formats based on the client&#39;s Accept header. A browser receives HTML. An API client receives JSON. A native mobile app receives a UI schema. The resolution pipeline branches at the representation layer; the data layer is shared.</p>
+<p>This extends the uniform interface constraint to multi-platform delivery. A single route declaration — with its data query, its context providers, and its module integrations — becomes the source of truth for all clients. The template syntax produces HTML; an alternative serializer produces JSON or UI schemas from the same resolved data. The server decides the format; the client declares its preference through standard HTTP content negotiation.</p>
+<h3>9.3 Collaborative Multiplayer</h3>
+<p>The WebSocket pub/sub system that supports real-time channels and state synchronization extends naturally to multi-user collaboration. Multiple clients subscribe to the same channel; mutations broadcast to all subscribers; optimistic updates resolve conflicts locally before server confirmation. Shared cursors, live presence indicators, and collaborative editing are enabled by the existing channel + pub/sub model without additional architectural concepts.</p>
+<p>The deeper question is conflict resolution. The current architecture&#39;s optimistic update pattern (mutate locally, confirm or rollback from server) handles single-user optimism. Multi-user collaboration requires the server to mediate concurrent mutations — a domain where CRDTs (Conflict-Free Replicated Data Types) or operational transformation provide formal solutions. A CRDT module, delivered as a WASM binary via Compute State Transfer, would enable the client to merge concurrent edits at native speed while the server maintains the authoritative state.</p>
+<h3>9.4 Distributed Affordance Coordination</h3>
+<p>The three-phase lifecycle repeats with each client interaction. Over many iterations, the client accumulates affordances — its state at any moment is a negotiated aggregate of every server response received and every local mutation applied. When multiple authenticated islands operate on the same page, each managing independent state through its own channel, a coordination question arises: can islands signal each other laterally (client-side) and communicate collective state vertically (to the server) in subsequent requests?</p>
+<p>If so, the resolved representation is not the final form of the interaction but a snapshot in an ongoing negotiation — stateless on the server, stateful on the client, mediated through hypermedia. The server tailors each response to reported client state without storing it between exchanges. This pattern — distributed client-side state coordination with server-aware negotiation — may emerge naturally from authenticated islands operating within the iterative PRESTO lifecycle.</p>
+<h3>9.5 Streaming Resolution</h3>
+<p>The current resolution pipeline produces a complete HTML response before sending it. An alternative: stream the resolved HTML as each pipeline stage completes. The layout header and navigation could be sent immediately while data queries are still executing. The client receives the page skeleton first and the content fills in progressively — without JavaScript, without hydration, using only HTTP chunked transfer encoding. This is the browser&#39;s native progressive rendering model, applied to the HTX pipeline.</p>
+<p>Server-pushed modules and dynamic route sources are agnostic to how their content is produced. A template string returned by a route source could be written by a developer, retrieved from a database, or generated by a large language model at request time.</p>
+<p>An AI agent that produces valid template strings is, architecturally, a route source. It receives a path and a context. It returns a template. The engine resolves the template through the standard pipeline — evaluating expressions, resolving includes and components, applying layouts, enforcing authentication. The agent does not need direct database access, filesystem access, or WebSocket control. It provides a representation; the engine does the rest.</p>
+<p>The trust model is inherent in the architecture. The engine controls what the agent&#39;s template can reference: layouts and components are resolved from the filesystem, data queries go through the content adapter, context providers supply scoped data. The agent&#39;s output is <em>resolved</em>, not <em>executed</em> — the template string passes through the same constrained pipeline as any developer-written template. The agent cannot bypass middleware, cannot access unprovided context, cannot push code that the engine&#39;s ComponentResolver doesn&#39;t extract.</p>
+<h3>9.6 AI-Generated Representations</h3>
+<p>Server-pushed modules and dynamic route sources are agnostic to how their content is produced. A template string returned by a route source could be written by a developer, retrieved from a database, or generated by a large language model at request time.</p>
+<p>An AI agent that produces valid template strings is, architecturally, a route source. It receives a path and a context. It returns a template. The engine resolves the template through the standard pipeline — evaluating expressions, resolving includes and components, applying layouts, enforcing authentication. The agent does not need direct database access, filesystem access, or WebSocket control. It provides a representation; the engine does the rest.</p>
+<p>The trust model is inherent in the architecture. The engine controls what the agent&#39;s template can reference: layouts and components are resolved from the filesystem, data queries go through the content adapter, context providers supply scoped data. The agent&#39;s output is <em>resolved</em>, not <em>executed</em> — the template string passes through the same constrained pipeline as any developer-written template. The agent cannot bypass middleware, cannot access unprovided context, cannot push code that the engine&#39;s ComponentResolver doesn&#39;t extract.</p>
+<h3>9.7 Agent-Mediated Route Sources and Multi-Agent Cooperation</h3>
+<p>Federated route sources — where one engine resolves a route from another engine&#39;s output — extend naturally to multi-agent architectures. Each agent is a route source responsible for a namespace of routes:</p>
+<ul>
+<li>Agent A provides analytical views under one path prefix</li>
+<li>Agent B provides personalized recommendations under another</li>
+<li>Agent C provides generated content under a third</li>
+</ul>
+<p>The agents cooperate by composing into a single application without awareness of each other. The engine resolves all their outputs through the same pipeline, with the same layouts, the same authentication, the same module system. Each agent&#39;s representations are mediated by the same constraints that mediate human-authored templates.</p>
+<p>The trust protocol follows the same pattern established by the module manifest system (§5.5). Each agent operates as a module with a declared manifest — its trust level, the route prefixes it may claim, the adapters it may query, the components it may reference. The engine enforces these declarations through the same sandboxed registry proxy that constrains third-party and tenant modules. An agent declared at the &quot;tenant&quot; trust level can produce templates but cannot register middleware, cannot access undeclared adapters, and cannot claim routes outside its declared prefix.</p>
+<p>The access negotiation is policy-driven, mirroring <code>HTX_MODULE_POLICY</code> at the agent level. An engine operator configures how much authority agents receive — from &quot;strict&quot; (agents must declare every capability and the engine enforces all boundaries) to &quot;permissive&quot; (agents operate with broader access for development and experimentation). The same policy gradient that governs human-authored modules governs agent-authored representations. The mechanism is identical; the subject is different.</p>
+<p>This suggests a broader principle: the constraints that govern human-client interaction — complete representations, server authority, mediated extensions — are the same constraints that govern agent-to-agent interaction. The representation is the contract. The pipeline is the trust boundary. The module manifest is the capability negotiation. The policy setting determines the posture. Whether the subject is a browser, a third-party plugin, or an AI agent, the architecture provides one consistent model for granting, scoping, and auditing capability.</p>
+<h3>9.8 Constrained Agent Harness</h3>
+<p>The agent-as-route-source model (§9.4) raises a practical question: how does the engine ensure that an agent&#39;s output conforms to the architecture&#39;s rules? An unconstrained agent may produce templates that violate assumptions — using directives in contexts where they aren&#39;t processed, referencing resources that don&#39;t exist, or generating markup that breaks the resolution pipeline.</p>
+<p>The answer is a <em>constrained harness</em>: a wrapper around the agent that provides scoped context before generation and validates output after generation.</p>
+<p>Before generation, the harness packages architectural context for the agent: which directives work in which contexts (page templates vs. component files), which CSS variables the theme provides, which client libraries are available, which file paths are writable, and which patterns existing templates follow. This context is not documentation — it is an operational constraint. The agent generates within the boundary the context defines.</p>
+<p>After generation, the harness validates the output against the architecture&#39;s invariants: the template starts with a layout directive, page-level scripts use standard script tags (not component-scoped directives), CSS references theme variables rather than hardcoded colors, the markup is responsive, and no expressions appear inside script blocks where they would be evaluated unintentionally. Validation failures can trigger re-generation with the specific error as additional context — a self-correcting loop.</p>
+<p>The harness itself is a module with a manifest. Its declared capabilities scope what it can register (route sources under a specific prefix, a channel handler for generation requests) and what the agent can write (template files in a designated directory, component files with a designated prefix). The module sandbox (§5.5) enforces these declarations. The agent cannot register middleware, cannot modify existing templates, cannot access databases directly.</p>
+<p>This layered trust model — agent constrained by harness, harness constrained by manifest, manifest enforced by engine — mirrors the architecture&#39;s approach at every other boundary. The principle is consistent: capability is granted, scoped, and auditable. Whether the subject is a browser client, a third-party module, or an AI agent, the mechanism is the same.</p>
+<h3>9.9 Edge Deployment</h3>
+<p>The architecture&#39;s statelessness — no per-client session state, no persistent server-side processes per connection, templates resolved on demand — makes it naturally suited to edge deployment. An HTX engine running at edge locations resolves templates close to the user. Static templates (Layer 0-1) benefit immediately from edge proximity. Dynamic queries require edge-accessible data — a replicated SQLite file (via LiteFS or similar) or an edge-compatible data adapter. The module system&#39;s adapter abstraction means switching from a local SQLite adapter to an edge-replicated adapter requires changing one line in the module registration, not restructuring the application.</p>
+<h3>9.10 Optional Ahead-of-Time Compilation</h3>
+<p>While the architecture resolves templates on demand at request time, nothing prevents optional ahead-of-time compilation. A build step could pre-resolve static templates into cached HTML files, compile WASM modules from source, and bundle client-side JavaScript — all as an optimization, not a requirement. The key distinction from thick-client build systems: the build step is <em>optional and additive</em>. The application works without it. The build makes it faster, not functional. This inverts the conventional relationship where the build step is mandatory and its absence means the application doesn&#39;t run.</p>
+<h3>9.11 Template Marketplace</h3>
+<p>Dynamic route sources and the module system enable distributable template sets. A template pack — a collection of page templates, components, and stylesheets — could be published, installed, and resolved through the existing architecture. A tenant installs a template pack; the pack&#39;s templates become available as dynamic routes; the pack&#39;s components become available on the filesystem. The composition model (dynamic page-level templates referencing shared filesystem components) makes installation a matter of database writes and file copies, not application reconfiguration.</p>
+<hr>
+<h2>10. Conclusion</h2>
+<p>The web&#39;s architectural strength has always been the complete representation — a document sent in full, rendered immediately, navigable without JavaScript. Modern web development abandoned this strength in pursuit of application-like interactivity, creating a generation of frameworks that compensate for the problems their own architecture introduces.</p>
+<p>HTX does not compensate. It restores.</p>
+<p>The server sends complete documents. Templates declare their own data needs. Scripts enhance what already exists. Each layer of client capability is added only when the previous layer is insufficient. The architecture scales from static HTML to WASM-powered 3D visualization without changing frameworks, without introducing a build step, and without abandoning the RESTful contract.</p>
+<p>The progressive code-on-demand model demonstrates that the tension between &quot;simple content site&quot; and &quot;rich interactive application&quot; is a false dichotomy created by frameworks that force a single level of complexity. When the architecture supports independent layers, the developer chooses the right layer for each feature — and most features need less than they think.</p>
+<p>The cross-language verification confirms that this is not a framework-specific claim. Six implementations in six languages, spanning garbage-collected runtimes and manual memory management, object-oriented and functional paradigms, interpreted and compiled execution, all produce the same architectural properties from the same specification. The engine is bounded: it does not grow with application complexity. The specification is convergent: it improves through the act of being independently implemented. The resource floor is minimal: the complete specification operates within 11 megabytes of memory and 3,122 lines of C.</p>
+<p>These properties suggest that PRESTO describes something closer to infrastructure than to a framework. Frameworks evolve with their ecosystems, accumulate features, and eventually require migration. An architectural style, once its constraints are correctly identified and its specification is complete, is stable. The constraints do not change because they are derived from the properties of the medium itself: HTTP, HTML, and the uniform interface that connects them.</p>
+<p>The document is the foundation. The extensions are progressive. The server mediates both. The engine is finished.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<hr>
+<h2>References</h2>
+<ol>
+<li><p>Fielding, R.T. (2000). <em>Architectural Styles and the Design of Network-based Software Architectures</em>. Doctoral dissertation, University of California, Irvine.</p>
+</li>
+<li><p>Gross, C., Stepinski, A., &amp; Akşimşek, D. (2023). <em>Hypermedia Systems</em>. Big Sky Software.</p>
+</li>
+<li><p>Berners-Lee, T., Fielding, R., &amp; Masinter, L. (2005). Uniform Resource Identifier (URI): Generic Syntax. RFC 3986.</p>
+</li>
+<li><p>Fielding, R., &amp; Reschke, J. (2014). Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content. RFC 7231.</p>
+</li>
+<li><p>McCord, C. (2018). Phoenix LiveView. <a href="https://github.com/phoenixframework/phoenix_live_view">https://github.com/phoenixframework/phoenix_live_view</a></p>
+</li>
+<li><p>Gross, C. (2020). htmx: High Power Tools for HTML. <a href="https://htmx.org">https://htmx.org</a></p>
+</li>
+<li><p>Heinemeier Hansson, D. (2020). Hotwire: HTML Over The Wire. <a href="https://hotwired.dev">https://hotwired.dev</a></p>
+</li>
+<li><p>Haas, A., et al. (2017). Bringing the Web up to Speed with WebAssembly. PLDI &#39;17.</p>
+</li>
+</ol>
+<hr>
+<p><em>This paper describes the HTX architecture as implemented in six conformant engines across TypeScript, Go, Elixir, Python, Rust, and C. The reference implementation, specification, documentation, and cross-language verification suite are available at the project repository (<a href="https://hypermediaapp.org">https://hypermediaapp.org</a>).</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

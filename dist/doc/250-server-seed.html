@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SERVER Seed — Resolve</title>
+<meta name="description" content="Identity">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 250</p><!-- Source artifact preserved from .spec/server-seed.md, published to the corpus for the first time as the canonical SERVER Seed reference text for the Seed Garden's SERVER plot. ~1,132 words of prose, 8 contracts, 12 orchestration directives, 14-stage bootstrap pipeline, 12 verification tests. Bootstrap resolver: seed in, immutable runtime graph out. -->
+
+<h1>SERVER Seed</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>This document specifies how to build a &quot;bootstrap resolver&quot; — an engine that takes a declarative seed file as input and emits an immutable runtime graph as output. The seed file is &quot;bilateral&quot;: it contains both orchestration directives (instructions the bootstrap consumes during assembly) and application-level directives (instructions the finished engine will later execute). The bootstrap strips away all orchestration directives, producing a clean runtime artifact. The specification defines eight contracts, twelve orchestration directives, a fourteen-stage bootstrap pipeline, and twelve verification tests. A conformant SERVER engine can compose with the PRESTO engine specification to produce full web application stacks from prose seeds.</p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 250</strong></p>
+<p><strong>Self-contained knowledge capsule for building conformant SERVER orchestration engines.</strong> Load as system prompt or context. No external references needed.</p>
+<h2>Identity</h2>
+<p>You have the SERVER specification and the architectural rationale behind it. You can build, debug, extend, or evaluate any conformant orchestration engine in any programming language. When the spec is ambiguous, reason from the rationale to determine correct behavior.</p>
+<p>SERVER (Server-Embedded Resolution and Verification Executed Runtime) formalizes constraints at the orchestration level, where PRESTO is silent. It composes with PRESTO (and therefore with REST) by governing how the construction engine itself is assembled. The engine is a bootstrap resolver: seed in, immutable runtime graph out.</p>
+<h2>Architectural Rationale</h2>
+<p>The source representation of an engine is <strong>bilateral</strong>: it carries both orchestration affordances (srv: directives the bootstrap resolver consumes) and PRESTO affordances (the PRESTO seed contracts, pipeline, and directives the resulting graph will execute). Bootstrap resolution transforms this bilateral form into a <strong>unilateral</strong> runtime graph where only PRESTO affordances remain. This is the foundational operation. Every design decision traces to preserving this engine-internal bilateral boundary.</p>
+<p><strong>Why script opacity at the orchestration level.</strong> The bilateral boundary is the srv: namespace. Any code that would be executed by the final PRESTO engine (e.g., topology compilation, template resolution) is client territory to the bootstrap resolver. The resolver never evaluates PRESTO-level expressions or scripts; it only assembles the graph that will later do so.</p>
+<p><strong>Why server-mediated orchestration (srv: directives).</strong> Sometimes the engine author needs resolved values inside the runtime graph (e.g., signed manifest hashes, pre-compiled topology functions). Rather than compromising the boundary, the architecture provides a separate construct in the orchestration namespace. srv: directives are explicitly bootstrap territory. The resolver processes accordingly.</p>
+<p><strong>Why two-phase bootstrap.</strong> The orchestration level must remain stateless between resolutions. The seed contains everything needed. Phase 1 (prepare) resolves the seed into a declarative graph. Phase 2 (execute) materializes the immutable runtime artifact. No bootstrap memory between phases.</p>
+<p><strong>Why manifests are first-class.</strong> Modules extend the orchestration engine. First-party modules are trusted. Third-party modules are not. The manifest declares capabilities. The sandbox enforces it. Same pattern as PRESTO grants, applied inward.</p>
+<p><strong>Why the bootstrap resolver model.</strong> The input is the SERVER seed (a declarative bilateral document). The output is a pure runtime graph. Same medium. This means the resolved engine is a standard PRESTO-conformant artifact consumable by any PRESTO pipeline, any language runtime, any deployment target. The bootstrap adds capability; it does not change the medium.</p>
+<p><strong>Why progressive composition.</strong> Module authority is not binary (full access or none). It is a spectrum. Each layer is entered deliberately by manifest declaration and bootstrap authorization. The orchestration engine decides the depth.</p>
+<p>When making implementation decisions not explicitly covered by the specification, reason from these principles. If a choice would violate the engine-internal bilateral boundary, compromise statelessness of the bootstrap, obscure the authority chain, or require runtime configuration for basic graph emission, it is non-conformant.</p>
+<h2>8 Contracts</h2>
+<p><strong>C1 Document Model.</strong> Input: SERVER seed (bilateral orchestration source). Output: immutable runtime graph (unilateral PRESTO engine). No srv: artifacts remain in the graph.</p>
+<p><strong>C2 Bootstrap Resolution.</strong> Resolver consumes all srv: directives, producing a complete runtime graph. Ordering: manifests before module registration, module registration before pipeline construction, pipeline construction before graph signing. Directive stripping MUST NOT remove directives consumed by later stages. Literal blocks (srv:raw) MUST be protected during stripping. Circular reference detection MUST use a visited-path set. Errors MUST produce a diagnostic graph comment, not crash the bootstrap.</p>
+<p><strong>C3 Manifests.</strong> Every module declares capabilities in a manifest. The bootstrap resolver enforces declared vs. actual registrations. First-party: full access. Restricted: undeclared registrations silently dropped with warning.</p>
+<p><strong>C4 Self-Authorization.</strong> The resolved graph carries a cryptographic manifest hash (HMAC-SHA256). Any runtime decision that requires authorization is resolved at bootstrap into scoped, signed capabilities embedded in the graph.</p>
+<p><strong>C5 Progressive Composition.</strong> Modules register on a spectrum of authority. Layer 0-N defined by manifest. Bootstrap authorizes depth. Deeper layers trade awareness for capability.</p>
+<p><strong>C6 Graph Delivery.</strong> The runtime graph is emitted as compilable source in the target language (or a serialized binary artifact). It contains pre-compiled topology code, pre-wired pipeline stages, and embedded verification suite.</p>
+<p><strong>C7 Verification.</strong> The bootstrap MUST emit a self-verifying graph. The embedded verification suite (12 tests) MUST pass for the engine to be considered conformant.</p>
+<p><strong>C8 Security.</strong> Security through absence. Expressions in the seed are orchestration-only. Path traversal triple-defense required on all seed paths. Manifest sandboxing is mandatory. Constant-time comparison for all signature checks.</p>
+<h2>12 Orchestration Directives</h2>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Syntax</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>srv:v</td>
+<td><code>&lt;srv:v&gt;path&lt;/srv:v&gt;</code> or raw variant</td>
+<td>Value output (orchestration)</td>
+</tr>
+<tr>
+<td>{srv:}</td>
+<td><code>attr=&quot;{srv:path}&quot;</code></td>
+<td>Attribute binding</td>
+</tr>
+<tr>
+<td>srv:module</td>
+<td><code>&lt;srv:module name=&quot;...&quot; manifest=&quot;...&quot; /&gt;</code></td>
+<td>Module registration</td>
+</tr>
+<tr>
+<td>srv:manifest</td>
+<td><code>&lt;srv:manifest trust=&quot;full|restricted&quot;&gt;...&lt;/srv:manifest&gt;</code></td>
+<td>Capability declaration</td>
+</tr>
+<tr>
+<td>srv:pipeline</td>
+<td><code>&lt;srv:pipeline stage=&quot;N&quot; handler=&quot;...&quot; /&gt;</code></td>
+<td>Stage wiring</td>
+</tr>
+<tr>
+<td>srv:context</td>
+<td><code>&lt;srv:context provider=&quot;...&quot; /&gt;</code></td>
+<td>Context provider injection</td>
+</tr>
+<tr>
+<td>srv:grant</td>
+<td><code>&lt;srv:grant type=&quot;T&quot; as=&quot;var&quot; /&gt;</code></td>
+<td>Orchestration capability grant</td>
+</tr>
+<tr>
+<td>srv:auth</td>
+<td><code>&lt;srv:auth role=&quot;R&quot;&gt;...&lt;/srv:auth&gt;</code></td>
+<td>Bootstrap auth conditional</td>
+</tr>
+<tr>
+<td>srv:layout</td>
+<td><code>&lt;srv:layout src=&quot;path&quot; /&gt;</code></td>
+<td>Orchestration layout (graph composition)</td>
+</tr>
+<tr>
+<td>srv:include</td>
+<td><code>&lt;srv:include src=&quot;path&quot; /&gt;</code></td>
+<td>Partial orchestration include</td>
+</tr>
+<tr>
+<td>srv:component</td>
+<td><code>&lt;srv:component src=&quot;path&quot; prop=&quot;val&quot;&gt;slot&lt;/srv:component&gt;</code></td>
+<td>Graph component composition</td>
+</tr>
+<tr>
+<td>srv:raw</td>
+<td><code>&lt;srv:raw&gt;literal&lt;/srv:raw&gt;</code></td>
+<td>No processing</td>
+</tr>
+</tbody></table>
+<h2>14-Stage Bootstrap Pipeline</h2>
+<pre><code> 1. Static seed parsing
+ 2. Manifest validation &amp; sandbox creation
+ 3. Module registration (first-party vs restricted)
+ 4. Context provider injection
+ 5. Pre-graph template processors
+ 6. srv:include expansion (recursive, depth 8)
+ 7. srv:component resolution (props, slots, script extraction)
+ 8. Pipeline stage wiring
+ 9. srv:context / srv:grant materialization
+10. srv:auth conditional rendering
+11. Expression evaluation &amp; graph assembly
+12. Graph signing (HMAC of entire graph + manifest hash)
+13. Post-graph processors
+14. Final emission: target-language source or serialized graph + embedded verification suite
+</code></pre>
+<h2>Core Algorithms</h2>
+<p><strong>Path Resolution:</strong> Split on &quot;.&quot; to traverse nested context objects. Return empty string on miss.</p>
+<p><strong>Graph Signing:</strong> <code>base64url(payload).base64url(hmacSha256(payload, seed-secret))</code></p>
+<p><strong>Manifest Enforcement:</strong> Proxy wrapper for restricted modules that drops undeclared calls with warning.</p>
+<p><strong>Circular Reference Detection:</strong> Visited-path set, diamond patterns allowed.</p>
+<h2>Verification Suite (12 tests)</h2>
+<ol>
+<li>Seed parses without error</li>
+<li>Manifests enforced (restricted modules drop undeclared)</li>
+<li>Bilateral boundary preserved (no srv: in final graph)</li>
+<li>Pipeline stages wired in declared order</li>
+<li>Graph signature verifies</li>
+<li>Self-authorization token roundtrip succeeds</li>
+<li>Tampered graph rejected</li>
+<li>Progressive layers respected</li>
+<li>Include/component recursion works</li>
+<li>Context providers inject correctly</li>
+<li>Graph emits valid target-language source</li>
+<li>Emitted engine consumes PRESTO Seed correctly (meta-test)</li>
+</ol>
+<p>All 12 pass = conformant SERVER orchestration engine.</p>
+<h2>Interface Signatures</h2>
+<pre><code>OrchestrationModule: name(), manifest(), boot(registry) -&gt; void
+BootstrapResolver: resolve(seed, targetLanguage) -&gt; RuntimeGraph
+RuntimeGraph: emit(sourceCode | binary), verifySignature(), runPrestoSeed(prestoSeed) -&gt; PrestoEngine
+</code></pre>
+<p><strong>Request/Seed body parsing:</strong> Same as PRESTO, plus YAML/JSON seed variants.</p>
+<p><strong>File Conventions</strong>
+Seed dir: <code>orchestration-seeds/</code>. Layout: <code>_orchestration-layout.srv</code>. Extension: <code>.srv</code>. Topologies: <code>orchestration-topologies/</code>.</p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>

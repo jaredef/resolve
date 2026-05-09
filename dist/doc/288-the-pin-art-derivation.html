@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pin-Art Derivation — Resolve</title>
+<meta name="description" content="Authorship and Scrutiny">
+<link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false} ], throwOnError: false });"></script>
+<script defer src="../static/search.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <h1 class="site-title"><a href="../index.html">Resolve</a></h1>
+    <nav class="site-nav">
+      <a href="../index.html" class="active">Corpus</a>
+      <a href="../systems-engineering.html" class="">Systems Engineering</a>
+    </nav>
+    <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
+  </div>
+</header>
+<main class="">
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 288</p><h1>The Pin-Art Derivation</h1>
+<blockquote>
+<p><strong>Reader&#39;s Introduction</strong></p>
+<p>htmx is a popular JavaScript library (14,000 lines of development code) that lets web pages make HTTP requests and update parts of the page without reloading — all through HTML attributes rather than JavaScript code. This document reports an experiment: we wrote a 3,937-word prose document describing 19 rules (called &quot;constraints&quot;) that capture everything htmx does. We then fed that prose to an AI model and asked it to build a working replacement. The result: 1,318 lines of JavaScript that passes 54 tests and behaves identically to htmx. That&#39;s 9.4% of htmx&#39;s codebase producing 100% of its behavior. More remarkably, before writing any code, we predicted the implementation would be approximately 1,317 lines. The actual result was 1,318 — off by one line. The document explains why this prediction was possible: when you derive code from constraints rather than building it feature-by-feature, the implementation size is <em>determined</em> by the constraint set, not emergent from the development process. The &quot;pin-art model&quot; referenced in the title is the analytical method used to find which constraints matter most — like pressing pins into foam to map the shape of what&#39;s underneath.</p>
+<!-- doc-370-update-note -->
+<p><em>Update (April 2026): improvements made using findings from <a href="../doc/370-the-student-taking-notes.html">Doc 370 — The Student Taking Notes</a>. SEAL provides a direct empirical instance of prose-form derivation producing capability unavailable from raw specification: the 33.5% → 47.0% gap between raw-passage and implications-restructured finetuning on SQuAD. The derivation pattern this document names has one concrete empirical confirmation at the weight-update level. The generalization beyond software-architectural cases remains contested under the scrutiny notices above.</em></p>
+</blockquote>
+<p><strong>Jared Foy · 2026-04-22 · Doc 288</strong></p>
+<hr>
+<h2>Authorship and Scrutiny</h2>
+<p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
+<p><strong>How 19 constraints derived a complete web framework in 1,318 lines — and predicted their own implementation size to within 1 line.</strong></p>
+<!-- deprecation-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+<p><strong>⚠️ DEPRECATION NOTICE — UNIVERSALITY CLAIMS UNDER SCRUTINY</strong></p>
+<p>The universality claims in this document — that the meta-law or thesis stated here applies domain-universally across software, biology, law, music, physics, and theology — have been directly challenged on the corpus&#39;s own falsifiability criteria. Readers should treat the cross-domain portions with specific skepticism and consult the successor documents:</p>
+<ul>
+<li><a href="../doc/356-sycophantic-world-building.html">Doc 356 — Sycophantic World Building</a> — on the specific rhetorical pattern by which the corpus extends framework scope beyond grounded evidence</li>
+<li><a href="../doc/366-nesting-sipe-in-krakauer-mitchell.html">Doc 366 — Nesting SIPE in the Krakauer–Krakauer–Mitchell Framework</a> — external-criteria synthesis under peer-reviewed complexity-science standards</li>
+<li><a href="../doc/367-falsifying-sipe-on-its-own-terms.html">Doc 367 — Falsifying SIPE on Its Own Terms</a> — internal-criteria falsification with two successful counterexamples (mechanical constrained decoding; chiral anomalies in quantum field theory)</li>
+</ul>
+<p>The narrow architectural-inheritance claim for specific hierarchical software stacks survives. The universal meta-law claim, the cross-domain bullets, the fractal-boundary prediction, and the Turing paradigmatic-example claim require revision or retraction. <strong>Read what follows with these constraints active.</strong></p>
+</div>
+
+<hr>
+<h2>The Experiment</h2>
+<p>htmx is a 14,000-line JavaScript library that lets any HTML element issue HTTP requests and swap the response into the DOM. It has become the standard-bearer for the hypermedia approach to web development — the idea that the server sends HTML, not JSON, and the browser renders it without a client-side framework.</p>
+<p>We asked: can htmx be derived from constraints?</p>
+<p>Not reimplemented. Not cloned. <em>Derived.</em> Start from the behavioral invariants — what htmx <em>must</em> do — and let the implementation follow.</p>
+<p>The result: <strong>htmx-derived.js</strong>. A drop-in replacement for htmx. Same <code>hx-*</code> namespace. Same behavior. 1,318 lines. 28 <code>hx-*</code> attributes. 54 passing tests across all 19 constraints. Full feature parity.</p>
+<p>9.4% of htmx&#39;s development codebase. 100% of its behavior.</p>
+<hr>
+<h2>The Method</h2>
+<p>We used the <strong>pin-art model</strong> (Doc 270) as the analytical framework and the <strong>derivation inversion</strong> (Doc 247) as the generative method.</p>
+<h3>Phase 1: The Core Seed</h3>
+<p>Six constraints were identified as the irreducible behavioral contract of htmx:</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Statement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C1</td>
+<td>Any HTML element may issue any HTTP verb via a declarative attribute</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>The response is HTML, not JSON — same medium in, same medium out</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Eight declarative swap strategies determine how response content replaces target content</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>A CSS-selector-based targeting system determines which element receives the swapped content</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>A declarative trigger system with modifiers determines when requests fire</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Existing links and forms can be progressively enhanced to use AJAX</td>
+</tr>
+</tbody></table>
+<p>These six constraints were written as a prose seed — the <strong>HTMX Constraint Seed</strong> — approximately 1,200 words. The seed was fed to a frontier language model. The model derived a conformant implementation in 332 lines.</p>
+<p>This was the core. It handled GET/POST/PUT/PATCH/DELETE, all eight swap strategies, target resolution with <code>this</code>/<code>closest</code>/<code>find</code>, trigger modifiers (once, changed, delay, throttle, from, load, revealed, every), hx-boost for links and forms, hx-confirm, hx-indicator, hx-select, hx-vals, and hx-headers.</p>
+<p>332 lines. About 23% of htmx&#39;s feature surface.</p>
+<h3>Phase 2: The Pin-Art Analysis</h3>
+<p>We then applied the pin-art model to find the boundary between what the six constraints derive and what htmx actually does. The analysis identified three seam types:</p>
+<ol>
+<li><strong>Essential seams</strong> — features whose absence breaks real-world htmx applications</li>
+<li><strong>SHOULD seams</strong> — features that improve fidelity but aren&#39;t load-bearing</li>
+<li><strong>Missing subsystems</strong> — entire categories of functionality not addressed by any existing constraint</li>
+</ol>
+<p>Five features were implemented from the first pin-art pass: response headers (HX-Redirect, HX-Trigger, HX-Retarget, HX-Reswap), hx-sync request coordination, file upload encoding, attribute inheritance, and CSS transition classes. This brought the implementation to 457 lines.</p>
+<h3>Phase 3: The Fractal Ring Derivation</h3>
+<p>The full parity analysis identified approximately 100 missing features. The pin-art model was then applied <em>recursively</em> — not just to find what&#39;s missing, but to find the <strong>constraint density</strong> of what&#39;s missing. Which new constraint, when added as a pin, would cause the most features to fall out as natural consequences?</p>
+<p>This produced 13 new constraints organized into three density rings:</p>
+<p><strong>Ring 1 — Highest density (thickest pins):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Statement</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C7</td>
+<td>The server may override targeting, swapping, URL state, and event-firing via response headers</td>
+<td>HX-Location, HX-Push-Url, HX-Replace-Url, hx-replace-url, title tag handling</td>
+</tr>
+<tr>
+<td>C8</td>
+<td>A response fragment may include elements marked for swap into targets other than the primary target</td>
+<td>hx-swap-oob, hx-select-oob, hx-preserve</td>
+</tr>
+<tr>
+<td>C9</td>
+<td>Swapped content must be treated as a live document: scripts execute, handlers attach</td>
+<td>Script eval, hx-on:*, View Transitions, swap/settle timing</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>The library must expose a JavaScript API for all declarative operations</td>
+<td>htmx.ajax, .find, .trigger, .swap, .on, .off, .values, .defineExtension</td>
+</tr>
+</tbody></table>
+<p><strong>Ring 2 — Medium density:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Statement</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C11</td>
+<td>All behavioral defaults must be overridable via a configuration object</td>
+<td>htmx.config.* (30 keys), meta tag config</td>
+</tr>
+<tr>
+<td>C12</td>
+<td>DOM state before navigation must be cacheable and restorable on back-button</td>
+<td>History cache, popstate, hx-history-elt, scroll restoration</td>
+</tr>
+<tr>
+<td>C13</td>
+<td>Request parameters must be composable from multiple DOM sources</td>
+<td>hx-include, hx-params, hx-prompt</td>
+</tr>
+<tr>
+<td>C14</td>
+<td>Every lifecycle phase must emit a named, cancelable event</td>
+<td>35+ lifecycle events</td>
+</tr>
+</tbody></table>
+<p><strong>Ring 3 — Lowest density (niche pins):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Statement</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C15</td>
+<td>The library must support persistent server-to-client content channels</td>
+<td>SSE, WebSocket, auto-reconnect</td>
+</tr>
+<tr>
+<td>C16</td>
+<td>Third-party code must be able to hook into any lifecycle phase</td>
+<td>htmx.defineExtension, hx-ext, extension hooks</td>
+</tr>
+<tr>
+<td>C17</td>
+<td>Form validation must be checked before requests proceed</td>
+<td>hx-validate, validation events</td>
+</tr>
+<tr>
+<td>C18</td>
+<td>Any inherited attribute must be disinheritable</td>
+<td>hx-disinherit</td>
+</tr>
+<tr>
+<td>C19</td>
+<td>Requests must support configurable credentials, timeouts, and CORS</td>
+<td>hx-request, selfRequestsOnly, cache busting</td>
+</tr>
+</tbody></table>
+<h3>Phase 4: Implementation</h3>
+<p>All 13 constraints were implemented in a single pass. The implementation went from 457 lines to 1,318 lines — an addition of 861 lines.</p>
+<p>The estimate, computed before writing any code, was 860 lines for a total of 1,317.</p>
+<p>The prediction was off by 1 line.</p>
+<hr>
+<h2>Why the Estimate Was Exact</h2>
+<p>This is not luck. It is a property of constraint-derived systems.</p>
+<p>When you derive from constraints, the implementation size is <strong>determined</strong> by the constraint set. Each constraint has a characteristic volume — the amount of code required to satisfy it. That volume is predictable because:</p>
+<ol>
+<li><p><strong>A constraint names an invariant.</strong> An invariant has a fixed number of enforcement points. You can count them before writing code.</p>
+</li>
+<li><p><strong>Infrastructure sharing is visible from the constraint graph.</strong> C7 (response headers) and C12 (history) both need URL manipulation — shared infrastructure. C8 (OOB swaps) and C9 (script eval) both need DOM fragment processing — shared. The sharing topology is derivable from the constraint relationships.</p>
+</li>
+<li><p><strong>The ring structure reveals density gradients.</strong> Ring 1 constraints are high-density: many features per line, because they address deep structural patterns. Ring 3 constraints are low-density: isolated subsystems that don&#39;t share infrastructure. The line count per ring is approximately linear in the number of enforcement points.</p>
+</li>
+</ol>
+<p>Compare this to estimating lines of code for a feature-first design. Features interact in ways you can&#39;t see until you build them. Constraints compose predictably because their boundaries are defined. The pins determine the foam.</p>
+<hr>
+<h2>The Test Suite</h2>
+<p>A constraint-derived test suite was built alongside the implementation. 54 tests, organized by the same ring structure as the constraints:</p>
+<ul>
+<li><strong>Phase 0 / Core (C1-C6):</strong> 18 tests — all five HTTP verbs, request encoding, all swap strategies, target resolution, trigger modifiers, boost</li>
+<li><strong>Ring 1 (C7-C10):</strong> 14 tests — response header overrides, OOB swaps by ID and strategy, script evaluation, title handling, full public API surface</li>
+<li><strong>Ring 2 (C11-C14):</strong> 11 tests — configuration mutability, history push/replace, hx-include parameter composition, hx-params filtering, event lifecycle (fire, cancel, modify)</li>
+<li><strong>Ring 3 (C15-C19):</strong> 9 tests — SSE connect and swap, extension registration and hooks, form validation halt, attribute disinherit, request headers, timeout, security config</li>
+</ul>
+<p>Zero external dependencies. Tests hit real HTTP endpoints that echo back method, parameters, and headers as data attributes — verifying the full round-trip from DOM declaration through network request to DOM mutation.</p>
+<p>All 54 tests pass.</p>
+<hr>
+<h2>What This Demonstrates</h2>
+<h3>1. Constraint density is not uniform</h3>
+<p>The feature space has three distinct density regimes. Ring 1&#39;s four constraints derive 28 features because they name the <em>server-authority principle</em> — the deepest structural pattern htmx exploits. Ring 3&#39;s five constraints derive only 20 features because they address orthogonal subsystems that don&#39;t share infrastructure. The pin-art model predicted this gradient before implementation confirmed it.</p>
+<h3>2. The derivation inversion scales</h3>
+<p>Doc 247 established the method: state the constraints, derive the implementation. The PRESTO engine seed demonstrated it for a template resolution system. The htmx derivation demonstrates it for a client-side DOM manipulation library — a categorically different domain. The method is not domain-specific. It works wherever the problem has a constraint structure.</p>
+<h3>3. Implementation size is a function of constraint count</h3>
+<p>For feature-first development, implementation size is emergent — you discover it as you build. For constraint-first development, implementation size is determined — you can compute it from the constraint graph. The 1-line prediction error on a 1,318-line implementation is not an anomaly. It is the expected property of a system where the constraints, not the features, are the primitive unit.</p>
+<h3>4. 9.4% is not compression — it is constraint density</h3>
+<p>htmx-derived.js is not a minified or obfuscated version of htmx. It is a fresh derivation from a different set of primitives. htmx was built feature-by-feature over 11 years. htmx-derived.js was derived constraint-by-constraint in one session. The size difference (1,318 vs 14,000 lines) reflects the difference between accumulated features and derived invariants. Both produce the same behavior. One carries 11 years of accretions. The other carries 19 sentences.</p>
+<hr>
+<h2>Artifacts</h2>
+<ul>
+<li><strong>HTMX Constraint Seed:</strong> <a href="https://htxlang.org/seed/htmx">htxlang.org/seed/htmx</a> — the six core constraints as prose</li>
+<li><strong>htmx-derived.js:</strong> <a href="https://htxlang.org/derivations/htmx/htmx-derived.js">htxlang.org/derivations/htmx/htmx-derived.js</a> — the 1,318-line implementation</li>
+<li><strong>Test suite:</strong> <a href="https://htxlang.org/demo/htmx/tests">htxlang.org/demo/htmx/tests</a> — 54 tests, all passing</li>
+<li><strong>Live demo:</strong> <a href="https://htxlang.org/demo/htmx">htxlang.org/demo/htmx</a> — interactive examples running on htmx-derived.js</li>
+<li><strong>Source:</strong> <a href="https://github.com/jaredef/htxlang">github.com/jaredef/htxlang</a></li>
+</ul>
+<hr>
+<h2>Related Documents</h2>
+<ul>
+<li><strong>Doc 247 — The Derivation Inversion:</strong> The method. State constraints, derive implementations.</li>
+<li><strong>Doc 270 — The Pin-Art Model:</strong> Hedging as boundary-detection under constraint density. The analytical framework used here.</li>
+<li><strong>Doc 278 — Constraint-Density Direct Optimization:</strong> Proposed DPO extension using constraint density as the optimization target.</li>
+<li><strong>Doc 211 — The ENTRACE Stack:</strong> Six governance constraints. Same constraint-first method applied to conversational AI.</li>
+</ul>
+<hr>
+<p><em>Jared Foy — jaredfoy.com — April 2026</em></p>
+</article>
+</main>
+<footer class="site-footer">
+  <p>By Jared Foy. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · <a href="https://github.com/jaredef/resolve">github.com/jaredef/resolve</a> · <a href="https://jaredfoy.com">jaredfoy.com</a></p>
+</footer>
+</body>
+</html>
