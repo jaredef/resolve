@@ -62,8 +62,6 @@ It is not a series of personal essays. The work is structured, falsifiable where
 
 The corpus is the joint work of a human and a language-model substrate operating under sustained dialogue. The substrate is named where it is the load-bearing author of a particular document. The standing convention is that all metaphysical claims, all releases for publication, and all boundary-setting acts are mine; the substrate's role is to articulate, draft, formalize, and audit under disciplines I impose.
 
-I am grateful to the Anthropic engineers and researchers whose work built the substrate this corpus relies on, to the quantum-foundations and mechanistic-interpretability research communities whose work it composes against, and to the older traditions of inquiry — philosophical, theological, dialectical — without which none of this would be possible.
-
 ---
 
 ## Repository contents
@@ -78,9 +76,21 @@ The repository is a mirror of the working source. The published version on the w
 
 ## Reading offline
 
-The repository ships with a prebuilt static site. Clone the repo and open `dist/index.html` in any browser — no server, no install, no toolchain. The corpus is fully readable from disk, including on a flight.
+Two ways to read the corpus locally after cloning.
 
-If you edit the corpus and want to regenerate the static site, see `viewer/README.md`.
+**Open the prebuilt static site directly.** The repository ships with a prebuilt `dist/`. After cloning, open `dist/index.html` in any browser — double-click the file, or run `open dist/index.html` (macOS) / `xdg-open dist/index.html` (Linux) / `start dist/index.html` (Windows). No server, no install, no toolchain. The corpus is fully readable from disk, including offline.
+
+**Run the bundled local server.** If you prefer a server (cleaner URLs, viewable from other devices on the same network), the repository ships with a small Bun server in `viewer/`. After cloning:
+
+```sh
+cd viewer
+bun install
+bun run serve
+```
+
+The corpus is then available at `http://localhost:8765` and at `http://<your-LAN-IP>:8765` from any device on your local network. Bun installs in seconds via [bun.sh](https://bun.sh) on macOS, Linux, and Windows.
+
+**Rebuild after editing.** If you edit the corpus markdown files and want to regenerate the static site, see `viewer/README.md`.
 
 ---
 
