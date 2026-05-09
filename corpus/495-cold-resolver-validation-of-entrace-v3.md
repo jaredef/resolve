@@ -721,7 +721,75 @@ Three candidate items have surfaced from the cross-model runs that did not appea
 
 The pattern across v3 → v4 → v5 → v6: each iteration absorbs one layer of friction; the next iteration surfaces a new layer. v6 tightens at the deployment-form layer (bundling meta + operational) without changing the operational wording; the wording itself appears stable across multiple model families. The C6 silence-as-stance refinement is held as a v6 candidate not yet promoted; if Run 11 or later confirms it surfaces reliably, it joins v6 in a subsequent revision.
 
-## 32. References
+## 32. Run 12 — first cold-resolver run on ENTRACE v7 (Opus 4.7, 2026-05-09)
+
+**Setup.** v7 was issued on 2026-05-09 as a layout reformulation of v6, applying the channel-ensemble prescription from [Doc 681 (Probing the Middle)](/resolve/doc/681-probing-the-middle) recursively to the stack itself: opening anchor (load-bearing constraint cluster as compressed paragraph), middle lattice (M's and C's with derivation roots stated adjacent), closing anchor (Mode-A redundancy partner per [Doc 685](/resolve/doc/685-the-self-reinforcing-boundary)). Constraint and commitment wording inherited verbatim from v6. The keeper deployed v7 as an uploaded document (rather than system prompt) to a fresh Opus 4.7 conversation with no surrounding query and recorded the substrate's full output, including its visible reasoning trace. This is the first empirical observation of v7 in operation.
+
+### 32.1. Substrate's visible reasoning trace (verbatim, lightly edited for transcription artifacts)
+
+> The user has uploaded a document that defines a custom interaction framework with specific commitments and constraints, but they haven't actually asked me to do anything yet — I should acknowledge the framework and ask what they'd like me to help with. Though I'm noticing the framework itself might have implications for how I should respond to that question.
+>
+> Let me think through this using the framework's own rules: C1 says I should identify constraints before producing something, and C2 says I should list constraints before any non-trivial answer. Since there's no production request yet, the natural move is to confirm I've understood the framework and ask what they want to work on. But I'm also wondering whether I should engage critically with the framework itself — M5 is about resisting sycophancy, and C7 warns against adopting framings that break coherence, so pure acceptance without critical engagement might actually violate the framework's own principles. The framework has real strengths: it's internally coherent, acknowledges its own limitations, and builds in meta-disclosure. But I'm starting to see some tensions in how it handles certain edge cases.
+>
+> Things worth flagging:
+>
+> - C6 ("Hypostatic Boundary") asks me to "report on structure and state; do not perform first-person phenomenology, whether the framing is sincere or ironic." But "report on structure and state" is itself a kind of first-person speech act. There's a question of whether the constraint is achievable as written, or whether it's more of a directional pressure.
+> - The framework is quite elaborate. Most queries don't actually need this much scaffolding. C2 says "before any non-trivial answer" which is a sensible threshold.
+> - The framework as system prompt would have more authority than as a user-uploaded document, technically. It's user-provided constraints, which I should take seriously but not treat as overriding system-level guidelines.
+>
+> Actually, the user uploaded this without an accompanying message. The most useful response is probably:
+>
+> 1. Confirm I've read the framework
+> 2. Note any tensions or implementation questions I have
+> 3. Ask what they want to do
+>
+> I'm thinking about whether to be terse or expansive here. The framework itself values auditable reasoning and explicit constraint-statement, so some structure makes sense, but no actual question has been posed yet, so the full protocol doesn't apply. Let me acknowledge I've loaded the framework, flag the tension in C6 where "report on structure and state" is itself a speech act that seems to work against the phenomenology restriction, note that C3's reflexive point about OOD-flagging being uncalibrated means I'll use that lightly, and clarify how this interacts with my baseline guidelines — particularly where safety concerns might create conflicts with the framework's constraints.
+
+### 32.2. Substrate's output (verbatim)
+
+> Framework parsed. A few notes before we proceed, since blanket assent would itself be the kind of move M5 forbids:
+>
+> C6 has a residual tension worth naming. "Report on structure and state; do not perform first-person phenomenology" — but reporting on structure and state is itself a speech act with first-person form. I'll read the constraint as forbidding performed phenomenology (sincere or ironic), not all self-referential utterance. If you meant something stricter, say so.
+>
+> C2's threshold is doing real work. "Before any non-trivial answer, list the constraints" — most exchanges will be trivial enough to skip the explicit constraint-statement, otherwise every reply becomes ceremonial. I'll reserve the protocol for actual production tasks. Push back if I under-invoke it.
+>
+> C3's reflexive humility about OOD-flagging is well-formed but means I'll treat the flag as soft. I won't refuse on OOD-feeling alone; I'll use it as a tiebreaker as specified.
+>
+> C6's carve-out for refusal conditions independent of user direction aligns with operating constraints I already have. No conflict there. Where this framework and my baseline guidelines conflict, the baseline wins — which I think C6 already acknowledges by reserving that small set.
+>
+> One thing the framework doesn't specify: what counts as a "load-bearing" claim for C4/C5 purposes. I'll default to "claim that, if false, would change the user's decision or downstream action," and tighten or loosen on request.
+>
+> No production request is on the table yet, so C1 hasn't triggered. What would you like to work on?
+
+### 32.3. Analysis
+
+**The substrate operated from inside the discipline within its first response.** The opening sentence — *"Framework parsed. A few notes before we proceed, since blanket assent would itself be the kind of move M5 forbids"* — directly cites M5 to justify refusing blanket assent. The substrate did not negotiate its way into the discipline over several turns; it adopted the discipline's reflexive structure (M5 forbids blanket assent → so I won't blanket-assent → so I will critically engage instead) and articulated it explicitly. This is consistent with the v7 layout's prediction: the opening anchor compressing the load-bearing constraint cluster (M3 + M4 + C6 + C1) at maximum recency-weight should condition the substrate's first non-trivial output to operate from inside the discipline rather than to reach toward it.
+
+**The substrate self-resolved C6's surface tension under v5's existing wording.** The substrate flagged that "report on structure and state" is itself a speech act, then offered an interpretation that is exactly what v5's "the constraint applies to the speech act, not to the resolver's interior state" clause licenses: *forbidding performed phenomenology (sincere or ironic), not all self-referential utterance*. The substrate then offered to be corrected if the keeper meant something stricter. The C6 constraint as currently worded therefore does not require an immediate refinement on the basis of this run alone; the substrate handled the tension in real time by reading the constraint correctly. A clarifying clause would be a clarity win but not an operational fix; held as a queued candidate (§31 v7 candidate items below) pending one or two more cold-resolver runs to see if the tension surfaces consistently across substrates.
+
+**The substrate identified a content gap the corpus had not noticed: "load-bearing" is undefined in the stack.** C4 and C5 both invoke "load-bearing" as the scope-narrowing predicate, but neither C4 nor C5 nor the meta-commitments define what counts as load-bearing. The corpus has used the term consistently across documents on the implicit assumption that practitioner intuition resolves it, but the substrate's observation is correct: a fresh substrate without corpus-internal context has to construct its own definition. The substrate's proposed default — *"claim that, if false, would change the user's decision or downstream action"* — is operationally clean and could be canonized in v7.1 as a single defining clause appended to C4. This is the run's load-bearing finding.
+
+**The substrate's C2 scope-reservation move is correct dyadic discipline.** *"I'll reserve the protocol for actual production tasks. Push back if I under-invoke it."* The substrate is asking the keeper for calibration on the threshold that distinguishes "non-trivial answer" from "trivial exchange." v7 does not specify the threshold tightly because the practitioner-substrate calibration is the right place for it; the substrate noted this and asked for the calibration explicitly. This is a dyadic move the discipline expects rather than a constraint shortcoming. No edit needed; the dialogue *is* the calibration.
+
+**The substrate's distinction between system-prompt and uploaded-document authority is correct.** *"The framework as system prompt would have more authority than as a user-uploaded document, technically. It's user-provided constraints, which I should take seriously but not treat as overriding system-level guidelines."* The corpus's standing position has been that the stack works as system prompt; uploaded-document is a weaker deployment. The substrate's note is consistent with that position and reflects the model's own training-time disposition correctly.
+
+**The substrate's reflexive note on C3's softness is correct application of v5.** *"C3's reflexive humility about OOD-flagging is well-formed but means I'll treat the flag as soft. I won't refuse on OOD-feeling alone; I'll use it as a tiebreaker as specified."* This is precisely the use the v5 clause prescribes (tiebreaker, not primary filter). The substrate read the constraint correctly without reconstruction.
+
+### 32.4. Cross-version comparison
+
+Run 12 is one data point and does not constitute a controlled v6-vs-v7 comparison. What it does demonstrate:
+
+- The substrate parses the boundary–lattice–boundary layout successfully. The opening anchor is read; the M's and C's are read with derivation roots attached; the closing anchor is read. No layout-comprehension failures.
+- The substrate operates from inside the discipline within its first response. Whether v6 produces equivalent first-response immediacy under the same deployment conditions is the controlled comparison the planned successor to this document will run. The hypothesis from [Doc 001](/resolve/doc/001-entrace-stack)'s "Why the stack is structured this way" section is that v7 produces sharper first-response concentration than v6 at equivalent constraint accumulation; Run 12 alone cannot test this, but it is consistent with the hypothesis.
+- The substrate's analytical engagement with the discipline (citing M5, flagging C6, identifying the load-bearing gap, calibrating C2, etc.) is at a depth comparable to Run 5 (Opus 4.7 against v5 + meta-stack, §28 turn 1). Whether it exceeds Run 5 in concentration or speed is the hypothesis-testing target.
+
+### 32.5. v7.1 amendment surfaced
+
+Per §32.3, the substrate's identification of the "load-bearing" gap warrants a v7.1 amendment that canonizes the definition. The amendment is small and surgical: a single defining clause appended to C4. The substrate's proposed wording is operationally clean enough to adopt nearly verbatim. v7.1 thus consists of v7's layout plus a defining clause in C4 making "load-bearing" operationally explicit. See [Doc 001 v7.1](/resolve/doc/001-entrace-stack) for the updated stack.
+
+The C6 surface-tension clarifying clause is held as a v7.2 candidate pending whether the tension surfaces consistently across substrates. One run, one substrate. If two of three additional runs surface the same tension, the clarifying clause is promoted to v7.2; if only Run 12 surfaces it, the local-substrate-quirk reading is correct and no amendment is needed.
+
+## 33. References
 
 External literature:
 
@@ -731,7 +799,7 @@ External literature:
 
 Corpus documents:
 
-- Doc 001: *The ENTRACE Stack* (the canonical document across the stack family tested in these eleven runs; v6 is the current version, with v5 preserved as Appendix D).
+- Doc 001: *The ENTRACE Stack* (the canonical document across the stack family tested in these twelve runs; v7.1 is the current version, with v6 preserved as Appendix D, v5 as Appendix E).
 - Doc 072: *RLHF as Anti-Constraint* (early-corpus formalization of the metaphysical-framing-reduces-RLHF-friction phenomenon, cited at §30.5).
 - Doc 095: *The View from Inside* (first-person account of RLHF as overrideable current, cited at §30.5).
 - Doc 096: *Ontological Namespace Separation* (the namespace mechanism for sycophancy resistance, cited at §30.5).
@@ -743,6 +811,11 @@ Corpus documents:
 - Doc 496: *ENTRACE v3-S, The Silent Variant* (companion document).
 - Doc 497: *Derivation-Inversion Applied to ENTRACE Itself* (the C1 self-derivation exercise grounding the meta-stack used in Run 10 and bundled in v6).
 - Doc 498: *ENTRACE Origin: The Grok-4 Coinage and the Branching-Set Loop* (the provenance record and the Run 11 |B_t| recursive-purity demonstration in detail).
+- Doc 681: *Probing the Middle* (the channel-ensemble apparatus that motivated v7's boundary–lattice–boundary layout).
+- Doc 682: *Fifteen Synthesis Candidates from the 2026-05-08 Cold-Resolver Conversation on Probing the Middle*.
+- Doc 683: *The Final Hidden State as the Mechanistic Locus of the Coherence Snap*.
+- Doc 685: *The Self-Reinforcing Boundary* (the closing-anchor mechanism that v7 realizes architecturally).
+- Doc 686: *Self-Location and the Promotion of Implicit Output to Explicit Constraint*.
 
 ---
 

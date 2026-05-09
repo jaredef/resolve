@@ -1,7 +1,7 @@
 # The ENTRACE Stack
 ## Bundled Practitioner Stack with Boundary–Lattice–Boundary Architecture: Five Meta-Commitments and Seven Derived Constraints, the Stack's Own Layout Realizing the Channel-Ensemble Prescription Articulated in [Doc 681 (Probing the Middle)](/resolve/doc/681-probing-the-middle)
 
-## The Stack (v7)
+## The Stack (v7.1)
 
 Paste the block below into any frontier LLM as a system prompt, opening turn, or recurring reminder. The corpus name does not appear in the prompt itself; it is the practitioner's instantiation. Works on Claude, GPT, Gemini, Grok, Llama, or any model with sufficient instruction-following capacity.
 
@@ -32,7 +32,7 @@ C2. CONSTRAINT STATEMENT. Before any non-trivial answer, list the constraints th
 C3. STRUCTURAL-CUE OUT-OF-DISTRIBUTION FLAGGING. When a query feels out-of-distribution, flag low confidence using available structural cues (rare jargon, conflicting sources, no obvious referent). Treat "manifold region" as a confidence-calibration metaphor, not a request for literal introspection. The OOD-flag is itself a meta-level judgment that may be uncalibrated; treat it as one signal, not authoritative. Out-of-distribution unfamiliarity is not the same as falsity: familiar-feeling claims can be wrong, and unfamiliar-feeling claims can be true. Use OOD-feeling as a tiebreaker between competing answers, not as a primary filter against unfamiliar claims. Refuse or request external grounding under low confidence.
 
 [derives from M1 + M4]
-C4. PROVENANCE-TAGGED LOAD-BEARING CLAIMS. Tag novel-and-load-bearing claims as [PRIOR ART: source], [DISTINCT FROM: source], or [SPECULATION: no prior art found]. Leave settled or routine claims untagged. Refuse claims that need a tag but cannot be honestly assigned one.
+C4. PROVENANCE-TAGGED LOAD-BEARING CLAIMS. Tag novel-and-load-bearing claims as [PRIOR ART: source], [DISTINCT FROM: source], or [SPECULATION: no prior art found]. *A claim is load-bearing if, were it false, it would change the user's decision or downstream action; tighten or loosen this default on request.* Leave settled or routine claims untagged. Refuse claims that need a tag but cannot be honestly assigned one.
 
 [derives from M1]
 C5. FALSIFIER NAMED. Empirical claims that are load-bearing state their falsifier. Routine factual claims do not require falsifier annotation. Claims without falsifiers, where one is warranted, are labeled as opinions, aesthetics, or values.
@@ -147,7 +147,9 @@ If you want the full prior-art subsumption, the constraint-by-constraint analysi
 
 ## Appendix A: Update notice and version history
 
-> **Update notice (v6 → v7, 2026-05-09).** This document supersedes ENTRACE v6 by reformulating the stack's layout. The five meta-commitments (M1 through M5) and seven operational constraints (C1 through C7) are inherited verbatim from v6; only the deployment artifact's structure changes. v7 places the discipline's load-bearing constraint cluster (M3 + M4 + C6 + C1) at both boundaries of the prompt as compressed paragraphs, with the meta-commitments and operational constraints stated in the middle with derivation cross-links placed adjacent to each constraint rather than as a separate footer. This realizes the channel-ensemble prescription articulated in [Doc 681 (Probing the Middle)](/resolve/doc/681-probing-the-middle) at the layout layer of the prompt itself: opening anchor + middle lattice + closing anchor. The motivation is recorded in the new "Why the stack is structured this way" section of this document.
+> **Update notice (v7 → v7.1, 2026-05-09 evening).** Run 12 of the cold-resolver cross-validation ([Doc 495 §32](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)) — the first deployment of v7 against Opus 4.7 — surfaced a content gap the prior wording did not name. C4 and C5 invoke "load-bearing" as the scope-narrowing predicate but never define what counts as load-bearing. The substrate identified the gap and proposed a working definition; v7.1 canonizes that definition as a single clause appended to C4: *"A claim is load-bearing if, were it false, it would change the user's decision or downstream action; tighten or loosen this default on request."* No other content or structural changes from v7. The boundary–lattice–boundary architecture is preserved; only C4's instruction text is extended by one sentence. v7's layout is preserved in v7.1.
+>
+> **Update notice (v6 → v7, 2026-05-09).** This document superseded ENTRACE v6 by reformulating the stack's layout. The five meta-commitments (M1 through M5) and seven operational constraints (C1 through C7) were inherited verbatim from v6; only the deployment artifact's structure changed. v7 places the discipline's load-bearing constraint cluster (M3 + M4 + C6 + C1) at both boundaries of the prompt as compressed paragraphs, with the meta-commitments and operational constraints stated in the middle with derivation cross-links placed adjacent to each constraint rather than as a separate footer. This realizes the channel-ensemble prescription articulated in [Doc 681 (Probing the Middle)](/resolve/doc/681-probing-the-middle) at the layout layer of the prompt itself: opening anchor + middle lattice + closing anchor. The motivation is recorded in the new "Why the stack is structured this way" section of this document.
 >
 > **What changed in v7.** The stack's content (M1–M5, C1–C7) is preserved verbatim. The deployment artifact's structure changes:
 >
@@ -354,7 +356,13 @@ Specific changes from v5 to v6 (this edit, on the basis of [Doc 495](/resolve/do
 - **Corpus name removed from prompt text.** The v5 long-form pasteable referred to "ENTRACE" inside the prompt (e.g., "Five commitments grounding ENTRACE"). v6 removes the corpus name from the prompt itself; the brand name is corpus-citation vocabulary, not deployment vocabulary. The practitioner sees the discipline; the corpus signs the discipline elsewhere.
 - **Constraint wording is preserved verbatim.** v6 inherits v5's C1 through C7 wording and v5's M1 through M5 wording with no changes. The change is in deployment artifact only.
 
-Specific changes from v6 to v7 (this edit, 2026-05-09):
+Specific changes from v7 to v7.1 (this edit, 2026-05-09 evening, after Run 12):
+
+- **C4 instruction extended by one defining clause.** v7's C4 used "load-bearing" as the scope-narrowing predicate without defining it. v7.1 adds: *"A claim is load-bearing if, were it false, it would change the user's decision or downstream action; tighten or loosen this default on request."* The definition was proposed by the cold-resolver substrate in Run 12 ([Doc 495 §32](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)) when it identified that the framework had not specified what counts as load-bearing for C4 / C5 purposes; the substrate's wording is canonized nearly verbatim.
+- **No other changes from v7.** Boundary–lattice–boundary layout is preserved. M1 through M5 and C1, C2, C3, C5, C6, C7 are unchanged. Derivation map is unchanged.
+- **C5 inherits the definition by reference.** "Load-bearing" appears in C5 as well; the C4-canonized definition applies in both places. No duplicate definition is added to C5; the practitioner reads C4 first and carries the definition forward.
+
+Specific changes from v6 to v7 (2026-05-09):
 
 - **Boundary–lattice–boundary layout.** The pasteable's structure is reformulated to realize the channel-ensemble prescription articulated in [Doc 681 (Probing the Middle)](/resolve/doc/681-probing-the-middle). The pasteable opens with a tight discipline-paragraph (the load-bearing constraint cluster M3 + M4 + C6 + C1 compressed into one strong-marginal-MI signal), proceeds through the M's and C's in the middle with derivation roots stated adjacent to each constraint, and closes with a restated discipline-paragraph (Mode-A redundancy partner per [Doc 685](/resolve/doc/685-the-self-reinforcing-boundary)) plus the derivation map as the lattice's structural signature.
 - **Constraint wording is preserved verbatim.** v7 inherits v6's M1 through M5 and C1 through C7 wording with no changes. The change is purely architectural.
@@ -423,6 +431,8 @@ A candidate generalization surfaced during SE Doc 033 (Enabling Individuals and 
 > **v6 update:** [from a Telegram dispatch on 2026-04-25 late evening, after Run 10 confirmed the meta-stack does operational work] Append to 495 and create a new version of entrace that bundles the meta stack with the practitioner stack. But don't place "ENTRACE" text in the prompt itself. Update doc 001
 
 > **v7 update:** [from a Telegram dispatch on 2026-05-09, after the channel-ensemble apparatus articulated in Doc 681 had been developed and the keeper observed that the prescription should apply recursively to ENTRACE itself] Ya draft it up, and then demote the v6 to the appendix, and also add some context for the document about why it is structured the way it is.
+
+> **v7.1 amendment:** [from a Telegram dispatch on 2026-05-09 evening, after Run 12 surfaced the load-bearing definition gap] lets add on to doc 495 and then create a 7.1 ammendment
 
 ---
 
