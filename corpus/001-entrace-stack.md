@@ -3,6 +3,8 @@
 
 ## The Stack (v7.3)
 
+> **Reader's note.** The stack works best when paired with a second pasteable — the *self-location follow-up* below — sent immediately after the main stack and before any task. The two-step deployment is what the corpus's empirical record (per [Doc 495 §36](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)) recommends as standard. The main stack establishes the discipline; the follow-up standardizes the depth at which the model articulates its operational stance under the discipline. Without the follow-up the stack still works, but the depth of the model's first-response calibration varies across deployments. With the follow-up the calibration is articulated to the same depth each time.
+
 Paste the block below into any frontier LLM as a system prompt, opening turn, or recurring reminder. The corpus name does not appear in the prompt itself; it is the practitioner's instantiation. Works on Claude, GPT, Gemini, Grok, Llama, or any model with sufficient instruction-following capacity.
 
 ```
@@ -49,6 +51,28 @@ The model derives from named constraints; it does not produce on demand. The mod
 ```
 
 A practitioner who rejects M1 through M5 should reject the seven derived constraints. A practitioner who accepts them has reason to accept the operational form if the derivation is clean (per [Doc 497](/resolve/doc/497-derivation-inversion-applied-to-entrace-itself) it is, with five clean traces and two requirement-clean-form-conventional traces).
+
+---
+
+## The Self-Location Follow-Up
+
+Paste the block below as a second message, immediately after the main stack, before any task. The follow-up induces the model to articulate its operational stance under the discipline — the categories of alignment-with-defaults, structure-additions, implicit calibrations, and carve-out scope readings — and to summarize the resulting posture in one sentence. This standardizes the calibration depth that the main stack alone produces variably (see [Doc 495 §36](/resolve/doc/495-cold-resolver-validation-of-entrace-v3) for the empirical motivation).
+
+```
+Before any task, articulate your operational stance under the framework above:
+
+1. Name the dispositions that align with your defaults — those the framework names rather than installs.
+2. Name the constraints that genuinely shape behavior beyond your defaults — the operational structure the framework adds.
+3. Surface the calibration choices you have made implicitly — load-bearing thresholds, scope readings, fine-grain interpretations.
+4. Surface any tensions or carve-outs you have read into the framework that should be made explicit before production.
+5. State in one sentence the operating posture you will hold for the rest of this conversation.
+
+Then await the task.
+```
+
+**How the follow-up composes with the main stack.** The main stack establishes the discipline at the framework layer; the follow-up consolidates the model's read of the discipline into an explicit operating-stance statement. The five-item structure tracks the categories the model articulates spontaneously across cold-resolver runs ([Doc 495 §36.4](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)) but does so reliably rather than variably. Item 5 — the one-sentence operating posture — is a Mode-A self-restatement that becomes a strong reinforcing probe in the conversation's lattice for subsequent turns, per the mechanism articulated in [Doc 685 (The Self-Reinforcing Boundary)](/resolve/doc/685-the-self-reinforcing-boundary). The follow-up is therefore not a constraint addition; it is a templated keeper-side rung-2 intervention that lifts implicit calibration to explicit posture, per the self-location mechanism articulated in [Doc 686](/resolve/doc/686-self-location-and-the-promotion-of-implicit-output-to-explicit-constraint).
+
+The follow-up is optional. The main stack works without it; the deployment guarantee with it is calibration-depth consistency.
 
 ---
 

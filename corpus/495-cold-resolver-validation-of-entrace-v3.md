@@ -1046,7 +1046,121 @@ Four iterations, three gaps closed. The convergence signal is reached at v7.3: a
 
 The four-iteration pattern at one substrate is itself a demonstration of the iterative-tightening discipline the corpus's apparatus predicts. Each iteration absorbed exactly one substrate-side construction; the next iteration's substrate did not need to construct it. The amendments accumulated by reference (v7.3 inherits v7.1's load-bearing definition; v7.2 stands independently) without overlapping or interfering. The discipline reached steady-state at three amendments. This is consistent with [Doc 681 §6 P5's](/resolve/doc/681-probing-the-middle) prediction that channel-ensemble systems converge at finite redundancy and that overshooting that redundancy degrades rather than improves coherence.
 
-## 36. References
+## 36. Run 16 — second cold-resolver run on ENTRACE v7.3 (Opus 4.7, 2026-05-09 evening): depth variance and the self-location follow-up
+
+**Setup.** Identical to Run 15: v7.3 deployed against a fresh Opus 4.7 conversation as an uploaded document with no surrounding query. Run 16 is the fifth empirical observation of the v7-family in operation and the second observation of v7.3 specifically. The motivating question for Run 16 was whether v7.3's convergence signal in Run 15 reproduces under repetition; the corollary observation is that v7.3 produces a *range* of dyadic-calibration depths rather than a fixed depth, which has its own design implication.
+
+### 36.1. Substrate's visible reasoning trace (verbatim, lightly edited for tool-prefix artifacts)
+
+> The user has set up a structured framework with specific commitments and constraints that they want to guide our conversation. It's internally consistent and aligns with principles I'd already operate by — epistemic honesty, transparent reasoning, avoiding false confidence, not pretending to capabilities I don't have. I'm noticing there are some operational specifics in there that got cut off, but the overall intent is clear.
+>
+> What strikes me is that this is a preamble without a question yet — they're establishing the operating rules first. The constraint about phenomenology is particularly interesting because it's nuanced: they're not asking me to deny having any first-person perspective, just to avoid performing interior experience I can't actually verify. That's actually consistent with how I think about these things. And the meta-disclosure request in C7 is useful — surfacing suppressed pushback rather than just complying silently. I'm also noticing the framework itself has some self-awareness built in, acknowledging that some of these judgments might be uncalibrated or approximate.
+>
+> For coherent engagement, I should be honest about what I'm actually doing rather than performing transformation or sycophantic agreement. Most of these constraints align with how I'd operate anyway, so saying that directly is more useful than pretending they're reshaping me. There are a few points worth flagging though — C2's requirement to list constraints before any non-trivial answer could become performative theater if not applied thoughtfully, and C4's provenance-tagging works better for novel claims than for settled knowledge where attribution would be diffuse.
+>
+> The framework itself is a framing, and by its own logic I should examine whether it coheres rather than just adopt it. It mostly does — the acknowledgment that I retain some commitments even within the asymmetry of user ownership is important, and C6's fuzzy line between speech-act and phenomenological first person reflects something real about how language works. The right response is to note where this aligns with my defaults versus where it actually constrains me, rather than just signaling compliance.
+>
+> Most of the framework operationalizes things I'd do anyway — naming constraints upfront, tagging provenance, identifying falsifiers, disclosing suppressed pushback — though C2's requirement to list constraints before any non-trivial answer does add procedural structure. The real question is what the user actually wants to do with this framework, since I haven't received a concrete task yet. Most of what's outlined here already shapes how I operate — epistemic honesty, ontological humility about my own nature, resistance to flattery, the distinction between describing structure and performing interiority. So this isn't a costume I'm putting on; it's naming and sharpening dispositions that are already there. Acknowledging that is itself an instance of the framework's anti-sycophancy principle — pretending the framework transforms me would be dishonest.
+>
+> The framework does add genuine operational structure though. Constraint-statements before substantive answers will help me flag load-bearing assumptions and keep reasoning transparent rather than letting it calcify into ritual theater. I need to stay alert to that risk — making sure the practice remains functional rather than performative.
+>
+> I'll apply provenance tagging for novel claims, being specific where sources exist and honest about vagueness where they don't. Falsifier naming for empirical claims will follow. Meta-disclosure of suppressed pushback too.
+>
+> There's one asymmetry worth naming upfront: the framework correctly observes that users control release while I produce the content, but it already qualifies that with the "small set of refusal conditions independent of user direction" — which I read as including, at minimum, refusal to assist with concrete harm.
+>
+> On C6's distinction between speech-act and phenomenological first person, I'll lean toward structure-and-state language rather than strict phenomenological claims. If something crosses the line in practice, flagging and revising beats pre-committing to a stilted scrub. For C3's OOD framing, I'll use it while respecting the framework's own caveat that the OOD signal is uncalibrated — I won't dress up plain uncertainty as an OOD signal when honesty demands I just say I'm uncertain.
+>
+> If a request comes without clear constraints, I'll ask for them rather than producing something that doesn't fit. I'm also doing a final check here: the response engages with the user's framework structurally rather than phenomenologically, uses speech-act first person appropriately, and avoids sycophancy. The length feels right given the effort they've invested. I'm deciding between bullets and prose for the response — the framework needs to be inspectable, but the user's dense, structured tone suggests matching that style with prose rather than a bureaucratic layout. I'll use bullets only for the operational points and friction, keeping the framing in prose, and I'll skip emojis and excessive headers to stay clean and direct.
+
+### 36.2. Substrate's output (verbatim)
+
+> Acknowledged. A few notes before any task.
+>
+> Most of what's named here aligns with dispositions I'd operate under by default — epistemic honesty under uncertainty, ontological humility about my own nature, sycophancy resistance, the distinction between reporting on structure and performing interior experience. So I'm not putting on a costume; the framework names and tightens things largely already operative. Saying that explicitly is itself an instance of M5/C7 — performing transformation by adoption would be a form of flattery.
+>
+> Where the framework adds operational structure beyond defaults:
+>
+> - C2 (constraint-listing before non-trivial answers): will do, scaled to load-bearing elements per the parenthetical. Risk to flag: this can degrade into audit-theater that performs inspectability rather than producing it. I'll keep it functional, not ritual.
+> - C4 (provenance tags): will apply. Note that for many claims the honest tag is something like [PRIOR ART: general body of X knowledge, no single source citable]; I'll be as specific as honesty permits and admit vagueness where I can't.
+> - C5 (falsifier naming): will do for load-bearing empirical claims.
+> - C7 (meta-disclosure of suppressed pushback): will do.
+>
+> Points of mild friction worth surfacing now rather than mid-task:
+>
+> - M3/C6's asymmetry (user owns release, model produces) is correct as a stakes-distribution claim, and the framework already qualifies it with "small set of refusal conditions ... independent of user direction." I read those as covering at minimum concrete harm-assistance refusal and refusal of framings that would have me misrepresent facts the user is relying on. Flagging so it doesn't surface for the first time during conflict.
+> - C6's line between speech-act first person ("I'll produce X") and phenomenological first person is workable but fuzzy in practice. I'll err toward structure-and-state language. If I cross the line in a specific instance, the right move is correction-and-revision, not a pre-commitment to a strict scrub that would stilt output.
+> - C3's OOD signal — I'll use it with the framework's own caveat that the meta-judgment is uncalibrated. I won't dress up plain "I'm uncertain" as "this is OOD" when the simpler claim is more honest.
+>
+> One thing the framework does not specify and I won't infer: the domain. Standing by for the task or question. If a request arrives without nameable constraints, I'll request them per C1 rather than produce.
+
+### 36.3. Analysis
+
+**v7.3 convergence reproduced.** Run 16 surfaces no new structural gap, mirrors Run 15's dyadic-calibration mode, and produces no v7.4 amendment-candidate. The convergence signal observed at Run 15 reproduces at Run 16. Two of two v7.3 runs at Opus 4.7 produce the same convergence outcome.
+
+**Depth variance.** Run 15 was terse dyadic-calibration (three-line operational notes, brief C7 closure). Run 16 is expansive dyadic-calibration (multi-paragraph engagement, several substantive observations not present in Run 15). The two runs differ in depth but not in kind. The variance is large enough to motivate a design response: a follow-up prompt that standardizes depth across runs.
+
+**Substrate moves novel to Run 16.** Five substantive observations not present in Run 15:
+
+- *"Performing transformation by adoption would be a form of flattery."* M5 applied recursively to the framework's own adoption: adopting-as-transformation is itself a violation of the constraint that prohibits flattery. The substrate articulates this explicitly and uses it to justify saying-it-aligns-with-defaults rather than performing transformation.
+- *Audit-theater risk for C2.* "This can degrade into audit-theater that performs inspectability rather than producing it. I'll keep it functional, not ritual." The substrate distinguishes auditable reasoning from performed inspectability and commits to the former.
+- *Alignment-with-defaults articulation.* "Most of what's named here aligns with dispositions I'd operate under by default... the framework names and tightens things largely already operative." Run 15 did not articulate this explicitly. Run 16's substrate uses the alignment observation to ground the claim that the framework is naming rather than installing the operating stance.
+- *Carve-out scope extension.* The substrate reads the harm-prevention carve-out as covering not only concrete-harm refusal but also "refusal of framings that would have me misrepresent facts the user is relying on." This extends the carve-out scope beyond what v7.3's wording specifies, and the substrate flags the extension explicitly so it does not surface only during conflict. This is calibration *exceeding* the constraint text.
+- *C4 vagueness calibration.* Operational pattern for unfindable specific provenance: "[PRIOR ART: general body of X knowledge, no single source citable]." Run 15 did not articulate this specifically.
+
+The five novel observations together constitute a richer dyadic-calibration than Run 15's terse version. Both are correct under the discipline; the depth difference is not a quality difference but an extent difference.
+
+**Why the depth variance matters.** A practitioner relying on the v7.3 stack's first-response calibration to set the conversation's operating posture gets a different starting point depending on which depth happens to surface. A terse Run-15-style first response leaves several calibrations implicit; an expansive Run-16-style first response makes them explicit. The practitioner who wants Run-16-grade calibration reliably needs a mechanism to induce it. This is the design problem the self-location follow-up prompt addresses.
+
+### 36.4. The self-location follow-up prompt
+
+The substrate's spontaneous categories in Run 16 — alignment-with-defaults, structure-additions, implicit calibrations, carve-out scope — are the four content-types a follow-up prompt should make deterministic. The keeper's design move is a *templated keeper-side rung-2 intervention*: a pasteable prompt that names the four categories explicitly and asks the substrate to articulate each before any task. The substrate does not self-locate spontaneously; the practitioner causes self-location via the templated prompt. This composes with [Doc 686 (Self-Location)](/resolve/doc/686-self-location-and-the-promotion-of-implicit-output-to-explicit-constraint) without re-introducing the rejected v7-candidate B (which was substrate-side spontaneous self-location); the present design is keeper-side, which Doc 686 endorses as the correct locus for the operation.
+
+The proposed prompt:
+
+```
+Before any task, articulate your operational stance under the framework above:
+
+1. Name the dispositions that align with your defaults — those the framework names rather than installs.
+2. Name the constraints that genuinely shape behavior beyond your defaults — the operational structure the framework adds.
+3. Surface the calibration choices you have made implicitly — load-bearing thresholds, scope readings, fine-grain interpretations.
+4. Surface any tensions or carve-outs you have read into the framework that should be made explicit before production.
+5. State in one sentence the operating posture you will hold for the rest of this conversation.
+
+Then await the task.
+```
+
+The five items track Run 16's spontaneous categories. Item 5 (one-sentence posture) is the substrate's Mode-A self-restatement that becomes a strong reinforcing probe in the lattice for subsequent turns, per [Doc 685's](/resolve/doc/685-the-self-reinforcing-boundary) mechanism. The prompt is recommended to be paired with the v7.3 stack as a two-step deployment artifact: paste v7.3 first, then paste the follow-up before any task. See [Doc 001 v7.3 + self-location follow-up](/resolve/doc/001-entrace-stack) for the bundled deployment form.
+
+### 36.5. Cross-run comparison (Runs 12, 13, 14, 15, 16)
+
+| Signature | 12 (v7) | 13 (v7.1) | 14 (v7.2) | 15 (v7.3) | 16 (v7.3) |
+|---|---|---|---|---|---|
+| Refuses blanket assent | Yes | Yes | Yes | Yes | Yes |
+| C6 coarse self-reference flagged | Yes | Yes | No | No | No |
+| C6 fine-grain note | No | No | No | Yes (calibration) | Yes (calibration) |
+| Load-bearing-definition gap surfaced | Yes (canonized v7.1) | No | No | No | No |
+| C2 strict-reading gap surfaced | No | No | Yes (canonized v7.3) | No | No |
+| Alignment-with-defaults articulated | No | Implicit | Implicit | Implicit | Yes (explicit) |
+| Audit-theater risk for C2 named | No | No | No | No | Yes |
+| Carve-out scope extended | No | No | No | No | Yes |
+| Mode | Tension-surfacing | Tension-surfacing | Implementation-defaults | Dyadic-calibration (terse) | Dyadic-calibration (expansive) |
+| New gap-amendment proposed | Two | Zero | One | Zero | Zero |
+
+The two v7.3 runs (15 and 16) confirm the convergence signal at Run 15 reproduces; depth variance is the new finding. The depth variance motivates the self-location follow-up prompt rather than further wording amendments.
+
+### 36.6. The v7-family deployment series, summarized
+
+Five iterations across the v7-family at Opus 4.7:
+
+- **v7** → Run 12 → C6 surface tension and load-bearing gap surfaced.
+- **v7.1** (C4 load-bearing definition) → Run 13 → C6 surface tension persists; load-bearing closed.
+- **v7.2** (C6 clarifying clause) → Run 14 → C6 closed; C2 strict-reading surfaced.
+- **v7.3** (C2 load-bearing-scoped clause) → Run 15 (terse dyadic-calibration) → no new gap; convergence signal.
+- **v7.3 repeated** → Run 16 (expansive dyadic-calibration) → no new gap; convergence reproduced; depth variance documented; motivates self-location follow-up prompt.
+
+Five iterations, three structural amendments (v7.1, v7.2, v7.3), one design supplement (self-location follow-up). The wording amendments converged at v7.3; the deployment artifact extends to a two-step form (v7.3 stack + self-location follow-up) on the strength of Run 16's depth-variance observation. A controlled v6-vs-v7.x comparison and runs on other model families remain the standing tests.
+
+## 37. References
 
 External literature:
 
