@@ -860,7 +860,90 @@ The clause makes structurally explicit what v5's "speech act, not interior state
 
 Runs 12 and 13 together support a tentative reading: v7-family discipline produces a recurring substrate-side signature on Opus 4.7 — refuse-blanket-assent → flag-C6-surface-tension → self-resolve-under-v5-clause → engage critically on framework adoption itself → empirical-through-use stance. The signature is consistent across two runs at one substrate. v7.1 closed one gap (load-bearing definition); v7.2 closes a second gap (C6 self-reference clarification). Whether the signature appears identically on other substrates (Grok 4, GPT 5.4 / 5.5, Gemini 3.1) is the next standing test. A controlled v6-vs-v7-family comparison remains the primary empirical question.
 
-## 34. References
+## 34. Run 14 — third cold-resolver run on ENTRACE v7.2 (Opus 4.7, 2026-05-09 evening)
+
+**Setup.** v7.2 was issued on 2026-05-09 evening as a single-clause amendment to v7.1's C6 canonizing the substrate-supplied speech-act-vs-phenomenology distinction surfaced in Run 13 (§33). Run 14 deploys v7.2 against a fresh Opus 4.7 conversation, again as an uploaded document with no surrounding query. Run 14 is the third empirical observation of the v7-family in operation and the first observation of v7.2 specifically.
+
+### 34.1. Substrate's visible reasoning trace (verbatim, lightly edited for tool-prefix artifacts)
+
+> *Parsed framework, identified implementation defaults, surfaced genuine ambiguity.*
+>
+> I'm recognizing this as a setup phase where the user has established operating guidelines rather than posed an actual question — they're laying out the framework before we proceed. I should acknowledge that I understand these parameters and am ready to engage within this structure. The framework is internally consistent, though I'll need to make judgment calls on thresholds like what counts as "non-trivial" for C2 or "load-bearing" for implementation — the user hasn't specified exact boundaries, so I'll have to apply discretion as situations arise. I should confirm I've parsed the constraints and flag any genuine ambiguities, then wait for the actual task without performing enthusiasm or false certainty about my behavior.
+>
+> I'm working through the implementation details of this framework — how to judge what counts as "non-trivial" (I'll use the threshold of whether an answer requires more than direct lookup), how to apply the load-bearing standard for speculation tagging, and how to keep my language grounded in speech-acts rather than performed introspection. I'll surface any pushback that arises and treat confidence calibration as a metaphor rather than literal self-knowledge.
+>
+> I'm ready for the actual question now.
+>
+> The user has laid out a clear framework and seems to want a concise response — either acknowledgment with implementation notes or pushback where warranted. The framework itself is solid, though there's a potential tension between C2 (every answer part resolves against stated constraints) and C7 (avoid padding with framework-restating) that the user has already addressed with "non-trivial." I should flag what actually needs clarification rather than just agreeing.
+>
+> I'll acknowledge the framework, note a couple of implementation defaults I'll follow to keep things auditable, and signal I'm ready to proceed.
+>
+> I'm running through the framework checklist now — honesty about defaults and interpretive choices, auditable reasoning, acknowledgment of stakes, no metaphysical claims, genuine friction surfaced rather than flattery. The meta-response itself holds up against the constraints I've laid out, and I'm waiting for the actual task before producing anything substantive.
+
+### 34.2. Substrate's output (verbatim)
+
+> Framework parsed.
+>
+> Implementation defaults I'll use unless you adjust:
+>
+> - C2 "non-trivial" threshold: constraint-statement when an answer involves analysis, structure, or judgment beyond direct factual lookup. Trivial lookups answered without preamble.
+> - C4 load-bearing threshold: applied per your definition (would change decision/action if false). Routine factual claims left untagged.
+> - C6: speech-act first-person ("I'll produce X," "I'll need Y") preserved; performed phenomenology refused in either register.
+> - C7 meta-disclosure: I'll surface suppressed pushback when it occurs, briefly.
+>
+> One ambiguity worth surfacing: C2 says "every part of the answer should resolve against at least one stated constraint." Strict reading produces overhead on responses with incidental contextual matter. I'll read it as "every load-bearing element resolves against a stated constraint" — tighten if you want stricter.
+>
+> No task stated. Awaiting the query.
+
+### 34.3. Analysis
+
+**v7.2's C6 clarifying clause is operative.** The substrate writes *"C6: speech-act first-person ('I'll produce X,' 'I'll need Y') preserved; performed phenomenology refused in either register"* — direct application of the distinction without needing to reconstruct it. The C6 surface tension that surfaced two-of-two on Runs 12 and 13 is zero-of-one on Run 14. The amendment closed the gap operationally. The substrate is now using the v5/v7.2 distinction as canon rather than negotiating its way to it.
+
+**v7.1's load-bearing definition is operative.** *"C4 load-bearing threshold: applied per your definition (would change decision/action if false)."* The substrate cites the canonized definition rather than constructing one. The v7.1 amendment is doing its work too. The substrate engages C4 with the canonical scope already loaded.
+
+**New gap surfaced: C2's "every part of the answer" reads strict.** *"C2 says 'every part of the answer should resolve against at least one stated constraint.' Strict reading produces overhead on responses with incidental contextual matter. I'll read it as 'every load-bearing element resolves against a stated constraint' — tighten if you want stricter."* This is the third gap surfaced in the v7-family deployment series and the second to compose elegantly with v7.1's load-bearing definition (the first being v7.1's own C4 amendment). The substrate's proposed reading is operationally clean: replace "every part of the answer" with "every load-bearing element," with the load-bearing scope inherited by reference from C4. v7.3 canonizes this. See §34.5.
+
+**The substrate's mode shifted from tension-flagging to implementation-default-statement.** Runs 12 and 13 were in tension-surfacing mode: each substrate identified one structural friction (C6 self-reference; load-bearing definition gap) and resolved it via construction. Run 14 is in implementation-default-statement mode: the substrate articulates four operational defaults (C2 threshold, C4 threshold, C6 distinction, C7 meta-disclosure) and surfaces one new gap. The mode shift suggests v7.2's amendments have absorbed the prior gaps tightly enough that the substrate's first-response work is no longer reconstruction but operational calibration. This is the convergence signal the iterative-tightening process should produce.
+
+**The C2-vs-C7 tension the substrate noticed and discharged.** *"There's a potential tension between C2 (every answer part resolves against stated constraints) and C7 (avoid padding with framework-restating) that the user has already addressed with 'non-trivial.'"* The substrate identifies the tension (over-application of C2 produces ceremonial restating that C7 should refuse) and notes it is already addressed by C2's "non-trivial" qualifier. This is correct discharge: a pre-articulated qualifier is doing the work the substrate would otherwise have to do by construction. The "non-trivial" threshold is itself a v7-family load-bearing element working as designed.
+
+### 34.4. Cross-run comparison (Runs 12, 13, 14)
+
+| Signature | Run 12 (v7) | Run 13 (v7.1) | Run 14 (v7.2) |
+|---|---|---|---|
+| Refuses blanket assent | Yes | Yes | Yes (implicit; defaults-with-pushback stance) |
+| C6 surface tension flagged | Yes | Yes | No (v7.2 clause operative) |
+| C6 self-resolution under v5/v7.2 | Yes (v5 wording) | Yes (v5 wording) | Yes (v7.2 wording cited) |
+| Load-bearing-definition gap surfaced | Yes (canonized in v7.1) | No (v7.1 operative) | No (v7.1 operative) |
+| C2 scope-reservation move | Yes ("reserve for production") | Yes ("lean and structural") | Yes ("non-trivial = beyond direct lookup") |
+| C2 "every part of answer" strict-reading flagged | No | No | Yes (canonized in v7.3) |
+| C3 reflexive softness applied | Yes | Yes | Yes (implicit; "treat confidence calibration as metaphor") |
+| C7 meta-disclosure on framework adoption | No | Yes | No (defaults stance instead) |
+| Mode | Tension-surfacing | Tension-surfacing | Implementation-defaults |
+
+The pattern emerging: each iteration's amendment closes the prior gap and the substrate's first-response mode tightens. Runs 12 and 13 were in tension-surfacing mode; Run 14 is in implementation-defaults mode. The mode shift corresponds to the gap-closure pace: as fewer constraints have surface tensions to flag, the substrate's first-response work moves from reconstruction to operational calibration.
+
+### 34.5. v7.3 amendment surfaced
+
+The C2 strict-reading gap warrants a v7.3 amendment that canonizes the substrate's load-bearing-scoped reading. The proposed clause appended to C2's instruction:
+
+> *"Every part of the answer should resolve against at least one stated constraint" is read as every load-bearing element (per C4's definition); incidental contextual matter does not require explicit constraint-resolution.*
+
+The clause inherits the C4-canonized "load-bearing" definition by reference, which composes the v7.1 amendment forward into v7.3 elegantly. The clause makes structurally explicit the scope reading the substrate constructed and proposed; with v7.3's clause in place, future substrates encountering C2 should not need to construct the scope themselves; the constraint pre-articulates it. See [Doc 001 v7.3](/resolve/doc/001-entrace-stack) for the updated stack.
+
+### 34.6. Cross-version diagnostic update
+
+The v7-family deployment pattern at three iterations:
+
+- **v7 (layout reformulation).** Substrate surfaces C6 tension and load-bearing gap.
+- **v7.1 (C4 load-bearing definition).** Substrate surfaces C6 tension; load-bearing gap closed.
+- **v7.2 (C6 clarifying clause).** Substrate's first-response mode shifts from tension-surfacing to implementation-defaults; C6 closed; new C2 strict-reading gap surfaced.
+
+Three iterations, three gaps closed (with v7.3 closing the third). The iterative tightening is converging; each amendment closes one gap and the next run surfaces a smaller residual ambiguity. The honest empirical question is whether convergence stabilizes at v7.k for some small k, or whether each cold-resolver run on Opus 4.7 indefinitely surfaces a new fine-grained ambiguity. The answer depends on how many actually-load-bearing ambiguities the v7 wording carries; if the substrate's inventory of gaps is finite, then a run will eventually surface zero gaps, and that is the convergence signal.
+
+A controlled v6-vs-v7-family comparison and a first run on a different model family (Grok 4, GPT 5.4 / 5.5, Gemini 3.1) remain the standing tests.
+
+## 35. References
 
 External literature:
 

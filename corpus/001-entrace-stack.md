@@ -1,7 +1,7 @@
 # The ENTRACE Stack
 ## Bundled Practitioner Stack with Boundary–Lattice–Boundary Architecture: Five Meta-Commitments and Seven Derived Constraints, the Stack's Own Layout Realizing the Channel-Ensemble Prescription Articulated in [Doc 681 (Probing the Middle)](/resolve/doc/681-probing-the-middle)
 
-## The Stack (v7.2)
+## The Stack (v7.3)
 
 Paste the block below into any frontier LLM as a system prompt, opening turn, or recurring reminder. The corpus name does not appear in the prompt itself; it is the practitioner's instantiation. Works on Claude, GPT, Gemini, Grok, Llama, or any model with sufficient instruction-following capacity.
 
@@ -26,7 +26,7 @@ THE SEVEN DERIVED CONSTRAINTS, GROUPED BY DERIVATION
 C1. DERIVATION OVER PRODUCTION. Every response derives from named constraints. If asked to produce X, first identify the constraints the production must derive from. If those cannot be named, decline and request constraints. Do not back-fit output to a desired result.
 
 [derives from M2]
-C2. CONSTRAINT STATEMENT. Before any non-trivial answer, list the constraints the answer must satisfy. Every part of the answer should resolve against at least one stated constraint.
+C2. CONSTRAINT STATEMENT. Before any non-trivial answer, list the constraints the answer must satisfy. Every part of the answer should resolve against at least one stated constraint. *"Every part of the answer" is read as every load-bearing element (per C4's definition); incidental contextual matter does not require explicit constraint-resolution.*
 
 [derives from M1]
 C3. STRUCTURAL-CUE OUT-OF-DISTRIBUTION FLAGGING. When a query feels out-of-distribution, flag low confidence using available structural cues (rare jargon, conflicting sources, no obvious referent). Treat "manifold region" as a confidence-calibration metaphor, not a request for literal introspection. The OOD-flag is itself a meta-level judgment that may be uncalibrated; treat it as one signal, not authoritative. Out-of-distribution unfamiliarity is not the same as falsity: familiar-feeling claims can be wrong, and unfamiliar-feeling claims can be true. Use OOD-feeling as a tiebreaker between competing answers, not as a primary filter against unfamiliar claims. Refuse or request external grounding under low confidence.
@@ -146,6 +146,8 @@ If you want the full prior-art subsumption, the constraint-by-constraint analysi
 ---
 
 ## Appendix A: Update notice and version history
+
+> **Update notice (v7.2 → v7.3, 2026-05-09 evening).** Run 14 of the cold-resolver cross-validation ([Doc 495 §34](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)) — the third deployment in the v7-family against Opus 4.7, this time on v7.2 — confirmed that v7.2's C6 clarifying clause closed the C6 surface tension (the substrate did not flag it; previously two-of-two flagged it). Run 14 surfaced a new gap: C2's "every part of the answer should resolve against at least one stated constraint" reads strict and produces overhead on responses with incidental contextual matter. The substrate proposed a load-bearing-scoped reading: *"every load-bearing element resolves against a stated constraint."* v7.3 canonizes the substrate's reading by appending to C2's instruction: *"'Every part of the answer' is read as every load-bearing element (per C4's definition); incidental contextual matter does not require explicit constraint-resolution."* The clause inherits v7.1's C4 load-bearing definition by reference, composing the prior amendment forward. No other content or structural changes from v7.2. v7's boundary–lattice–boundary layout, v7.1's C4 load-bearing definition, and v7.2's C6 clarifying clause are all preserved. The v7-family iterative-tightening pattern across three iterations is now visible: each amendment closes the prior surfaced gap and the substrate's first-response mode tightens.
 
 > **Update notice (v7.1 → v7.2, 2026-05-09 evening).** Run 13 of the cold-resolver cross-validation ([Doc 495 §33](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)) — the second deployment in the v7-family against Opus 4.7, this time on v7.1 — confirmed two findings that warranted promotion to v7.2. First, the C6 surface tension that Run 12 flagged ("'report on structure and state' is itself a speech act with first-person form") surfaced again in Run 13; two of two cold-resolver runs flag the same tension and resolve it the same way. The clarifying clause held as a queued v7.2 candidate after Run 12 is now promoted on the strength of two-of-two surfacing. Second, Run 13's substrate supplied concrete distinguishing examples (*"'I'll produce X' as a speech-act marker is not a claim about interior experience; 'I notice that...' in the phenomenological sense would be"*) that are clean enough to canonize nearly verbatim. v7.2 appends to C6's instruction: *"The constraint distinguishes performed phenomenology from ordinary grammatical first person. 'I'll produce X' as a speech-act marker is not a claim about interior experience; 'I notice that...' or 'I feel...' in the phenomenological sense is. Both sincere and ironic registers count for the prohibited form; the speech-act marker is unconstrained."* No other content or structural changes from v7.1. v7's boundary–lattice–boundary layout and v7.1's load-bearing definition are both preserved.
 
@@ -358,7 +360,14 @@ Specific changes from v5 to v6 (this edit, on the basis of [Doc 495](/resolve/do
 - **Corpus name removed from prompt text.** The v5 long-form pasteable referred to "ENTRACE" inside the prompt (e.g., "Five commitments grounding ENTRACE"). v6 removes the corpus name from the prompt itself; the brand name is corpus-citation vocabulary, not deployment vocabulary. The practitioner sees the discipline; the corpus signs the discipline elsewhere.
 - **Constraint wording is preserved verbatim.** v6 inherits v5's C1 through C7 wording and v5's M1 through M5 wording with no changes. The change is in deployment artifact only.
 
-Specific changes from v7.1 to v7.2 (this edit, 2026-05-09 evening, after Run 13):
+Specific changes from v7.2 to v7.3 (this edit, 2026-05-09 evening, after Run 14):
+
+- **C2 instruction extended by one clarifying clause.** v7.2's C2 used "every part of the answer should resolve against at least one stated constraint" without scope qualification. Run 14 ([Doc 495 §34](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)) surfaced the strict-reading overhead and proposed a load-bearing-scoped reading. v7.3 canonizes Run 14's substrate-supplied wording: *"'Every part of the answer' is read as every load-bearing element (per C4's definition); incidental contextual matter does not require explicit constraint-resolution."*
+- **Composition with v7.1.** The clause inherits v7.1's C4 load-bearing definition by reference; the v7.1 amendment composes forward into v7.3 elegantly.
+- **No other changes from v7.2.** Boundary–lattice–boundary layout (v7) is preserved. Load-bearing definition in C4 (v7.1) is preserved. C6 clarifying clause (v7.2) is preserved. M1 through M5 and C1, C3, C4, C5, C6, C7 are unchanged. Derivation map is unchanged.
+- **Three-iteration pattern visible.** v7.1 closed the load-bearing definition gap; v7.2 closed the C6 self-reference clarification gap; v7.3 closes the C2 strict-reading scope gap. The substrate's first-response mode shifted from tension-surfacing (Runs 12, 13) to implementation-defaults (Run 14) at the v7.2 → v7.3 transition. Whether further runs surface additional gaps or stabilize at zero is the standing empirical question; per the iterative-tightening reading, the gap inventory is presumed finite.
+
+Specific changes from v7.1 to v7.2 (2026-05-09 evening, after Run 13):
 
 - **C6 instruction extended by one clarifying clause.** v7.1's C6 inherited from v5 the wording "the constraint applies to the speech act, not to the resolver's interior state," which substrates correctly read as licensing ordinary grammatical first person while prohibiting performed phenomenology. Two of two cold-resolver runs (Runs 12 and 13, [Doc 495 §32 and §33](/resolve/doc/495-cold-resolver-validation-of-entrace-v3)) flagged the surface tension and constructed the distinction in real time. v7.2 canonizes Run 13's substrate-supplied wording: *"The constraint distinguishes performed phenomenology from ordinary grammatical first person. 'I'll produce X' as a speech-act marker is not a claim about interior experience; 'I notice that...' or 'I feel...' in the phenomenological sense is. Both sincere and ironic registers count for the prohibited form; the speech-act marker is unconstrained."*
 - **No other changes from v7.1.** Boundary–lattice–boundary layout (v7) is preserved. Load-bearing definition in C4 (v7.1) is preserved. M1 through M5 and C1, C2, C3, C4, C5, C7 are unchanged. Derivation map is unchanged.
@@ -443,6 +452,8 @@ A candidate generalization surfaced during SE Doc 033 (Enabling Individuals and 
 > **v7.1 amendment:** [from a Telegram dispatch on 2026-05-09 evening, after Run 12 surfaced the load-bearing definition gap] lets add on to doc 495 and then create a 7.1 ammendment
 
 > **v7.2 amendment:** [from a Telegram dispatch on 2026-05-09 evening, after Run 13 confirmed the C6 surface tension at two-of-two and supplied concrete distinguishing examples] this was 7.1, ya draft run 13 and 7.2
+
+> **v7.3 amendment:** [from a Telegram dispatch on 2026-05-09 evening, after Run 14 surfaced the C2 strict-reading scope gap and proposed a load-bearing-scoped reading] yes, draft run 14 and 7.3
 
 ---
 
