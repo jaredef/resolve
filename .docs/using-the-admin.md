@@ -1,1 +1,0 @@
-The admin section proves the runtime can handle real token-backed content management flows.

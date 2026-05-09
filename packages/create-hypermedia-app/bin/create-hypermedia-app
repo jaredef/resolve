@@ -1,6 +1,0 @@
-#!/usr/bin/env bun
-
-import { runCreateHypermediaApp } from "../src";
-
-const exitCode = runCreateHypermediaApp(Bun.argv.slice(2));
-process.exit(exitCode);

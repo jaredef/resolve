@@ -1,3 +1,4 @@
+# Build / runtime artifacts
 node_modules/
 app/data/
 *.sqlite
@@ -5,10 +6,32 @@ app/data/
 *.sqlite-wal
 bun.lock
 /tmp/
-CLAUDE.md
+
+# Editor / local overrides
+.cursor/
 .env.local
 **/.env.local
+.local-overrides
+CLAUDE.md
+
+# Legacy engineering directories from this repo's earlier life as an
+# HTX/PRESTO development tree. This repository is the corpus mirror; the
+# application code that builds the published site lives elsewhere.
+.docs/
+.htx-learnings/
+.plans/
+.spec/
+app/
+bunfig.toml
+docs/
+docs-site/
+experiments/
+package.json
+packages/
+presto-go/
 presto-go/data.db
 presto-go/*.db
-.cursor/
-.cursor/
+scripts/
+tests/
+tsconfig.base.json
+tsconfig.json

@@ -1,3 +1,0 @@
-<htx:layout src="layouts/alt.htx" />
-<h1>Explicit Layout</h1>
-<p>This page uses an explicit layout.</p>

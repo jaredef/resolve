@@ -1,1 +1,0 @@
-The workspace CLI can scaffold a project and serve it through the real runtime path.

@@ -1,1 +1,0 @@
-HTX supports nested layouts, partial includes, props, and slots for reusable UI.

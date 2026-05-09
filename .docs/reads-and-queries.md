@@ -1,1 +1,0 @@
-Read blocks query the adapter directly and render rows through HTX templates.
