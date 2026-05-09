@@ -46,7 +46,6 @@
       '<li><a href="' + escapeHtml(d.href) + '">' +
         '<span class="doc-num">' + escapeHtml(d.label) + '</span>' +
         '<span class="doc-title">' + escapeHtml(d.title) + '</span>' +
-        (d.subtitle ? '<span class="doc-subtitle">' + escapeHtml(d.subtitle) + '</span>' : '') +
       '</a></li>'
     ).join('');
   }

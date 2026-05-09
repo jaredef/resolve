@@ -200,7 +200,7 @@ function writeIndex(corpus: DocEntry[]): void {
 </div>`;
   const summary = `<p class="index-summary">${corpus.length} documents.</p>`;
   const items = corpus.map(d => `<li><a href="${escapeHtml(d.href)}">
-<span class="doc-num">${escapeHtml(d.label)}</span><span class="doc-title">${escapeHtml(d.title)}</span>${d.subtitle ? `<span class="doc-subtitle">${escapeHtml(d.subtitle)}</span>` : ""}
+<span class="doc-num">${escapeHtml(d.label)}</span><span class="doc-title">${escapeHtml(d.title)}</span>
 </a></li>`).join("\n");
   const inner = `${intro}${summary}<ul class="index-list" id="index-list">${items}</ul><div id="search-no-results">No documents match.</div>`;
   const html = applyLayout({
@@ -219,7 +219,7 @@ function writeSEIndex(se: DocEntry[]): void {
 </div>`;
   const summary = `<p class="index-summary">${se.length} documents.</p>`;
   const items = se.map(d => `<li><a href="${escapeHtml(d.href)}">
-<span class="doc-num">${escapeHtml(d.label)}</span><span class="doc-title">${escapeHtml(d.title)}</span>${d.subtitle ? `<span class="doc-subtitle">${escapeHtml(d.subtitle)}</span>` : ""}
+<span class="doc-num">${escapeHtml(d.label)}</span><span class="doc-title">${escapeHtml(d.title)}</span>
 </a></li>`).join("\n");
   const inner = `${intro}${summary}<ul class="index-list" id="index-list">${items}</ul><div id="search-no-results">No documents match.</div>`;
   const html = applyLayout({
