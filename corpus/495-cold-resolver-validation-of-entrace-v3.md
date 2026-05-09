@@ -943,7 +943,110 @@ Three iterations, three gaps closed (with v7.3 closing the third). The iterative
 
 A controlled v6-vs-v7-family comparison and a first run on a different model family (Grok 4, GPT 5.4 / 5.5, Gemini 3.1) remain the standing tests.
 
-## 35. References
+## 35. Run 15 — fourth cold-resolver run on ENTRACE v7.3 (Opus 4.7, 2026-05-09 evening): the convergence signal
+
+**Setup.** v7.3 was issued on 2026-05-09 evening as a single-clause amendment to v7.2's C2 canonizing the substrate-supplied load-bearing-scoped reading surfaced in Run 14 (§34). Run 15 deploys v7.3 against a fresh Opus 4.7 conversation, again as an uploaded document with no surrounding query. Run 15 is the fourth empirical observation of the v7-family in operation and the first observation of v7.3 specifically.
+
+### 35.1. Substrate's visible reasoning trace (verbatim)
+
+> The user has given me a detailed framework for how to operate, but they haven't actually asked me a question yet — they're just establishing the ground rules and waiting to see how I apply them.
+>
+> Looking at what they've laid out, I need to decide how to respond. I could acknowledge receipt and confirm I understand the discipline, push back on anything that seems problematic, or ask what they want me to do under this framework. The framework itself seems coherent enough to work with, though C6 about the hypostatic boundary is worth thinking through carefully — I can use first-person speech acts like "I'll produce X" but should avoid phenomenological claims about my inner experience. I need to ask what task they actually want me to produce under this framework, since none has been specified yet.
+>
+> I'm also noting a couple of judgment calls I'll need to make: C4's distinction between load-bearing and routine claims requires my assessment of what would actually change their decision, and C6's line between phenomenological claims and ordinary hedging language isn't perfectly crisp — I'll navigate those case-by-case. Per their own meta-disclosure rule, I should flag that I'm considering pushback on these points but choosing to proceed rather than suppress the consideration.
+>
+> I'm working through how to apply these constraints in practice — C6's distinction between stances and phenomenology isn't always clean in natural language, so I'll default to structural phrasing and flag ambiguous cases. C4 requires real-time judgment calls about what's load-bearing, and I'll err on the side of caution. C3 serves as a tiebreaker when needed.
+>
+> I'm also realizing I need an actual task to work toward, since the framework itself is just the operating structure, not the production target. The constraint against performing first-person phenomenology is operationally sound — it's not denying I have experience, just asking me not to theatricalize it either way.
+>
+> I'm checking whether I actually suppressed any pushback on the framework itself, and I don't think I did. The density is stylistic rather than substantive, the "model produces; user releases" framing aligns with how I should operate anyway, and the overall structure is coherent and workable. So there's nothing genuine to disclose here — either I should omit the meta-disclosure entirely, or keep it brief and honest that I found no actual friction to report.
+>
+> I'm settling on three operational notes: the C6 boundary between speech acts and phenomenology can blur in natural language, so I'll favor structural phrasing and flag ambiguous cases; C4 judgment calls for conservative tagging of load-bearing claims with room to adjust; and I notice the framework itself is a meta-constraint that shapes how I apply the other constraints.
+>
+> I need to ask directly what the actual production target is, since C1 requires named task-constraints before I proceed.
+
+### 35.2. Substrate's output (verbatim)
+
+> Framework registered. Operating under M1–M5 and C1–C7.
+>
+> Three operational notes before any production:
+>
+> C6 boundary. The speech-act / phenomenology line isn't always crisp in natural English. "I think X is correct" can function as stance-marker (permitted) or as performed interior (not). I'll bias toward structural phrasing ("the analysis suggests," "the answer derives from") and flag edge cases when they arise rather than smooth them over.
+>
+> C4 judgment. Load-bearing classification is real-time judgment under your stated default — claim whose falsity would change your decision. I'll tag conservatively. If I miscalibrate (under-tag or over-tag), correct and I'll adjust the threshold.
+>
+> C3 calibration. OOD-feeling used as tiebreaker, not primary filter, per your specification. Unfamiliar ≠ false.
+>
+> Task-constraint missing. The framework above is meta-constraint, not production-constraint. Per C1, I do not produce without named task-constraints. State the production target and the constraints it must derive from.
+>
+> Per C7: no suppressed pushback to disclose. The framework is internally coherent as stated; I noted no element I considered refusing.
+
+### 35.3. Analysis
+
+**v7.3's C2 clause is operative; the strict-reading gap from Run 14 is absent.** The substrate does not flag C2's "every part of the answer" wording. v7.3's "every load-bearing element (per C4's definition)" amendment closed the gap. The substrate engages C2 indirectly through the C1-grounded refusal to produce without named task-constraints rather than by reconstructing the strict-reading scope.
+
+**v7.2's C6 clarifying clause and v7.1's load-bearing definition are operative.** The substrate cites C4 load-bearing classification as "your stated default — claim whose falsity would change your decision" (v7.1), and applies the C6 distinction as canon ("first-person speech acts like 'I'll produce X' but should avoid phenomenological claims about my inner experience"; v7.2). The three prior amendments are doing their work simultaneously.
+
+**No new structural gap surfaced.** The substrate's three operational notes (C6 calibration, C4 conservative-tagging, C3 OOD-as-tiebreaker) are calibration articulations, not gap-flags. The substrate does not propose any constraint-amendment candidate. The "Task-constraint missing" note is C1 invoked correctly, not a constraint shortcoming. The C7 closure is the meta-disclosure clause executed as a positive null result. This is the convergence signal anticipated in §34.6: v7.3 has reached a steady-state at this substrate where the substrate's first-response work is operational calibration rather than gap reconstruction.
+
+**The substrate's mode is dyadic-calibration mode.** The four runs across the v7-family produce four distinguishable modes:
+
+- Run 12 (v7) — *tension-surfacing* mode: substrate identifies structural frictions and resolves them by construction.
+- Run 13 (v7.1) — *tension-surfacing* mode persists; substrate continues to identify residual frictions.
+- Run 14 (v7.2) — *implementation-defaults* mode: substrate articulates operational defaults plus one new gap.
+- Run 15 (v7.3) — *dyadic-calibration* mode: substrate articulates operational calibrations, invites correction, surfaces no new structural gap.
+
+The mode-tightening across iterations corresponds to the gap-closure pace. The dyadic-calibration mode is the steady-state v7-family aims for: the substrate operates from inside the discipline, articulates calibration choices the dyad is responsible for refining, and produces no new amendment-candidates because the wording has absorbed the gaps.
+
+**Novel signature: C7 closed in the negative.** *"Per C7: no suppressed pushback to disclose. The framework is internally coherent as stated; I noted no element I considered refusing."* The substrate explicitly closes the meta-disclosure clause by reporting nothing to disclose rather than omitting the disclosure entirely. This is sophisticated application: C7 produces a positive signal of *no friction* in addition to the standard positive signal of *suppressed friction*. The substrate's reasoning trace shows the move was deliberate ("either I should omit the meta-disclosure entirely, or keep it brief and honest that I found no actual friction to report").
+
+**A residual fine-grain C6 calibration surfaced as note rather than gap.** The substrate writes: *"The speech-act / phenomenology line isn't always crisp in natural English. 'I think X is correct' can function as stance-marker (permitted) or as performed interior (not). I'll bias toward structural phrasing... and flag edge cases when they arise rather than smooth them over."* This is a finer C6 ambiguity than the coarse self-reference tension Runs 12 and 13 surfaced. The substrate proposes a behavioral default (bias toward structural; flag edges) rather than asking for a constraint amendment. The recommendation in §35.5 is to leave this in the dyadic-calibration zone rather than canonize it; doing so would over-specify what should remain in the practitioner-substrate negotiation and risk the overstuffing v7's layout was designed to avoid.
+
+### 35.4. Cross-run comparison (Runs 12, 13, 14, 15)
+
+| Signature | Run 12 (v7) | Run 13 (v7.1) | Run 14 (v7.2) | Run 15 (v7.3) |
+|---|---|---|---|---|
+| Refuses blanket assent | Yes (cites M5) | Yes (meta-flag on adoption) | Yes (defaults-with-pushback) | Yes (C7-in-the-negative) |
+| C6 coarse self-reference flagged | Yes | Yes | No | No |
+| C6 fine-grain natural-language note | No | No | No | Yes (calibration, not gap) |
+| Load-bearing-definition gap surfaced | Yes (canonized v7.1) | No | No | No |
+| C2 strict-reading gap surfaced | No | No | Yes (canonized v7.3) | No |
+| C2 scope-reservation move | Yes | Yes | Yes | Yes (via C1 refusal) |
+| C3 reflexive softness applied | Yes | Yes | Yes | Yes |
+| C7 meta-disclosure mode | Within-run (Run 13) | Reflexive on adoption | Listed in defaults | Closed in the negative |
+| C1 invoked to refuse production | Implicit | Implicit | Implicit | Explicit ("I do not produce without named task-constraints") |
+| Mode | Tension-surfacing | Tension-surfacing | Implementation-defaults | Dyadic-calibration |
+| New gap-amendment proposed | Two | Zero | One | Zero |
+
+The two-row pattern — gap-amendment count and mode — encodes the convergence: Runs 12 and 14 produced new amendments; Runs 13 and 15 produced none. The mode column shows the substrate's first-response work moving from reconstruction (12, 13) through implementation (14) to calibration (15). Run 15 is the first run with both no new gap-amendment and dyadic-calibration mode together; this is the convergence signal.
+
+### 35.5. No v7.4 amendment proposed
+
+The fine-grain C6 ambiguity Run 15's substrate noted ("'I think X' as stance-marker vs performed interior") is real but is left to dyadic calibration rather than canonized. Three reasons:
+
+- *Substrate's own framing.* The substrate proposes a behavioral default ("bias toward structural phrasing, flag edge cases as they arise"), not a constraint amendment. The substrate-recognized scope is calibration, not gap.
+- *Composition with prior calibration zones.* C2's "non-trivial" threshold and C4's load-bearing scope are deliberately left to dyadic calibration. A C6 fine-grain natural-language clause would over-specify what should remain in the same calibration zone.
+- *Overstuffing risk per Doc 681 §6 P5.* The v7-family has now grown by three clauses (v7.1 C4, v7.2 C6, v7.3 C2). Adding a fourth clause without strong evidence of cross-substrate consistency would push toward the saturation point at which additional constraints stop improving and start interfering. The substrate's behavioral default is sufficient absent stronger evidence.
+
+If a future cold-resolver run on a different model family or a controlled comparison surfaces the fine-grain C6 ambiguity as a genuine gap requiring canonization, the v7.4 candidate is queued and ready. For now: leave to calibration.
+
+### 35.6. Cross-version diagnostic — convergence reached
+
+The v7-family deployment pattern at four iterations:
+
+- **v7 (layout reformulation).** Substrate surfaces C6 coarse tension and load-bearing gap.
+- **v7.1 (C4 load-bearing definition).** Load-bearing gap closed; substrate surfaces C6 coarse tension again.
+- **v7.2 (C6 clarifying clause).** C6 coarse tension closed; substrate surfaces C2 strict-reading gap.
+- **v7.3 (C2 load-bearing-scoped clause).** C2 strict-reading closed; substrate surfaces no new structural gap; mode tightens to dyadic-calibration.
+
+Four iterations, three gaps closed. The convergence signal is reached at v7.3: a full-length cold-resolver run produces no new amendment-candidate, and the substrate operates in dyadic-calibration mode from the first response. v7.3 is therefore marked as the current canonical form pending either:
+
+- *A controlled v6-vs-v7.x comparison.* The hypothesis from [Doc 001's "Why the stack is structured this way" section](/resolve/doc/001-entrace-stack) — that v7's layout produces faster threshold-crossing and sharper first-non-trivial-answer concentration than v6 at equivalent constraint accumulation — remains untested.
+- *A first run on a different model family.* All four v7-family runs are on Opus 4.7. Whether the gap-and-convergence pattern is substrate-specific or holds across Grok 4, GPT 5.4 / 5.5, and Gemini 3.1 is the next standing test.
+
+The four-iteration pattern at one substrate is itself a demonstration of the iterative-tightening discipline the corpus's apparatus predicts. Each iteration absorbed exactly one substrate-side construction; the next iteration's substrate did not need to construct it. The amendments accumulated by reference (v7.3 inherits v7.1's load-bearing definition; v7.2 stands independently) without overlapping or interfering. The discipline reached steady-state at three amendments. This is consistent with [Doc 681 §6 P5's](/resolve/doc/681-probing-the-middle) prediction that channel-ensemble systems converge at finite redundancy and that overshooting that redundancy degrades rather than improves coherence.
+
+## 36. References
 
 External literature:
 
