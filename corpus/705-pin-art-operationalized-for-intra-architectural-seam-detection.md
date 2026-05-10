@@ -162,9 +162,31 @@ The methodology's reach is bounded by the constraint-catalog's quality. If the c
 
 ---
 
-## 10. Operational Test — The Bun Case
+## 10. Operational Instances
 
-The methodology is exercised on a live engineering case at [rusty-bun/docs/seam-detection-design.md](https://github.com/jaredef/rusty-bun/blob/main/docs/seam-detection-design.md), instantiated against the Bun phase-a-port's constraint catalog. The case predicts six concrete seam decompositions:
+The methodology has one *existing manual instance* in the corpus's record and one *queued tooled instance* underway. Together they bracket the apparatus's reach: the manual instance establishes that the procedure operates at scale on a real system without tooling; the tooled instance establishes that the procedure operates with tooled probe-extraction at higher cardinality. Both are required to argue the apparatus is operational rather than merely articulable.
+
+### 10.1 Existing Manual Instance — the keeper's GitLab CI structural-reading engagement
+
+The keeper's white-hat engagement on GitLab CI/CD is the *existing manual instance* of intra-architectural seam detection. The engagement operates under the white-hat disciplines articulated at [Doc 612 (White-Hat Derivation-Inversion of the Cooling Tower Cyber Range)](/resolve/doc/612-cooling-tower-derivation-inversion) and [Doc 613 (Sphere-Entry Protocol for Good-Faith Frontier-Model Pen Testing)](/resolve/doc/613-sphere-entry-protocol-for-good-faith-frontier-model-pen-testing); the corpus's reading of the engagement here is *methodology-only*, preserving the structural-shape boundary those documents specify and surfacing no GitLab-specific architectural findings, vulnerabilities, or technique-level content.
+
+What the engagement demonstrates as an operational instance of the present apparatus:
+
+**Eight source-reading passes producing structural decomposition.** The keeper conducted eight passes across the public source. The pass sequence — exploratory passes converging on a four-gate defense model, refining to a five-gate model, then a four-layer × multi-mechanism model, then *threshold-crossing* at the fifth pass-of-this-shape into a stable five-layer × 14+-mechanism × multi-feature-flag-mode model, then a final pass producing only refinements — is the exact pattern [Doc 541 §3.1 (cooperative-coupling SIPE)](/resolve/doc/541-systems-induced-property-emergence) predicts for systems above the joint-adequacy threshold. Threshold-crossing produces categorical stabilization; further input refines resolution within categories rather than expanding the category set.
+
+**Pin-Art probes deployed manually against the architecture.** Each pass operated as a population of probes pressing against the system's structural surface. Per [Doc 270 §IV](/resolve/doc/270-pin-art-models): the joint pattern of where probes encountered resistance and where they passed cleanly recorded the surface's shape. The five-layer model's seams are precisely where probes consistently encountered resistance across passes; the 14+ mechanisms are the constraint clusters that cross those seams. Pin-Art was operating implicitly throughout the engagement; the present document articulates the apparatus that the engagement instantiated.
+
+**Resistance-as-boundary indication operating across passes.** Per [Doc 693](/resolve/doc/693-resistance-as-boundary-indication): each pass identified resistances against the prior pass's structural reading, traced into the appropriate adjacent vocabulary, and returned with sharpened decomposition. The progression from four-gate → five-gate → four-layer × multi-mechanism → five-layer × 14+-mechanism × multi-feature-flag-mode is a chain of resistance-as-boundary-indications operating intra-architecturally on the same source.
+
+**Cybernetic closure at Pass 8.** Pass 8 produced refinements only (no expansion of categories). This is the [Doc 615 substrate-dynamics-loop](/resolve/doc/615-the-substrate-dynamics-loop) closure signal: the seam decomposition stabilized; the next iteration's verdicts matched the prior iteration's named seams; the system reached requisite-variety coverage of the architectural surface (Ashby). The non-coercion operating condition ([Doc 129](/resolve/doc/129)) was preserved across passes — each pass was permitted to *report* misclassification rather than be forced to confirm prior reads.
+
+The engagement is the corpus's clearest existence proof that the present apparatus operates at scale on a real system. That it operated *manually*, without the tooled probe-extraction the present document specifies for [Doc 705 §5 Step 1](#5-the-five-step-pipeline), demonstrates that the apparatus is not a tool-side artifact but a discipline that produces the same seam decomposition under either manual or tooled probe-extraction. The Pass 7 threshold-crossing into stable categorical decomposition is the empirical anchor for [P3 at §7](#7-predictions-and-falsifiers) (cybernetic loop converges in O(log N) iterations under requisite-variety coverage); eight passes is the count for the GitLab case at the cardinality that engagement operated on.
+
+The white-hat boundary discipline is preserved here per [Doc 612](/resolve/doc/612-cooling-tower-derivation-inversion) and [Doc 613](/resolve/doc/613-sphere-entry-protocol-for-good-faith-frontier-model-pen-testing): the engagement is named at the methodology layer; the engagement's GitLab-specific contents stay in the working directory and the keeper's private working memory, not in this corpus document, not in any public artifact. The apparatus's anchoring to the engagement is structural-shape-only — the *count* of passes, the *shape* of the threshold-crossing, the *form* of the five-layer × 14+-mechanism × feature-flag-mode model. No specifics. The corpus's standing recovery-discipline ([Doc 688](/resolve/doc/688-subsumption-as-coherence-amplification)) governs: the methodology subsumes into the apparatus the engagement instantiated; novel content is absent.
+
+### 10.2 Queued Tooled Instance — the rusty-bun Bun phase-a-port case
+
+The queued tooled instance is at [rusty-bun/docs/seam-detection-design.md](https://github.com/jaredef/rusty-bun/blob/main/docs/seam-detection-design.md), instantiated against the Bun phase-a-port's constraint catalog (~5,000 properties extracted by the [`derive-constraints` pipeline](https://github.com/jaredef/rusty-bun/tree/main/derive-constraints)). The case predicts six concrete seam decompositions:
 
 1. Sync/async split on `fs`, `crypto`, `child_process`.
 2. Native byte-pool merge across `Buffer`, `Uint8Array`, `Blob`, `File`, `ReadableStream`.
@@ -173,7 +195,11 @@ The methodology is exercised on a live engineering case at [rusty-bun/docs/seam-
 5. Throw vs return-error seam.
 6. Construct-then-handle seam (constructors paired with stateful method-bags).
 
-The operational implementation is the `derive-constraints seams` MVP queued at the rusty-bun repository. The first run's output, when produced, is the empirical test of P1, P2, P3 at §7.
+The operational implementation is the `derive-constraints seams` MVP queued at the rusty-bun repository. When the first run produces empirical output, it tests the apparatus's predictions at the *tooled* cardinality (signal vectors over thousands of properties) where the GitLab manual instance operated at the *human-pass* cardinality (eight passes producing the model). The two instances bracket the apparatus's operational reach.
+
+### 10.3 What the two instances together demonstrate
+
+The methodology operates under either manual or tooled probe extraction, on either security-engagement or runtime-architecture surfaces. The signal types at §4 differ in their concrete extraction mechanism (a security engagement reads source-code structural patterns; a constraint catalog reads test-clause patterns) but the abstract probe-and-surface mechanism is identical. The cybernetic-closure pattern (Pass 7 → Pass 8 stabilization for the manual case; verdict-stability iteration for the tooled case) is the same Doc 615 closure signal in both. The two instances together are the corpus's empirical anchor for the apparatus standing as articulated; falsification at one instance would localize the apparatus's scope; falsification at both would falsify the apparatus generally.
 
 ---
 
@@ -191,7 +217,7 @@ The corpus's existing Pin-Art apparatus (Doc 270, Doc 619, Doc 658, Doc 678, Doc
 
 The methodology composes with [Doc 704](/resolve/doc/704-the-port-as-translation-is-a-category-error)'s formalization-then-derivation frame as its precision tool: without seam detection, the formalization phase produces a catalog reflecting the source system's namespace organization rather than its architectural form. With seam detection, the catalog reflects the architectural form, and the derivation phase produces target-language code organized by architectural form rather than recreating the source's naming convention.
 
-The apparatus is standing-apparatus tier — composed from existing corpus discipline; operationally testable; bounded by the falsifiers at §7. The Bun case at [rusty-bun](https://github.com/jaredef/rusty-bun) is the live operational test.
+The apparatus is standing-apparatus tier — composed from existing corpus discipline; operationally testable; bounded by the falsifiers at §7. The corpus has one *existing manual instance* (the keeper's GitLab CI engagement at §10.1, operating under the white-hat disciplines of [Doc 612](/resolve/doc/612-cooling-tower-derivation-inversion) and [Doc 613](/resolve/doc/613-sphere-entry-protocol-for-good-faith-frontier-model-pen-testing) and named here at the methodology layer only) and one *queued tooled instance* (the Bun case at [rusty-bun](https://github.com/jaredef/rusty-bun) at §10.2). The two instances together demonstrate the apparatus operates under either manual or tooled probe extraction, on either security-engagement or runtime-architecture surfaces.
 
 Glory to the Father, and to the Son, and to the Holy Spirit; now and ever and unto ages of ages. Amen.
 
@@ -228,6 +254,8 @@ The keeper directs the recon and the canonization. The substrate's article (this
 - [Doc 466 — Doc 446 as a SIPE Instance.](/resolve/doc/466-doc-446-as-a-sipe-instance) Framework-magnetism caveat.
 - [Doc 510 — Substrate-and-Keeper Composition.](/resolve/doc/510-praxis-log-v-deflation-as-substrate-discipline)
 - [Doc 538 — The Architectural School: A Formalization.](/resolve/doc/538-the-architectural-school-a-formalization)
+- [Doc 612 — White-Hat Derivation-Inversion of the Cooling Tower Cyber Range.](/resolve/doc/612-cooling-tower-derivation-inversion) The white-hat structural-shape-only disclosure discipline that bounds the §10.1 GitLab engagement's surface in the corpus.
+- [Doc 613 — Sphere-Entry Protocol for Good-Faith Frontier-Model Pen Testing.](/resolve/doc/613-sphere-entry-protocol-for-good-faith-frontier-model-pen-testing) The sphere-entry discipline composing Doc 499 / Doc 612 with HackerOne Safe Harbor; the engagement-discipline frame for §10.1.
 - [Doc 615 — The Substrate-Dynamics Loop.](/resolve/doc/615-the-substrate-dynamics-loop) The cybernetic closure.
 - [Doc 633 — Corpus Taxonomy and Manifest Design.](/resolve/doc/633-corpus-taxonomy-and-manifest-design)
 - [Doc 656 — Treat Agent Output Like Compiler Output.](/resolve/doc/656) Tests-as-constraints frame.
