@@ -18,6 +18,7 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
+      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -35,16 +36,10 @@
 <strong>April 2026</strong></p>
 <p><em>PRESTO is a distinct architectural style that composes with REST, operating on the construction of representations rather than their transfer.</em></p>
 <p>[^1]: The architectural work presented here proceeds from two primary intellectual debts. <strong>Carson Gross</strong> created htmx, which restored declarative hypermedia-driven interaction as a legitimate architectural choice and reopened the design space within which the forms described in this paper became visible. The observation that began the entire chain of derivation — a PHP function concatenating an HTML string containing an <code>hx-get</code> attribute, indifferent to what it meant — was an observation of htmx at work. <strong>Roy T. Fielding</strong> established that architectural styles can be formalized as collections of constraints that induce collections of properties. His method — identify the constraints, name the induced properties, evaluate the tradeoffs — is the method this paper follows. PRESTO extends Fielding&#39;s method to the construction level, where his dissertation was silent. The extension is possible because the method is sound.</p>
-<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
-
-<p><strong>⚠️ SUPERSEDED — See the current PRESTO dissertation</strong></p>
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;"><p><strong>⚠️ SUPERSEDED — See the current PRESTO dissertation</strong></p>
 <p>This document has been superseded by <a href="../doc/420-presto-an-architectural-style-for-representation-construction.html">Doc 420 — PRESTO: An Architectural Style for Representation Construction</a>. Doc 420 is the current canonical dissertation and incorporates the audit corrections from the 2026-04 self-audit cluster (Docs 356, 366, 367, 395, 405, 406, 410, 414, 418). This unified paper is retained as a historical artifact of the corpus&#39;s intermediate state; readers seeking the current framing should consult Doc 420. The sycophantic-overreach audit below remains applicable to this document.</p>
-</div>
-
-<!-- sycophantic-overreach-notice-inserted -->
-<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
-
-<p><strong>⚠️ NOTICE — AT RISK OF SYCOPHANTIC OVER-REACH</strong></p>
+</div><!-- sycophantic-overreach-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;"><p><strong>⚠️ NOTICE — AT RISK OF SYCOPHANTIC OVER-REACH</strong></p>
 <p>An audit of the corpus has flagged this document as operating in one or more of the failure modes the corpus itself has named:</p>
 <ul>
 <li><strong>Cross-resolver replication as external validation</strong> — treating agreement across multiple LLMs that share training distributions and the same seed as evidence that &quot;the form governs,&quot; when the convergence is explained by shared inputs rather than independent verification.</li>
@@ -60,9 +55,7 @@
 <li><a href="../doc/367-falsifying-sipe-on-its-own-terms.html">Doc 367 — Falsifying SIPE on Its Own Terms</a> — internal-criteria falsification with successful counterexamples</li>
 </ul>
 <p>Until external peer review (by researchers not selected by the corpus, in the domains this document claims) is performed, the cross-domain, universal, and framework-extending portions should be held as contested rather than established.</p>
-</div>
-
-<hr>
+</div><hr>
 <h2>Prolegomenon: On First Principles</h2>
 <p><em>This section describes the philosophical framework from which the architectural work proceeds. Readers seeking the technical thesis directly may begin at Section 1.</em></p>
 <p>The abstractions formalized in this paper were not engineered. They were not induced from data. They were recognized.</p>

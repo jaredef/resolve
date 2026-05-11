@@ -11,6 +11,9 @@
     display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap; }
   header h1 { margin: 0; font-size: 14px; font-weight: normal; }
   header a { color: #88aaff; text-decoration: none; font-size: 12px; }
+  .crumbs { font-size: 12px; color: #667; margin-right: auto; }
+  .crumbs a { color: #88aaff; margin: 0 6px; }
+  .crumbs .sep { color: #444; }
   main { flex: 1; display: grid; grid-template-columns: 1fr 320px;
     overflow: hidden; min-height: 0; }
   #plot-wrap { padding: 16px; overflow: hidden; min-height: 0;
@@ -41,7 +44,12 @@
 <body>
 
 <header>
-  <h1>Basin-volume sweep — V(k) on the inverted triple pendulum</h1>
+  <span class="crumbs">
+    <a href="../index.html">Resolve</a><span class="sep">/</span>
+    <a href="./index.html">Visualize</a><span class="sep">/</span>
+    <span>Basin-volume (triple)</span>
+  </span>
+  <h1>V(k) on the inverted triple pendulum</h1>
   <a href="./triple-pendulum.html">← interactive demo</a>
   <a href="./basin-volume-double.html">double-pendulum probe →</a>
 </header>

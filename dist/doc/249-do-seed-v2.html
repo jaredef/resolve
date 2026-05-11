@@ -18,14 +18,13 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
+      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
 </header>
 <main class="">
-<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 249</p><!-- Source artifact preserved from .spec/do-seed-v2.md. The refined DO Seed (v2) — verified against React's own contract tests. 2,574 words. See Doc 248 for the original 2,177-word version. -->
-
-<h1>Distributed Objects Seed v2</h1>
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 249</p><!-- Source artifact preserved from .spec/do-seed-v2.md. The refined DO Seed (v2) — verified against React's own contract tests. 2,574 words. See Doc 248 for the original 2,177-word version. --><h1>Distributed Objects Seed v2</h1>
 <blockquote>
 <p><strong>Reader&#39;s Introduction</strong></p>
 <p>This is the refined second version of the Distributed Objects Seed, a prose specification for building a UI runtime architecturally equivalent to React. Where the original seed had 15 verification tests, this version expands to 75 tests extracted directly from React&#39;s own contract test suite — covering bail-out optimization (skipping unnecessary re-renders), effect ordering guarantees (the sequence in which side effects fire after screen updates), and concurrency correctness. The ten architectural contracts remain the same; the verification surface is now comprehensive enough that a runtime passing all 75 tests is verified against React&#39;s own invariants, not just the seed author&#39;s interpretation of them.</p>
