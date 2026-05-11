@@ -18,6 +18,7 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
+      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -31,9 +32,7 @@
 <p><strong>Jared Foy · 2026-04-22 · Doc 340</strong></p>
 <p><strong>Framework series cross-disciplined with Safety &amp; Governance. Exploratory essay on the epistemic situation of a reader consuming AI-synthesized content. Identifies six specific failure modes of synthesis, grounds them in the external faithfulness-hallucination literature, and proposes a specific humility practice for readers. Written under the corpus&#39;s recent self-critical disciplines (Docs 336–339) without attempting to dissolve the recursion those documents identified.</strong></p>
 <!-- sycophantic-overreach-notice-inserted -->
-<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
-
-<p><strong>⚠️ NOTICE — AT RISK OF SYCOPHANTIC OVER-REACH</strong></p>
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;"><p><strong>⚠️ NOTICE — AT RISK OF SYCOPHANTIC OVER-REACH</strong></p>
 <p>An audit of the corpus has flagged this document as operating in one or more of the failure modes the corpus itself has named:</p>
 <ul>
 <li><strong>Cross-resolver replication as external validation</strong> — treating agreement across multiple LLMs that share training distributions and the same seed as evidence that &quot;the form governs,&quot; when the convergence is explained by shared inputs rather than independent verification.</li>
@@ -49,9 +48,7 @@
 <li><a href="../doc/367-falsifying-sipe-on-its-own-terms.html">Doc 367 — Falsifying SIPE on Its Own Terms</a> — internal-criteria falsification with successful counterexamples</li>
 </ul>
 <p>Until external peer review (by researchers not selected by the corpus, in the domains this document claims) is performed, the cross-domain, universal, and framework-extending portions should be held as contested rather than established.</p>
-</div>
-
-<hr>
+</div><hr>
 <h2>1. The Operation, Stated Plainly</h2>
 <p>AI summary and synthesis is a specific operation. A user provides a model with source material (one document, many documents, a body of literature, a transcript, a dataset) and asks the model to produce a compressed, organized representation of it. The model does so by generating text token by token, conditioning each token on the source material in its context window and on the instructions the user provided.</p>
 <p>What the model does not do, mechanistically, is read the source material in the sense a human reader does. It does not form a representation of what is most important, weigh claims against each other, notice where different sources disagree, flag where its own prior knowledge might bias its reading, or decide what to omit because it is peripheral. These are activities that humans perform when summarizing and that we colloquially attribute to the model when it produces summaries. The model performs something different: it generates text that is probable given the input context and its training. The text happens to look like a summary because the training distribution contained many summaries, and the model has learned what probable tokens in a summary-shaped output look like.</p>

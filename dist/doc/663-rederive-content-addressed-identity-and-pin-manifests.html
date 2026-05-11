@@ -18,6 +18,7 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
+      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -25,13 +26,9 @@
 <main class="">
 <article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 663</p><h1>Rederive: Content-Addressed Identity and Pin Manifests</h1>
 <h2>A Comprehensive Entracement to How a Constraint Set Acquires Its Stable Identity — the Canonicalization Algorithm Stated Precisely with the Manifest-First Layout, the Lexicographic Constraint Sort, the Fixed Field Order, the Sorted Unknown Fields, the Body-Whitespace Normalization, the SHA-256 Hash and Where It Flows in the Platform — Together with the Pin Manifest Layer for Cross-Cutting Implementation Preservation, the Discipline of Pinning, the Substitutability Promise the Platform Makes, and a Worked Walk Through the Hash Computation from Source File to Sixty-Four Hex Characters — the Fourth Branch off <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> for the Working Engineer</h2>
-<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
-
-<p><strong>EXPLORATORY — practitioner-facing entracement, branch §D of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;"><p><strong>EXPLORATORY — practitioner-facing entracement, branch §D of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
 <p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-PRACTITIONER-FACING | PHASE-CROSS-PRACTITIONER</p>
-</div>
-
-<blockquote>
+</div><blockquote>
 <p><strong>Reader&#39;s Introduction.</strong> This is the fourth branch off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a>. The earlier documents covered authoring, execution, and acceptance. This document closes the loop on <em>identity</em>. A constraint set has a stable, content-addressed identity computed from its canonical form. That identity is what makes the platform&#39;s substitutability promise operational: <em>two materializations from the same constraint set are interchangeable under verification, even though the code may differ</em>. This document also covers the pin manifest, the cross-cutting layer that lets an engineer preserve specific implementation details across regenerations when intent depends on them. If you have used git&#39;s content-addressed object store, much of this will feel familiar; the difference is that rederive content-addresses <em>requirements</em> rather than source files, and the canonicalization is over a structured AST rather than a byte stream. By the end of the document, the engineer should be able to inspect a constraint file, predict the canonical form, and reason about whether a given edit will change the hash.</p>
 </blockquote>
 <p><strong>Jared Foy · 2026-05-05 · Doc 663</strong></p>

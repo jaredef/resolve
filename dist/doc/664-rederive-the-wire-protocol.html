@@ -18,6 +18,7 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
+      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -25,13 +26,9 @@
 <main class="">
 <article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 664</p><h1>Rederive: The Wire Protocol</h1>
 <h2>A Comprehensive Entracement to How a Constraint Repository Synchronizes Across Machines — the Three Object Types, the Wire Verbs and Their Semantics, the Reachability-Walked Object Transfer, the Object Frame Format, the Server&#39;s HTTP Endpoint Surface for Both Repository and Derivation, the Ed25519 Signature-Based Authentication and the Signers Manifest as Identity-as-Constraint-Document, the Atomic-Update Discipline on Refs, the MVE&#39;s Honest Scope Limits — and a Concrete Cross-Machine Workflow End-to-End — the Fifth and Final Branch off <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> for the Working Engineer</h2>
-<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
-
-<p><strong>EXPLORATORY — practitioner-facing entracement, branch §E of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;"><p><strong>EXPLORATORY — practitioner-facing entracement, branch §E of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
 <p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-PRACTITIONER-FACING | PHASE-CROSS-PRACTITIONER</p>
-</div>
-
-<blockquote>
+</div><blockquote>
 <p><strong>Reader&#39;s Introduction.</strong> This is the fifth and final branch off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a> in this comprehensive series. The earlier documents covered authoring (<a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660</a>), execution (<a href="../doc/661-rederive-the-build-pipeline.html">Doc 661</a>), acceptance (<a href="../doc/662-rederive-the-verification-backends.html">Doc 662</a>), and identity (<a href="../doc/663-rederive-content-addressed-identity-and-pin-manifests.html">Doc 663</a>). This document covers <em>distribution</em>: how a constraint repository synchronizes across machines, how peers authenticate, and how a team collaborates on constraint-set work without sharing a runtime. If you have used git, the patterns are familiar (clone, push, pull, content-addressed objects, refs as mutable pointers); the grain is shifted up a layer (constraint sets and materializations rather than blobs and trees), and the auth surface is signature-based rather than provider-mediated. By the end of this document, the engineer has a complete working picture of the platform&#39;s MVE: how to author, how to build, how to verify, how to identify, how to share. The platform sketch&#39;s commitment is to demonstrate that constraints can be the durable source under a working transport; this document closes the loop.</p>
 </blockquote>
 <p><strong>Jared Foy · 2026-05-05 · Doc 664</strong></p>

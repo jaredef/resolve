@@ -18,6 +18,7 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
+      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -25,13 +26,9 @@
 <main class="">
 <article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 662</p><h1>Rederive: The Verification Backends</h1>
 <h2>A Comprehensive Entracement to the Seven Backends — TypeScript Compiler, Assertion Runner, Property Runner, Language-Model Judge, Pin Checker, Static Accessibility Rules, DOM Flow Runner — with the Hard-vs-Soft Classification that Determines What Blocks Sign, the Per-Backend Inputs and Evidence Format, the Constraint-Type-to-Backend Routing Convention, the Honest Scope Limits on Each, and the Small Extension Surface for Team-Specific Backends — the Third Branch off <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> for the Working Engineer</h2>
-<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
-
-<p><strong>EXPLORATORY — practitioner-facing entracement, branch §C of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;"><p><strong>EXPLORATORY — practitioner-facing entracement, branch §C of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
 <p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-PRACTITIONER-FACING | PHASE-CROSS-PRACTITIONER</p>
-</div>
-
-<blockquote>
+</div><blockquote>
 <p><strong>Reader&#39;s Introduction.</strong> This is the third branch off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a>. The first two documents covered authoring (<a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660</a>) and execution (<a href="../doc/661-rederive-the-build-pipeline.html">Doc 661</a>). This document explains the verification layer, the place where the platform&#39;s contract with the engineer is enforced. The verification verdict is what gates acceptance of a derivation; the backend system is what produces the verdict. There are seven backends. Six are <em>hard</em> (a failure blocks sign; the materialization is rejected). One is <em>soft</em> (a failure is recorded as evidence but does not block sign). Each backend reads a specific kind of fenced evidence from the constraint file and produces a per-constraint pass / fail result with concrete evidence. This document names each backend, what it consumes, what evidence it produces, the constraint type it conventionally serves, and the honest scope limits a working engineer should know about before depending on the platform for production work. By the end, the engineer should be able to read a verification report and locate any failure to a specific backend, a specific constraint, and a specific recovery.</p>
 </blockquote>
 <p><strong>Jared Foy · 2026-05-05 · Doc 662</strong></p>
