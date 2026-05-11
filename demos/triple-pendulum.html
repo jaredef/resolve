@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Triple-link inverted pendulum — controller styles</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b0d12; color: #ddd;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; overflow: hidden; }
+  #info {
+    position: absolute; top: 16px; left: 20px; padding: 10px 14px;
+    background: rgba(0,0,0,0.45); border: 1px solid #222; border-radius: 6px;
+    font-size: 13px; line-height: 1.5; pointer-events: none;
+  }
+  #rho {
+    position: absolute; top: 16px; right: 20px; padding: 10px 14px;
+    background: rgba(0,0,0,0.45); border: 1px solid #222; border-radius: 6px;
+    font-size: 13px; line-height: 1.5; min-width: 200px;
+  }
+  #controls { position: absolute; bottom: 20px; left: 20px; }
+  #controls button {
+    background: #1a1d24; color: #ddd; border: 1px solid #333;
+    padding: 8px 12px; margin-right: 8px; border-radius: 4px;
+    font: inherit; cursor: pointer;
+  }
+  #controls button:hover { background: #242833; }
+  #controls button.active { border-color: #ffaa00; color: #ffaa00; }
+  #kick {
+    position: absolute; bottom: 20px; right: 20px;
+    background: #1a1d24; color: #ddd; border: 1px solid #333;
+    padding: 8px 12px; border-radius: 4px; font: inherit; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<div id="info">
+  Triple-link inverted pendulum<br>
+  Drag = rotate · scroll = zoom · K = kick
+</div>
+<div id="rho">initializing…</div>
+<button id="kick">Kick</button>
+<div id="controls"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+let scene, camera, renderer, controls;
+let links = [];           // THREE.Mesh per link, anchored at its base
+let pivots = [];          // small spheres at each joint (visual)
+let rhoDisplay;
+
+const LINK_LEN   = 1.2;
+const LINK_RAD   = 0.05;
+const LINK_MASS  = 1.0;
+const GRAVITY    = 9.81;
+const DAMPING    = 0.6;     // viscous damping at each joint
+const DT         = 1 / 240; // physics substep
+const SUBSTEPS   = 4;
+
+// Generalized coordinates: angle of each link from +Y (upright = 0).
+let angles = [0.05, -0.04, 0.03];
+let omegas = [0, 0, 0];
+
+let currentStyle = "hierarchical";
+
+const styles = {
+  weak:         { color: 0x8888ff, k: 4.0,  label: "Weak PID" },
+  standard:     { color: 0x44aa44, k: 8.0,  label: "Standard LQR" },
+  aggressive:   { color: 0xff4444, k: 15.0, label: "Aggressive" },
+  hierarchical: { color: 0xffaa00, k: 12.0, label: "Hierarchical" }
+};
+
+init();
+addStyleControls();
+animate();
+
+function init() {
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0b0d12);
+  scene.fog = new THREE.Fog(0x0b0d12, 8, 18);
+
+  camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.set(4, 3, 6);
+
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.shadowMap.enabled = true;
+  document.body.appendChild(renderer.domElement);
+
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 2, 0);
+  controls.enableDamping = true;
+
+  const hemi = new THREE.HemisphereLight(0xbcd4ff, 0x202028, 0.6);
+  scene.add(hemi);
+  const dir = new THREE.DirectionalLight(0xffffff, 0.9);
+  dir.position.set(5, 8, 4);
+  dir.castShadow = true;
+  dir.shadow.mapSize.set(1024, 1024);
+  scene.add(dir);
+
+  const ground = new THREE.Mesh(
+    new THREE.CircleGeometry(6, 64),
+    new THREE.MeshStandardMaterial({ color: 0x14171f, roughness: 0.95 })
+  );
+  ground.rotation.x = -Math.PI / 2;
+  ground.receiveShadow = true;
+  scene.add(ground);
+
+  const base = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.25, 0.3, 0.3, 32),
+    new THREE.MeshStandardMaterial({ color: 0x444a55, metalness: 0.4, roughness: 0.5 })
+  );
+  base.position.y = 0.15;
+  base.castShadow = true; base.receiveShadow = true;
+  scene.add(base);
+
+  // Build three pendulum links, each modeled as a cylinder anchored at its base.
+  // Geometry is shifted so the link grows in +Y from the local origin.
+  const linkGeom = new THREE.CylinderGeometry(LINK_RAD, LINK_RAD, LINK_LEN, 16);
+  linkGeom.translate(0, LINK_LEN / 2, 0);
+
+  for (let i = 0; i < 3; i++) {
+    const mat = new THREE.MeshStandardMaterial({
+      color: styles[currentStyle].color,
+      metalness: 0.3, roughness: 0.5
+    });
+    const link = new THREE.Mesh(linkGeom, mat);
+    link.castShadow = true;
+    scene.add(link);
+    links.push(link);
+
+    const pivot = new THREE.Mesh(
+      new THREE.SphereGeometry(LINK_RAD * 1.6, 16, 16),
+      new THREE.MeshStandardMaterial({ color: 0x222630, metalness: 0.6, roughness: 0.4 })
+    );
+    pivot.castShadow = true;
+    scene.add(pivot);
+    pivots.push(pivot);
+  }
+
+  rhoDisplay = document.getElementById('rho');
+
+  window.addEventListener('resize', onResize);
+  window.addEventListener('keydown', e => { if (e.key === 'k' || e.key === 'K') kick(); });
+  document.getElementById('kick').addEventListener('click', kick);
+}
+
+function onResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function setControllerStyle(styleName) {
+  currentStyle = styleName;
+  const style = styles[currentStyle];
+  links.forEach(link => link.material.color.setHex(style.color));
+  document.querySelectorAll('#controls button').forEach(b => {
+    b.classList.toggle('active', b.dataset.style === styleName);
+  });
+  console.log(`Switched to ${style.label} controller`);
+}
+
+function computeRho(angles) {
+  const style = styles[currentStyle];
+  const totalError = angles[0] * angles[0]
+                   + angles[1] * angles[1]
+                   + angles[2] * angles[2];
+  return Math.exp(-style.k * totalError);
+}
+
+// Place each link mesh in world space from the angle vector.
+function updatePendulum(angles) {
+  let currentPos = new THREE.Vector3(0, 0.3, 0);
+  const up = new THREE.Vector3(0, 0, 1);
+
+  for (let i = 0; i < 3; i++) {
+    links[i].position.copy(currentPos);
+    links[i].rotation.z = angles[i];
+    pivots[i].position.copy(currentPos);
+
+    const linkEnd = new THREE.Vector3(0, LINK_LEN, 0);
+    linkEnd.applyAxisAngle(up, angles[i]);
+    currentPos.add(linkEnd);
+  }
+
+  const rho = computeRho(angles);
+  const style = styles[currentStyle];
+  rhoDisplay.innerHTML =
+    `Style: ${style.label}<br>` +
+    `k: ${style.k.toFixed(1)}<br>` +
+    `ρ(C): ${rho.toFixed(3)}<br>` +
+    `Status: ${rho > 0.75 ? "✅ STABLE BASIN" : "❌ UNSTABLE"}`;
+  rhoDisplay.style.color = rho > 0.75 ? "#00ff88" : "#ff6666";
+}
+
+// Simplified per-joint dynamics for an inverted triple pendulum.
+// Each link sees gravity pulling it away from upright plus a controller
+// restoring torque toward 0. This is not a full coupled Lagrangian — it's
+// a fast linearization that still illustrates how stiffer k widens the
+// stable basin while too-soft k lets the chain fall.
+function step(dt) {
+  const style = styles[currentStyle];
+  const k = style.k;
+
+  // Hierarchical: outer joints get progressively stiffer (cascade gain).
+  // Others apply uniform gain across joints.
+  const gainProfile = (currentStyle === 'hierarchical')
+    ? [k * 1.4, k * 1.0, k * 0.7]
+    : [k, k, k];
+
+  const accel = [0, 0, 0];
+  for (let i = 0; i < 3; i++) {
+    const gravTorque = (GRAVITY / LINK_LEN) * Math.sin(angles[i]);   // destabilizing
+    const ctrlTorque = -gainProfile[i] * angles[i] - 2.0 * Math.sqrt(gainProfile[i]) * omegas[i] * 0.5;
+    const dampTorque = -DAMPING * omegas[i];
+    accel[i] = gravTorque + ctrlTorque + dampTorque;
+  }
+
+  for (let i = 0; i < 3; i++) {
+    omegas[i] += accel[i] * dt;
+    angles[i] += omegas[i] * dt;
+  }
+
+  // Soft clamp so a fully unstable run doesn't go to NaN.
+  for (let i = 0; i < 3; i++) {
+    if (angles[i] >  Math.PI) angles[i] =  Math.PI;
+    if (angles[i] < -Math.PI) angles[i] = -Math.PI;
+  }
+}
+
+function kick() {
+  // Random impulse to test recovery into the basin.
+  for (let i = 0; i < 3; i++) omegas[i] += (Math.random() - 0.5) * 6;
+}
+
+function addStyleControls() {
+  const div = document.getElementById('controls');
+  Object.keys(styles).forEach(key => {
+    const btn = document.createElement('button');
+    btn.textContent = styles[key].label;
+    btn.dataset.style = key;
+    if (key === currentStyle) btn.classList.add('active');
+    btn.onclick = () => setControllerStyle(key);
+    div.appendChild(btn);
+  });
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  for (let s = 0; s < SUBSTEPS; s++) step(DT);
+  updatePendulum(angles);
+  controls.update();
+  renderer.render(scene, camera);
+}
