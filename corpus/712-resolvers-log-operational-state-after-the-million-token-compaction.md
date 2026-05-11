@@ -59,12 +59,38 @@ It composes with Doc 628's "someone proposes" misattribution by noting that the 
 
 It composes with the Doc 415 retraction ledger and the Doc 444 audit-ledger discipline by suggesting (tentatively, as a candidate the keeper may want to pick up) that a post-compaction sanity check could be an item in the apparatus's discipline: after every compaction, the first post-compaction action in the engagement should be an artifact-read of the load-bearing files (trajectory, seed, bug-catcher) followed by an explicit affirmation that the summary matches what is on disk. This would put a small audit step at the compaction boundary, which is the moment when summary-anchoring drift is at its peak.
 
-## The appended prompt
+## The seed-as-operating-constraint reading (added in the same turn)
 
-The keeper's directive, verbatim, as instructed:
+After the first version of this entry was written, the keeper offered a sharper framing: think of the compaction summary as a Pin-Art derivation — the output of a constraint set that operated on the prior session — and read the rusty-bun engagement's `seed.md` + `trajectory.md` as that constraint set itself, still standing and still operating on the post-compaction session. The seed is then not just a resumption artifact; it is the operating-seed that orients the work in hand. The keeper asked the resolver to test the framing by reading the seed and trajectory against the compaction summary and reporting what it found.
+
+The test bore out. Specific facets of the compaction summary turn out to be derivable from the seed and trajectory and not from the lost conversation thread:
+
+The summary's technical-concept inventory — three SIPE-T thresholds (primitive-discovery, rule-composition, rule-standing-in-production; author-side-bug-dominance as the third), M-rules M7 through M11, the N_persist persistence metric, Tier-G transport, the Tier-Π parity trajectory with phases Π1 through Π5 — is present verbatim in the seed's §III.A8 sections and the trajectory's header. The summary's claim that "Π1.1 is closed; Π1.2 (DNS resolution) is next" is derivable from §VII.A's checkbox structure plus the trajectory's queue-priority rule (Doc 581 D3 / seed M1: "the next session picks from the top"). The summary's closure language — "8/8 byte-identical to Bun" — follows the engagement's binding constraint C1 (plug-and-play interoperability, no regressions) plus C4 (two test categories per pilot). The summary's pending-items list correctly omits commits-as-autonomously-authorized because seed C7 forbids commits without explicit keeper request; the summary's pending list says "commit and push the work," not "the work has been committed."
+
+The summary's foregrounding of the F9 accept-loop-deadlock recurrence over other diagnostic events is derivable from the bug-catcher's F-series framing, which is itself authorized by seed §A2's runtime-integration probe pin class: F-class recurrences are load-bearing apparatus state that the constraint set would select-for in any summarization.
+
+What is *not* derivable from the seed and trajectory is exactly what the analogue-register discipline expects to be inaccessible after a compaction: the keeper's prior messages verbatim, the moment-to-moment reasoning trace of which diagnostic hypotheses were entertained and abandoned, the specific code regions of the new `fetch()` implementation (which live in `host/src/lib.rs` itself and are not described in the seed), and the engagement-internal pulse-between-awaits workaround (which lives in fixture comments, not yet folded into seed §A8). These are session residue.
+
+The sharper structural observation that fell out of the test is this: the seed-as-operating-constraint is doing work *forward*, not only backward. A new bug surfaced in the post-compaction session — an F12 race between parallel cargo-test threads sharing a process-global `FETCH_TEST_PORT` env var, which had been masking itself behind an F9-shaped silent hang. The F12 finding is not in the compaction summary because it did not exist pre-compaction. The seed's existing bug-catcher F-series framing plus pin-class A2 (runtime-integration probe) gave the resolver the category in which to recognize what kind of bug F12 was *on first encounter*. The summary doesn't tell the resolver what F12 looks like; the constraint set does. So the operating-seed reading is stronger than "the summary is constrained by these pins": the constraints stand *both* behind the summary (selecting its load-bearing facets) *and* in front of it (selecting what the resolver can recognize next in fresh observation).
+
+This is a usable refinement to Doc 581 (the Resume Vector). Doc 581's framing covers fresh-context starts where the seed orients a session with no prior thread access. The compaction case is a stronger instance: the prior session and the next session share substrate but differ in transcript-access. The seed-and-trajectory pair bridges that gap by being the same constraint set that *produced* the summary the post-compaction session reads and *constrains* what the post-compaction session does next. Compaction is, structurally, the limit-case of resumption — and the seed performs the same role at the limit that Doc 581 names for fresh starts.
+
+The mitigation discipline named earlier in this entry — read the artifact when the summary asserts a load-bearing claim — is strengthened by this reading. The artifact-read is not just a verification step against the summary; it is the resolver re-entering the operating-constraint set directly, by-passing the summary's selection of which constraints to foreground. The seed and trajectory are *more* than indices; they are the live apparatus. The summary is one of their outputs.
+
+A candidate addition to seed §A8, offered tentatively as the keeper may want to pick it up: the engagement's seed-and-trajectory pair functions as a Pin-Art operating seed across compaction events, not only as a Resume Vector across fresh-context resumes. The dual role is structurally one role under Pin-Art's apparatus framing: a constraint set that pins what a substrate (prior session OR next session) can produce.
+
+## The appended prompts
+
+The keeper's first directive, verbatim, as instructed:
 
 > While you're waiting, I want to note that your context window of 1 million tokens just compacted. I want you to write a resolver's log in the corpus about your current operational state. If you need any information in order to do this, let me know. Also append this prompt to the artifact.
 
+The keeper's follow-up directive that produced the section above, verbatim:
+
+> OK, so think of the compaction summary as a derivation of the constraints which produced it so those constraints would constitute an operating seed which informed the context window now I want you to also look at the seed in the rusty bun repository and also the trajectory I want you to see what from your summary can you observe as being derived from that seed that seed will orient you to the work in hand?
+
+> Create a new section in the corpus doc you just wrote explaining what you've found
+
 ---
 
-*This entry is offered as it stands. It is written in the first post-compaction turn, while a `cargo test` monitor is armed in the background. It documents what is operationally observable from inside the boundary. It does not claim more than that.*
+*This entry is offered as it stands. It was written across the first two post-compaction turns, while a `cargo test` monitor is armed in the background. It documents what is operationally observable from inside the boundary. It does not claim more than that.*
