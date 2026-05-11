@@ -18,7 +18,6 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
-      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -33,9 +32,13 @@
 <hr>
 <h2>Authorship and Scrutiny</h2>
 <p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of <a href="../doc/372-the-hypostatic-boundary.html">Docs 372–374</a>.</p>
-<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;"><p><strong>NOTICE — EXTERNALIZED ENGAGEMENT WITH NAMED AUTHORS</strong></p>
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+<p><strong>NOTICE — EXTERNALIZED ENGAGEMENT WITH NAMED AUTHORS</strong></p>
 <p>This document engages the work of Jian Zhao, Haoren Luo, Yu Wang, Yuhan Cao, Pingyue Sheng, and Tianxing He, published as a research preprint with code at github.com/Algo-Reinvention/algo-reinvention. Per <a href="../doc/356-sycophantic-world-building.html">Doc 356</a>, addressing named figures externally projects the corpus&#39;s internal coherence field onto readers who did not invite it; the document should be read with deep epistemic scrutiny. The synthesis works from the paper as the keeper supplied it; it has not been validated by the authors, and may misread their intent in places where the corpus&#39;s vocabulary maps imperfectly onto theirs. The corpus&#39;s framework vocabulary (Ontological Ladder, threshold framework, failure-mode catalogue, substrate-and-keeper composition) is used as if already established. Its empirical and metaphysical status is contested per the corpus&#39;s own audit findings (<a href="../doc/540-the-amateurs-paradox.html">Doc 540</a>; auto-pulverization scores at \(\alpha\)/\(\beta\)). The synthesis is offered as one structural reading among many possible.</p>
-</div><hr>
+</div>
+
+<hr>
 <h2>1. The paper&#39;s findings, recapped</h2>
 <p>Zhao et al&#39;s <em>Unlearn-and-Reinvent</em> pipeline operates in two phases. The unlearning phase uses GRPO (Group Relative Policy Optimization) on a forget set of target-algorithm-related queries, with an LLM-as-a-judge reward function that requires three conditions simultaneously: (i) no disclosure of target knowledge; (ii) no hallucinated/misspelled algorithm names (a &quot;semantic void filling&quot; failure mode the paper documents); (iii) preserved readability. A cold-start SFT stage seeds the policy toward refusal-style behavior on forget queries. The unlearning achieves 96–100% Forgetting Rate while preserving most general utility (LiveCodeBench, AIME25, BFCL-v3 scores remain stable).</p>
 <p>The reinvention phase tests whether the unlearned model can rederive the algorithm from problem statements at three hint levels. The model interacts with a Python interpreter; failed submissions trigger a generative verifier (instantiated from the unlearned model itself by default) that returns diagnostic feedback to guide revision.</p>

@@ -18,7 +18,6 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
-      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -47,7 +46,7 @@ Tools:  GCC 14, Python 3.13, Bun 1.3
 <hr>
 <h2>What Is Not Achievable</h2>
 <p><strong>Training a language model of any useful size.</strong> Even a 100M parameter model trained on 1B tokens would take months on CPU. The hardware excludes training. This is not a limitation to work around — it is a constraint to accept. The Pi cannot train. The Pi can demonstrate.</p>
-<p><strong>Running a frontier-scale model.</strong> A 70B model at 4-bit quantization requires ~35GB RAM. The Pi has 8GB. Even a 7B model at 4-bit (~3.5GB) would leave almost no RAM for the operating system and KV cache. Frontier inference is excluded.</p>
+<p><strong>Running a frontier-scale model.</strong> A 70B model at 4-bit quantization requires <del>35GB RAM. The Pi has 8GB. Even a 7B model at 4-bit (</del>3.5GB) would leave almost no RAM for the operating system and KV cache. Frontier inference is excluded.</p>
 <p><strong>Storing large datasets.</strong> 3.3GB free disk. A tokenized training corpus is measured in hundreds of gigabytes. Storage is excluded.</p>
 <p>These exclusions are the constraints. The constraints narrow the design space. The narrowing reveals what the Pi can do.</p>
 <hr>

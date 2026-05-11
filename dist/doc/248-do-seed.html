@@ -18,13 +18,14 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
-      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
 </header>
 <main class="">
-<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 248</p><!-- Source artifact preserved from .spec/do-seed.md, published to the corpus for the first time as the canonical DO Seed reference text for the Seed Garden's DO plot. 2,177 words of prose, 10 contracts, 7 properties, 15 verification tests. Written in natural language. No code. --><h1>Distributed Objects Seed (React Realization)</h1>
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 248</p><!-- Source artifact preserved from .spec/do-seed.md, published to the corpus for the first time as the canonical DO Seed reference text for the Seed Garden's DO plot. 2,177 words of prose, 10 contracts, 7 properties, 15 verification tests. Written in natural language. No code. -->
+
+<h1>Distributed Objects Seed (React Realization)</h1>
 <blockquote>
 <p><strong>Reader&#39;s Introduction</strong></p>
 <p>This document is a complete specification — written entirely in prose and pseudocode, with no framework-specific API calls — for building a UI runtime architecturally equivalent to React. It defines ten contracts (rules the runtime must satisfy, such as unidirectional data flow, render purity, and two-phase commit), seven properties that emerge automatically when the contracts hold, and fifteen verification tests. An AI given this document as its only instruction can produce a working runtime that passes all fifteen tests. The specification demonstrates the &quot;derivation inversion&quot; principle: state the constraints first in natural language, then derive the implementation from them, rather than abstracting constraints from existing code after the fact.</p>
