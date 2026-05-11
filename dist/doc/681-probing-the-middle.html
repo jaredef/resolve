@@ -18,7 +18,6 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
-      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -26,9 +25,13 @@
 <main class="">
 <article class="document"><p class="doc-byline">Jared Foy · 2026-05-08 · Doc 681</p><h1>Probing the Middle</h1>
 <h2>An Information-Theoretic Account of the Context Window as a Parallel-Channel Ensemble that Snaps into Coherence under Threshold Conditions, with Prompt Engineering as Channel-Ensemble Composition</h2>
-<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;"><p><strong>EXPLORATORY — π-tier articulation with five falsifiable predictions at μ-tier.</strong></p>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>EXPLORATORY — π-tier articulation with five falsifiable predictions at μ-tier.</strong></p>
 <p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-PIN-ART, THREAD-COHERENCE-AMPLIFICATION, THREAD-DECOHERENCE, THREAD-INFORMATION-THEORY, THREAD-SIPE-T | PHASE-CROSS-PRACTITIONER</p>
-</div><p><strong>Jared Foy · 2026-05-08 · Doc 681</strong></p>
+</div>
+
+<p><strong>Jared Foy · 2026-05-08 · Doc 681</strong></p>
 <hr>
 <h2>Abstract</h2>
 <p>Long-context language models exhibit a position-dependent attention phenomenon that has been characterized empirically as &quot;lost in the middle&quot;: demonstrations and instructions placed in the middle of long inputs are recalled and integrated less reliably than those at the boundaries. The standard reading frames this as an architectural artifact of attention scaling. This paper proposes a different reading. We formalize the context window as a parallel-channel ensemble in the Shannon-information-theoretic sense. Each input position is a channel between a probe (a token, demonstration, instruction, or any other constraint-bearing input element) and the model&#39;s residual output distribution. Cumulative mutual information across the ensemble accumulates in a structured way; under disciplined ensemble composition, the model&#39;s residual output entropy decreases monotonically until a threshold is crossed at which the output snaps into stable, high-fidelity behavior. The &quot;middle&quot; is precisely the zone where the ensemble&#39;s redundancy is realized; degraded recall at the middle is the empirical signature of a parallel-channel code whose redundancy budget has not been adequately composed. We connect this picture to the information-theoretic literature on quantum decoherence and quantum Darwinism, where the same parallel-channel-ensemble mathematics governs the inverse operation: information flowing from a coherent system to environmental fragments, with a redundancy plateau as the empirical signature. The two cases are duals of one mechanism, distinguished only by the direction of information flow across the system-probe interface. We extract five falsifiable predictions for the long-context-language-model case and survey the experimental signatures that would confirm or refute them. We argue that the practical discipline of prompt engineering, properly understood, is the operational composition of channel-ensemble inputs whose joint mutual information drives the model&#39;s residual output across the threshold-conditional coherence boundary; the engineering principles of redundancy, ordering, and capacity allocation that practitioners have arrived at empirically are exactly the principles the parallel-channel-ensemble reading predicts.</p>

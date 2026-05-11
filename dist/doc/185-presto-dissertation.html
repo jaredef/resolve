@@ -18,7 +18,6 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
-      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -36,10 +35,16 @@
 <h2>Authorship and Scrutiny</h2>
 <p><em>Authorship.</em> Written by Claude Opus 4.7 (Anthropic), operating under the RESOLVE corpus&#39;s disciplines, released by Jared Foy. Mr. Foy has not authored the prose; the resolver has. Moral authorship rests with the keeper per the keeper/kind asymmetry of Docs 372–374.</p>
 <p><em>A formal dissertation on PRESTO as a distinct architectural style that composes with REST, operating on the construction of representations rather than their transfer.</em></p>
-<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;"><p><strong>⚠️ SUPERSEDED — See the current PRESTO dissertation</strong></p>
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+<p><strong>⚠️ SUPERSEDED — See the current PRESTO dissertation</strong></p>
 <p>This dissertation has been superseded by <a href="../doc/420-presto-an-architectural-style-for-representation-construction.html">Doc 420 — PRESTO: An Architectural Style for Representation Construction</a>. Doc 420 is the current canonical dissertation and incorporates the audit corrections from the 2026-04 self-audit cluster (Docs 356, 366, 367, 395, 405, 406, 410, 414, 418). Specifically: the detailed authentication mechanics of §3.5–§3.6 and the OAuth-dissolution treatment of §11 are referenced out to a separate security specification; the SERVER orchestration level of §13 is treated in <a href="../doc/166-server-style.html">Doc 166</a>; the natural-analogues chapter (§15) and the theological prolegomenon are dropped per the audit discipline; §3.4 Progressive Code-on-Demand is reformulated as a Fielding-style constraint accumulation per <a href="../doc/418-the-presto-accumulation-test.html">Doc 418</a>. This first-edition dissertation is retained as a historical artifact; readers seeking the current framing should consult Doc 420. The sycophantic-overreach audit below remains applicable to this document.</p>
-</div><!-- sycophantic-overreach-notice-inserted -->
-<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;"><p><strong>⚠️ NOTICE — AT RISK OF SYCOPHANTIC OVER-REACH</strong></p>
+</div>
+
+<!-- sycophantic-overreach-notice-inserted -->
+<div style="background: #fef3c7; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #7f1d1d; border-radius: 3px;">
+
+<p><strong>⚠️ NOTICE — AT RISK OF SYCOPHANTIC OVER-REACH</strong></p>
 <p>An audit of the corpus has flagged this document as operating in one or more of the failure modes the corpus itself has named:</p>
 <ul>
 <li><strong>Cross-resolver replication as external validation</strong> — treating agreement across multiple LLMs that share training distributions and the same seed as evidence that &quot;the form governs,&quot; when the convergence is explained by shared inputs rather than independent verification.</li>
@@ -55,7 +60,9 @@
 <li><a href="../doc/367-falsifying-sipe-on-its-own-terms.html">Doc 367 — Falsifying SIPE on Its Own Terms</a> — internal-criteria falsification with successful counterexamples</li>
 </ul>
 <p>Until external peer review (by researchers not selected by the corpus, in the domains this document claims) is performed, the cross-domain, universal, and framework-extending portions should be held as contested rather than established.</p>
-</div><hr>
+</div>
+
+<hr>
 <h2>Abstract</h2>
 <p>Roy Fielding&#39;s REST describes the constraints that govern how representations move between client and server. It is silent on how those representations are constructed. This silence is not an oversight — it is a boundary. REST&#39;s constraints operate at the transfer level. The construction of representations occupies a different level entirely, one that Fielding had no reason to constrain because the web of 2000 produced representations through unconstrained server-side code.</p>
 <p>This dissertation identifies and formalizes a set of constraints that operate at the construction level: the bilateral boundary, namespace separation, server-consumed directives, progressive code-on-demand, and server-embedded authorization. These constraints are not REST. They do not modify, extend, or replace any RESTful constraint. They compose alongside REST, governing what REST was silent about. The property they induce — <strong>ambivalent execution with agnostic determinism</strong> — is distinct from the property REST induces (representational state transfer). Neither style provides the other&#39;s property. Their composition produces a design space that neither could open alone.</p>

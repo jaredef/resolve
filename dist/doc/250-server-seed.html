@@ -18,13 +18,14 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
-      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
 </header>
 <main class="">
-<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 250</p><!-- Source artifact preserved from .spec/server-seed.md, published to the corpus for the first time as the canonical SERVER Seed reference text for the Seed Garden's SERVER plot. ~1,132 words of prose, 8 contracts, 12 orchestration directives, 14-stage bootstrap pipeline, 12 verification tests. Bootstrap resolver: seed in, immutable runtime graph out. --><h1>SERVER Seed</h1>
+<article class="document"><p class="doc-byline">Jared Foy · 2026-04-22 · Doc 250</p><!-- Source artifact preserved from .spec/server-seed.md, published to the corpus for the first time as the canonical SERVER Seed reference text for the Seed Garden's SERVER plot. ~1,132 words of prose, 8 contracts, 12 orchestration directives, 14-stage bootstrap pipeline, 12 verification tests. Bootstrap resolver: seed in, immutable runtime graph out. -->
+
+<h1>SERVER Seed</h1>
 <blockquote>
 <p><strong>Reader&#39;s Introduction</strong></p>
 <p>This document specifies how to build a &quot;bootstrap resolver&quot; — an engine that takes a declarative seed file as input and emits an immutable runtime graph as output. The seed file is &quot;bilateral&quot;: it contains both orchestration directives (instructions the bootstrap consumes during assembly) and application-level directives (instructions the finished engine will later execute). The bootstrap strips away all orchestration directives, producing a clean runtime artifact. The specification defines eight contracts, twelve orchestration directives, a fourteen-stage bootstrap pipeline, and twelve verification tests. A conformant SERVER engine can compose with the PRESTO engine specification to produce full web application stacks from prose seeds.</p>

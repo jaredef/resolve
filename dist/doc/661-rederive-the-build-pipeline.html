@@ -18,7 +18,6 @@
     <nav class="site-nav">
       <a href="../index.html" class="active">Corpus</a>
       <a href="../systems-engineering.html" class="">Systems Engineering</a>
-      <a href="../visualize/index.html" class="">Visualize</a>
     </nav>
     <input type="search" id="search-input" placeholder="Search…" autocomplete="off">
   </div>
@@ -26,9 +25,13 @@
 <main class="">
 <article class="document"><p class="doc-byline">Jared Foy · 2026-05-05 · Doc 661</p><h1>Rederive: The Build Pipeline</h1>
 <h2>A Comprehensive Entracement to the Eight Deterministic Stages — Read, Parse, Validate, Resolve, Canonicalize, Derive, Verify, Sign — with the Inputs and Outputs of Each, the Failure Modes that Arise at Each, the Stage-Event Stream that Tooling and CI Hook Into, the Provenance Tuple the Final Stage Records, the Multi-Call Mode for Engine-Scope Work, and a Concrete End-to-End Walkthrough — the Second Branch off <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a> for the Working Engineer</h2>
-<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;"><p><strong>EXPLORATORY — practitioner-facing entracement, branch §B of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
+<div style="background: #ecfeff; border-left: 4px solid #0e7490; padding: 1rem 1.25rem; margin: 1.5rem 0; color: #164e63; border-radius: 3px;">
+
+<p><strong>EXPLORATORY — practitioner-facing entracement, branch §B of <a href="../doc/659-rederive-for-the-working-engineer-hub.html">Doc 659</a>.</strong></p>
 <p><em>Taxonomy per <a href="../doc/633-corpus-taxonomy-and-manifest-design.html">Doc 633</a>:</em> ENGAGEMENT | ACTIVE | W-PI | THREAD-REDERIVE, THREAD-PRACTITIONER-FACING | PHASE-CROSS-PRACTITIONER</p>
-</div><blockquote>
+</div>
+
+<blockquote>
 <p><strong>Reader&#39;s Introduction.</strong> This is the second branch off the <a href="../doc/659-rederive-for-the-working-engineer-hub.html">rederive hub</a>. The first document (<a href="../doc/660-rederive-the-constraint-authoring-grammar.html">Doc 660</a>) covered what a constraint file looks like. This document explains what the platform does with it. The build pipeline has eight stages. Six of them are deterministic pure functions that produce identical output for identical inputs; one of them is the language-model call that turns the canonical constraint set into derived code; the last one is the signing step that writes the auditable artifact. The pipeline emits stage events as it runs, so a CLI, a CI runner, a browser UI, or a custom tool can observe and react in real time. This document walks the engineer through each stage in order: what it consumes, what it produces, what failure looks like, and how to debug. By the end, the engineer should be able to read a build run&#39;s stage stream and, when something fails, locate the failure to a stage and a recovery in seconds.</p>
 </blockquote>
 <p><strong>Jared Foy · 2026-05-05 · Doc 661</strong></p>

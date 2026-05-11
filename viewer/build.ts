@@ -13,12 +13,10 @@ import { marked } from "marked";
 const REPO_ROOT = pathResolve(import.meta.dir, "..");
 const CORPUS_DIR = join(REPO_ROOT, "corpus");
 const SE_DIR = join(REPO_ROOT, "systems-engineering");
-const VIZ_DIR = join(REPO_ROOT, "visualize");
 const VIEWER_DIR = join(REPO_ROOT, "viewer");
 const DIST_DIR = join(REPO_ROOT, "dist");
 const STATIC_SRC = join(VIEWER_DIR, "static");
 const STATIC_DEST = join(DIST_DIR, "static");
-const VIZ_DEST = join(DIST_DIR, "visualize");
 const LAYOUT_PATH = join(VIEWER_DIR, "templates", "layout.html");
 
 const LAYOUT = readFileSync(LAYOUT_PATH, "utf8");
@@ -108,7 +106,7 @@ function applyLayout(opts: {
   description: string;
   body: string;
   root: string; // relative-from-page prefix to dist/, e.g. "" or "../"
-  active: "index" | "systems-engineering" | "visualize" | "none";
+  active: "index" | "systems-engineering" | "none";
   wide?: boolean;
 }): string {
   return LAYOUT
@@ -118,7 +116,6 @@ function applyLayout(opts: {
     .replace(/__ROOT__/g, opts.root)
     .replace(/__INDEX_ACTIVE__/g, opts.active === "index" ? "active" : "")
     .replace(/__SE_ACTIVE__/g, opts.active === "systems-engineering" ? "active" : "")
-    .replace(/__VIZ_ACTIVE__/g, opts.active === "visualize" ? "active" : "")
     .replace(/__MAIN_CLASS__/g, opts.wide ? "wide" : "");
 }
 
@@ -235,41 +232,6 @@ function writeSEIndex(se: DocEntry[]): void {
   writeFileSync(join(DIST_DIR, "systems-engineering.html"), html);
 }
 
-// Render the visualize hub page from visualize/index.md and copy all
-// other .html files in visualize/ verbatim into dist/visualize/.
-function buildVisualizations(): { count: number } {
-  if (!safeExists(VIZ_DIR)) return { count: 0 };
-  ensureDir(VIZ_DEST);
-
-  let count = 0;
-  for (const name of readdirSync(VIZ_DIR)) {
-    const src = join(VIZ_DIR, name);
-    if (!statSync(src).isFile()) continue;
-    if (name === "index.md") continue;
-    if (name.endsWith(".html")) {
-      copyFileSync(src, join(VIZ_DEST, name));
-      count++;
-    }
-  }
-
-  const indexMdPath = join(VIZ_DIR, "index.md");
-  if (safeExists(indexMdPath)) {
-    const md = readFileSync(indexMdPath, "utf8");
-    const title = extractTitle(md);
-    const body = renderMarkdown(md);
-    const html = applyLayout({
-      title,
-      description: "Interactive visualizations and probes from the Resolve corpus.",
-      body: `<article class="document">${body}</article>`,
-      root: "../",
-      active: "visualize",
-    });
-    writeFileSync(join(VIZ_DEST, "index.html"), html);
-  }
-
-  return { count };
-}
-
 function writeSearchIndex(corpus: DocEntry[], se: DocEntry[]): void {
   const all = [
     ...corpus.map(d => ({ label: d.label, title: d.title, subtitle: d.subtitle, href: d.href })),
@@ -305,10 +267,6 @@ function main(): void {
   writeIndex(corpus);
   writeSEIndex(se);
   writeSearchIndex(corpus, se);
-
-  console.log("  building visualize/ ...");
-  const viz = buildVisualizations();
-  console.log(`    ${viz.count} interactive pages`);
 
   // Tiny readme inside dist so users opening it directly understand what they have.
   writeFileSync(join(DIST_DIR, "README.txt"),
