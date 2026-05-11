@@ -88,12 +88,16 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-// Normalize internal corpus links of the form /resolve/doc/SLUG and
-// /resolve/systems-engineering/SLUG so they resolve in the static dist.
+// Normalize internal corpus links of the form /resolve/doc/SLUG,
+// /resolve/systems-engineering/SLUG, and /resolve/visualize/SLUG so they
+// resolve in the static dist. The canonical source-side form is
+// extensionless; the static build appends .html.
 function rewriteInternalLinks(md: string): string {
   return md
     .replace(/\(\/resolve\/doc\/([a-z0-9-]+)\)/g, "(__ROOT__doc/$1.html)")
     .replace(/\(\/resolve\/systems-engineering\/([a-z0-9-]+)\)/g, "(__ROOT__systems-engineering/$1.html)")
+    .replace(/\(\/resolve\/visualize\/([a-z0-9-]+)\)/g, "(__ROOT__visualize/$1.html)")
+    .replace(/\(\/resolve\/visualize\/?\)/g, "(__ROOT__visualize/index.html)")
     .replace(/\(\/resolve\/?(\)|#)/g, "(__ROOT__index.html$1");
 }
 
