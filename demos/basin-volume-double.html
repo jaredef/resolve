@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Triple-link inverted pendulum — basin-volume sweep</title>
+<title>Double-link inverted pendulum — basin-volume sweep</title>
 <style>
   body { margin: 0; height: 100vh; background: #0b0d12; color: #ddd;
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -41,9 +41,9 @@
 <body>
 
 <header>
-  <h1>Basin-volume sweep — V(k) on the inverted triple pendulum</h1>
-  <a href="./triple-pendulum.html">← interactive demo</a>
-  <a href="./basin-volume-double.html">double-pendulum probe →</a>
+  <h1>Basin-volume sweep — V(k) on the inverted double pendulum</h1>
+  <a href="./basin-volume.html">← triple-pendulum probe</a>
+  <a href="./triple-pendulum.html">interactive demo</a>
 </header>
 
 <main>
@@ -52,8 +52,8 @@
   <aside>
     <fieldset>
       <legend>Sweep parameters</legend>
-      <label>k_min <input id="kmin" type="number" value="10" step="1" /></label>
-      <label>k_max <input id="kmax" type="number" value="60" step="1" /></label>
+      <label>k_min <input id="kmin" type="number" value="6" step="1" /></label>
+      <label>k_max <input id="kmax" type="number" value="36" step="1" /></label>
       <label>k samples <input id="nk" type="number" value="40" step="1" min="5" /></label>
       <label>Trials per k <input id="ntrials" type="number" value="60" step="10" min="10" /></label>
     </fieldset>
@@ -73,8 +73,8 @@
     <fieldset>
       <legend>Controller family</legend>
       <label>Profile <select id="profile">
-        <option value="uniform">uniform [k, k, k]</option>
-        <option value="scaled" selected>scaled [k, 0.6k, 0.25k]</option>
+        <option value="uniform">uniform [k, k]</option>
+        <option value="scaled" selected>scaled [k, k/3]</option>
       </select></label>
       <label>ζ <input id="zeta" type="number" value="0.7" step="0.1" /></label>
     </fieldset>
@@ -93,53 +93,49 @@
     </fieldset>
 
     <p class="note">
-      Each candidate ρ(C) is a pin: it predicts a power law V(k) ~ (k − k_c)^β
-      near the threshold. Fit β here; compare against β measured on
-      mechanically-dissimilar systems sharing constraint structure.
-      Coincident β across systems → universality (SIPE-T survives).
-      System-specific β or β → 0 (sharp step) → falsified.
+      Same probe as the triple-pendulum sweep, on a mechanically dissimilar
+      system (different mass matrix, different gravity scales, different
+      Coriolis structure). If β here matches the triple-pendulum β within
+      noise, candidate ρ(C) survives one universality test. If they diverge,
+      the exponent is system-specific and SIPE-T's universality framing
+      falsifies on its first attempt.
     </p>
   </aside>
 </main>
 
 <script type="module">
-// ---- Pendulum dynamics: full coupled Lagrangian, RK4 ---------------------
+// ---- Double-pendulum dynamics: full coupled Lagrangian, RK4 ---------------
+// Two uniform rods, length L, mass m. Absolute angles θ_i from upright.
+//   M_dim = [[4/3,           (1/2)cos(θ_1-θ_2)],
+//            [(1/2)cos(...), 1/3              ]]   in mL² units
+//   G_dim = [(3/2) sinθ_1, (1/2) sinθ_2]            in mgL units
+//   C_dim = [ (1/2)ω_2² sin(θ_1-θ_2), -(1/2)ω_1² sin(θ_1-θ_2) ] in mL² units
+//   M θ̈ = (g/L) G_dim − C_dim + τ_eff
 const GRAVITY = 9.81, LINK_LEN = 1.2;
 
 function massMatrix(th) {
-  const c12 = Math.cos(th[0]-th[1]), c13 = Math.cos(th[0]-th[2]), c23 = Math.cos(th[1]-th[2]);
+  const c12 = Math.cos(th[0] - th[1]);
   return [
-    [ 7/3,       1.5*c12,  0.5*c13 ],
-    [ 1.5*c12,   4/3,      0.5*c23 ],
-    [ 0.5*c13,   0.5*c23,  1/3     ],
+    [ 4/3,        0.5*c12 ],
+    [ 0.5*c12,    1/3     ],
   ];
 }
 function coriolisVec(th, om) {
-  const s12 = Math.sin(th[0]-th[1]), s13 = Math.sin(th[0]-th[2]), s23 = Math.sin(th[1]-th[2]);
+  const s12 = Math.sin(th[0] - th[1]);
   return [
-     1.5*om[1]*om[1]*s12 + 0.5*om[2]*om[2]*s13,
-    -1.5*om[0]*om[0]*s12 + 0.5*om[2]*om[2]*s23,
-    -0.5*om[0]*om[0]*s13 - 0.5*om[1]*om[1]*s23,
+     0.5 * om[1]*om[1] * s12,
+    -0.5 * om[0]*om[0] * s12,
   ];
 }
 function gravityVec(th) {
-  return [ 2.5*Math.sin(th[0]), 1.5*Math.sin(th[1]), 0.5*Math.sin(th[2]) ];
+  return [ 1.5*Math.sin(th[0]), 0.5*Math.sin(th[1]) ];
 }
-function invert3(M) {
-  const a=M[0][0],b=M[0][1],c=M[0][2];
-  const d=M[1][0],e=M[1][1],f=M[1][2];
-  const g=M[2][0],h=M[2][1],i=M[2][2];
-  const A=e*i-f*h, B=-(d*i-f*g), C=d*h-e*g;
-  const D=-(b*i-c*h), E=a*i-c*g, F=-(a*h-b*g);
-  const G=b*f-c*e, H=-(a*f-c*d), I=a*e-b*d;
-  const det = a*A + b*B + c*C, s = 1/det;
-  return [[A*s,D*s,G*s],[B*s,E*s,H*s],[C*s,F*s,I*s]];
-}
-function matVec3(M, v) {
+function solve2(M, b) {
+  const det = M[0][0]*M[1][1] - M[0][1]*M[1][0];
+  const inv = 1 / det;
   return [
-    M[0][0]*v[0]+M[0][1]*v[1]+M[0][2]*v[2],
-    M[1][0]*v[0]+M[1][1]*v[1]+M[1][2]*v[2],
-    M[2][0]*v[0]+M[2][1]*v[1]+M[2][2]*v[2],
+    ( M[1][1]*b[0] - M[0][1]*b[1]) * inv,
+    (-M[1][0]*b[0] + M[0][0]*b[1]) * inv,
   ];
 }
 function angularAccel(th, om, tau) {
@@ -148,14 +144,13 @@ function angularAccel(th, om, tau) {
   const rhs = [
     gOverL*Gv[0] - Cv[0] + tau[0],
     gOverL*Gv[1] - Cv[1] + tau[1],
-    gOverL*Gv[2] - Cv[2] + tau[2],
   ];
-  return matVec3(invert3(massMatrix(th)), rhs);
+  return solve2(massMatrix(th), rhs);
 }
 
 // ---- Controller family parameterised by (k, profile, ζ) -------------------
 function makeController(k, profile, zeta) {
-  const kp = profile === 'uniform' ? [k, k, k] : [k, k*0.6, k*0.25];
+  const kp = profile === 'uniform' ? [k, k] : [k, k/3];
   const dp = kp.map(g => 2 * Math.sqrt(g) * zeta);
   return { kp, dp };
 }
@@ -163,7 +158,6 @@ function controllerTau(th, om, ctrl) {
   return [
     -ctrl.kp[0]*th[0] - ctrl.dp[0]*om[0],
     -ctrl.kp[1]*th[1] - ctrl.dp[1]*om[1],
-    -ctrl.kp[2]*th[2] - ctrl.dp[2]*om[2],
   ];
 }
 
@@ -174,24 +168,24 @@ function simulateTrial(theta0, omega0, ctrl, tMax, failTh, dt) {
   for (let n = 0; n < N; n++) {
     const tau1 = controllerTau(th, om, ctrl);
     const k1th = om.slice(), k1om = angularAccel(th, om, tau1);
-    const th2 = [th[0]+0.5*dt*k1th[0], th[1]+0.5*dt*k1th[1], th[2]+0.5*dt*k1th[2]];
-    const om2 = [om[0]+0.5*dt*k1om[0], om[1]+0.5*dt*k1om[1], om[2]+0.5*dt*k1om[2]];
+    const th2 = [th[0]+0.5*dt*k1th[0], th[1]+0.5*dt*k1th[1]];
+    const om2 = [om[0]+0.5*dt*k1om[0], om[1]+0.5*dt*k1om[1]];
     const tau2 = controllerTau(th2, om2, ctrl);
     const k2th = om2.slice(), k2om = angularAccel(th2, om2, tau2);
-    const th3 = [th[0]+0.5*dt*k2th[0], th[1]+0.5*dt*k2th[1], th[2]+0.5*dt*k2th[2]];
-    const om3 = [om[0]+0.5*dt*k2om[0], om[1]+0.5*dt*k2om[1], om[2]+0.5*dt*k2om[2]];
+    const th3 = [th[0]+0.5*dt*k2th[0], th[1]+0.5*dt*k2th[1]];
+    const om3 = [om[0]+0.5*dt*k2om[0], om[1]+0.5*dt*k2om[1]];
     const tau3 = controllerTau(th3, om3, ctrl);
     const k3th = om3.slice(), k3om = angularAccel(th3, om3, tau3);
-    const th4 = [th[0]+dt*k3th[0], th[1]+dt*k3th[1], th[2]+dt*k3th[2]];
-    const om4 = [om[0]+dt*k3om[0], om[1]+dt*k3om[1], om[2]+dt*k3om[2]];
+    const th4 = [th[0]+dt*k3th[0], th[1]+dt*k3th[1]];
+    const om4 = [om[0]+dt*k3om[0], om[1]+dt*k3om[1]];
     const tau4 = controllerTau(th4, om4, ctrl);
     const k4th = om4.slice(), k4om = angularAccel(th4, om4, tau4);
     const sixth = dt / 6;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 2; i++) {
       th[i] += sixth * (k1th[i] + 2*k2th[i] + 2*k3th[i] + k4th[i]);
       om[i] += sixth * (k1om[i] + 2*k2om[i] + 2*k3om[i] + k4om[i]);
     }
-    if (Math.abs(th[0]) > failTh || Math.abs(th[1]) > failTh || Math.abs(th[2]) > failTh) return false;
+    if (Math.abs(th[0]) > failTh || Math.abs(th[1]) > failTh) return false;
   }
   return true;
 }
@@ -220,8 +214,8 @@ async function runSweep() {
     const ctrl = makeController(k, profile, zeta);
     let success = 0;
     for (let t = 0; t < nTrials; t++) {
-      const theta0 = [(Math.random()*2-1)*thRange, (Math.random()*2-1)*thRange, (Math.random()*2-1)*thRange];
-      const omega0 = [(Math.random()*2-1)*omRange, (Math.random()*2-1)*omRange, (Math.random()*2-1)*omRange];
+      const theta0 = [(Math.random()*2-1)*thRange, (Math.random()*2-1)*thRange];
+      const omega0 = [(Math.random()*2-1)*omRange, (Math.random()*2-1)*omRange];
       if (simulateTrial(theta0, omega0, ctrl, tMax, failTh, dt)) success++;
     }
     const V = success / nTrials;
@@ -250,8 +244,6 @@ function findKc(data) {
   }
   return null;
 }
-
-// Fit log V = β log(k − k_c) + const on the rising shoulder.
 function fitBeta(data, kc) {
   const pts = [];
   for (const d of data) {
@@ -274,11 +266,11 @@ function fitBeta(data, kc) {
   return { beta: slope, intercept, r2: 1 - ssr/sst, nPts: n };
 }
 
-// Linearised stability boundary: per-link k_i must exceed scale_i · g/L.
+// Per-link diagonal stability boundary: k_i > scale_i · g/L / profile_i.
 function linearStabilityKc(profile) {
   const gOverL = GRAVITY / LINK_LEN;
-  const scales = [2.5, 1.5, 0.5];
-  const factors = profile === 'uniform' ? [1, 1, 1] : [1, 0.6, 0.25];
+  const scales = [1.5, 0.5];
+  const factors = profile === 'uniform' ? [1, 1] : [1, 1/3];
   return Math.max(...scales.map((s, i) => s * gOverL / factors[i]));
 }
 
