@@ -174,6 +174,34 @@ Predictive consequences for engagement scheduling:
 
 This canonicalization is offered as a candidate apparatus discipline. The form is the engagement's contribution to the corpus's standing apparatus at the substrate-stratum tier: edge cataloguing is now (stratum, layer) cataloguing, closure-arc scheduling is layer-ordered, and §A8.13's amortization claim is sharpened to its layer-bounded form.
 
+#### Sub-consequence 4.a — Edge-kind alphabets per layer (conjecture)
+
+A further conjecture follows from the layered structure: at each layer L_i, the edges that surface form a **small finite alphabet** A_i of edge-kinds. The alphabet is determined by the *kind of constraint question* the layer asks. Closing one edge at layer N does not merely lift consumers above N; it also predicts the shape of the edges that surface at N+1, because the next layer asks a different *kind* of question against the same substrate primitive.
+
+The engagement's evidence so far suggests the following alphabets:
+
+| Layer | Constraint question | Edge-kind alphabet A_i (predicted) |
+|---|---|---|
+| L0 parse | does the engine accept the source? | spec-strict literal rejection · ES20XX+ syntax · BigInt/numeric literals · contextual keywords |
+| L1 load | does the loader complete in bounded time/state? | catastrophic backtracking · module-resolution conditionals · CJS↔ESM bridge · cyclic require · stack-depth limits |
+| L2 namespace | are the required names resolvable? | missing web global · missing node builtin · missing V8/Node extension · missing browser-compat alias |
+| L3 surface | do the names have the right shape? | wrong constructor arity · missing prototype method · missing static · missing symbol-keyed protocol · init-order undefined |
+| L4 idiom | do the shapes support consumer call patterns? | class vs function constructor (`.call(this)`) · async/callback interop · inheritance pattern · this-binding |
+| L5 semantics | do correct operations produce correct bytes? | rounding-mode divergence · encoding boundary (UTF-8 vs Latin-1) · locale-data shortfall · stack-format wording · error-message text |
+| L6 timing | does scheduling match? | microtask vs task ordering · timer fidelity · AbortSignal propagation · event-loop tick boundary |
+
+Pin-Art reading sharpens: a pin reading at layer N has a *kind of bilateral comparison* fixed by N. L2 readings are boolean (does the name resolve?); L3 readings are structural diffs (shape comparison); L5 readings are byte diffs; L6 readings are sequence diffs. The kind of pin determines the form of substrate widening: missing-namespace → install a global; wrong-shape → add a method or fix init order; wrong-bytes → fix the algorithm or rounding rule; wrong-timing → fix the event-loop pump or scheduler.
+
+The work-to-telos bound refines once more:
+
+  *measured fix points* ≈ K × L̄ × |A_i|_observed
+
+where |A_i|_observed is the average alphabet size seen at each exercised layer. The engagement's first 56 recorded edges, redistributed across (stratum, layer, kind), suggest |A_i| ≤ 4–6 per layer for the in-basin axes. The bound is bounded.
+
+**Predictive operational consequence.** When a closure arc lifts layer N of a stratum, the engagement can *pre-name* the candidate edge-kinds that will surface at layer N+1 for that stratum, before the next consumer probes it. The pre-naming is not certainty but a constrained hypothesis space: the keeper-side cost of the next probe is the difference between the pre-named set and the actually-revealed edge. When the difference is zero, the alphabet has been correctly enumerated for that stratum-layer pair; when nonzero, the new edge-kind extends A_i by one element.
+
+This is the conjecture. Its falsifier (added to §VII): an open layer of an already-closed stratum produces an edge-kind that is not member of any layer's alphabet listed above, repeatedly across multiple consumers. If the alphabets must grow without bound to accommodate new edges, the layered canonicalization is descriptive only and not predictive; if they remain stable across the next ~30 consumer probes, the canonicalization is operationally predictive at the rate empirically observed.
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
