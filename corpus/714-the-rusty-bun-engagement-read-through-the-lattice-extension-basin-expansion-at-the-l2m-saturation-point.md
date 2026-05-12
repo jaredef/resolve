@@ -202,6 +202,36 @@ where |A_i|_observed is the average alphabet size seen at each exercised layer. 
 
 This is the conjecture. Its falsifier (added to §VII): an open layer of an already-closed stratum produces an edge-kind that is not member of any layer's alphabet listed above, repeatedly across multiple consumers. If the alphabets must grow without bound to accommodate new edges, the layered canonicalization is descriptive only and not predictive; if they remain stable across the next ~30 consumer probes, the canonicalization is operationally predictive at the rate empirically observed.
 
+#### Sub-consequence 4.b — Layer-floor selection (pragmatic constraint)
+
+Sub-consequence 4.a implicitly treated the closure arc as ascending from L0 upward by default — closing each layer in dependency order until the consumer's deepest-exercised layer is reached. A late-session empirical observation refines this: the *top of the arc* is not a structural given. It is itself an apparatus decision.
+
+Some closure arcs that ascend cleanly from L0 reveal at intermediate layers a chain of downstream regressions whose total cost exceeds the cost of leaving the lowest-layer fix unlanded. The engagement can elect, per stratum, to **leave a lower layer in its wrong-but-permissive state and re-anchor the arc's top at the lowest layer above it that still produces consumer parity for the in-basin axes**. The basin boundary becomes a *cut* through the (stratum, layer) grid; the cut's location per stratum is an empirical apparatus decision.
+
+The naming: **layer-floor selection**. The substrate operates wrong-per-spec at and below the floor for that stratum, but the consumer-observable outputs match the reference for the in-basin consumer set, because the wrong-but-permissive lower-layer behavior happens to align with the downstream consumers' assumptions. Above the floor, closure work proceeds normally; below the floor, the divergence is named and accepted.
+
+The engagement's first instance: an attempted closure of E.51 (md5-hex) by fixing the package.json exports-conditions priority order to the Node-spec-correct `[bun, import/require, module, node, default]` (default last). The fix is one substrate widening at L1. It revealed three downstream cascades through the layered structure:
+
+- L2 namespace: uuid's `node` build needs `randomFillSync` (small fix)
+- L3 surface: stringify-object's transitive `is-identifier → super-regex → function-timeout → vm.Script.runInNewContext`
+- L4 idiom + L5 semantics: `vm.Script` requires real context-variable propagation back through the running script's scope, which our stub does not implement
+
+The total downstream cost of closing the L1 fix correctly exceeded the cost of leaving the wrong-but-permissive condition order in place and accepting that md5-hex's `node` build is never picked. The engagement chose **cut at L5** for this stratum: implement the MD5 JS primitive (L5 closure for any consumer that does reach it through other paths) but keep the L1 condition order wrong, so the chain that would expose vm.Script semantics stays masked.
+
+Three operational sharpenings follow:
+
+1. **§A8.13 substrate-amortization is bounded by the cut layer**, per stratum. Above-floor gains amortize across consumers; below-floor gains do not because the lower layer's behavior remains divergent. The amortization formula from §A8.18 (substrate-standing-in-production) sharpens: substrate gains carry consumers whose deepest-exercised layer is at-or-above the floor and within the closed band, not the full alphabet.
+
+2. **The recorded-edge catalogue gains a per-stratum (floor-layer, accepted-divergences) annotation**. Each open stratum carries not just its set of open (stratum, layer, kind) coordinates but the engagement's decided cut: which layer is the operational top, which divergences have been explicitly accepted. The annotation is a first-class apparatus state, not a hidden choice.
+
+3. **Pin-Art reading becomes a chooser, not just a fixer**. The bilateral apparatus, for an open stratum with a deep cascade, names two or more valid completions of the closure arc: cut at L0 retires N consumers at cost A; cut at L3 retires N − M consumers at cost B < A; cut at L5 retires N − M − M' consumers at cost C < B. The pragmatic operator picks the cut whose ratio is most favorable for the current engagement phase. The pick is itself a recorded apparatus decision; it can be re-opened later when the cost calculus changes (e.g., if a downstream consumer requires lifting the cut).
+
+The pragmatic constraint does not falsify sub-§4.a (the alphabet conjecture). It refines its predictive form: the conjecture's predictions are conditional on the engagement's chosen cut. An edge-kind predicted at layer N+1 is only an actionable prediction if the engagement intends to close layer N. When the engagement elects to stop at layer N − 1 (cut lower than the predicted edge), the layer N+1 prediction is moot.
+
+The corresponding falsifier (added to §VII alongside the alphabet conjecture's): if no closure arc admits a cut location that produces favorable cost-benefit across multiple consumers, the layered framework cannot serve as a scheduling tool — the engagement is forced into all-or-nothing per-stratum closure work, and the K × L̄ × |A_i| bound becomes nonconvergent in practice even if convergent in principle. Operationally testable: track per-stratum cut decisions across the next ~30 consumer probes and confirm whether favorable cuts exist in ≥ 2/3 of closure arcs.
+
+The corpus contribution: substrate-stratum closure is no longer a single closure-or-defer decision; it is a *cut-location* decision. The engagement's apparatus catalogue refines to record not just the recorded edges but the decided floors.
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
