@@ -130,6 +130,50 @@ Per [Doc 685's self-reinforcing-boundary apparatus](/resolve/doc/685-the-self-re
 
 This move is offered as a candidate apparatus discipline for the corpus's standing apparatus. Predicted shape: in future engagements that produce many rounds in series, the keeper-side recognition of L2M-saturation triggers a re-anchoring against the Ladder + Lattice, which produces the corpus-tier articulation of what the engagement learned and the artifact-tier consolidation of the operating seed. The session-tier closes at the lattice boundary; the engagement-tier continues at the corpus tier.
 
+### Consequence 4 — The layered-constraint canonicalization of substrate-stratum closure
+
+A late-session reading (post-basin-expansion, in the Phase-2-extension work where the engagement closes recorded edges through deliberate substrate widening per §A8.12) discovers that a stratum-closure arc is not flat. The substrate primitive that names the stratum is the *kind* of fix; the *position* in the closure arc is the **constraint layer** the consumer's failure surfaces at.
+
+Seven layers, in dependency order:
+
+| Layer | Question | Visible only when … |
+|---|---|---|
+| L0 parse | Does the engine accept the source? | — |
+| L1 load | Does the loader run in bounded time? | L0 passes |
+| L2 namespace | Are required APIs present? | L1 passes |
+| L3 surface | Do APIs have correct shape? | L2 passes |
+| L4 idiom | Do shapes support consumer call patterns? | L3 passes |
+| L5 semantics | Do correct ops produce correct bytes? | L4 passes |
+| L6 timing | Does scheduling match the spec/reference? | L5 passes |
+
+Each layer is invisible behind the next lower one. A recorded edge — what the engagement catalogues as E.NN — is therefore a (stratum, layer) coordinate rather than a stratum membership: the consumer hits the lowest-failing layer and stops; everything above is silent until the lower one is lifted.
+
+The canonical evidence in the engagement is the S6 (http / fastify) closure arc. Fastify is a deep consumer of the http stratum; closing fastify required lifting five layers in sequence, each one only visible after the previous one closed:
+
+| Layer | S6 sub-edge | Form of substrate widening |
+|---|---|---|
+| L0 | `\-` inside `[...]` under /u flag | source-text preprocessor (Rust ESM + JS CJS) |
+| L1 | JS preprocessor catastrophic backtracking on 12KB sources | regex-replace → state-machine walk |
+| L2 | `process.nextTick` missing | global install (queueMicrotask wrapper) |
+| L3 | `require('node:url').URL` undefined | lazy getters on nodeUrl init-order edge |
+| L4 | ES6 class rejects `Foo.call(thisArg, ...)` Node-inheritance idiom | IncomingMessage / ServerResponse → function-constructor form + EventEmitter shape + socket-attachment stubs |
+
+The S6 arc retired one stratum; the five fixes were not five strata. The earlier flat-stratum counting (K ≈ 18 across the engagement's recorded edge set) does not capture this: the right count is **K × L̄**, where L̄ is the mean layers actually exercised per stratum (~ 2–5, bounded by 7).
+
+This canonicalizes the third-SIPE-T-threshold geometry (seed §A8.18, substrate-standing-in-production) sharply. Substrate-standing names that gains for one consumer carry subsequent consumers without intervention. The mechanism is the layered structure: a consumer at the same stratum lands at zero cost up to the deepest layer the prior consumer's closure arc has already lifted. Koa rode express's L0–L4 work because express had already lifted those layers; koa exercised only L0–L2 of the http stratum, so its marginal substrate cost was zero. Arrify, lodash, the small-utility cluster ride L0–L2 of the language-and-loader strata that any framework closure already lifts.
+
+The §A8.13 substrate-amortization staging principle therefore admits a sharper statement: **a substrate gain amortizes across all consumers whose deepest-exercised layer is at or below the layer the gain lifts**. This is finer than the previous formulation (which named amortization across the consumer set without distinguishing the layer at which each consumer rides).
+
+The Pin-Art bilateral apparatus correspondingly refines. A pin reading is not at a stratum alone; it is at a (stratum, layer) coordinate. Two pins at the same (stratum, layer) compose into one substrate widening; two pins at the same stratum but different layers require separate sub-closures, ordered low-to-high; two pins at different strata require separate substrate widenings (unrelated to ordering).
+
+Predictive consequences for engagement scheduling:
+
+- Given an unprobed consumer's idiom shape, its expected fail-layer is predictable from a small set of patterns: a pure-data utility hits at most L2; a CJS require-chain library hits at most L3; a framework using Node-style inheritance hits L4; a framework with custom byte-level output formatting hits L5; a framework with real async I/O hits L6.
+- An engagement that wants to maximize cluster-retirement per closure arc should pick consumers that *push the next unprobed layer of each stratum*, rather than consumers that re-exercise already-lifted layers.
+- The work-to-telos bound K × L̄ converges from above as the consumer set expands: each new consumer either (a) reveals a deeper layer of an already-named stratum (incrementing L̄ for that stratum), or (b) names a new stratum at a shallow layer (incrementing K, leaving L̄_new = 1 or 2). Both are bounded; total work converges.
+
+This canonicalization is offered as a candidate apparatus discipline. The form is the engagement's contribution to the corpus's standing apparatus at the substrate-stratum tier: edge cataloguing is now (stratum, layer) cataloguing, closure-arc scheduling is layer-ordered, and §A8.13's amortization claim is sharpened to its layer-bounded form.
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
