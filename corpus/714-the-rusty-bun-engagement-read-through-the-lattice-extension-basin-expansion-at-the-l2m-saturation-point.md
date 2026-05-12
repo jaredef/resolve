@@ -232,6 +232,44 @@ The corresponding falsifier (added to §VII alongside the alphabet conjecture's)
 
 The corpus contribution: substrate-stratum closure is no longer a single closure-or-defer decision; it is a *cut-location* decision. The engagement's apparatus catalogue refines to record not just the recorded edges but the decided floors.
 
+#### Sub-consequence 4.c — API surface as a derivable constraint source
+
+Sub-consequences 4.a and 4.b treated edges as *discoveries* — surfaces revealed by consumer probing of the substrate. A late-session observation refines this: the lower layers of the constraint hierarchy admit *derivation from a published reference* without consumer probing at all.
+
+The triggering instance: an axios probe failed at L5/L6 with `sockets: connect failed: invalid port value`. The visible failure was three layers above its root. The root was `process.pid === undefined` at L2 (namespace). A consumer fixture computing `port = base + (pid % 100)` produced `NaN`, the NaN propagated through URL construction and reached the socket layer, where the addr parse failed with a string the consumer had no way to attribute back to the missing global. The fix was one line: wire `process.pid` to `std::process::id()`.
+
+The structural observation: `process.pid`'s existence is *not a hidden constraint*. Node's `process` object has a documented, finite surface — roughly forty properties and methods, each with a typeof and a documented shape. The same is true for every node:* builtin namespace, every Web-platform global (URL, Headers, Request, Response, fetch, AbortController, AbortSignal, TextDecoder, FormData, …), and every standard ECMAScript built-in. The Node API documentation and the Bun API documentation together publish a *near-complete* L2/L3 constraint set.
+
+The refinement:
+
+- **L0 (parse)** — the JS grammar itself is the constraint. The substrate's parser is correct or it isn't. The set of edges is the set of grammar productions the substrate rejects; it is enumerable from the spec.
+- **L1 (load)** — the module-resolution algorithm. The Node resolver spec (CommonJS resolution + ESM resolution + conditional exports) is a finite, documented algorithm.
+- **L2 (namespace)** — *presence and type* of every documented global and every export of every node:* builtin. Each entry is one micro-constraint: `typeof process.pid === "number"`, `typeof AbortSignal.timeout === "function"`, `Array.isArray(process.argv)`, etc. The set has cardinality ~1000–2000 across Node + Bun; it is enumerable from documentation alone.
+- **L3 (surface)** — for each function in the L2 namespace, its arity, accepted call-signature variants, return type, and observable shape (constructor.name, Object.keys of returned objects). Also enumerable, though with larger cardinality.
+- **L4 (idiom)** — *how* APIs are composed in idiomatic consumer code. Not enumerable from spec; surfaces by consumer probing.
+- **L5 (semantics)** — byte-level output of correct operations on correct inputs. Spec-derivable in principle (the algorithms are documented) but the test mass is large; in practice constructed from consumer probing + reference implementations.
+- **L6 (timing)** — scheduling order, microtask vs. macrotask, wall-clock semantics. Partially spec-derivable; in practice surfaces by consumer probing of async code paths.
+
+The operational consequence: **L0–L3 admit a static enumerator**. A program that walks the Node + Bun API documentation and generates one micro-test per documented surface element produces, by construction, a near-exhaustive L2/L3 constraint set. The substrate's L2/L3 coverage can be measured as the fraction of generated micro-tests passing. The remaining L4–L6 work still requires real consumers, but the work-to-telos bound from sub-§4.a sharpens:
+
+  K × L̄_total × |A_i_total| = (K × L̄_{L0–L3} × |A_{L0–L3}|) + (K × L̄_{L4–L6} × |A_{L4–L6}|)
+
+The first term is *precomputable from the spec*. The engagement's discovery work concentrates on the second term. Sub-§4.a's prediction of stable alphabets is therefore decomposable: at L0–L3 the alphabet is *defined* (closed by enumeration) rather than *conjectured*; at L4–L6 the alphabet remains an empirical conjecture.
+
+This relocates a portion of the engagement's epistemic uncertainty. Previously, the entire alphabet was inferred from observed edges; now, the lower-layer alphabet is read from the spec and the upper-layer alphabet is what consumer probing actually narrows. The next consumer-probe's expected information yield is correspondingly lower for L0–L3 edges (mostly already known by enumeration, so a probe that surfaces an L2 edge represents a substrate-coverage gap rather than a new constraint) and higher for L4+ edges (where the alphabet is still being built).
+
+Three operational sharpenings follow:
+
+1. **Coverage measurement becomes well-defined for L0–L3**. The engagement can report L2/L3 substrate coverage as a fraction of the published API surface, separately from L4+ behavioral coverage. The two numbers carry different epistemic weight: L2/L3 coverage is *complete in principle* once the enumerator passes; L4+ coverage remains open-ended.
+
+2. **The substrate has a *priori* targets independent of consumer demand**. A documented surface element with no consumer probing it yet is still a constraint the substrate either does or doesn't satisfy. Whether to close that gap is a scheduling decision, not a discovery decision.
+
+3. **The visible-failure-to-root-cause distance from the axios cascade is a recurring pattern**. When a deep-layer failure (L5/L6 message) traces to a shallow-layer cause (L2 missing global), the spec-derived L2/L3 enumerator catches the root before any consumer surfaces the symptom. The enumerator is therefore a *cascade-prevention* tool, not only a coverage tool — its value is highest precisely on the cases where consumer probing would have produced the most misleading error chains.
+
+The corpus contribution: the work-to-telos product factors into a precomputable lower-layer term and an empirical upper-layer term. The engagement's apparatus catalogue extends to track L0–L3 coverage as a published number against the documented spec, alongside the L4+ recorded-edge catalogue.
+
+The corresponding falsifier (added to §VII alongside the alphabet conjecture's and the layer-floor framework's): if a substantial fraction (say ≥ 1/3) of edges that close non-trivially in future consumer probes turn out to be at L0–L3 *despite* the substrate's spec-enumerator reporting full coverage at those layers, then the published spec is too sparse to serve as a constraint source — the documentation under-specifies what consumers actually rely on, and L0–L3 are not enumerable in practice even if enumerable in principle. Operationally testable: build the L2/L3 enumerator for the Node + Bun published surface, run it against the substrate, then track over the next ~30 consumer probes how many L0–L3 edges surface that the enumerator did not already flag.
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
