@@ -102,3 +102,53 @@ Three caveats on the structural reading.
 Stubs are explicit cuts in the lattice. Their classification factors through Doc 715's three projections: DAG (which stub matters by in-degree), lattice (which rung the cut sits at), alphabet (which of three kinds the cut takes). The tracker methodology follows directly: detect via syntactic signatures, record in a catalogue keyed by substrate node, rank by leverage, audit per rung, falsify the alphabet's cardinality across engagements.
 
 The corpus contribution is to name the object (the stub catalogue) and the conjecture (stub-alphabet stability at cardinality three). Building the tool is downstream work the engagement can do at its leisure. The structural framing is now in place to support it.
+
+---
+
+## X. Amendment — 2026-05-13 evening (closure-class as fourth axis)
+
+Posted after the keeper's conjecture: *"For K1, what does wrapping each afford us at a point of further derivation. My conjecture is that we can predict the outcome of this at the level of substrate derivation."* The amendment develops the conjecture's sharp form. It refines the catalogue schema by adding a fourth axis — **closure-class** — derivable from (kind × lower-surface-existence).
+
+**The structural claim.** Each of K1/K2/K3 has a *different predictability profile at the substrate-derivation level*. Closure-cost is therefore not a single number per stub; it factors through a derivable class.
+
+**K1 closure is the identity transformation on substrate structure.** A K1 stub exists because the apparatus chose to expose a surface but not the underlying semantics. If the underlying semantics exist elsewhere in the apparatus (typically: a sync counterpart exists for an async surface), closure is the one-line wrap `async (...) => sync(...)`. The substrate is unchanged: no new substrate nodes added to G, no new alphabet kinds at any layer, no new edges. The only thing that changes is the cut-rung field of the catalogue entry — from "L5 throws" to "L5 with semantics." Per Doc 715 P2 (alphabet stability), no falsification risk. Per P1 (heavy-tailed in-degree), retirement count is bounded by `(in-degree at node) × (fraction of consumers that exercise the method)`. **Fully predictable pre-derivation.**
+
+**K2 closure is split.** If an underlying substrate exists below the K2 surface, closure is pure cut-rung movement — same as K1. If no underlying substrate exists (the K2 stub is plausibly-correct constant-return because there's nothing to delegate to), closure REQUIRES substrate widening. That widening's prediction follows the standard `substrate-rank.sh` heavy-tail-fanout procedure. **Predictable conditional on a substrate-existence check.** The check is mechanical: walk the surface chain below the K2 method and confirm whether a real implementation exists.
+
+**K3 closure is always substrate widening.** Hardcoded sentinels exist because the real semantics requires data or algorithm not present (CLDR locale tables, full grapheme-cluster break tables, kernel-state queries the apparatus didn't wire). The closure introduces a new substrate node, and may also introduce new alphabet elements at the data-encoding layer (e.g., adding locale data adds a new edge kind: "locale-aware lookup"). **Predictable as substrate widening** with retirement-count following the heavy-tail formula but ADDITIONALLY carrying non-zero probability of alphabet extension.
+
+**The fourth axis: closure-class.** Each catalogue entry per §VI now records (substrate node, cut rung, kind, in-degree, known consumers, re-open, **closure-class**), where closure-class is one of:
+
+- **`IDENTITY`** — closure is pure cut-rung movement. Substrate unchanged. Zero new alphabet kinds. The catalogue entry's status updates from "K1" or "K2" to "[WIRED-full]." Includes: K1 with sync counterpart; K2 with sync counterpart.
+
+- **`WIDENING`** — closure requires introducing new substrate. Doc 715 §X.a heavy-tail rules apply. May introduce new alphabet elements; runs the §XI.f selection procedure. Includes: K2 without sync counterpart; all K3.
+
+- **`SUCCESSOR`** — closure requires substrate the engagement cannot reach within its scope. The cut is permanent at the current engagement's depth budget; closure target is a successor engagement. Includes: K1/K2 at engine-internal depth (worker_threads, real GC-hooked FinalizationRegistry, multi-process cluster).
+
+**Operational implications.** Three follow directly.
+
+**(1) The priority ranker (§VI output 1) weights by closure-class.** IDENTITY-class K1s at high in-degree are the cheapest wins: predictable, mechanical, zero risk. They retire first. WIDENING-class entries are deferred to `substrate-rank.sh`'s selection procedure. SUCCESSOR-class entries park with their re-open condition documented.
+
+**(2) The per-cut-rung audit (§VI output 2) reads closure-class distribution.** Across the engagement: count of IDENTITY-class stubs tells the apparatus how much *cheap closure work* remains. Count of WIDENING-class tells how much *substrate-introduction* work remains. Count of SUCCESSOR-class tells how much *permanent cut* the engagement has accepted.
+
+**(3) The stub-alphabet stability check (§VI output 3) gains a closure-class stability sub-check.** Per Doc 715 sub-§4.a, the catalogue's alphabet should be bounded. Closure-class is a three-element alphabet: IDENTITY / WIDENING / SUCCESSOR. Falsifier: a closure that doesn't factor cleanly into one of the three. We have not observed one; the conjecture is the closure-class alphabet is also bounded at cardinality three.
+
+**Composition with the original K1/K2/K3.** The full catalogue entry now reads as a (kind, closure-class) tuple. Empirically observed combinations in the rusty-bun engagement so far:
+
+| kind | closure-class | example |
+|---|---|---|
+| K1 | IDENTITY | fs/promises.writeFile (sync exists) |
+| K1 | SUCCESSOR | node:sqlite.DatabaseSync (no sqlite substrate; engine-class native binding) |
+| K1 | SUCCESSOR | node:worker_threads.Worker (no multi-engine substrate) |
+| K2 | IDENTITY | (none observed yet — would be a K2 over an existing sync) |
+| K2 | WIDENING | FinalizationRegistry.register (no GC-hook substrate) |
+| K2 | SUCCESSOR | node:cluster.fork (no multi-process substrate) |
+| K3 | WIDENING | Intl.PluralRules.select (no CLDR substrate) |
+| K3 | WIDENING | process.getuid (libc binding, easy) |
+| K3 | SUCCESSOR | (none observed yet) |
+
+Six observed combinations of the nine possible (3 kinds × 3 closure-classes). Two combinations (K2 IDENTITY, K3 SUCCESSOR) haven't surfaced in this engagement; whether they appear in future engagements is itself a falsification signal.
+
+**Forward use.** The conjecture pre-derivation predicts: closure of the fs/promises K1-IDENTITY cluster is a ~20 LOC mechanical pass, zero substrate change, zero alphabet extension, retirement count bounded by `(in-degree 46) × (fraction-of-consumers-actually-calling-the-method)` — empirically estimated 3-8 new direct retirements. The closure is its own empirical falsification: if a fourth closure-class emerges, or if the closure surfaces a new alphabet element, the conjecture refines.
+
+The closure-class axis turns each stub-catalogue entry into a *derivation-cost predictor*. Pin-Art engagements applying this framework gain the ability to schedule stub-closure work by cost class before doing the work, not after. That is the conjecture's operational gift: substrate-derivation becomes *prospectively* legible at the stub-catalogue level, not just retrospectively.
