@@ -308,6 +308,26 @@ This is *not* a refutation of sub-§4.a's alphabet conjecture; it is a sharpenin
 
 **The corresponding falsifier.** Track the next ~30 consumer probes' retirement-fanout per substrate widening landed. If the median fanout drops below ~10× (i.e., each widening retires fewer than ten consumers on average), the density coefficient is not operating as predicted, and either (a) the alphabet is not as stable as sub-§4.a claims (so widenings cannot amortize), or (b) the dependency graph is sparser than the npm sample suggests, or (c) the consumer corpus has been deliberately chosen to maximize fanout and the operational claim doesn't generalize. The falsifier separates the alphabet-stability claim from the density-amortization claim; both can hold or only one can hold, and the test discriminates.
 
+#### Sub-consequence 4.e — The DAG as the load-bearing object (amendment 2026-05-13)
+
+Sub-consequences 4.a–4.d each named an apparatus-tier conjecture about the engagement's productive surface: stable alphabet, layer-floor cut, spec-derivable lower layer, dependency-graph-amplified MI density. The keeper's observation following sub-§4.d's landing identified the structural connection the four sub-consequences had been pointing at: *the directed acyclic graph has something to do with the joint MI lattice.*
+
+[Doc 715 (the consumer–substrate dependency graph as the load-bearing object beneath the joint MI lattice)](/resolve/doc/715-the-consumer-substrate-dependency-graph-as-the-load-bearing-object-beneath-the-joint-mi-lattice) develops this observation as a primary articulation. The four sub-consequences are reframed as four projections of a single underlying object — the consumer–substrate dependency DAG — taken at different cut-positions and through different measurement lenses:
+
+- **Sub-§4.a (alphabet stability)** reads as the boundedness of the DAG's substrate leaf set under consumer accretion.
+- **Sub-§4.b (cut-location framework)** reads as a node-cut on the DAG, with inert-stub interception as a single-node-replacement instance.
+- **Sub-§4.c (spec-derivability)** reads as the published sub-DAG anchored at L0–L3 depths; the documented Node + Bun + ECMAScript + WHATWG surfaces enumerate the substrate leaf set.
+- **Sub-§4.d (density coefficient)** reads as the moments of the heavy-tailed in-degree distribution at substrate nodes; the K × log(L̄ × |A_i|) compression is the upper-tail's amortization signature.
+
+Three structural properties of the DAG (P1: heavy-tailed in-degree at substrate nodes; P2: bounded substrate leaf set; P3: bounded depth) together carry the four sub-consequences as theorems. Three new DAG-structural predictions (D1: enumerator coverage asymptotes ≥ 95%; D2: in-degree power-law exponent γ ∈ [1.5, 2.5]; D3: depth distribution bounded ~10; D4: L2M-saturation as a measurable density signal) extend the falsification surface beyond the per-sub-§ falsifiers above.
+
+The corpus contribution of sub-§4.e is a *consolidation*: the four sub-consequences cease to be parallel claims and become consequences of a single graph-structural reading. Doc 714's articulation stands; Doc 715 reframes it under the DAG that was always the object the apparatus was reading.
+
+Operational shifts (per Doc 715 §VII):
+1. The apparatus catalogue extends to track each substrate node's transitive in-degree (snapshot from the npm dependency graph at engagement time) and each consumer probe's transitive out-degree.
+2. Substrate-widening priority becomes graph-theoretic — pick the substrate node with the highest in-degree among nodes blocking the next consumer probe.
+3. The L2M-saturation diagnostic anchors empirically — measure the ratio of new-substrate-edges-exercised per probe and shift to corpus-tier consolidation when the ratio drops below ~1.
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
