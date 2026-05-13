@@ -270,6 +270,44 @@ The corpus contribution: the work-to-telos product factors into a precomputable 
 
 The corresponding falsifier (added to §VII alongside the alphabet conjecture's and the layer-floor framework's): if a substantial fraction (say ≥ 1/3) of edges that close non-trivially in future consumer probes turn out to be at L0–L3 *despite* the substrate's spec-enumerator reporting full coverage at those layers, then the published spec is too sparse to serve as a constraint source — the documentation under-specifies what consumers actually rely on, and L0–L3 are not enumerable in practice even if enumerable in principle. Operationally testable: build the L2/L3 enumerator for the Node + Bun published surface, run it against the substrate, then track over the next ~30 consumer probes how many L0–L3 edges surface that the enumerator did not already flag.
 
+#### Sub-consequence 4.d — Joint MI lattice density and the dependency-graph multiplier
+
+Sub-consequences 4.a–4.c treated each (stratum, layer) edge as a unit cost: K substrate strata, L̄ exercised layers, |A_i| alphabet per stratum. The product K × L̄ × |A_i| bounded total closure work. A late-engagement empirical observation refines the cost model in the saturation regime: **the dependency graph among consumers introduces high mutual-information density between adjacent rungs of the lattice, which makes the effective coefficient much smaller than the unit-cost framing predicts.**
+
+The two empirical channels of MI density:
+
+**(a) Substrate-widening channel — high downstream fanout.** Each L2 instance addition retires *every* consumer that transitively depends on the widened surface. The fanout follows the dependency graph rather than the consumer probe order. Empirically observed in the rusty-bun engagement's saturation slice:
+
+  - One ~6-line addition (node:http exporting `METHODS` + `STATUS_CODES`) retires express + router + the entire subset of npm packages that transitively import either.
+  - `createRequire(url)` binding to URL-dirname (was cwd) retires css-tree + its ~12 transitive ESM-from-CJS-shimming dependents.
+  - `util.styleText` retires inquirer + ~20 modern CLI libraries.
+  - `process.emitWarning` retires fs-extra + ~30 libraries that gate deprecation surfaces behind it.
+  - `fixReservedClassFields` on the CJS path retires fast-glob + every-shelljs-like-lib.
+
+Each widening's marginal cost stays O(1) — a few lines, sometimes a single function. Its retirement fanout is the closure of the widened surface in the npm dependency graph, often 10²–10³ consumers.
+
+**(b) Consumer-probe channel — high inter-probe mutual information.** Each new probe surfaces 1–3 substrate gaps. The gaps are *not* independent across probes — they lie on the same Node-API tail (process.*, util.*, fs.*, http.*, stream.*). Two adjacent consumer probes share most of their substrate demand structure; the marginal information per new probe is therefore *not* the alphabet of edge kinds (which is the unit-cost prediction) but a much smaller residual after subtracting the shared demand. Doc 700 Appendix C's bipartite MI framing applies directly: the (substrate × consumer-set) lattice is structured by the dependency graph, not by independent edges.
+
+**Refined cost model.** When the dependency graph among consumers is *dense* — which it is for the npm ecosystem, where a small set of substrate APIs (process, fs, util, stream, http) are shared by virtually every package — the work-to-telos cost is closer to:
+
+  Work_to_telos ≈ K × log(L̄ × |A_i|)
+
+The logarithmic compression arises because adjacent rungs of the lattice share most of their information content; each new closure activates the prior closures via the dependency graph rather than independently. The K factor (substrate strata count) does not compress (each stratum is genuinely independent), but the L̄ × |A_i| product compresses logarithmically under dense graphs.
+
+This is *not* a refutation of sub-§4.a's alphabet conjecture; it is a sharpening of its operational form. The alphabet remains finite and stable per layer; the empirical fact is that consumers' demands on the alphabet are heavily correlated through the dependency graph, so the work per closure is amortized across the graph closure.
+
+**Three operational sharpenings follow:**
+
+1. **Substrate widenings should be tracked by dependency-graph fanout, not by per-widening LOC count.** The 6-line METHODS addition is structurally a 10²-class closure event. The apparatus catalogue annotates each substrate widening with its retirement-fanout estimate (the count of npm packages whose transitive dependency closure contains the widened surface).
+
+2. **Consumer-probe scheduling should target the lattice's high-density regions first.** A probe of express (high in-degree in the dependency graph) yields more substrate-demand information per round than a probe of an isolated leaf-utility, because express's failure mode walks through the most-shared substrate edges. This refines sub-§4.b's cut-location framework: pick probes whose failure surfaces lie on lattice nodes with the highest downstream fanout.
+
+3. **L2M-saturation diagnostic becomes more precise with density measurement.** Per Doc 700 Appendix C, the L2M-saturation point at the session tier was named structurally but not quantified. The lattice's density (mean fanout per substrate widening, mean MI between consumer probes) is a published apparatus number that anchors saturation empirically rather than relying solely on round-cadence cues. The rusty-bun engagement's slice produced fanout ratios of ~50–200× per widening, consistent with the dense-graph regime.
+
+**The corpus contribution.** Sub-§4.a's alphabet conjecture × sub-§4.c's spec-derivability framework × Doc 700's MI-resolved bound, when applied to a dependency-graph-dense consumer ecosystem like npm, predicts and explains the engagement's saturation-regime cadence: most rounds close large fractions of the open consumer space at constant marginal cost. The engagement's empirical productivity in that regime (~10–30 fixtures per substrate widening, ~3–8 substrate widenings per round, ~50–200× retirement fanout per widening) is the predicted form of the density coefficient operating.
+
+**The corresponding falsifier.** Track the next ~30 consumer probes' retirement-fanout per substrate widening landed. If the median fanout drops below ~10× (i.e., each widening retires fewer than ten consumers on average), the density coefficient is not operating as predicted, and either (a) the alphabet is not as stable as sub-§4.a claims (so widenings cannot amortize), or (b) the dependency graph is sparser than the npm sample suggests, or (c) the consumer corpus has been deliberately chosen to maximize fanout and the operational claim doesn't generalize. The falsifier separates the alphabet-stability claim from the density-amortization claim; both can hold or only one can hold, and the test discriminates.
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
