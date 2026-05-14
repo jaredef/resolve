@@ -328,6 +328,33 @@ Operational shifts (per Doc 715 §VII):
 2. Substrate-widening priority becomes graph-theoretic — pick the substrate node with the highest in-degree among nodes blocking the next consumer probe.
 3. The L2M-saturation diagnostic anchors empirically — measure the ratio of new-substrate-edges-exercised per probe and shift to corpus-tier consolidation when the ratio drops below ~1.
 
+### Consequence 5 — The event loop belongs inside the engine (amendment 2026-05-14)
+
+A late-engagement architectural recognition: the cooperative-loop reactor work (Π2.6.c.a–e + Π2.6.d.a–d, nine substantial sub-rounds landed 2026-05-13) put mio outside the embedded engine and synchronized it with the JS-side `__keepAlive` Set + `__tickKeepAlive` polyfill across the rquickjs FFI boundary. The 2026-05-14 keeper conjecture names the structural error: **the event loop belongs inside the engine, not split across the engine boundary.**
+
+The conjecture is sound for three reasons.
+
+**First, ECMA-262 §9 places the job-queue surface inside the engine's host-defined hooks.** `HostEnqueuePromiseJob`, `HostMakeJobCallback`, `HostCallJobCallback`, `HostEnqueueGenericJob` are spec-named hooks at the realm rung — the E5 cut per [Doc 717 §V](/resolve/doc/717-the-apparatus-above-the-engine-boundary-the-three-projections-lifted-to-engine-substrate-and-the-pure-abstraction-point). Implementing them as a host polyfill plus an out-of-engine reactor smears the E5 cut across the embedding boundary rather than landing it at a single rung. The cut location is wrong.
+
+**Second, the libuv/Bun pattern names the right split.** Node decomposes: libuv = OS I/O multiplexer (epoll/kqueue/IOCP); V8 = JS execution + microtask queue. Bun similarly: uSockets = I/O; JavaScriptCore = execution. In each, the engine owns the run-loop discipline (microtask drain order, Promise settlement, ready-event dispatch); the host supplies OS I/O through callback registration. The "event loop" is the engine's, not a parallel substrate.
+
+**Third, the engagement's reactor-class basin boundaries corroborate.** E.7 (WeakRef/FinalizationRegistry), E.9 (Intl + WebSocket + BroadcastChannel + Worker), E.18 (polka cooperative-loop), E.19 (megastack idle-budget exhaustion) all stem from scheduling/timing concerns that the engagement closed as nine separate sub-rounds of substrate addition in the host. With the event loop inside the engine, these boundaries retire as a single architectural move: the engine's run-loop has well-defined microtask/macrotask phases per the HTML spec, and consumer code threads through cleanly without per-package substrate work.
+
+**Operational consequence for Tier-Ω.** The rusty-bun engagement's Tier-Ω engine work (parser → bytecode → runtime → GC) sits below the migration of the existing rusty-bun-host into the new engine. The current Tier-Ω.4 trajectory plan (per the Ω.3 engine-selection decision artifact, host/tools/omega-3-engine-selection.md §III) treats the host migration as porting all of rusty-bun-host's wirings into the new engine's API. The event-loop-in-engine recognition simplifies Tier-Ω.4 substantially: the nine reactor sub-rounds (Π2.6.c.a–e + Π2.6.d.a–d) do *not* port one-for-one; instead, rusty-bun-host's mio integration becomes a thin registration layer over `Runtime::install_host_hook(WatchReadable | WatchWritable | Timer | ...)`, with the engine driving the run-loop. Estimated migration-cost reduction: ~30–50% of Tier-Ω.4 LOC delta vs the pre-recognition trajectory.
+
+**The architectural shift becomes a new rusty-js-runtime sub-pilot: Ω.3.f — JobQueue + run-loop.** Scope:
+- Microtask queue (Promise reaction jobs per §9.4)
+- Macrotask queue (timers, ready I/O completions)
+- `Runtime::install_host_hook` extensions: `EnqueueMicrotask`, `WatchReadable(fd, cb)`, `WatchWritable(fd, cb)`, `Timer(ms, cb)`
+- `Runtime::run_to_completion()` — drains microtasks + advances macrotask phase + consults host-registered I/O sources at idle
+- Per [Doc 717 §VII], the closure rung is E5 (realm host-defined behavior) — the same rung as Tuple A/B's HostFinalizeModuleNamespace hook (already landed in rusty-js-runtime round 3.d.f)
+
+The host (rusty-bun-host) then wires its mio Poll events into the engine's registered callbacks. The engine drives forward progress; the host supplies the OS-I/O multiplexer. The split matches libuv/Bun.
+
+**Falsifier specific to this consequence.** If, post-Ω.3.f + Ω.4, the parity-percentage gap closes at a slower per-host-LOC delta than it closed in the pre-recognition trajectory — i.e., the host wirings grow faster than the parity-percentage grows — the architectural shift didn't deliver the predicted simplification. Per Doc 715 P1's heavy-tail prediction, the event-loop node has very high in-degree at the consumer-substrate DAG; pulling it inside the engine boundary should flip the architectural ratio toward less host-LOC per parity-percentage-point. The 88.2% baseline measured 2026-05-13 night (host/tools/parity-corpus-baseline.md, post-commit `3f9673ab`) is the anchor against which the prediction is testable.
+
+**Corpus contribution.** Consequence 5 names a structural recognition the engagement reached at the conjuncture of: (a) rusty-js-runtime structurally complete through round 3.d.f, (b) Doc 717's E5 architectural identification, (c) the empirical record of nine reactor sub-rounds completed in the host that the new architecture re-locates. The recognition extends Doc 714's lattice-extension framework with a substrate-architectural amendment: the cut-rung at which the run-loop attaches is E5 (engine-realm), not E4 (execution-context) and not external to the engine. The articulation is the engagement's first explicit substrate-architectural decision recorded at the corpus tier rather than as a per-pilot trajectory entry.
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
