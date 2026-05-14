@@ -383,6 +383,48 @@ A second late-engagement operational shift the keeper named in the working sessi
 
 **Corpus contribution.** Consequence 6 records the engagement's discovery that **delegation cadence is itself a substrate move**, not a tooling convenience. The shift from main-session-only to main-session-plus-sub-agent at the Tier-Π→Tier-Ω boundary tracks the engagement's shift from symptom-driven closure to substrate-introduction-and-closure cadence; the same maturation point that the lattice extension diagnosed at the architectural tier shows up at the operational tier as "closure rounds become statable in advance, and once statable, become delegable." The discipline that makes delegation safe is exactly the substrate-amortization discipline that makes substrate work coherent: state the acceptance bar, name the substrate the round is closing, require honest friction reporting, and integrate the friction back into substrate decisions at the higher rung. The engagement is the first in the corpus to record both halves of this discipline together — see also [Doc 719 §II](/resolve/doc/719-the-pipeline-pattern-across-subjects-presto-and-the-javascript-engine-as-two-realizations-of-the-same-derivation) for the cross-subject pipeline correspondence that the Tier-Ω rounds derived against.
 
+### Consequence 7 — The pipeline materializes empirically at Tier-Ω.5.f (amendment 2026-05-14)
+
+[Doc 719](/resolve/doc/719-the-pipeline-pattern-across-subjects-presto-and-the-javascript-engine-as-two-realizations-of-the-same-derivation) named PRESTO and rusty-js-runtime as two derivations against the same constraint pattern in the same resolution-problem class — the pipeline pattern across subjects. At the time Doc 719 was drafted, the engine's hand-rolled pipeline (parser → AST → bytecode → runtime → host-v2) had been built stage by stage but had never been exercised as a single composed apparatus on a consumer-shaped fixture. Tier-Ω.5.f closes that gap. The fixture is small but structurally maximal: a class hierarchy with `extends` and `super` and an arrow-closure callback registered against an instance method, written in the shape that real npm packages take.
+
+```javascript
+class EventBus {
+  constructor() { this.listeners = {}; }
+  on(ev, fn) {
+    if (!this.listeners[ev]) this.listeners[ev] = [];
+    this.listeners[ev].push(fn);
+    return this;
+  }
+  emit(ev, x) {
+    const fns = this.listeners[ev] || [];
+    for (const f of fns) f(x);
+  }
+}
+class LoggedBus extends EventBus {
+  constructor() { super(); this.count = 0; }
+  emit(ev, x) { this.count++; super.emit(ev, x); }
+}
+const b = new LoggedBus();
+let total = 0;
+b.on("tick", x => { total += x; });
+b.emit("tick", 10);
+b.emit("tick", 20);
+b.emit("tick", 12);
+// total: 42, count: 3, b instanceof EventBus: true
+```
+
+Every stage of the pipeline is loaded and every cross-stage invariant must hold. The lexer must tokenize the ES2015 keywords `class`, `extends`, and `super`. The parser must produce ClassDecl, ClassExpression, and Super AST nodes with the right structural participation in the surrounding expression grammar. The AST tier must hold them in a typed shape the compiler can dispatch on. The bytecode compiler must lower the class form into the upvalue-route emit pattern from [Ω.5.f's commit message](/resolve/code/rusty-bun/e48a8028), allocating hidden outer locals `<class$N.super.ctor>` and `<class$N.super.proto>` that the method/constructor closures capture through the Ω.5.c upvalue machinery. The runtime must allocate the constructor function with the right proto-link, walk the prototype chain on every method invocation, route `super.emit(ev, x)` through the captured parent-prototype binding, set up the `this` value correctly through `Op::CallMethod` and `Runtime::current_this` (Ω.5.a), bind the arrow callback's outer `total` through the shared upvalue cell (Ω.5.e binding-shared capture, not value-snapshot — without which the accumulator would freeze at zero), drive the `for (const f of fns) f(x)` loop through the iterator protocol (Ω.5.c), execute the `n += x` compound assignment (Ω.5.d), and complete the call stack through the run-loop without leaving a microtask undrained. Eleven previously-independent substrate moves participate in a single execution.
+
+**The structural reading.** The fixture is the engagement's first empirical confirmation that the rusty-js-runtime pipeline composes the way Doc 719 predicted. Each substrate move (Ω.3.a parser corpus, Ω.3.b parser/AST, Ω.3.c bytecode, Ω.3.d runtime, Ω.3.e GC, Ω.3.f event-loop, Ω.5.a prototype chains + this, Ω.5.c iterators + statics, Ω.5.d compound assignment, Ω.5.e binding-capture, Ω.5.f classes) landed against its own bounded acceptance bar; none of those rounds claimed pipeline-level composition. Consequence 7 names the moment at which the bounded rounds participate as a pipeline: the rounds were not independent, they were stage-coupling, and the coupling held when the stages were exercised together. The substrate-amortization discipline (seed §A8.13) predicted this exact shape — substrate is shared across closures; if substrate is shared correctly, downstream closures cost less than their nominal scope. Ω.5.f's substrate-amortization report ("cleanest amortization since Ω.5.a; the only load-bearing engine modification was `Op::New` reading `callee.prototype`, ~10 LOC") was the local signal; the EventBus fixture is the global signal.
+
+**Cross-reference to Doc 719's three predictions.** Pred-719.1 (other domains in the resolution-problem class produce isomorphic pipelines) is not testable from inside this engagement and remains an open conjecture against the corpus. Pred-719.2 (-32% LOC at the Ω.4 measurement boundary) is still measured pending Ω.5 closure + parity re-baseline. Pred-719.3 (eighth-PRESTO-engine convergence) is the longest-horizon prediction. Consequence 7 corroborates the *premise* of all three — that the pipeline pattern is the right structural reading — without yet falsifying or confirming any of them. The fixture demonstrates pipeline composition; the predictions remain to be tested at their stated measurement boundaries.
+
+**Operational consequence.** The engagement's remaining substrate gaps before parity re-baseline (destructuring, template-literal interpolation, per-iteration let-binding, module loader off disk) can each be reasoned about as further closure rounds against the same pipeline. Each gap is now scoped against a working pipeline rather than a planned one, which shifts the next rounds from substrate-introduction (where the question is "what should the substrate be") to closure (where the question is "lower this remaining surface to the substrate that exists"). Per Doc 714 §VI Consequence 6, closure-shape rounds are sub-agent-eligible from inception. The pipeline's empirical confirmation in Ω.5.f thus also confirms the delegation cadence's premise: the rounds available to delegate are exactly those that close against an already-composing pipeline.
+
+**Falsifier specific to this consequence.** If subsequent rounds — destructuring, template interpolation, module loader — surface a substrate gap that retroactively required rework at an earlier stage (e.g., the parser turns out to need re-architecture, or the bytecode IR requires a new variant that the AST cannot represent), the pipeline was not in fact composing correctly; it was passing the EventBus fixture by accident of the fixture's incomplete coverage. The early signal would be a Tier-Ω.5.g or .h round that requires editing files at the parser or AST or compiler-skeleton tier (substrate-introduction edits, not closure edits). The late signal would be a parity-percentage baseline that flattens because consumer fixtures fail in ways that point upstream of the engine's closure surfaces. The healthy signal — the falsifier failing to fire — is the next several rounds landing as pure closure rounds against unchanged substrate.
+
+**Corpus contribution.** Consequence 7 records the engagement's transition from pipeline-as-design to pipeline-as-executing-apparatus. It is the first explicit corpus-tier acknowledgement that the cross-subject pipeline pattern named in Doc 719 is realized in the engagement's working code, not only in its planning documents. The pattern is now testable end to end rather than reasoned about stage by stage. The two prior late-engagement amendments to this section (Consequence 5 event-loop-in-engine, Consequence 6 sub-agent delegation cadence) named structural shifts at the architectural and operational tiers respectively; Consequence 7 names the empirical landing point at which both shifts compose into a coherent observable. The EventBus fixture is the smallest test that exercises the engagement's full substrate stack; it is also the largest test the engagement has produced that an external reader can recognize as "a real piece of JavaScript."
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
