@@ -191,6 +191,43 @@ The amendment is therefore *probe-shape-dependent*. A probe that exercised value
 
 **Operational implication.** The protocol's Step 5 iteration condition is now: iterate if `|U - (A + F)| > 1`. Under the corrected check, predictions that look wrong in n_ok terms may be right in substrate-completion terms; the protocol does not need to re-walk the chain bundle in those cases. The iteration cost is bounded by real prediction errors, not by probe-design artifacts.
 
+## VI.6. Threshold-escalation amendment — ladder-up when Step 2's walk yields below-threshold signal
+
+[Doc 723](/resolve/doc/723-diagnostic-tags-as-semiotic-signs-layer-indexed-interpretation-in-pipeline-dag-topologies) named the threshold of diagnostic semanticity: chain depth × tag specificity × kind information. When the failure's fault tag is below threshold, Step 2's walk cannot constrain the hypothesis space and Step 3's locator returns ambiguously. The protocol as originally articulated (Steps 1–5) did not name what to do in this case — the substrate-introducer's options were to either (i) try more probes blindly at the substrate tier, or (ii) declare protocol-Step-3-negative and defer to per-package debugging.
+
+The 2026-05-15 round on the jose/ky/get-stream cluster of the rusty-bun engagement produced a third option that is now formalized as a protocol step.
+
+**The pattern.** Three packages exhibited the same bare-tag fault: `TypeError("callee is not callable: undefined")` with no chain, no specific local name, no kind information. Five hand-rolled probes (per Doc 723's Layer D) reproduced no specific structure. Bisect across the named feature set returned NO MATCH for the cluster.
+
+Instead of (i) expanding Layer-D's feature set blindly (route a in Doc 723's terminology) or (ii) accepting protocol-Step-3-negative, the substrate-introducer escalated *up* the apparatus's instrumentation ladder. The escalation: a single-line patch at the engine's `Op::New` error-handling site to append a `(new-callee='X')` hint that names the LoadLocal/LoadGlobal whose value was undefined.
+
+The patch did not flip any package directly. It raised the signal level at one engine site so that the *same fault*, re-emitted on the next run, carried enough information to converge a substrate hypothesis. The next run produced `(new-callee='<global>TextEncoder')` for all three packages, instantly naming the missing substrate (TextEncoder global). One subsequent substrate fix (TextEncoder/TextDecoder stubs) lifted four packages terminally.
+
+**Step 6 — Ladder-up when below threshold.** When Step 2's walk produces tags below the threshold of diagnostic semanticity:
+
+1. Identify the engine site where the bare-tag fault is emitted (typically an error-handler in the call/new/index pipeline).
+2. Augment that site with a per-emission hint that names the most recent local/global/property that contributed context (per Doc 723 route-b).
+3. Re-run the gated population. Per-failure signal level is now raised at the chosen site; previously-below-threshold faults may now be above threshold.
+4. Resume Steps 1–5 with the enriched signal.
+
+The escalation is a *meta-substrate* move: it does not fix any package's bug directly. It instruments the *apparatus that produces the diagnostic*. The cost is one engine-site patch; the benefit is per-emission compounding — every future fault at that site carries the new signal. The compounding rate scales by site, not by failure.
+
+**Distinct from Step 5's iteration.** Step 5 iterates Steps 1–4 when the predicted-vs-actual delta is wide. Step 6 escalates when Step 2 cannot produce a constrained prediction in the first place. The two steps address different gates: Step 5 corrects miscalibration *of* a hypothesis; Step 6 makes *generating* a hypothesis possible at all.
+
+**Empirical demonstration record.** The 2026-05-15 jose/ky/get-stream round provides the demonstrating instance:
+- Bare-tag fault at three packages.
+- Probe-substrate bisect across eleven combinations returned NO MATCH.
+- Single Op::New hint patch (Ω.5.hhhh).
+- Same three packages now emit `(new-callee='<global>TextEncoder')` — above threshold.
+- One TextEncoder/TextDecoder substrate fix (Ω.5.iiii).
+- Four packages flip terminally (jose, ky, get-stream, plus one transitive beneficiary).
+
+The escalation route was named in [Doc 723](/resolve/doc/723-diagnostic-tags-as-semiotic-signs-layer-indexed-interpretation-in-pipeline-dag-topologies) §IV's second amendment as route (b). This Doc-721 amendment formalizes it as Step 6 of the diagnostic protocol so the methodology document carries the operational discipline alongside Doc 723's structural articulation.
+
+**Falsifier specific to Step 6.** If a Step 6 escalation produces no improvement in subsequent runs — the tag still under-constrains the hypothesis after the engine-site enrichment — the chosen instrumentation site was not the load-bearing one. Test: count predicted-vs-actual deltas pre- and post-escalation. If the delta does not tighten across the next several rounds, the escalation was at the wrong site (or, more rarely, the fault genuinely has no recoverable per-emission context, in which case route (a) — denser Layer-D — remains the only path).
+
+**Operational implication for the protocol's terminal-value claim.** [Doc 714](/resolve/doc/714-the-rusty-bun-engagement-read-through-the-lattice-extension-basin-expansion-at-the-l2m-saturation-point) §VI Consequence 13 named the protocol's *systemic* terminal value: Step 3 returns negative across the residual long tail. Step 6 raises the floor at which "terminal" gets declared. A Step-3-negative result that holds *under enriched instrumentation* is genuinely terminal; one that resolves after a Step 6 escalation was never terminal, just under-instrumented.
+
 ## VII. Honest scope
 
 The protocol is articulated against the rusty-bun engine substrate, where the pipeline DAG has 16 named pipelines (per Doc 720), the stage signatures are stable, and the substrate decisions cluster at coordination boundaries. Whether the methodology applies to other systems is a corpus-extension question that future engagement can test. The falsifiers in §V are stated with the appropriate scope.
