@@ -84,6 +84,44 @@ Under the correct reading, the substrate gap was *not* `Object.prototype.constru
 
 **The C14 falsifier implication:** Doc 714 §VI Consequence 14 named that the trace fidelity holds when substrate↔parity traceability is bidirectional, short-hop, and atomic. The local instance shows that *all three properties depend on correct interpretation of tag chains*. Short-hop and atomic require Layer-C grammar; bidirectional requires Layer-A indexing. The Pin-Art property C14 named is not just structural; it is structural-with-correct-interpretation.
 
+### Amendment (2026-05-15) — Layer-B misreading and the probe-substrate as Layer D
+
+A second pass on the same engagement's substrate work produced a finding that refines Layer B's claim and adds a Layer D that this document had not anticipated.
+
+**The misreading.** Continuing the minimatch chase after the Ω.5.lll → Ω.5.mmm round, the substrate-introducer read the tag chain `(callee='braceExpand') (method='make') (callee='minimatch')` as: "class method body's LoadUpvalue for module-level `braceExpand` resolves to undefined." Layer A was correct (tags came from the call-pipeline and the diagnostic-stash layer). Layer C was correct (the chain composed as outer-call → method-call → inner-call). But **Layer B was wrong**: the referent of `callee='braceExpand'` was not the function being called. It was *the last LoadLocal name on the stack at the moment the failure surfaced*, which happened to be `braceExpand` because that was the name loaded just before the actually-failing operation. The actually-failing operation was three layers deeper: a spread of a Set whose constructor had silently failed to populate and whose `Symbol.iterator` was undefined.
+
+Five hand-rolled isolation probes attempted to reproduce the "class-method upvalue" hypothesis. All five succeeded. None included the Set + spread pattern because the substrate-introducer's Layer-B reading had identified the wrong locus. The probes operationalized a wrong hypothesis.
+
+**The discipline that surfaced the truth.** The keeper named the structural insufficiency: *"in order to add more resolution on the problem, we need to add more probes. This appears to validate the bi-directionality of information flow with a pin-art probe, but in this instance, we need to construct the substrate that will become the surface for the probe itself."* The probe-construction apparatus was itself unstructured. Each ad-hoc probe represented an unnamed combination of shape-features; the absence of a feature could not be observed.
+
+A probe-construction substrate was built (rusty-bun `host/tools/probe-builder.sh`) that names ~30 shape-features (module-level forms, class-shape forms, runner forms) and emits probes as explicit combinations. Bisect mode enumerates feature-sets looking for a match against an expected fault-tag substring. The first bisect against minimatch's fault produced a NO-MATCH across eleven combinations — the negative was the information. Expanding the named feature-set with six additional features (`mod_arrow_refs_class`, `helper_set_spread`, `arrow_prop_writes_after_class`, etc.) and re-running bisect produced a MATCH on the second pass: the combination `mod_arrow_refs_class + fields_18 + helper_set_spread + run_via_arrow` reproduced the exact fault shape. Further narrowing within the matched combination showed `helper_set_spread` (the `[...new Set(this.method())]` pattern) was the *only* load-bearing feature. The real substrate gap was Set's missing iterable-arg handling and missing `@@iterator`.
+
+**Layer B's revised claim.** Tag-chain referents are *candidates* for the failure's location, not identifications. A Layer-B reading produces a hypothesis that a Pin-Art-structured probe can test. Without the probe-substrate, the substrate-introducer cannot distinguish between a correct Layer-B reading and a coincidence: any working isolated probe is consistent with both. The hypothesis must be falsified by a probe that includes the named feature-set the hypothesis predicts; if such a probe exists and fails to reproduce, the hypothesis is weakened; if no such probe exists in the named feature-set, the hypothesis is *not yet falsifiable*.
+
+**Layer D — constructive probe-substrate.** This document's original §III named three interpretive layers (A: layer assignment, B: referential context, C: compositional grammar). The Layer-D recognition: **the probe-construction apparatus is itself a fourth layer of the interpretive frame**, and it must be Pin-Art-structured (named features, explicit combinations, enumerable bisect) for Layer B's hypotheses to be testable. Without Layer D, Layer B's hypotheses are unfalsifiable; with Layer D, Layer B becomes a discipline of generating-and-testing candidate locations against a named feature-region.
+
+The Doc 722 reflexive structure now extends to the diagnostic apparatus: corpus articulations name properties; named properties produce disciplines; the disciplines require constructive substrate; the constructive substrate is itself Pin-Art-built; the building of it is enabled by the corpus articulation that named the need.
+
+**The full chain for the minimatch round:**
+1. Tag chain `(callee='braceExpand') (method='make') (callee='minimatch')` surfaces from the engine's diagnostic pipeline.
+2. Layer A correctly identifies the pipeline layers.
+3. Layer C correctly composes the chain.
+4. Layer B produces a hypothesis: "class method upvalue for module-level braceExpand."
+5. Five ad-hoc probes test the hypothesis. All succeed; none reproduce minimatch's failure.
+6. Layer D recognition: probes are unstructured, hypothesis is unfalsifiable in current apparatus.
+7. Probe-substrate built. First bisect (eleven combinations): NO MATCH.
+8. Feature set expanded. Second bisect: MATCH on a four-feature combination.
+9. Within-match narrowing: only `helper_set_spread` is load-bearing.
+10. Substrate fix at Set ctor + Set @@iterator. Verified by route-2 reading: 17 → 18 (micromatch crosses; minimatch advances to next alphabet top).
+
+The total trace is now nine hops including three at Layer D. The Pin-Art property's claim — substrate↔parity traceability is bidirectional, short-hop, atomic — held at every layer, but only because Layer D was constructed. Without it, the trace would have terminated at hop 5 with "Layer B reading correct, can't reproduce, defer."
+
+**Falsifier 723.1 revised.** The original 723.1 asked whether tag-chain interpretation improves predict-then-check accuracy. The revised 723.1 asks two questions:
+- *(a) When Layer B's hypothesis matches the probe-substrate's named feature-set, does the predict-then-check loop tighten?* (Operationally: yes for this round — Ω.5.ooo, Ω.5.rrr both matched first attempt.)
+- *(b) When Layer B's hypothesis does NOT match the probe-substrate's named feature-set, does the bisect's negative result correctly indicate "expand the feature-set" rather than "hypothesis wrong"?* (Operationally: yes for this round — the first NO-MATCH led to feature expansion; the second MATCH found the load-bearing combination on the third hop within the match.)
+
+Both questions must be testable across multiple rounds before the discipline is fully validated. This round provides one data point each.
+
 ## V. The general claim
 
 The rusty-bun-specific tag stash is one realization. The general claim covers any apparatus that emits surface diagnostics across pipeline layers.
