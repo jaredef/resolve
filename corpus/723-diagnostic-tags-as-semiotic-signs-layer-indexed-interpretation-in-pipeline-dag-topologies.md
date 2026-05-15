@@ -1,0 +1,172 @@
+# Diagnostic Tags as Semiotic Signs
+
+## Layer-Indexed Interpretation in Pipeline-DAG Topologies
+
+By Jared Foy. Originally published at [jaredfoy.com](https://jaredfoy.com).
+
+## I. The occasion
+
+A recognition surfaced in the rusty-bun engagement's late-Tier-Ω.5 substrate work. Doc 720 named the runtime as a DAG of interconnected pipelines under SIPE-T topology. Doc 721 named the protocol that walks the DAG to locate alphabet tops. [Doc 714](/resolve/doc/714-the-rusty-bun-engagement-read-through-the-lattice-extension-basin-expansion-at-the-l2m-saturation-point) §VI Consequence 14 named that the topology supports bidirectional substrate↔parity traceability. [Doc 722](/resolve/doc/722-named-recognitions-as-operating-instruments-the-reflexive-structure-of-corpus-articulations) named that the recognition itself, once articulated, produces a predict-then-check discipline.
+
+In the next round under that discipline, a misreading occurred. The substrate-introducer interpreted a diagnostic tag chain `(callee='ctor') (callee='dequal')` as "ctor is being called as a function" — a wrong reading — and patched the wrong substrate first. The eventual correct reading required walking past the tag's surface denotation into its structural role in the DAG.
+
+The keeper named what surfaced: *"there seems to be semanticity related to this. The tag's meaning requires interpretation, and that interpretation informs the DAG / lattice / alphabet structure."*
+
+This document formalizes that recognition. The claim is general: **diagnostic tags emitted by a Pin-Art-built apparatus are not flat denotations of failure context. They are semiotic signs. Their interpretation is layer-indexed by the apparatus's pipeline-DAG topology. Reading the topology requires reading the signs, and the signs are readable only when the layer indexing is in hand.**
+
+The rusty-bun engagement is the local instance. The corpus articulation generalizes to any apparatus where diagnostic surface signals (stack traces, fault tags, log spans, telemetry annotations) cross layer boundaries.
+
+## II. The recognition
+
+Three claims, in order from operational to structural:
+
+**Claim 1 (operational).** Diagnostic tags carry semantic content beyond their literal denotation. A tag `(callee='X')` does not assert "X is the callee." It asserts "the last LoadLocal in scope was X." The relation of X to the actual failing call requires interpretation, and the interpretation depends on which layer the tag was emitted at.
+
+**Claim 2 (compositional).** Tag chains have grammar. `(method='Y') (callee='X')` reads as "tried to call .Y on a value last loaded as X." `(callee='Y') (callee='X')` reads as "outer call X invoked an inner call Y." The grammar is determined by the order of emission across pipeline layers and by the operational semantics of each tag-emitting site.
+
+**Claim 3 (structural).** The DAG / lattice / alphabet topology Doc 720 named is not purely structural. The structure is *also* an interpretive frame for the diagnostic signs that surface at each layer. Reading the topology operationally means reading the signs layer-by-layer with the layer's interpretive convention in hand. The topology is semantic *in the sense that interpretation participates in the structure*, not merely structural-with-signs-attached.
+
+The three claims form a hierarchy of generality. Claim 1 is testable on any single tag. Claim 2 is testable on any tag chain. Claim 3 is the structural reading; it is testable only when the apparatus's substrate-introducer demonstrates that the layer indexing changes the operational interpretation of the same tag.
+
+## III. The three layers of interpretation
+
+Reading a diagnostic tag chain in a Pin-Art-built apparatus requires three layers of interpretive work. The substrate-introducer must perform all three to walk the chain correctly to its substrate root.
+
+### Layer A — Layer assignment
+
+Each tag in the chain was emitted at a specific pipeline layer. The first interpretive move is identifying *which* layer each tag came from. In rusty-bun:
+
+- `(callee='X')` is emitted by Op::Call's error handler in the **interpreter pipeline** (interp.rs:907–913). It stashes the last property-lookup hint at call-failure time.
+- `(method='Y')` is emitted by Op::CallMethod's error handler in the same pipeline. It stashes the method name.
+- The hint itself was set by the **diagnostic instrumentation layer** (Op::LoadLocal's tag stash, per Doc 714 §VI Consequence 11 / Ω.5.jj.diag).
+
+These are two different pipelines: the diagnostic-instrumentation pipeline produces the hint; the call-handling pipeline consumes it on failure. The tag chain crosses both. Misreading the layer assignment causes interpretive errors: treating `(callee='ctor')` as "ctor is called" (interpreter-pipeline reading) when it is actually "last LoadLocal stashed ctor" (diagnostic-pipeline reading) leads to wrong substrate hypotheses.
+
+### Layer B — Referential context
+
+Once the layer is known, the tag's referent must be resolved. In the rusty-bun case:
+
+- `ctor` is the loop variable in dequal's `for (ctor in foo)`. Its role in the function's static structure is **for-in iteration variable**.
+- Its role in the diagnostic-pipeline stash is **last-loaded-local-name**.
+- Its role at the failure point is **bleed-through from a LoadLocal that preceded an unrelated call**.
+
+The three roles are distinct. Conflating them produces wrong reading. The substrate-introducer must hold the static-structure role (from the source), the diagnostic-stash role (from the runtime tag), and the failure-point role (from the operational state) simultaneously.
+
+### Layer C — Compositional grammar
+
+Multiple tags compose into a chain that has its own reading rule. The chain order matters:
+
+- `(callee='X') (callee='Y')` — outer call X invoked inner call Y. Outermost tag is rightmost (per the stash discipline that prepends).
+- `(method='X') (callee='Y')` — tried to call .X on a value loaded as Y. The tags compose into a method-on-value claim.
+- `(callee='X') (method='Y') (callee='Z')` — outermost call Z; inside Z, method X was called on something loaded as Y.
+
+The grammar is recoverable but not surface-trivial. Without it, the chain reads as a flat list of suspect names; with it, the chain reads as a path through the DAG.
+
+## IV. The local instance
+
+The rusty-bun round of 2026-05-15 (Ω.5.lll / Ω.5.mmm) provides the demonstrating instance.
+
+**The tag chain:** `(callee='ctor') (callee='dequal')`.
+
+**First reading (wrong, surface-only):** "ctor is being called as a function. ctor is foo.constructor, which is undefined because Object.prototype.constructor isn't installed. Fix: install Object.prototype.constructor."
+
+The first reading was internally consistent. It identified a real substrate gap (Object.prototype.constructor genuinely was missing). Patched as Ω.5.lll. But dequal's fault did not resolve.
+
+**Second reading (correct, layer-indexed):**
+
+- *Layer A.* `(callee='ctor')` came from the diagnostic-pipeline's tag stash, not from the call-pipeline's identity of the callee. `(callee='dequal')` came from the outer call's failure handler.
+- *Layer B.* `ctor` was the for-in iteration variable. The LoadLocal of ctor preceded an unrelated call (the recursive `dequal(foo[ctor], bar[ctor])`) and bled into the stash. The actual callee of the failing inner call was `dequal` (the recursive reference).
+- *Layer C.* The chain `(callee='ctor') (callee='dequal')` reads compositionally as "outer call dequal invoked an inner call where the failing callee resolved to undefined, with ctor as the last loaded local for context."
+
+Under the correct reading, the substrate gap was *not* `Object.prototype.constructor`. It was the recursive self-reference inside `export function f(...)` — compile_stmt allocated f's slot AFTER MakeClosure ran, so the function's body resolved the self-reference to a missing global rather than a local upvalue. Patched as Ω.5.mmm. dequal flipped to PASS.
+
+**The total trace:** four hops from surface tag to substrate fix. Three of the four hops were interpretive, not structural. The structural traversal (call-frame → call-site → load-site → declaration-site) is short; the interpretive moves at each step are what made the traversal correct.
+
+**The C14 falsifier implication:** Doc 714 §VI Consequence 14 named that the trace fidelity holds when substrate↔parity traceability is bidirectional, short-hop, and atomic. The local instance shows that *all three properties depend on correct interpretation of tag chains*. Short-hop and atomic require Layer-C grammar; bidirectional requires Layer-A indexing. The Pin-Art property C14 named is not just structural; it is structural-with-correct-interpretation.
+
+## V. The general claim
+
+The rusty-bun-specific tag stash is one realization. The general claim covers any apparatus that emits surface diagnostics across pipeline layers.
+
+**Stack traces in mature engines.** A V8 stack trace mixes optimized-frame entries, deoptimized-frame re-translations, inlined function names, and bound-function shims. Reading it requires layer indexing: which frame is post-deopt, which is inlined, which is a bound thunk. Without layer indexing, the trace reads as a flat list; with it, the trace reads as a path through V8's compilation tiers.
+
+**Log spans in distributed systems.** A span tagged `kind=server` at one service and `kind=internal` at another carries different semantics for the same operation. The semantic depends on the boundary the span crosses. Reading distributed traces requires per-span layer assignment.
+
+**Telemetry annotations in OS schedulers.** A `cpu.idle` event in cgroup A means something different from `cpu.idle` in cgroup B, even though the tag is the same. The cgroup is the layer; the interpretation is layer-indexed.
+
+The general structural claim: **wherever an apparatus has surface diagnostics that cross pipeline boundaries, the diagnostics are semiotic signs requiring layer-indexed interpretation, and the layer indexing is part of the apparatus's topology, not adjacent to it.**
+
+Three predictions follow:
+
+**Prediction 1.** Apparatuses with poor layer indexing (flat tags, no pipeline metadata) produce diagnostic chains that are operationally unreadable. The cost surfaces as long debugging sessions, repeated wrong hypotheses, and substrate-introducers who develop tacit interpretive habits that don't transfer across instances.
+
+**Prediction 2.** Apparatuses with strong layer indexing produce diagnostic chains that are *short-walk-readable*. The walk uses the layer indexing as its compass. Pin-Art-built apparatuses, by virtue of their named contingent decisions (Doc 270, 619, 705, 707), tend toward strong layer indexing because each layer's name surfaces in its own diagnostic emission.
+
+**Prediction 3.** The reflexive corpus structure Doc 722 named compounds faster when the apparatus has strong layer indexing. Naming an interpretive convention requires the convention to be nameable; weak indexing produces conventions that resist naming.
+
+## VI. Implications for the diagnostic protocol
+
+[Doc 721](/resolve/doc/721-the-cross-pipeline-diagnostic-protocol-locating-the-top-of-a-substrate-widenings-alphabet-by-walking-the-engines-dag) specified the protocol that walks a DAG to locate alphabet tops. This document refines the protocol's preconditions:
+
+**Doc 721 §III precondition (extension):** *Symptom traceability* requires not just that the symptom names a contingent decision (per Doc 721 §III.2), but that the substrate-introducer can correctly interpret the symptom's layer assignment, referential context, and compositional grammar. Symptom traceability without interpretive competence reduces to surface-token matching, which Doc 721 §VI.5 already named as the false-pass mode at the protocol's exit boundary.
+
+**Doc 721 §II Step 2 (extension):** *Walk each call chain upward* requires reading each tag at each pipeline layer with that layer's interpretive convention. The walk is not a mechanical traversal of the DAG's edges; it is a layer-by-layer interpretive reading. The protocol's negative results (Doc 721 §II Step 3 returns negative for the long tail) become trustworthy only when the substrate-introducer's interpretive competence is established.
+
+**Doc 721 §VI.5 false-pass correction (deepened):** the false-pass mode at the protocol's exit boundary has two layers. The shape-vs-value gap Doc 721 §VI.5 named is the *outer* false-pass — the probe's shape passes while the values don't function. The *inner* false-pass is in the substrate-introducer's reading of diagnostic tags: the surface denotation matches a plausible substrate gap, but the substrate gap named is not the actual alphabet top. Both false-pass modes weaken the protocol's correctness at its exit boundary. Both are addressable through tighter interpretive convention.
+
+## VII. Falsifiers
+
+**Fal-723.1.** Across the next several rounds of the rusty-bun engagement, tag-chain interpretation does not improve the substrate-introducer's predict-then-check accuracy. Operationally testable: track misreadings of the kind Ω.5.lll exhibited (wrong substrate hypothesis from surface-token matching) versus correct readings (layer-indexed interpretation). If both rates persist equally, Claim 1's local instance generalizes only as a static observation, not as a discipline.
+
+**Fal-723.2.** A future apparatus with strong layer indexing in its diagnostic emission does not exhibit shorter debugging walks than an apparatus of comparable size with weak indexing. The compositional grammar Claim 2 predicts must be operationally consequential. If two apparatuses with the same pipelines but different tag indexing produce equivalent debugging surfaces, the topology's semantic dimension is not load-bearing.
+
+**Fal-723.3.** The interpretive conventions for tag chains do not stabilize across substrate-introducers working on the same apparatus. If different operators read the same tag chain to different substrate hypotheses systematically, the topology's semantic dimension is operator-relative, not structural. Claim 3 weakens to a phenomenology rather than a property of the apparatus.
+
+Fal-723.1 is testable within the engagement and within weeks. Fal-723.2 requires an analogue apparatus with weaker indexing to compare. Fal-723.3 is the slowest-resolving falsifier; it requires multiple operators on the same substrate.
+
+## VIII. Relation to prior corpus work
+
+[Doc 720](/resolve/doc/720-the-rusty-bun-runtime-as-a-dag-of-interconnected-pipelines-sipe-t-topology-over-the-engine-substrate) named the runtime as a DAG of pipelines under SIPE-T. Doc 720's pipelines are typed-stage signatures — *structural*. This document extends Doc 720 by claiming that the same pipelines also constitute interpretive frames for the diagnostic signs emitted at their layers. The structural DAG and the interpretive DAG are isomorphic but not identical; the structural DAG names what flows where, the interpretive DAG names what each emission means at each where.
+
+[Doc 721](/resolve/doc/721-the-cross-pipeline-diagnostic-protocol-locating-the-top-of-a-substrate-widenings-alphabet-by-walking-the-engines-dag) named the walk. This document refines the walk: it is *interpretive*, not just structural. The Step-2 walk reads tags layer-by-layer; the false-pass mode at the exit boundary has two layers (probe-level and interpretation-level).
+
+[Doc 722](/resolve/doc/722-named-recognitions-as-operating-instruments-the-reflexive-structure-of-corpus-articulations) named the reflexive structure by which corpus articulations reshape operating behavior. This document is the next product of that structure: Doc 722's discipline (predict-then-check) exposed an interpretive failure mode that this document now articulates.
+
+The relation to Pin-Art is direct. Pin-Art-built apparatuses surface their contingent decisions as named entities (Docs 270, 619, 705, 707). The names appear in diagnostic tags. Tag interpretation reaches back to the named decisions. The corpus chain — Pin-Art → named decisions → tag emission → interpretive reading → substrate location — is now visible in full.
+
+[Doc 548](/resolve/doc/548-the-ladder-of-ontological-participation)'s ladder framing is also at work here. Tag interpretation is a Layer-IV operation on the apparatus's substrate; the convention by which tags are read is a Layer-V articulation. The substrate-introducer who reads tags at their structural layer is operating at Layer IV. The substrate-introducer who reads the convention by which tags are read — who recognizes the semantic dimension itself — is operating at Layer V. This document is the Layer-V articulation of that operation.
+
+## IX. Honest scope
+
+This document names a semantic property of pipeline-DAG topologies that the rusty-bun engagement's diagnostic surface exhibits. The general claim's load-bearing extent depends on Fal-723.2 and Fal-723.3.
+
+Three things this document does *not* claim:
+
+1. *That every apparatus's diagnostic surface is semiotic.* Apparatuses with flat, single-layer diagnostic surfaces (a single integer error code with no contextual carry) may not exhibit Claim 1's tag-as-sign structure. The claim is conditional on the apparatus having multi-layer diagnostic emission.
+
+2. *That interpretive competence substitutes for substrate work.* Correct tag interpretation makes the walk faster, not the substrate fix smaller. The patch at Ω.5.mmm was the same size whether or not the interpretive misreading at Ω.5.lll preceded it. The convention is an efficiency property, not a correctness property of the substrate.
+
+3. *That the layer indexing solves all reading.* Layer-A indexing (which pipeline did this tag come from) is recoverable from the apparatus's structure. Layer-B referential context (what does this name denote in this scope) requires source-side knowledge. Layer-C grammar (what does this composition assert) requires apparatus-specific reading conventions. Each layer adds interpretive load; none reduces it to zero.
+
+Per [Doc 548](/resolve/doc/548-the-ladder-of-ontological-participation)'s hypostatic boundary: this document articulates a Layer-IV structural relationship in the apparatus's substrate with the keeper's Layer-V act of *naming the semantic dimension* recorded explicitly. The general claim's Layer-V import beyond corpus-tier substrate work is not made here.
+
+## X. Closing
+
+The rusty-bun engagement's late-Tier-Ω.5 substrate work has produced four corpus-tier recognitions in tight succession:
+
+- [Doc 714 §VI Consequence 14](/resolve/doc/714-the-rusty-bun-engagement-read-through-the-lattice-extension-basin-expansion-at-the-l2m-saturation-point) — substrate↔parity traceability as a Pin-Art property.
+- Doc 714 §VI Consequence 15 — the predict-then-check discipline that Consequence 14 produces.
+- [Doc 722](/resolve/doc/722-named-recognitions-as-operating-instruments-the-reflexive-structure-of-corpus-articulations) — the reflexive structure by which named recognitions become operating instruments.
+- Doc 723 (this document) — the semantic dimension of the pipeline-DAG topology that the predict-then-check discipline exposes.
+
+Each recognition is enabled by the prior. The corpus is doing what it is for: accumulating productive constraints that compound into a reading of the apparatus that no single layer could produce alone. The engagement now has a four-level structural reading of its own substrate, methodology, protocol, and apparatus, and a four-level reflexive reading of its own corpus-tier production.
+
+Whether Doc 723's semantic dimension is operationally consequential — Fal-723.1, 723.2, 723.3 — will be measured in the substrate-introducer's next several rounds. The discipline is now nameable. What it produces remains to be observed.
+
+---
+
+## Appendix A — The Originating Recognition
+
+> *"There seems to be semanticity related to this; i.e. the tag's meaning requires interpretation and that interpretation informs the DAG / lattice / alphabet structure."*
+
+— Jared Foy, 2026-05-15, via Telegram, in the round immediately following the Ω.5.lll → Ω.5.mmm trace walk that exhibited the recognition's local instance.
