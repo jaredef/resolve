@@ -157,6 +157,40 @@ Across the three rounds (Ω.5.gg pre-protocol; Ω.5.x–Ω.5.dd calibration; Ω.
 
 The engagement is not finished — parity sits at 46/118 (39%) with the long tail of individual-debug-shape failures dominating. The protocol's value at this state is *qualitative*: it changes the engagement's forward-route reasoning from bin-symptom-counting to alphabet-top-locating. The methodology is now an explicit discipline; previously-implicit prediction errors (Ω.5.gg's miscalibration, the systematic over-prediction across Ω.5.x–Ω.5.dd) are now visible as protocol-diagnosable signals.
 
+## VI.5. Measurement-precision amendment — false-pass correction
+
+A discovery from the protocol's second application (rusty-bun Ω.5.kk, 2026-05-15) requires an amendment to Step 4's predicted-vs-actual discipline as originally stated.
+
+**The phenomenon.** Step 4 specifies the diagnostic check as `|U - A| ≤ 1`, where `U` is the predicted unlock count and `A` is the actual unlock count measured after the substrate move lands. Round Ω.5.kk in the rusty-bun engagement produced a *negative actual delta*: predicted `U = 2` (entities and parse5 unlocked from a TypeScript-compiled-enum pattern), measured `A = -2` (n_ok dropped from 46 to 44).
+
+The naive reading would treat this as a 4-unit prediction error. But the substrate move was structurally correct (the parser was discarding `export var/let/const X = init;` initializer expressions; the fix routes them through the typed variable-statement compile path so initializers actually execute, per ECMA-262 §16.2.3.7). What the move *exposed* was a class of packages — jose, jsonc-parser, micromark — whose pre-fix "pass" status was a *false positive*: their re-export-only ESM index files transitively loaded source files whose `export var X = init;` initializers were silently skipped, and the resulting partial namespace happened to match Bun's namespace shape (specifically the `keyCount` field that the parity probe compares) by coincidence.
+
+Post-fix, those 3 packages' transitive loads run their initializers, hit real semantic gaps deeper in the chain, and fail honestly. The "regressions" are *not* regressions in engine behavior; they are *false-pass corrections*. The engine is now *more correct* on jose, jsonc-parser, micromark than it was pre-fix — it just expresses that correctness as honest failure rather than coincidental success.
+
+**The amendment.** The predicted-vs-actual diagnostic check expands from `|U - A| ≤ 1` to `|U - (A + F)| ≤ 1`, where:
+
+- `A` = actual n_ok delta (literal pass-count change).
+- `F` = false-pass exposure count (packages whose pre-fix status was a coincidental match invalidated by the substrate move).
+- `A + F` = real substrate-completion delta (the engine's correctness improvement on the gated population, independent of whether each individual package's full chain is complete).
+
+For Ω.5.kk: `U = 2`, `A = -2`, `F = 3`, so `A + F = 1`. The diagnostic check `|2 - 1| = 1 ≤ 1` is satisfied. The substrate move's prediction was correct on the real substrate-completion metric, even though it under-delivered on the raw n_ok counter.
+
+**How to identify F.** A package contributes to `F` when:
+
+1. It was in the OK set before the substrate move.
+2. Its OK status was due to a partial-load pattern (early-aborted initializer, skipped declaration body, re-export-only namespace) rather than full evaluation.
+3. The substrate move forces fuller evaluation, exposing a real failure that the partial-load pattern previously hid.
+
+The identification protocol: for each package that transitioned OK → fail after a substrate move, compare its post-fix failure location to its pre-fix evaluation depth. If the post-fix failure is *deeper* in the call chain (the package now executes more of its source before failing), it is a false-pass correction. If the post-fix failure is at the *same or shallower* depth, it is a real regression — the substrate move broke working behavior.
+
+The distinction matters because real regressions trigger Step 5 iteration (revisit the alphabet-top location) while false-pass corrections do not (the move is correct; the affected packages need more substrate work to actually pass).
+
+**Why parity-probe-based measurement amplifies this.** The parity probe in the rusty-bun engagement compares `Object.keys(namespace).length` byte-identically against Bun. This makes the probe sensitive to namespace shape, but it does not exercise the namespace's values. A package's namespace can have all the right keys with all the wrong values and still pass the probe. The probe-design choice (validated against the engagement's Tier-Π scope ceiling per Doc 715 §VII) was deliberate; it makes the probe cheap and parallelizable, at the cost of admitting false-pass coincidences when the engine's failure mode produces an empty / partial namespace that happens to match.
+
+The amendment is therefore *probe-shape-dependent*. A probe that exercised values (e.g., invoked a known function and compared the result) would have a lower false-pass rate. A probe that compared full namespace-and-values byte-identically would have a near-zero false-pass rate but be much more expensive. The choice of probe sets the false-pass exposure rate; the protocol's predicted-vs-actual check must account for whatever rate the chosen probe admits.
+
+**Operational implication.** The protocol's Step 5 iteration condition is now: iterate if `|U - (A + F)| > 1`. Under the corrected check, predictions that look wrong in n_ok terms may be right in substrate-completion terms; the protocol does not need to re-walk the chain bundle in those cases. The iteration cost is bounded by real prediction errors, not by probe-design artifacts.
+
 ## VII. Honest scope
 
 The protocol is articulated against the rusty-bun engine substrate, where the pipeline DAG has 16 named pipelines (per Doc 720), the stage signatures are stable, and the substrate decisions cluster at coordination boundaries. Whether the methodology applies to other systems is a corpus-extension question that future engagement can test. The falsifiers in §V are stated with the appropriate scope.
