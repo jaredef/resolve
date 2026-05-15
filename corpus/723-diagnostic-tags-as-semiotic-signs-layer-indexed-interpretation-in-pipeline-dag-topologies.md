@@ -122,6 +122,47 @@ The total trace is now nine hops including three at Layer D. The Pin-Art propert
 
 Both questions must be testable across multiple rounds before the discipline is fully validated. This round provides one data point each.
 
+### Amendment (2026-05-15, second) — Threshold of diagnostic semanticity; route (a) vs (b)
+
+A second round of substrate work surfaced a refinement to Layer D's claim and added an explicit named axis on which the diagnostic apparatus itself can be invested.
+
+**The threshold.** After Ω.5.sss (arrow `this`) flipped minimatch and Ω.5.ttt (Array as Function) flipped rfdc, route-2's residual narrowed to pluralize, ansi-colors, object-hash, and remeda. Pluralize's fault was `Cannot read property 'toLowerCase' of undefined` — a single-tag fault with no chain composition, no kind information, no specific referent. Five hand-rolled probes targeting plausible hypotheses (UMD-factory shape, hoisted-function recursion, property assignment ordering, etc.) all succeeded in isolation. The Layer-D probe-substrate's bisect across eleven combinations produced NO-MATCH. The substrate-introducer had no path forward from the tag alone.
+
+The keeper named the pattern as a question: *what do the probes tell us about how to set a probe-substrate for threshold emergence of diagnostic semanticity?*
+
+The recognition that surfaced: **diagnostic semanticity has a threshold below which the fault tag's signal level is too thin to constrain hypothesis-generation, regardless of how dense Layer-D's named features are**. The threshold is determined by three axes:
+
+1. **Chain depth** — multiple tags compose into a path; single tags are points.
+2. **Tag specificity** — `(callee='braceExpand')` names a specific local; `'undefined'` names a value-class with infinite preimages.
+3. **Kind information** — `Object(kind=ordinary)` with a callable expected is a strong constraint that points at the lying-typeof bug-class; "X of undefined" gives no kind constraint at the failing point.
+
+When the fault is below threshold, Layer-D's blind enumeration can still surface the bug IF the named feature-set is dense enough. But density-investment-at-Layer-D scales linearly while signal-investment-at-tag-level scales by-fault.
+
+**Route (a) vs route (b).** Two paths raise threshold-crossing capacity:
+
+- *Route (a)*: make Layer-D denser — add named features so blind enumeration eventually crosses unanticipated combinations. Per-failure investment.
+- *Route (b)*: make engine tags richer — instrument the runtime to emit more constraining information at each fault site. Per-engine-site investment; compounds across all future failures that hit that site.
+
+This document's prior amendment articulated Layer-D as substrate. The second amendment names that there are two complementary routes, and that route (b) is *per-site, compounding across failures* while route (a) is *per-failure, additive*.
+
+**The empirical demonstration.** The pluralize chase proceeded by route (b):
+
+1. Ω.5.uuu added `(receiver='Y')` to `Cannot read property X of undefined` faults. The receiver tag names the local whose load preceded the failing access — a per-site instrumentation move at one engine site (the GetProp-on-undefined error path).
+2. Pluralize's fault rendered with the new signal: `Cannot read property 'toLowerCase' of undefined (receiver='word')`. Threshold crossed. The substrate-introducer now had: the property being accessed (toLowerCase), and the local that was undefined (word).
+3. A targeted trace walk identified the call chain: `pluralize.plural` → `sanitizeWord` → `replace(word, rule)` → `word.replace(rule[0], cb)` → `cb(match, index)` where the callback's second param `index` was undefined. Inside cb, `word[index - 1]` = `word[NaN]` = undefined, propagated into `restoreCase(undefined, result)`, fail.
+4. Layer-B hypothesis: String.replace's callback doesn't receive the per-spec (match, p1..pN, offset, string) args. Confirmed by reading our `string_replace_impl` — only `match` was passed.
+5. Ω.5.vvv: replace callback now per ECMA-262 §22.1.3.18.
+6. Pluralize flips terminal.
+
+**Three rounds total.** Round one (Ω.5.uuu): meta-substrate investment in engine-tag richness, compounding effect across all future GetProp-of-undefined faults. Round two (trace walk): consume the new signal, identify the load-bearing gap. Round three (Ω.5.vvv): per-site substrate fix per the trace. Net: one terminal flip plus durable signal-amplification at one engine site.
+
+**The reflexive close at the diagnostic layer.** Doc 722 named that corpus articulations become operating instruments. This round demonstrates the analogue at the meta-substrate layer: **investments in engine-instrumentation that raise threshold-crossing capacity become operating substrate for the diagnostic apparatus**. They are not single-failure fixes; they reshape what the apparatus can subsequently see. The corpus's productive layer (Doc 722) extends through to the diagnostic apparatus's named tags.
+
+**Falsifier 723.1 amended again.** Add a third operational sub-question:
+- *(c) When a fault is below the threshold of diagnostic semanticity, does a route-(b) meta-substrate move at the relevant engine site raise the signal enough that subsequent Layer-B reading converges?* (Operationally: yes for this round — Ω.5.uuu's receiver hint enabled the trace walk that Ω.5.vvv resolved. Pluralize crossed in three rounds total, one of which was meta-substrate not per-package.)
+
+The complete falsifier surface for Doc 723 now has three operational sub-questions; the empirical validation record for this engagement is positive on all three across distinct rounds.
+
 ## V. The general claim
 
 The rusty-bun-specific tag stash is one realization. The general claim covers any apparatus that emits surface diagnostics across pipeline layers.
