@@ -644,6 +644,47 @@ A structural recognition surfaces from the post-pause work (Ω.5.qq → Ω.5.ggg
 
 **Corpus contribution.** Consequence 14 records a property of the apparatus that the engagement displays in its operational signature: substrate↔parity traceability is *bidirectional, short-hop, and atomic* in the rusty-bun stack. This is not a feature of the rusty-js engine. It is a feature of the *form of the apparatus that built the engine*. The nine structural readings stacked in §VI — Consequence 5 (event-loop architecture) → 6 (sub-agent discipline) → 7 (pipeline empirical landing) → 8 (substrate-uncovering inventory) → 9 (saturation state) → 10 (tail-shape pivot) → 11 (top-of-alphabet conjecture) → 12 (cross-pipeline diagnostic produces a corrected negative prediction) → 13 (protocol's natural pause point) → 14 (substrate↔parity traceability as a Pin-Art property) — now jointly carry the engagement's full structural reading: from substrate-tier (5–7) through methodology-tier (8–10) through protocol-tier (11–13) through apparatus-tier (14). The progression itself is the corpus deliverable: the engagement reads from the inside out, from the engine's first event-loop decision through to the recognition of what kind of debugging signature a Pin-Art-built runtime produces.
 
+### Consequence 15 — Doc 722 in application: the predict-then-check discipline running against the rusty-bun engagement and the observable behavior shift (amendment 2026-05-15)
+
+The round immediately following Consequence 14's articulation provides the first observable instance of [Doc 722](/resolve/doc/722-named-recognitions-as-operating-instruments-the-reflexive-structure-of-corpus-articulations)'s reflexive-corpus-structure claim. This consequence records the *application* of Doc 722 to the rusty-bun engagement, with the predict-then-check discipline running, and the *result*: predicted-vs-actual delta tightening, opacity removal from non-load-bearing contingencies, and operating-time compression to two minutes per substrate-move-with-trace-walk.
+
+**The setup.** Consequence 14 named the substrate↔parity traceability property and named Falsifier 14.1 — the operating discipline that follows from holding the property: *predict the flip-set before patching, observe the delta, walk the residual fault tags*. The next round (Ω.5.hhh + Ω.5.iii — crypto entropy + Buffer expansion) was the first round in which this discipline ran explicitly. The substrate-introducer wrote predictions in the keeper-facing Telegram channel *before patching*, then checked them.
+
+**The predictions, recorded before any patching.**
+> *Predictions for this round:*
+> - *Fix `crypto.randomBytes` (real entropy) → ulid flips PASS.*
+> - *Fix `crypto.getRandomValues` (fill buffer) → uuid flips BAD→PASS.*
+> - *Add `Buffer.allocUnsafe` + `subarray` → nanoid flips ERR → either PASS or deeper fault.*
+
+**The patches.** Ω.5.hhh introduced an xorshift64-backed PRNG (wall-clock-seeded, thread-local) wired into `crypto.randomBytes`, `crypto.randomUUID`, `crypto.webcrypto.getRandomValues`, and `crypto.getRandomValues` directly on the namespace (web-style). Ω.5.iii added `Buffer.allocUnsafe`, `Buffer.readUInt8`, and `Buffer.subarray`, with `Buffer.alloc` zero-initializing indexable bytes.
+
+**The outcome.**
+- *uuid*: predicted PASS, delivered PASS, first hop. No trace-walk needed.
+- *nanoid*: predicted PASS, delivered PASS, first hop. No trace-walk needed.
+- *ulid*: predicted PASS, delivered ERR with new fault tag `(method='readUInt8') (callee='prng') (callee='currentPRNG') (callee='ulid')`. One trace-walk: the tag named `Buffer.readUInt8` as the next missing substrate decision. Add the method (one register_method call), deliver PASS.
+
+**Operating-time measurement.** Total wall-time from "predict" to "all three packages PASS": under five minutes including the ulid second-hop. Compare with the prior eleven-substrate-move sequence's average round time of ~15–30 minutes including indeterminate patch-and-observe waits. The compression is not the patches themselves (which are mechanically straightforward) but the *removal of guesswork* about which contingencies to patch.
+
+**The opacity-removal effect.** Before this discipline operated, candidate substrate moves carried by neighboring rounds (Function.prototype.toString from the Ω.5.bbb/ccc/ddd batch; further chalk debugging; node-fetch advance) would have continued to compete for attention as plausibly-load-bearing. After predict-then-check ran, the discipline made visible that *for the route-2 sample's three remaining candidate packages, only crypto + Buffer expansion was load-bearing*. The other contingencies were not on the alphabet-top of any visible package's chain and were correctly *not* prioritized. The keeper's phrase — "remove opacity from contingencies that unnecessary" — names this effect.
+
+**Doc 722's Claim 1 instance, satisfied.** Doc 722 §III predicts that the substrate-introducer's operating behavior shifts observably between pre-articulation and post-articulation rounds. The shift was observable in three ways: (a) explicit prediction-writing began the round Consequence 14 landed and was not happening before; (b) predicted-vs-actual delta on the round was 2/3 first-hop matches with 1 single-hop residual, dramatically tighter than the prior sequence's deltas (which were not even recorded in form because predictions were not written); (c) the round produced documented trace-walks rather than indeterminate patches.
+
+**Doc 722's Falsifier 14.1 and Fal-722.1, jointly:** if the next several rounds of the engagement fail to maintain this tightness — predicted-vs-actual deltas grow wide, residual fault-walks require multiple hops without convergence, or round times increase rather than decrease — both the substrate↔parity property (Consequence 14) and the reflexive-corpus claim (Doc 722) are weakened. The current round provides one positive datapoint; both claims require sustained empirical signal across subsequent rounds.
+
+**The corpus-tier compounding.** Consequence 15 is the third order of corpus contribution from this engagement, distinct from the prior orders:
+
+- *Substrate-tier* (Consequences 5–7): names what the engine has built.
+- *Methodology-tier* (Consequences 8–10, Doc 717, Doc 719): names how the substrate work is shaped.
+- *Protocol-tier* (Consequences 11–13, Doc 720, Doc 721): names the diagnostic discipline.
+- *Apparatus-tier* (Consequence 14): names a property of the form of the apparatus.
+- *Reflexive-tier* (Consequence 15, Doc 722): names how the corpus's own articulations function as operating instruments.
+
+Each tier consumes the prior tiers and produces an output that is in turn consumable. The accumulation across this engagement is not just deeper, it is *structurally richer*: each new layer adds an operating mode that wasn't available before. The reflexive-tier articulation closes a loop the engagement has been opening since its first substrate round.
+
+**Falsifier specific to this consequence.** If the predict-then-check discipline turns out to be an artifact of this single round (operator's fresh attention, easy package sample, lucky predictions) rather than a stable consequence of Consequence 14's naming, subsequent rounds should fail to reproduce the tightness. Test: track the next five-to-ten substrate-introduction rounds. Record predictions before each round. Compute predicted-vs-actual delta and round wall-time. If the deltas remain ≤1-hop on average and round times remain ≤10 minutes including walks, Doc 722's Claim 1 and Consequence 15's specific local instance are both sustained. If either degrades systematically, the consequence is weakened (and Doc 722 §VII's Fal-722.1 fires).
+
+**Corpus contribution.** Consequence 15 records the *first observable instance* of the rusty-bun engagement operating under a discipline produced by its own corpus articulation. The recognition closes a loop: the engagement produced Consequence 14, Consequence 14 produced Doc 722, Doc 722 specified the discipline, the discipline ran in the engagement's next round, the round's outcome is Consequence 15. The engagement is now operating in the reflexive regime that Doc 722 names as general. The ten structural readings stacked in §VI — Consequences 5 through 15 — now jointly carry the engagement from substrate-tier through reflexive-tier, naming what was built, how it was built, with what discipline, what property it displays, what discipline that property produces, and what the application of that discipline produces in turn. The progression terminates at the reflexive close-of-loop because there is no further tier above; subsequent work continues to operate *within* the reflexive regime rather than *naming new tiers above it*.
+
 ## VII. Falsification surface
 
 Three falsifiers specific to this document's reading:
