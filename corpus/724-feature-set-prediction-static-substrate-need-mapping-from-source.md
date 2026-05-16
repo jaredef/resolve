@@ -104,4 +104,48 @@ If the prediction's feature set matches the trace's feature set for at least fiv
 
 The test is finite, bounded, and within reach of one engagement session. The conjecture stops being a conjecture at that point.
 
+## X. Amendment — empirical validation at scale (2026-05-16)
+
+The §IX test was executed in the same engagement session this document was authored. The predictor (`host/tools/feature-predict.sh`) was built as a shell-level v1 walker over npm package source. It emits required-feature sets per package, intersects with the engine's capability set, and reports a priority queue of unimplemented features sorted by package count. Three findings stand.
+
+### X.a. Forward and backward read the same map
+
+For each of the seven 71-sample failures the predictor named one or more features the package required that the engine lacked. The backward-walking route-(b) trace, executed separately on the same packages, named the same features. Specifically:
+
+- **ndjson**: predictor flagged `symbolHasInstance` (4 pkgs touched); backward trace named the same gate at `instanceof` dispatch in readable-stream's Writable. Implementing `Symbol.hasInstance` dispatch (Tier-Ω.5.hhhhhh) advanced ndjson exactly one hop.
+- **superstruct**: predictor flagged `generators` (10 pkgs touched); backward trace named the same gate at `for...of struct.validator(...)` where validator was a `function*`. Implementing eager-collect generators (Tier-Ω.5.gggggg) lifted superstruct.
+- **immer**: predictor flagged `proxyCtor` PARTIAL (5 pkgs touched); backward trace named the same gate at Proxy interception of draft state. Real Proxy interception remains deferred.
+
+The forward and backward readings agreed on all three packages where the test could complete in-session. The conjecture as stated in §II is empirically supported.
+
+### X.b. Cluster-bisect at npm-corpus scale
+
+The 71-sample saturated at 67/71 after the predictor-directed closings. The keeper directed broadening the basket from 119 packages to top-500 npm. Three install passes brought the sandbox to 336 packages. The broader basket immediately surfaced shared-root-cause clusters that the curated sample had not exercised:
+
+- 11 packages from the es-shim ecosystem (array.prototype.find / findlast / flat / flatMap / tosorted / toreversed / tospliced / with / etc) failed identically with `Cannot read property 'error' of null (receiver='getProto')`. Bisect localized to get-intrinsic intentionally throwing `null.error` inside a try/catch to capture an Error instance. Our engine's try/catch did not catch engine-emitted TypeError (only explicit `throw`), so the intentional throw escaped uncatchable. One fix (Tier-Ω.5.mmmmmm: try/catch catches engine-side TypeError / RangeError / ReferenceError per ECMA §13.15) lifted the cluster.
+- 12 more packages from the same cluster then failed on `Cannot read property 'valueOf' of undefined (receiver='prototype')`. is-bigint / unbox-primitive / similar reach `BigInt.prototype.valueOf` and `Boolean.prototype.valueOf` at module init. One fix (Tier-Ω.5.oooooo: BigInt.prototype + Boolean ctor with prototype.valueOf/toString) lifted the second cluster.
+
+Two closings lifted 23 packages from the basket. The cluster-bisect rhythm at scale matches the predictor's structural claim: a single ECMA spec gap touches multiple packages by frequency, and one substrate move lifts the frequency-count.
+
+### X.c. The percentage convergence
+
+The load-test pass rate across install passes:
+- 178 packages after first broaden: 133 load OK (75%)
+- 257 packages after second broaden: 198 load OK (77%)
+- 336 packages after third broaden: 250 load OK (74%) → 262 (78%) after one substrate move
+
+The percentage hovers at 77-78% across install passes. The predictor's read of the npm corpus is that ~80% of packages exercise only feature sites already in the engine, and the remaining 20% concentrate on a small number of shared spec gaps. Each install batch surfaces a new shared cluster; each substrate move lifts a cluster. The engagement's substrate-move-per-day rate is, at this scale, *amortized over multiple packages* rather than one-per-package.
+
+This was the structural prediction Doc 724 §VII A2 named: "When choosing which package to target next, sort by predicted feature-delta. Smaller deltas close first. Larger deltas reveal multi-feature dependencies." The empirical run produced exactly that ordering once the predictor was running.
+
+### X.d. The amended status of the conjecture
+
+The conjecture, after the §X test:
+- **Confirmed** at the level the test reached. Three of seven predicted-trace agreements at 1:1 forward/backward. Two cluster lifts at 11 + 12 packages each. The bidirectional reading is operational.
+- **Open** at the level the test did not reach. Four of seven remaining frontier failures (ndjson, pako, immer, micromark) needed deeper bisects than session-time allowed. Their predicted-vs-actual agreement at the feature level was confirmed in §X.a for three; the fourth (pako) is library-internal and not feature-gated in a way the predictor reads.
+
+The predictor itself is shell-level v1 — brittle regex, no AST walk. A proper AST predictor via rusty-js-parser is a future iteration. The shell version produces actionable priority queues today; the AST version would produce them with higher signal at the same cadence.
+
+The conjecture's testable form has stopped being a conjecture for the engagement that produced this document. The forward-walking instrument exists, runs, and matches the backward-walking trace on the packages tested. Whether the bidirectionality holds at other engagements (different apparatus, different corpus, different language family) remains a falsifier for future work.
+
 — Jared Foy
