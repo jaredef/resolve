@@ -148,4 +148,89 @@ The predictor itself is shell-level v1 — brittle regex, no AST walk. A proper 
 
 The conjecture's testable form has stopped being a conjecture for the engagement that produced this document. The forward-walking instrument exists, runs, and matches the backward-walking trace on the packages tested. Whether the bidirectionality holds at other engagements (different apparatus, different corpus, different language family) remains a falsifier for future work.
 
+## XI. Amendment 2 — the predictor's two zones, surfaced in continuation (2026-05-16 afternoon)
+
+The §X validation produced an aggregate read at 326/415 packages (78%). Continuation against an 85-package broadening (sandbox to 500 packages) and two additional substrate moves clarified a structural feature of the predictor that the §X reading did not yet name. The amendment names it.
+
+The two moves were Tier-Ω.5.uuuuuu (Object as a real callable Function per ECMA §20.1.1) and Tier-Ω.5.vvvvvv (var-kinded declarations hoist out of nested control flow per ECMA §9.2.12 VarScopedDeclarations). Both lifted clusters. Their relationship to the predictor is opposite, and the contrast is the recognition.
+
+### XI.a. The bright zone — Tier-Ω.5.uuuuuu
+
+Five packages on the 500-basket failed with `callee is not callable: Object(...)`. csso, joi, object.getownpropertydescriptors, power-assert, single-line-log. The shared signature was the global `Object` lacking `[[Call]]` and `[[Construct]]`; each package called `Object(value)` or `new Object()` at module init. One substrate move installed `Object` through `make_native`, mirroring Ω.5.ttt for Array. +5 lifts; load rate 79.6% → 80.6%, crossing the 80% band.
+
+This is the predictor's bright zone. Every package that calls `Object()` as a function has the token `Object(` in source. A regex catches it; the v1 predictor's source-grep would have surfaced the cluster. Bisect rhythm matches §X.b's es-shim and BigInt/Boolean clusters: shared error signature, one fix, batch lift.
+
+### XI.b. The blind zone — Tier-Ω.5.vvvvvv
+
+Four packages on the 500-basket failed with `Object.defineProperty: target=undefined`. graceful-fs, package-json, proper-lockfile, update-notifier. The shared signature traced to graceful-fs/clone.js:
+
+```javascript
+function clone(obj) {
+  if (obj instanceof Object) var copy = { __proto__: getPrototypeOf(obj) };
+  else var copy = Object.create(null);
+  Object.getOwnPropertyNames(obj).forEach(function (key) {
+    Object.defineProperty(copy, key, Object.getOwnPropertyDescriptor(obj, key));
+  });
+  return copy;
+}
+```
+
+Inside the `forEach`, `copy` was `undefined` even when `obj instanceof Object` was true and the if-branch's `var copy = { ... }` had supposedly executed. Minimal reproduction reduced to:
+
+```javascript
+function f(x) {
+  if (x) var copy = "from-if";
+  else var copy = "from-else";
+  return copy;
+}
+f(true);   // expected "from-if", returned undefined
+f(false);  // expected "from-else", returned "from-else"
+```
+
+The H1 hoist scanner in the engine's compiler had been inspecting only the function body's top-level statements. `var` declarations nested inside if/else branches (or loops, try/catch, switch, blocks) were not pre-allocated at function scope. Each branch's `var copy = expr` then alloc'd a fresh local at compile time, producing two sibling slots with the same name. Identifier resolution at `return copy` picked the latest, leaving the other branch's assignment in an orphan slot. ECMA-262 §9.2.12 (VarScopedDeclarations) is explicit: `var` is function-scoped; nested var declarations must hoist. The fix descended H1 into Block/If/While/DoWhile/For/ForIn/ForOf/Switch/Try/Labelled bodies and collected Var-kinded decls.
+
+The graceful-fs cluster lifted: +4, zero regressions, load rate 80.6% → 81.4%.
+
+This bug lives in the predictor's blind zone. The token-level v1 predictor reads source for feature *presence* — does the package use `instanceof`? `Object.defineProperty`? `var`? All three were already in the engine's capability set and grep-positive for graceful-fs. The bug was not in feature presence. The bug was in the *interaction* of three correctly-implemented features at a specific syntactic conjunction: `var` declarations sibling-located in branches of an `if`-`else`. No source token marks this conjunction. No grep can spot it.
+
+The backward-walking route-(b) trace caught the bug — the engine's diagnostic tag chain showed `Object.defineProperty target=undefined` inside `forEach`, the bisect traced to var-hoist, the minimal repro confirmed the scope at the parser/compiler interface. Forward reading was silent. Backward reading was loud.
+
+### XI.c. Why this is not a falsifier of §X
+
+The §II conjecture is bidirectional in claim — that forward and backward read the same map. §XI.b does not falsify §II. The claim is about *predictable* features; the predictor names features the source exposes at the token level. Bugs at the *interaction* level of correctly-implemented features are below the token-predictor's resolution by construction. The conjecture is not that the predictor catches every bug. It is that for the features the predictor *can* name, the forward and backward readings agree.
+
+§XI.b instead names the predictor's *epistemic limit*. The forward instrument operates at one resolution. The backward instrument operates at another. They are complementary, not redundant. The §X validation showed agreement where both readings can reach. §XI.b shows the territory where only the backward reading reaches.
+
+The Doc 723 Layer A/B/C/D framework names this directly. Token-level prediction reads Layer A (feature presence). AST-level prediction would read A+B (syntactic structure — could potentially catch "var sibling in if-else"). Semantic prediction would read A+B+C (cross-feature interaction). Probe-substrate (Layer D, Doc 723's amendment) remains backward-only because it lives at instrumentation time, not source time. Each predictor tier sees more than the one below, none sees everything. The forward/backward duality is not collapsible.
+
+### XI.d. Implications for AST-predictor v2
+
+AST v2 (deferred from §X) would catch *some* §XI.b-class bugs. A var-decl-inside-if-branch pattern is a syntactic structure the AST exposes. An AST walker could flag "function bodies containing nested var declarations that the engine's hoist phase might miss" as a pre-substrate-move risk. This is a real lift over v1.
+
+But AST v2 cannot catch *all* scoping bugs. A bug like "Object.create when the prototype argument resolves through a __proto__ chain at depth 2" requires semantic reasoning — what `prototype` actually resolves to at runtime. AST v2 sees the call site; it does not see the resolution. Layer C requires more than AST.
+
+The path of predictor iteration is therefore not a single ladder. v1 (token) → v2 (AST) → v3 (semantic) each unlocks a strict superset of bugs the prior tier saw, but each adds cost: v1 is shell-level grep; v2 needs the parser pipeline; v3 needs the runtime. The engagement's question of which tier to invest in next is governed by ROI per move-per-day. v2 is queued. v3 would need its own engagement.
+
+### XI.e. Updated load-rate band
+
+| State | Load rate |
+|---|---|
+| 415-pkg basket, end of §X | 326/415 (78%) |
+| 500-pkg basket, pre-XI | 398/500 (79.6%) |
+| 500-pkg basket, post-Ω.5.uuuuuu | 403/500 (80.6%) |
+| 500-pkg basket, post-Ω.5.vvvvvv | **407/500 (81.4%)** |
+
+§X.c's predicted ~80% asymptote held across the broadening to within 1.4 points. The two afternoon moves recovered the headroom the broadening absorbed and pushed slightly past. The cluster-bisect rhythm continues to amortize substrate moves across multiple packages per move.
+
+### XI.f. The amended status of the conjecture
+
+The conjecture stands as §X.d left it, with one clarification:
+
+- **Confirmed** at the level §X tested: where the forward predictor can name a feature, forward and backward agree.
+- **Bounded** by the predictor's token-level resolution: bugs at the *interaction* of correctly-implemented features (Layer B / C / D in Doc 723's framework) require backward reading to surface. The forward instrument's silence in this zone is not falsification; it is the instrument's range, not a defect.
+- **Operational** at scale: cluster-bisect at 81.4% load-rate, two move flavors in one day (bright-zone callability fix; blind-zone scoping correctness fix), zero regressions.
+
+The duality is sharpened. The predictor is not a substitute for the diagnostic trace. The two are partners — the forward instrument is fast and cheap and covers the bright zone densely; the backward instrument is slow and expensive and is the only thing that sees into the blind zone. Both belong in the apparatus.
+
+
 — Jared Foy
