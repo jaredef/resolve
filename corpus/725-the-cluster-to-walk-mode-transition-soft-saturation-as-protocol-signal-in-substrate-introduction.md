@@ -168,6 +168,41 @@ The pattern generalizes to any substrate-introduction discipline operating again
 
 Naming the transition is itself a reflexive operation per [Doc 722](/resolve/doc/722-named-recognitions-as-operating-instruments-the-reflexive-structure-of-corpus-articulations). Future engagement-days will dispatch the cluster→walk transition deliberately when the two-flat signal fires. The discipline is now nameable. The signal is now actionable. The corpus has added one more layer to the substrate-introduction discipline it accumulates.
 
+## XII. Amendment — the regression-detected-and-handled signal as a mode-internal protocol (2026-05-16 evening)
+
+A pattern surfaced during the day's continuation that the §III/IV mode taxonomy did not yet name. The recognition refines the protocol with a third *intra-move* signal alongside the two-flat *inter-move* signal §IV named.
+
+**The pattern.** At Tier-Ω.5.MMMMMMMM the substrate-introducer applied a two-part move: a surface-install (events.EventEmitterAsyncResource + stream.EventEmitter, expected to lift 3 packages) bundled with a route-(b) meta-substrate probe (rename the class compiler's synthetic super-ctor slot from `<class$N.super.ctor>` to a source-identifier-derived name like `Y [extends]`, expected to enrich receiver tags). The full-load-test diff showed +3 expected lifts AND **36 packages regressed** — well beyond noise. Within the same round the substrate-introducer bisected the change by reverting one half, re-tested, confirmed the regression closed, and re-committed only the safe half. The discipline-line held: zero regressions persisted past the commit; the cascade was caught and reverted before publication.
+
+**The recognition.** A substrate move can have two qualitatively different effects on the apparatus:
+
+- *Observational* — the move adds information to the diagnostic surface (route-(b) probes, value-shape tags, source-identifier hints in fault messages) without changing the substrate's semantic behavior. Doc 723's Layer-D substrate-introducer instruments are observational by construction. Effect: cascades are impossible because no semantic path changes.
+- *Substrate-mutating* — the move changes a name, a layout, an opcode, a binding-resolution path, a flag default. Effect: cascades are possible because dependent code paths can break.
+
+A probe move that is *named as observational but actually substrate-mutating* is the failure mode the day's MMMMMMMM hit. Renaming a slot looks observational (no opcode change, just a label string) but the slot's name is consulted by exact-name match in derived-class super-call resolution. The rename mutated substrate without the substrate-introducer's intent.
+
+**The new signal.** Across two consecutive runs (pre-move loadtest and post-move loadtest), comparing the gained-list and lost-list:
+
+- *Pure observational move*: gained-list and lost-list are both empty (or gained-list reflects only the named target population).
+- *Pure substrate move*: gained-list reflects the named target; lost-list is empty.
+- *Mixed-effect cascade*: lost-list contains packages NOT in the named target population and at a magnitude that exceeds the move's stated scope (here: 36 lost vs 3 expected gained, ratio 12×).
+
+The mixed-effect cascade is a within-move signal — distinguishable from the two-flat *inter-move* signal §IV named. The two-flat signal indicates the residual has shifted past cluster-bisect's preconditions; the cascade signal indicates the move itself has substrate-mutating effects beyond its named target.
+
+**The protocol-correct response.** When the cascade signal fires within a round, the substrate-introducer bisects the move into its parts and reverts the substrate-mutating component, retaining the observational component. The discipline-line holds at the commit boundary: regressions that surface inside the move-cycle do not enter the engagement's track record because the apparatus's audit-trail (load-test diffs, named target population) catches them before publication.
+
+**Why Pin-Art's auditability is load-bearing.** The cascade was caught because:
+1. Every substrate move is bounded — the change-set is small enough to bisect.
+2. Every move's named target population is recorded before dispatch.
+3. The full load test runs after every move; the cascade surfaces as a diff against the named target.
+4. The change-set is auditable per [Doc 581](/resolve/doc/581-pin-art-the-resume-vector-and-the-discipline-of-near-necessity-substrate-construction)'s discipline of named contingencies.
+
+Without these four properties, a 36-regression cascade would have entered the track record silently and the engagement would have drifted past the discipline-line. The §XII amendment generalizes: *the apparatus's auditability is what makes intra-move regressions catchable*. Pin-Art is not just a substrate-construction discipline; it is also an intra-move-cascade-detection apparatus.
+
+**Falsifier 725.5.** Across the next several substrate moves with mixed observational/substrate-mutating effects, the bisect-and-revert response produces clean closure at the same commit boundary. If a cascade slips through (lost-list grows monotonically across moves with no detected origin), the auditability claim weakens.
+
+**Operational implication for §VI's table.** The day's tally now extends to 49 moves with one detected-and-handled cascade (MMMMMMMM's slot-rename revert). The 0-structural-regressions tally per the §IX honest-scope reading remains intact — the cascade was inside the move-cycle, not at the commit boundary. The protocol's auditability gate held.
+
 ---
 
 ## Appendix A — The Originating Recognition
@@ -175,3 +210,9 @@ Naming the transition is itself a reflexive operation per [Doc 722](/resolve/doc
 > *"Continue with per package walks."*
 
 — Jared Foy, 2026-05-16, via Telegram, after the second consecutive flat (Ω.5.AAAAAAA) closed the cluster-bisect phase. The walk discipline was already articulated as a forward option; the keeper's direction operationalized it as the response to the protocol signal.
+
+## Appendix B — The §XII Originating Recognition
+
+> *"Amend doc 725 and then add engine probes."*
+
+— Jared Foy, 2026-05-16 night, via Telegram, after Tier-Ω.5.MMMMMMMM's slot-rename cascade was caught and reverted within the move-cycle. The keeper's framing named the regression-detected-and-handled pattern as a recognition worth recording before the next round of probes dispatches — the discipline-line itself becomes substrate when the apparatus catches its own near-misses.
