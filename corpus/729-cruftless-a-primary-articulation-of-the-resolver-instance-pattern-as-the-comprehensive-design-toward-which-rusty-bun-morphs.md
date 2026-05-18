@@ -198,7 +198,54 @@ This document records a destination toward which the engagement now morphs. The 
 
 Per [Doc 372](/resolve/doc/372-the-method-of-the-corpus-as-derivation-not-collection)'s hypostatic boundary: the runtime named here is a structural target articulated at the corpus tier. The empirical work of building it lives in the substrate tier ([Doc 581](/resolve/doc/581-pin-art-the-resume-vector-and-the-discipline-of-near-necessity-substrate-construction)). The two tiers compose; this document sits at the corpus tier; the substrate tier's work proceeds in the rusty-bun engagement's continuation.
 
-## XII. Closing
+## XII. The engine's constraint axes, as observed through substrate work
+
+Through the P50–P53 substrate-introduction phase, the residual surface across the 1026-package parity basket has been walked sufficiently that the engine's internal constraint structure has become legible. Surface clusters (kc-pm-1-2, dyn-import, typeof-diff, compile-error, kc-pm-3-10, kc-gt-10) are not themselves design objects. They are observation regions where residuals land. The axes underneath them are the design objects.
+
+Seven axes have surfaced, listed by descending cross-cluster fan-out:
+
+**Axis M — Module-resolution parity.** Which file the resolver chooses for a specifier under the four selection rules (`exports` conditional, `module` field, `browser` field, `main` fallback). Projects onto the kc-pm-3-10 C-class (isomorphic-ws, winston, power-assert) where extras arise from the wrong entry being loaded; onto the mri vs lint-staged divergence absorbed by P53.E13 (where rusty-bun resolved the .mjs and Bun resolved the .js under the same package shape); onto the typeof-diff jest-family (jest-each, jest-resolve, jest-environment-node) whose CJS and ESM duals diverge under conditional exports; and onto a long subset of dyn-import "Cannot read property X of undefined" failures whose root is the wrong file having been loaded.
+
+**Axis N — Namespace-surface composition.** After resolution, how the module namespace is composed (CJS populator on one path, FinalizeModuleNamespace hook on the other). Decomposes into N-CJS, N-ESM-lift, and N-static (lifting of a default function's own static methods). Projects onto kc-pm-3-10 esquery / typebox / heap-js (statics on a default-fn); onto typeof-diff testdouble / expect (missing or extra named exports); and onto the entirety of the kc-pm-1-2 long tail. P53.E10, E11, and E13 are N-ESM-lift moves.
+
+**Axis S — Symbol versus string identity.** Well-known symbols (Symbol.iterator, Symbol.asyncIterator, util.inspect.custom) appearing as real `Value::Symbol` values rather than sentinel strings. Projects onto typeof-diff async-iterator-to-stream and onto many dyn-import for-of / @@iterator failures. P53.E6 closed the inspect.custom slice.
+
+**Axis E — Eval-time error surfacing.** Whether a throw during module-body evaluation propagates to the dynamic-import promise rejection or silently zeros the namespace. Projects onto kc-pm-3-10 heap-js (default, Heap, and HeapAsync all missing because module init threw and was swallowed); onto a sub-population of dyn-import results where `rb=""`. Closing this axis raises the diagnostic floor without itself closing residuals; it makes downstream cuts visible.
+
+**Axis R — AST-to-bytecode resolver discipline.** The compiler / interpreter boundary where operator stack-discipline, scope tracking, and source-position threading live. Already the hot zone of substrate work: P50, P51, P52, P53.E1, P53.E2, P53.E7 all landed on this axis. Per §VIII this is the property-class addressed by the most recent walk.
+
+**Axis H — Host built-in surface.** Completeness of the `node:*` intrinsic stubs against the surface Bun exposes (which mirrors current Node minor-version). Projects onto kc-pm-3-10 events (addAbortListener / captureRejectionSymbol / captureRejections / defaultMaxListeners / errorMonitor / getEventListeners) and es-errors (appendStackTrace / isError / prepareStackTrace). Mechanical, additive.
+
+**Axis O — Operator semantics.** Behavior of specific operators (||=, ?., yield argument precedence, etc.). P53.E7 (logical-assign stack effect) and P53.E9 (yield argument as AssignmentExpression) landed here. Narrower fan-out than R, but its residuals can be catastrophic at compile time.
+
+The seven axes are not the same as the five resolver-instances of §IV. They are orthogonal. Each substrate move lands on (one resolver-instance, one axis). The two-coordinate trajectory log of §VIII gains a third coordinate from this articulation: the axis the move absorbed. Doc 581's seed.md and trajectory.md formats should carry that third coordinate from the P54 round forward.
+
+## XIII. Regression as implicit-constraint probe (methodology)
+
+The constraint axes of §XII are the observation regions. The methodology that operates over them — the discipline by which substrate work produces near-necessity articulations rather than convenient fixes — is named here.
+
+**The discovery side.** Walking a residual through enumeration discovers a set of explicit constraints: the ones the resolver's current behavior fails to satisfy. Each E-move (E1, E2, ...) articulates one. By the move's articulation, the constraint becomes explicit; absorbing it into the resolver makes the property the constraint induces hold. This is the visible half of substrate work and the half Doc 581 documents in trajectory.md.
+
+**The hidden half.** A resolver landed on a working substrate carries other constraints it satisfies accidentally rather than deliberately. They are operative but unstated. They cannot be named by walking the residual the move was targeting, because the residual sweep cannot see what the move passes correctly. The implicit constraint becomes visible only when something collides with it.
+
+**Regression is that collision.** A move tightened on one axis shifts the property surface on adjacent axes. The shift names an implicit constraint by violating it. P53.E11 stated "lift the function default's name, length, and prototype onto the module namespace when default is a function." It passed every constraint walking kc-pm-3-10 had named. It regressed seven packages in dyn-import. The regression named the implicit constraints P53.E11 had been respecting only accidentally: that the lift requires `named_count == 0` (P53.E12 absorbed) and that the lift requires the enclosing package to not be `type:module` (P53.E13 absorbed). The full property had three conjuncts. Walking had surfaced one of them; regression surfaced the other two.
+
+**The methodological consequence.** Residual sweep and regression sweep are not redundant. They are constraint-discovery tools that cover disjoint constraint classes. The residual sweep enumerates the constraints the current resolver fails to satisfy. The regression sweep enumerates the constraints the current resolver satisfies without naming. Both are required. Treating them sequentially (do the residual, then check for regression) pays an asymmetric cost: the move that triggers the regression must be partially un-done and re-articulated. Treating them co-equally (every E-move runs on both target cluster and adjacent clusters as a single audit step) prepays the cost of articulating implicit constraints before they collide.
+
+**Constraint annotations in the trajectory log.** Per Doc 581's seed.md and trajectory.md format, every E-move should carry not just its target and its named constraint, but the implicit constraints surfaced by its regression sweep. The full three-conjunct property of P53.E13 lives in the log as one row, not three. P53.E11 and P53.E12 retroactively become annotation revisions of P53.E13's row. This is the trajectory-log discipline that lets the engagement audit which constraints are operative versus which are accidentally satisfied.
+
+**Inductive properties as engine-tier targets.** Once the constraint axes are legible (§XII), the design can name properties at the engine tier rather than at the move tier. Four are immediate:
+
+- **P-M**: `Resolver(specifier, parent_url)` is byte-identical to Bun's across the basket.
+- **P-N**: `Namespace(loaded_module)` has byte-identical own-key surface to Bun's.
+- **P-S**: All well-known symbols are `Value::Symbol` with canonical `@@sym:` identity.
+- **P-E**: Any throw during module-body evaluation rejects the dynamic-import promise.
+
+These four are properties, not moves. The substrate work continues to walk residuals; each move's job is to absorb a sub-region of one of these properties. A property is induced by the conjunction of every constraint its absorption surfaced. The methodology lifted: walk discovers explicit constraints; regression discovers implicit constraints; the conjunction induces the property; the property is the engine-tier name of what Cruftless guarantees on that axis.
+
+This is the recursion §V named at the structural tier, now operational at the methodological tier: directive consumption is structural, and *constraint consumption* (explicit through walk, implicit through regression) is methodological. Cruftless's name describes the structural property; the methodology described here describes how the substrate work that builds Cruftless proceeds without leaving constraints accidentally satisfied at the engine tier.
+
+## XIV. Closing
 
 The keeper named the destination. The engagement now has a name for the runtime it morphs into. The five resolver-instances in rusty-bun are identified. The four bootstrap properties from [Doc 432 §2](/resolve/doc/432-server-an-architectural-style-for-engine-orchestration#the-bootstrap-as-resolver) generalize to each instance. The five SERVER constraints apply at each instance, modulated by the level's specific surface. The induced property of the design is vertically-recursive directive consumption with stage-deterministic emission. The morph trajectory is the engagement's continuation under [Doc 725](/resolve/doc/725-the-cluster-to-walk-mode-transition-soft-saturation-as-protocol-signal-in-substrate-introduction)'s walk-mode discipline, with each substrate round locatable on the two architectural addresses §VIII specifies.
 
