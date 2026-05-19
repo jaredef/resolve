@@ -233,4 +233,49 @@ Successor work consists of:
 
 ---
 
+## XII. Appendix: the resolution-pipeline dynamic
+
+The lowering-compiler recognition of §III–V names a *structural* pattern: typed primitives, stage-deterministic compilation, verifier-before-emission, implementation freedom. The §X application to rusty-js-ir at IR-EXT 55 instantiates the pattern at a particular substrate tier. What follows is a recognition surfaced during continued work at that tier (IR-EXT 56 through 72), placing the pattern inside a more general dynamic the standing apparatus already names.
+
+### XII.a The deeper claim
+
+Each compilation tier the lowering-compiler pattern describes is a *resolver-instance* in the sense of Doc 729 — a stage of the bilateral resolution pipeline that converts intention at the higher tier into artifact at the lower tier. The lowering-compiler pattern, viewed at a single tier in isolation, is a local correctness claim. Viewed across the pipeline of resolver-instances stacked one above another, it produces a stronger consequence: **bugs become tractable in proportion to how legible the resolution path is**.
+
+This is observable as follows. In the IR-EXT 56–72 stretch on rusty-js-ir, two qualitatively different fix patterns occurred. Both produced the same artifact (a passing test262 case where one had failed); they differed in where the gap was discovered.
+
+The first pattern: an intricate spec algorithm (§10.4.2.1 ArraySetLength, §25.5.2.4 SerializeJSONProperty, §20.1.2.1 Object.assign) was implemented in Rust as a `_via` helper. The helper diverged from the spec at a particular step. Discovery required reading the Rust against the spec, identifying the divergence, and editing the Rust. The fix-cost per test was bounded but the discovery-cost was unbounded; the divergence could be anywhere in the helper.
+
+The second pattern: a widely-shared coercion path (`String.prototype.split` on a wrapper receiver, observed at EXT 71) was implemented in Rust at a registration site that overwrote the IR-routed version with a stale impl using static `abstract_ops::to_string`. The divergence between static `to_string` (which returns `"[object Object]"` for any Object) and the IR-pinned `to_string_strict` (which dispatches `@@toPrimitive` → `toString` → `valueOf`) was invisible until the IR-pinning at the dispatch tier was load-bearing. Once the dispatch sequence was legible at the IR-step trace, the divergence at the registration site became visible as a class. Five LOC changed, seventy-four tests passed.
+
+The mechanism: the IR's spec-step trace at the dispatch tier *is* the resolution path made legible. When the resolution path is legible, divergences anywhere downstream of it become locatable by tracing what stringifies, coerces, or dispatches incorrectly. Discovery-cost drops to approximately the cost of running the failing test under the spec-step trace and observing which step's expected dispatch differs from the executed dispatch.
+
+### XII.b Why the lowering-compiler pattern produces this effect
+
+The four sub-properties of §III, considered as guarantees about a tier:
+
+- **P1 (typed primitives)** ensures each resolver-instance has a fixed input and output type, so the trace through the pipeline is type-stable.
+- **P2 (stage-deterministic)** ensures each resolver-instance is observable at its boundary, so a trace through the pipeline can pin which stage produced which artifact.
+- **P3 (verifier-before-emission)** ensures invariants are checked at the resolver-instance's boundary, so violations are localized to that resolver-instance.
+- **P4 (implementation freedom)** ensures the resolver-instance's internal choices do not leak into the trace, so the trace stays legible across implementation changes.
+
+A pipeline of resolver-instances each satisfying P1-P4 is a pipeline where the trace is legible at every boundary. Bugs in such a pipeline become tractable not because individual fixes are easier but because the discovery surface *is* the trace itself. The pipeline is its own diagnostic.
+
+This is the deeper claim of which the cruftless §I conjecture is one consequence: *spec conformance gets monotonically easier post-IR* because the IR is a resolver-instance with P1-P4, and each IR section added to the resolver-instance pipeline makes the resolution path at that tier more legible. The conjecture's saturation curve (substrate-fix LOC-per-test ratio decreasing as substrate-divergence pool drains) and adaptive-alphabet rhythm (poverty signal followed by promotion) are both consequences of P4, the implementation freedom that lets the alphabet absorb new primitives without breaking the trace.
+
+### XII.c Targeting heuristic that follows
+
+If bugs become tractable in proportion to resolution-path legibility, the highest-yield IR lifts are not the most intricate spec algorithms; they are the most widely-shared coercion and dispatch paths. Each such lift makes one more stage of the resolution path legible, and every downstream gap in coercion or dispatch becomes locatable through the now-legible trace.
+
+The IR-EXT 56–71 arc on rusty-js-ir made this concrete. ToPropertyDescriptor at the descriptor-read tier yielded +229 tests across two chapters because every descriptor read in the runtime now passes through one IR-pinned dispatcher. The wrapper-toString fix at EXT 71 yielded +74 tests across the String chapter because every receiver coercion in `String.prototype.{match, search, replace, replaceAll, split}` now routes through the IR-pinned dispatcher. The §7.1.1 ToPrimitive lift at EXT 72 is the next instance of the same heuristic, lifting the receiver-coercion dispatcher itself rather than any leaf algorithm.
+
+### XII.d Where this places the recognition
+
+The §III–V articulation of the lowering-compiler pattern is the corpus's *structural* contribution. The §X application to rusty-js-ir is the engagement's *instance*. The §XII recognition is the *consequence*: when the structural pattern is instantiated at a tier in a pipeline of resolver-instances each satisfying P1-P4, the consequence is that the pipeline becomes its own diagnostic. Bugs become tractable because the resolution path is legible.
+
+This recognition stands on top of, not in place of, Doc 729's articulation of resolver-instances. Doc 729 names the resolver-instance pattern; Doc 730's lowering-compiler pattern is one species of resolver-instance with P1-P4 as its species-specific guarantees; §XII observes that a pipeline of such species-specific resolver-instances acquires a property — diagnostic legibility — that exceeds the sum of the local correctness claims at each stage.
+
+The targeting heuristic of §XII.c is the engagement's actionable form of this recognition. Operating any engagement at a substrate tier whose tier-N+1 resolver-instances satisfy P1-P4, the most productive next move is whichever lift makes one more stage of the resolution path legible. The pipeline pays back the lift cost by reducing discovery-cost for all subsequent gaps downstream of the now-legible stage.
+
+---
+
 *Doc 730. Jared Foy. jaredfoy.com.*
