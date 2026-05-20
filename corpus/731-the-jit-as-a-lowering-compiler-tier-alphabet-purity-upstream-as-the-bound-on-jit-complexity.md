@@ -184,6 +184,67 @@ Successor work consists of:
 
 Each step is amortized against the prior corpus apparatus. Pin-Art applies (per Doc 581); the seed.md + trajectory.md discipline at the engagement-tier captures each step; the Doc 730 lowering-compiler pattern provides the structural template against which to check progress.
 
+## XIV. Amendment: empirical corroboration from JIT-EXT 4 (the trusted-i64 ceiling)
+
+This document was articulated as a structural claim. Same-day engagement work (2026-05-20, JIT-EXT 0 through JIT-EXT 4 in `pilots/rusty-js-jit/`) produced the first empirical reading against the conjecture, with three landed substrates: the Op-P4 classification table per §V S1, the Cranelift integration on the engagement's target platform (aarch64-linux on Pi), and a first-cut translator covering the Class A subset (LoadArg, LoadLocal, StoreLocal, PushI32, Add, Sub, Mul, Inc, Dec, Lt, Le, Gt, Ge, Eq, Ne, StrictEq, StrictNe, Dup, Pop, Jump, JumpIfTrue, JumpIfFalse, Return, ReturnUndef). The translator JIT-compiles real bytecode produced by `compile_module` for arithmetic hot loops with control flow.
+
+### XIV.a The measurement
+
+The benchmark function (`sum(n) { var s=0; for (var i=0; i<n; i++) s=s+i; return s; }`) compiled to cruftless bytecode, then JIT-compiled through the translator, then executed:
+
+```
+JIT compile time (one-time):              0.412 ms
+JIT mean per-call (sum(1_000_000)):       1.25  ms
+Cruftless interpreter (sum(1M)):        532     ms
+JIT speedup over interpreter:           425×
+Bun (V8-class JIT, sum(1M)):              3     ms
+JIT vs Bun ratio:                         0.42× (cruftless faster)
+```
+
+The Cranelift integration produced machine code that beats Bun's V8-class JIT on this specific hot loop, with the simplest possible per-Op translation (no inlining, no ICs, no type feedback, no internal optimization passes inside the JIT itself; only Cranelift's standard backend pipeline).
+
+### XIV.b The load-bearing caveat
+
+The measurement applies only to functions where the trusted-i64 type assumption holds. The first-cut JIT treats every operand stack value as a raw i64. It does not box as `Value::Number(f64)`. It does not verify operand types at JIT-compile time. It does not deopt on type mismatch. A JIT-compiled function called with a String, Object, or non-Number Boolean would bit-cast garbage and produce nonsense.
+
+The 425× and the 0.42×-of-Bun numbers are not the speed cruftless's JIT will deliver in production. They are the **structural ceiling** the Cranelift backing reaches when the operand-type assumption is satisfied. Production-grade JIT integration adds type-feedback verification, boxing at the JIT / interpreter boundary, and deopt to interpreter on type mismatch (per Doc 731 §VII R4 + R5 + §VI H1). Each of these layers reduces the ceiling, but the *floor* remains the interpreter's 532 ms.
+
+The honest production-grade estimate is the JIT lands between 5 ms and 50 ms per call depending on how often the type guards succeed in real code. The first-cut measurement says nothing about that range. It says only that the Cranelift backing itself is not the cost.
+
+### XIV.c What this corroborates and what it does not
+
+**Corroborates §V S1 (speculation surface shrinks to the genuinely dynamic dispatch sites):** the JIT compiles the entire sum(N) body to straight-line Cranelift IR plus two basic-block branches, with no speculation surface at all when the trusted-i64 assumption holds. The IC surface for this specific function shape is **empty**. Doc 731 §V S1's strong-form claim is corroborated at the substrate level for the case the assumption admits.
+
+**Corroborates §V S3 (the verifier at the JIT tier inherits the upstream verifier's work):** the translator's verifier rejects (returns `Err`) any op not in the supported set. No bytecode well-typedness recheck is needed because the bytecode-compiler tier's P1 + P3 already guarantee the input's well-formedness. The JIT's own verifier checks only the op-coverage contract, not the bytecode's correctness.
+
+**Corroborates §V S4 (single tier is structurally sufficient):** one Cranelift compile pass produces the final machine code. No interpreter-to-baseline tier-up, no baseline-to-optimizing tier-up, no inlining pass. Sparkplug-shaped baseline matches Bun's V8-class output on this benchmark.
+
+**Corroborates §V S5 (Cranelift absorbs the lower tiers):** instruction selection, register allocation, scheduling, and machine-code emission are entirely Cranelift's work. The JIT crate's translator is ~400 lines covering 22 ops with control flow and locals; the Cranelift dependency itself is large (~200K LOC) but is shared with any Rust-hosted JIT and amortizes against many consumers.
+
+**Does NOT corroborate §V S2 (deopt enumerable from the alphabet):** no deopt path is implemented in JIT-EXT 4. The "trusted-i64" assumption is not a speculation; it is an unverified precondition. §V S2's empirical test requires a real type-feedback + deopt path, which is queued for JIT-EXT 5+.
+
+**Does NOT corroborate §V S6 (no internal optimization passes needed):** untested. The current translator is simple enough that no internal pass would help; whether this holds when the op set extends to property access, closure captures, and the rest of the Class B + Class C ops is an open question.
+
+**Does NOT corroborate §VI H1 (interp-to-JIT bridge is hard):** untested. JIT-EXT 4 produces a JIT'd function in isolation. Wiring the JIT into the runtime's call_function dispatch + threshold counter + frame-state reconciliation is JIT-EXT 5's work. The hard residual the doc names lives at that bridge, not at the codegen.
+
+### XIV.d The deeper claim the measurement sharpens
+
+Doc 731 §XII said: "canonical-engine complexity is largely substrate-amortization debt accumulated by skipping alphabet promotion at the tiers above." The JIT-EXT 4 measurement sharpens this to: **canonical-JIT complexity is largely the cost of operating without typed primitives at the operand-stack level**. Cruftless's bytecode alphabet does not currently carry typed operand-stack discriminations (no Op::AddI64, Op::AddF64, Op::AddBoxedValue); every Op::Add must dispatch through ToPrimitive + numeric-vs-string-concat-vs-add. The first-cut JIT cheats by ignoring this and treating every operand as i64. The trusted-i64 ceiling is the speed cruftless could reach *if its bytecode alphabet promoted typed-operand discriminations*.
+
+This identifies a §XIII alphabet-promotion candidate at the bytecode tier (not at the IR tier where Doc 730 §XIII originally landed): typed-operand-arithmetic primitives (`AddI64`, `AddF64`, `AddBoxedAdd`) emitted by the bytecode compiler when the IR tier or a future type-inference pass can prove operand types. With those, the JIT does not cheat. It just emits the typed instruction directly. The trusted-i64 ceiling becomes the real-code speed for any operation the typed alphabet covers.
+
+This is the substrate move that converts the JIT-EXT 4 measurement from a demonstration into production performance. It is also exactly what Doc 730 §XIII promotes the IR alphabet for at the spec-discrimination tier: promote spec discriminations the alphabet collapses, here at the bytecode tier rather than the IR tier.
+
+### XIV.e Where this places the amendment
+
+The amendment does not retract anything from §I through §XIII. It records that the first concrete engagement-tier exercise of the doc's structural claims produced a measurement well within the predicted range, and that the *path to making the measurement applicable to production code* is itself a typed-alphabet-promotion move at the bytecode tier, the same shape as Doc 730 §XIII's IR-tier alphabet promotion.
+
+The corpus claim that JIT complexity is bounded by upstream alphabet impurity now has an empirical instance at one end of the range (trusted-i64, full ceiling reached). The other end of the range (production semantics with type feedback and deopt) is open and is the engagement's next stretch. Both ends compose under the same Doc 730 + Doc 731 framework.
+
+---
+
+*Doc 731 § XIV amendment, 2026-05-20. Jared Foy. jaredfoy.com.*
+
 ---
 
 *Doc 731. Jared Foy. jaredfoy.com.*
