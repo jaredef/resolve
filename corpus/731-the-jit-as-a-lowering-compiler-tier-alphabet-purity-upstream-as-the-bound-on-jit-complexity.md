@@ -235,6 +235,27 @@ This identifies a §XIII alphabet-promotion candidate at the bytecode tier (not 
 
 This is the substrate move that converts the JIT-EXT 4 measurement from a demonstration into production performance. It is also exactly what Doc 730 §XIII promotes the IR alphabet for at the spec-discrimination tier: promote spec discriminations the alphabet collapses, here at the bytecode tier rather than the IR tier.
 
+### XIV.f The equivalence corroboration (JIT-EXT 5 + EXT 6)
+
+Same-day follow-on engagement work completed the loop that §XIV.d named. JIT-EXT 5 (rusty-bun commit `72f335ba`) promotes typed-operand arithmetic primitives at the bytecode tier: `AddI64 / SubI64 / MulI64 / IncI64 / DecI64 / LtI64 / LeI64 / GtI64 / GeI64 / EqI64 / NeI64`. Three tiers updated together: the bytecode alphabet (new ops at 0xF0..0xFA), the interpreter (`unbox_int64` accepts integer-valued `Value::Number`, rejects everything else with TypeError, dispatches as pure-integer arithmetic), and the JIT translator (direct Cranelift `iadd / isub / imul / icmp` lowering, no type assumption at the JIT tier because the alphabet itself encodes the contract).
+
+JIT-EXT 6 (rusty-bun commit `d87dd6f4`) benched the β-path against the cheat-path on the canonical `sum(1_000_000)` workload:
+
+```
+interpreter (plain ops, baseline):       532 ms
+JIT plain ops (i64-cheat):              1.28 ms   (415× speedup)
+JIT typed-i64 ops (β-path, honest):     1.38 ms   (386× speedup)
+Bun (V8-class JIT):                     3.00 ms
+```
+
+The two JIT paths produce **structurally identical Cranelift IR**; the ~0.1 ms difference is noise at the per-call scale. The β-path costs nothing in performance versus the cheat path. Both reach the same trusted-i64 ceiling.
+
+**The corroboration this completes:** §XIV.d named the bytecode-tier typed-operand alphabet promotion as the structural move that converts the JIT-EXT 4 trusted-i64 ceiling from demonstration into production performance. The empirical reading is that the move is **strictly better than the cheat**: same performance ceiling, plus the typed alphabet also benefits the interpreter (skips ToPrimitive dispatch when typed ops are dispatched), plus the JIT verifier inherits a safe contract from the alphabet, plus no JIT-side cheating to maintain.
+
+The structural choice between "JIT cheats and treats every Value as i64" and "alphabet carries the typed discrimination and JIT lowers honestly" is **purely an architectural-cleanliness question, not a performance trade-off**. Doc 731 §VII R4's "selective ICs at P4 sites only" thereby becomes: selective ICs at P4 sites only, AND typed-alphabet promotion at every site where the type assumption is provable. The two compose.
+
+What remains open is the type-inference pass at the bytecode-compiler tier (the JIT-EXT 7 substrate) that emits typed-i64 ops automatically when operand types are statically or profile-provably constant. With that, real JavaScript code compiled by cruftless's standard pipeline gets the β-path speedup without hand-construction. The corpus claim survives or falsifies at that stretch's measurement.
+
 ### XIV.e Where this places the amendment
 
 The amendment does not retract anything from §I through §XIII. It records that the first concrete engagement-tier exercise of the doc's structural claims produced a measurement well within the predicted range, and that the *path to making the measurement applicable to production code* is itself a typed-alphabet-promotion move at the bytecode tier, the same shape as Doc 730 §XIII's IR-tier alphabet promotion.
