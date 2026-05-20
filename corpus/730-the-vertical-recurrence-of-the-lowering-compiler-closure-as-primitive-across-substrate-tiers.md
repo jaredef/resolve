@@ -333,6 +333,74 @@ This is not a refinement that retracts §XII — it is the dual. §XII's diagnos
 
 The §X application to rusty-js-ir at IR-EXT 55 instantiated the lowering-compiler pattern at the IR-as-spec-prose-mirror tier. The §XIII recognition opens the next instantiation: a Tier-1.5 spec-IR resolver-instance whose alphabet carries spec discriminations the prose-mirror tier collapses. The lowering chain becomes spec → spec-IR → IR → Rust → bytecode, with each arrow a P1–P4 resolver-instance and the resolution path legible across the full pipeline.
 
+## XIV. Appendix: the dual deviation-pipeline
+
+§XII observed the diagnostic-legibility property of a P1–P4 resolver-instance pipeline. §XIII named the alphabet-sensitivity of that property and proposed a Tier-1.5 spec-IR to preserve discriminations the prose-mirror IR collapses. §XIII's lift is *additive in the upward direction*: each promotion encodes one more spec-mandated distinction the alphabet can express, moving cruftless toward higher-fidelity ECMA.
+
+This appendix names the dual move: *additive in the downward direction*. Engagement evidence (rusty-js-ir IR-EXT 84–89, recorded 2026-05-20) showed that a sequence of strict spec-correctness improvements (+242 test262 wins) produced a slight regression in load-and-shape parity against Bun on a top500 ecosystem-package basket (cruftless 78.8% → 78.3%, 11 packages newly failing where Bun continues to accept them, 0 newly passing). The §XII–XIII pipeline correctly drives spec conformance up; it does not, by construction, track the deviation-tolerance that production engines (Bun, V8, Node, JavaScriptCore) have absorbed over years of ecosystem integration. Real-world JS code depends on those tolerances; a stricter-than-Bun engine catches genuine bugs but is also unloadable for many packages whose authors never noticed they were depending on the deviation.
+
+The structural recognition: a resolver-instance pipeline can encode *what the spec requires* and *what real code requires that the spec doesn't*, and both alphabets can satisfy P1–P4 independently. The two alphabets are duals — one names spec discriminations that the prose under-articulates; the other names ecosystem-deviation patterns that the spec forbids but production engines silently absorb.
+
+### XIV.a The recognition
+
+§XIII gave cruftless a Tier-1.5 spec-IR whose alphabet's role is to preserve discriminations the spec carries but the prose-mirror IR collapses. Each §XIII promotion (Expr::SpecGet, Expr::GetMethod, the apply_proxy_*_invariant family) lifted one spec verb into a typed primitive at the verifier-time discrimination boundary. Test262 conformance rose monotonically.
+
+In the same engagement, package-load parity against Bun fell. The 11 newly-failing packages share a shape: each depends on a behavior the spec forbids but Bun accepts. Two sub-shapes surfaced:
+
+1. **Function-shape-without-callable** (e.g., `module.exports = obj` where obj has `length`/`name` properties typical of functions but isn't callable; a §10.5.8 Proxy.get-trap-returning-an-uninvocable-value path). Spec rejects, EXT 85's GetMethod throws "$1 is not a function." Bun accepts and continues.
+
+2. **Mutable-config-after-freeze** (e.g., a Proxy.get-trap returning a value that differs from the non-configurable non-writable target's stored value; §10.5.8 step 10 TypeError post EXT 88). Spec rejects, EXT 88's apply_proxy_get_invariant throws. Bun accepts.
+
+These are not cruftless bugs. They are *strict spec rejections of code that is in production and whose authors did not notice they were depending on Bun's tolerance*. Catching them is engagement-positive in the §XII / §XIII sense (spec conformance up). It is engagement-negative in the parity-with-Bun sense (load-rate down).
+
+### XIV.b The formalization
+
+A *deviation alphabet* is a resolver-instance whose typed primitives name recurring ecosystem-deviation patterns — patterns that the spec forbids and a strict-spec implementation rejects, but that real-world code in production depends on. Each deviation primitive carries:
+
+1. **Pattern** — the precise spec-step site where the deviation surfaces (e.g., "§10.5.8 step 10: non-configurable non-writable target data property + Proxy.get trap result differs").
+2. **Strict rejection** — the TypeError / RangeError / SyntaxError the spec mandates at that site.
+3. **Tolerant lowering** — the alternative behavior the deviation absorbs (e.g., silently use the trap result and continue).
+4. **Diagnostic** — a structured surface naming the deviation, the file:line of the dependent code, and the spec section the code violates, so library authors can fix upstream without re-introducing the runtime cost of re-discovery.
+
+A deviation-alphabet tier is a P1–P4 resolver-instance: each typed primitive is observable at its boundary (P1), the choice of which deviation applies is stage-deterministic (P2), the verifier checks invariants of the deviation itself — e.g., that a deviation's tolerant lowering remains a sound continuation of execution rather than open-ended undefined behavior (P3), and implementation freedom for the lowering remains intact (P4). The same diagnostic-legibility property §XII names for the spec pipeline transfers: a divergence between a package's expected behavior and its actual behavior under a deviation lowering becomes locatable because the trace explicitly names *which deviation applies at which step*.
+
+The dual structure clarifies a question §XIII left implicit. §XIII observed that an alphabet at the lower resolution-tier collapses spec discriminations the upper tier carries, and the remedy is alphabet promotion. §XIV observes that an alphabet at the upper resolution-tier (the spec text itself) under-models the deviations the lower tier (running ecosystem) depends on, and the remedy is alphabet *extension* — additive primitives that the spec does not name but the ecosystem requires.
+
+### XIV.c Mode-switched vs per-deviation-opt-in
+
+Production JS engines distribute deviation handling differently along this axis:
+
+- **V8 / Node / SpiderMonkey** ship a single global discriminator (strict mode vs sloppy mode, plus implicit-host-bound deviations like `globalThis` extensions). Coarse: one flag drains a large bundle of deviations.
+- **JavaScriptCore** distributes per-feature host-bound flags, finer than V8.
+- **Bun** appears to absorb most deviations silently and at parser/loader time; not exposed as per-deviation opt-in.
+
+The lowering-compiler pattern §III–V proposes the finest-grained shape: *per-deviation opt-in*. Each deviation is its own typed primitive at the deviation-tier alphabet; the consumer (or a project manifest, or a per-import directive) selects which deviations apply. The engine ships strict-by-default; a consumer that needs a deviation declares it explicitly.
+
+Per-deviation opt-in preserves §XIII's targeting heuristic at the deviation tier: the next deviation to absorb is whichever the consumer base most depends on, and the alphabet grows by promoting those one at a time. Mode-switched, by contrast, collapses every deviation into one undifferentiated bucket and forecloses the discrimination.
+
+The cruftless engagement has tested both modes implicitly. The strict-by-default-with-no-tolerance shape is what EXT 84–89 produced; the result is the +242 test262 wins / 11 parity regressions outcome documented in the trajectory. A per-deviation opt-in shape would let the same engine load the 11 regressed packages (each one declaring the specific deviation it needs) while preserving the strict-spec correctness for the other 999.
+
+### XIV.d Application: the §XIV targeting heuristic
+
+If §XII's heuristic is "lift the most widely-shared coercion/dispatch paths" and §XIII's is "promote the most-frequently-collapsed spec discriminations to typed primitives", then §XIV's heuristic is *promote the most-frequently-tolerated ecosystem deviations to typed primitives at the deviation tier*. The targeting input is the corpus of packages a consumer needs to load; the output is the deviation alphabet sized to that consumer's actual dependency surface.
+
+cruftless's 11 EXT 84–89 regressions are the seed data for the first row of the deviation alphabet. Each row would name one deviation Bun absorbs, alongside the strict-spec site it violates. A consumer that needs to load these 11 packages would opt into 2–3 deviation primitives (the function-shape-without-callable family + the mutable-config-after-freeze family + perhaps a module-loader-conditional-export shim).
+
+### XIV.e Where this places the recognition
+
+§XII names diagnostic legibility as the consequence of a P1–P4 resolver-instance pipeline. §XIII names alphabet-completeness as the precondition for §XII at any given tier, and the Tier-1.5 spec-IR as the upward-additive remedy when a tier's alphabet collapses spec discriminations. §XIV names the dual downward-additive remedy: a deviation-tier alphabet whose role is to preserve ecosystem-deviation patterns that the spec forbids but production code depends on.
+
+Together §XII–§XIV describe a self-extending pipeline along both axes:
+
+- **Upward** (toward the spec): §XIII alphabet promotions encode one more discrimination the spec carries.
+- **Downward** (toward the running ecosystem): §XIV deviation primitives encode one more tolerance the production ecosystem requires.
+
+The pipeline's diagnostic-legibility property holds across both axes when both alphabets satisfy P1–P4. The structural symmetry — one tier names what the spec requires, the other names what real code requires the spec doesn't — is the dual the §III–V lowering-compiler pattern admits when run in both directions.
+
+A consequence the cruftless engagement makes concrete: spec conformance and ecosystem-load parity are *not* the same metric and *can move in opposite directions* under a strict-spec-only investment strategy. A high-fidelity ECMA engine is one half of a full production runtime; the other half is the deviation alphabet sized to the consumer base. Neither half is reducible to the other; both are first-class corpus contributions in the §III–V lowering-compiler tradition.
+
+This recognition stands on top of §XII–§XIII rather than retracting them. §XIII opens the upward direction of alphabet growth; §XIV opens the downward direction. Together they map the two-axis self-extension of the lowering-compiler pipeline.
+
 ---
 
 *Doc 730. Jared Foy. jaredfoy.com.*
