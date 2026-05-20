@@ -401,6 +401,77 @@ A consequence the cruftless engagement makes concrete: spec conformance and ecos
 
 This recognition stands on top of §XII–§XIII rather than retracting them. §XIII opens the upward direction of alphabet growth; §XIV opens the downward direction. Together they map the two-axis self-extension of the lowering-compiler pipeline.
 
+## XV. Appendix: the co-evolution requirement and constraint-comprehension contract
+
+§XIII formalizes the upward-additive lift (spec-discrimination alphabet); §XIV formalizes the downward-additive dual (deviation-tier alphabet). Engagement evidence (rusty-js-ir IR-EXT 90, recorded 2026-05-20) demonstrated the §XIV pipeline empirically: one deviation primitive (`function-not-constructor-relax`) recovered 8 of 11 EXT 84–89 parity regressions while preserving strict-spec correctness on the other ~1015 packages. The recovery was clean. The recovery was also unsafe in a way that the §XIV formalization, as drafted, does not address.
+
+This appendix names the safety property §XIV requires, the §XIII–§XIV co-evolution structure that satisfies it, and the *protected-invariants* field each deviation primitive must carry to make the deviation auditable.
+
+### XV.a The recognition
+
+A deviation primitive D relaxes a strict-spec rule R. R was placed in the spec by TC39 for a reason — to protect some invariant I such that violating R causes I to fail. Enabling D bypasses R, which means I is no longer protected. The deviation is "safe to enable" iff one of two conditions holds:
+
+1. I is not load-bearing for any code that runs under the deviation, OR
+2. The deviation's tolerant lowering reconstructs I by some other mechanism.
+
+The cruftless engagement landed `function-not-constructor-relax` and observed 8-of-11 recovery. What it did NOT do: enumerate the invariants that the [[Construct]] enforcement (§10.3.3, EvaluateNew step 7) protects. There is at least one: a non-constructor invoked with `new` may execute `this.X = …` assignments that silently write into a fresh ordinary Object the caller never sees, instead of throwing the TypeError the caller would have caught. Enabling the deviation across an entire package's dependency tree silently absorbs every such write site, producing a class of "the program loaded fine but its state is wrong" bugs that are vastly harder to diagnose than the original "TypeError on load" surface.
+
+The deviation is locally safe (we know what TypeError it skips) and globally unsafe (we don't know what invariants depend on that TypeError still firing inside library internals). This is the cost paid for the +8-recovery yield: every newly-loaded package now carries an unspecified set of invariant violations that the strict rejection was preventing.
+
+§XIV as drafted does not require a deviation primitive to enumerate what it absorbs. §XV closes that gap.
+
+### XV.b The co-evolution requirement
+
+§XIII and §XIV are not independent additions; they are co-evolutionary. Two failure modes follow from treating either as standalone:
+
+**§XIV without §XIII** — each deviation is a load-bearing-or-not coin flip. The deviation pipeline reports "8 packages now load" while silently absorbing an unknown number of invariant violations. The pipeline's diagnostic-legibility property (§XII) is broken at the deviation tier: the trace shows the deviation firing, but not what it suppressed.
+
+**§XIII without §XIV** — the engine becomes more spec-correct than the ecosystem will accept. Real code stops loading. The pipeline's spec-fidelity is high; the consumer surface for that fidelity is empty. Engagement evidence at EXT 84–89: 78.8% → 78.3% parity, 11 packages newly unloadable.
+
+**§XIII + §XIV together, in parallel co-evolution** — each tier names what the other has left implicit. The §XIV deviation catalog forces §XIII to articulate what each strict-spec rule actually protects. The §XIII discrimination alphabet gives §XIV the vocabulary in which to express protected invariants. Each iteration of one tier surfaces new candidates for the other. The constraint surface becomes fully comprehended over time.
+
+This is the structural symmetry §XIV.e hinted at: the upward direction (spec fidelity) and the downward direction (ecosystem tolerance) co-extend the same constraint surface. Neither half alone reaches the production-runtime telos; both halves in parallel converge on a runtime that is both spec-correct AND ecosystem-loadable AND constraint-comprehended.
+
+### XV.c The constraint-comprehension contract
+
+Each deviation primitive D carried at the §XIV alphabet must enumerate, alongside its (pattern, strict_rejection, tolerant_lowering, diagnostic) fields, a fifth field:
+
+5. **protected_invariants** — the set of invariants I_1, I_2, … that the strict_rejection enforces, named at the §XIII discrimination tier. Each I_k is either:
+   - A spec-named invariant (e.g., "§10.3.3: a non-constructor's body assumes `this` is bound by the caller, not freshly allocated"), reachable as a typed primitive at the spec-discrimination alphabet, OR
+   - An explicit "unknown" marker, recording that the engagement has not yet articulated what R protects. An unknown marker forbids enabling the deviation in any consumer context without explicit waiver.
+
+A deviation is *constraint-comprehended* iff every protected_invariant is either a typed primitive at the §XIII tier OR marked "unknown — auditor-waived" with a referenced engagement record. The pipeline's safety property holds iff the deviations the consumer enables are all constraint-comprehended.
+
+cruftless's first §XIV deviation (`function-not-constructor-relax`) is not yet constraint-comprehended. It carries an implicit protected_invariants list of at least:
+- "non-constructor's `this`-write assumptions" (the spec's reason for §10.3.3).
+- "callers depending on TypeError-on-new-of-non-constructor as a runtime type-check" (the ergonomic invariant the rejection enforces in idiomatic JS).
+
+Both are currently absent from the EXT 90 primitive. Closing the EXT 90 deviation under §XV requires either (a) lifting both to typed primitives at the §XIII tier, OR (b) waiving them explicitly in the engagement record (trajectory.md) with the consumer-impact analysis the waiver documents.
+
+### XV.d The targeting heuristic
+
+§XII targets coercion/dispatch path lifts (highest discovery-cost reduction per lift).
+§XIII targets alphabet promotions for spec discriminations the prose-mirror tier collapses (highest verifier-time-discrimination gain per promotion).
+§XIV targets deviation primitives for ecosystem-tolerated patterns (highest parity-recovery per primitive).
+§XV targets *protected-invariant articulations* — given a deviation candidate D, the highest-yield next §XIII promotion is whichever invariant in D's protected_invariants list has the most cross-cutting impact when typed.
+
+The four heuristics nest. §XV's heuristic operates on §XIV's deviation candidates and produces §XIII work items. Each iteration of §XV's loop closes one (deviation, invariant) pair as constraint-comprehended; the deviation graduates from "unsafe to enable" to "safe to enable in consumer surfaces that don't rely on the invariant."
+
+### XV.e Where this places the recognition
+
+§XII opens the diagnostic-legibility property of a P1–P4 pipeline. §XIII opens the upward alphabet axis (spec discriminations). §XIV opens the downward alphabet axis (ecosystem deviations). §XV closes the loop by requiring that the two axes co-evolve under a constraint-comprehension contract: each deviation primitive carries the invariants it absorbs; each invariant is either typed at the §XIII tier or explicitly waived.
+
+The pipeline thereby achieves three properties together:
+
+1. **Diagnostic legibility** (§XII): trace shows where execution diverges from intent.
+2. **Spec fidelity** (§XIII): every spec discrimination preserved as a typed primitive.
+3. **Ecosystem loadability** (§XIV): every recurring tolerance available as an opt-in.
+4. **Constraint comprehension** (§XV): every tolerance enumerates what it absorbs.
+
+The combined property is what production-runtime telos requires. A high-fidelity ECMA engine without §XIV is unloadable; with §XIV but without §XV, it loads but silently absorbs invariant violations. With §XIII + §XIV + §XV, it loads, comprehends what it absorbed, and surfaces the absorbed-invariant catalog as auditable signal.
+
+This places §XV not as an extension of §XIV but as the *closure* of the two-axis pipeline — the property that makes the two axes safe to co-evolve. Doc 730 §III–V articulated the lowering-compiler pattern. §XII–§XV articulates the *constraint-comprehended pipeline* that the pattern generates when run in both directions under a co-evolution contract.
+
 ---
 
 *Doc 730. Jared Foy. jaredfoy.com.*
