@@ -472,6 +472,117 @@ The combined property is what production-runtime telos requires. A high-fidelity
 
 This places §XV not as an extension of §XIV but as the *closure* of the two-axis pipeline — the property that makes the two axes safe to co-evolve. Doc 730 §III–V articulated the lowering-compiler pattern. §XII–§XV articulates the *constraint-comprehended pipeline* that the pattern generates when run in both directions under a co-evolution contract.
 
+## XVI. Appendix: bidirectional engine-diff as the deviation-pipeline's empirical instrument
+
+§XII through §XV described a self-extending pipeline along two axes: upward (spec discriminations promoted to typed primitives at §XIII) and downward (ecosystem tolerances promoted to typed primitives at §XIV with §XV protected-invariant audits). The pipeline's discipline named what to do at each tier. It did not formalize the empirical instrument that distinguishes, at a localized divergence between two engines, which of the following four substrate-move cases applies. Without that instrument, the §XIV deviation alphabet risks absorbing engine bugs disguised as deviations, the §XIII alphabet risks chasing ghosts that are really ecosystem tolerances, and the §XV constraint-comprehension contract has no executable check.
+
+This appendix names the instrument: **bidirectional engine-diff probing**, the apparatus that compares two engines' execution at a localized divergence point and reads which side carries the spec-correct behavior. The instrument is a direct instance of bidirectional Pin-Art (per [Doc 691](/resolve/doc/691-the-polytopal-feature-and-the-pin-art-bidirection)) and of seam-detection operationalized at the engine-pair boundary rather than the intra-engine boundary (per [Doc 705](/resolve/doc/705-pin-art-operationalized-for-intra-architectural-seam-detection)). The rusty-bun engagement-tier application on 2026-05-20 (arktype loading trace, EXT 21 stretch) made the operational shape concrete and supplied the worked example below.
+
+### XVI.a The recognition
+
+In the deviation-pipeline framing of §XIV, a divergence between two engines at a localized program point has four possible structural shapes:
+
+1. **Engine A is spec-correct, engine B violates the spec.** The divergence is a B-bug. Substrate move: §XII coercion / dispatch lift on B, or §XIII alphabet promotion if B's alphabet collapsed a spec discrimination. No deviation primitive applies.
+
+2. **Engine A violates the spec by absorbing a tolerance, engine B is spec-strict.** The divergence is a B-rejection of code that A's ecosystem depends on. Substrate move: introduce a §XIV deviation primitive on B with the §XV protected-invariants list naming what the absorption costs.
+
+3. **Both engines diverge from the spec in different directions.** Each engine has its own deviation alphabet; the divergence at this point is the intersection of their respective absorbed-tolerance and rejected-strictness sets.
+
+4. **Both engines conform to the spec; the divergence is below the spec-mandated discrimination.** Implementation freedom (per the lowering-compiler P4 sub-property) admits this case. No substrate move; both behaviors are admissible.
+
+The §XIV pipeline as drafted presumes case (2) when the surface shape is "B fails, A succeeds." But cases (1), (3), and (4) are equally plausible without an empirical check. The check is the bidirectional engine-diff probe.
+
+### XVI.b The apparatus discipline
+
+The probe operates in five steps.
+
+First, **localize the divergence point**. Run both engines on identical input until they diverge in observable behavior. Bisect until the smallest program point at which they differ is identified, typically a specific function invocation, property access, or method dispatch.
+
+Second, **instrument both engines at the divergence point**. Add identical user-level logging (in JavaScript, in Rust, in whatever surface language sits above the engine) that captures the state visible to user code immediately before the divergence: receiver shape, argument types, intermediate computations.
+
+Third, **read the divergence**. Engines that produce different state at this point are exhibiting different semantics. The diff itself is the diagnostic.
+
+Fourth, **compare each side against the spec**. The spec section governing the operation is the third reference frame. Both engine outputs are evaluated against it.
+
+Fifth, **categorize per cases (1)–(4) above**. The categorization determines whether the next substrate move is §XII (coercion / dispatch lift), §XIII (alphabet promotion), §XIV (deviation primitive with §XV audit), or no-op (case 4).
+
+The bidirectionality is structural per Doc 691: each engine is in turn the **detection-direction probe** (reading what the other engine's execution contains at the divergence) and the **composition-direction reference** (the standard against which the other is compared). Neither engine is privileged. The spec is the privileged reference; the engines provide two independent observations of how that spec is realized.
+
+### XVI.c The session as worked example
+
+The rusty-bun session of 2026-05-20 operated this instrument on arktype's loading failure under cruftless. The trace started with the surface symptom and ended with a localized substrate move.
+
+**Surface**: arktype's parity-probe failed with `Cannot read property 'parseDefinition' of undefined` at `@ark/schema/out/node.js:216:39` inside an `equals()` method. The initial framing treated this as a §XIV candidate, presuming Bun was absorbing a deviation cruftless was rejecting.
+
+**Probe construction**: every `equals()` call in `@ark/schema/out/node.js` was instrumented with identical JavaScript logging under both engines, capturing per-call state (`this.kind`, `r.kind`, `this === r`, `'$' in this`).
+
+**Divergence read**:
+- Bun: 2154 equals calls during arktype load. Calls 1 through 45 had specific instance-shape state (`this.kind` was "union", "domain", or "unit"; `'$' in this` was true).
+- Cruftless: 46 equals calls before failure. Calls 1 through 45 were byte-identical to Bun. Call #46 exhibited `this === r === Class.prototype`, no `$` in own properties.
+
+**Spec comparison**: Bun's call #46 computed a domain-node instance at the receiver. Cruftless's call #46 computed a class prototype reference. Both engines reached call #46 via identical control flow. The spec section governing the immediate operation (ECMA-262 §13.3.7.3 MakeSuperPropertyReference + §10.1.7.2 OrdinaryGet) mandated the receiver to be the calling method's `this` binding, not the super-base. Bun conformed; cruftless violated.
+
+**Categorization**: case (1). Cruftless violates the spec; Bun is spec-correct. The divergence is a cruftless bug, not a deviation Bun is absorbing.
+
+**Upstream root**: traced via further instrumentation to arktype's `@ark/schema/out/roots/root.js:21`:
+
+```js
+get rawIn() {
+    return super.rawIn;
+}
+```
+
+Cruftless's super.X dispatch was invoking the inherited getter with `this = super-base prototype` rather than `this = the original instance`. The BaseNode getter then cached the prototype as `rawIn`'s value on the prototype itself via `cacheGetter`, leaking the proto-as-this state through every subsequent `branch.rawIn` access.
+
+**Substrate**: `Ω.5.P03.E2.super-get-this` (commit `16ff1f56`) introduced `__super_get(this_val, super_base, key)` as a runtime helper that walks `super_base`'s chain and invokes any found getter with `this = this_val`. The bytecode compiler emits this helper call instead of the previous `LoadIdent <super.proto>; GetProp X` sequence. No §XIV deviation; no §XV protected-invariants enumeration; the deviation framing was falsified at the probe step. A pure §XII coercion / dispatch lift at the engine substrate.
+
+The instrument's operational value: it converted what could have been a multi-hour speculative "is this a deviation or a bug?" discussion into a roughly twenty-minute "the engines diverge here; cruftless is wrong; here is the spec section" determination.
+
+### XVI.d The corpus-tier articulation
+
+The instrument is not specific to JavaScript engines. It generalizes to any pair of substrate-implementations of a shared spec: compilers of the same source language, runtimes targeting the same instruction set architecture, parsers of the same protocol, schedulers of the same task model. The probe procedure (localize divergence, instrument both, read the diff, compare each side against the spec, categorize) operates identically in each case.
+
+The corpus already named the mechanism (Doc 691's bidirectional Pin-Art: detection and composition as duals operating on the same surface) and the operational shape at intra-engine seams (Doc 705's seam-detection: Pin-Art probing applied to identify architectural decomposition boundaries). What §XVI adds is the **engine-pair-boundary instance** of the same apparatus, and its specific role within the deviation-resolution pipeline of §XII–§XV. The instrument is what makes the pipeline empirically grounded rather than only specification-grounded.
+
+The seam-detection apparatus (Doc 705) and the engine-diff probe (this section) are the same instrument operating at different scales. Doc 705 names intra-system seams (the boundaries that decompose a single system's constraint catalog into its real architectural forms). §XVI names inter-system seams (the boundaries that decompose the spec-vs-implementations relationship into spec-correctness, ecosystem-tolerance, and implementation-freedom regions). Both operate by reading the joint pattern of probe-positions across many local observations.
+
+### XVI.e Why this is load-bearing for the pipeline
+
+The §XV constraint-comprehension contract requires every §XIV deviation to enumerate `protected_invariants`. The enumeration is auditable only against a reference standard. Without bidirectional engine-diff probing, the reference is the spec text alone, and the spec is intentionally under-articulated about what ecosystem implementations tolerate (per §XIV, that under-articulation is precisely what the deviation alphabet exists to fill). Engine-diff probing supplies a second reference: the executable spec as a chosen reference engine implements it. The `protected_invariants` list then becomes auditable as "what invariant does cruftless protect that Bun does not?" or "what invariant does Bun protect that V8 does not?" at the level of executable behavior on probe inputs.
+
+Without the probe, the §XIV alphabet is a list of patterns with §XV invariants enumerated against the spec text only. With the probe, each invariant entry can be corroborated empirically by running both engines on a probe input that tests the invariant and reading whether the invariant holds in each. The probe is the empirical surface the §XV contract requires.
+
+A related consequence: the probe rules out two failure modes the §XV contract alone cannot detect. The first is the engine-bug-as-deviation mistake (case 1 misread as case 2), in which the engagement introduces a §XIV primitive that silently masks a real spec violation. The second is the ghost-discrimination mistake, in which a §XIII alphabet promotion is undertaken to "fix" a divergence that is in fact implementation freedom (case 4). The probe distinguishes both failure modes from their non-failing siblings.
+
+### XVI.f Successor questions
+
+Three corpus-tier questions extend this articulation.
+
+**(Q1) What is the catalog shape of engine-diff probes across the JavaScript ecosystem?** Bun vs cruftless is one pair. V8 vs Bun, V8 vs JSC, JSC vs SM, SM vs Bun, Bun vs Deno: each pair has its own intersection of absorbed-tolerance and rejected-strictness sets. The pairwise diff lattice is a successor-engagement question. Doc 715's consumer-substrate dependency graph is the structural object the lattice would be a sub-projection of.
+
+**(Q2) Does the instrument apply at the GC tier, the JIT tier, the parser tier?** Each is a P1–P4 resolver-instance per Doc 730 §IV and (for the JIT) [Doc 731](/resolve/doc/731-the-jit-as-a-lowering-compiler-tier-alphabet-purity-upstream-as-the-bound-on-jit-complexity). A GC implementation diff between two engines is structurally peer with a JS-semantics diff. The instrument's vertical recurrence across substrate tiers is a falsifiable claim of this articulation, testable by trying the probe at each tier and observing whether the four-case categorization still applies.
+
+**(Q3) Can engine-diff probes be automated as a standing operational pipeline?** The 2026-05-20 session operated the probe manually: hand-written instrumentation, manual comparison, ad-hoc trace inspection. A pipeline that systematically samples the spec surface by running two engines on test262-class inputs and reading the diff at each divergence would be the standing operational form. The probe at scale is a §XIV alphabet-discovery instrument: it would surface every Bun-deviation cruftless has not yet absorbed (downward axis) and every spec-correctness gap in cruftless that Bun closes (upward axis), continuously, across each test262 sweep. The §XV protected-invariants enumeration would become a generated artifact rather than a hand-curated list.
+
+### XVI.g Where this places the recognition
+
+§XII opened the diagnostic-legibility property of a P1–P4 resolver-instance pipeline. §XIII added the upward alphabet axis (spec discriminations). §XIV added the downward alphabet axis (ecosystem deviations). §XV closed the loop with the constraint-comprehension contract that requires every deviation to enumerate what it absorbs. §XVI names the **empirical instrument** that makes the contract executable: bidirectional engine-diff probing, the apparatus that distinguishes the four substrate-move cases at each localized divergence.
+
+The instrument's mechanism was named at Doc 691 (bidirectional Pin-Art). Its operational form was named at Doc 705 (seam-detection at the intra-architectural scale). What §XVI adds is the role within the deviation-resolution pipeline at the engine-pair scale: the instrument is what converts §XIV from a hand-curated catalog of suspected deviations into an empirically-grounded alphabet whose entries are each corroborated against a reference engine.
+
+The full pipeline now has six co-evolutionary properties:
+
+1. **Diagnostic legibility** (§XII): the trace shows where execution diverges from intent.
+2. **Spec fidelity** (§XIII): every spec discrimination preserved as a typed primitive.
+3. **Ecosystem loadability** (§XIV): every recurring tolerance available as an opt-in primitive.
+4. **Constraint comprehension** (§XV): every tolerance enumerates the invariants it absorbs.
+5. **Empirical groundedness** (§XVI): every §XIII and §XIV primitive corroborated against a reference engine's behavior at the relevant divergence point.
+6. **Bidirectional self-extension**: the pipeline grows along both axes, validated at each step by the empirical instrument.
+
+Production-runtime telos requires all six. A high-fidelity engine without the §XVI instrument cannot empirically distinguish its own bugs from the ecosystem's deviations; without that distinction, the §XIV alphabet absorbs noise and the §XIII alphabet chases ghosts. With the instrument, each substrate move is empirically grounded at the engine-pair boundary, and the constraint-comprehension contract has an executable second reference against which to audit every absorbed invariant.
+
+The rusty-bun engagement's 2026-05-20 trace is the first worked instance of the instrument operating inside the deviation-resolution pipeline. The corpus contribution is the recognition that the pipeline's §XII–§XV discipline becomes executable only when §XVI's empirical instrument is in place. Further engagements at the JavaScript-engine tier, the GC tier, the JIT tier, the parser tier, or any other P1–P4 substrate boundary should expect to operate this instrument as a first move when a divergence surfaces, before any substrate move is named.
+
 ---
 
 *Doc 730. Jared Foy. jaredfoy.com.*
