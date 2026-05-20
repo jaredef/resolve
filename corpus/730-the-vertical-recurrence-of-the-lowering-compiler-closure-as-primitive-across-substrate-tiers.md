@@ -276,6 +276,63 @@ This recognition stands on top of, not in place of, Doc 729's articulation of re
 
 The targeting heuristic of §XII.c is the engagement's actionable form of this recognition. Operating any engagement at a substrate tier whose tier-N+1 resolver-instances satisfy P1-P4, the most productive next move is whichever lift makes one more stage of the resolution path legible. The pipeline pays back the lift cost by reducing discovery-cost for all subsequent gaps downstream of the now-legible stage.
 
+## XIII. Appendix: higher-resolution IR
+
+§XII names the resolution-pipeline dynamic: when a tier's resolver-instance satisfies P1–P4, the pipeline becomes its own diagnostic and divergences downstream of the tier become locatable through its trace. The §XII targeting heuristic follows: lift the most widely-shared coercion and dispatch paths to make one more stage legible. The IR-EXT 56–72 arc made this targeting heuristic actionable; the IR-EXT 73–81 stretch on rusty-js-ir surfaced a *limit* on the heuristic that §XII does not, by itself, name.
+
+### XIII.a The recognition
+
+After the high-yield lifts of EXT 56–71, a residue of spec-conformance bugs remained where the resolution path *was* legible at the IR tier — the IR section read 1:1 against the spec, the lowering compiler emitted Rust whose control flow matched the spec steps, the verifier passed — and yet the lowered code diverged from the spec at a discrimination the IR did not carry. Five instances at EXT 73–81 share this shape.
+
+**1. EXT 72b — Type(input) is Object.** §7.1.1 ToPrimitive step 1 reads "If Type(input) is not Object, return input." The IR section discriminated on `typeof === "object"`. Functions report `typeof === "function"` but are spec-Objects. The IR alphabet had no primitive that distinguished "spec-Object" from "runtime typeof tag"; one IR step silently spanned two runtime cases.
+
+**2. EXT 73 — strict-mode binding.** §10.2.1.2 OrdinaryCallBindThis discriminates on strict-mode of the calling function code. The first attempt applied the coercion universally because the IR (and the bytecode below it) had no carrier for strictness. The fix required plumbing `strict: bool` through `FunctionProto`. One IR step silently spanned two semantic branches.
+
+**3. EXT 78 — ToBigInt vs NumberToBigInt.** §7.1.13 ToBigInt and §21.2.1.1.1 NumberToBigInt are two distinct spec abstract operations with different error classes (TypeError vs RangeError) and different prim→bigint mappings. The IR had a single surface entry for "convert to bigint." One IR step silently spanned two spec abstract ops.
+
+**4. EXT 79c — [[Get]] vs internal-slot read.** §7.3.18 CreateListFromArrayLike reads `length` via [[Get]], which dispatches accessors, Proxy traps, and accessor-throws. The runtime read length via an internal helper that bypassed all three. The IR step "read length" did not distinguish the spec verb "[[Get]]" from the runtime operation "read the length internal slot." One IR step silently spanned two operationally distinct reads.
+
+**5. EXT 81 — [[MapData]] vs [[WeakMapData]].** §24.1.3 and §24.3.3 brand-check on distinct internal slots. The IR had no carrier for internal-slot identity; both Map and WeakMap instances were marked with the same property tag. One IR step silently spanned two spec-distinct objects.
+
+The pattern: the IR's vocabulary is *coarser than the spec's discriminations*. The resolver-instance at the IR tier satisfies P1 (typed primitives), P2 (stage-deterministic), P3 (verifier-before-emission), and P4 (implementation freedom) — but only with respect to its own alphabet. The alphabet itself silently collapses spec entities the spec's algorithm depends on distinguishing.
+
+### XIII.b The formalization
+
+A resolver-instance whose alphabet collapses upstream discriminations imposes those collapses on every consumer of its output. The §XII targeting heuristic — lift coercion/dispatch paths to make resolution legible — does not detect collapses inside the alphabet; it presupposes that the alphabet faithfully encodes the upstream tier's distinctions. When the alphabet collapses, the trace at the resolver-instance is locally consistent (the verifier passes; the lowering succeeds; the IR section reads 1:1 against the spec prose) and globally wrong (the spec's algorithm diverges from the lowered behavior at a step the IR cannot express).
+
+This is a class of bug distinct from those §XII targets. §XII bugs are *trace-visible*: the resolution path through the legible tier shows where execution diverges from expected. XIII bugs are *trace-invisible at the legible tier*: the trace shows the IR step executing exactly as written; the divergence is between what the IR step *can* express and what the spec step *means*.
+
+The recognition: a single legible tier is not sufficient for §XII's diagnostic property. The pipeline acquires its diagnostic property only when each tier's *alphabet* preserves the upstream tier's discriminations. When it does not, the missing discrimination needs its own resolver-instance — a tier interposed between the spec and the IR that explicitly carries the discrimination as a typed primitive. Call this a **higher-resolution IR**: a Tier-1.5 resolver-instance whose alphabet is finer-grained than Tier-1 (the IR-as-spec-prose-mirror) and whose role is to surface spec discriminations that Tier-1's alphabet collapses.
+
+The four §III sub-properties at the higher-resolution tier:
+
+- **P1**: typed primitives that name the previously-collapsed discriminations explicitly. Examples: `SpecType` (Object/Function/Array/NumberData/MapData/WeakMapData…) distinct from runtime typeof; `SpecError` (TypeError/RangeError/SyntaxError taxonomy mapped to RuntimeError variants); `SpecOp` (ToBigInt/ToPrimitive/CreateListFromArrayLike as first-class composition nodes); `[[Get]]` vs `[[ReadInternalSlot]]` as distinct read primitives.
+- **P2**: each Tier-1.5 node is observable at its lowering boundary; a Tier-1 IR step that previously open-coded the discrimination is rewritten as a Tier-1.5 composition.
+- **P3**: the verifier at Tier-1.5 enforces alphabet fidelity — an IR section that uses a coarse Tier-1 primitive where a Tier-1.5 distinction is required becomes a verifier error, surfacing the collapse at IR-edit time rather than at test262-divergence time.
+- **P4**: the lowering from Tier-1.5 to Tier-2 (Rust runtime helpers) preserves the implementation freedom of the runtime tier; multiple lowerings of the same Tier-1.5 node are admissible as long as they preserve the discrimination.
+
+### XIII.c Application: the §XIII targeting heuristic
+
+If §XII's heuristic is *lift the most widely-shared coercion/dispatch paths*, §XIII's heuristic is *promote the most-frequently-collapsed spec discriminations to typed primitives*. The five EXT 73–81 instances each indicate one discrimination worth promoting:
+
+- spec-Object vs runtime typeof (EXT 72b).
+- strict-mode of function code (EXT 73).
+- spec abstract op identity (EXT 78).
+- [[Get]] vs internal-slot read (EXT 79c).
+- internal-slot brand (EXT 81).
+
+The cleanest first move is the [[Get]] vs [[ReadInternalSlot]] split. The spec explicitly uses different fonts (typewriter for internal methods, double-bracket for internal slots); the discrimination is already formalized in the spec text. The Tier-1.5 promotion is: a `RefRead` IR node parameterized on `kind: GetMethod | InternalSlot`, where `GetMethod` lowers to a path that invokes inherited accessors and Proxy traps, and `InternalSlot` lowers to a direct field read. The verifier rejects any IR section whose spec step text says "Let len be Get(arrayLike, 'length')" but whose IR uses the `InternalSlot` kind. A substrate audit of the current `generated.rs` names every site that needs the discrimination; EXT 79c was one such site discovered by test failure rather than by audit.
+
+Each subsequent discrimination follows the same shape: name the spec distinction the alphabet currently collapses, introduce the Tier-1.5 primitive that carries it, rewrite the affected Tier-1 IR sections to use the primitive, let the verifier surface remaining collapse-sites. The payoff is the same as §XII's: discovery-cost drops from "find the divergence inside the helper" to "audit which IR sites use the coarse primitive where the fine one is needed."
+
+### XIII.d Where this places the recognition
+
+§XII observed that a pipeline of resolver-instances satisfying P1–P4 acquires diagnostic legibility — the pipeline becomes its own diagnostic for trace-visible bugs. §XIII observes that this property is *alphabet-sensitive*: when an alphabet collapses spec discriminations, a class of bug becomes trace-invisible at the tier whose alphabet is too coarse. The remedy is a higher-resolution resolver-instance whose alphabet preserves the discriminations the previous tier collapsed.
+
+This is not a refinement that retracts §XII — it is the dual. §XII's diagnostic property holds whenever the alphabet is faithful; §XIII names what to do when it is not. Together they describe a self-extending pipeline: trace-visible bugs surface where the resolution path is legible (§XII), and trace-invisible bugs surface as candidates for alphabet promotion at the next higher resolution (§XIII). Each promotion makes one more class of discrimination expressible and thereby restores §XII's diagnostic property over a larger fraction of the spec.
+
+The §X application to rusty-js-ir at IR-EXT 55 instantiated the lowering-compiler pattern at the IR-as-spec-prose-mirror tier. The §XIII recognition opens the next instantiation: a Tier-1.5 spec-IR resolver-instance whose alphabet carries spec discriminations the prose-mirror tier collapses. The lowering chain becomes spec → spec-IR → IR → Rust → bytecode, with each arrow a P1–P4 resolver-instance and the resolution path legible across the full pipeline.
+
 ---
 
 *Doc 730. Jared Foy. jaredfoy.com.*
