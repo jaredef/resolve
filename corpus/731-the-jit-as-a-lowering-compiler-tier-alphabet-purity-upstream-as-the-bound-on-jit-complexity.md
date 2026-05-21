@@ -329,4 +329,80 @@ The engagement's WC-EXT 3+ rounds are the empirical exercise of this section. Th
 
 ---
 
+## XV.g Amendment: the build-time vs first-use-init distinction
+
+*A refinement to §XV.c surfaced by WC-EXT 4 (2026-05-21, commit `abec4d8f`) and articulated against the keeper's conjecture that the pattern will recur across the optimization-tier instances §XV.e Pred-731.XV.1 names.*
+
+### XV.g.a The observation
+
+§XV.c claims: "more upstream alphabet purity → JIT-tier decisions move from runtime to compile time." WC-EXT 4 implemented exactly that for the §XV.c canonical instance — the precomputed table of `[2^i·G for i in 0..256]` for the ECDSA-P-256 base point — using `std::sync::OnceLock` to defer the table's computation to first use.
+
+Empirical result: the fixture-test verify time *increased* from 0.29 seconds (WC-EXT 3 Jacobian-only) to 2.85 seconds (Jacobian + lazily-initialized comb table). The table's first-use initialization required 255 affine point doublings, each ~12 milliseconds on the engagement's Pi target, totaling ~3 seconds — far exceeding the per-call savings on a workload that performs ~3 verifies per process lifetime (a typical TLS handshake).
+
+The §XV.c structural claim is correct: the precomputation IS admissible because the alphabet at this tier is pure (curve generator G is known statically). What §XV.c failed to distinguish is *when* the "compile-time" precomputation actually runs.
+
+### XV.g.b The distinction
+
+Three distinct precomputation regimes inhabit the "compile-time" pole §XV.c collapsed into one:
+
+**Regime 1 — Build-time bake.** The precomputed artifact is produced before the binary is shipped (by `build.rs`, by a one-shot offline script that commits its output as source, by a metaprogramming macro that evaluates at compile time). The artifact arrives at runtime as a `const` or `static` baked into the binary's `.rodata`. Runtime cost: zero. The §XV.c claim holds without qualification.
+
+**Regime 2 — First-use init (lazy).** The precomputed artifact is computed by the running process on first need (`std::sync::OnceLock`, `lazy_static!`, init-on-first-call patterns). Runtime cost: the first call pays the full computation cost; subsequent calls amortize. The §XV.c claim holds only when the call count per process exceeds the break-even point.
+
+**Regime 3 — Per-call computation.** The "precomputed" form is recomputed every call (no caching). The §XV.c claim does not hold; this is structurally the same as the unoptimized path.
+
+§XV.c's prose treated Regime 1 and Regime 2 as interchangeable. They are not. The break-even count for Regime 2 to win over the unoptimized path depends on the ratio of init cost to per-call savings; for some workloads the break-even is in the single digits and Regime 2 suffices; for others (the WC-EXT 4 case) the break-even is in the tens or hundreds and Regime 2 is a net loss against the realistic call count.
+
+### XV.g.c The substrate-tier implication
+
+The choice between regimes is itself a substrate-tier decision the optimization workstream must make explicit. The decision criterion is empirical: measure the unoptimized cost, the per-call savings of Regime 2, the init cost, and the realistic per-process call count. The regime that minimizes total wallclock for the workload at hand is the correct one.
+
+This decision is not present at the §XII/§XIII/§XIV tiers Doc 730 articulates, because those tiers operate at the bytecode-to-machine-code or alphabet-promotion scale where the optimization artifact's "compute cost" is bounded by the JIT compile time itself (already a runtime cost, already amortized over function invocations). The optimization-tier instances §XV.e Pred-731.XV.1 names (RSA modexp Montgomery tables, AES T-tables vs bitslicing, Poly1305 finite-field reductions, BLAKE2 round constants) all admit Regime 1 / Regime 2 alternatives where the choice carries empirical weight.
+
+### XV.g.d The keeper's conjecture
+
+The keeper (2026-05-21 03:10-local): *"My conjecture is that we will run into other optimizations that have this same form."*
+
+The conjecture is supported by the §XV.b mapping. Every R5 ("first-cut tier-1 implementations") instance at the optimization tier admits a precomputed-table acceleration; each such acceleration faces the same Regime 1 / Regime 2 / Regime 3 choice. Specifically:
+
+- **RSA modular exponentiation**: Montgomery reduction tables per modulus. Cannot bake at build time (modulus is per-key). Regime 2 only; break-even depends on signatures-per-key.
+- **AES round keys**: derived from cipher key. Regime 1 not applicable (key is runtime input). Regime 2 viable when many blocks are encrypted with the same key; per-call viable for one-shot encrypt.
+- **AES T-tables**: derived from cipher key + S-box. Same shape as round keys. Regime 2 break-even: ~16 blocks.
+- **Poly1305 multiplication tables**: derived from the one-time key. Regime 2; break-even: ~few hundred bytes of MAC input.
+- **BLAKE2 round constants + sigma permutations**: known at compile time. Regime 1 (already done in standard implementations via `const` arrays).
+- **ECDSA base-point table for P-256/P-384/P-521**: known at compile time. Regime 1 viable; the WC-EXT 4 case currently uses Regime 2 and is the open frontier for WC-EXT 5.
+- **Pairing-based cryptography (BLS, etc.)**: Miller loop precomputations. Mixed — some constants at build time, some derived from the per-call point.
+
+The pattern recurs in proportion to how much of each primitive's optimization surface is in the "known at compile time" cell. The keeper's conjecture holds; the empirical density of (Regime 1 vs Regime 2 vs Regime 3) per primitive is itself a substrate-tier mapping worth producing as a standing artefact (a table per primitive, comparable to §XV.b's R1–R8 mapping).
+
+### XV.g.e The recursive structure
+
+The Regime 1 / Regime 2 / Regime 3 distinction is itself an instance of the same lowering-compiler closure §XV records. The "source" is the optimization-tier specification (e.g., "the comb table for G"); the "resolver" is the implementation choice (build.rs vs OnceLock vs recompute); the "artifact" is the runtime behavior on the workload. Different resolver choices produce different artifacts, all admissible against the specification, with different cost profiles.
+
+This is Doc 730 §IV's vertical recurrence operating at one more tier below where §XII–§XV articulated it. The lowering-compiler shape recurs at the optimization-implementation tier, with build-time-vs-runtime-init as the alphabet-purity dimension at this tier. Build-time bake is the "fully pure" end (zero runtime cost); per-call recomputation is the "fully impure" end (no amortization at all).
+
+The recursive shape suggests Doc 730 §XII–§XV's deviation-pipeline framework should extend one tier further. Where §XIII names alphabet promotion at the spec-IR tier, §XV.g implies an analogous "regime promotion" at the optimization-implementation tier: when a precomputation is identified as Regime 2 with insufficient amortization, the substrate move is to promote it to Regime 1. This is the optimization-tier version of Doc 730 §XIII's "promote the most-frequently-collapsed spec discriminations to typed primitives."
+
+### XV.g.f Falsifiers
+
+**Pred-731.XV.g.1.** The build-time-vs-init-time distinction is universal across the optimization-tier instances Pred-731.XV.1 names. Falsifier: an instance where Regime 1 is not constructively achievable (the "compile-time" artifact actually depends on runtime input, so build-time bake is incoherent). The pairing-based-crypto case partially falsifies this: only constants known at curve-spec time are Regime-1-eligible; per-pairing constants are Regime-2-bound. The Pred-731.XV.g.1 should be read as "the distinction is universal *where Regime 1 is admissible*"; the prior of admissibility is itself a substrate-tier mapping.
+
+**Pred-731.XV.g.2.** For every Regime 2 instance, an empirical break-even-count exists below which the optimization is a net loss. Falsifier: a Regime 2 instance whose init cost is so low that Regime 2 wins for any workload ≥ 1 call. (Trivially true for cheap inits — the falsifier would be specifically an instance where the WC-EXT 4-shape negative finding cannot happen.)
+
+**Pred-731.XV.g.3.** The regime-promotion move (Regime 2 → Regime 1 when amortization is insufficient) is bounded in complexity: it requires a build.rs script or a one-shot offline computation, not a redesign of the optimization. Falsifier: an instance where moving from Regime 2 to Regime 1 requires substantially more substrate work than the original Regime 2 implementation. WC-EXT 5 will test this for the comb table case; the substrate move is expected to be ~100 LOC of build.rs producing a `const` table source file.
+
+### XV.g.g Where this places the amendment
+
+§XV.g does not retract §XV.c. It records that the §XV.c prose collapsed three runtime-cost regimes into one and supplies the distinction. The framework's optimization-tier mapping (§XV.b R1–R8) is unchanged; the WC-EXT 4 substrate move is correct; the wallclock measurement that surfaced the gap is the empirical instrument the §XVI bidirectional oracle requires.
+
+The amendment also corroborates the §XV.f closing claim that "two substrate-tier instances of §VII R1–R8 are now empirically anchored." WC-EXT 4's negative finding is itself empirical anchoring: it shows that the framework's predictions interact with the engagement's actual hardware (Pi, ~12ms per affine ec_double) in ways the structural analysis alone does not surface. This is the Pin-Art apparatus operating at the optimization tier: structural reading + empirical measurement together name the framework with its missing distinction.
+
+WC-EXT 5+ will exercise §XV.g.f Pred-731.XV.g.3 by implementing the regime-promotion move for the comb table. The expected outcome is sub-100ms ECDSA-P-256 verify with zero init cost — Doc 731 §XV.c's prose claim realized as the framework intended.
+
+---
+
+*Doc 731 § XV.g amendment, 2026-05-21. Jared Foy. jaredfoy.com.*
+
+---
+
 *Doc 731. Jared Foy. jaredfoy.com.*
