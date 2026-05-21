@@ -268,4 +268,65 @@ The corpus claim that JIT complexity is bounded by upstream alphabet impurity no
 
 ---
 
+## XV. Section: cryptographic primitive optimization as the lowering-compiler closure at the arithmetic tier
+
+*A primary articulation responding to the keeper's observation (2026-05-21 02:41-local), during WC-EXT 2 of the rusty-bun engagement: the optimization techniques the standard cryptographic-primitive literature develops for elliptic-curve scalar multiplication (precomputed comb tables, windowed methods, projective coordinates, Montgomery ladder, wNAF) are not merely faster algorithms. They are an instance of this document's R1–R8 structural shape, operating at a different substrate tier than the one §I–§XIII describes. The recognition is corpus-original at the JIT–crypto-primitive bridge; the underlying techniques are textbook in their field.*
+
+### XV.a The occasion
+
+The rusty-bun engagement's WC-EXT 2 round (2026-05-21, commit `65e49c30`) confirmed that `rusty_web_crypto::ecdsa_verify` on the P-256 curve over SHA-256 takes approximately 8 seconds per call on the engagement's Pi target. The signature verifies correctly; the function is not non-terminating. The slowness is in `ec_scalar_mul`, the scalar-multiplication primitive that ECDSA verify invokes twice per call (once with the curve generator G, once with the public key Q).
+
+The standard cryptographic-primitive literature has a well-developed catalog of scalar-multiplication optimizations that bring P-256 verify well under one second on the same hardware. The keeper's observation, in plain terms: *this is its own little JIT*. The recognition this section formalizes: the structural mapping holds at every cell of the §VII R1–R8 table, not as analogy but as identity.
+
+### XV.b The mapping
+
+| §VII R1–R8 shape (Doc 731) | ECDSA scalar-multiplication tier |
+|---|---|
+| **R1**: single tier (no Maglev intermediate) | One scalar-mul implementation per curve; no tier hierarchy. wNAF, comb tables, projective coordinates, Montgomery ladder all *compose into one tier's specialized implementation*, not into a stack of tiers. |
+| **R2**: Cranelift owns codegen + reg-alloc + scheduling | Standard ECC literature owns the algorithm catalog. wNAF tables, comb-table sizes, window widths are all reference choices the implementer composes; no in-pilot innovation required. |
+| **R3**: verifier-before-emission for the bytecode-to-IR translation | Curve-membership check on the input point (`on_curve(c, qx, qy)`) and range check on the scalar (`1 ≤ k < n`) are the verifier at this tier. Run before the optimized scalar-mul path; failure routes to a typed error. |
+| **R4**: deopt is a small enumerable set of typed reasons | The optimized path's preconditions are typed primitives: scalar in range, point on curve, point not at infinity, key non-zero. Each is checked once at entry. There is no need for inline guards because the input shape is fully known. |
+| **R5**: tier-1 baseline JIT (Sparkplug-style) sufficient | The "baseline" at this tier is naive double-and-add over affine coordinates with on-demand modular inverse. The "optimized" tier is double-and-add over projective coordinates with precomputed comb table for G. Both are first-cut tier-1 implementations of the same primitive; one is glacial, the other is fast. |
+| **R6**: GC integration via Cranelift stack maps | Not applicable at this tier (no managed memory at the math layer). The tier inherits its memory discipline from the upstream substrate. |
+| **R7**: no internal optimization passes | The optimization is structural: pick a better algorithm. There are no peephole / DCE / CSE passes inside the scalar-mul code. The substrate-tier optimization budget is spent at algorithm-selection, not at code-rewriting. |
+| **R8**: no async / generator / module-top-level | The primitive is synchronous, single-call, no continuations. The carve-out is automatic at this tier. |
+
+The mapping is direct and complete. Every R-condition has an instance at the scalar-mul tier. The §VI carve-out shape ("what stays hard regardless") also applies: side-channel hardening is the analog of the JIT's deopt-correctness work; both are correctness-under-adversarial-conditions concerns that the first-cut optimization does not pretend to absorb.
+
+### XV.c What plays the role of "hot function"?
+
+The JIT's hot-function detection picks which user-supplied JavaScript closures merit compilation. At the scalar-mul tier, the equivalent question — *which inputs merit precomputation* — has a stronger answer than at the JS-engine tier: the curve generator G is *known hot at compile time*. Every signature verify on a given curve uses G. There is no input variability. The precomputed comb table for G is the JIT analog of *every user function being eligible for compilation, with the threshold set to one*.
+
+This is a feature, not a bug, of the substrate purity Doc 730 §III–§V names. The scalar-mul tier's alphabet (curve parameters, scalar, point) is so pure that the "hot function" determination is statically provable. Compare the JIT tier: alphabet purity is gradual (P1 pure ops vs P4 dispatch sites), so hot-function detection must be dynamic (call counters, type feedback).
+
+The corollary: the more upstream-pure the substrate, the more JIT-tier optimization can move from runtime decisions to compile-time precomputation. The §VII R1–R8 shape is more aggressively simplifiable at higher upstream purity. The scalar-mul tier is at one end of that spectrum (alphabet so pure that all decisions move to compile time); the JS-engine JIT is at the other (alphabet so impure that decisions must be made dynamically per call).
+
+### XV.d Where this places the recognition
+
+§I–§XIII articulated the JIT-as-lowering-compiler-tier framework at the bytecode → machine-code substrate boundary. §XIV recorded the engagement-tier empirical corroboration at that boundary (JIT-EXT 4, 425× speedup, trusted-i64 ceiling). This section §XV records a *structurally identical* instance of the same framework at the curve-scalar-mul tier. The framework is not specific to bytecode-to-machine-code lowering; it is the structural shape any lowering-compiler-as-resolver-instance takes when its R1–R8 conditions are satisfied.
+
+This is the §XII observation of Doc 730 specialized to the optimization tier: a P1–P4 resolver-instance pipeline whose alphabet is sufficiently pure (at this tier, ECC parameters + scalars + points) admits aggressive simplification of the optimization decisions (precomputation, projective coordinates, windowed scalar-mul), and the simplification is bounded — the §VII R1–R8 shape catalogs exactly which decisions move to compile time.
+
+A consequence: the engagement's existing JIT workstream and crypto-primitive workstream are not unrelated. They are two instances of the same lowering-compiler closure operating at different substrate tiers. The substrate moves at the JIT tier (alphabet promotion at the bytecode tier per JIT-EXT 5–6) and the substrate moves at the scalar-mul tier (precomputation table + projective coordinates per WC-EXT 3+) are the same shape of work, sized to their tier's alphabet purity.
+
+### XV.e Predictions
+
+**Pred-731.XV.1.** The R1–R8 framework applies at every cryptographic-primitive optimization site where the inputs are typed and bounded. Candidates: RSA modular exponentiation (Montgomery multiplication + sliding-window), AES round dispatch (T-tables vs bitslicing), Poly1305 finite-field multiplication, BLAKE2 compression function unrolling.
+
+**Pred-731.XV.2.** The aggressive-simplification corollary of §XV.c holds: tiers whose alphabet purity is higher admit more compile-time-resolved decisions. Curve scalar-mul (very pure) admits comb tables for fixed inputs; modular exponentiation (less pure — the modulus is per-key) admits window-table precomputation per key but not per modulus. JS engine JIT (least pure) admits per-call type feedback only.
+
+**Pred-731.XV.3.** Engagement-tier line-count for the scalar-mul tier's optimization will be bounded by the algorithm catalog (~6 algorithms in the standard literature × ~200 LOC each = ~1200 LOC), not by the alphabet at the tier. This is the §V `O(alphabet purity bound)` claim specialized: the alphabet bounds the *substrate complexity*; the catalog bounds the *implementation effort*.
+
+### XV.f Closes the section
+
+The keeper's observation that ECC scalar-mul optimization "is its own little JIT" surfaces a structural identity: the optimization techniques at the cryptographic-primitive tier are an instance of this document's R1–R8 framework at a different substrate tier. The mapping is direct; every R-condition has an instance at the scalar-mul tier. The §XV recognition extends the framework's applicability from bytecode-to-machine-code to any lowering-compiler-shaped resolver-instance whose upstream alphabet is sufficiently pure.
+
+The engagement's WC-EXT 3+ rounds are the empirical exercise of this section. The expected outcome — ECDSA-P-256 verify dropping from 8 seconds to under 500 milliseconds via projective coordinates + comb table for G — would be the engagement-tier corroboration at the scalar-mul end of the optimization tier, analogous to JIT-EXT 4's 425× speedup at the bytecode-to-machine-code end. The two together would empirically anchor the R1–R8 framework at two substrate tiers, supporting Pred-731.XV.1 that the framework applies wherever its preconditions are met.
+
+---
+
+*Doc 731 § XV section, 2026-05-21. Jared Foy. jaredfoy.com.*
+
+---
+
 *Doc 731. Jared Foy. jaredfoy.com.*
