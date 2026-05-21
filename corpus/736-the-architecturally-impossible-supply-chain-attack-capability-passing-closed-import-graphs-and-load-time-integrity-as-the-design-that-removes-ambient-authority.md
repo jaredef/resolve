@@ -188,4 +188,83 @@ This is the architectural answer the keeper invited. The remaining question is w
 
 ---
 
-*Doc 736 closes the design articulation. The substrate work it implies is queued as a candidate next pilot pair: `pilots/rusty-js-caps/` for the capability-passing runtime, with subsidiary moves into rusty-js-pm and host-v2. The Pin-Art discipline applies as written.*
+## IX. Amendment — security as a slider, audit mode as the bridge
+
+*Added 2026-05-21 after the keeper raised a load-bearing concern during Pilot α founding: would landing the capability-passing runtime cut Cruftless off from differential testing against real npm packages and from interoperability with Node-shaped code? The §I–§VIII design as written enforces capability-passing uniformly, which is correct for the impossibility claim but wrong for ecosystem co-evolution. This amendment makes enforcement a per-process mode rather than a baseline, while preserving the impossibility claim of §IV as the strict-mode setting.*
+
+### IX.1 The trade-off the binary design hides
+
+Sections III through V argued the design as an architectural binary: either ambient authority is present (and supply chain attacks are reachable) or it is absent (and they are not). The argument is structurally correct but operationally lossy. The lossy part is that nearly every real-world Cruftless invocation, today and for the foreseeable future, will compose against npm packages whose authors never declared capabilities and never will. A binary enforcement of Move 1 puts those packages on the wrong side of the capability gate by default.
+
+The PM-EXT 11 closure gate runs `require('lodash').identity(42) === 42` through the cruftless runtime. The identity function is pure; in a binary-enforcement world, lodash declares zero capabilities and the gate stays green. Most lodash methods would. The cases that would break are real but narrow: lodash's `_.now` reads the clock, lodash's `_.uniqueId` reads a module-local counter that is pure but state-carrying, and a handful of other methods touch process state for compatibility reasons. The lockdown would not catastrophically break lodash. It would break some methods of it, and the breakage would not be visible until the application called the broken method. The application author would have no clear path to recovery short of patching lodash.
+
+The right framing is not "ambient on" vs "ambient off" but **graduated enforcement**: a slider from "Node-equivalent" through "audit and learn" through "lock down deps but keep developer ambient" to "lock everything." Each mode is useful for a different stage of a project's lifecycle. Each mode preserves a coherent story about what is and is not possible. The impossibility claim of §IV survives at the strictest setting; the looser settings give up the claim in exchange for compatibility, and they advertise the trade-off honestly.
+
+### IX.2 The four modes
+
+**Mode 0 — Node-equivalent.** Default. Invocation: `cruftless app.mjs`. Behavior: identical to current Cruftless as of CAPS-EXT 0. Every module receives ambient authority; no capability checks fire. PM-EXT 11 / 12 / 13 gates remain green by construction. Differential testing against `bun install`, `node`, or any other JS runtime continues to work because the surface is the same. The capability infrastructure compiles but is dormant; the dispatcher returns the ambient handle for every check.
+
+**Mode 1 — Audit.** Invocation: `cruftless --audit app.mjs`. Behavior: same ambient authority as Mode 0, with one addition. Every effectful call is logged to a sidecar file with the tuple `(calling_module_id, capability_class, method_name, args_summary, timestamp)`. The audit log is the empirical answer to a question the static manifest schema cannot answer: what capabilities does this dependency actually exercise on this workload? The output feeds Move 2's per-package `caps` declarations directly. This is the bridge mode. It lets Cruftless run any npm package, learn what capabilities the package needs, and produce the declaration the package's maintainer never wrote.
+
+**Mode 2 — Sealed dependencies, ambient application.** Invocation: `cruftless --sealed-deps app.mjs`. Behavior: bifurcated authority based on call-site provenance. The application's own code (modules loaded outside `node_modules/`) runs with ambient authority. Modules loaded through the PM (under `node_modules/`) run sealed: they receive only the capabilities their manifest declares and the application explicitly passes. A dep that calls `fs.readFileSync('/etc/passwd')` without a declared fs capability throws CapabilityError. The application code three frames up doing the same call works. This is the **carrot mode**: opt-in dep lockdown without forcing the developer to refactor their own code into capability-passing style. The first practical step a security-conscious team takes.
+
+**Mode 3 — Sealed everywhere.** Invocation: `cruftless --sealed app.mjs` (with `cruftless-caps.json` declaring the application's root capability set). Behavior: the strict §IV interpretation. No ambient authority anywhere. The application receives capabilities from the host based on the `cruftless-caps.json` declaration; deps receive only what the application explicitly passes. The impossibility claim of §IV holds. Production deployments of audited applications run here. CI pipelines for security-critical projects run here. The mode is operational evidence that the architectural impossibility is reachable, not theoretical.
+
+The progression across modes maps onto a project's lifecycle. A team starts in Mode 0 (cruftless behaves like Node), runs their test suite in Mode 1 (discovers what their tree needs), promotes to Mode 2 for staging (deps locked down, app ergonomic), and ships in Mode 3 for production. At no point is the team forced to choose between security and interoperability. The choice is sequenced.
+
+### IX.3 Per-dep overrides
+
+In any mode where authority is ambient by default, the application can opt a specific dep into sealed treatment at the import site:
+
+```javascript
+const lodash = require('lodash');                        // mode default
+const sketchy = require('sketchy-pkg', { caps: {} });    // sealed for this dep
+const limited = require('plugin', { caps: { fs: scopedFs(['./data']) } });
+```
+
+This pattern lets a Mode-0 or Mode-1 application apply Mode-2 enforcement to a single suspicious dependency without flipping the global mode. It is the finest-grained dial: capability discipline at the line level rather than the process level. A team that wants to harden one dep against a known-bad ecosystem signal can do so without committing to a wider posture change.
+
+### IX.4 Audit mode as ecosystem accelerator
+
+Audit mode resolves a coordination problem the strict design did not address. Capability-passing requires per-package capability declarations. Per-package declarations require either the maintainer writing them (unlikely at ecosystem scale) or someone else writing them (politically and practically fraught). Audit mode produces the declarations empirically as a byproduct of running the code.
+
+The path: a project runs its test suite under `cruftless --audit`. The audit log records every effectful call each dep makes. A post-processor collapses the log into a candidate `caps` block per package. The block is committed to a community-maintained capability catalog, indexed by package + version + SRI. Other projects starting with the same dep download the catalog entry and use it as their starting declaration.
+
+The maintainer never has to act. The consumer gets a high-quality declaration backed by empirical evidence from the audit run. Discrepancies (consumer's audit shows a capability the catalog does not list) are signals worth investigating: either the catalog is incomplete, or the package is exercising a different code path, or the package has changed in a way SRI did not catch. Each signal is information.
+
+The catalog is the ecosystem-scale dual of the per-project lockfile. The lockfile freezes what *this* project's deps need. The catalog accumulates what those deps need *generally*. The two together make Mode 2 and Mode 3 reachable at ecosystem scale without anyone having to write a capability declaration by hand.
+
+### IX.5 The impossibility claim, restated under modes
+
+The §IV claim is preserved exactly as written, with one operational refinement: it holds in **Mode 3**, where no ambient authority exists. In Modes 0, 1, and 2, the claim weakens to a partial form documented per mode:
+
+- **Mode 0**: no impossibility claim. The runtime is Node-equivalent. Supply chain attacks against Cruftless in Mode 0 reduce to attacks against Cruftless's reduced (and still-stub-heavy) Node surface, which is a smaller attack surface than full Node but not architecturally restricted beyond what the §III audit found absent.
+- **Mode 1**: same as Mode 0, with the additional property that any successful attack is *logged* with the calling module's identity. The audit log is forensic evidence; it does not prevent the attack but documents it.
+- **Mode 2**: the impossibility claim holds *for dependencies*, partial in that the application itself retains ambient authority. A malicious dep cannot exfiltrate, persist, or escalate. The application can. This is the right boundary for a development environment: the developer trusts their own code; the developer does not trust their deps; the runtime enforces the asymmetry.
+- **Mode 3**: the full §IV claim. Architectural impossibility.
+
+This stratification clarifies what each mode buys. Mode 0 is for compatibility, not security. Mode 1 is for discovery, not security. Mode 2 is for the development environment of a security-conscious team. Mode 3 is for the production deployment of an audited application. Each mode names its intended use; no mode pretends to be what it is not.
+
+### IX.6 What this changes in the Pilot α work
+
+Mode 0 is what Cruftless does today. CAPS-EXT 0 through whatever EXT introduces the capability check dispatcher is implementing Mode 0 with the infrastructure in place (the dispatcher exists but always returns ambient). This satisfies Pred-736.1 by construction at minimal LOC cost.
+
+Mode 1 (audit) is roughly 100 LOC of logging branching at the dispatcher: a thread-local audit recorder, a sidecar-file writer, and a module-id-resolution helper. It can land in parallel with Move 1's substrate moves because it depends on the dispatcher existing, not on enforcement being wired.
+
+Mode 2 (sealed deps) is the dispatcher's mode-flag branch: check the calling module's provenance flag (application vs node_modules), apply enforcement only to the latter. ~30 LOC on top of Mode 3's enforcement.
+
+Mode 3 is the full §IV enforcement and is what the original Pilot α plan implemented. The substrate work is unchanged; only the dispatcher's default behavior shifts.
+
+Total amendment cost on top of the ~1100 LOC CAPS-EXT 1 estimate: ~150 LOC. The architecture is the same; the surfacing is what differs.
+
+### IX.7 The standing question after the amendment
+
+The original §VIII closure posed the question: what is the next workstream after PM, Pilot α or Branch A? The amendment refines: the answer can be both, sequenced. Land Mode 0's capability-infrastructure-without-enforcement as Pilot α's first substrate cluster; land Mode 1's audit mode immediately after; land Mode 2 and Mode 3 once the catalog and the synthetic-adversary probe suite are mature. Branch A (semver-range resolution) can land in parallel at any point because it operates on a different substrate (PM-R1 / PM-EXT 14+) and has no interaction with the capability dispatcher.
+
+The mode-slider design is what makes this sequencing possible. Without it, Pilot α was a one-shot landing that broke compatibility at the moment of merge. With it, Pilot α becomes a multi-stage rollout where each mode adds a security guarantee without removing any compatibility guarantee.
+
+The keeper's question was the right question. The amendment is the design that answers it.
+
+---
+
+*Doc 736 amendment closes. CAPS-EXT 2's capability-API design (queued as the next pilot move at the engagement) inherits this amendment: the dispatcher is mode-aware from the first commit, the audit recorder ships with Mode 1, and the §IV impossibility claim is reachable under Mode 3 without forcing it as the default.*
