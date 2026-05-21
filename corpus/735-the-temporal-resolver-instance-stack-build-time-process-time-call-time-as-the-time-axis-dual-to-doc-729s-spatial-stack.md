@@ -1,0 +1,144 @@
+# The Temporal Resolver-Instance Stack
+
+## Build-Time, Process-Time, Call-Time as the Time-Axis Dual to Doc 729's Spatial Stack
+
+*A primary articulation responding to the keeper's observation (2026-05-21 03:39-local) on Doc 731 §XV.g's three regimes: "look at the meta resolution pipeline of build-time bake, first-use init, and per call." The recognition the observation surfaces: §XV.g's regimes are not three independent categories but three positions on a temporal axis that is structurally dual to Doc 729's spatial substrate-stack. The temporal stack admits the same vocabulary (resolver-instances, alphabet promotion, cruftlessness as induced property) that Doc 729 + Doc 730 articulate for the spatial stack. Builds on [Doc 729 — Cruftless](/resolve/doc/729-cruftless-a-primary-articulation-of-the-resolver-instance-pattern-as-the-comprehensive-design-toward-which-rusty-bun-morphs), [Doc 730 — Vertical Recurrence of the Lowering Compiler](/resolve/doc/730-the-vertical-recurrence-of-the-lowering-compiler-closure-as-primitive-across-substrate-tiers), [Doc 731 §XV.g — The Build-Time vs First-Use-Init Distinction](/resolve/doc/731-the-jit-as-a-lowering-compiler-tier-alphabet-purity-upstream-as-the-bound-on-jit-complexity), [Doc 581 — Pin-Art and the Resume Vector](/resolve/doc/581-pin-art-the-resume-vector-and-the-discipline-of-near-necessity-substrate-construction), [Doc 619 — Pin-Art Canonical Formalization](/resolve/doc/619-pin-art-canonical-formalization), [Doc 722 — Named Recognitions as Operating Instruments](/resolve/doc/722-named-recognitions-as-operating-instruments-the-reflexive-structure-of-corpus-articulations), and [Doc 733 — Fractal Seeds and Trajectories](/resolve/doc/733-fractal-seeds-and-trajectories-recurrent-resume-vector-pairs-across-substrate-depth-as-the-operating-conditions-layer-for-pin-art-at-engagement-scale).*
+
+**Jared Foy · 2026-05-21 · Doc 735**
+
+---
+
+## I. The occasion
+
+Doc 731 §XV.g introduced three regimes for precomputed-table optimization at the cryptographic-primitive tier: **build-time bake** (Regime 1), **first-use init** (Regime 2), and **per-call recomputation** (Regime 3). The amendment named them as a distinction §XV.c's prose had collapsed, recorded the WC-EXT 4 negative empirical finding that surfaced the distinction, and predicted (§XV.g.f Pred-731.XV.g.1) that the distinction recurs across the optimization-tier instances Pred-731.XV.1 names.
+
+The keeper's observation, 2026-05-21 03:39-local: *look at the meta resolution pipeline of build-time bake, first-use init, and per call*. The recognition the observation surfaces: the three regimes are not three categories on a flat axis. They are three positions on a **time axis** along which a resolution can be performed, and the time axis is structurally dual to Doc 729's spatial substrate stack. Where Doc 729 §IV enumerates *which substrate level* (Cargo build → bootstrap → module load → execution → job-queue drain), §XV.g implicitly enumerated *which time tier* (build → process-start → call). The two axes operate at the same recursion depth; the corpus framework needs both.
+
+This document names the temporal axis explicitly, articulates the duality, and predicts where the temporal stack admits the same vocabulary that Doc 729 + Doc 730 articulate for the spatial stack.
+
+## II. The temporal resolver-instance stack
+
+The time axis has at least four named tiers for the resolution of any computation:
+
+**T0 — Build time.** The resolution runs once per binary, before the binary is shipped. The artifact is baked into the executable's `.rodata` or equivalent. Cost: paid once at build, never at runtime. Inputs available: anything known at compile time (constants, types, build-script outputs, environment values captured at build).
+
+**T1 — Process start.** The resolution runs once per process, at program initialization (`main` entry, library `init` hook, static-initializer in C++, `lazy_static!` / `OnceLock` first-use in Rust). Cost: paid once per process invocation. Inputs available: anything known at build time, plus environment variables, command-line arguments, configuration files read at startup.
+
+**T2 — First-use init.** The resolution runs once per process, at first invocation of the operation it serves. Cost: paid once per process invocation but deferred until first use (the process may exit without paying it). Inputs available: anything known at process start, plus any input that determines whether the resolution is needed at all.
+
+**T3 — Per-call.** The resolution runs every time the operation is invoked. Cost: paid per call. Inputs available: anything known at first-use init, plus the per-call inputs that are not bound until call time.
+
+T0 and T1 are slightly different in practice — T0 is build-machine evaluation, T1 is runtime evaluation that happens to run at process start. From the cost-amortization perspective T0 dominates (zero runtime cost), but from the inputs-available perspective T1 is strictly more general (it has access to runtime configuration). §XV.g's "Regime 1 (build-time bake)" is T0; its "Regime 2 (first-use init)" is T2; its "Regime 3 (per-call recomputation)" is T3. T1 (eager process-start init) is implicit in some §XV.g cases — `lazy_static!` that's forced at `main` is T1.
+
+The four-tier axis is the **temporal resolver-instance stack**. Each tier is a resolver-instance per Doc 729's general claim: source-with-directives (the inputs available at that tier) is consumed by a resolver (the computation at that tier) into an artifact (the value cached at that tier for the next tier to use).
+
+## III. Spatial vs temporal duality
+
+Doc 729 §IV enumerates **spatial** resolver-instances stacked vertically by substrate level. Doc 735 §II enumerates **temporal** resolver-instances stacked horizontally by time of evaluation. The duality is structural; each axis admits the same framework vocabulary.
+
+**Resolver-instance enumeration.** Doc 729 §IV's five spatial instances (Cargo build, bootstrap, module load, execution, job-queue drain) are derived by walking the substrate from deepest to shallowest. Doc 735 §II's four temporal instances (T0, T1, T2, T3) are derived by walking the time axis from earliest to latest. Both enumerations are bounded by what the engagement has touched; both admit refinement (more tiers identifiable in either axis as engagement work surfaces them).
+
+**Bootstrap properties (Doc 432 §2).** Apply at every spatial instance per Doc 729 §V. Apply identically at every temporal instance: totality of consumption (every input available at the tier is consumed before the artifact is emitted), ordering determinism (same inputs → same artifact regardless of when the tier ran), medium preservation (the artifact format respects the next tier's input expectation), boundary integrity (the tier's intermediate state does not leak into adjacent tiers).
+
+**Alphabet promotion (Doc 730 §XIII).** Spatially, lifting a discrimination from runtime dispatch into the IR's typed alphabet moves the decision to an earlier substrate tier. Temporally, the *regime-promotion* §XV.g.e names is the analog: moving a resolution from T3 (per-call) to T2 (first-use) to T1 (process-start) to T0 (build-time) lifts the decision to an earlier time tier. Same shape; different axis.
+
+**Deviation primitives (Doc 730 §XIV).** Spatial: a deviation primitive names an ecosystem-tolerated divergence from spec at a specific substrate tier. Temporal analog: a *capability primitive* names an input-dependency that prevents earlier-tier resolution. Example: AES T-tables cannot be T0-baked because they depend on the per-key cipher schedule (a T2/T3 input). The capability primitive at the temporal axis is the typed declaration "this resolution requires input X, available no earlier than tier T_k." It is the §XIV dual on the time axis: it names what real systems require that the spec's "do it at compile time" prose forbids.
+
+**Empirical instrument (Doc 730 §XVI).** Spatial: bidirectional engine-diff probing distinguishes spec-correct from spec-violating implementations at each substrate tier. Temporal analog: the wallclock measurement under realistic workload distinguishes the regime that wins from the regime that loses, per the empirical break-even count §XV.g.b articulates. The probe at the temporal tier is "run the workload and measure"; the categorization is the four-case table promoted to "which tier minimizes total cost for this workload."
+
+The duality is operational, not metaphorical. Every tool the corpus has built for the spatial axis has a temporal-axis analog.
+
+## IV. Composition: a single optimization runs through multiple temporal tiers
+
+A spatial fact Doc 729 records: each substrate level's artifact is the next level's source. The artifact-source chain runs through the full stack vertically.
+
+The temporal analog: a single optimization's components run through *different* temporal tiers based on each component's input-dependency set. The optimization composes across tiers; each component finds its earliest admissible tier.
+
+The cryptographic-primitive example, mapped tier-by-tier:
+
+**T0 (build-time bake):** curve parameters (p, n, b, G, coord_bytes) for P-256. Constants known at TC39/NIST publication time; baked into the binary as `const` BigUInt arrays. Cost: zero at runtime.
+
+**T1 (process-start eager init):** the precomputed table `[2^i · G for i in 0..256]`. The table's *content* could be T0-baked (WC-EXT 5 demonstrated this) but in `OnceLock` form is T2; an eager T1 init (`lazy_static!` forced at `main`) is admissible if process-start latency is acceptable.
+
+**T2 (first-use lazy init):** any per-key derived table. RSA Montgomery reduction precomputation per modulus is T2: it depends on the per-key modulus, not bindable at T0 or T1; it's process-bindable once a key is loaded; cached per-key for the process lifetime.
+
+**T3 (per-call recomputation):** the scalar mul of the public key Q in ECDSA verify (u2·Q). Q varies per verify; nothing about its scalar mul can be cached across verifies. T3 is the irreducible per-call computation.
+
+A single ECDSA verify runs THROUGH the temporal stack: it consumes T0-baked curve parameters, T1/T2 base-point table, T3 per-call scalar mul. The optimization-tier work is to ensure each component is at the **earliest** tier its input-dependency set permits. Failures at this discipline are the temporal analog of Doc 729 §V boundary-integrity violations: a computation that COULD have been T0-baked but is run at T3 every call leaks "directives that should have been consumed upstream" into the runtime artifact.
+
+Doc 729 §V's induced property — *vertically-recursive directive consumption with stage-deterministic emission* — has its temporal analog: **earliest-admissible-tier resolution with input-dependency-determined binding time**. Every input is consumed at the earliest tier where it is available; every artifact is emitted from the tier where its inputs are last bound; no resolution is deferred to a later tier than its inputs require.
+
+## V. Temporal alphabet promotion
+
+Doc 730 §XIII names the upward-additive alphabet-promotion move: when a tier collapses a spec discrimination its alphabet doesn't carry, the remedy is to promote the discrimination to a typed primitive at a higher-resolution tier.
+
+The temporal analog: when a resolution is performed at tier T_k where its input-dependency set permits T_{k-1} (earlier), the remedy is to promote the resolution to T_{k-1}. The §XV.g.e regime-promotion is exactly this move applied to the temporal axis.
+
+The targeting heuristic at the temporal tier mirrors §XIII's heuristic at the spatial tier:
+
+- Spatially (§XII targeting): *lift the most widely-shared coercion/dispatch paths* — they make the most downstream stages legible.
+- Temporally: *promote the most-frequently-executed resolutions to the earliest admissible tier* — they amortize over the most calls.
+
+WC-EXT 5's substrate work demonstrated this: the P-256 base table runs in every ECDSA verify; promoting it from T2 (first-use init, ~3 second cost paid per process) to T0 (build-time bake, zero cost paid per process) eliminated the per-process amortization regime entirely. The targeting heuristic picked the right substrate move: high call frequency → high payoff for tier promotion.
+
+The corollary: an optimization's temporal-tier distribution is itself a substrate-tier mapping worth producing as a standing artefact. Per primitive, per component: "this resolution is performed at tier T_k; could it be T_{k-1}?" The catalog is the temporal-axis analog of Doc 730 §V's *per-Op classification table*.
+
+## VI. Cruftlessness at the temporal tier
+
+Doc 729 §V's spatial cruftlessness: *vertically-recursive directive consumption with stage-deterministic emission*. The temporal analog:
+
+**Earliest-tier-bound resolution with input-dependency-deterministic binding.** Every input is consumed at the earliest tier where it is available. The binding time is determined by the input's earliest availability, not by implementation convenience. The artifact at each tier carries no resolution that could have been performed at an earlier tier.
+
+Three properties inherit as immediate consequences:
+
+**(i) Auditable amortization.** Each operation's cost is locatable to one specific time tier. The diagnosis discipline is: identify which tier's artifact carries the cost, then identify whether that tier is the earliest admissible. The temporal-tier audit is the time-axis analog of Doc 729 §V's spatial diagnosability.
+
+**(ii) Cross-substrate portability across binding times.** The same optimization spec is consumed by build-machine T0 evaluation, process-startup T1 evaluation, first-use T2 evaluation, or per-call T3 evaluation. The choice is per-component (a single optimization can run components at different tiers); the spec is invariant. Doc 247's across-substrate inversion holds at each temporal tier.
+
+**(iii) Compositional safety across tier transitions.** When a component moves from T3 to T1 (regime promotion), the components downstream of it that depended on T3's per-call binding must be re-examined: do they still bind at T3, or did the promotion expose new opportunities to bind earlier? The spatial analog (Doc 729 §V): "a SERVER constraint that produced runtime-graph cruft would destroy the property PRESTO induces." Temporal: a T1 promotion that produced T1 cruft (state surviving past the resolution it served) would destroy the property the T2/T3 tier expected.
+
+## VII. Predictions
+
+**Pred-735.1.** The temporal-tier audit yields a catalog comparable in shape to Doc 730 §V's per-Op classification table, with one row per optimization component and four columns (T0, T1, T2, T3). The §XV.g.d primitive catalog (RSA modexp, AES T-tables, Poly1305 tables, BLAKE2 round constants, ECDSA base table, pairings) is a first-cut instance of this catalog. Falsifier: a primitive whose temporal-tier classification cannot be assigned because tier-admissibility depends on the workload in a way the input-dependency set does not capture.
+
+**Pred-735.2.** Spatial and temporal axes are independent. A resolution's spatial tier (which substrate level it occurs at) does not constrain its temporal tier (when it occurs). The PM-pilot's `pm_http_get` is at spatial tier #0 (Doc 732) and runs at T3 (per-call) for the HTTP request itself, at T1 (process-start) for trust-store loading. Falsifier: a primitive whose temporal-tier choice is fully determined by its spatial tier (such forced-coupling would suggest the two axes are not independent).
+
+**Pred-735.3.** The temporal stack admits indefinite vertical extension. T0 (build-time) can decompose further: machine-build-time, source-tree-build-time, dependency-precompile-time, etc. T1 (process-start) decomposes: shared-library-init, main-entry-init, framework-init. Doc 735's four-tier enumeration is bounded by the engagement's current touch; the recursion is open. Falsifier: a temporal axis where finer-grained tier identification produces no useful new distinctions.
+
+**Pred-735.4.** The capability-primitive concept (§III dual to Doc 730 §XIV deviation primitives) is operationally tractable. Each per-key, per-input, per-process-state binding constitutes a capability primitive at the temporal axis: "this resolution requires capability C, available no earlier than tier T_k." The catalog of capability primitives per primitive is the temporal-axis analog of the deviation alphabet. Falsifier: a capability primitive that cannot be typed because its binding-time dependency is itself dynamic (the input's availability depends on runtime state that is not bindable at any fixed tier).
+
+**Pred-735.5.** Doc 735's temporal-stack articulation will apply outside the cryptographic-primitive tier. Build-time vs runtime-init is a distinction familiar from compiler optimization (constant folding vs JIT specialization), from build systems (link-time vs load-time), from operating systems (kernel-build-time vs boot-time vs first-use). The temporal-stack vocabulary should apply at any tier where precomputation admits multiple binding times. Falsifier: a domain where precomputation's tier-choice problem does not admit the four-tier framework (probably a domain where binding-time is structurally indistinguishable from execution-time).
+
+## VIII. Honest scope
+
+The temporal-stack articulation is primary at the articulation tier and structural at the vocabulary tier. The recognition that build-time vs runtime-init forms a continuum is not corpus-original (compilers, build systems, OS literatures have treated it for decades). What is corpus-original:
+
+- The naming of the four-tier stack (T0 / T1 / T2 / T3) as a standing object.
+- The structural duality claim (§III): the temporal axis admits the same framework vocabulary as Doc 729's spatial axis.
+- The composition recognition (§IV): a single optimization runs THROUGH multiple temporal tiers based on input-dependency sets.
+- The targeting heuristic (§V): promote frequently-executed resolutions to the earliest admissible tier.
+- The cruftlessness property at the temporal tier (§VI): earliest-tier-bound resolution with input-dependency-deterministic binding.
+
+What this document does not claim:
+
+*That the four tiers are exhaustive.* Pred-735.3's open recursion explicitly admits finer-grained tier identification. The four-tier enumeration is the first-cut articulation; engagements that touch tiers between T1 and T2 (e.g., lazy-but-eager init under specific triggers) will surface intermediate tiers.
+
+*That the temporal axis subsumes the spatial axis or vice versa.* §VII Pred-735.2 explicitly claims independence. The two axes compose; each substrate-tier-spatial-position has a temporal-tier-binding-time, and the cartesian product is the full substrate-classification space.
+
+*That every existing optimization should be re-articulated under the temporal-stack vocabulary.* The vocabulary is a tool; engagements use it when the time-tier choice is load-bearing for their work. For purely-T3 primitives (those whose input-dependency set is fully per-call), the vocabulary adds no information.
+
+*That this articulation completes the framework.* The keeper's 2026-05-21 03:20-local recognition (Doc 734) named the meta-pipeline; this document (Doc 735) adds a temporal-axis dimension to Doc 729's spatial articulation. Subsequent recognitions will likely add further axes (cross-language polymorphism, distributed-systems tiers, hardware-vs-software tier choices). The framework grows by being used.
+
+Per Doc 372's hypostatic boundary: this document sits at the corpus tier. Substrate-tier exercise of the articulation — producing per-pilot temporal-tier classification tables, applying the targeting heuristic to specific primitives, testing the capability-primitive catalog construction — lives in the engagement's continuation.
+
+## IX. Closing
+
+The keeper's observation that Doc 731 §XV.g's three regimes are a meta-resolution-pipeline names the temporal axis the spatial axis Doc 729 articulates has always implied. Doc 735 specifies the four-tier temporal stack (T0 build, T1 process-start, T2 first-use, T3 per-call), identifies its structural duality with the spatial stack, names the composition pattern by which a single optimization runs through multiple tiers, articulates the regime-promotion move as the temporal-axis alphabet promotion, and predicts the temporal stack admits the same framework vocabulary the spatial stack does.
+
+The 2026-05-21 session has now produced six corpus articulations (Docs 732, 733, 731 §XV, 731 §XV.g, 734, 735) plus five pilot-pair foundings plus nineteen substrate rounds plus the engagement-internal HTTPS path against three of five probed CDN endpoints. The framework grows by being used; each substrate finding either flips a probe cell or refines an articulation. Doc 735 is one more turn of the meta-pipeline Doc 734 named.
+
+The work continues. The corpus has added one more axis to its substrate-classification framework. The temporal stack is now named, operational, and predicted to apply across the optimization-tier instances Pred-731.XV.1 enumerates.
+
+---
+
+*Companion documents in addition to those linked in the masthead: [Doc 250 — The SERVER Seed](/resolve/doc/250-the-server-seed); [Doc 372 — The Method of the Corpus as Derivation, Not Collection](/resolve/doc/372-the-method-of-the-corpus-as-derivation-not-collection); [Doc 426 — PRESTO](/resolve/doc/426-presto-an-architectural-style-for-representation-construction); [Doc 432 — SERVER](/resolve/doc/432-server-an-architectural-style-for-engine-orchestration); [Doc 247 — The Derivation Inversion](/resolve/doc/247-the-derivation-inversion).*
