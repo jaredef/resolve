@@ -142,3 +142,94 @@ The work continues. The corpus has added one more axis to its substrate-classifi
 ---
 
 *Companion documents in addition to those linked in the masthead: [Doc 250 — The SERVER Seed](/resolve/doc/250-the-server-seed); [Doc 372 — The Method of the Corpus as Derivation, Not Collection](/resolve/doc/372-the-method-of-the-corpus-as-derivation-not-collection); [Doc 426 — PRESTO](/resolve/doc/426-presto-an-architectural-style-for-representation-construction); [Doc 432 — SERVER](/resolve/doc/432-server-an-architectural-style-for-engine-orchestration); [Doc 247 — The Derivation Inversion](/resolve/doc/247-the-derivation-inversion).*
+
+---
+
+## X. Amendment: intra-tier cost stratification
+
+*A refinement to §II–§V surfaced by WC-EXT 8 and WC-EXT 9–10 of the rusty-bun engagement. The temporal stack of §II treats each tier (T0/T1/T2/T3) as a single point on the time axis. WC-EXT 8's 40× per-mul bench measurement and the subsequent WC-EXT 9 + 10 routing rounds showed that operations at the same temporal tier can have cost-per-op profiles that differ by an order of magnitude or more. The amendment names this as a structural feature the original framework did not articulate.*
+
+### X.a The observation
+
+§II's four-tier stack (T0 build / T1 process-start / T2 first-use init / T3 per-call) classifies *when* a resolution runs. §V's targeting heuristic — promote frequently-executed resolutions to the earliest admissible tier — operates over this classification.
+
+WC-EXT 8 measured Montgomery REDC at ~667ns per multiplication on the engagement's Pi target. The pre-existing `mod_mul` (binary long division for the modular reduction step) measured ~26,728ns per call on the same hardware. Both operations are at the same temporal tier — both are T3 per-call. Both produce equivalent outputs for equivalent inputs. The per-op cost ratio is 40×.
+
+§II's four-tier vocabulary cannot express this. Saying "they are both T3" loses 40× of substrate information. WC-EXT 9 + 10's substrate-move sequence (routing the EC tier through Montgomery, then the base-table consumption, then the live verify path) was a series of refinements *within* T3 — moving from a slow T3 implementation to a fast T3 implementation. The framework as drafted had no tier vocabulary for this distinction.
+
+### X.b The dimension that was missing
+
+The missing axis is **cost-per-op within a tier**. Different implementations of a resolution at the same temporal tier admit different per-op costs. The cost-per-op range within a tier can be substantial:
+
+- Within T3 for P-256 modular multiplication: 667ns (Montgomery REDC) vs 26,728ns (binary long division). Ratio: 40×.
+- Within T2 for first-use comb-table init: 100ms (hex-parse 256 baked entries) vs 3000ms (255 affine `ec_double` from scratch). Ratio: 30×.
+- Within T1 for process-start eager init: variable depending on what the init does (load disk file, parse config, allocate buffers). Plausible range: microseconds to seconds.
+- Within T0 for build-time bake: the cost is the build-server's clock, not the runtime's; per-runtime-process cost is identically zero, but build-system cost varies across implementations (re-bake every build vs cache + skip-if-source-unchanged).
+
+The cost-per-op distribution within a tier is not random. It is determined by the *implementation regime* chosen at that tier — which algorithm, which data layout, which auxiliary data structure. Different regimes within a tier produce different cost-per-op profiles for the same operation.
+
+This is structurally distinct from §II's temporal-tier axis. §II answers *when does this resolution run?* §X answers *given that it runs at this time, how fast is it?* Both are substrate-tier classifications; they are orthogonal.
+
+### X.c Formalizing intra-tier cost stratification
+
+A **cost stratum** within a temporal tier is a set of implementations that share approximately the same per-op cost. Within T3 for P-256 modular multiplication, the strata observed in the engagement are:
+
+- **Stratum T3-fast** (~700ns per op): Montgomery REDC, specialized for P-256's m'=1 simplification.
+- **Stratum T3-slow** (~27,000ns per op): generic `BigUInt::mul` followed by binary-long-division `BigUInt::modulo`.
+
+A 40× cost gap. The framework should treat these as distinct substrate cells, both at T3 but at different strata.
+
+The general form: each temporal tier T_k admits a set of cost strata `S_{k,0}, S_{k,1}, ...` ordered by per-op cost. The implementation choice at a tier determines which stratum the substrate occupies for that operation. A substrate move that changes the stratum (e.g., the WC-EXT 8 swap from binary-divmod `mod_mul` to Montgomery `mont_mul`) is an **intra-tier promotion**, structurally analogous to §V's temporal-tier promotion (which moves a resolution to an earlier tier) but operating along the cost axis rather than the time axis.
+
+### X.d The intra-tier targeting heuristic
+
+§V's temporal-tier heuristic: *promote frequently-executed resolutions to the earliest admissible tier*.
+
+§X's intra-tier heuristic: *promote frequently-executed operations within a tier to the fastest admissible cost stratum*.
+
+The two heuristics compose. A resolution gets shifted earlier along the time axis (when admissible) AND shifted to a faster stratum within whatever tier it lands at (when implementations exist). Both promotions are bounded in complexity: temporal promotion is bounded by the input-dependency set (some inputs are not available before T_k); intra-tier promotion is bounded by the standard-literature catalog of faster implementations for the operation.
+
+WC-EXT 8 demonstrated the bound concretely. The `mont_mul` substrate move was ~150 LOC of REDC implementation plus a one-time cached precomputation of R². The intra-tier promotion of P-256 `mod_mul` from T3-slow to T3-fast was bounded by the size of the standard Montgomery-multiplication algorithm specification.
+
+### X.e Composition with §V
+
+The §V composition pattern — *a single optimization runs through multiple temporal tiers based on each component's input-dependency set* — extends to §X's intra-tier strata. A component at temporal tier T_k can occupy *any* of T_k's cost strata; the choice is independent of the component's temporal-tier classification.
+
+The cryptographic-primitive example (§IV revisited under §X):
+
+- **T0 build-time bake**: curve parameters in `.rodata`. Stratum: zero per-runtime-op cost; there is no cost gradation at T0 once the bake has happened.
+- **T1 process-start**: Mont-form base table built once at first use, parse-time ~100ms. Stratum T1-fast (hex-parse) vs Stratum T1-slow (affine doublings, ~3000ms). The WC-EXT 5 baked-table-in-source substrate move was a T1 stratum promotion (slow → fast within T1).
+- **T2 first-use lazy**: per-key derived tables. Stratum depends on the key-specific computation.
+- **T3 per-call**: variable-input scalar mul. WC-EXT 8 + 9 promoted from T3-slow (binary-divmod-based) to T3-fast (Mont-REDC-based). The 40× per-op speedup propagates through every T3 op the computation performs.
+
+Each temporal-tier × cost-stratum cell is a substrate-tier classification. The cartesian product (tier × stratum × spatial-tier per Doc 735 §III) is the full substrate-classification space.
+
+### X.f Falsifiers
+
+**Pred-735.X.1.** Within every temporal tier, multiple cost strata exist and the cost-per-op range across strata is substantial (≥2×). Falsifier: a temporal tier whose implementations all converge to the same per-op cost regardless of algorithm choice. T0 is the candidate failure mode (per X.c the per-runtime-op cost at T0 is identically zero); accept this as a tier where the stratum dimension is degenerate.
+
+**Pred-735.X.2.** Intra-tier promotion (slow stratum → fast stratum) is bounded in implementation complexity by the standard literature catalog of faster algorithms for the operation. Falsifier: an instance where moving from a slow stratum to a fast stratum required substrate work whose complexity exceeded the standard-literature implementation by an order of magnitude. WC-EXT 8 corroborates the prediction at one instance (~150 LOC Montgomery REDC, well within the published algorithm's complexity).
+
+**Pred-735.X.3.** The intra-tier targeting heuristic (X.d) composes with the temporal-tier heuristic (§V) without conflict. The two promotions are along orthogonal axes; applying both produces a strict improvement. Falsifier: a substrate-tier instance where the cost-stratum-fastest implementation at the earliest-admissible tier produces *worse* end-to-end performance than a slower-stratum implementation at the same tier, due to some cross-axis coupling the framework does not name.
+
+**Pred-735.X.4.** The cost-stratum catalog per primitive is enumerable and stable. The strata within a tier for a given operation are determined by the standard-literature implementation catalog plus engagement-specific extensions; new strata are introduced only when new implementations enter the catalog. Falsifier: a primitive whose cost-stratum classification cannot be assigned because the implementation space is continuous (every micro-optimization shifts the cost without a recognizable algorithm-class boundary).
+
+### X.g Where this places the amendment
+
+§II named the temporal axis. §III named the duality with the spatial axis. §V named the targeting heuristic along the temporal axis. §X adds the third axis — intra-tier cost stratification — without retracting any of the prior structure. The Doc 735 framework's substrate-classification space is now **3-axis**: (spatial-tier × temporal-tier × cost-stratum).
+
+A substrate move can promote along any of the three axes, and any combination of the three. WC-EXT 5 was a Regime 1 substrate move that promoted along the temporal axis (T2 → T0/T1) AND held the cost stratum constant. WC-EXT 8 + 9 + 10 were a sequence of substrate moves that held the temporal tier constant (T3) AND promoted the cost stratum (T3-slow → T3-fast). The two axes compose without interference; the engagement realized both kinds of promotions independently.
+
+This amendment corroborates the keeper's 2026-05-21 03:39-local conjecture (Doc 735 §I occasion) at a finer grain than §I anticipated. The recognition was that §XV.g's three regimes form a *time-axis pipeline* dual to Doc 729's spatial stack. The WC-EXT 8+9+10 empirical sequence showed that the time-axis pipeline itself admits **internal cost stratification at each tier**, a third axis the original recognition's spatial-temporal duality did not articulate.
+
+Per Doc 734 §V.b growth mechanism: this is a negative-finding amendment in the dual sense — *no* negative finding occurred (WC-EXT 8 produced a 40× speedup, WC-EXT 9 + 10 propagated it), but the structural articulation in §II–§V was *insufficiently fine-grained* to capture what the empirical sequence demonstrated. The framework grew by being used; the demonstrated cost-stratum dimension was the missing distinction the empirical work surfaced. Doc 735 §X closes the gap.
+
+### X.h Open scope
+
+The WC-EXT 11 + 12 work the rusty-bun engagement queues — generalize Montgomery to arbitrary odd-prime moduli — is a substrate move that will instantiate §X at the RSA primitive's T3 stratum (current: T3-slow via binary divmod; target: T3-fast via per-modulus Montgomery REDC). The session-2 engagement will produce additional empirical corroboration for Pred-735.X.1 + Pred-735.X.2.
+
+The cost-stratum catalog as a standing artefact — one row per (primitive, tier) cell, with the cost-stratum implementations enumerated — is the substrate-tier deliverable §X implies. Producing this catalog for the cryptographic-primitive tier is a session-3+ work item.
+
+---
+
+*Doc 735 § X amendment, 2026-05-21. Jared Foy. jaredfoy.com.*
