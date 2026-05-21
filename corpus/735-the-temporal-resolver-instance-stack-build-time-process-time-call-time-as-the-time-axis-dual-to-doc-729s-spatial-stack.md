@@ -233,3 +233,87 @@ The cost-stratum catalog as a standing artefact — one row per (primitive, tier
 ---
 
 *Doc 735 § X amendment, 2026-05-21. Jared Foy. jaredfoy.com.*
+
+---
+
+## X.h Amendment: the cost-stratum is a property of the (algorithm × implementation × hardware) tuple, with substrate-tier correctness requiring three probe levels
+
+*A refinement to §X surfaced by WC-EXT 18–24 of the rusty-bun engagement. The original §X.b treated cost stratum as if it were a property of the algorithm choice alone. The empirical sequence WC-EXT 18 (CIOS u64+carry), WC-EXT 19 (CIOS u128), WC-EXT 20 (Solinas naive), WC-EXT 21 (Solinas v2 i64-column), WC-EXT 24 (Solinas v3 BigUInt::add) demonstrated that the cost stratum depends jointly on (algorithm, implementation, hardware), and that the implementation can appear at a faster cost-stratum than is correctness-permitted. The amendment formalizes the four sub-cases of §X.d intra-tier promotion and adds the three-probe-levels discipline that substrate-tier correctness claims require.*
+
+### X.h.a The tuple recognition
+
+§X.b stated: *"Within T3 for P-256 modular multiplication: 667ns (Montgomery REDC) vs 26,728ns (binary long division). Ratio: 40×."* This treats the stratum as a property of the algorithm — "Montgomery REDC" is one stratum, "binary long division" is another, with a 40× gap.
+
+WC-EXT 24's empirical sequence showed a different shape. The Solinas reduction for P-256 was implemented twice:
+
+- **v2 (i64-column with signed carry)** — appeared at 271 ns/op (2.25× faster than Montgomery's 610 ns), but fuzz-tested at 1000/2000 divergent results. The "speed" was illegal: v2 was failing to propagate signed carries, so it was doing strictly less work than the correct computation requires.
+- **v3 (composed from BigUInt::add)** — measured 940 ns/op (0.65× of Montgomery, i.e. slower), but fuzz-tested at 0/2000 divergent. Correct, but at a worse cost-stratum than the Mont alternative.
+
+The same algorithm (Solinas reduction, the standard FIPS 186-4 §B.2.1 formula) inhabits **different cost strata** depending on implementation. v2's apparent speed-stratum was not achievable correctness-permitted; v3's correctness-permitted speed-stratum was worse than the Mont alternative. The algorithm's "fast stratum" is not a property of the algorithm; it is a property of *(algorithm × implementation × hardware)*.
+
+The corrected formulation: **a cost-stratum is determined by the (algorithm, implementation, hardware) triple. Substrate moves at the (P2) case must be validated at all three.**
+
+### X.h.b Four sub-cases of (P2) intra-tier promotion
+
+§X.b distinguished cost-strata as alternative implementations of the same operation. §X.h refines: each (P2) substrate move falls into one of four sub-cases per (algorithm, implementation, hardware):
+
+- **(P2.a) Strict win.** Algorithm-correct + implementation-correct + per-op-faster-than-alternative on the target hardware. Substrate move is a strict improvement; the prior stratum is retired or kept as portability fallback. Engagement instance: WC-EXT 8 (P-256 Montgomery REDC vs binary-divmod on Pi).
+
+- **(P2.b) Slow-stratum implementation.** Algorithm-correct + implementation correct but composed from primitives at a slower cost-stratum. The substrate move inherits the slow stratum's cost, even though the algorithm at its best stratum would beat the alternative. Engagement instance: WC-EXT 20 (Solinas reduction composed from `mod_add`/`mod_sub` which call binary-divmod inside `modulo`; 70 µs/op vs Mont's 610 ns).
+
+- **(P2.c) Illegal-speed implementation.** Algorithm-correct in shape + implementation-INCORRECT in a way that produces output faster than correctness allows. The substrate appears to occupy a faster cost-stratum than the algorithm achieves correctly. Engagement instance: WC-EXT 21 v2 (i64-column Solinas failing to propagate signed carries; 271 ns/op, 50% fuzz divergence).
+
+- **(P2.d) Correct-stratum but losing.** Algorithm-correct + implementation-correct + cost-stratum is the algorithm's best achievable on the target hardware, but the per-op cost is still worse than an alternative substrate-tier algorithm. Engagement instance: WC-EXT 24 v3 (Solinas via BigUInt::add; 0/2000 fuzz divergent; 940 ns/op vs Mont's 610 ns).
+
+Only (P2.a) is a strict substrate improvement. (P2.b), (P2.c), (P2.d) each represent partial failures the framework's apparatus discipline must distinguish. The (P2.c) case is particularly insidious: a bench-fixture pass that happens to land on non-divergent inputs makes the substrate appear (P2.a) when it is actually (P2.c). The WC-EXT 21 claim ("2.22× speedup") was a (P2.c) misclassified as (P2.a) for ~24 hours before WC-EXT 23's fuzz coverage and WC-EXT 24's correctness-validation surfaced the misclassification.
+
+### X.h.c The three-probe-levels discipline
+
+Per §X.h.b's (P2.c) hazard: bench-fixture passing is insufficient evidence for (P2.a) classification. The substrate-tier correctness claim requires three distinct probe levels operating simultaneously:
+
+- **Bench probe**: symbolic test fixtures (small known inputs + 1-2 fixtures from real-world traces). Establishes that the substrate produces outputs that look reasonable for the chosen inputs. NECESSARY but not sufficient.
+
+- **Consumer-route probe**: integration with at least one upstream consumer. The consumer's input distribution exercises corners the bench fixtures don't (small operands, near-zero intermediates, edge values arising during composition). WC-EXT 22's EC routing was this probe; it surfaced v2's bug that the bench had missed. NECESSARY but not sufficient.
+
+- **Fuzz probe**: many random fixtures spanning the input space. Quantifies divergence frequency. WC-EXT 23's 2000-fixture fuzz quantified v2's 50% divergence rate. NECESSARY for the (P2.a) claim; sufficient ONLY when combined with the bench + consumer probes.
+
+A substrate move at the BigUInt arithmetic tier (or any tier where the (P2) classification matters) requires **all three** probe levels to claim (P2.a). The framework's apparatus discipline (Doc 730 §XVI four-case categorization + Doc 735 §X cost-stratum dimension) is gated on three-probe correctness validation, not on bench-fixture passing alone.
+
+### X.h.d (P2) saturation as escalation signal
+
+WC-EXT 16, 18, 19 ran three (P2) substrate moves at the same site (mont_mul for P-256) with diminishing-then-zero returns:
+
+- WC-EXT 16 (Comba schoolbook two-pass): 607 ns
+- WC-EXT 18 (CIOS u64+carry): 631 ns (4% slower)
+- WC-EXT 19 (CIOS u128 accumulator): 606 ns (parity)
+
+The three iterations of the same (P2) cycle reached an empirical ceiling at ~605–610 ns/op on the engagement's Pi at the current Vec<u32> BigUInt representation. **Saturation is a structural signal**: when a tier's (P2) substrate moves stop producing wallclock improvement, the next substrate-move target is *outside* the tier — either a representation switch (BigUInt to u64 limbs) or a primitive-specific specialization (Solinas reduction for the specific prime).
+
+This is §V's targeting heuristic extended: rank substrate moves by (impact × frequency) / LOC; when impact saturates at zero, escalate the substrate axis. The framework's apparatus discipline catalogs the saturation point as the signal to escalate.
+
+### X.h.e Wrong-stratum-composition pattern
+
+WC-EXT 20's naive Solinas composed the algorithm from `mod_add` and `mod_sub` calls, each of which invokes `BigUInt::modulo` = binary long division. Result: 70 µs/op (2.7× slower than even the unoptimized binary-divmod `mod_mul`, because Solinas needs more reductions than a single mul-then-modulo).
+
+The structural finding: **composition is not closure of the cost-stratum dimension**. A substrate move at one stratum (Solinas algorithm avoids multiplication; ought to be fast) that calls primitives at a worse stratum (mod_add → modulo → divmod) is bounded by the worse stratum, not the better.
+
+Per Doc 730 §XII diagnostic-legibility: the wrong-stratum-composition pattern is locatable to one specific call site (the slow primitive in the composition). The (P2.b) sub-case is the named target for the substrate-move recategorization: route the algorithm through faster primitives (in WC-EXT 21 + 24, the i64-column or BigUInt::add alternatives) rather than re-deriving the algorithm itself.
+
+### X.h.f Where this places the amendment
+
+§X.b classified cost-strata. §X.h refines the classification to four sub-cases and adds the three-probe-levels discipline. The framework's apparatus is unchanged in shape but sharper in resolution.
+
+The rusty-bun engagement WC-EXT 8–24 sequence is the empirical anchor for §X.h. The seven (P2) substrate moves (WC-EXT 8, 16, 18, 19, 20, 21, 24) populate the four sub-cases:
+
+- (P2.a) — WC-EXT 8, 12, 15 (the strict wins)
+- (P2.b) — WC-EXT 20 (the wrong-stratum-composition slow-down)
+- (P2.c) — WC-EXT 21 (the illegal-speed bug-artifact)
+- (P2.d) — WC-EXT 24 (the correct-but-losing)
+
+The fact that the engagement produced all four sub-cases empirically corroborates the framework's structural claim: the (P2) classification is not a single binary "fast vs slow" but a four-cell taxonomy that requires three-probe-levels validation to populate correctly.
+
+Per Doc 734 §V.b growth mechanism: a substrate-tier negative finding produces a corpus-tier framework refinement. §X.h is the cumulative refinement from WC-EXT 18–24's productive negative findings (one regression that wasn't, one wash, one composition failure, one bug-artifact, one correct-but-losing). The corpus has added four sub-cases to its substrate-classification space; the engagement's WC-EXT 25+ work proceeds with the sharper apparatus.
+
+---
+
+*Doc 735 § X.h amendment, 2026-05-21. Jared Foy. jaredfoy.com.*
