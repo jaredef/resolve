@@ -683,4 +683,61 @@ The two pipelines together specify the full deviation-resolution surface the eng
 
 ---
 
+## XVIII. Appendix: heuristic recovery via output-set membership
+
+A pattern that surfaced during the cruftless engagement's rusty-js-esm locale on 2026-05-21 extends §XVI's instrument with a sharper claim about when a substrate rule is recoverable.
+
+### XVIII.a The earlier defer
+
+The locale's Rung-3 reading (enquirer, twenty-one spurious keys versus bun on a CJS-to-ESM namespace synthesis) closed as deferred. The verdict was: bun keeps eighteen `enumerable: false` own properties on the exported constructor and drops the other twenty-three. A pure enumerability filter would keep both groups; a pure "keep all own" would keep both. Three hypotheses were considered and rejected. The reading concluded that bun's filter rule was package-shape-dependent in a way the locale's reading could not recover without bun source access.
+
+The defer was wrong. The rule was recoverable. What was missing was not bun source access but a second axis along which to read both engines' output.
+
+### XVIII.b The recovery move
+
+Revisiting the same probe later in the session, the recovery move was to enumerate not just bun's output keys but also the structural feature against which the kept-versus-dropped partition aligns. The discriminator turned out to be membership in `getOwnPropertyNames(Object.getPrototypeOf(exports).prototype)`, the superclass's prototype's own names.
+
+The full rule for CJS namespace mirroring when `module.exports` is a function-typed value inheriting from another class:
+
+```
+enum=true own property → INCLUDE
+enum=false own property → INCLUDE iff name is in:
+    getOwnPropertyNames(Object.getPrototypeOf(exports).prototype)
+    OR {"name", "length", "prototype"}
+```
+
+The eighteen kept `enum=false` names matched exactly the EventEmitter prototype's own-names set plus the three function intrinsics. The twenty-three dropped names matched neither. The set-membership check was the missing axis. Once it was added, the partition lined up perfectly; the rule fell out as a single conjunction.
+
+### XVIII.c The heuristic class
+
+The earlier defer happened because the reading axis was "what enumerability does each key carry," which produces a partition that the rule cannot distinguish. A rule's discriminator does not have to be a property of the keys themselves. It can be membership in a set computed from a different region of the object graph.
+
+The general claim. When a deviation reading appears to admit no clean rule on the keys' own descriptors, the next axis to consider is structural set-membership against a related object: a superclass's prototype, a marker symbol's value set, an intrinsics table, a registered transformer's signature. The reference engine's output keys, projected against any such structural set, may yield a clean partition where the descriptor-only projection did not.
+
+This extends §XVI's instrument with a recovery protocol. §XVI says: use the reference engine's output as the oracle. §XVIII adds: when the oracle's output does not yield a clean rule under the obvious axis, try set-membership against a structural feature of the input graph before concluding the rule is unrecoverable.
+
+### XVIII.d Verification
+
+The recovered rule was implemented in cruftless's `populate_cjs_namespace_view` (commit `1fe06c2b`, 2026-05-21). The probe flipped: enquirer's namespace dropped from sixty-four keys to forty-three, matching bun exactly. The 119-package parity sweep cleared with no regressions; the locale's parity advanced from 98.3% to 99.1%.
+
+The cost. One additional read of the same probe output, paired with a `getOwnPropertyNames` call on the superclass prototype. The same engineer who declared the rule unrecoverable could have recovered it, in under five minutes, by trying the set-membership projection first.
+
+### XVIII.e The corpus claim
+
+Defers labeled "unrecoverable from outside the reference engine's source" should be treated as conditional rather than terminal. The condition is: the reading has not yet tried set-membership against a structural feature of the input. Until that axis has been tried, the defer is a methodological gap, not a recovery ceiling.
+
+This refines the §XII–§XVI pipeline's failure semantics. A §XIV trace iteration that returns a clean PASS on the bracket probe (the substrate is not the gap) is a genuine close. A §XIV trace iteration that returns "rule unrecoverable" without trying structural set-membership against the reading targets is a deferred re-read, not a close.
+
+The pipeline's discipline now reads: a deviation is closed when either (a) the substrate move lands and the deviation is gone, or (b) the bracket probe returns PASS confirming the substrate is not the gap, or (c) the rule has been read against at least one structural set-membership axis beyond key descriptors and still admits no partition. Anything short of (c) is a deferred re-read at the next session.
+
+### XVIII.f Successor question
+
+The set-membership axes worth trying are not arbitrary. They cluster into a small taxonomy: superclass-prototype, marker-symbol, intrinsics-table, registered-transformer. A corpus-tier successor question is whether the engagement maintains a standing catalog of these axes as a Pin-Art reading checklist, so the next deferred-as-unrecoverable rule routes through the catalog before the defer lands.
+
+---
+
+*Doc 730 § XVIII appendix, 2026-05-21. Jared Foy. jaredfoy.com.*
+
+---
+
 *Doc 730. Jared Foy. jaredfoy.com.*
