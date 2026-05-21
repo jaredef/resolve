@@ -585,4 +585,102 @@ The rusty-bun engagement's 2026-05-20 trace is the first worked instance of the 
 
 ---
 
+## XVII. Appendix: the performance-axis deviation-resolution pipeline
+
+*A primary articulation responding to the keeper's observation (2026-05-21 05:29-local): the §XVI bidirectional engine-diff oracle has been operating implicitly on the performance axis throughout the rusty-bun session, alongside its explicit correctness-axis role. The cumulative 16 WC-EXTs of substrate work — each measured against Bun's BoringSSL-backed reference — is dense empirical anchor for naming the performance-axis pipeline as a structural object dual to the §XVI correctness pipeline.*
+
+### XVII.a The recognition
+
+§XII–§XVI articulate a deviation-resolution pipeline whose units are spec-correctness divergences. The §XVI four-case taxonomy categorizes each localized cruftless-vs-Bun divergence and routes it to one of (1) §XII lift on B, (2) §XIV deviation primitive on B, (3) both-diverge, (4) implementation freedom. The probe is bidirectional engine-diff; the spec is the privileged reference.
+
+The rusty-bun engagement's 2026-05-21 session ran a structurally identical pipeline on the **performance axis**. The probe was the same 5-endpoint TLS coverage matrix; the categorization classified per-substrate-move outcomes by whether the cruftless implementation matched, lagged, or exceeded Bun's wallclock at each primitive site; the substrate moves were §XII-style lifts at the performance dimension (Jacobian coords, Montgomery REDC, baked tables, generic curve scalar mul, Comba schoolbook). The pipeline operated without being named, because the framework as drafted only articulated the correctness axis.
+
+This appendix names the performance-axis pipeline, supplies its four-case taxonomy (extended to five for one hardware-specific case), and supplies the apparatus discipline. The pipeline is **structurally dual to §XVI**: same probe shape, same categorize-then-move discipline, different reference (engineering benchmark rather than specification text), different substrate-move catalog.
+
+### XVII.b The taxonomy (five cases instead of four)
+
+The §XVI four-case correctness taxonomy maps onto the performance axis with one structural addition. For each localized divergence between two implementations' wallclock at the same probed primitive:
+
+**(P1) Algorithmic gap** — implementation B uses an asymptotically faster algorithm than implementation A. cruftless's `BigUInt::mul` is O(n²) schoolbook; BoringSSL above ~16 limbs uses Karatsuba O(n^1.58). The divergence is at the algorithm tier; the substrate move is an algorithm promotion at A. Maps to §XVI case 1 (B has the spec-correct algorithm; A lifts).
+
+**(P2) Constant-factor gap** — both implementations use the same algorithm but B's per-op constant is smaller (different instruction selection, register allocation, inlining, vectorization). cruftless's Montgomery REDC and BoringSSL's are both O(k²); BoringSSL's CIOS-style integrated loop is ~3× smaller constant. The divergence is at the codegen tier; the substrate move is constant-factor work (Comba, CIOS, inline asm). Maps loosely to §XVI case 1 with a finer-grained substrate move.
+
+**(P3) Mixed-axis gap** — both implementations diverge from each other in different directions on different sub-primitives. cruftless beats Bun on alphabet purity at the engagement-internal-TLS substrate (we know exactly what every operation does); Bun beats cruftless on cipher throughput (AES-NI). The divergence is composable; substrate moves trade in both directions. Maps to §XVI case 3.
+
+**(P4) Implementation-freedom gap** — both implementations satisfy the performance envelope acceptable for the workload; no substrate move required. cruftless's ECDSA-P-256 verify at 0.10s after WC-EXT 10 vs Bun's ~1ms: gap is real but acceptable for TLS handshakes whose total budget is ~100ms. Maps to §XVI case 4.
+
+**(P5) Hardware-bound gap** — B uses hardware instructions A's target doesn't have (AES-NI, ARMv8 crypto extensions, SHA hardware accelerators, AVX2). The substrate move is not within the engagement's reach; the choice is either hardware-tier escalation (deploy to hardware with the extension) or carve-out (accept the gap as deployment-tier scope). Has no §XVI analogue; it's a performance-axis specific case.
+
+(P5) is the case the correctness axis cannot encounter: spec correctness is not hardware-dependent at the engagement tier in the way performance is. Adding (P5) extends the framework rather than refining it.
+
+### XVII.c Apparatus discipline
+
+Five steps, parallel to §XVI.b's correctness-probe discipline:
+
+1. **Localize the divergence point**. Bench cruftless vs reference at increasingly granular probe-set, from end-to-end wallclock (TLS handshake) down to per-primitive cost (`mont_mul` micro-bench). Bisect until the smallest unit at which they differ is identified.
+
+2. **Instrument both implementations at the divergence point**. Time the primitive in cruftless under representative input. For reference engines whose internals aren't accessible, infer per-op cost from published benchmarks plus reasonable substrate models.
+
+3. **Read the gap**. Magnitude (how many ×?), workload-frequency (how many times per workload?), and per-EXT-LOC estimate of substrate moves that would close it.
+
+4. **Categorize per (P1)–(P5)**. The categorization determines whether the substrate move is algorithm promotion (P1), constant-factor work (P2), composable trade-off (P3), no-op carve-out (P4), or hardware-tier escalation (P5).
+
+5. **Sequence the substrate moves by (impact × frequency) / LOC**. Rank candidates per the diagnosis, pick the top-of-stack per round.
+
+### XVII.d The rusty-bun session as worked example
+
+The 2026-05-21 session ran the pipeline through 16 WC-EXTs against the Bun-vs-cruftless 5-endpoint TLS probe. Cumulative trace through the five cases:
+
+- **WC-EXT 3** (Jacobian coordinates): (P1) algorithm promotion — affine double-and-add to Jacobian. ~50 LOC for 28× fixture-verify speedup.
+- **WC-EXT 5** (build-time-baked comb table): (P1) algorithm promotion — naive scalar mul to comb-table-based; reused the WC-EXT 4 negative-finding to choose Regime 1 over Regime 2.
+- **WC-EXT 8** (P-256 Montgomery REDC): (P1) algorithm promotion — binary-divmod-based `mod_mul` to Montgomery REDC. ~150 LOC for 40× per-mul speedup.
+- **WC-EXT 9, 10** (route ec_scalar_mul through Mont): (P1) propagation — apply the new algorithm at consumer sites.
+- **WC-EXT 12** (generic Mont for arbitrary odd modulus): (P1) at the abstraction tier — generalize the WC-EXT 8 substrate to apply at every consumer.
+- **WC-EXT 13** (route EphemeralEcdh to Mont base table): (P1) at the consumer-routing tier.
+- **WC-EXT 15** (generic Mont scalar mul for any curve): (P1) at the abstraction tier for ECDSA-P-384.
+- **WC-EXT 16** (Comba schoolbook): (P2) constant-factor work — same schoolbook algorithm with better instruction scheduling via single-pass column accumulation.
+
+All 16 WC-EXTs were §XVI-style probe → categorize → substrate-move → re-probe cycles, operating on the performance axis. The session's cumulative effect: ECDSA verify 8.18s → 0.10s (82×), TLS probe wallclock 36s → 2.59s (14×), api.github.com handshake ~10s → ~0.85s (~12×). Bun remains ~17× faster per-endpoint and the gap is decomposed structurally:
+
+| component | cruftless | Bun | gap | case | next move |
+|---|---|---|---|---|---|
+| ECDSA-P-256 verify | 100ms | ~1ms | 100× | P2 | CIOS Mont (WC-EXT 17) |
+| ECDSA-P-384 verify | 260ms | ~3ms | 87× | P2 | CIOS Mont generalized |
+| RSA-2048 verify | ~50ms | ~1ms | 50× | P1+P2 | Karatsuba (WC-EXT ?) |
+| AES-GCM AEAD | (slow) | (instant) | ~ | P5 | AES-NI / ARM crypto ext |
+| Connection establishment | per-request | pooled | ∞ | P3 | connection pooling |
+| TLS 1.2 fallback | absent | present | n/a | P4 → carve-out vs lift |
+
+The remaining gap to Bun decomposes cleanly into (P2) substrate moves (~5-10× achievable in pure Rust), (P1) algorithm-tier moves (Karatsuba ~3× on RSA), (P5) hardware moves (AES-NI ~10× on AEAD; out of reach on the Pi without crypto extensions), and (P4) carve-outs or (P3) workload-orthogonal architecture changes. The framework predicts the gap is closeable to within ~5-10× by pure-Rust substrate work; further closure requires hardware-tier escalation.
+
+### XVII.e Why this is load-bearing for the pipeline
+
+§XVI's correctness-axis pipeline operates over a discrete set of spec sections; the deviation-resolution moves either close a divergence or escalate to a carve-out. §XVII's performance-axis pipeline operates over a continuous wallclock measurement; the deviation-resolution moves close fractions of the gap until either an acceptable envelope is reached (P4) or a substrate-tier ceiling is hit (P5).
+
+The two pipelines compose. A substrate move at the correctness tier (e.g., absorbing a spec discrimination via §XIII alphabet promotion) may incur a performance cost; the performance pipeline tracks that cost and surfaces follow-up moves. A substrate move at the performance tier (e.g., switching from naive ec_scalar_mul to Mont-form) may make a correctness subtle (e.g., the Mont-Z initialization bug in WC-EXT 9); the correctness pipeline tracks that subtlety.
+
+The discipline operating *both* pipelines simultaneously is the Pin-Art apparatus per Doc 619. Per Doc 691's bidirectional reading: the detection-direction probe surfaces both correctness and performance divergences from the same wire trace; the composition-direction probe stresses both axes simultaneously. The §XII–§XVI correctness vocabulary and the §XVII performance vocabulary together name the full substrate-move dispatch space.
+
+### XVII.f Successor questions
+
+Three corpus-tier questions extend this articulation.
+
+**(Q1) Per-substrate-tier cost catalog.** Each substrate-tier admits a per-primitive cost catalog with one row per (primitive, implementation) cell. The cryptographic-primitive tier's catalog for cruftless currently has 16 entries (one per WC-EXT). The full catalog per substrate tier becomes a standing artifact the engagement maintains; a workstream-found pair (Doc 733) produces the catalog as a standing artefact at its tier.
+
+**(Q2) Cross-pipeline interaction.** When does a performance substrate move surface a correctness subtlety (or vice versa)? The session's WC-EXT 9 bug (Mont-Z initialization) is one instance. Cataloging the cross-pipeline events is itself a substrate-tier mapping worth producing as a corpus-tier successor work.
+
+**(Q3) Hardware-tier escalation as a first-class substrate move.** (P5) currently routes to carve-out or escalation. The escalation case admits its own substrate-move framework — "deploy to hardware satisfying constraint C." Future engagement work on multi-platform substrate dispatch (hardware-detect at runtime; route to AES-NI on x86_64, ARMv8 AES on ARM64-with-extensions, scalar fallback on Pi-without-extensions) would formalize this. Doc 733's fractal-pair discipline applies: a hardware-detect-and-dispatch workstream merits its own seed-and-trajectory pair.
+
+### XVII.g Where this places the recognition
+
+§XII opened diagnostic legibility for a P1–P4 resolver-instance pipeline (correctness). §XIII–§XV opened the upward and downward alphabet axes (correctness). §XVI named the empirical instrument (bidirectional engine-diff against a reference engine, correctness). §XVII adds the performance-axis pipeline structurally dual to §XVI: same shape, different reference, extended taxonomy (five cases instead of four to handle hardware-bound divergences).
+
+The two pipelines together specify the full deviation-resolution surface the engagement operates over. Per Doc 734 §V.c growth mechanism (positive-finding generalization): the 16 WC-EXTs of empirical anchor density were sufficient to articulate the performance-axis pipeline as a corpus-tier object. Per Doc 733 §V: the engagement now has explicit pair-structured workstream discipline for both axes simultaneously.
+
+---
+
+*Doc 730 § XVII appendix, 2026-05-21. Jared Foy. jaredfoy.com.*
+
+---
+
 *Doc 730. Jared Foy. jaredfoy.com.*
