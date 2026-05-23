@@ -212,3 +212,68 @@ The relevant-tier set R is identified by a component A/B probe per §II.4: N add
 The cruftless instance: the JSF chain landed correctness-preserving substrate work at a tier outside R for its target fixture; -1% CRB after six rounds. The component A/B probe surfaced the actual dominator (character-scanning loop, 77% of cost). Two follow-on rounds closed substrate-tier algorithm + interp-tier dispatch; -12% CRB cumulative; cruft/node 20.34× → 17.93×. The pipeline connects at the cumulative scope.
 
 The keeper's pre-implementation framing — "you have to go through this middle stretch where performance decreases first" — was correct: the middle stretch is the substrate-introduction round whose (P2.d) is the cascade-revival signature, not pilot failure. What the multi-tier reading adds: the middle stretch may extend across multiple rounds at different tiers, and the pipeline-connection moment is the cumulative-measurement round after all relevant tiers have been closed.
+
+---
+
+## VIII. Amendment — Coverage-axis enumeration for tier-class pilots
+
+*Added 2026-05-23, several hours after the document's first publication, following the architectural-pivot session's TL → VD → OSR sequence. The amendment specifies the coverage-axis enumeration that the §II relevant-tier-set R apparatus exposes when the pilot tier-class is "JIT closure of a measured-CRB-gap." The amendment is a refinement of §II.4's empirical-disambiguation discipline, not a revision: §II.4's component A/B probe identifies the COST dominator; §VIII enumerates the COVERAGE axes that must close at the dominator tier for cumulative reclaim to materialize.*
+
+### VIII.1 The coverage-axis enumeration
+
+The §II multi-tier reading treats R as a set of tiers along a single dimension (per-call cost contribution). For a tier class with multiple structural dimensions (e.g., "the JIT tier" composes a code-emission dimension, a value-encoding dimension, and a calling-convention dimension), the relevant-tier set R has additional structure: for the tier to close, ALL of its structural dimensions must support the pilot's required closure shape.
+
+A coverage axis is a structural dimension of a tier class that gates whether a pilot at that tier can deliver its intended closure. For the cruftless engagement's JIT-closure pilots, four coverage axes surfaced empirically during the 2026-05-23 architectural-pivot session:
+
+**(A1) Component A/B coverage**: the pilot targets the actual cost dominator (identified by the §II.4 probe), not a suspected component. Without (A1), the pilot's substrate work lands at a tier outside R and produces 0% cumulative reclaim regardless of the pilot's correctness. Apparatus per §II.4 + Pin-Art component-decomposition probe.
+
+**(A2) Op-set coverage**: for JIT-alphabet pilots (closing a JIT-eligibility gap by adding alphabet variants), the pilot's alphabet additions cover ALL ops in the hot-path enclosing scope, not just the inner-loop sub-region. The JIT's whole-body bail discipline (a structural property of single-entry JIT compilation) means any op outside the alphabet causes the whole body to fall through to interp regardless of how completely the inner-loop sub-region's alphabet is closed. Apparatus: source-read enumeration of the full enclosing-scope bytecode before pilot spawn.
+
+**(A3) Value-domain coverage**: for JIT-IC pilots that require non-Number / non-Object receivers (e.g., String-receiver method ICs), the calling convention encodes the required receiver Value variants. Without (A3), the JIT body receives a structurally-incomplete representation of the receiver (e.g., 0.0 instead of an Rc<String> pointer) and cannot correctly emit IC fast-path bodies regardless of the alphabet's coverage. Apparatus: source-read of the calling-convention's unboxing helpers before pilot spawn.
+
+**(A4) Locals-marshaling coverage**: for JIT-invoke pilots that invoke JIT bodies from non-arg state (OSR loop extraction; coroutine / async resume; mid-function deopt resume; ICs synthesizing JIT bodies from runtime-known state), the calling convention populates locals from the required source. The args-only initialization shape (locals 0..params from f64 args; locals params..N = 0.0) is sufficient for function-call entry and module-body entry; it is INSUFFICIENT for state-injection pilots whose JIT body reads enclosing-frame locals. Apparatus: source-read of the locals-init path before pilot spawn.
+
+### VIII.2 The 5-tier lower bound for JIT-invoke pilots
+
+For a JIT-invoke pilot whose target is a hot-path closure on a fixture with mixed-Value receivers + non-arg state (the cruftless json_parse_transform fixture is the canonical case), the relevant-tier set R has a structural lower bound of five tiers:
+
+1. **Entry mechanism**: the JIT body's entry point is reachable from the dispatcher / interp loop. Closes the "JIT never fires" gap.
+2. **Op-set coverage (per A2)**: the loop body's bytecode ops are all in the JIT alphabet. Closes the "whole-body bail" gap.
+3. **Value-domain coverage (per A3)**: the calling convention encodes the Value variants the loop body's receivers / operands require. Closes the "0.0-degradation at boundary" gap.
+4. **Locals-marshaling coverage (per A4)**: the calling convention populates locals from the enclosing frame's state at JIT body entry. Closes the "stale-locals at invoke" gap.
+5. **IC fast-path body**: for hot intrinsic calls within the loop body (e.g., String.prototype.charCodeAt), the JIT emits inline fast-path IR that reads the receiver via (A3)'s encoding and produces the result without dispatcher round-trip. Closes the "per-call dispatch overhead" gap.
+
+A pilot addressing only a subset of these five tiers delivers substrate-introduction value at the addressed tier(s) but not cumulative reclaim. Per §II.2 (P4): the cumulative reclaim materialization point is the round that closes the LAST of the relevant tiers.
+
+The cruftless engagement's 2026-05-23 session closed tiers 1 (TL pilot's entry-mechanism), 3 (VD pilot's value-domain), and the cross-tier substrate + dispatch closures (CharCode-EXT 1+2 at non-JIT tiers). Tiers 2, 4, and 5 remain for the OSR pilot's subsequent rounds. The current 12% CRB cumulative reclaim on json_parse_transform is the partial-closure measurement; full closure projects to 40-60% reclaim per the OSR-EXT 1 design's reclaim model.
+
+### VIII.3 Apparatus extension: standing rule with multi-axis coverage check
+
+The cruftless engagement's standing rule 11 (the component A/B probe rule, originally introduced as the (A1) coverage check) extends to multi-axis: before spawning any pilot whose telos is "close a CRB-measured gap," run the (A1) probe AND verify (A2) op-set coverage if the pilot is JIT-alphabet AND verify (A3) value-domain coverage if the pilot is JIT-IC with non-Number/Object receivers AND verify (A4) locals-marshaling coverage if the pilot invokes JIT bodies from non-arg state.
+
+If any of the applicable coverage checks fails, the pilot's reclaim ceiling on the target fixture is 0% via that pilot alone; the missing tier(s) must be addressed in dependency order (per §II.2 P4) before cumulative reclaim materializes.
+
+The compounding value: each future JIT-tier pilot's spawn decision is gated on the multi-axis check; mis-attribution at any axis is caught BEFORE substrate work begins. The cost of the multi-axis check is bounded (each axis check is a source-read + brief enumeration; minutes per axis); the cost of NOT running the check is the cost of a substrate pilot landing at a structurally-insufficient tier (one example from the session: the TL (b-narrow) plan, six rounds + ~390 LOC, closed structurally at TL-EXT 3 with the remaining rounds re-scoped after Finding VII.2 surfaced).
+
+### VIII.4 Generalization beyond JIT
+
+The four coverage axes (A1-A4) named here are JIT-specific. The structural pattern — "a tier class has multiple coverage dimensions; the pilot's closure requires ALL applicable dimensions to be covered" — generalizes to any tier class with multiple structural dimensions. For example:
+
+- A storage-tier pilot (closing a measured query-latency gap) may have coverage axes: query-shape coverage (the query plan handles the actual hot-path shape), index-coverage (the relevant index exists), partition-coverage (data layout aligns with the access pattern), serialization-coverage (the wire format supports the required types).
+- A network-tier pilot may have coverage axes: protocol-coverage (the wire protocol supports the operation), buffer-coverage (buffer sizes accommodate the workload), connection-coverage (the connection pool supports the concurrency), encoding-coverage (the payload encoding round-trips the required types).
+
+The §II.4 component A/B probe identifies the cost dominator at the per-call axis; the §VIII coverage-axis enumeration identifies the structural dimensions that must close at the dominator tier. Together, they form the engagement's standing pre-spawn discipline for tier-class pilots.
+
+### VIII.5 Composition with prior sections
+
+- §II.2 (P4): the cumulative-reclaim materialization point holds; this amendment adds that "all relevant tiers closed" includes "all relevant coverage axes at each tier."
+- §II.4 component A/B probe: extended; the probe remains the apparatus for (A1) coverage check; this amendment adds (A2-A4) as additional pre-spawn checks for JIT-tier pilots.
+- §III cruftless instance: the JSF chain closed (A1) at JSF-EXT 8 + the substrate/dispatch tiers at CharCode-EXT 1+2; the TL pilot closed entry-mechanism (tier 1); the VD pilot closed value-domain (tier 3 + (A3)); the OSR pilot's remaining scope is to close (A2) at the loop scope + (A4) locals-marshaling + tier 5 IC bodies. Each closure round adds the corresponding coverage; cumulative reclaim materialization is queued for the OSR pilot's final round.
+- §IV.1 empirical disambiguation: extended along the coverage axes; (A1) is empirical (probe); (A2)-(A4) are source-read enumerations (each takes minutes; each prevents structural mis-scoping).
+- §IV.2 substrate-introduction signature: holds; a substrate-intro round that closes one coverage axis at the tier still expects (P2.d) bench because the remaining coverage axes at the tier still gate cumulative reclaim.
+
+### VIII.6 Summary of the amendment
+
+The §II multi-tier reading enumerates tiers along the per-call cost dimension. §VIII enumerates coverage axes along the structural dimensions of each tier class. For a tier class with multiple structural dimensions, the pilot's closure at the tier requires ALL applicable coverage axes to be covered; partial coverage delivers substrate-introduction value but not cumulative reclaim.
+
+For JIT-closure pilots specifically, four coverage axes are identified: component A/B; op-set coverage; value-domain coverage; locals-marshaling coverage. The cruftless engagement's standing rule 11 multi-axis check applies all four pre-spawn for any JIT-tier CRB-driven pilot. The structural pattern generalizes to any tier class with multiple structural dimensions.
