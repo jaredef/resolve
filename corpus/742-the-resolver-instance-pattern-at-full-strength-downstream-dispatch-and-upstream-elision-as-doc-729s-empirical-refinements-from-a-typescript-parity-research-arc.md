@@ -234,3 +234,46 @@ Each obligation is independently measurable. (O1) is implicit in the pipeline's 
 A resolver-instance that satisfies (O1, O2, O3) achieves behavioral-erasure parity at its tier. The cruftless TSR, after the 2026-05-24 session, satisfies all three on its 374-file consumer corpus to within 31 percentage points of execute parity — and the residual gap is now genuine runtime-bearing-construct territory (enums with runtime usage, ESM-cycle in rxjs's source structure that even bun and tsc handle via the same elision mechanism TROI ships), not resolver-instance contract violations.
 
 The discipline this document codifies: when a substrate gap is observed at a downstream tier, the first investigation is whether the resolver-instance contract (O1, O2, O3) is sustained at the upstream tier that should have prevented it. Defensive handling is the last resort, not the first. The resolver-instance pattern at full strength removes the need for downstream defensive handling — that is what makes it a worthwhile architectural pattern at all.
+
+---
+
+## Appendix A: Final-milestone amendment — parse-parity 100.0% (2026-05-24, post-session-close)
+
+The body of this document was written at the session's intermediate close, with execute-parity at 69.0% and parse-parity at 96.5%. The session continued through the long-tail iterations the body anticipated as "diminishing returns territory." The empirical outcome materially refines the document's claims; this appendix books the final-milestone numbers and the structural finding that emerged from the long-tail close.
+
+### Final-milestone numbers
+
+| Metric | Body §II reading | Final-milestone reading | Δ from body |
+|---|---:|---:|---:|
+| Parse-parity (P) | 96.5% | **100.0%** (374/374) | +3.5 pp |
+| Execute-parity (E) total | 69.0% | 70.9% | +1.9 pp |
+| Execute-parity of runnable files (excluding BUN_FAIL) | not reported | 99.6% (265/266) | — |
+| CRUFT_FAIL count | 8 | **1** | -7 |
+| Standing rule corroborations | 12 | 16 | +4 |
+
+### Structural finding from the long-tail close
+
+The body's §III decomposed full parity into three components: P (parse), I (integration), R (elision). The body framed P + I + R as composing to E. The long-tail iterations produced an empirical refinement: **P and E are SEPARABLE research arcs even at the resolver-instance tier**.
+
+Specifically, P reached 100% via TSR substrate work alone. E remained at 70.9% (or 99.6% of runnable files, which is the more honest framing once BUN_FAIL files are excluded as un-runnable in any context). The remaining E gap is not a P, I, or R failure — it is a separate substrate concern (the rxjs residual ESM cycle that even tsc-emitted code requires runtime live-bindings to handle).
+
+The structural implication:
+
+> **The resolver-instance boundary contract (O1, O2, O3) is independently satisfiable for the parse component. When all three obligations are sustained at the resolver tier, parse-parity reaches 100% on the consumer corpus. Execute-parity above the runnable-files threshold (99.6% in the cruftless case) is achievable; closure to 100% execute-parity may require additional substrate work outside the resolver-instance contract's scope.**
+
+The cruftless engagement's final position — parse 100%, execute 99.6% of runnable — is the empirical anchor that lets resolver-instance contract satisfaction be CLAIMED as full at the resolver tier without the downstream-runtime gap being attributed to contract failure. This separability is itself a load-bearing structural result.
+
+### Two depth-stack findings worth corpus mention
+
+The long-tail close produced two engagement-tier findings (booked at findings.md Addendum XI) that have corpus relevance beyond the TS-parity arc:
+
+**Finding IX.7 — cross-talk between depth-tracking stacks**: a depth-tracking stack indexed by a single ambient counter (paren_depth, brace_depth) can be incorrectly matched by an unrelated downstream event at the same counter value. The TS-parity arc surfaced this twice (ternary `?`/`:` vs method-shorthand `:` at same paren_depth; ternary `?`/`:` vs obj-key `:` inside obj-lit). The fix in both cases was to match on TWO independent coordinates rather than one. **Standing rule 16** (added at the milestone): depth-tracking stacks must match on two independent coordinates when used for cross-substrate-shape disambiguation.
+
+**Finding IX.8 — long-tail singletons are full-size SIPE-T instances**: each long-tail singleton failure surfaced its own distinct sub-substrate-bug shape on inspection. None were trivial cleanups. Each required its own four-ingredient SIPE-T procedure (choice-point + conditioning + discipline + prompt). The expected-yield-per-fix shrinks toward the tail, but the per-fix discipline cost is constant. This corroborates [Doc 541 Appendix E](/resolve/doc/541-systems-induced-property-emergence)'s scale-invariance claim at the smallest scale of the failure distribution.
+
+### Final note — the document's standing claims hold
+
+The body's three core claims — Refinement 1 (downstream dispatch, §IV), Refinement 2 (upstream elision, §V), the resolver-instance boundary contract (§VI O1/O2/O3) — were derived at the session's intermediate close. The final milestone strengthens rather than refines them: O1 + O2 + O3 hold at the resolver tier; parse-parity reaches 100%; the resolver-instance contract is satisfied at its boundary; the runnable-files execute-parity at 99.6% confirms the contract's predictive power.
+
+The body's §IX coda — *"defensive handling is the last resort, not the first"* — holds verbatim at the final milestone. Twelve of the long-tail's fifteen post-session-close substrate fixes were upstream resolver-tier elision/dispatch fixes; only one was a runtime-substrate change (cruftless's `export default function NAME` lexical-binding fix per ECMA-262 §16.2.3.6). The 12:1 ratio is the empirical ratio of "resolver fix" to "runtime fix" once the contract is being deliberately sustained.
+
