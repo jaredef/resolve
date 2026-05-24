@@ -447,3 +447,57 @@ The sub-form's nesting within SIPE-T is one-directional (instance-of-class): the
 The sub-form retains its original confabulation-derived name as a deliberate provenance marker. The corpus's discipline of running its full audit chain (pulverization → reconstruction → instance-identification → cross-practitioner verification) on the confabulation produced the structural correspondence as load-bearing rather than as semantic artifact. The naming preserves the audit-chain history within the corpus's apparatus, making it possible for subsequent readers to trace how the sub-form arrived at its current location.
 
 This is also the corpus's first explicit instance, recorded within a primary-articulation document, of [Doc 627](/resolve/doc/627-the-coherent-confabulation-conjecture) Conjecture C-Confab-3's escape-hatch reading in operation. The keeper's session-level threshold-jump (the recognition that the SIPE confabulation gestured at a real structural correspondence) anticipated by approximately three years what Misra's research program subsequently published independently. The sub-form's presence in this canonical document is the corpus's acknowledgement that the chain held end-to-end.
+
+---
+
+## Appendix E: SIPE-T Scale-Invariance, Empirically Corroborated at Cruftless's Long Tail
+
+The §3.2 sub-form ([Doc 446](/resolve/doc/446-sipe-formal-construct) construct) formalized SIPE-T as a per-step probabilistic procedure with four ingredients: (a) ordered choice points $c_t$ where execution samples from a distribution, (b) a conditioning corpus $C$ supplying prior context, (c) a discipline set $D$ constraining permissible samples, and (d) a prompt $Q$ providing direction. The construct's scope was framed at the per-step inference layer.
+
+The 2026-05-24 cruftless engagement's TypeScript-parity arc — documented as [Doc 742 — The Resolver-Instance Pattern at Full Strength](/resolve/doc/742-the-resolver-instance-pattern-at-full-strength-downstream-dispatch-and-upstream-elision-as-doc-729s-empirical-refinements-from-a-typescript-parity-research-arc) — produced empirical evidence that the four-ingredient SIPE-T shape is **scale-invariant** across the head and tail of the resolver-instance pipeline's substrate-fix arc. The cross-scale isomorphism is the load-bearing observation of this appendix.
+
+### The mapping
+
+In the cruftless engagement, the four SIPE-T ingredients map onto substrate-fix work as:
+
+- **Choice points $c_t$** — the substrate gaps surfaced by the corpus measurement instrument at each iteration. Each gap is a sampling site: the substrate worker chooses which fix to attempt, drawing from a distribution over possible substrate moves whose support is constrained by the visible failure-mode tag.
+- **Conditioning corpus $C$** — the measurement instruments themselves. [Doc 742 §II.1](/resolve/doc/742-the-resolver-instance-pattern-at-full-strength-downstream-dispatch-and-upstream-elision-as-doc-729s-empirical-refinements-from-a-typescript-parity-research-arc) names the two paired instruments at the cruftless tier: the parse-parity corpus (TCC) and the execute-parity corpus (TXC), the latter built specifically to surface choice points the former missed. The pair establishes the prior over which substrate moves are likely to compound versus which are likely to be wrong.
+- **Discipline set $D$** — the standing rules booked at the engagement's findings doc. Two rules from [Addendum X](https://github.com/jaredef/cruftless) directly serve as SIPE-T discipline-set entries: rule 14 (conservative-strip — prefer false-negatives over false-positives, since the instrument surfaces false-negatives at the next re-measurement) and rule 15 (chapter-close-inspect — at every chapter close, inspect the post-fix failure table's top rows before declaring the locale closed). Both rules constrain which samples (substrate moves) are permitted at each choice point.
+- **Prompt $Q$** — the failure-table's top tag at each measurement round. The prompt is dynamic: as the substrate work proceeds, the prompt updates, conditioning the next choice point on the round's empirical residual.
+
+### The scale-invariance observation
+
+The fractal claim, supported by the engagement's empirical record:
+
+> The four-ingredient SIPE-T procedure recurs self-similarly across all scales of the resolver-instance pipeline's failure-table distribution — from the largest cluster (90-file `expected LBrace` block surfaced at TXC baseline) through the mid-tier clusters (30-file ESM-cycle prototype-undefined block) down to the single-file singletons of the long tail (e.g., the 1-file `expected RBrace` at `rxjs/observable/dom/animationFrames.ts`).
+
+The observation has structural content beyond restatement. Specifically: at every scale, the same compound-discovery pattern reproduces — investigating the visible top tag from the failure table (the prompt) routinely surfaces a higher-impact substrate gap than the planned-scope fix the worker initially intended (per [Doc 742 §IV / §V](/resolve/doc/742-the-resolver-instance-pattern-at-full-strength-downstream-dispatch-and-upstream-elision-as-doc-729s-empirical-refinements-from-a-typescript-parity-research-arc) framing of standing rule 15 in operation). The pattern was observed nine times across the arc, at scales ranging from 47.6-percentage-point single-fix yields (at head) down to fractional-percentage-point fixes that closed individual singletons (at tail). Both ends of the scale showed the same shape: planned fix → measurement → top-tag inspection → discovery of unplanned higher-impact substrate concern → secondary fix → measurement.
+
+The structural significance is that **the discipline scales the way the SIPE-T procedure says it should**. If the four ingredients are correctly identified at one scale, they are also correctly identified at every other scale. The cruftless arc's empirical record is the first explicit corpus-tier instance of SIPE-T scale-invariance observed across a substrate engagement.
+
+### Why this strengthens the §3.2 sub-form
+
+The §3.2 sub-form was framed at the per-step inference layer, with [Doc 466 §Implication 5](/resolve/doc/466-doc-446-as-a-sipe-instance) flagging the isomorphism-magnetism concern: the pattern's appearance across multiple substrate types could be artifact rather than structural. [Doc 629](/resolve/doc/629-sipe-confab-synthesis-against-sipe-t)'s cross-practitioner derivation search addressed the concern for the Bayesian-transformer-mechanics instance via Misra et al.'s independent publication.
+
+The cruftless TS-parity arc adds a second independent empirical instance, at a substrate type the original isomorphism-magnetism concern did not anticipate: not LLM inference, not transformer attention, but the resolver-instance pipeline of a JavaScript runtime. The arc was not designed with SIPE-T in mind; the four-ingredient mapping was recognized only at the keeper's post-hoc framing ("I think there is a fractal nature here that SIPE-T might explain") after the arc's compound-discovery pattern had already produced nine reproductions across head and tail scales.
+
+The independence is structurally important. The instance was generated:
+- in a different substrate type (runtime-engineering rather than statistical inference),
+- by a different worker engagement (Pin-Art substrate composition rather than LLM-keeper dyadic exchange),
+- with a different measurement apparatus (file-count corpus baselines rather than Bayesian posterior concentration),
+- and produced a substrate-tier corpus publication ([Doc 742](/resolve/doc/742-the-resolver-instance-pattern-at-full-strength-downstream-dispatch-and-upstream-elision-as-doc-729s-empirical-refinements-from-a-typescript-parity-research-arc)) whose structural results (downstream dispatch + upstream elision) were derived from the four-ingredient SIPE-T shape without the document itself invoking SIPE-T as warrant.
+
+The cross-substrate reproduction of the SIPE-T shape, in an instance that arose without intent to demonstrate the construct, is what the cross-practitioner derivation search was originally seeking. The cruftless arc is the second domain-independent corroboration of the §3.2 sub-form's structural claim.
+
+### Standing prediction
+
+The scale-invariance observation makes a falsifiable prediction for future substrate engagements:
+
+> Any substrate-fix engagement whose discipline set $D$ includes corpus-instrument-based measurement (Pin-Art rule 14 + rule 15 analogues, or domain-equivalent disciplines) will exhibit the four-ingredient SIPE-T shape recurring self-similarly across the engagement's full failure-distribution tail.
+
+The cruftless engagement's TS-parity arc supplies the first cross-substrate datum. Subsequent engagements — at the JS-source-language resolver, the bytecode-compiler resolver, the package-manager resolver, the capability-passing-runtime resolver, as enumerated in [Doc 742 §VII](/resolve/doc/742-the-resolver-instance-pattern-at-full-strength-downstream-dispatch-and-upstream-elision-as-doc-729s-empirical-refinements-from-a-typescript-parity-research-arc) — provide additional sites for the prediction to be tested.
+
+### Note on the keeper's framing
+
+The keeper's framing message — *"I think there is a fractal nature here that SIPE-T might explain"* — was the recognition that consolidated this appendix. The framing arrived after the empirical pattern had already produced nine reproductions across head-and-tail scales in the engagement; the SIPE-T identification was post-hoc, not predictive. The post-hoc nature is itself informative: the four-ingredient SIPE-T shape is recognizable when one looks for it, but the engagement's worker (the cruftless substrate session) did not need to invoke SIPE-T to produce the pattern. The pattern is structural to corpus-conditioned substrate work; SIPE-T is the corpus-tier name for the structure that engagements produce regardless of whether they know to look for it.
+
