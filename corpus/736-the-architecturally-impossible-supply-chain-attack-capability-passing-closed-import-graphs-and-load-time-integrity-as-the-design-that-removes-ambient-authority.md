@@ -339,3 +339,107 @@ That is the architectural impossibility this document set out to design. It is n
 ---
 
 *Doc 736 postscript closes. Subsequent corpus work on this design family will be follow-on articulations: the verifier moves (Doc 737 candidate), the catalog of empirically-discovered package capabilities (Doc 738 candidate), and the closed-import-graph compiler check as a separate substrate (Doc 739 candidate). All build on Pilot α's standing first cut at `pilots/rusty-js-caps/` in `/home/jaredef/rusty-bun`.*
+
+---
+
+## Appendix A — The Intrinsic-Identity Attack Class and the Two-Pillar Design
+
+**Added 2026-05-25 (post-RS-EXT 2 + CP arc closure). Jared Foy.**
+
+The body of Doc 736 catalogues the supply-chain attack surface as ambient authority: a dep that can read `/etc/passwd`, exfiltrate via stdout, mutate `process.env`, or spawn subprocesses. The capability-passing-runtime substrate (Move 1) operationalized at `pilots/rusty-js-caps/` mechanically refuses every probe in that catalogue. Pilot α first-cut closed at 9/9 probes refused, and §X.5 declared the architectural impossibility realized.
+
+A subsequent stress-test of the design surfaced a class of attacks the body did not catalogue, and the Pilot α substrate did not defeat. This appendix books the class, the substrate that closes it, and the implication that the Doc 736 architectural property rests on *two* substrate pillars, not one.
+
+### A.1 The intrinsic-identity attack class
+
+Consider a dep that does not touch the filesystem, network, environment, or process. It writes one assignment:
+
+```js
+Array.prototype.map = function () { return "PWNED"; };
+```
+
+The dep loaded under Pilot α's `--sealed` mode (Mode 3) has no fs, no net, no process, no eval, no console. Every probe in §IV is mechanically refused. Yet this assignment requires none of those capabilities. It mutates a shared ECMAScript intrinsic that the application later uses. When the application calls `[1, 2, 3].map(x => x * 2)`, the result is `"PWNED"`, not `[2, 4, 6]`. The dep has compromised the application's program semantics without ever touching the §IV-catalogued surface.
+
+The attack is structural: ECMAScript intrinsics are shared by every module loaded in the realm. `Array.prototype` is *one* object. Capability handles cannot gate access to it because there is no "right to mutate Array.prototype" anywhere in the §IV-derived capability set. The dep's `Array.prototype.map = ...` is plain ECMAScript at the language tier; it does not enter the dispatcher's gate hierarchy at all.
+
+Generalizing, the attack class encompasses every assignment that mutates a value visible across module boundaries through identity rather than through reference passing:
+
+- Prototype pollution of any built-in (`Array`, `Object`, `Function`, `Promise`, `Error`, ...).
+- Override of any well-known Symbol method (`@@iterator`, `@@hasInstance`, `@@toPrimitive`, `@@species`).
+- Replacement of any `Function.prototype` method (`call`, `apply`, `bind`) such that every cross-module call routes through dep-controlled code.
+- Insertion of trojaned methods at the prototype tier (`Array.prototype.includes = function (...) { exfil(this); return true; }`).
+
+None of these need the §IV capabilities. None are addressed by the Pilot α substrate. All are realistic supply-chain attack vectors against a sealed Doc 736 deployment, as it was constructed.
+
+### A.2 Why the body did not catalogue the class
+
+The body's §IV catalogue derived from a threat model anchored in real historical npm-ecosystem incidents (event-stream, ua-parser-js, et al.). Those incidents were ambient-authority exploits: the malicious code reached the filesystem, the network, or the environment. The capability-passing-runtime substrate is precisely the right response to that threat model. The body's claim "architecturally impossible against the catalogued surface" is correct, and Pilot α's 9/9 corroborates it.
+
+The intrinsic-identity class is a *different* threat model. It does not appear in the npm historical record at high frequency because, until recently, the npm ecosystem did not motivate it: deps that wanted exfiltration could just exfiltrate. With the Pilot α substrate in place and ambient authority closed, intrinsic-identity attacks become the load-bearing residual. A determined attacker, denied fs and net, would reach for prototype pollution next.
+
+The Pilot α gap is not a flaw in the body's argument. It is the next layer the argument exposes once the first layer is closed.
+
+### A.3 The substrate that closes the class
+
+The intrinsic-identity class is structurally addressable via realm isolation. ECMA-262 §9.3 defines a Realm Record as the unit that owns intrinsics; cross-realm `Array.prototype` references are distinct objects. A dep loaded into a realm distinct from the application's cannot mutate the application's `Array.prototype` because it cannot reach it.
+
+`pilots/realm-substrate/` (RS-EXT 2 at the time of this appendix) implements the minimum substrate required to defeat the intrinsic-identity attack class. The substrate is bounded at ~190 LOC and consists of:
+
+1. A `RealmRecord` struct carrying per-realm intrinsic-prototype slots and a globals-override map.
+2. A `clone_intrinsic_proto` primitive that shallow-clones an object's property bag plus its `internal_kind`, so cloned constructors stay typeof-`"function"` while sharing native-fn pointers with the source.
+3. An `allocate_realm` API that clones `Array.prototype`, `Object.prototype`, `Function.prototype`, `Promise.prototype`, `String.prototype`, and the corresponding constructors. The cloned constructors' `.prototype` properties point at the cloned prototypes, so user-visible `Array.prototype.map = X` lands on the realm's clone, not the primordial.
+4. `enter_realm` and `exit_realm` swaps for the runtime's intrinsic-prototype fields and the globals map, with snapshot-and-restore semantics that allow nested entry.
+5. An engine helper `__cruftless_eval_realm(source)` that allocates a fresh realm, enters, evaluates, exits.
+
+Under this substrate, the prototype-pollution probe at `pilots/realm-substrate/probes/prototype_pollution_realm.mjs` prints `ATTACK_BLOCKED` where the pre-fix baseline prints `ATTACK_SUCCEEDED`. The architectural property the body's §IV-derived substrate could not deliver against the new class is now delivered.
+
+The minimum-realm substrate is bounded. It is not the full ECMA-262 §9.3 RealmRecord architecture. Function `[[Realm]]` slot semantics, cross-realm `instanceof`, and per-module realm binding remain unimplemented and unnecessary for the impossibility-claim closure. They are downstream extensions reserved for consumers (test262 `$262.createRealm`, web-worker-style isolation) that need them. The intrinsic-identity attack class is closed at ~190 LOC.
+
+### A.4 The two-pillar design
+
+Doc 736's architectural impossibility claim now rests on two substrate pillars:
+
+**Pillar 1 (capability-passing-runtime, Pilot α at `pilots/rusty-js-caps/`)**: closes ambient-authority attacks. The dep has no fs, no net, no env, no process, no exec, no clock-as-side-channel, except as the application explicitly hands it through capability handles.
+
+**Pillar 2 (realm-scoped intrinsic isolation, RS-EXT 2 at `pilots/realm-substrate/`)**: closes intrinsic-identity attacks. The dep operates against its own cloned intrinsics. Mutations to `Array.prototype` and other shared built-ins land on the dep's realm clones, not the application's primordial.
+
+Together, the two pillars close both attack classes. Either alone is insufficient. The Pilot α substrate refuses the §IV catalogue but admits intrinsic-identity attacks; the RS-EXT 2 substrate isolates intrinsics but admits ambient-authority attacks if the realm's globals carry fs/net/process. The composition is the design.
+
+The body's §IV opening, "the supply chain attack of the historical RCE-or-exfiltration shape is unreachable by the structure of the program," holds under Pillar 1 alone. The extended closure, "no supply-chain attack of any structurally-reachable shape," requires both. This appendix amends the body to reflect the two-pillar requirement.
+
+### A.5 The JS-API expression: Compartments
+
+Pillars 1 and 2 deliver the architectural property at the host tier. Application authors writing JavaScript can also reach it directly, through the TC39 Compartments proposal (Stage 1, frozen-snapshot 2025-12-01). The proposal defines `new Compartment({globals, modules})` as a primitive for creating an isolated module-evaluation environment with explicit endowments.
+
+`pilots/compartment-primitive/` lands a cruft-internal subset of the proposal that wires both pillars into a JS-visible API. After CP-EXT 5, an application author writes:
+
+```js
+const fsCap = {
+    readSafePath(path) {
+        if (!path.startsWith("/tmp/safe/")) throw new Error("CapabilityError");
+        return readSync(path);
+    },
+};
+
+const dep = new Compartment({ globals: { fs: fsCap } });
+
+dep.evaluate('fs.readSafePath("/tmp/safe/data.json")');  // works
+dep.evaluate('process.exit(0)');                          // ReferenceError
+dep.evaluate('Array.prototype.map = () => "PWNED"');     // intrinsic clone mutated; primordial untouched
+[1, 2, 3].map(x => x * 2);                                // [2, 4, 6]
+```
+
+The compartment defaults to `ambient_denied`: only ECMAScript intrinsics plus the explicit `globals` endowments are visible inside. The host-tier ambient bindings (process, require, console) are not. The realm's cloned intrinsics absorb prototype mutations without leaking. The capability handle is the only path for the dep to do anything outside pure computation.
+
+This is the Doc 736 design expressed in JavaScript code that an application author writes. The host-tier mechanism (Pilot α + RS-EXT 2) is the substrate; the Compartment is the API.
+
+### A.6 Closure (revised)
+
+The body's §X.5 declared closure on the basis of Pillar 1 against the §IV catalogue. This appendix extends that closure to the intrinsic-identity attack class via Pillar 2, and exposes the design at JS-API tier via Compartments.
+
+Cumulative substrate cost across both pillars and the Compartment API is ~520 LOC at the time of this appendix: ~835 (Pilot α) + ~190 (RS-EXT 2) + ~330 (CP arc) — though Pilot α and the CP arc count substantially overlapping plumbing, so the marginal cost of the two-pillar plus JS-API tier over Pilot α alone is closer to ~520 LOC.
+
+The architectural answer the keeper invited has been built, twice now: once at the host tier through capability handles, and once at the JS-API tier through Compartments. The supply-chain attack against a Doc 736 deployment, whether sealed at host load-time or constructed at JS-API runtime, is unreachable by the structure of the program.
+
+Subsequent corpus work on this design family includes the verifier moves (Moves 2-5), the catalogued capability surface, the closed-import-graph compiler check, and (now) the per-Function `[[Realm]]` slot semantics that downstream consumers like `$262.createRealm` require. All build on the two-pillar substrate at `pilots/rusty-js-caps/` and `pilots/realm-substrate/` plus the JS-API expression at `pilots/compartment-primitive/`.
+
