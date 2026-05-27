@@ -1,0 +1,8 @@
+{
+  "name": "global-builtins",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "globalThis identity, queueMicrotask ordering, setTimeout/setImmediate ordering, process.nextTick, console methods shape, eval basic, Function constructor."
+}

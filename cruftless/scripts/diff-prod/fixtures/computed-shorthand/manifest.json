@@ -1,0 +1,8 @@
+{
+  "name": "computed-shorthand",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "Computed property names, shorthand properties, shorthand methods, Symbol keys, getter/setter in object literals, method name inference, toString on functions."
+}

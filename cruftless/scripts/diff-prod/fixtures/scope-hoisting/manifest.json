@@ -1,0 +1,8 @@
+{
+  "name": "scope-hoisting",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "var hoisting, function declaration hoisting, block scoping with let/const, closures in loops, IIFE, function expression vs declaration, nested function scopes."
+}

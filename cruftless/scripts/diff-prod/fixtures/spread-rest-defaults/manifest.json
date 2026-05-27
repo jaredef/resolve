@@ -1,0 +1,8 @@
+{
+  "name": "spread-rest-defaults",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "Rest parameters, default parameters, spread in arrays and objects, arguments object, rest in destructuring, spread in function calls."
+}

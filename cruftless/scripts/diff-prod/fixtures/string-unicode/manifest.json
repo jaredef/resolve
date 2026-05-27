@@ -1,0 +1,8 @@
+{
+  "name": "string-unicode",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "String.raw, String.fromCodePoint, codePointAt, normalize, localeCompare, at, matchAll iteration, replaceAll with function, search, raw template edge cases."
+}

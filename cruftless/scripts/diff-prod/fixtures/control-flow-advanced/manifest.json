@@ -1,0 +1,8 @@
+{
+  "name": "control-flow-advanced",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "for-in enumeration (own + prototype, non-enumerable exclusion), switch (fall-through, default, break, expression matching), labeled break/continue, comma operator, ternary, do-while, for-of with break."
+}

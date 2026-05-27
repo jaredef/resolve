@@ -1,0 +1,8 @@
+{
+  "name": "weak-refs",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "WeakRef creation and deref, FinalizationRegistry shape, AggregateError construction and Promise.any rejection, Error.isError, Error cause chaining."
+}

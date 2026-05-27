@@ -1,0 +1,8 @@
+{
+  "name": "property-descriptors",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "Object.defineProperty, getOwnPropertyDescriptor, getOwnPropertyNames, defineProperties, property attributes (writable/enumerable/configurable), getters/setters via descriptors, Object.seal/freeze/preventExtensions."
+}

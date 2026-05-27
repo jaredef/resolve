@@ -1,0 +1,8 @@
+{
+  "name": "typeof-coercion",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "typeof for all types, Object.is edge cases, loose vs strict equality, ToPrimitive via valueOf/toString, Symbol.toPrimitive, unary operators (+, -, !, ~, void), Boolean coercion."
+}

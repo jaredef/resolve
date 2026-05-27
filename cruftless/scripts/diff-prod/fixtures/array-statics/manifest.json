@@ -1,0 +1,8 @@
+{
+  "name": "array-statics",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "Array.from (iterable, arrayLike, mapFn), Array.of, Array.isArray edge cases, Array.prototype methods: every, some, reduce, reduceRight, fill, copyWithin, splice, concat edge cases."
+}

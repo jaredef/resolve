@@ -1,0 +1,8 @@
+{
+  "name": "class-advanced",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "Private fields, private methods, private static, static blocks, computed method names, extends expression, class name binding, toString behavior, instanceof chain."
+}
