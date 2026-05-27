@@ -1,0 +1,8 @@
+{
+  "name": "promise-concurrency",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "Promise concurrency patterns: race first-wins, all short-circuit on reject, allSettled mixed results, any first-fulfills, withResolvers, chaining, nested then/catch ordering."
+}

@@ -1,0 +1,8 @@
+{
+  "name": "node-buffer",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "Buffer class: from (string, array, buffer), alloc, concat, isBuffer, byteLength, compare, toString with encodings (utf8, hex, base64), slice, copy, indexOf."
+}

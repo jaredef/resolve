@@ -1,0 +1,8 @@
+{
+  "name": "node-process",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "process global: argv shape, env access, cwd, pid/ppid, platform, arch, version, versions shape, memoryUsage shape, uptime type."
+}

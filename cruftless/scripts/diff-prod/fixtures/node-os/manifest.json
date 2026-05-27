@@ -1,0 +1,8 @@
+{
+  "name": "node-os",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "node:os module: platform, arch, type, cpus shape, homedir, tmpdir, EOL, endianness, totalmem/freemem types."
+}

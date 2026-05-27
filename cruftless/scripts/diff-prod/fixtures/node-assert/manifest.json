@@ -1,0 +1,8 @@
+{
+  "name": "node-assert",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "node:assert module: ok, equal, notEqual, strictEqual, notStrictEqual, deepStrictEqual, throws, doesNotThrow, fail."
+}

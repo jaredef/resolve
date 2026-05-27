@@ -1,0 +1,8 @@
+{
+  "name": "dataview-arraybuffer",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "DataView read/write methods (getInt8, setInt8, getUint16, getFloat32, getFloat64, byte order), ArrayBuffer basics (byteLength, slice, isView)."
+}

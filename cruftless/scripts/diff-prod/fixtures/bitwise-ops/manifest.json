@@ -1,0 +1,8 @@
+{
+  "name": "bitwise-ops",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "Bitwise operators: AND, OR, XOR, NOT, left shift, signed right shift, unsigned right shift, assignment variants, 32-bit truncation, negative handling."
+}

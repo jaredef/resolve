@@ -1,0 +1,8 @@
+{
+  "name": "node-util",
+  "categories": ["F"],
+  "deps": [],
+  "timeout-ms": 5000,
+  "gate2": true,
+  "description": "node:util module: format, inspect, isDeepStrictEqual, types sub-module (isArray, isDate, isMap, isSet, isRegExp, isTypedArray)."
+}
