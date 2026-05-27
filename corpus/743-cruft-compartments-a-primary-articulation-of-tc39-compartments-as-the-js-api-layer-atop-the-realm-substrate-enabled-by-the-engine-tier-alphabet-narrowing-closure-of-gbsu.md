@@ -79,24 +79,28 @@ The relationship is parallel composition, not nested dependency. CruftScript doe
 
 ## VIII. Honest scope
 
-CruftCompartments today is the CP-EXT 1–4 + GBSU-7f.4 closure. That is:
+CruftCompartments today (post the CSC-EXT arc that landed the same day as this articulation's first draft) is the CP-EXT 1–4 + GBSU-7f.4 + CPF-EXT 1+2+3+4 + CSC-EXT 1+2+3+4+5+6 closure. That is:
 
 - The Compartment constructor exists and accepts `{globals, modules}`.
-- `evaluate(source)` returns the value of the last expression.
-- `import(specifier)` returns a Promise of a module namespace, scoped to the compartment's modules map.
-- `globalThis` accessor returns the per-compartment globalThis.
-- `Object.keys(compartment.globalThis)` enumerates only intrinsics + endowments; no ambient host surface leaks.
-- P-C holds in steady state.
+- `evaluate(source)` returns the value of the last expression, with Script semantics for top-level `var` (closes ECMA-262 §16.1 + §19.2.1.3); subsequent reassignment of a top-level var via local-slot mirrors to globalThis at the StoreGlobal site (closes ES-EXT 2 v2 standing rec ARC.M.7 broadly).
+- `import(specifier)` returns a Promise of a module namespace, scoped to the compartment's modules map (closed-graph mode).
+- `globalThis` is a getter on `Compartment.prototype` per spec, returning the compartment's globalThis Object on each access. Per-instance internal slots (`__compartment_realm`, `__compartment_globalthis`, `__compartment_modules`) are non-enumerable non-configurable.
+- Endowments install with the §17 standard built-in descriptor `{w:t, e:f, c:t}` so their property shape matches the intrinsic allowlist.
+- Sloppy-mode top-level `this` inside `compartment.evaluate` is bound to the compartment's globalThis per ECMA-262 §10.2.1.2.
+- Cross-realm Error identity holds (caught `instanceof Error` from outer code returns true for errors thrown inside `compartment.evaluate`; same for TypeError, RangeError, SyntaxError); `error.message` and `error.name` carry across realms.
+- `Object.keys(compartment.globalThis)` enumerates only endowments + the spec-enumerable subset; no ambient host surface leaks; no engine-internal helper (`__apply`, `__await`, `__destr_*`) appears as JS-visible global.
+- Compartment lifecycle: each `new Compartment()` allocates a realm + a globalThis Object pre-populated with the intrinsic allowlist + endowments; short-lived compartments don't crash; coarse smoke verified at N=100 instances.
+- P-C holds empirically (verified by an 8-probe falsifier set executed against the substrate).
 
 What is NOT yet shipped:
 
-- Cross-compartment instanceof checks via `[[Realm]]` slot on functions (RS-EXT 3+).
-- Hook implementations (importHook, loadHook, resolveHook).
-- Module Source records (precompiled binary modules).
-- Capability-handle wrapping at endowment-injection time (today the user passes raw Values; the cap-handle types from `pilots/rusty-js-caps/` are not auto-wrapped).
-- ES-EXT 2 v2 (the indirect-eval-attaches-to-globalThis closure, also from today's session) interacts cleanly with compartments but its v2 limitation — that subsequent reassignment of a script-top var via local-slot doesn't mirror back to globalThis — applies to compartment.evaluate calls too. The standing-rec for a compiler pass flipping top-level-script-var ASSIGNMENT targets to also emit StoreGlobal is the constraint-respecting closure here.
+- **Cross-compartment instanceof via the [[Realm]] slot on functions** (RS-EXT 3+). Today cross-realm Error checks work by reference-sharing the Error ctor through the allowlist; if RS-EXT 3+ later clones intrinsics per realm, brand-check substrate work lands at the same time.
+- **Hook implementations (importHook / loadHook / resolveHook)**. Without hooks, `compartment.import` resolves only against the pre-registered modules dictionary; dynamic `import('foo')` inside `compartment.evaluate` rejects for any specifier not in the map. Larger TC39 conformance surface; queued as a paired sub-arc with dynamic-import resolution.
+- **Module Source records** (precompiled binary modules) — TC39 proposal surface; deferred.
+- **Capability-handle wrapping at endowment-injection time**. Today the user passes raw Values; the cap-handle types from `pilots/rusty-js-caps/` are not auto-wrapped. Manual passing achieves Doc 736 capability-passing today; the auto-wrap rung would tighten the discipline at the API boundary.
+- **Realm-arena GC accounting**. Each compartment's realm slot in `Runtime.realms` is retained for the runtime's lifetime; the globalThis Object is GC-reclaimed when references drop, but the realm record is not. Long-running programs creating many short-lived compartments accumulate realm entries. Coarse JS-side smoke test confirms no crash at modest N; a Rust-side allocator probe + arena-reclamation mechanism would be the substrate-tier fix.
 
-The substrate that supports the prospective items is in place. The work to land them is per-rung articulation of how each maps onto the resolver-instance stack the GBSU arc cleared.
+The substrate that supports the prospective items is in place. The work to land them is per-rung articulation of how each maps onto the resolver-instance stack the GBSU arc cleared, with each rung's falsifier probe pre-articulated in `pilots/compartment-primitive/spec-conformance/probes/` per the standing rec ARC.MR.4 (formalization-before-implementation discipline).
 
 ## IX. Composes-with
 
